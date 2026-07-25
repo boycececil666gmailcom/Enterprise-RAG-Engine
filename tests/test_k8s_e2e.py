@@ -44,7 +44,7 @@ def test_k8s_real_e2e_flow():
 
 
     
-    # 3. Query chatbot with off-theme query (should trigger refusal safeguard)
+    # 3. Query chatbot with off-theme query (should trigger refusal node)
     refusal_payload = {
         "message": "How do I make a chocolate cake?"
     }

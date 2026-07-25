@@ -12,8 +12,9 @@ def get_reranker() -> FlashrankRerank:
     return _compressor
 
 @tool
-def retrieve_local_documents(query: str) -> str:
-    """Retrieve semantically relevant document chunks from the local vector database.
+def retrieve_local_documents(query: str, original_query: str = None) -> str:
+    """Retrieve semantically relevant document chunks from the local vector database,
+    and structured relationships from the graph database.
     Use this tool when the query refers to private documentation, internal guidelines,
     project names (like 'Supernova'), or local workspace facts."""
     try:
@@ -24,27 +25,46 @@ def retrieve_local_documents(query: str) -> str:
         # Perform hybrid search natively in Qdrant (using query text directly or HyDE text if provided)
         docs = store.similarity_search(query, k=5)
         
-        if not docs:
-            return "No matching local documents found."
+        context_list = []
+        if docs:
+            # Apply FlashRank Cross-Encoder reranker using the original user query
+            try:
+                compressor = get_reranker()
+                # If original_query is provided, use it for rerank query, otherwise fall back to query
+                rerank_q = original_query if original_query else query
+                reranked_docs = compressor.compress_documents(docs, rerank_q)
+            except Exception as rerank_err:
+                import logging
+                logging.getLogger(__name__).warning(
+                    f"FlashRank reranking failed, falling back to database rankings: {rerank_err}"
+                )
+                reranked_docs = docs[:2]
             
-        # Apply FlashRank Cross-Encoder reranker using the original user query
+            # Format top chunks as output context
+            for doc in reranked_docs:
+                score = doc.metadata.get("relevance_score", 0.0)
+                context_list.append(f"[Match Score: {score:.3f}] Content: {doc.page_content}")
+                
+        vector_context = "\n\n".join(context_list) if context_list else "No matching local documents found."
+        
+        # Retrieve context from Neo4j Graph Database
+        graph_target = original_query if original_query else query
         try:
-            compressor = get_reranker()
-            reranked_docs = compressor.compress_documents(docs, query)
-        except Exception as rerank_err:
+            import src.theme_based_rag_backend.graph_db as graph_db
+            graph_context = graph_db.query_graph_context(graph_target)
+        except Exception as graph_err:
             import logging
             logging.getLogger(__name__).warning(
-                f"FlashRank reranking failed, falling back to database rankings: {rerank_err}"
+                f"Failed to query Neo4j Graph DB: {graph_err}"
             )
-            reranked_docs = docs[:2]
-        
-        # Format top chunks as output context
-        context_list = []
-        for doc in reranked_docs:
-            score = doc.metadata.get("relevance_score", 0.0)
-            context_list.append(f"[Match Score: {score:.3f}] Content: {doc.page_content}")
+            graph_context = f"Error querying Neo4j Graph DB: {graph_err}"
             
-        return "\n\n".join(context_list)
+        combined_context = (
+            f"=== VECTOR DATABASE CONTEXT ===\n{vector_context}\n\n"
+            f"=== KNOWLEDGE GRAPH RELATIONSHIPS ===\n{graph_context}"
+        )
+        return combined_context
+        
     except Exception as e:
         import traceback
         traceback.print_exc()

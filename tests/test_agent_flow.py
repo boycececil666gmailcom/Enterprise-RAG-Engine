@@ -4,7 +4,7 @@ from src.theme_based_rag_backend.agent_flow import (
     AgentState,
     classifier_node,
     rag_qa_node,
-    safeguard_node,
+    refuse_node,
     critique_node,
     route_by_category,
     route_after_critique,
@@ -71,10 +71,10 @@ def test_classifier_node_fallback(mock_embeddings):
     result = classifier_node(state)
     assert result == {"category": "refuse"}
 
-# Test safeguard_node
+# Test refuse_node
 @patch("src.theme_based_rag_backend.agent_flow.llm")
-def test_safeguard_node(mock_llm):
-    """Test that safeguard_node generates a standard refusal/guardrails message for queries classified under the 'refuse' category."""
+def test_refuse_node(mock_llm):
+    """Test that refuse_node generates a standard refusal/guardrails message for queries classified under the 'refuse' category."""
     mock_response = MagicMock()
     mock_response.content = "I can only assist with Fintech SaaS platform questions."
     mock_llm.invoke.return_value = mock_response
@@ -88,7 +88,7 @@ def test_safeguard_node(mock_llm):
         "critique_feedback": None,
         "attempts": 0
     }
-    result = safeguard_node(state)
+    result = refuse_node(state)
     assert result == {"agent_response": "I can only assist with Fintech SaaS platform questions."}
 
 # Test rag_qa_node

@@ -2,5 +2,5 @@ from src.theme_based_rag_backend.agent_flow.nodes.node_classifier import classif
 from src.theme_based_rag_backend.agent_flow.nodes.node_hyde_decision import hyde_decision_node
 from src.theme_based_rag_backend.agent_flow.nodes.node_hyde_generator import hyde_node, generate_hypothetical_document
 from src.theme_based_rag_backend.agent_flow.nodes.node_rag_qa import rag_qa_node
-from src.theme_based_rag_backend.agent_flow.nodes.node_safeguard import safeguard_node
+from src.theme_based_rag_backend.agent_flow.nodes.node_refuse import refuse_node
 from src.theme_based_rag_backend.agent_flow.nodes.node_critique import critique_node

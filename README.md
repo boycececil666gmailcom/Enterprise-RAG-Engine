@@ -117,20 +117,20 @@ flowchart TD
         HyDEDecision{node_hyde_decision<br/>⚡ Rule Engine}:::decision
         HyDEGen[node_hyde_generator<br/>🤖 Gemini LLM]:::hyde
         QA[node_rag_qa<br/>🤖 Gemini LLM]:::lgNode
-        Safeguard[node_safeguard<br/>🤖 Gemini LLM]:::lgNode
+        Refuse[node_refuse<br/>🤖 Gemini LLM]:::lgNode
         Critique[node_critique<br/>🤖 Gemini LLM]:::lgNode
         End([End & Return]):::endNode
         
         Graph --> Classifier
         Classifier -->|edge_category: rag| HyDEDecision
-        Classifier -->|edge_category: refuse| Safeguard
+        Classifier -->|edge_category: refuse| Refuse
         
         HyDEDecision -->|edge_hyde: enable| HyDEGen
         HyDEDecision -->|edge_hyde: skip| QA
         HyDEGen --> QA
         
         QA --> Critique
-        Safeguard --> Critique
+        Refuse --> Critique
         
         Critique -->|edge_critique: approved| End
         Critique -->|edge_critique: rejected| Classifier
@@ -181,7 +181,7 @@ sequenceDiagram
     participant HyDEDecision as node_hyde_decision (Rule Engine)
     participant HyDEGen as node_hyde_generator (Gemini LLM)
     participant QA as node_rag_qa (Gemini LLM)
-    participant Safeguard as node_safeguard (Gemini LLM)
+    participant Refuse as node_refuse (Gemini LLM)
     participant Critique as node_critique (Gemini LLM)
     participant VectorStore as Qdrant DB
 
@@ -215,8 +215,8 @@ sequenceDiagram
             end
         else Path B: Category is 'refuse'
             rect rgb(254, 226, 226)
-                Graph->>Safeguard: LLM generates polite refusal response
-                Safeguard-->>Graph: agent_response
+                Graph->>Refuse: LLM generates polite refusal response
+                Refuse-->>Graph: agent_response
             end
         end
         
@@ -251,7 +251,7 @@ All nodes and edges inside `src/theme_based_rag_backend/agent_flow` follow expli
 | `node_hyde_decision` | [node_hyde_decision.py](file:///c:/Users/boyce/OneDrive/Desktop/rag-backend/src/theme_based_rag_backend/agent_flow/nodes/node_hyde_decision.py) | **⚡ Rule Engine** | Fast heuristic pattern matching (Regex for error codes & Query length) |
 | `node_hyde_generator` | [node_hyde_generator.py](file:///c:/Users/boyce/OneDrive/Desktop/rag-backend/src/theme_based_rag_backend/agent_flow/nodes/node_hyde_generator.py) | **🤖 Gemini LLM** | Generates hypothetical document passage (`gemini-3.1-flash-lite`) |
 | `node_rag_qa` | [node_rag_qa.py](file:///c:/Users/boyce/OneDrive/Desktop/rag-backend/src/theme_based_rag_backend/agent_flow/nodes/node_rag_qa.py) | **🤖 Gemini LLM** | Hybrid retrieval consumer & answer synthesis (`gemini-3.1-flash-lite`) |
-| `node_safeguard` | [node_safeguard.py](file:///c:/Users/boyce/OneDrive/Desktop/rag-backend/src/theme_based_rag_backend/agent_flow/nodes/node_safeguard.py) | **🤖 Gemini LLM** | Polite boundary refusal response (`gemini-3.1-flash-lite`) |
+| `node_refuse` | [node_refuse.py](file:///c:/Users/boyce/OneDrive/Desktop/rag-backend/src/theme_based_rag_backend/agent_flow/nodes/node_refuse.py) | **🤖 Gemini LLM** | Polite boundary refusal response (`gemini-3.1-flash-lite`) |
 | `node_critique` | [node_critique.py](file:///c:/Users/boyce/OneDrive/Desktop/rag-backend/src/theme_based_rag_backend/agent_flow/nodes/node_critique.py) | **🤖 Gemini LLM** | Quality, groundedness & hallucination check (`gemini-3.1-flash-lite`) |
 
 ---
