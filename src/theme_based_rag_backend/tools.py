@@ -21,13 +21,13 @@ def retrieve_local_documents(query: str) -> str:
     except Exception as e:
         return f"Error: Local Vector database is not initialized: {e}"
     try:
-        # Perform hybrid search natively in Qdrant (which uses RRF under the hood)
+        # Perform hybrid search natively in Qdrant (using query text directly or HyDE text if provided)
         docs = store.similarity_search(query, k=5)
         
         if not docs:
             return "No matching local documents found."
             
-        # Apply FlashRank Cross-Encoder reranker using the cached instance
+        # Apply FlashRank Cross-Encoder reranker using the original user query
         try:
             compressor = get_reranker()
             reranked_docs = compressor.compress_documents(docs, query)

@@ -14,9 +14,16 @@ def setup_gateway_routing():
     gateway_module.async_client = httpx.AsyncClient(transport=httpx.ASGITransport(app=backend_app), base_url="http://localhost:8000")
     yield
 
+@patch("src.theme_based_rag_backend.vector_db.embeddings")
+@patch("src.theme_based_rag_backend.agent_flow.nodes.node_hyde_generator.get_hyde_llm")
 @patch("src.theme_based_rag_backend.agent_flow.llm")
-def test_full_e2e_flow(mock_llm):
+def test_full_e2e_flow(mock_llm, mock_hyde_llm, mock_embeddings):
     """Test the full end-to-end flow from document ingestion to querying via the API Gateway."""
+    import src.theme_based_rag_backend.agent_flow.nodes.node_classifier as classifier_module
+    classifier_module.theme_embedding_cached = None
+    mock_embeddings.embed_query.return_value = [1.0, 0.0]
+    mock_hyde_llm.return_value = mock_llm
+
     gateway_client = TestClient(gateway_app)
     
     # 1. Ingest document via API Gateway
@@ -30,14 +37,16 @@ def test_full_e2e_flow(mock_llm):
     assert ingest_response.json()["chunk_count"] > 0
 
     # 2. Query chatbot via API Gateway
-    # Mock LLM nodes sequentially: RAG QA -> Critique (Classifier is now vector-similarity based, no LLM call)
+    # Mock LLM nodes sequentially: HyDE -> RAG QA -> Critique (Classifier is vector-similarity based)
+    mock_resp_hyde = MagicMock(content='Supernova project security scanning system excerpt.')
     mock_resp_qa = MagicMock(content='The Supernova project is a next generation security scanning system.')
-    mock_resp_crit = MagicMock(content='{"status": "PASS"}')
+    mock_resp_crit = MagicMock(content='PASS')
     
-    mock_llm.invoke.side_effect = [mock_resp_qa, mock_resp_crit]
+    mock_llm.invoke.side_effect = [mock_resp_hyde, mock_resp_qa, mock_resp_crit]
+
 
     query_payload = {
-        "message": "What is the Supernova project?"
+        "message": "What is the Supernova project on the Fintech SaaS platform?"
     }
     query_response = gateway_client.post("/query", json=query_payload)
     
@@ -45,4 +54,5 @@ def test_full_e2e_flow(mock_llm):
     res_json = query_response.json()
     assert "Supernova project" in res_json["response"]
     assert "retrieve_local_documents" in res_json["tool_calls_executed"]
+
     assert "Supernova project is a next generation" in res_json["retrieved_documents"]

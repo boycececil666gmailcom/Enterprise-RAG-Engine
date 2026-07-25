@@ -15,7 +15,8 @@ from src.theme_based_rag_backend.agent_flow import (
 @patch("src.theme_based_rag_backend.vector_db.embeddings")
 def test_classifier_node_rag(mock_embeddings):
     """Test that classifier_node classifies query as 'rag' when cosine similarity is high (>= 0.65)."""
-    import src.theme_based_rag_backend.agent_flow.nodes.classifier as classifier_module
+    import src.theme_based_rag_backend.agent_flow.nodes.node_classifier as classifier_module
+
     classifier_module.theme_embedding_cached = None
     
     mock_embeddings.embed_query.return_value = [1.0, 0.0]
@@ -25,7 +26,7 @@ def test_classifier_node_rag(mock_embeddings):
         "history": [],
         "category": "refuse",
         "retrieved_documents": None,
-        "draft_response": "",
+        "agent_response": "",
         "critique_feedback": None,
         "attempts": 0
     }
@@ -35,7 +36,8 @@ def test_classifier_node_rag(mock_embeddings):
 @patch("src.theme_based_rag_backend.vector_db.embeddings")
 def test_classifier_node_refuse(mock_embeddings):
     """Test that classifier_node classifies query as 'refuse' when cosine similarity is low (< 0.65)."""
-    import src.theme_based_rag_backend.agent_flow.nodes.classifier as classifier_module
+    import src.theme_based_rag_backend.agent_flow.nodes.node_classifier as classifier_module
+
     classifier_module.theme_embedding_cached = None
     
     mock_embeddings.embed_query.side_effect = [[1.0, 0.0], [0.0, 1.0]]
@@ -45,7 +47,7 @@ def test_classifier_node_refuse(mock_embeddings):
         "history": [],
         "category": "rag",
         "retrieved_documents": None,
-        "draft_response": "",
+        "agent_response": "",
         "critique_feedback": None,
         "attempts": 0
     }
@@ -62,7 +64,7 @@ def test_classifier_node_fallback(mock_embeddings):
         "history": [],
         "category": "rag",
         "retrieved_documents": None,
-        "draft_response": "",
+        "agent_response": "",
         "critique_feedback": None,
         "attempts": 0
     }
@@ -82,12 +84,12 @@ def test_safeguard_node(mock_llm):
         "history": [],
         "category": "refuse",
         "retrieved_documents": None,
-        "draft_response": "",
+        "agent_response": "",
         "critique_feedback": None,
         "attempts": 0
     }
     result = safeguard_node(state)
-    assert result == {"draft_response": "I can only assist with Fintech SaaS platform questions."}
+    assert result == {"agent_response": "I can only assist with Fintech SaaS platform questions."}
 
 # Test rag_qa_node
 @patch("src.theme_based_rag_backend.agent_flow.retrieve_local_documents")
@@ -104,13 +106,13 @@ def test_rag_qa_node_with_retrieval(mock_llm, mock_retrieve):
         "history": [],
         "category": "rag",
         "retrieved_documents": None,
-        "draft_response": "",
+        "agent_response": "",
         "critique_feedback": None,
         "attempts": 0
     }
     result = rag_qa_node(state)
     
-    assert result["draft_response"] == "Synthesized response"
+    assert result["agent_response"] == "Synthesized response"
     assert result["retrieved_documents"] == "Retrieved doc context"
     mock_retrieve.invoke.assert_called_once_with("query message")
 
@@ -127,13 +129,13 @@ def test_rag_qa_node_already_retrieved(mock_llm, mock_retrieve):
         "history": [],
         "category": "rag",
         "retrieved_documents": "Existing documents",
-        "draft_response": "",
+        "agent_response": "",
         "critique_feedback": None,
         "attempts": 0
     }
     result = rag_qa_node(state)
     
-    assert result["draft_response"] == "Synthesized response"
+    assert result["agent_response"] == "Synthesized response"
     assert result["retrieved_documents"] == "Existing documents"
     mock_retrieve.invoke.assert_not_called()
 
@@ -150,7 +152,7 @@ def test_critique_node_refuse_pass(mock_llm):
         "history": [],
         "category": "refuse",
         "retrieved_documents": None,
-        "draft_response": "I can only assist with Fintech SaaS platform questions.",
+        "agent_response": "I can only assist with Fintech SaaS platform questions.",
         "critique_feedback": None,
         "attempts": 0
     }
@@ -170,7 +172,7 @@ def test_critique_node_refuse_fail(mock_llm):
         "history": [],
         "category": "refuse",
         "retrieved_documents": None,
-        "draft_response": "Here is the recipe for chocolate cake...",
+        "agent_response": "Here is the recipe for chocolate cake...",
         "critique_feedback": None,
         "attempts": 0
     }
@@ -190,7 +192,7 @@ def test_critique_node_pass(mock_llm):
         "history": [],
         "category": "rag",
         "retrieved_documents": "Context",
-        "draft_response": "Response",
+        "agent_response": "Response",
         "critique_feedback": None,
         "attempts": 1
     }
@@ -209,7 +211,7 @@ def test_critique_node_fail(mock_llm):
         "history": [],
         "category": "rag",
         "retrieved_documents": "Context",
-        "draft_response": "Response",
+        "agent_response": "Response",
         "critique_feedback": None,
         "attempts": 1
     }
@@ -238,30 +240,44 @@ def test_route_after_critique():
     assert route_after_critique(state) == "approved"
 
 # Test compiled graph end-to-end
+@patch("src.theme_based_rag_backend.vector_db.embeddings")
+@patch("src.theme_based_rag_backend.agent_flow.nodes.node_hyde_generator.get_hyde_llm")
 @patch("src.theme_based_rag_backend.agent_flow.retrieve_local_documents")
 @patch("src.theme_based_rag_backend.agent_flow.llm")
 @pytest.mark.asyncio
-async def test_agent_graph_e2e(mock_llm, mock_retrieve):
+async def test_agent_graph_e2e(mock_llm, mock_retrieve, mock_hyde_llm, mock_embeddings):
     """Test that the compiled LangGraph agent workflow functions correctly end-to-end from classification to final approved response."""
+    import src.theme_based_rag_backend.agent_flow.nodes.node_classifier as classifier_module
+    classifier_module.theme_embedding_cached = None
+    mock_embeddings.embed_query.return_value = [1.0, 0.0]
+    
+    mock_hyde_llm.return_value = mock_llm
     mock_retrieve.invoke.return_value = "Retrieved documents"
     
-    # Mock LLM calls: RAG QA -> Critique (Classifier is now vector-similarity based, no LLM call)
+    # Mock LLM calls: HyDE Generation -> RAG QA -> Critique (Classifier is vector-similarity based)
+    mock_resp_hyde = MagicMock(content='Hypothetical document passage')
     mock_resp_qa = MagicMock(content='Draft Response text')
     mock_resp_crit = MagicMock(content="PASS")
     
-    mock_llm.invoke.side_effect = [mock_resp_qa, mock_resp_crit]
+    mock_llm.invoke.side_effect = [mock_resp_hyde, mock_resp_qa, mock_resp_crit]
+
+
+
     
     inputs = {
-        "message": "User question",
+        "message": "How does the Fintech SaaS platform process payments?",
         "history": [],
         "category": "refuse",
+
+        "hypothetical_document": None,
         "retrieved_documents": None,
-        "draft_response": "",
+        "agent_response": "",
         "critique_feedback": None,
         "attempts": 0
     }
+
     
     result = await agent_graph.ainvoke(inputs)
     assert result["category"] == "rag"
-    assert result["draft_response"] == "Draft Response text"
+    assert result["agent_response"] == "Draft Response text"
     assert result["critique_feedback"] == "PASS"

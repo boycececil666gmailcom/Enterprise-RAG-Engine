@@ -11,7 +11,8 @@ logger = logging.getLogger(__name__)
 app = FastAPI(title="Theme-Based RAG Workflow Gateway")
 
 # Read downstream backend endpoint configuration
-RAG_BACKEND_URL = os.getenv("RAG_BACKEND_URL", "http://localhost:8000")
+RAG_BACKEND_URL = os.getenv("RAG_BACKEND_URL", os.getenv("BACKEND_URL", "http://localhost:8000"))
+
 GATEWAY_HOST = os.getenv("HOST", "0.0.0.0")
 GATEWAY_PORT = int(os.getenv("PORT", "8080"))
 
@@ -31,6 +32,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Initialize an async HTTP client for proxy routing
 # Initialize an async HTTP client for proxy routing
 async_client = httpx.AsyncClient(timeout=60.0)
 
@@ -105,6 +107,8 @@ async def health_check():
             backend_status = f"unhealthy (status {response.status_code})"
     except Exception as e:
         logger.warning(f"Health check failed to contact downstream backend: {e}")
+
+
         
     return {
         "status": "ok",

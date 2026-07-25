@@ -3,7 +3,7 @@ import time
 import httpx
 import pytest
 
-GATEWAY_URL = os.getenv("K8S_GATEWAY_URL", "http://localhost:8080")
+GATEWAY_URL = os.getenv("K8S_GATEWAY_URL", "http://localhost")
 
 def test_k8s_real_e2e_flow():
     """Real end-to-end integration test running against the actual services deployed in Kubernetes."""
@@ -41,6 +41,8 @@ def test_k8s_real_e2e_flow():
     assert "Zenith Tech" in res_query["response"] or "quantum computing" in res_query["response"]
     assert "retrieve_local_documents" in res_query["tool_calls_executed"]
     assert "Aurora Project" in res_query["retrieved_documents"]
+
+
     
     # 3. Query chatbot with off-theme query (should trigger refusal safeguard)
     refusal_payload = {

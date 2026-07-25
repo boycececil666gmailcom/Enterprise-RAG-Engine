@@ -34,8 +34,11 @@ async def run_query(request: QueryRequest):
             "message": request.message,
             "history": [{"role": msg.role, "content": msg.content} for msg in request.history],
             "category": "refuse",
+            "use_hyde": True,
+            "hyde_reason": None,
+            "hypothetical_document": None,
             "retrieved_documents": None,
-            "draft_response": "",
+            "agent_response": "",
             "critique_feedback": None,
             "attempts": 0
         }
@@ -48,10 +51,16 @@ async def run_query(request: QueryRequest):
             tool_calls_executed.append("retrieve_local_documents")
             
         return QueryResponse(
-            response=result.get("draft_response", ""),
+            response=result.get("agent_response", ""),
+
             tool_calls_executed=tool_calls_executed,
+            use_hyde=result.get("use_hyde"),
+            hyde_reason=result.get("hyde_reason"),
+            hypothetical_document=result.get("hypothetical_document"),
             retrieved_documents=result.get("retrieved_documents")
         )
+
+
     except Exception as e:
         import traceback
         traceback.print_exc()

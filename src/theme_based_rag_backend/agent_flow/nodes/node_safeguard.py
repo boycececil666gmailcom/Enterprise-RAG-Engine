@@ -21,4 +21,5 @@ def safeguard_node(state: AgentState) -> dict:
     content = response.content
     if isinstance(content, list):
         content = "".join(part if isinstance(part, str) else part.get("text", "") for part in content)
-    return {"draft_response": content}
+    return {"agent_response": content}
+
