@@ -10,3 +10,5 @@ langsmith_project  = "pr-virtual-cork-53"
 chatbot_theme      = "Fintech SaaS platform"
 backend_replicas   = 2
 gateway_replicas   = 2
+neo4j_username     = "neo4j"
+neo4j_password     = "YOUR_NEO4J_PASSWORD_HERE"

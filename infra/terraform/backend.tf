@@ -67,6 +67,31 @@ resource "kubernetes_deployment" "backend" {
           }
 
           env {
+            name  = "NEO4J_URI"
+            value = "bolt://${kubernetes_service.neo4j_service.metadata[0].name}:7687"
+          }
+
+          env {
+            name = "NEO4J_USERNAME"
+            value_from {
+              secret_key_ref {
+                name = kubernetes_secret.neo4j_secrets.metadata[0].name
+                key  = "neo4j-username"
+              }
+            }
+          }
+
+          env {
+            name = "NEO4J_PASSWORD"
+            value_from {
+              secret_key_ref {
+                name = kubernetes_secret.neo4j_secrets.metadata[0].name
+                key  = "neo4j-password"
+              }
+            }
+          }
+
+          env {
             name  = "GEMINI_MODEL"
             value = var.gemini_model
           }

@@ -85,3 +85,15 @@ variable "gateway_image" {
   description = "Docker image for theme-based RAG gateway"
   default     = "theme-based-rag-gateway:latest"
 }
+
+variable "neo4j_username" {
+  type        = string
+  description = "Neo4j database username"
+  default     = "neo4j"
+}
+
+variable "neo4j_password" {
+  type        = string
+  description = "Neo4j database password"
+  sensitive   = true
+}

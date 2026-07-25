@@ -8,4 +8,5 @@ langchain-qdrant
 fastembed
 flashrank
 langchain-google-genai
+neo4j
 

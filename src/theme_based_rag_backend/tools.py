@@ -12,60 +12,64 @@ def get_reranker() -> FlashrankRerank:
     return _compressor
 
 @tool
-def retrieve_local_documents(query: str, original_query: str = None) -> str:
-    """Retrieve semantically relevant document chunks from the local vector database,
-    and structured relationships from the graph database.
+def retrieve_local_documents(query: str) -> str:
+    """Retrieve semantically relevant document chunks and knowledge graph relationships.
     Use this tool when the query refers to private documentation, internal guidelines,
     project names (like 'Supernova'), or local workspace facts."""
     try:
         store = db.get_vector_store()
     except Exception as e:
         return f"Error: Local Vector database is not initialized: {e}"
-    try:
-        # Perform hybrid search natively in Qdrant (using query text directly or HyDE text if provided)
-        docs = store.similarity_search(query, k=5)
         
-        context_list = []
+    # 1. Vector DB Hybrid Search (Qdrant)
+    vector_docs = []
+    try:
+        docs = store.similarity_search(query, k=5)
         if docs:
             # Apply FlashRank Cross-Encoder reranker using the original user query
             try:
                 compressor = get_reranker()
-                # If original_query is provided, use it for rerank query, otherwise fall back to query
-                rerank_q = original_query if original_query else query
-                reranked_docs = compressor.compress_documents(docs, rerank_q)
+                vector_docs = compressor.compress_documents(docs, query)
             except Exception as rerank_err:
                 import logging
                 logging.getLogger(__name__).warning(
                     f"FlashRank reranking failed, falling back to database rankings: {rerank_err}"
                 )
-                reranked_docs = docs[:2]
-            
-            # Format top chunks as output context
-            for doc in reranked_docs:
-                score = doc.metadata.get("relevance_score", 0.0)
-                context_list.append(f"[Match Score: {score:.3f}] Content: {doc.page_content}")
-                
-        vector_context = "\n\n".join(context_list) if context_list else "No matching local documents found."
-        
-        # Retrieve context from Neo4j Graph Database
-        graph_target = original_query if original_query else query
-        try:
-            import src.theme_based_rag_backend.graph_db as graph_db
-            graph_context = graph_db.query_graph_context(graph_target)
-        except Exception as graph_err:
-            import logging
-            logging.getLogger(__name__).warning(
-                f"Failed to query Neo4j Graph DB: {graph_err}"
-            )
-            graph_context = f"Error querying Neo4j Graph DB: {graph_err}"
-            
-        combined_context = (
-            f"=== VECTOR DATABASE CONTEXT ===\n{vector_context}\n\n"
-            f"=== KNOWLEDGE GRAPH RELATIONSHIPS ===\n{graph_context}"
-        )
-        return combined_context
-        
+                vector_docs = docs[:2]
     except Exception as e:
-        import traceback
-        traceback.print_exc()
-        return f"Error querying local documents: {str(e)}"
+        import logging
+        logging.getLogger(__name__).warning(f"Vector search failed: {e}")
+        
+    # 2. Graph DB Search (Neo4j)
+    graph_context = ""
+    try:
+        from src.theme_based_rag_backend.graph_db import extract_query_entities, retrieve_graph_relations
+        query_entities = extract_query_entities(query)
+        if query_entities:
+            print(f"Extracted entities for GraphRAG query: {query_entities}")
+            graph_context = retrieve_graph_relations(query_entities)
+    except Exception as graph_err:
+        import logging
+        logging.getLogger(__name__).warning(f"Graph database search failed: {graph_err}")
+        
+    # 3. Format and Merge Context
+    if not vector_docs and not graph_context:
+        return "No matching local documents or graph relations found."
+        
+    context_parts = []
+    
+    if vector_docs:
+        vector_list = []
+        for doc in vector_docs:
+            score = doc.metadata.get("relevance_score", 0.0)
+            vector_list.append(f"[Match Score: {score:.3f}] Content: {doc.page_content}")
+        context_parts.append("=== VECTOR DATABASE CONTEXT ===\n" + "\n\n".join(vector_list))
+    else:
+        context_parts.append("=== VECTOR DATABASE CONTEXT ===\nNo matching vector documents found.")
+        
+    if graph_context:
+        context_parts.append(f"=== KNOWLEDGE GRAPH CONTEXT ===\n{graph_context}")
+    else:
+        context_parts.append("=== KNOWLEDGE GRAPH CONTEXT ===\nNo relevant graph relations found.")
+        
+    return "\n\n".join(context_parts)
