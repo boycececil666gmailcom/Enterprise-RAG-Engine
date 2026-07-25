@@ -247,12 +247,12 @@ All nodes and edges inside `src/theme_based_rag_backend/agent_flow` follow expli
 
 | Node Module | File Link | Execution Mechanism | Purpose & Model |
 | :--- | :--- | :--- | :--- |
-| `node_classifier` | [node_classifier.py](file:///c:/Users/boyce/OneDrive/Desktop/rag-chatbot/src/theme_based_rag_backend/agent_flow/nodes/node_classifier.py) | **📐 Vector Similarity** | Embeddings Cosine Similarity against `CHATBOT_THEME` (`gemini-embedding-001`) |
-| `node_hyde_decision` | [node_hyde_decision.py](file:///c:/Users/boyce/OneDrive/Desktop/rag-chatbot/src/theme_based_rag_backend/agent_flow/nodes/node_hyde_decision.py) | **⚡ Rule Engine** | Fast heuristic pattern matching (Regex for error codes & Query length) |
-| `node_hyde_generator` | [node_hyde_generator.py](file:///c:/Users/boyce/OneDrive/Desktop/rag-chatbot/src/theme_based_rag_backend/agent_flow/nodes/node_hyde_generator.py) | **🤖 Gemini LLM** | Generates hypothetical document passage (`gemini-3.1-flash-lite`) |
-| `node_rag_qa` | [node_rag_qa.py](file:///c:/Users/boyce/OneDrive/Desktop/rag-chatbot/src/theme_based_rag_backend/agent_flow/nodes/node_rag_qa.py) | **🤖 Gemini LLM** | Hybrid retrieval consumer & answer synthesis (`gemini-3.1-flash-lite`) |
-| `node_safeguard` | [node_safeguard.py](file:///c:/Users/boyce/OneDrive/Desktop/rag-chatbot/src/theme_based_rag_backend/agent_flow/nodes/node_safeguard.py) | **🤖 Gemini LLM** | Polite boundary refusal response (`gemini-3.1-flash-lite`) |
-| `node_critique` | [node_critique.py](file:///c:/Users/boyce/OneDrive/Desktop/rag-chatbot/src/theme_based_rag_backend/agent_flow/nodes/node_critique.py) | **🤖 Gemini LLM** | Quality, groundedness & hallucination check (`gemini-3.1-flash-lite`) |
+| `node_classifier` | [node_classifier.py](file:///c:/Users/boyce/OneDrive/Desktop/rag-backend/src/theme_based_rag_backend/agent_flow/nodes/node_classifier.py) | **📐 Vector Similarity** | Embeddings Cosine Similarity against `CHATBOT_THEME` (`gemini-embedding-001`) |
+| `node_hyde_decision` | [node_hyde_decision.py](file:///c:/Users/boyce/OneDrive/Desktop/rag-backend/src/theme_based_rag_backend/agent_flow/nodes/node_hyde_decision.py) | **⚡ Rule Engine** | Fast heuristic pattern matching (Regex for error codes & Query length) |
+| `node_hyde_generator` | [node_hyde_generator.py](file:///c:/Users/boyce/OneDrive/Desktop/rag-backend/src/theme_based_rag_backend/agent_flow/nodes/node_hyde_generator.py) | **🤖 Gemini LLM** | Generates hypothetical document passage (`gemini-3.1-flash-lite`) |
+| `node_rag_qa` | [node_rag_qa.py](file:///c:/Users/boyce/OneDrive/Desktop/rag-backend/src/theme_based_rag_backend/agent_flow/nodes/node_rag_qa.py) | **🤖 Gemini LLM** | Hybrid retrieval consumer & answer synthesis (`gemini-3.1-flash-lite`) |
+| `node_safeguard` | [node_safeguard.py](file:///c:/Users/boyce/OneDrive/Desktop/rag-backend/src/theme_based_rag_backend/agent_flow/nodes/node_safeguard.py) | **🤖 Gemini LLM** | Polite boundary refusal response (`gemini-3.1-flash-lite`) |
+| `node_critique` | [node_critique.py](file:///c:/Users/boyce/OneDrive/Desktop/rag-backend/src/theme_based_rag_backend/agent_flow/nodes/node_critique.py) | **🤖 Gemini LLM** | Quality, groundedness & hallucination check (`gemini-3.1-flash-lite`) |
 
 ---
 
