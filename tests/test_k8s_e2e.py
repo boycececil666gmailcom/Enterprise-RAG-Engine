@@ -40,7 +40,13 @@ def test_k8s_real_e2e_flow():
     # Verify response is grounded and contains the correct project name
     assert "Zenith Tech" in res_query["response"] or "quantum computing" in res_query["response"]
     assert "retrieve_local_documents" in res_query["tool_calls_executed"]
-    assert "Aurora Project" in res_query["retrieved_documents"]
+    
+    # Verify both Vector and Graph databases are integrated and queried in the real cluster
+    retrieved_docs = res_query["retrieved_documents"]
+    assert "=== VECTOR DATABASE CONTEXT ===" in retrieved_docs
+    assert "=== KNOWLEDGE GRAPH CONTEXT ===" in retrieved_docs
+    assert "Aurora Project" in retrieved_docs
+    assert "Zenith Tech" in retrieved_docs
 
 
     
