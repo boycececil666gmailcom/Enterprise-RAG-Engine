@@ -191,8 +191,9 @@ def retrieve_graph_relations(query_entities: list) -> str:
     try:
         with driver.session() as session:
             for entity_name in query_entities:
+                # Use substring matching to handle variations in entity naming (e.g., 'Aurora' matching 'Aurora Project')
                 result = session.run(
-                    "MATCH (e:Entity) WHERE toLower(e.name) = toLower($name) "
+                    "MATCH (e:Entity) WHERE toLower(e.name) CONTAINS toLower($name) OR toLower($name) CONTAINS toLower(e.name) "
                     "OPTIONAL MATCH (e)-[r]-(neighbor:Entity) "
                     "RETURN e.name as name, e.type as type, e.description as description, "
                     "       type(r) as rel_type, neighbor.name as neighbor_name, "

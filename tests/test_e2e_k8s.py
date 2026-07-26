@@ -47,6 +47,10 @@ def test_k8s_real_e2e_flow():
     assert "=== KNOWLEDGE GRAPH CONTEXT ===" in retrieved_docs
     assert "Aurora Project" in retrieved_docs
     assert "Zenith Tech" in retrieved_docs
+    
+    # Assert that actual knowledge graph relationships from Neo4j are retrieved
+    assert "- (Zenith Tech) -[DEVELOPED]-> (Aurora Project)" in retrieved_docs
+    assert "Fintech SaaS platform" in retrieved_docs
 
 
     
