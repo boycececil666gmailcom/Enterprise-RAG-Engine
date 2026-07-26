@@ -57,8 +57,13 @@ def sanitize_rel_type(rel_type: str) -> str:
     sanitized = re.sub(r'[^a-zA-Z0-9_]', '_', rel_type).upper().strip('_')
     return sanitized if sanitized else "RELATED_TO"
 
-def clean_json_response(content: str) -> str:
+def clean_json_response(content) -> str:
     """Cleans code blocks (```json ... ```) from LLM response text."""
+    if isinstance(content, list):
+        content = "".join(part if isinstance(part, str) else part.get("text", "") for part in content)
+    elif not isinstance(content, str):
+        content = str(content)
+        
     content = content.strip()
     if content.startswith("```"):
         # split by newline, drop the first and last line
