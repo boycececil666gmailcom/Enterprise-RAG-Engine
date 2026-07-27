@@ -12,7 +12,12 @@ class QueryRequest(BaseModel):
 class QueryResponse(BaseModel):
     response: str
     tool_calls_executed: List[str] = Field(default_factory=list)
+    use_hyde: Optional[bool] = None
+    hyde_reason: Optional[str] = None
+    hypothetical_document: Optional[str] = None
     retrieved_documents: Optional[str] = None
+
+
 
 
 

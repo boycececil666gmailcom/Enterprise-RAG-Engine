@@ -8,7 +8,8 @@ logger = logging.getLogger(__name__)
 def critique_node(state: AgentState) -> dict:
     from src.theme_based_rag_backend.agent_flow import llm
     category = state.get("category")
-    draft = state.get("draft_response")
+    draft = state.get("agent_response")
+
     docs = state.get("retrieved_documents")
     query = state["message"]
     attempts = state.get("attempts", 0)
@@ -17,6 +18,8 @@ def critique_node(state: AgentState) -> dict:
     print(f"\033[1;92m>>> [Agent Flow] Critique Node validating response ({category})\033[0m")
     print(f"\033[1;96m========================================================\033[0m\n")
     
+    hypo_doc = state.get("hypothetical_document")
+
     if category == "refuse":
         critique_prompt = (
             f"You are a strict quality control evaluator.\n"
@@ -32,13 +35,18 @@ def critique_node(state: AgentState) -> dict:
         critique_prompt = (
             f"You are a strict quality control evaluator.\n"
             f"Your task is to verify if the draft response is fully grounded in the retrieved documents context.\n"
-            f"Make sure there are no hallucinated facts or statements that cannot be verified by the documents.\n\n"
+            f"STRICT HALLUCINATION CHECK:\n"
+            f"- Verify that all facts, numbers, prices, and specifications in the draft response exist EXPLICITLY in the retrieved context.\n"
+            f"- If the draft response invents or extrapolates numbers/prices (e.g., guessing a monthly fee when the document only mentions plan names), MARK IT AS FAIL.\n\n"
+            f"User Query: {query}\n"
+            f"HyDE Hypothetical Query Representation: {hypo_doc or 'N/A'}\n\n"
             f"Retrieved Context:\n{docs}\n\n"
-            f"User Query: {query}\n\n"
             f"Draft Response to Evaluate: {draft}\n\n"
-            f"If the response is fully grounded and correct, output exactly: PASS\n"
-            f"Otherwise, output a detailed explanation of what is wrong or hallucinated in the response."
+            f"If the response is fully grounded and contains zero extrapolated numbers/facts, output exactly: PASS\n"
+            f"Otherwise, output a detailed explanation of what is wrong, extrapolated, or hallucinated."
         )
+
+
     
     messages = [HumanMessage(content=critique_prompt)]
     response = llm.invoke(messages)

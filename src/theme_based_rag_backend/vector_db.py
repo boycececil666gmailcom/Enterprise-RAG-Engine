@@ -83,7 +83,7 @@ except Exception:
     pass
 
 def add_document_text(text: str, metadata: dict = None) -> int:
-    """Chunks text and adds documents to Qdrant vector database. Returns chunk count."""
+    """Chunks text and adds documents to Qdrant vector database and Neo4j graph database. Returns chunk count."""
     store = get_vector_store()
     chunks = text_splitter.split_text(text)
     documents = [
@@ -91,4 +91,16 @@ def add_document_text(text: str, metadata: dict = None) -> int:
         for chunk in chunks
     ]
     store.add_documents(documents)
+    
+    # Process Neo4j knowledge graph ingestion
+    try:
+        from src.theme_based_rag_backend.graph_db import extract_entities_and_relations, add_graph_relations
+        for chunk in chunks:
+            extracted = extract_entities_and_relations(chunk)
+            if extracted.get("entities") or extracted.get("relationships"):
+                add_graph_relations(extracted["entities"], extracted["relationships"])
+    except Exception as e:
+        import logging
+        logging.getLogger(__name__).warning(f"Failed to ingest data into Neo4j graph database: {e}")
+        
     return len(documents)

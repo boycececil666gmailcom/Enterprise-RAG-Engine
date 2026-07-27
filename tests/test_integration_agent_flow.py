@@ -2,75 +2,79 @@ import pytest
 from unittest.mock import patch, MagicMock
 from src.theme_based_rag_backend.agent_flow import (
     AgentState,
-    routing_node,
+    classifier_node,
     rag_qa_node,
-    refusal_node,
+    refuse_node,
     critique_node,
     route_by_category,
     route_after_critique,
     agent_graph
 )
 
-# Test routing_node
-@patch("src.theme_based_rag_backend.agent_flow.llm")
-def test_routing_node_rag(mock_llm):
-    """Test that routing_node classifies query as 'rag' when LLM returns 'rag'."""
-    mock_response = MagicMock()
-    mock_response.content = "rag"
-    mock_llm.invoke.return_value = mock_response
+# Test classifier_node
+@patch("src.theme_based_rag_backend.vector_db.embeddings")
+def test_classifier_node_rag(mock_embeddings):
+    """Test that classifier_node classifies query as 'rag' when cosine similarity is high (>= 0.65)."""
+    import src.theme_based_rag_backend.agent_flow.nodes.node_classifier as classifier_module
+
+    classifier_module.theme_embedding_cached = None
+    
+    mock_embeddings.embed_query.return_value = [1.0, 0.0]
 
     state: AgentState = {
         "message": "Relevant Fintech SaaS platform question",
         "history": [],
         "category": "refuse",
         "retrieved_documents": None,
-        "draft_response": "",
+        "agent_response": "",
         "critique_feedback": None,
         "attempts": 0
     }
-    result = routing_node(state)
+    result = classifier_node(state)
     assert result == {"category": "rag"}
 
-@patch("src.theme_based_rag_backend.agent_flow.llm")
-def test_routing_node_refuse(mock_llm):
-    """Test that routing_node classifies query as 'refuse' when LLM returns 'refuse'."""
-    mock_response = MagicMock()
-    mock_response.content = "refuse"
-    mock_llm.invoke.return_value = mock_response
+@patch("src.theme_based_rag_backend.vector_db.embeddings")
+def test_classifier_node_refuse(mock_embeddings):
+    """Test that classifier_node classifies query as 'refuse' when cosine similarity is low (< 0.65)."""
+    import src.theme_based_rag_backend.agent_flow.nodes.node_classifier as classifier_module
+
+    classifier_module.theme_embedding_cached = None
+    
+    mock_embeddings.embed_query.side_effect = [[1.0, 0.0], [0.0, 1.0]]
 
     state: AgentState = {
         "message": "Unrelated question",
         "history": [],
         "category": "rag",
         "retrieved_documents": None,
-        "draft_response": "",
+        "agent_response": "",
         "critique_feedback": None,
         "attempts": 0
     }
-    result = routing_node(state)
+    result = classifier_node(state)
     assert result == {"category": "refuse"}
 
-@patch("src.theme_based_rag_backend.agent_flow.llm")
-def test_routing_node_fallback(mock_llm):
-    """Test that routing_node falls back to 'refuse' when an LLM exception occurs."""
-    mock_llm.invoke.side_effect = Exception("API error")
+@patch("src.theme_based_rag_backend.vector_db.embeddings")
+def test_classifier_node_fallback(mock_embeddings):
+    """Test that classifier_node falls back to 'refuse' when an embedding exception occurs."""
+    mock_embeddings.embed_query.side_effect = Exception("API error")
 
     state: AgentState = {
         "message": "Query message",
         "history": [],
         "category": "rag",
         "retrieved_documents": None,
-        "draft_response": "",
+        "agent_response": "",
         "critique_feedback": None,
         "attempts": 0
     }
-    result = routing_node(state)
+    result = classifier_node(state)
     assert result == {"category": "refuse"}
 
-# Test refusal_node
+# Test refuse_node
 @patch("src.theme_based_rag_backend.agent_flow.llm")
-def test_refusal_node(mock_llm):
-    """Test that refusal_node generates a standard refusal/guardrails message for queries classified under the 'refuse' category."""
+def test_refuse_node(mock_llm):
+    """Test that refuse_node generates a standard refusal/guardrails message for queries classified under the 'refuse' category."""
     mock_response = MagicMock()
     mock_response.content = "I can only assist with Fintech SaaS platform questions."
     mock_llm.invoke.return_value = mock_response
@@ -80,12 +84,12 @@ def test_refusal_node(mock_llm):
         "history": [],
         "category": "refuse",
         "retrieved_documents": None,
-        "draft_response": "",
+        "agent_response": "",
         "critique_feedback": None,
         "attempts": 0
     }
-    result = refusal_node(state)
-    assert result == {"draft_response": "I can only assist with Fintech SaaS platform questions."}
+    result = refuse_node(state)
+    assert result == {"agent_response": "I can only assist with Fintech SaaS platform questions."}
 
 # Test rag_qa_node
 @patch("src.theme_based_rag_backend.agent_flow.retrieve_local_documents")
@@ -102,13 +106,13 @@ def test_rag_qa_node_with_retrieval(mock_llm, mock_retrieve):
         "history": [],
         "category": "rag",
         "retrieved_documents": None,
-        "draft_response": "",
+        "agent_response": "",
         "critique_feedback": None,
         "attempts": 0
     }
     result = rag_qa_node(state)
     
-    assert result["draft_response"] == "Synthesized response"
+    assert result["agent_response"] == "Synthesized response"
     assert result["retrieved_documents"] == "Retrieved doc context"
     mock_retrieve.invoke.assert_called_once_with("query message")
 
@@ -125,13 +129,13 @@ def test_rag_qa_node_already_retrieved(mock_llm, mock_retrieve):
         "history": [],
         "category": "rag",
         "retrieved_documents": "Existing documents",
-        "draft_response": "",
+        "agent_response": "",
         "critique_feedback": None,
         "attempts": 0
     }
     result = rag_qa_node(state)
     
-    assert result["draft_response"] == "Synthesized response"
+    assert result["agent_response"] == "Synthesized response"
     assert result["retrieved_documents"] == "Existing documents"
     mock_retrieve.invoke.assert_not_called()
 
@@ -148,7 +152,7 @@ def test_critique_node_refuse_pass(mock_llm):
         "history": [],
         "category": "refuse",
         "retrieved_documents": None,
-        "draft_response": "I can only assist with Fintech SaaS platform questions.",
+        "agent_response": "I can only assist with Fintech SaaS platform questions.",
         "critique_feedback": None,
         "attempts": 0
     }
@@ -168,7 +172,7 @@ def test_critique_node_refuse_fail(mock_llm):
         "history": [],
         "category": "refuse",
         "retrieved_documents": None,
-        "draft_response": "Here is the recipe for chocolate cake...",
+        "agent_response": "Here is the recipe for chocolate cake...",
         "critique_feedback": None,
         "attempts": 0
     }
@@ -188,7 +192,7 @@ def test_critique_node_pass(mock_llm):
         "history": [],
         "category": "rag",
         "retrieved_documents": "Context",
-        "draft_response": "Response",
+        "agent_response": "Response",
         "critique_feedback": None,
         "attempts": 1
     }
@@ -207,7 +211,7 @@ def test_critique_node_fail(mock_llm):
         "history": [],
         "category": "rag",
         "retrieved_documents": "Context",
-        "draft_response": "Response",
+        "agent_response": "Response",
         "critique_feedback": None,
         "attempts": 1
     }
@@ -236,31 +240,44 @@ def test_route_after_critique():
     assert route_after_critique(state) == "approved"
 
 # Test compiled graph end-to-end
+@patch("src.theme_based_rag_backend.vector_db.embeddings")
+@patch("src.theme_based_rag_backend.agent_flow.nodes.node_hyde_generator.get_hyde_llm")
 @patch("src.theme_based_rag_backend.agent_flow.retrieve_local_documents")
 @patch("src.theme_based_rag_backend.agent_flow.llm")
 @pytest.mark.asyncio
-async def test_agent_graph_e2e(mock_llm, mock_retrieve):
+async def test_agent_graph_e2e(mock_llm, mock_retrieve, mock_hyde_llm, mock_embeddings):
     """Test that the compiled LangGraph agent workflow functions correctly end-to-end from classification to final approved response."""
+    import src.theme_based_rag_backend.agent_flow.nodes.node_classifier as classifier_module
+    classifier_module.theme_embedding_cached = None
+    mock_embeddings.embed_query.return_value = [1.0, 0.0]
+    
+    mock_hyde_llm.return_value = mock_llm
     mock_retrieve.invoke.return_value = "Retrieved documents"
     
-    # Mock LLM calls: Routing -> RAG QA -> Critique
-    mock_resp_routing = MagicMock(content='rag')
+    # Mock LLM calls: HyDE Generation -> RAG QA -> Critique (Classifier is vector-similarity based)
+    mock_resp_hyde = MagicMock(content='Hypothetical document passage')
     mock_resp_qa = MagicMock(content='Draft Response text')
     mock_resp_crit = MagicMock(content="PASS")
     
-    mock_llm.invoke.side_effect = [mock_resp_routing, mock_resp_qa, mock_resp_crit]
+    mock_llm.invoke.side_effect = [mock_resp_hyde, mock_resp_qa, mock_resp_crit]
+
+
+
     
     inputs = {
-        "message": "User question",
+        "message": "How does the Fintech SaaS platform process payments?",
         "history": [],
         "category": "refuse",
+
+        "hypothetical_document": None,
         "retrieved_documents": None,
-        "draft_response": "",
+        "agent_response": "",
         "critique_feedback": None,
         "attempts": 0
     }
+
     
     result = await agent_graph.ainvoke(inputs)
     assert result["category"] == "rag"
-    assert result["draft_response"] == "Draft Response text"
+    assert result["agent_response"] == "Draft Response text"
     assert result["critique_feedback"] == "PASS"

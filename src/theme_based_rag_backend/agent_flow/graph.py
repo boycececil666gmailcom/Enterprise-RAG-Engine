@@ -1,13 +1,16 @@
 from langgraph.graph import StateGraph, END
 from src.theme_based_rag_backend.agent_flow.state import AgentState
 from src.theme_based_rag_backend.agent_flow.nodes import (
-    routing_node,
+    classifier_node,
+    hyde_decision_node,
+    hyde_node,
     rag_qa_node,
-    refusal_node,
+    refuse_node,
     critique_node
 )
 from src.theme_based_rag_backend.agent_flow.edges import (
     route_by_category,
+    route_by_hyde_decision,
     route_after_critique
 )
 
@@ -15,32 +18,44 @@ from src.theme_based_rag_backend.agent_flow.edges import (
 workflow = StateGraph(AgentState)
 
 # Add Nodes
-workflow.add_node("routing", routing_node)
+workflow.add_node("classifier", classifier_node)
+workflow.add_node("hyde_decision", hyde_decision_node)
+workflow.add_node("hyde", hyde_node)
 workflow.add_node("rag_qa", rag_qa_node)
-workflow.add_node("refusal", refusal_node)
+workflow.add_node("refuse", refuse_node)
 workflow.add_node("critique", critique_node)
 
 # Set Entry Point and Edges
-workflow.set_entry_point("routing")
+workflow.set_entry_point("classifier")
 
 workflow.add_conditional_edges(
-    "routing",
+    "classifier",
     route_by_category,
     {
-        "rag": "rag_qa",
-        "refuse": "refusal"
+        "rag": "hyde_decision",
+        "refuse": "refuse"
     }
 )
 
+workflow.add_conditional_edges(
+    "hyde_decision",
+    route_by_hyde_decision,
+    {
+        "enable": "hyde",
+        "skip": "rag_qa"
+    }
+)
+
+workflow.add_edge("hyde", "rag_qa")
 workflow.add_edge("rag_qa", "critique")
-workflow.add_edge("refusal", "critique")
+workflow.add_edge("refuse", "critique")
 
 workflow.add_conditional_edges(
     "critique",
     route_after_critique,
     {
         "approved": END,
-        "rejected": "routing"  # Loop back to the start (Routing Node)
+        "rejected": "classifier"  # Loop back to the start (Classifier Node)
     }
 )
 

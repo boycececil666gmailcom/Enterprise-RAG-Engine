@@ -23,11 +23,35 @@ HOST = os.getenv("HOST", "0.0.0.0")
 QDRANT_URL = os.getenv("QDRANT_URL")
 QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
 
+# Neo4j settings
+NEO4J_URI = os.getenv("NEO4J_URI", "bolt://localhost:7687")
+NEO4J_USERNAME = os.getenv("NEO4J_USERNAME", "neo4j")
+NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD", "password123")
+
 # Chatbot Theme setting
 CHATBOT_THEME = os.getenv("CHATBOT_THEME", "Fintech SaaS platform")
 
-# Force RAG keywords (comma-separated, case-insensitive)
-FORCE_RAG_KEYWORDS = [
-    kw.strip().lower() for kw in os.getenv("FORCE_RAG_KEYWORDS", "quoos").split(",") if kw.strip()
-]
+# LangSmith Observability settings
+LANGSMITH_TRACING = (os.getenv("LANGSMITH_TRACING") or os.getenv("LANGCHAIN_TRACING_V2") or "false").lower() == "true"
+LANGSMITH_API_KEY = os.getenv("LANGSMITH_API_KEY") or os.getenv("LANGCHAIN_API_KEY")
+LANGSMITH_PROJECT = os.getenv("LANGSMITH_PROJECT") or os.getenv("LANGCHAIN_PROJECT") or "pr-virtual-cork-53"
+LANGSMITH_ENDPOINT = os.getenv("LANGSMITH_ENDPOINT") or os.getenv("LANGCHAIN_ENDPOINT") or "https://api.smith.langchain.com"
+
+if LANGSMITH_TRACING:
+    os.environ["LANGSMITH_TRACING"] = "true"
+    os.environ["LANGCHAIN_TRACING_V2"] = "true"
+    if LANGSMITH_API_KEY:
+        os.environ["LANGSMITH_API_KEY"] = LANGSMITH_API_KEY
+        os.environ["LANGCHAIN_API_KEY"] = LANGSMITH_API_KEY
+    if LANGSMITH_PROJECT:
+        os.environ["LANGSMITH_PROJECT"] = LANGSMITH_PROJECT
+        os.environ["LANGCHAIN_PROJECT"] = LANGSMITH_PROJECT
+    if LANGSMITH_ENDPOINT:
+        os.environ["LANGSMITH_ENDPOINT"] = LANGSMITH_ENDPOINT
+        os.environ["LANGCHAIN_ENDPOINT"] = LANGSMITH_ENDPOINT
+    print(f"\033[1;92m[LangSmith Tracing] Enabled for project: '{LANGSMITH_PROJECT}'\033[0m")
+
+
+
+
 

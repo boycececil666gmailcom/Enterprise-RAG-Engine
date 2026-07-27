@@ -1,244 +1,318 @@
 # Theme-Based RAG Workflow
 
-A modular, stateless Retrieval-Augmented Generation (RAG) customer service chatbot utilizing the Google Gemini API, LangGraph agent orchestration, and Qdrant for document vector storage.
+A modular, stateless Retrieval-Augmented Generation (RAG) customer service chatbot utilizing the Google Gemini API, Qdrant for vector storage, and an adaptive LangGraph multi-agent workflow featuring HyDE (Hypothetical Document Embeddings) query transformation.
 
 ---
 
-## 1. Executive Summary & Technology Stack
+## Business & Product Flow (Overview)
 
-### Business Overview
-The **Theme-Based RAG Workflow** is an enterprise-grade customer service chatbot system designed to deliver strictly grounded, accurate responses while preventing off-topic queries and AI hallucinations. 
-
-- **Topic Boundaries**: Automatically enforces business domain boundaries (e.g., Fintech SaaS platform documentation) by routing off-theme queries to a dedicated refusal engine.
-- **Self-Correcting Groundedness Verification**: Incorporates a self-critique agent loop that evaluates answer candidates against retrieved context before presenting them to customers.
-- **Enterprise Ingestion Pipeline**: Ingests company documentation into a high-performance vector store with hybrid dense (semantic) and sparse (keyword) indexing.
-
-### Technical Overview
-Built on a microservice architecture separating an API Gateway proxy (`theme_based_rag_gateway`) from the core RAG execution engine (`theme_based_rag_backend`). The system utilizes LangGraph for state management, combining hybrid Qdrant search with FlashRank neural reranking for passage retrieval.
-
-### Technology Stack & Dependencies
-
-* ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) **Python 3.10+**: Core programming environment and runtime.
-* ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white) **FastAPI**: Asynchronous web framework used for the API Gateway and backend services.
-* ![LangGraph](https://img.shields.io/badge/LangGraph-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white) **LangGraph**: Framework for orchestrating stateful, multi-node agent loops, conditional routing, and critique workflows.
-* ![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white) **LangChain**: Framework for text chunking (`RecursiveCharacterTextSplitter`), document abstractions, and model integrations.
-* ![Google Gemini](https://img.shields.io/badge/Google_Gemini-4285F4?style=for-the-badge&logo=google-gemini&logoColor=white) **Google Gemini API**: Powers LLM decision-making (`gemini-3.1-flash-lite`) and dense text embeddings (`gemini-embedding-001`).
-* ![Qdrant](https://img.shields.io/badge/Qdrant-DC2626?style=for-the-badge&logo=qdrant&logoColor=white) **Qdrant Vector DB**: Vector store supporting hybrid dense-sparse retrieval and payload filtering.
-* ![FastEmbed](https://img.shields.io/badge/FastEmbed_BM25-FF6F00?style=for-the-badge&logo=python&logoColor=white) **FastEmbed BM25**: Fast lexical embedding engine for sparse keyword matching (`Qdrant/bm25`).
-* ![FlashRank](https://img.shields.io/badge/FlashRank-000000?style=for-the-badge&logo=lightning&logoColor=white) **FlashRank**: Ultra-fast neural reranking model used to rerank retrieved document passages.
-* ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white) **Docker**: Containerization infrastructure for Qdrant and microservice deployment.
-* ![Uvicorn](https://img.shields.io/badge/Uvicorn-4053D6?style=for-the-badge&logo=python&logoColor=white) **Uvicorn**: Production-ready ASGI server implementation powering FastAPI endpoints.
-* ![HTTPX](https://img.shields.io/badge/HTTPX-5B60EA?style=for-the-badge&logo=python&logoColor=white) **HTTPX**: Asynchronous HTTP client powering the gateway proxy routing layer.
-
----
-
-## 2. Business Flow Overview
-
-Below is a simplified operational workflow designed for business managers and product stakeholders, illustrating how customer queries and knowledge base updates move through the system without technical jargon:
+Below is a high-level view of how customer requests flow through the system, detailing the execution mechanism (LLM vs Vector Search vs Rules) of each step:
 
 ```mermaid
 flowchart TD
     %% Styling Node classes
-    classDef client fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1;
+    classDef client fill:#e0e7ff,stroke:#4338ca,stroke-width:2px,color:#3730a3;
     classDef router fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#b45309;
     classDef kb fill:#f3e8ff,stroke:#7e22ce,stroke-width:2px,color:#6b21a8;
     classDef reply fill:#dcfce7,stroke:#15803d,stroke-width:2px,color:#166534;
     classDef block fill:#fee2e2,stroke:#b91c1c,stroke-width:2px,color:#991b1b;
     classDef process fill:#f9fafb,stroke:#d1d5db,stroke-width:1px,color:#374151;
-
-    %% Client App / Customer Entry
-    Customer(["📱 Customer / App User"]):::client
     
-    Customer -->|"1. Submits customer support question"| TopicCheck{"🤖 AI Intent Classifier<br/>(Check if query matches business domain)"}:::router
+    %% Main customer interaction entry point
+    Client(["📱 Customer / User"]):::client
     
-    %% Routing Decision Branches
-    TopicCheck -->|"Topic matches business domain"| SearchKB["🔍 Search Company Knowledge Base"]:::process
-    TopicCheck -->|"Topic outside business domain"| DraftRefusal["🛡️ Prepare Polite Refusal Message"]:::block
+    Client -->|"1. Asks question"| ScopeCheck{"📐 Service Scope Check<br/>(Vector Similarity)"}:::router
     
-    %% Knowledge Base Search
-    SearchKB -->|"Retrieve context documents"| KnowledgeBase[("📚 Knowledge Base Vector Store")]:::kb
-    KnowledgeBase -->|"Return matching document passages"| GenerateAnswer["✍️ Draft Answer Using Document Context"]:::process
+    %% Classifier branches
+    ScopeCheck -->|"Product & Support Question"| SupportAI["🤖 AI Customer Support Assistant<br/>(Gemini LLM)" ]:::process
+    ScopeCheck -->|"Unrelated / General Chat"| OutOfScopeNotice["🤖 Scope Refusal Notice<br/>(Gemini LLM)"]:::block
     
-    %% Quality Control Check
-    GenerateAnswer -->|"2. Draft answer ready"| QualityCheck{"🔎 Quality & Groundedness Checker<br/>(Verify zero hallucination)"}:::router
-    DraftRefusal -->|"Refusal draft ready"| QualityCheck
+    %% Knowledge Base Retrieval
+    SupportAI -->|"Search official guides"| DB[("📚 Product Manuals & FAQs<br/>(Qdrant Vector DB)")]:::kb
+    DB -->|"Return relevant text"| SupportAI
     
-    %% Quality Outcomes
-    QualityCheck -->|"Passes verification check"| FinalAnswer["✅ Verified Helpful Answer"]:::reply
-    QualityCheck -->|"Fails verification (Information unverified)"| TopicCheck
+    %% Quality verification
+    SupportAI -->|"2. Proposed answer"| QualityCheck{"🤖 Answer Quality Review<br/>(Gemini LLM Check)"}:::router
+    OutOfScopeNotice -->|"Polite boundary response"| QualityCheck
     
-    FinalAnswer -->|"3. Send final answer back to customer"| Customer
+    %% Critique outcomes
+    QualityCheck -->|"Verified Answer Delivered"| VerifiedReply["Final Answer"]:::reply
+    QualityCheck -->|"Needs Revision"| ScopeCheck
+    
+    VerifiedReply -->|"3. Delivers answer to customer"| Client
     
     %% Ingestion background flow
-    subgraph DocumentIngestion ["Document Ingestion Flow (Offline Updates)"]
-        style DocumentIngestion fill:#f9fafb,stroke:#d1d5db,stroke-width:1px;
-        OpsAdmin(["👤 Operations / Content Admin"]):::client -->|"Uploads new FAQs & User Guides"| TextSplitter["✂️ Break Documents into Small Passages"]:::process
-        TextSplitter -->|"Generate Dense Semantic & Keyword Embeddings"| KnowledgeBase
+    subgraph Maintenance ["Knowledge Base Maintenance (Admin)"]
+        style Maintenance fill:#f9fafb,stroke:#d1d5db,stroke-width:1px;
+        Admin(["Support Team Admin"]):::client -->|"Uploads FAQs & Guides"| Indexer["✂️ Document Indexing Pipeline<br/>(Dense & Sparse Embeddings)"]:::process
+        Indexer --> DB
     end
 ```
 
 ---
 
-## 3. Technical System Architecture
+## Features & API Endpoints
 
-Below is a detailed component architecture diagram illustrating the internal modules, state graphs, data structures, and interactions between `theme_based_rag_gateway` and `theme_based_rag_backend`:
+The backend exposes HTTP endpoints via FastAPI:
+
+- **`POST /ingest`**: Accepts raw text documents, splits them into manageable chunks (using `RecursiveCharacterTextSplitter`), generates dense Gemini embeddings and sparse BM25 embeddings, and stores them in Qdrant.
+- **`POST /query`**: Accepts user queries and conversation history. Routes queries dynamically through the LangGraph workflow:
+  - **`node_classifier`** *(Vector Similarity)*: Determines theme boundary adherence (`rag` vs `refuse`).
+  - **`node_hyde_decision`** *(Rule Engine)*: Evaluates query patterns to decide whether to enable HyDE (`use_hyde: true/false`).
+  - **`node_hyde_generator`** *(Gemini LLM)*: Generates hypothetical passage excerpts for abstract or non-technical queries.
+  - **`node_rag_qa`** *(Gemini LLM)*: Performs Qdrant hybrid retrieval + FlashRank cross-encoder reranking and synthesizes answers.
+  - **`node_critique`** *(Gemini LLM)*: Performs strict quality and grounding checks before returning answers.
+- **`GET /health`**: Performs liveness checks, confirming vector store readiness.
+
+---
+
+## Configuration
+
+The application is configured using environment variables (stored locally in a `.env` file).
+
+| Environment Variable | Description | Default Value |
+| :--- | :--- | :--- |
+| `GEMINI_API_KEY` | Google Gemini API credentials | *(Required)* |
+| `GEMINI_MODEL` | Gemini LLM model for routing and synthesis | `gemini-3.1-flash-lite` |
+| `GEMINI_EMBED_MODEL` | Google Generative AI embeddings model | `gemini-embedding-001` |
+| `GEMINI_TEMPERATURE` | Generation temperature (0.0 for deterministic RAG answers) | `0.0` |
+| `PORT` | FastAPI server port for Chatbot Backend | `8000` |
+| `HOST` | FastAPI server bind address | `0.0.0.0` |
+| `QDRANT_URL` | URL to access Qdrant instance (e.g. `http://localhost:6333` or `:memory:`) | *(Required)* |
+| `QDRANT_API_KEY` | Optional API Key if using Qdrant Cloud | `None` |
+| `CHATBOT_THEME` | The primary theme boundary for retrieval routing & safeguards | `Fintech SaaS platform` |
+
+---
+
+## Technical Architecture & Logic Flow
+
+Below is the technical flowchart detailing node execution mechanisms (**LLM** vs **Vector Similarity** vs **Rule Engine**):
 
 ```mermaid
 flowchart TD
-    %% Styling
-    classDef gateway fill:#eff6ff,stroke:#2563eb,stroke-width:2px,color:#1e40af;
-    classDef backend fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#166534;
-    classDef graphNode fill:#fdf4ff,stroke:#c026d3,stroke-width:2px,color:#86198f;
-    classDef dbNode fill:#fff7ed,stroke:#ea580c,stroke-width:2px,color:#9a3412;
-    classDef modelNode fill:#f8fafc,stroke:#64748b,stroke-width:1px,color:#334155;
+    %% Styling classes
+    classDef main fill:#f9fafb,stroke:#d1d5db,stroke-width:1px,color:#374151;
+    classDef ingest fill:#ecfdf5,stroke:#10b981,stroke-width:1px,color:#065f46;
+    classDef lgNode fill:#eff6ff,stroke:#3b82f6,stroke-width:2px,color:#1e40af;
+    classDef decision fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#b45309;
+    classDef hyde fill:#e0e7ff,stroke:#4338ca,stroke-width:2px,color:#3730a3;
+    classDef endNode fill:#f3e8ff,stroke:#7e22ce,stroke-width:2px,color:#6b21a8;
 
-    subgraph GatewayModule ["API Gateway Service (src.theme_based_rag_gateway)"]
-        style GatewayModule fill:#f8fafc,stroke:#94a3b8,stroke-width:1px;
-        GatewayMain["main.py (FastAPI App)"]:::gateway
-        RouteQuery["route_query(QueryRequest)"]:::gateway
-        RouteIngest["route_ingest(IngestRequest)"]:::gateway
-        HTTPXClient["httpx.AsyncClient"]:::gateway
+    Server[FastAPI Server]:::main
+    
+    %% Ingest path
+    Server -->|POST /ingest| Ingest[Document Ingestion Path]:::ingest
+    Ingest --> Split[RecursiveCharacterTextSplitter]:::ingest
+    Split --> Embed[Gemini Dense / FastEmbed Sparse]:::ingest
+    Embed --> DB[(Qdrant DB)]:::ingest
+
+    %% Query path
+    Server -->|POST /query| Query[Query Processing Path]:::main
+    
+    subgraph LangGraph ["🤖 LangGraph Agent Flow (Node Mechanism Breakdown)"]
+        style LangGraph fill:#f0f7ff,stroke:#2563eb,stroke-width:3px,stroke-dasharray: 5 5;
         
-        GatewayMain --> RouteQuery
-        GatewayMain --> RouteIngest
-        RouteQuery --> HTTPXClient
-        RouteIngest --> HTTPXClient
+        Graph[Agent Coordinator]:::lgNode
+        Classifier{node_classifier<br/>📐 Vector Similarity}:::decision
+        HyDEDecision{node_hyde_decision<br/>⚡ Rule Engine}:::decision
+        HyDEGen[node_hyde_generator<br/>🤖 Gemini LLM]:::hyde
+        QA[node_rag_qa<br/>🤖 Gemini LLM]:::lgNode
+        Refuse[node_refuse<br/>🤖 Gemini LLM]:::lgNode
+        Critique[node_critique<br/>🤖 Gemini LLM]:::lgNode
+        End([End & Return]):::endNode
+        
+        Graph --> Classifier
+        Classifier -->|edge_category: rag| HyDEDecision
+        Classifier -->|edge_category: refuse| Refuse
+        
+        HyDEDecision -->|edge_hyde: enable| HyDEGen
+        HyDEDecision -->|edge_hyde: skip| QA
+        HyDEGen --> QA
+        
+        QA --> Critique
+        Refuse --> Critique
+        
+        Critique -->|edge_critique: approved| End
+        Critique -->|edge_critique: rejected| Classifier
     end
-
-    subgraph BackendModule ["Core RAG Backend Service (src.theme_based_rag_backend)"]
-        style BackendModule fill:#f8fafc,stroke:#94a3b8,stroke-width:1px;
-        BackendMain["main.py (FastAPI App)"]:::backend
-        RunQuery["run_query(QueryRequest)"]:::backend
-        IngestDoc["ingest_document(IngestRequest)"]:::backend
-        
-        BackendMain --> RunQuery
-        BackendMain --> IngestDoc
-        
-        subgraph VectorStoreModule ["Vector DB Pipeline (vector_db.py)"]
-            style VectorStoreModule fill:#fff7ed,stroke:#fdba74,stroke-width:1px;
-            GetVS["get_vector_store()"]:::dbNode
-            AddDocText["add_document_text(text, metadata)"]:::dbNode
-            Splitter["RecursiveCharacterTextSplitter"]:::dbNode
-            DenseEmbed["GoogleGenerativeAIEmbeddings<br/>(gemini-embedding-001)"]:::dbNode
-            SparseEmbed["FastEmbedSparse<br/>(Qdrant/bm25)"]:::dbNode
-            QdrantStore["QdrantVectorStore<br/>(collection: local_rag_documents)"]:::dbNode
-            
-            AddDocText --> Splitter
-            Splitter --> QdrantStore
-            GetVS --> DenseEmbed
-            GetVS --> SparseEmbed
-            GetVS --> QdrantStore
-        end
-        
-        subgraph LangGraphAgent ["Agent Execution Graph (agent_flow/graph.py)"]
-            style LangGraphAgent fill:#fdf4ff,stroke:#f0abfc,stroke-width:2px;
-            State["AgentState (TypedDict)"]:::graphNode
-            CompiledGraph["agent_graph (Compiled StateGraph)"]:::graphNode
-            
-            RoutingNode["routing_node(AgentState)"]:::graphNode
-            RAGQANode["rag_qa_node(AgentState)"]:::graphNode
-            RefusalNode["refusal_node(AgentState)"]:::graphNode
-            CritiqueNode["critique_node(AgentState)"]:::graphNode
-            
-            RouteEdge["route_by_category(AgentState)"]:::graphNode
-            CritiqueEdge["route_after_critique(AgentState)"]:::graphNode
-            
-            RetrieveTool["tools.retrieve_local_documents"]:::graphNode
-            FlashRankRerank["flashrank.Ranker"]:::graphNode
-
-            CompiledGraph --> RoutingNode
-            RoutingNode --> RouteEdge
-            RouteEdge -->|"rag"| RAGQANode
-            RouteEdge -->|"refuse"| RefusalNode
-            RAGQANode --> RetrieveTool
-            RetrieveTool --> GetVS
-            RetrieveTool --> FlashRankRerank
-            RAGQANode --> CritiqueNode
-            RefusalNode --> CritiqueNode
-            CritiqueNode --> CritiqueEdge
-            CritiqueEdge -->|"approved"| ENDNode([END]):::graphNode
-            CritiqueEdge -->|"rejected"| RoutingNode
-        end
-    end
-
-    HTTPXClient -->|"POST /query"| RunQuery
-    HTTPXClient -->|"POST /ingest"| IngestDoc
-    RunQuery --> CompiledGraph
-    IngestDoc --> AddDocText
+    
+    Query --> Graph
 ```
 
----
+### 1. Ingestion Path
 
-## 4. Technical Sequence & Business Logic Execution
-
-Below is a sequence diagram detailing the end-to-end execution flow across exact class names, function calls, and data transitions, highlighting conditional logic branches with colorized alternative blocks:
+The ingestion pipeline splits input text and uploads semantic chunks (with both dense Gemini and sparse BM25 embeddings) to Qdrant.
 
 ```mermaid
 sequenceDiagram
     autonumber
-    actor Client as Client / Mobile App
-    participant Gateway as src.theme_based_rag_gateway.main
-    participant Backend as src.theme_based_rag_backend.main
-    participant Graph as agent_flow.graph.agent_graph
-    participant Routing as agent_flow.nodes.routing_node
-    participant QA as agent_flow.nodes.rag_qa_node
-    participant Tool as tools.retrieve_local_documents
-    participant DB as vector_db.get_vector_store
-    participant Refusal as agent_flow.nodes.refusal_node
-    participant Critique as agent_flow.nodes.critique_node
-    participant Edges as agent_flow.edges.routing
+    actor Client as Client / Ingestion Script
+    participant App as FastAPI Server (main.py)
+    participant VectorStore as Qdrant DB
 
-    Client->>Gateway: POST /query (QueryRequest)
-    Gateway->>Backend: httpx.AsyncClient.post("/query", QueryRequest)
-    Backend->>Graph: agent_graph.ainvoke(AgentState)
+    Client->>App: POST /ingest {"text": "...", "metadata": {...}}
+    Note over App: Chunks text using<br/>RecursiveCharacterTextSplitter
     
-    loop Execution Loop (Max 3 attempts)
-        Graph->>Routing: routing_node(AgentState)
-        Note over Routing: LLM classifies query category ("rag" or "refuse")
-        Routing-->>Graph: returns {"category": category}
+    alt Ingestion Success
+        rect rgb(220, 252, 231)
+            App->>VectorStore: Add document chunks (Dense + Sparse embeddings)
+            VectorStore-->>App: Confirmation
+            App-->>Client: Response {"status": "success", "chunk_count": X}
+        end
+    else Ingestion Failure (Database Offline / Missing Credentials)
+        rect rgb(254, 226, 226)
+            App->>VectorStore: Connection Error / Missing Key
+            App-->>Client: HTTP 500 Internal Server Error
+        end
+    end
+```
+
+### 2. Query Path & Adaptive HyDE Sequence Flow
+
+When a query is received, the request is dispatched to a stateful LangGraph agent workflow containing dynamic classification, HyDE decision/generation, RAG QA, and grounding evaluation:
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User
+    participant App as FastAPI Server (main.py)
+    participant Graph as LangGraph Agent (agent_flow)
+    participant Classifier as node_classifier (Vector Embeddings)
+    participant HyDEDecision as node_hyde_decision (Rule Engine)
+    participant HyDEGen as node_hyde_generator (Gemini LLM)
+    participant QA as node_rag_qa (Gemini LLM)
+    participant Refuse as node_refuse (Gemini LLM)
+    participant Critique as node_critique (Gemini LLM)
+    participant VectorStore as Qdrant DB
+
+    User->>App: POST /query {"message": "...", "history": [...]}
+    App->>Graph: ainvoke(inputs)
+    
+    loop Max 3 attempts
+        Graph->>Classifier: Determine category via Vector Similarity
+        Classifier-->>Graph: Category result (rag / refuse)
         
-        Graph->>Edges: route_by_category(AgentState)
-        
-        alt Path A: Category is 'rag' (Domain-related query)
+        alt Path A: Category is 'rag'
             rect rgb(224, 242, 254)
-                Edges-->>Graph: returns "rag"
-                Graph->>QA: rag_qa_node(AgentState)
-                QA->>Tool: retrieve_local_documents.invoke(query)
-                Tool->>DB: QdrantVectorStore.similarity_search_with_score()
-                DB-->>Tool: Raw doc passages
-                Note over Tool: FlashRank.Ranker.rerank() top passages
-                Tool-->>QA: Filtered & Reranked doc context string
-                Note over QA: LLM synthesizes answer using retrieved docs
-                QA-->>Graph: returns {"draft_response": content, "retrieved_documents": docs}
+                Graph->>HyDEDecision: Evaluate query pattern (Regex & Query Length)
+                HyDEDecision-->>Graph: Decision: use_hyde (True / False)
+                
+                alt HyDE Enabled (Abstract / Colloquial Query)
+                    rect rgb(238, 242, 255)
+                        Graph->>HyDEGen: LLM generates hypothetical passage
+                        HyDEGen-->>Graph: hypothetical_document
+                    end
+                else HyDE Skipped (Exact Error / Specific Code)
+                    rect rgb(243, 244, 246)
+                        Note over Graph: Bypass HyDE & use raw query
+                    end
+                end
+                
+                Graph->>VectorStore: retrieve_local_documents (Qdrant Hybrid + FlashRank Rerank)
+                VectorStore-->>Graph: Chunks & Reranked Docs
+                Graph->>QA: LLM synthesizes answer using retrieved docs
+                QA-->>Graph: agent_response
             end
-        else Path B: Category is 'refuse' (Off-theme query)
+        else Path B: Category is 'refuse'
             rect rgb(254, 226, 226)
-                Edges-->>Graph: returns "refuse"
-                Graph->>Refusal: refusal_node(AgentState)
-                Note over Refusal: LLM generates polite refusal response
-                Refusal-->>Graph: returns {"draft_response": content}
+                Graph->>Refuse: LLM generates polite refusal response
+                Refuse-->>Graph: agent_response
             end
         end
-
-        Graph->>Critique: critique_node(AgentState)
-        Note over Critique: LLM verifies groundedness & refusal compliance
         
-        alt Validation Status: PASS
+        Graph->>Critique: LLM evaluates agent_response & context grounding
+        
+        alt Validation Passes (or max attempts reached)
             rect rgb(220, 252, 231)
-                Critique-->>Graph: returns {"critique_feedback": "PASS"}
-                Graph->>Edges: route_after_critique(AgentState)
-                Edges-->>Graph: returns "approved" -> Exit Loop to END
+                Critique-->>Graph: Status: PASS
+                Note over Graph: Exit loop
             end
-        else Validation Status: FAIL (And attempts < 3)
-            rect rgb(254, 243, 199)
-                Critique-->>Graph: returns {"critique_feedback": reason, "attempts": attempts + 1}
-                Graph->>Edges: route_after_critique(AgentState)
-                Edges-->>Graph: returns "rejected" -> Loop back to routing_node
+        else Validation Fails
+            rect rgb(254, 226, 226)
+                Critique-->>Graph: Status: FAIL (Reason details)
+                Note over Graph: Increment attempts & loop back
             end
         end
     end
+    
+    Graph-->>App: Final state result
+    App-->>User: Response {"response": "...", "use_hyde": true, "hyde_reason": "...", "hypothetical_document": "..."}
+```
 
-    Graph-->>Backend: Final AgentState result
-    Backend-->>Gateway: QueryResponse(response, tool_calls_executed, retrieved_documents)
-    Gateway-->>Client: HTTP 200 OK (QueryResponse JSON)
+---
+
+## Agent Flow Modular Architecture & Node Mechanisms
+
+All nodes and edges inside `src/theme_based_rag_backend/agent_flow` follow explicit prefix naming conventions, with their underlying execution mechanism (**LLM** vs **Vector Search** vs **Rules**) explicitly defined:
+
+| Node Module | File Link | Execution Mechanism | Purpose & Model |
+| :--- | :--- | :--- | :--- |
+| `node_classifier` | [node_classifier.py](file:///c:/Users/boyce/OneDrive/Desktop/rag-backend/src/theme_based_rag_backend/agent_flow/nodes/node_classifier.py) | **📐 Vector Similarity** | Embeddings Cosine Similarity against `CHATBOT_THEME` (`gemini-embedding-001`) |
+| `node_hyde_decision` | [node_hyde_decision.py](file:///c:/Users/boyce/OneDrive/Desktop/rag-backend/src/theme_based_rag_backend/agent_flow/nodes/node_hyde_decision.py) | **⚡ Rule Engine** | Fast heuristic pattern matching (Regex for error codes & Query length) |
+| `node_hyde_generator` | [node_hyde_generator.py](file:///c:/Users/boyce/OneDrive/Desktop/rag-backend/src/theme_based_rag_backend/agent_flow/nodes/node_hyde_generator.py) | **🤖 Gemini LLM** | Generates hypothetical document passage (`gemini-3.1-flash-lite`) |
+| `node_rag_qa` | [node_rag_qa.py](file:///c:/Users/boyce/OneDrive/Desktop/rag-backend/src/theme_based_rag_backend/agent_flow/nodes/node_rag_qa.py) | **🤖 Gemini LLM** | Hybrid retrieval consumer & answer synthesis (`gemini-3.1-flash-lite`) |
+| `node_refuse` | [node_refuse.py](file:///c:/Users/boyce/OneDrive/Desktop/rag-backend/src/theme_based_rag_backend/agent_flow/nodes/node_refuse.py) | **🤖 Gemini LLM** | Polite boundary refusal response (`gemini-3.1-flash-lite`) |
+| `node_critique` | [node_critique.py](file:///c:/Users/boyce/OneDrive/Desktop/rag-backend/src/theme_based_rag_backend/agent_flow/nodes/node_critique.py) | **🤖 Gemini LLM** | Quality, groundedness & hallucination check (`gemini-3.1-flash-lite`) |
+
+---
+
+## Local Development & Testing Setup
+
+### 1. Environment Setup
+
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: .\venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+### 2. Configure Environment Variables
+
+Create a `.env` file in the root directory:
+```env
+GEMINI_API_KEY=your_gemini_api_key_here
+GEMINI_MODEL=gemini-3.1-flash-lite
+QDRANT_URL=http://localhost:6333
+CHATBOT_THEME=Fintech SaaS platform
+```
+
+### 3. Run Automated Unit & Integration Tests
+
+```powershell
+# Run full local backend and gateway test suite
+.\venv\Scripts\python.exe -m pytest tests/ --ignore=tests/test_k8s_e2e.py -v
+```
+
+### 4. Start Services
+
+```powershell
+# Backend FastAPI server (port 8000)
+.\venv\Scripts\python.exe -m uvicorn src.theme_based_rag_backend.main:app --host 0.0.0.0 --port 8000 --reload
+
+# Gateway FastAPI server (port 8080)
+.\venv\Scripts\python.exe -m uvicorn src.theme_based_rag_gateway.main:app --host 0.0.0.0 --port 8080 --reload
+```
+
+---
+
+## Terraform Infrastructure Provisioning
+
+You can provision and manage all Kubernetes resources (Namespace, Secrets, Qdrant StatefulSet, Backend/Gateway Deployments, Services, and Ingress) declaratively using Terraform:
+
+```powershell
+# Navigate to terraform directory
+cd infra/terraform
+
+
+# Initialize Terraform providers
+terraform init
+
+# Validate Terraform configuration
+terraform validate
+
+# Plan infrastructure deployment
+terraform plan -out=tfplan
+
+# Apply infrastructure to Kubernetes cluster
+terraform apply tfplan
 ```
