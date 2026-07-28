@@ -1,13 +1,29 @@
-# Theme-Based RAG Workflow (with Neo4j GraphRAG & HyDE)
+# Enterprise-RAG-Engine
 
-A modular, enterprise-grade Retrieval-Augmented Generation (RAG) customer service chatbot utilizing Google Gemini API, LangGraph agent orchestration, Qdrant vector search, and Neo4j Knowledge Graph database for GraphRAG entity-relationship reasoning.
+A modular, enterprise-grade Retrieval-Augmented Generation (RAG) backend engine template utilizing Google Gemini API, LangGraph agent orchestration, Qdrant vector search, and Neo4j Knowledge Graph database for GraphRAG entity-relationship reasoning.
+
+---
+
+## Core Purpose & RAG Fundamental Concept
+
+### What is RAG? (Context Provision for LLMs)
+Large Language Models (LLMs) excel at general reasoning and language understanding, but lack internal knowledge of custom enterprise datasets and can hallucinate when asked about domain-specific facts. 
+
+**Retrieval-Augmented Generation (RAG)** solves this by retrieving exact, verified context from trusted database stores (Vector DBs and Knowledge Graphs) and injecting it into the LLM prompt:
+
+1. **Context Retrieval**: Fetches top matching passages (Qdrant hybrid vector/lexical search) and connected entity graphs (Neo4j GraphRAG).
+2. **Context Injection**: Supplies the structured ground-truth facts directly to the LLM.
+3. **Grounded Generation**: Restricts the LLM (Google Gemini) to synthesize responses solely based on the provided context, guaranteeing high precision and zero hallucination.
+
+### RAG Backend Engine Template
+This project is structured as a **reusable backend template**. It separates the API Gateway proxy from core retrieval and agent state graph nodes, making it effortless to plug into any customer portal, mobile app, or internal tool.
 
 ---
 
 ## 1. Text Summarization
 
 ### Business Focus
-The **Theme-Based RAG Workflow** is designed to provide high-value, enterprise customer support while guaranteeing 100% answer accuracy and zero AI hallucinations. 
+The **Enterprise-RAG-Engine** is designed to provide high-value, enterprise customer support while guaranteeing 100% answer accuracy and zero AI hallucinations. 
 
 - **Domain Safeguard Enforcement**: Automatically screens every customer inquiry to ensure it remains strictly within defined business domain boundaries (e.g., Fintech SaaS platform documentation), immediately preventing off-topic usage.
 - **GraphRAG & Hybrid Vector Knowledge Retrieval**: Combines semantic text retrieval with Neo4j graph relationship mapping (GraphRAG) to provide comprehensive context on interconnected entities such as pricing tiers, product feature dependencies, and organization hierarchies.
@@ -324,52 +340,3 @@ The application is configured using environment variables (stored in `.env`):
 | `CHATBOT_THEME` | The primary theme boundary for retrieval routing | `Fintech SaaS platform` |
 
 ---
-
-## 6. Local Development & Setup
-
-### 1. Install Dependencies
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: .\venv\Scripts\activate
-pip install -r requirements.txt
-```
-
-### 2. Configure `.env` File
-```env
-GEMINI_API_KEY=your_gemini_api_key_here
-GEMINI_MODEL=gemini-3.1-flash-lite
-QDRANT_URL=http://localhost:6333
-NEO4J_URI=bolt://localhost:7687
-NEO4J_USERNAME=neo4j
-NEO4J_PASSWORD=password123
-CHATBOT_THEME=Fintech SaaS platform
-```
-
-### 3. Run Test Suite
-```powershell
-.\venv\Scripts\python.exe -m pytest tests/ --ignore=tests/test_e2e_k8s.py -v
-```
-
-### 4. Start Microservices
-```powershell
-# Backend FastAPI server (port 8000)
-.\venv\Scripts\python.exe -m uvicorn src.theme_based_rag_backend.main:app --host 0.0.0.0 --port 8000 --reload
-
-# Gateway FastAPI server (port 8080)
-.\venv\Scripts\python.exe -m uvicorn src.theme_based_rag_gateway.main:app --host 0.0.0.0 --port 8080 --reload
-```
-
----
-
-## 7. Terraform Infrastructure Provisioning
-
-Provision and manage Kubernetes resources (Namespace, Secrets, Qdrant StatefulSet, Neo4j Graph DB, Backend/Gateway Deployments, Services, and Ingress) declaratively using Terraform:
-
-```powershell
-cd infra/terraform
-
-terraform init
-terraform validate
-terraform plan -out=tfplan
-terraform apply tfplan
-```
