@@ -10,6 +10,24 @@ variable "kubeconfig_context" {
   default     = ""
 }
 
+variable "aws_region" {
+  type        = string
+  description = "AWS Region for EKS cluster deployment"
+  default     = "us-east-1"
+}
+
+variable "eks_cluster_name" {
+  type        = string
+  description = "AWS EKS cluster name"
+  default     = "theme-based-rag-eks"
+}
+
+variable "use_aws_eks" {
+  type        = bool
+  description = "Set to true to authenticate directly to AWS EKS cluster via AWS Provider"
+  default     = false
+}
+
 variable "namespace" {
   type        = string
   description = "Kubernetes namespace for Theme-Based RAG Workflow"
@@ -96,4 +114,6 @@ variable "neo4j_password" {
   type        = string
   description = "Neo4j database password"
   sensitive   = true
+  default     = "neo4jpassword123"
 }
+

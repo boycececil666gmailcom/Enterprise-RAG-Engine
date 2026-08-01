@@ -1,0 +1,76 @@
+name: AWS ECR & EKS Deployment Pipeline
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+env:
+  AWS_REGION: us-east-1
+  EKS_CLUSTER_NAME: theme-based-rag-eks
+  ECR_BACKEND_REPO: theme-based-rag-backend
+  ECR_GATEWAY_REPO: theme-based-rag-gateway
+
+jobs:
+  build-and-deploy:
+    name: Build, Push to ECR & Deploy to EKS
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code Repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Log in to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build, Tag, and Push Docker Images to Amazon ECR
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          # Build Backend & Gateway Images
+          docker build -t $ECR_REGISTRY/$ECR_BACKEND_REPO:$IMAGE_TAG -f src/theme_based_rag_backend/Dockerfile .
+          docker build -t $ECR_REGISTRY/$ECR_GATEWAY_REPO:$IMAGE_TAG -f src/theme_based_rag_gateway/Dockerfile .
+          
+          # Push Images to AWS ECR
+          docker push $ECR_REGISTRY/$ECR_BACKEND_REPO:$IMAGE_TAG
+          docker push $ECR_REGISTRY/$ECR_GATEWAY_REPO:$IMAGE_TAG
+          
+          # Tag as latest
+          docker tag $ECR_REGISTRY/$ECR_BACKEND_REPO:$IMAGE_TAG $ECR_REGISTRY/$ECR_BACKEND_REPO:latest
+          docker tag $ECR_REGISTRY/$ECR_GATEWAY_REPO:$IMAGE_TAG $ECR_REGISTRY/$ECR_GATEWAY_REPO:latest
+          docker push $ECR_REGISTRY/$ECR_BACKEND_REPO:latest
+          docker push $ECR_REGISTRY/$ECR_GATEWAY_REPO:latest
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.5.0
+
+      - name: Deploy Infrastructure & Update AWS EKS
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          cd infra/terraform
+          terraform init
+          terraform apply -auto-approve \
+            -var="use_aws_eks=true" \
+            -var="aws_region=${{ env.AWS_REGION }}" \
+            -var="eks_cluster_name=${{ env.EKS_CLUSTER_NAME }}" \
+            -var="backend_image=${ECR_REGISTRY}/${ECR_BACKEND_REPO}:${IMAGE_TAG}" \
+            -var="gateway_image=${ECR_REGISTRY}/${ECR_GATEWAY_REPO}:${IMAGE_TAG}"
+
+      - name: Trigger Rolling Restart on AWS EKS
+        run: |
+          aws eks update-kubeconfig --name ${{ env.EKS_CLUSTER_NAME }} --region ${{ env.AWS_REGION }}
+          kubectl rollout restart deployment/theme-based-rag-backend -n theme-based-rag-workflow
+          kubectl rollout restart deployment/theme-based-rag-gateway -n theme-based-rag-workflow
