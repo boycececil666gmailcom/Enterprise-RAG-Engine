@@ -1,0 +1,25 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":semanticCommits",
+    ":pinDigests"
+  ],
+  "packageRules": [
+    {
+      "matchPackageNames": ["langchain*", "langgraph*"],
+      "groupName": "langchain ecosystem",
+      "automerge": false
+    },
+    {
+      "matchUpdateTypes": ["patch"],
+      "automerge": true
+    }
+  ],
+  "pip_requirements": {
+    "fileMatch": ["(^|/)requirements.*\\.txt$"]
+  },
+  "pyproject": {
+    "fileMatch": ["(^|/)pyproject\\.toml$"]
+  }
+}

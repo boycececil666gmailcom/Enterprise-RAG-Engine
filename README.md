@@ -20,7 +20,7 @@ This project is structured as a **reusable backend template**. It separates the 
 
 ---
 
-## 1. Text Summarization
+## Dual-Perspective Project Summarization
 
 ### Business Focus
 The **Enterprise-RAG-Engine** is designed to provide high-value, enterprise customer support while guaranteeing 100% answer accuracy and zero AI hallucinations. 
@@ -52,7 +52,9 @@ The application follows a microservices architecture separating an API Gateway p
 
 ---
 
-## 2. Business Flow Mermaid Diagram
+## Mandatory System Diagrams
+
+### 1. Business Flow Mermaid Diagram
 
 Below is a simplified operational workflow designed for business managers and product stakeholders, illustrating how customer support questions and knowledge base updates flow through the system:
 
@@ -97,7 +99,7 @@ flowchart TD
 
 ---
 
-## 3. Technical Architecture Mermaid Diagram
+### 2. Technical Architecture Mermaid Diagram
 
 Below is the technical architecture diagram showing component structures, class implementations, module dependencies, state graph nodes, and database connection drivers:
 
@@ -215,7 +217,7 @@ flowchart TD
 
 ---
 
-## 4. Technical & Business Logic Sequence Diagram
+### 3. Technical & Business Logic Sequence Diagram
 
 Below is the technical sequence diagram illustrating exact execution flows, class method calls, data payloads, and conditional routing logic highlighted with colorized alternative blocks:
 
@@ -320,7 +322,7 @@ sequenceDiagram
 
 ---
 
-## 5. Configuration & Environment Variables
+## System Configuration & Environment Variables
 
 The application is configured using environment variables (stored in `.env`):
 
