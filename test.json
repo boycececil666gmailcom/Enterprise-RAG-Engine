@@ -1,0 +1,50 @@
+{
+    "urls": [
+        {
+            "comment_text": null,
+            "core-metadata": {
+                "sha256": "e68d1bf48aec9dcc2767343dedec25e12860085cba180e10bc3d3bdd031602ba"
+            },
+            "digests": {
+                "blake2b_256": "71431947f06babed6b3f1d7f38b0c767f52df66bfb2bc10b468c4a7de9eceff2",
+                "md5": "052c8e4d18a3d1f6f203ee0790e952be",
+                "sha256": "9243213661e29250eb41368e5daa826fc017156c3b8a11440826b2e3ed376472"
+            },
+            "downloads": -1,
+            "filename": "aiohappyeyeballs-2.7.1-py3-none-any.whl",
+            "has_sig": false,
+            "md5_digest": "052c8e4d18a3d1f6f203ee0790e952be",
+            "packagetype": "bdist_wheel",
+            "python_version": "py3",
+            "requires_python": "\u003E=3.10",
+            "size": 15038,
+            "upload_time": "2026-07-01T17:11:54",
+            "upload_time_iso_8601": "2026-07-01T17:11:54.055058Z",
+            "url": "https://files.pythonhosted.org/packages/71/43/1947f06babed6b3f1d7f38b0c767f52df66bfb2bc10b468c4a7de9eceff2/aiohappyeyeballs-2.7.1-py3-none-any.whl",
+            "yanked": false,
+            "yanked_reason": null
+        },
+        {
+            "comment_text": null,
+            "core-metadata": false,
+            "digests": {
+                "blake2b_256": "cef4eec0465c2f67b2664688d0240b3212d5196fd89e741df67ddb81f8d35658",
+                "md5": "0f2e6f584d94d4d21d7d6911f584fb2c",
+                "sha256": "065665c041c42a5938ed220bdcd7230f22527fbec085e1853d2402c8a3615d9d"
+            },
+            "downloads": -1,
+            "filename": "aiohappyeyeballs-2.7.1.tar.gz",
+            "has_sig": false,
+            "md5_digest": "0f2e6f584d94d4d21d7d6911f584fb2c",
+            "packagetype": "sdist",
+            "python_version": "source",
+            "requires_python": "\u003E=3.10",
+            "size": 24757,
+            "upload_time": "2026-07-01T17:11:55",
+            "upload_time_iso_8601": "2026-07-01T17:11:55.501366Z",
+            "url": "https://files.pythonhosted.org/packages/ce/f4/eec0465c2f67b2664688d0240b3212d5196fd89e741df67ddb81f8d35658/aiohappyeyeballs-2.7.1.tar.gz",
+            "yanked": false,
+            "yanked_reason": null
+        }
+    ]
+}
