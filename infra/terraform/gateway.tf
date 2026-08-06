@@ -27,7 +27,7 @@ resource "kubernetes_deployment" "gateway" {
   wait_for_rollout = true
 
   metadata {
-    name      = "theme-based-rag-gateway"
+    name = "theme-based-rag-gateway"
 
     namespace = kubernetes_namespace.rag_namespace.metadata[0].name
     labels = {

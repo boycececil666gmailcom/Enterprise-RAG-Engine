@@ -26,7 +26,7 @@ resource "kubernetes_deployment" "backend" {
   wait_for_rollout = true
 
   metadata {
-    name      = "theme-based-rag-backend"
+    name = "theme-based-rag-backend"
 
     namespace = kubernetes_namespace.rag_namespace.metadata[0].name
     labels = {

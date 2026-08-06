@@ -31,7 +31,7 @@ resource "kubernetes_stateful_set" "qdrant" {
   wait_for_rollout = true
 
   metadata {
-    name      = "qdrant"
+    name = "qdrant"
 
     namespace = kubernetes_namespace.rag_namespace.metadata[0].name
     labels = {

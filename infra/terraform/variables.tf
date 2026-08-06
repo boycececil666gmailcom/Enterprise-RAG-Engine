@@ -30,8 +30,8 @@ variable "use_aws_eks" {
 
 variable "namespace" {
   type        = string
-  description = "Kubernetes namespace for Theme-Based RAG Workflow"
-  default     = "theme-based-rag-workflow"
+  description = "Kubernetes namespace for Enterprise RAG Engine"
+  default     = "enterprise-rag-engine"
 }
 
 variable "gemini_api_key" {

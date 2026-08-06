@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: theme-based-rag-workflow
-  labels:
-    app.kubernetes.io/name: theme-based-rag-workflow
-    environment: production
