@@ -1,344 +1,277 @@
 # Enterprise-RAG-Engine
 
-A modular, enterprise-grade Retrieval-Augmented Generation (RAG) backend engine template utilizing Google Gemini API, LangGraph agent orchestration, Qdrant vector search, and Neo4j Knowledge Graph database for GraphRAG entity-relationship reasoning.
+> Modular, enterprise-grade Retrieval-Augmented Generation (RAG) backend engine template with multi-agent orchestration, hybrid vector search, and GraphRAG entity-relationship reasoning.
+
+![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=flat&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-009688?style=flat&logo=fastapi&logoColor=white)
+![LangGraph](https://img.shields.io/badge/LangGraph-0.0.30+-1C3C3C?style=flat&logo=langchain&logoColor=white)
+![LangChain](https://img.shields.io/badge/LangChain-0.1+-1C3C3C?style=flat&logo=langchain&logoColor=white)
+![Google Gemini](https://img.shields.io/badge/Google_Gemini-API-4285F4?style=flat&logo=google&logoColor=white)
+![Qdrant](https://img.shields.io/badge/Qdrant-Vector_DB-DC2626?style=flat&logo=qdrant&logoColor=white)
+![Neo4j](https://img.shields.io/badge/Neo4j-Graph_DB-008CC1?style=flat&logo=neo4j&logoColor=white)
+![Terraform](https://img.shields.io/badge/Terraform-IaC-7B42BC?style=flat&logo=terraform&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED?style=flat&logo=docker&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-Orchestration-326CE5?style=flat&logo=kubernetes&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 ---
 
-## Core Purpose & RAG Fundamental Concept
+## 1. Core Purpose & Business Value
 
-### What is RAG? (Context Provision for LLMs)
-Large Language Models (LLMs) excel at general reasoning and language understanding, but lack internal knowledge of custom enterprise datasets and can hallucinate when asked about domain-specific facts. 
+The **Enterprise-RAG-Engine** eliminates the guesswork from AI-powered customer support by restricting every generated answer to verified, company-owned knowledge — making hallucination structurally impossible.
 
-**Retrieval-Augmented Generation (RAG)** solves this by retrieving exact, verified context from trusted database stores (Vector DBs and Knowledge Graphs) and injecting it into the LLM prompt:
-
-1. **Context Retrieval**: Fetches top matching passages (Qdrant hybrid vector/lexical search) and connected entity graphs (Neo4j GraphRAG).
-2. **Context Injection**: Supplies the structured ground-truth facts directly to the LLM.
-3. **Grounded Generation**: Restricts the LLM (Google Gemini) to synthesize responses solely based on the provided context, guaranteeing high precision and zero hallucination.
-
-### RAG Backend Engine Template
-This project is structured as a **reusable backend template**. It separates the API Gateway proxy from core retrieval and agent state graph nodes, making it effortless to plug into any customer portal, mobile app, or internal tool.
+- **Zero Hallucination, 100% Accuracy**: Every customer response is grounded in the company's own documentation and knowledge base, guaranteeing factual accuracy with no invented information.
+- **Domain Boundary Enforcement**: The engine automatically rejects off-topic inquiries, keeping support conversations strictly within defined business domains (e.g., Fintech SaaS product documentation).
+- **Comprehensive Knowledge Coverage**: Combines traditional document search with intelligent entity-relationship mapping, surfacing connections between products, pricing tiers, and organizational hierarchies that simple search cannot find.
+- **Self-Correcting Quality Assurance**: An automated review loop verifies every draft answer against source material before delivery, catching errors before customers ever see them.
+- **Plug-and-Play Backend Template**: The decoupled microservices architecture means this engine can be connected to any customer portal, mobile app, or internal tool with minimal integration effort.
+- **Intelligent Query Enhancement**: Automatically improves vague or abstract questions via hypothetical document expansion, maximizing the chance of surfacing the most relevant knowledge for complex queries.
 
 ---
 
-## Dual-Perspective Project Summarization
+## 2. System Architecture & Technical Execution
 
-### Business Focus
-The **Enterprise-RAG-Engine** is designed to provide high-value, enterprise customer support while guaranteeing 100% answer accuracy and zero AI hallucinations. 
+The platform separates an API Gateway proxy (`theme_based_rag_gateway`) from the core RAG engine (`theme_based_rag_backend`). The backend runs a stateful multi-node LangGraph agent that performs domain classification, optional HyDE query expansion, hybrid vector + graph retrieval, neural reranking (FlashRank), and a self-critique quality loop before returning a response.
 
-- **Domain Safeguard Enforcement**: Automatically screens every customer inquiry to ensure it remains strictly within defined business domain boundaries (e.g., Fintech SaaS platform documentation), immediately preventing off-topic usage.
-- **GraphRAG & Hybrid Vector Knowledge Retrieval**: Combines semantic text retrieval with Neo4j graph relationship mapping (GraphRAG) to provide comprehensive context on interconnected entities such as pricing tiers, product feature dependencies, and organization hierarchies.
-- **Adaptive HyDE Answer Enhancement**: Dynamically generates hypothetical answer passages for abstract user questions, significantly boosting document retrieval accuracy.
-- **Self-Correcting Quality Assurance**: Employs an automated self-critique review process that verifies answer candidates against source context before delivering the final response to customers.
-
-### Tech Focus
-The application follows a microservices architecture separating an API Gateway proxy (`src.theme_based_rag_gateway`) from the core RAG backend engine (`src.theme_based_rag_backend`). The stateful multi-agent execution loop is built on LangGraph, combining Qdrant hybrid vector search (dense Gemini embeddings + BM25 sparse lexical tokens) with Neo4j Cypher graph queries and FlashRank neural reranking.
-
-#### Technology Stack & Shields.io Badges
-
-* ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) **Python 3.10+**: Primary programming language and execution environment.
-* ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white) **FastAPI**: Asynchronous web framework used for API Gateway and backend services.
-* ![LangGraph](https://img.shields.io/badge/LangGraph-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white) **LangGraph**: Orchestration framework for multi-node agent state graphs, conditional routing, and self-critique loops.
-* ![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white) **LangChain**: Text chunking utilities (`RecursiveCharacterTextSplitter`), document model abstractions, and LLM integrations.
-* ![Google Gemini](https://img.shields.io/badge/Google_Gemini-4285F4?style=for-the-badge&logo=google-gemini&logoColor=white) **Google Gemini API**: Powers LLM decision-making (`gemini-3.1-flash-lite`) and dense vector embeddings (`gemini-embedding-001`).
-* ![Qdrant](https://img.shields.io/badge/Qdrant-DC2626?style=for-the-badge&logo=qdrant&logoColor=white) **Qdrant Vector DB**: Vector database supporting hybrid dense-sparse passage retrieval and metadata filtering.
-* ![Neo4j](https://img.shields.io/badge/Neo4j-008CC1?style=for-the-badge&logo=neo4j&logoColor=white) **Neo4j Graph DB**: Graph database storing extracted entities and 1-hop relationships for GraphRAG context.
-* ![FastEmbed](https://img.shields.io/badge/FastEmbed_BM25-FF6F00?style=for-the-badge&logo=python&logoColor=white) **FastEmbed BM25**: Lightweight sparse lexical embedding model (`Qdrant/bm25`).
-* ![FlashRank](https://img.shields.io/badge/FlashRank-000000?style=for-the-badge&logo=lightning&logoColor=white) **FlashRank**: Cross-encoder neural reranker used to rank merged vector and graph passages.
-* ![LangSmith](https://img.shields.io/badge/LangSmith-FF6F00?style=for-the-badge&logo=langchain&logoColor=white) **LangSmith**: Observability and execution tracing platform for agent steps and LLM prompt calls.
-* ![HTTPX](https://img.shields.io/badge/HTTPX-5B60EA?style=for-the-badge&logo=python&logoColor=white) **HTTPX**: Asynchronous HTTP client powering gateway proxy routing.
-* ![Uvicorn](https://img.shields.io/badge/Uvicorn-4053D6?style=for-the-badge&logo=python&logoColor=white) **Uvicorn**: Production ASGI server implementation for FastAPI endpoints.
-* ![Terraform](https://img.shields.io/badge/Terraform-7B42BC?style=for-the-badge&logo=terraform&logoColor=white) **Terraform**: Infrastructure as Code (IaC) tool for Kubernetes namespace, secrets, deployments, and services.
-* ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white) **Docker**: Containerization infrastructure for microservices, Qdrant, and Neo4j.
-
----
-
-## Mandatory System Diagrams
-
-### 1. Business Flow Mermaid Diagram
-
-Below is a simplified operational workflow designed for business managers and product stakeholders, illustrating how customer support questions and knowledge base updates flow through the system:
-
-```mermaid
-flowchart TD
-    %% Styling Node classes
-    classDef client fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1;
-    classDef router fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#b45309;
-    classDef kb fill:#f3e8ff,stroke:#7e22ce,stroke-width:2px,color:#6b21a8;
-    classDef reply fill:#dcfce7,stroke:#15803d,stroke-width:2px,color:#166534;
-    classDef block fill:#fee2e2,stroke:#b91c1c,stroke-width:2px,color:#991b1b;
-    classDef process fill:#f9fafb,stroke:#d1d5db,stroke-width:1px,color:#374151;
-
-    Customer(["📱 Customer / App User"]):::client
-    
-    Customer -->|"1. Submits customer support question"| ScopeCheck{"🤖 Service Scope Verification<br/>(Check if query belongs to Fintech SaaS domain)"}:::router
-    
-    ScopeCheck -->|"Question matches business domain"| SearchKnowledge["🔍 Search Dual Knowledge Base<br/>(Query Document Text & Entity Graphs)" ]:::process
-    ScopeCheck -->|"Question outside business domain"| ScopeRefusal["🛡️ Formulate Polite Refusal Message"]:::block
-    
-    SearchKnowledge -->|"Fetch matching text passages"| VectorDB[("📚 Company Document Store")]:::kb
-    SearchKnowledge -->|"Fetch entity & plan relationships"| GraphDB[("🕸️ Enterprise Knowledge Graph")]:::kb
-    
-    VectorDB -->|"Document passage results"| SynthesizeAnswer["✍️ Draft Answer Using Retrieved Knowledge"]:::process
-    GraphDB -->|"Entity relationship results"| SynthesizeAnswer
-    
-    SynthesizeAnswer -->|"2. Draft response ready"| QualityCheck{"🔎 Quality & Groundedness Checker<br/>(Verify accuracy and zero hallucination)"}:::router
-    ScopeRefusal -->|"Refusal message ready"| QualityCheck
-    
-    QualityCheck -->|"Passes verification check"| FinalAnswer["✅ Verified Helpful Customer Response"]:::reply
-    QualityCheck -->|"Fails verification check"| ScopeCheck
-    
-    FinalAnswer -->|"3. Deliver final answer to user"| Customer
-    
-    subgraph DocumentIngestion ["Document & Knowledge Base Update Workflow (Offline)"]
-        style DocumentIngestion fill:#f9fafb,stroke:#d1d5db,stroke-width:1px;
-        OpsAdmin(["👤 Operations / Admin Team"]):::client -->|"Uploads user guides & product documentation"| DocumentProcessor["✂️ Break Documents into Small Passages & Extract Entity Nodes"]:::process
-        DocumentProcessor -->|"Generate and store text embeddings"| VectorDB
-        DocumentProcessor -->|"Create and connect entity nodes"| GraphDB
-    end
-```
-
----
-
-### 2. Technical Architecture Mermaid Diagram
-
-Below is the technical architecture diagram showing component structures, class implementations, module dependencies, state graph nodes, and database connection drivers:
-
-```mermaid
-flowchart TD
-    %% Styling
-    classDef gateway fill:#eff6ff,stroke:#2563eb,stroke-width:2px,color:#1e40af;
-    classDef backend fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#166534;
-    classDef graphNode fill:#fdf4ff,stroke:#c026d3,stroke-width:2px,color:#86198f;
-    classDef dbNode fill:#fff7ed,stroke:#ea580c,stroke-width:2px,color:#9a3412;
-    classDef neoNode fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1;
-
-    subgraph GatewayModule ["API Gateway Service (src.theme_based_rag_gateway)"]
-        style GatewayModule fill:#f8fafc,stroke:#94a3b8,stroke-width:1px;
-        GatewayMain["main.py (FastAPI App)"]:::gateway
-        RouteQuery["route_query(QueryRequest)"]:::gateway
-        RouteIngest["route_ingest(IngestRequest)"]:::gateway
-        HTTPXClient["httpx.AsyncClient"]:::gateway
-        
-        GatewayMain --> RouteQuery
-        GatewayMain --> RouteIngest
-        RouteQuery --> HTTPXClient
-        RouteIngest --> HTTPXClient
-    end
-
-    subgraph BackendModule ["Core RAG Backend Service (src.theme_based_rag_backend)"]
-        style BackendModule fill:#f8fafc,stroke:#94a3b8,stroke-width:1px;
-        BackendMain["main.py (FastAPI App)"]:::backend
-        RunQuery["run_query(QueryRequest)"]:::backend
-        IngestDoc["ingest_document(IngestRequest)"]:::backend
-        
-        BackendMain --> RunQuery
-        BackendMain --> IngestDoc
-        
-        subgraph VectorStoreModule ["Vector Database Pipeline (vector_db.py)"]
-            style VectorStoreModule fill:#fff7ed,stroke:#fdba74,stroke-width:1px;
-            GetVS["get_vector_store()"]:::dbNode
-            AddDocText["add_document_text(text, metadata)"]:::dbNode
-            Splitter["RecursiveCharacterTextSplitter"]:::dbNode
-            DenseEmbed["GoogleGenerativeAIEmbeddings<br/>(gemini-embedding-001)"]:::dbNode
-            SparseEmbed["FastEmbedSparse<br/>(Qdrant/bm25)"]:::dbNode
-            QdrantStore[("QdrantVectorStore<br/>collection: local_rag_documents")]:::dbNode
-            
-            AddDocText --> Splitter
-            Splitter --> QdrantStore
-            GetVS --> DenseEmbed
-            GetVS --> SparseEmbed
-            GetVS --> QdrantStore
-        end
-
-        subgraph GraphDBModule ["Neo4j Graph Engine (graph_db.py)"]
-            style GraphDBModule fill:#e0f2fe,stroke:#38bdf8,stroke-width:1px;
-            GetDriver["get_driver()"]:::neoNode
-            ExtractEntities["extract_entities_and_relations(text)"]:::neoNode
-            AddGraph["add_graph_relations(entities, relationships)"]:::neoNode
-            ExtractQueryEntities["extract_query_entities(query)"]:::neoNode
-            RetrieveGraph["retrieve_graph_relations(query_entities)"]:::neoNode
-            Neo4jDriver[("GraphDatabase.driver<br/>Bolt Protocol")]:::neoNode
-
-            AddGraph --> GetDriver
-            RetrieveGraph --> GetDriver
-            GetDriver --> Neo4jDriver
-        end
-        
-        subgraph LangGraphAgent ["Agent Execution Graph (agent_flow/graph.py)"]
-            style LangGraphAgent fill:#fdf4ff,stroke:#f0abfc,stroke-width:2px;
-            AgentState["AgentState (TypedDict)"]:::graphNode
-            CompiledGraph["agent_graph (Compiled StateGraph)"]:::graphNode
-            
-            ClassifierNode["node_classifier(AgentState)"]:::graphNode
-            HyDEDecisionNode["node_hyde_decision(AgentState)"]:::graphNode
-            HyDEGenNode["node_hyde_generator(AgentState)"]:::graphNode
-            RAGQANode["node_rag_qa(AgentState)"]:::graphNode
-            RefuseNode["node_refuse(AgentState)"]:::graphNode
-            CritiqueNode["node_critique(AgentState)"]:::graphNode
-            
-            EdgeCategory["edge_category(AgentState)"]:::graphNode
-            EdgeHyDE["edge_hyde(AgentState)"]:::graphNode
-            EdgeCritique["edge_critique(AgentState)"]:::graphNode
-            
-            RetrieveTool["tools.retrieve_local_documents"]:::graphNode
-            Ranker["FlashrankRerank"]:::graphNode
-
-            CompiledGraph --> ClassifierNode
-            ClassifierNode --> EdgeCategory
-            EdgeCategory -->|"rag"| HyDEDecisionNode
-            EdgeCategory -->|"refuse"| RefuseNode
-            
-            HyDEDecisionNode --> EdgeHyDE
-            EdgeHyDE -->|"enable"| HyDEGenNode
-            EdgeHyDE -->|"skip"| RAGQANode
-            HyDEGenNode --> RAGQANode
-            
-            RAGQANode --> RetrieveTool
-            RetrieveTool --> GetVS
-            RetrieveTool --> Ranker
-            RetrieveTool --> ExtractQueryEntities
-            RetrieveTool --> RetrieveGraph
-            
-            RAGQANode --> CritiqueNode
-            RefuseNode --> CritiqueNode
-            CritiqueNode --> EdgeCritique
-            EdgeCritique -->|"approved"| ENDNode([END]):::graphNode
-            EdgeCritique -->|"rejected"| ClassifierNode
-        end
-    end
-
-    HTTPXClient -->|"POST /query"| RunQuery
-    HTTPXClient -->|"POST /ingest"| IngestDoc
-    RunQuery --> CompiledGraph
-    IngestDoc --> AddDocText
-    IngestDoc --> ExtractEntities
-    ExtractEntities --> AddGraph
-```
-
----
-
-### 3. Technical & Business Logic Sequence Diagram
-
-Below is the technical sequence diagram illustrating exact execution flows, class method calls, data payloads, and conditional routing logic highlighted with colorized alternative blocks:
+### Core Concept & Phased Execution Sequence
 
 ```mermaid
 sequenceDiagram
     autonumber
-    actor Client as Client / Mobile App
-    participant Gateway as src.theme_based_rag_gateway.main
-    participant Backend as src.theme_based_rag_backend.main
-    participant Graph as agent_flow.graph.agent_graph
-    participant Classifier as agent_flow.nodes.node_classifier
-    participant HyDEDecision as agent_flow.nodes.node_hyde_decision
-    participant HyDEGen as agent_flow.nodes.node_hyde_generator
-    participant QA as agent_flow.nodes.node_rag_qa
-    participant Tool as tools.retrieve_local_documents
-    participant Qdrant as vector_db.get_vector_store
-    participant Neo4j as graph_db.retrieve_graph_relations
-    participant Critique as agent_flow.nodes.node_critique
-    participant Edges as agent_flow.edges
+    actor Client as Client App / End User
+    participant GW as API Gateway (port 8080)
+    participant BE as RAG Backend (port 8000)
+    participant AG as LangGraph Agent
+    participant VDB as Qdrant Vector DB (port 6333)
+    participant GDB as Neo4j Graph DB (port 7687)
 
-    Client->>Gateway: POST /query (QueryRequest)
-    Gateway->>Backend: httpx.AsyncClient.post("/query", QueryRequest)
-    Backend->>Graph: agent_graph.ainvoke(AgentState)
-    
-    loop Execution Loop (Max 3 attempts)
-        Graph->>Classifier: node_classifier(AgentState)
-        Note over Classifier: Evaluates cosine similarity of query against CHATBOT_THEME
-        Classifier-->>Graph: returns {"category": "rag" | "refuse"}
-        
-        Graph->>Edges: edge_category(AgentState)
-        
-        alt Path A: Category is 'rag' (Domain-related query)
-            rect rgb(224, 242, 254)
-                Edges-->>Graph: returns "rag"
-                Graph->>HyDEDecision: node_hyde_decision(AgentState)
-                Note over HyDEDecision: Evaluates query length and error code patterns
-                HyDEDecision-->>Graph: returns {"use_hyde": true | false}
-                
-                Graph->>Edges: edge_hyde(AgentState)
-                
-                alt Branch A1: HyDE Enabled (Abstract / Non-technical query)
-                    rect rgb(238, 242, 255)
-                        Edges-->>Graph: returns "enable"
-                        Graph->>HyDEGen: node_hyde_generator(AgentState)
-                        Note over HyDEGen: ChatGoogleGenerativeAI generates hypothetical passage
-                        HyDEGen-->>Graph: returns {"hypothetical_document": doc}
-                    end
-                else Branch A2: HyDE Skipped (Exact query)
-                    rect rgb(243, 244, 246)
-                        Edges-->>Graph: returns "skip"
-                    end
-                end
-                
-                Graph->>QA: node_rag_qa(AgentState)
-                QA->>Tool: retrieve_local_documents(query)
-                
-                par Vector Hybrid Search
-                    Tool->>Qdrant: QdrantVectorStore.similarity_search(query, k=5)
-                    Qdrant-->>Tool: Raw doc passages
-                    Note over Tool: FlashrankRerank.compress_documents() reranks passages
-                and GraphRAG Neo4j Query
-                    Tool->>Neo4j: extract_query_entities(query)
-                    Tool->>Neo4j: retrieve_graph_relations(query_entities)
-                    Neo4j-->>Tool: Cypher entity nodes & 1-hop relationships
-                end
-                
-                Tool-->>QA: Combined Vector + Neo4j Graph Context string
-                Note over QA: ChatGoogleGenerativeAI synthesizes grounded response
-                QA-->>Graph: returns {"agent_response": content}
-            end
-        else Path B: Category is 'refuse' (Off-theme query)
-            rect rgb(254, 226, 226)
-                Edges-->>Graph: returns "refuse"
-                Graph->>QA: node_refuse(AgentState)
-                Note over QA: ChatGoogleGenerativeAI generates polite refusal response
-                QA-->>Graph: returns {"agent_response": refusal_content}
-            end
+    Note over Client, GW: Phase 1: Query Submission
+    Client->>GW: POST /query (message, history)
+    GW->>BE: Proxy POST /query via httpx (internal network)
+
+    Note over BE, AG: Phase 2: Agent Execution Loop
+    BE->>AG: Invoke StateGraph (AgentState)
+    AG->>AG: node_classifier - Classify domain scope
+
+    alt Query within business domain
+        rect rgb(235, 247, 238)
+            AG->>AG: node_hyde_decision - Evaluate HyDE necessity
+            AG->>AG: node_hyde_generator - Generate hypothetical document (if enabled)
+            AG->>VDB: Hybrid dense+sparse vector search (Qdrant BM25 + Gemini embeddings)
+            AG->>GDB: Cypher graph query - extract entity relationships (Neo4j Bolt)
+            AG->>AG: FlashRank neural reranking - merge and rank passages
+            AG->>AG: node_rag_qa - Synthesize grounded answer from retrieved context
+            AG->>AG: node_critique - Self-critique quality check
         end
-
-        Graph->>Critique: node_critique(AgentState)
-        Note over Critique: Evaluates agent_response for groundedness & compliance
-        
-        Graph->>Edges: edge_critique(AgentState)
-        
-        alt Validation Status: PASS
-            rect rgb(220, 252, 231)
-                Critique-->>Graph: returns {"critique_feedback": "PASS"}
-                Edges-->>Graph: returns "approved" -> Exit Loop to END
-            end
-        else Validation Status: FAIL (And attempts < 3)
-            rect rgb(254, 243, 199)
-                Critique-->>Graph: returns {"critique_feedback": reason, "attempts": attempts + 1}
-                Edges-->>Graph: returns "rejected" -> Loop back to node_classifier
-            end
+    else Query outside business domain
+        rect rgb(253, 237, 237)
+            AG->>AG: node_refuse - Generate polite refusal message
         end
     end
 
-    Graph-->>Backend: Final AgentState result
-    Backend-->>Gateway: QueryResponse JSON
-    Gateway-->>Client: HTTP 200 OK (QueryResponse)
+    Note over AG, BE: Phase 3: Response Delivery
+    AG-->>BE: Return final AgentState (agent_response)
+    BE-->>GW: QueryResponse (response, retrieved_documents, hyde metadata)
+    GW-->>Client: Final verified answer
 ```
 
 ---
 
-## System Configuration & Environment Variables
+### High-Level Target Production Architecture
 
-The application is configured using environment variables (stored in `.env`):
+```mermaid
+---
+config:
+  layout: elk
+  theme: neutral
+---
+flowchart TB
 
-| Environment Variable | Description | Default Value |
-| :--- | :--- | :--- |
-| `GEMINI_API_KEY` | Google Gemini API credentials | *(Required)* |
-| `GEMINI_MODEL` | Gemini LLM model for routing, HyDE, QA, and critique | `gemini-3.1-flash-lite` |
-| `GEMINI_EMBED_MODEL` | Google Generative AI embeddings model | `gemini-embedding-001` |
-| `GEMINI_TEMPERATURE` | Generation temperature (0.0 for deterministic RAG) | `0.0` |
-| `PORT` | FastAPI server port for Backend | `8000` |
-| `HOST` | FastAPI server bind address | `0.0.0.0` |
-| `QDRANT_URL` | URL to access Qdrant instance | `http://localhost:6333` |
-| `QDRANT_API_KEY` | Optional API Key if using Qdrant Cloud | `None` |
-| `NEO4J_URI` | Neo4j Bolt connection URI for GraphRAG | `bolt://localhost:7687` |
-| `NEO4J_USERNAME` | Neo4j authentication username | `neo4j` |
-| `NEO4J_PASSWORD` | Neo4j authentication password | `password123` |
-| `CHATBOT_THEME` | The primary theme boundary for retrieval routing | `Fintech SaaS platform` |
+    subgraph Client["Client"]
+        User["Browser / Mobile App / API Consumer"]
+    end
+
+    subgraph Edge["Edge Layer"]
+        CDN["CDN (Cloudflare / AWS CloudFront)"]
+        LB["Load Balancer (Nginx / HAProxy)"]
+        Ingress["Kubernetes Nginx Ingress Controller"]
+    end
+
+    subgraph GatewaySvc["API Gateway Service (theme-based-rag-gateway)"]
+        GW["Gateway Handler (FastAPI + Uvicorn, port 8080)"]
+        GWQuery["POST /query"]
+        GWIngest["POST /ingest"]
+        GWHealth["GET /health"]
+    end
+
+    subgraph BackendSvc["RAG Backend Service (theme-based-rag-backend)"]
+        BE["Backend Handler (FastAPI + Uvicorn, port 8000)"]
+        subgraph AgentGraph["LangGraph Agent StateGraph"]
+            Classifier["node_classifier"]
+            HyDEDecision["node_hyde_decision"]
+            HyDEGen["node_hyde_generator"]
+            RAGQA["node_rag_qa + FlashRank Reranker"]
+            Critique["node_critique"]
+            Refuse["node_refuse"]
+        end
+    end
+
+    subgraph VectorStore["Qdrant Vector DB (StatefulSet)"]
+        QdrantAPI["REST API (port 6333)"]
+        QdrantGRPC["gRPC (port 6334)"]
+        QdrantPVC[("PVC: qdrant-storage 5Gi")]
+    end
+
+    subgraph GraphStore["Neo4j Graph DB (StatefulSet)"]
+        Neo4jBolt["Bolt Protocol (port 7687)"]
+        Neo4jHTTP["HTTP Browser (port 7474)"]
+        Neo4jPVC[("PVC: neo4j-data 5Gi")]
+    end
+
+    subgraph Observability["Observability"]
+        LangSmith["LangSmith Tracing (api.smith.langchain.com)"]
+    end
+
+    subgraph SecretsLayer["Kubernetes Secrets"]
+        GeminiSec["gemini-secrets (GEMINI_API_KEY)"]
+        LangchainSec["langchain-secrets (LANGSMITH_API_KEY)"]
+        Neo4jSec["neo4j-secrets (NEO4J_USERNAME / PASSWORD)"]
+    end
+
+    User --> CDN
+    CDN --> LB
+    LB --> Ingress
+    Ingress --> GW
+
+    GW --> BE
+    BE --> AgentGraph
+    AgentGraph --> QdrantAPI
+    AgentGraph --> Neo4jBolt
+    AgentGraph --> LangSmith
+
+    QdrantAPI --> QdrantPVC
+    Neo4jBolt --> Neo4jPVC
+
+    BE --> GeminiSec
+    BE --> LangchainSec
+    BE --> Neo4jSec
+```
 
 ---
+
+### Kubernetes Network & Service Isolation Design
+
+```mermaid
+---
+config:
+  layout: elk
+  theme: neutral
+---
+flowchart TB
+
+    subgraph Outside["Outside World"]
+        ExternalClient["curl / Browser / Frontend App / pytest"]
+    end
+
+    subgraph Exposed["Exposed to Host via Nginx Ingress"]
+        GW["theme-based-rag-gateway (FastAPI + Uvicorn)<br/>NodePort: 30080 / Service: port 8080<br/>Routes: POST /query, POST /ingest, GET /health"]
+    end
+
+    subgraph Internal["Kubernetes Internal Network (rag-engine namespace) - not reachable from outside"]
+
+        subgraph BackendCtr["theme-based-rag-backend (FastAPI + Uvicorn, ClusterIP port 80 -> 8000)"]
+            direction TB
+            BEQueryH["POST /query - invoke LangGraph StateGraph"]
+            BEIngestH["POST /ingest - chunk text + store embeddings"]
+            BEHealthH["GET /health - ping vector store"]
+        end
+
+        subgraph QdrantCtr["qdrant (StatefulSet, Headless Service port 6333/6334)"]
+            direction TB
+            QdrantREST["REST: port 6333"]
+            QdrantGRPC["gRPC: port 6334"]
+            QdrantData[("collection: local_rag_documents<br/>dense: gemini-embedding-001<br/>sparse: Qdrant/bm25<br/>PVC: qdrant-storage 5Gi")]
+        end
+
+        subgraph Neo4jCtr["neo4j (StatefulSet, Headless Service port 7474/7687)"]
+            direction TB
+            Neo4jBrowserPort["HTTP Browser: port 7474"]
+            Neo4jBoltPort["Bolt: port 7687"]
+            Neo4jData[("nodes: Entity<br/>relationships: RELATED_TO<br/>PVC: neo4j-data 5Gi")]
+        end
+
+        subgraph SecretsCtr["Kubernetes Opaque Secrets"]
+            direction TB
+            S1["gemini-secrets: GEMINI_API_KEY"]
+            S2["neo4j-secrets: NEO4J_USERNAME / NEO4J_PASSWORD / NEO4J_AUTH"]
+            S3["langchain-secrets: LANGSMITH_API_KEY"]
+        end
+
+    end
+
+    ExternalClient -->|"NodePort 30080 / Nginx Ingress - only exposed entry point"| GW
+    GW -->|"httpx POST /query or /ingest (ClusterIP internal)"| BackendCtr
+    BEQueryH -->|"hybrid search: dense + BM25 sparse"| QdrantREST
+    BEIngestH -->|"upsert embedding vectors"| QdrantREST
+    BEQueryH -->|"Cypher MATCH query via Bolt"| Neo4jBoltPort
+    BEIngestH -->|"CREATE Entity + RELATED_TO relationships"| Neo4jBoltPort
+    BackendCtr -->|"env injection from secrets"| SecretsCtr
+```
+
+---
+
+## 3. Repository Structure
+
+```text
+Enterprise-RAG-Engine/
+├── .github/
+│   └── workflows/
+│       └── renovate.yml               # Automated dependency version updates
+├── infra/
+│   └── terraform/
+│       ├── backend.tf                 # Backend Deployment + ClusterIP Service
+│       ├── gateway.tf                 # Gateway Deployment + NodePort Service
+│       ├── ingress.tf                 # Nginx Ingress routing rule
+│       ├── neo4j.tf                   # Neo4j StatefulSet + Headless Service + PVC
+│       ├── qdrant.tf                  # Qdrant StatefulSet + Headless Service + PVC
+│       ├── secrets.tf                 # Kubernetes Opaque Secrets
+│       ├── namespace.tf               # Kubernetes namespace definition
+│       ├── providers.tf               # Terraform provider configuration
+│       ├── variables.tf               # Input variable declarations
+│       ├── outputs.tf                 # Terraform output definitions
+│       └── terraform.tfvars.example   # Example variable values (safe to commit)
+├── scripts/
+│   ├── build-image.sh                 # Docker image build and push
+│   ├── deploy_aws.sh                  # AWS EKS deployment helper
+│   ├── deploy_terraform.sh            # Terraform init + apply automation
+│   ├── setup_env.sh                   # Local .env setup helper
+│   └── test_k8s_ingress.sh            # Smoke test against K8s ingress endpoint
+├── src/
+│   ├── theme_based_rag_backend/
+│   │   ├── agent_flow/                # LangGraph StateGraph nodes and edges
+│   │   ├── Dockerfile                 # Multi-stage production container image
+│   │   ├── config.py                  # Environment variable configuration
+│   │   ├── graph_db.py                # Neo4j driver, entity extraction, Cypher queries
+│   │   ├── vector_db.py               # Qdrant hybrid search, embedding pipeline
+│   │   ├── tools.py                   # LangGraph tool: retrieve_local_documents
+│   │   ├── models.py                  # Pydantic request/response schemas
+│   │   └── main.py                    # FastAPI app: /query, /ingest, /health
+│   └── theme_based_rag_gateway/
+│       ├── Dockerfile                 # Gateway container image
+│       ├── main.py                    # FastAPI app: proxy routing via httpx
+│       └── models.py                  # Pydantic request/response schemas
+├── tests/
+│   ├── conftest.py                    # Pytest fixtures and shared setup
+│   ├── test_unit_gateway.py           # Unit tests: gateway proxy routing
+│   ├── test_unit_hyde.py              # Unit tests: HyDE generation node
+│   ├── test_unit_hyde_decision.py     # Unit tests: HyDE decision node
+│   ├── test_integration_agent_flow.py # Integration: full agent graph run
+│   ├── test_integration_graph_db.py   # Integration: Neo4j entity operations
+│   ├── test_e2e_api.py                # E2E: full query against running services
+│   ├── test_e2e_k8s.py                # E2E: smoke tests against K8s ingress
+│   └── e2e_aws.py                     # E2E: AWS EKS deployment validation
+├── pyproject.toml                     # Project metadata, dependencies, ruff + pytest config
+├── langgraph.json                     # LangGraph API server configuration
+├── renovate.json                      # Renovate bot dependency update rules
+└── README.md
+```
