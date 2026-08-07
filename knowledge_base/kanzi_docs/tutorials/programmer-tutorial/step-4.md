@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/programmer-tutorial/step-4.htm
 
 # Step 4 - Create the interaction handler for selecting a widget
 
-
 In this tutorial you create an application in which users can scroll the list of widgets contained in the Widget Grid List Box and enable them to select from that list a widget represented by a Widget Item Prefab. The Grid List Box 3D node provides the horizontal scrolling you can set in the Kanzi Studio project, but you need to define the application logic that handles the widget selection.
 
 In this step of the tutorial you implement the functionality that handles the selection of the widget item when the user clicks a widget:
@@ -13,7 +12,6 @@ In this step of the tutorial you implement the functionality that handles the se
 - Trigger the animation that zooms the camera to a position so that the selected widget is highlighted on the left side of the application window.
 - Trigger the animation that orients the selected widget towards the camera to highlight it.
 - Make visible the description panel represented by the Widget Description Layer node on the right side of the application window. The description panel contains the description for each widget, a back button and a buy button. When the Widget Description Layer is visible, the scrolling of the Widget Grid List Box is disabled. While the camera zoom animation is going, the Back button is disabled.
-
 
 To create the interaction handler for selecting a widget:
 
@@ -169,8 +167,6 @@ void onProjectLoaded() override
 
 ```
 
-
 When you click a widget, the application highlights the widget using the two animations you specified, makes the Widget Description Layer node visible and shows the widget description in the Widget Description Layer.
-
 
 Previous step Next step

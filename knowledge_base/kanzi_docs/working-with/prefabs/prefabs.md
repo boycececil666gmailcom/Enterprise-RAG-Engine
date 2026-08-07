@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/prefabs/prefabs.html
 
 # Using node prefabs
 
-
 Use prefabs (prefabricated templates) to structure your application and to create consistent interfaces. Prefabs allow you to create the building blocks of your application and make the application easier to maintain.
 
 Create a prefab for every item in your application that appears more than once, when you want to logically separate a part of your application, or add content to the node tree when your application is already running. For example, use prefabs to:
@@ -16,17 +15,14 @@ Create a prefab for every item in your application that appears more than once, 
 - Create different themes for your Kanzi application.
 - Localize your Kanzi application.
 
-
 When using prefabs keep in mind that:
 
 - You can duplicate an instance of a prefab like any other node in the node tree.
 - Property values you add to an instance of a prefab override the property values set in the prefab.
 - Use relative paths when you want to reference items inside a prefab (for example, in a message trigger or a property binding). Do not use the prefab itself as a target path for any messages or animations.
 
-
 You can nest prefabs within prefabs.
 ## Node prefabs and node prefab instances
-
 
 Node prefabs consume memory on the device only when you load them. When you load a node prefab, the prefab consumes the amount of memory based on the number of nodes and properties that prefab contains. When you instantiate a node prefab, Kanzi creates nodes and assigns properties to those nodes. You can calculate how much memory prefab instances consume by multiplying the number of instances with the memory requirements of a single prefab instance.
 
@@ -36,7 +32,6 @@ When you detach a node prefab instance, Kanzi does not release resources used in
 
 Kanzi assumes that all the nodes that you place in the node tree are going to be used. Kanzi optimizes for the case that all the content put in the node tree is ready for immediate use. If a node is not supposed to be used, remove it from the node tree.
 ## Prefab Placeholder and Prefab View nodes
-
 
 You can use both Prefab Placeholder and Prefab View nodes to instantiate a node prefab in your project. The difference between these nodes is:
 
@@ -49,14 +44,12 @@ For example, if you use a Prefab View 2D node to instantiate a node prefab which
 
 ### When to use a Prefab Placeholder and when a Prefab View node
 
-
 Use a Prefab Placeholder node to instantiate a node prefab which you do not intend to change during application runtime.
 
 If you want to dynamically change a prefab, or want to asynchronously load the resources which the prefab uses, use a Prefab View to instantiate a prefab. For example, when you theme your application and want to use different prefabs for different themes, use a Prefab View node to instantiate those prefabs.
 
 Kanzi reads the value of the Prefab Template property of a Prefab Placeholder once, but a Prefab View node monitors for changes the value of the Prefab Template property. When the value of the Prefab Template property in a Prefab View changes, Kanzi replaces its child node with the new child node.
 ## Creating and using a node prefab
-
 
 To create and use a node prefab:
 
@@ -76,9 +69,7 @@ Kanzi Studio creates a Prefab Placeholder node which instantiates the prefab in 
 To instantiate a different prefab, in the Node Tree select the prefab you want to change, and in the Properties set the Prefab Template property to the prefab you want to instantiate.
   - In the Node Tree press Alt and right-click the node where you want to instantiate the prefab, select Prefab View, and in the Properties set the Prefab Template property to the prefab you want to instantiate.
 
-
 ## Customizing instances of a node prefab
-
 
 A node prefab can contain a tree of nodes, each with their own properties. When you edit the nodes in a prefab or any of its instances in a project, you change those nodes in all instances of that prefab. You can customize each instance of a prefab to have its own property values by overriding the property values of the prefab. For example, when you create a prefab for an address book entry, you want to show a different name, number, and photo for each address book entry.
 
@@ -109,16 +100,13 @@ Only this instance of the prefab uses the value that you set.
 
 ## Editing a node prefab
 
-
 To edit a node prefab double-click the prefab in the Prefabs. Kanzi Studio shows only the prefab in a Preview window tab. You can now edit the prefab with the Preview tools and see the result of your edits without instantiating the prefab.
 ## Turning nodes into prefab
-
 
 To turn any part of the node tree of your project into a prefab, from the Node Tree drag the root of the part you want to turn into a prefab to the Prefabs.
 
 When you drop a node into the Prefabs window, Kanzi Studio creates a prefab template from the node and replaces the original node with an instance of the prefab.
 ## Loading node prefab resources asynchronously
-
 
 When you load prefab resources asynchronously, Kanzi uses separate threads to load resources. When Kanzi finishes loading the resources, it deploys them using the main thread. That way your application stays responsive while it loads resources. To load resources asynchronously from several prefabs, see Tutorial: Load and deploy resources asynchronously.
 
@@ -172,7 +160,6 @@ For example, select the Dispatch Message Action > Activity Host > Activate Activ
     - Target Item to the Activity Host node that contains the Activity that you want to activate
     - Activity Activation Path to the Activity that you want to activate when Kanzi finishes loading the resources
 
-
 8.
 
 Select File > Export > Export as KZB Player for Windows and open the application exe file in the `<ProjectName>/Tool_project/Application Player` directory.
@@ -182,9 +169,7 @@ Because the Kanzi Studio Preview loads all resources in the project when it star
   - Export the project as a kzb file Player
   - Export the project kzb file and run the application from the project Visual Studio solution
 
-
 ## Replacing the root node of a node prefab
-
 
 Replace the root node of a prefab when you want to add or change the node that is used as the parent node of a prefab. For example, if you first created a prefab that has a Grid Layout 3D as its root, but now you want to place that Grid Layout 3D into a Stack Layout 3D, you need to replace the root node of that prefab.
 
@@ -206,7 +191,6 @@ Drag and drop the old prefab from the Empty Node node root to the new root node 
 
 ## Using the Prefab View 3D node in the API
 
-
 To use a Prefab view 3D node, create a prefab with 3D content and set it using setPrefab():
 
 ```
@@ -222,10 +206,8 @@ prefabView3D->setPrefab(prefabTemplate);
 
 ```
 
-
 For details, see the `PrefabView3D` class.
 ## Using the Prefab View 2D node in the API
-
 
 To use a Prefab View 2D node, create a prefab with 2D content and set it using setPrefab():
 
@@ -242,13 +224,10 @@ prefabView2D->setPrefab(prefabTemplate);
 
 ```
 
-
 For details, see the `PrefabView2D` class.
 ## Prefab View property types
 
-
 For lists of the available property types for the Prefab View nodes, see Prefab View 2D and Prefab View 3D.
 ## Prefab Placeholder property types and messages
-
 
 For lists of the available property types and messages for the Prefab Placeholder nodes, see Prefab Placeholder 2D and Prefab Placeholder 3D.

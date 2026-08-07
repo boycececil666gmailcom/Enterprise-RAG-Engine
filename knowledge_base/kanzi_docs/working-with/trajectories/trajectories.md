@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/trajectories/trajectories.h
 
 # Trajectories
 
-
 Use trajectories as paths along which Trajectory Layout 3D and Trajectory Layout 2D nodes arrange their child nodes, and along which Trajectory List Box 3D nodes move their items.
 
 Trajectories are paths in 3D space. See Using the Trajectory Layout nodes and Using the Trajectory List Box 3D node.
@@ -41,6 +40,5 @@ See Using spline trajectories.
 See Using trapezoid trajectories.
 
 ## Using trajectories in the API
-
 
 For details, see the `Trajectory` class.

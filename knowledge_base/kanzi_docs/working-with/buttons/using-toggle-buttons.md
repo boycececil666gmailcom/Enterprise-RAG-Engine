@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/buttons/using-toggle-button
 
 # Using the Toggle Button nodes
 
-
 Use the Toggle Button nodes to create interactions through buttons that can have multiple toggle states.
 
 See Creating a toggle button with two states and Creating a toggle button with more than two states.
@@ -17,7 +16,6 @@ When you create a Toggle Button, Kanzi by default adds to that node the Toggle B
 - Toggle Button: Toggled On
 - Toggle Button: Toggled Off
 - Toggle Button: State Toggled
-
 
 See Reacting to toggle changes.
 
@@ -31,10 +29,8 @@ For example, to show the difference between the on and off states of a toggle bu
 - Attach two different visual representations of the toggle button and switch their visibility.
 - Attach two different visual representations of the toggle button and transition between the two by animating their Blend Intensity property value.
 
-
 To learn how to create a toggle button, complete the toggle button tutorial. See Tutorial: Creating a toggle button.
 ## Creating a toggle button with two states
-
 
 To create a toggle button with two states:
 
@@ -84,7 +80,6 @@ In the State Tools, click Edit State Manager to deactivate the State Tools.
 In the Preview when you click the visual representation of the toggle button, you toggle between the states you created, and the appearance of the toggle button changes.
 
 ## Creating a toggle button with more than two states
-
 
 To create a toggle button with more than two states:
 
@@ -136,7 +131,6 @@ In the Preview when you click the visual representation of the toggle button, yo
 
 ## Reacting to toggle changes
 
-
 You can use the Toggle Button triggers to react when the user toggles a toggle button. To learn more about using triggers, see Using triggers.
 
 When you create a Toggle Button node, Kanzi by default adds these triggers to that node:
@@ -177,7 +171,6 @@ For example, in the Toggle Button: Toggled On trigger create a Write Log action 
 To learn more about the Write Log action, see Using Write Log action.
 
 ## Using a binding to update the toggle state
-
 
 To update the toggle state of a Toggle Button node with a binding, use a to-source or two-way binding. When you toggle a Toggle Button, that Toggle Button internally overrides any one-way binding that targets the Toggle State property. See Bindings.
 
@@ -225,20 +218,14 @@ For example, set it to
 
 ```
 
-
 This binding uses the conditional operator to toggle the Toggle Button:
 
     - Off when the value of the Slider is zero.
     - On when the value of the Slider is not zero.
 
-
 See ? (conditional).
-
-
-> **Tip:** You can start creating a binding for a property by right-clicking a property and selecting Create Binding.
->
-> This way you automatically add the property to the Binding Editor.
-
+**Tip:** You can start creating a binding for a property by right-clicking a property and selecting Create Binding.
+This way you automatically add the property to the Binding Editor.
 
 Now, when in the Preview you:
 
@@ -246,10 +233,8 @@ Now, when in the Preview you:
 - Adjust the slider to zero, Kanzi toggles off the toggle button.
 - Toggle the toggle button, the slider keeps its value.
 
-
 This enables the user to both adjust the value of a setting and quickly enable and disable the setting. For example, you can create a volume control.
 ## Controlling whether a Toggle Button node is in use
-
 
 To control whether a Toggle Button node is in use, use the Input > Enabled property. A disabled Toggle Button node does not produce user events, such as button presses. When you disable a Toggle Button node, Kanzi preserves the toggled state of that Toggle Button node.
 
@@ -259,7 +244,6 @@ To observe whether a node is effectively enabled, use the Input > Effectively En
 
 See Controlling how a node reacts to input.
 ## Enabling the double-click gesture for a Toggle Button node
-
 
 Use the double-click gesture to enable users to double-click or double-tap toggle buttons in your Kanzi application. Use the Multi-Click trigger to react to the double-click gesture. For example, you can change the appearance of a Toggle Button node when the user double-clicks or double-taps that node.
 
@@ -279,7 +263,6 @@ In the Node Components > Triggers press Alt and right-click the Multi-Click trig
 
 ## Setting the appearance of a Toggle Button 2D node
 
-
 To set the appearance of 2D nodes:
 
 - You can fill 2D nodes with a solid color, a texture, or a material. See Adjusting the appearance of 2D nodes.
@@ -290,13 +273,10 @@ To set the appearance of 2D nodes:
 
 ## Using the Toggle Button 3D node in the API
 
-
 For details, see the `ToggleButton3D` class.
 ## Using the Toggle Button 2D node in the API
 
-
 For details, see the `ToggleButton2D` class.
 ## Toggle Button property types and messages
-
 
 For lists of the available property types and messages for the Toggle Button nodes, see Toggle Button 2D and Toggle Button 3D.

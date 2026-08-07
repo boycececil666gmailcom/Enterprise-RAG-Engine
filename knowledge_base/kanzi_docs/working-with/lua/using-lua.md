@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/lua/using-lua.html
 
 # Using Lua
 
-
 Kanzi Engine Lua API is a platform-independent interface to the Kanzi Engine using the Lua programming language. It allows you to create application and user interface logic in Kanzi Studio.
 
 When you export a kzb file, Kanzi Studio embeds Lua scripts in the kzb file.
@@ -16,7 +15,6 @@ Learn how to develop application logic for your Kanzi applications using Kanzi E
 
 Kanzi uses Lua 5.4. See https://www.lua.org/manual/5.4/.
 ## Executing a Lua script
-
 
 To execute a Lua script:
 
@@ -44,10 +42,8 @@ print("Hello world!")
 
 ```
 
-
 When you set off the trigger, it executes the Run Lua Script action, which runs the code in the script. For example, when you click the button, the Lua script prints `Hello world!` to the Log.
 ## Using Lua variables
-
 
 In Lua, you can declare:
 
@@ -72,9 +68,7 @@ print("This script has been executed " .. runCount .. " times.")
 
 ```
 
-
 ## Accessing nodes
-
 
 When you set off a trigger that executes the Run Lua Script action, the action assigns to the `contextNode` variable the reference to the node that contains the trigger.
 
@@ -84,7 +78,6 @@ local name = contextNode:getProperty(Node.NameProperty)
 print(name)
 
 ```
-
 
 To navigate the node tree, start with the `contextNode` variable, then use the `lookupNode` function with:
 
@@ -97,7 +90,6 @@ local parentName = parent:getProperty(Node.NameProperty)
 print(parentName)
 
 ```
-
 
 ```
 -- To access a child node with the name "Empty Node 2D".
@@ -117,7 +109,6 @@ print(nodeName)
 
 ```
 
-
 To access all child nodes of a node, use the `iterateChildren` function.
 
 ```
@@ -129,7 +120,6 @@ end
 ```
 
 ## Using properties
-
 
 Kanzi Engine Lua API allows you to work with the existing property types. Most Kanzi property types are present in Kanzi Engine Lua API.
 
@@ -147,7 +137,6 @@ print(opacity)
 
 ```
 
-
 To access a custom property type, create an instance of a `PropertyType` with the full Kanzi Engine name of the property type.
 
 ```
@@ -158,12 +147,9 @@ print(contextNode:getProperty(customPropertyType))
 
 ```
 
-
 See Property system and Creating property types.
-
-> **Tip:** For most Kanzi property types, you can find the full Kanzi Engine name in the property tooltip.
+**Tip:** For most Kanzi property types, you can find the full Kanzi Engine name in the property tooltip.
 ### Using vector data types
-
 
 In Lua scripts, you can use as value types these Kanzi math types:
 
@@ -176,7 +162,6 @@ In Lua scripts, you can use as value types these Kanzi math types:
 - Matrix4x4
 - SRTValue2D
 - SRTValue3D
-
 
 For example, you can:
 
@@ -246,9 +231,7 @@ position = position + (rotation * direction):normalized() * speed
 
 ```
 
-
 ## Creating and removing nodes
-
 
 To instantiate a prefab:
 
@@ -261,7 +244,6 @@ local node = prefab:instantiate("My Node")
 contextNode:addChild(node)
 
 ```
-
 
 To replace all child nodes of a node with a node that you create:
 
@@ -277,10 +259,8 @@ contextNode:addChild(node)
 
 ```
 
-
 See Using node prefabs.
 ## Using messages
-
 
 You can access all message types that are already registered with Kanzi Engine. However, you cannot define a message type.
 
@@ -296,7 +276,6 @@ contextNode:dispatchMessage(ExclusiveActivityHost2D.NavigateNextMessageMessage, 
 
 ```
 
-
 To access a message type by name, create an instance of `MessageType` with the full name of the message type:
 
 ```
@@ -311,10 +290,8 @@ contextNode:dispatchMessage(messageType, arguments)
 
 ```
 
-
 See Using messages.
 ### Receiving messages
-
 
 Set up a message handler to receive messages. Create a handler function that accepts a message argument and set the function as a message handler.
 
@@ -338,7 +315,6 @@ contextNode:addMessageHandler(messageType, myMessageHandler)
 
 ## Logging
 
-
 Kanzi Engine Lua API gives you access to the standard Kanzi logging functions. They are defined inside of the `log` namespace.
 
 ```
@@ -348,7 +324,6 @@ log.warning("warning message")
 log.error("error message")
 
 ```
-
 
 Note that compared to the `print` function, logging functions accept only a single string argument.
 
@@ -360,7 +335,6 @@ log.info("info\tmessage")
 ```
 
 ## Navigating data sources
-
 
 You can access a data source, for example, by acquiring it as a resource and then use functions like `lookupDataContext` to modify its data object tree.
 
@@ -378,7 +352,6 @@ speed:setValue(200)
 
 ## Registering Main Loop Scheduler tasks
 
-
 You can customize the application main loop by registering additional tasks using `MainLoopScheduler` functions.
 
 ```
@@ -394,7 +367,6 @@ local token = MainLoopScheduler.appendTask(
 MainLoopScheduler.removeTask(MainLoopStage.USER, token)
 
 ```
-
 
 You can also register timer tasks.
 

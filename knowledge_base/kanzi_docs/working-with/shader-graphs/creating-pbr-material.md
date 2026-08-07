@@ -5,18 +5,14 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/shader-graphs/creating-pbr-
 
 # Creating a PBR material
 
-
 This tutorial walks you through building a physically-based material with the Shader Graph Editor. You set the graphâs material type to PBR, drive the Material Output Base Color input from a texture, generate the shader, and verify the result on a 3D mesh in the Preview.
 ## Creating the shader graph
-
 
 In the Library, press Alt and right-click Materials and Textures > Shader Graphs, and select Shader Graph. Kanzi Studio creates the shader graph and opens the Shader Graph Editor.
 ## Setting the material type to PBR
 
-
 From the Material dropdown in the top-left corner of the editor, select PBR. The Material Output node updates to expose the PBR input ports: Base Color, Metallic, Roughness, Normal, Emissive, and AO.
 ## Building the graph
-
 
 In this section you drive Base Color from a texture and set Metallic and Roughness to constant values.
 
@@ -43,11 +39,9 @@ The completed graph samples the texture using UV coordinates, routes the sampled
 
 ## Generating the shader
 
-
 Click Generate Shader in the top-right corner of the editor. When the shader compiles successfully, a green Shader compiled successfully notification appears, and Kanzi Studio creates two resources in the Library:
 
 - A Material Type that uses the generated PBR fragment shader.
 - A Material that uses that Material Type.
-
 
 If validation or compilation fails, the Problems panel shows what went wrong.

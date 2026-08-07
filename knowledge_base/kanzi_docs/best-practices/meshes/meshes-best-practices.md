@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/best-practices/meshes/meshes-best-practi
 
 # Meshes best practices
 
-
 Meshes, along with textures, have a major role in affecting the performance of any 3D application. To improve efficiency of meshes in your Kanzi applications:
 
 - Reduce the amount of vertex data in the meshes. See Optimizing meshes.

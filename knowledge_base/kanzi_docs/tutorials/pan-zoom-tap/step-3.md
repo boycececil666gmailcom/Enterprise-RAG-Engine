@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/pan-zoom-tap/step-3.html
 
 # Step 3 - Long-press to drop a pin
 
-
 Use the Long-Press Manipulator to enable users to long-press nodes in your Kanzi application.
 
 This way you can make the application react when the user presses and holds the pointer pressed on a node for the amount of time that you set in the Long-Press Manipulator.
@@ -14,7 +13,6 @@ In Kanzi Studio you can use the Long-Press Manipulator component to install a lo
 
 In this step you use the Long-Press Manipulator component and long-press manipulator to enable the user to drop a pin on the map by long-pressing the map. For example, this way you can enable the user to mark a point of interest on the map.
 ## Drop a pin
-
 
 In this section you create and use the Long-Press Manipulator component and long-press manipulator to drop a pin on the map when the user long-presses the map.
 
@@ -118,7 +116,6 @@ In the application long-press anywhere on the map to drop a pin.
 
 ## Keep the size and orientation of the dropped pin
 
-
 When the user zooms and rotates the map, the dropped pin changes size and rotates with the map. This is because you instantiated the Pin prefab, which shows the pin, as a child of the Map node. In this section you add the code to keep the size and orientation of the pin constant.
 
 To keep the size and orientation of the dropped pin:
@@ -156,7 +153,6 @@ Replace
 m_pin->setRenderTransformation(pinSRT);
 
 ```
-
 
 with
 
@@ -210,10 +206,8 @@ Build and deploy the application to your Android device.
 
 When you zoom and rotate the map, the pin that you dropped maintains its size and orientation.
 
-
 Previous step
 ## Whatâs next?
-
 
 In this tutorial you learned how to use the Kanzi gesture components and input manipulators to enable panning, zooming, rotating, resetting the position, and dropping a pin on the map. Now you can:
 

@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/performance-profiling/profi
 
 # Measuring the performance of your application code
 
-
 The Kanzi performance profiling system enables you to measure the performance of your Kanzi application. Kanzi profiles all main loop tasks with the `MainLoopProfiler`, including custom tasks that you add.
 
 Here you can find out how to measure the performance of your code in your Kanzi application. To measure the performance of different parts of Kanzi Engine during application startup and the tasks that Kanzi runs in the main loop, use the performance profilers in the Profiling build. See Measuring the performance of Kanzi Engine.
@@ -17,7 +16,6 @@ To measure the performance of your application code you can:
 - Log performance profiling data. See Logging application code performance profiling data.
 
 ## Creating performance profiling categories
-
 
 To group the performance measurements of functions and scopes, create your own performance profiling categories.
 
@@ -37,7 +35,6 @@ kzProfilingRegisterCategory(MY_PROFILING_CATEGORY, KZ_PROFILING_ENABLED_CATEGORY
 
 ```
 
-
 See ProfilingCategoryFilter.
 
 You can use the performance profiling category you created to profile the performance of:
@@ -47,12 +44,10 @@ You can use the performance profiling category you created to profile the perfor
 
 ## Measuring the performance of scopes
 
-
 You can use Kanzi profiling macros to measure the execution time of any scope in your application code:
 
 - `ProfilingMacros::kzProfileScope` profiles the execution time of a scope.
 - `ProfilingMacros::kzProfileScopeExtended` profiles the execution time of a scope using a custom profiler registry and sample buffer size.
-
 
 To measure the performance of a scope:
 
@@ -93,7 +88,6 @@ For example, when you exit the application, the Kanzi logger collects data from 
 
 Build and run your application. See Deploying Kanzi applications.
 
-
 Kanzi writes the performance measurement information to the log.
 
 ```
@@ -107,7 +101,6 @@ info:profiling>   Shortest duration [ns]: 34279
 ```
 
 ## Measuring the performance of functions
-
 
 You can use the `ProfilingMacros::kzProfileFunction` macro to measure the execution time of functions in your application code.
 
@@ -150,7 +143,6 @@ For example, when you exit the application, the Kanzi logger collects data from 
 
 Build and run your application. See Deploying Kanzi applications.
 
-
 Kanzi writes the performance measurement information to the log.
 
 In the log **Number of intervals** shows how many times the function was called.
@@ -166,6 +158,5 @@ info:profiling>   Shortest duration [ns]: 1823
 ```
 
 ## Logging application code performance profiling data
-
 
 To analyze the performance of your application code, log the performance profiling data. You can log per-sample and summary data from the profilers that you create and from profiler registries. See Logging Kanzi Engine performance profiling data.

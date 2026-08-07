@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/data-sources/data-sources.html
 
 # Tutorial: Get application data from a data source
 
-
 In this tutorial you learn how to get the data for your Kanzi application from a data source.
 
 Use data sources to separate the user interface from the application data and to remove the dependencies between a Kanzi Studio project and the application code which define the Kanzi application.
@@ -21,12 +20,10 @@ Before you start this tutorial, make sure that you have your Kanzi development e
 - CMake 3.25 or newer
 - Visual Studio 2022 with the latest updates
 
-
 This tutorial assumes that you understand the basics of working with Kanzi Studio. The best entry points for getting familiar with Kanzi Studio are:
 
 - Tutorial: Getting started with Kanzi Studio
 - Tutorial: Create a simple in-vehicle infotainment application
 - Tutorial: Hello world!
-
 
 Start with the tutorial

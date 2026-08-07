@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/localization-rtl/step-2.html
 
 # Step 2 - Define the application layout for the right-to-left locales
 
-
 In this step you define a layout which positions the content for the right-to-left locales. You create another prefab from the LocaleButton, which sets the alignment for the right-to-left locale buttons.
 ## Define the application layout for the right-to-left locales
-
 
 In this section you define the layout for the right-to-left locales. You reverse the size settings of the Columns property to position the elements in the grid layout nodes and align the text and texture content to the right.
 
@@ -32,7 +30,6 @@ In the Prefabs > IVI Grid RightToLeft select the LocationInformation node and in
 
   - Column to 1
   - Row to 0
-
 
 Here you position the nodes in the LocationInformation from the left to the right side of the application user interface.
 4.
@@ -85,7 +82,6 @@ In the Prefabs > IVI Grid RightToLeft > LocationInformation select the Destinati
 
 ## Create a LocaleButton prefab for the right-to-left locales
 
-
 In this section you create a LocaleButton prefab for the right-to-left locales to set the alignment of the locale names in the right-to-left locale buttons. You use the Horizontal Alignment property in the prefab to position the locale buttons for the Arabic and Hebrew locales, and use the original prefab for the left-to-right locales.
 
 1.
@@ -96,7 +92,6 @@ In the Prefabs select the LocaleButton prefab, press Ctrl D to duplicate it, nam
 Select the LocaleButton RightToLeft > Text Block 2D and SelectionBar nodes and in the Properties add the Horizontal Alignment property and set it to Right.
 
 ## Localize the prefabs for the left-to-right and right-to-left locales
-
 
 In this section you add the Prefab View 2D node IVI Grid as a resource to the localization table, and set which prefab each locale uses.
 
@@ -121,7 +116,6 @@ Kanzi uses the prefab resources when you instantiate the layouts for the left-to
 
 ## Export the kzb files
 
-
 To export the kzb files:
 
 1.
@@ -143,6 +137,5 @@ In Kanzi Studio, select File > Export > Export KZB. This command:
   - Creates one kzb file for each locale that you marked in the localization table as a locale pack. When Kanzi Studio exports locale packs, it names the kzb files after the locale whose resources they contain. Each locale pack file contains only the resources used by that locale.
   - Creates the main kzb file that contains the entire Kanzi Studio project, except the resources of locales that you mark as locale packs in the localization table.
   - Stores the locale pack kzb files in the `<ProjectName>/Application/bin/Locale_packs` directory, or the `Locale_packs` directory in the location that you specify in the Project > Properties in the Binary Export Directory property.
-
 
 Previous step Next step

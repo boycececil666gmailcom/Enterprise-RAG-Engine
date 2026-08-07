@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/meshes/editing-meshes.html
 
 # Optimizing meshes
 
-
 You can improve the performance of your Kanzi application by reducing the amount of vertex data in the meshes the application shows. When you reduce the amount of mesh vertex data, the size of the kzb file and the amount of GPU memory required at runtime decrease.
 ## Editing mesh attributes
-
 
 You can change vertex data of a mesh using the Mesh Attributes Editor.
 
@@ -28,33 +26,23 @@ In the Mesh Attributes Editor in the Export table set these attributes to contro
   - Semantic sets the meaning of the attribute. The semantics of the mesh attributes match the semantics of the shader attributes of the material type the mesh uses.
 
 For example, the position, normal, tangent, texture coordinate, or color vector.
-
-> **Tip:** To view and edit the semantics of the shader attributes of a material type, in the Library > Materials and Textures > Material Types right-click a material type and select Open Shader Attributes Editor.
-> - Semantic Index sets the index of the attribute in the material type.
->
-> For example, the correct texture coordinate.
->
-> The semantic index of each mesh attribute matches the semantic index of the shader attribute with the same semantic.
-> - Data Type sets the data type Kanzi uses when storing the attribute to the GPU memory and exporting it to the kzb file. See Setting the correct size of vertex cache.
-> - Dimensions sets the number of dimensions Kanzi uses for the attribute.
->
-> Kanzi Studio automatically sets this value when you import a mesh.
-> - Output Components sets the components to which Kanzi maps the attribute.
->
-> Kanzi Studio automatically sets this value when you import a mesh.
-> - Export sets the attributes Kanzi exports to the kzb file.
->
-> Select the checkbox for the attributes you use and clear the checkbox for the attributes you do not use.
->
-> Make sure you export all attributes that match the shader attributes of the material types the mesh is using.
->
-> In this example the tangent and texture coordinate attributes are not exported because they are not among the shader attributes of the material type the mesh uses.
-
+**Tip:** To view and edit the semantics of the shader attributes of a material type, in the Library > Materials and Textures > Material Types right-click a material type and select Open Shader Attributes Editor.
+- Semantic Index sets the index of the attribute in the material type.
+For example, the correct texture coordinate.
+The semantic index of each mesh attribute matches the semantic index of the shader attribute with the same semantic.
+- Data Type sets the data type Kanzi uses when storing the attribute to the GPU memory and exporting it to the kzb file. See Setting the correct size of vertex cache.
+- Dimensions sets the number of dimensions Kanzi uses for the attribute.
+Kanzi Studio automatically sets this value when you import a mesh.
+- Output Components sets the components to which Kanzi maps the attribute.
+Kanzi Studio automatically sets this value when you import a mesh.
+- Export sets the attributes Kanzi exports to the kzb file.
+Select the checkbox for the attributes you use and clear the checkbox for the attributes you do not use.
+Make sure you export all attributes that match the shader attributes of the material types the mesh is using.
+In this example the tangent and texture coordinate attributes are not exported because they are not among the shader attributes of the material type the mesh uses.
 
 The status bar at the bottom of the Mesh Attributes Editor shows the size of the mesh vertex data if you export the kzb file with the values you have currently set in the Export table.
 
 ## Setting the correct size of vertex cache
-
 
 GPUs have a vertex cache of a certain size. Accessing mesh vertices from the cache is an order of magnitude faster than accessing vertices from elsewhere in the memory. You can optimize the mesh data for a certain cache size by reordering vertices and indices in the vertex buffer so that the amount of cache hits is optimal.
 
@@ -79,9 +67,7 @@ The vertex buffer of a mesh contains a set of attributes which Kanzi uses to sen
 
 For example, if you set the Default Vertex Attribute Data Type property to Half-float, compared to Float you decrease the mesh data size by half, but also decrease the mesh accuracy.
 
-
 ## Setting the optimal data type for mesh attributes
-
 
 To optimize your meshes, set for each mesh attribute the data type that occupies the least amount of space while providing enough visual accuracy for your needs. Kanzi uses the data type when storing the attribute to the GPU memory and exporting it to the kzb file. When you use data types that occupy less space, the size of the kzb file and the amount of GPU memory required at runtime decrease. See Data types for mesh attributes.
 
@@ -150,9 +136,7 @@ Matrix palette  |
 
 Based on data range |   |
 
-
 ## Data types for mesh attributes
-
 
 This table lists the mesh attribute data types that Kanzi supports.
 |

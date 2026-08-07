@@ -5,13 +5,11 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/animations/property-animato
 
 # Incrementing the value of a property type
 
-
 Use a Value Accumulator to increment a value of a property type over time or per frame. While you can achieve a similar result with a keyframe animation or a State Manager, a Value Accumulator enables you to:
 
 - Control the size of the increment at application runtime.
 - Loop the value increment.
 - Increment the value once per frame, independent of the time interval between frames.
-
 
 For example, you can use a Value Accumulator to:
 
@@ -21,12 +19,10 @@ For example, you can use a Value Accumulator to:
 - Rotate a 3D model. For example, to create an animation of spinning wheels, see Rotating a 3D model.
 - Create a frame counter. See Creating a frame counter.
 
-
 Kanzi includes a Float Value Accumulator, an Int Value Accumulator, and messages that allow you to control the playback of Value Accumulators.
 
 When you want to increment the value of a property whose data type is neither an integer nor a floating point, use an intermediate property that is one of these data types, and create a binding to convert the data type. For example, when you want to show the changing value of a property as a string in a Text Block node, bind the Text property to the value of an intermediate property that you increment with a Value Accumulator.
 ## Creating a stopwatch
-
 
 To create a stopwatch, use an Int Value Accumulator to increment the value of an integer property type.
 
@@ -86,7 +82,6 @@ In the Node Tree select the Text Block node that you created in the beginning of
   - Set Property to Text.
   - From the Properties drag the intermediate property type that you created to the Expression text field.
 
-
 Click Save.
 
 You bind the Text property to the intermediate property type whose value the Int Value Accumulator increments. The binding converts the integer to a string that the Text Block node can show.
@@ -114,11 +109,9 @@ Create the pause, resume, and stop controls for the Int Value Accumulator. Repea
   - Resume
   - Stop
 
-
 See Value Accumulator messages.
 
 ## Creating a timer
-
 
 To create a timer, use an Int Value Accumulator to decrease the value of an integer property type.
 
@@ -155,9 +148,7 @@ To stop the timer when it reaches 0, set it to Clamp.
 
 When set to Clamp the Value Accumulator no longer increments the value when it reaches the highest value.
 
-
 ## Creating an animation of a moving road
-
 
 To create an animation of a moving road, use a Float Value Accumulator to increment the value of a property field that changes the position of a texture on a Plane.
 
@@ -227,9 +218,7 @@ For a smooth animation keep the value of the Increment Time Interval property lo
 
 For example, set it to 16.
 
-
 ## Rotating a 3D model
-
 
 You can use a Float Value Accumulator to rotate a 3D model. For example, to create an animation of a spinning wheel.
 
@@ -284,13 +273,11 @@ In the Node Tree select the 3D node to which you added a Float Value Accumulator
 
 For example, use the CreateRotationX function to rotate the node around its x axis.
 
-
 Click Save.
 
 You create the rotation on the x axis where you use the intermediate property that the Float Value Accumulator increments, and bind the Render Transformation property field ROTATION to that rotation.
 
 ## Creating a frame counter
-
 
 To create a frame counter, use an Int Value Accumulator with the Increment Mode set to Per Frame. In this mode, the Value Accumulator increments the value once per frame, regardless of how much time has passed between frames.
 
@@ -347,13 +334,11 @@ In the Node Tree select the Text Block node that you created in the beginning of
   - Set Property to Text.
   - From the Properties drag the intermediate property type that you created to the Expression text field.
 
-
 Click Save.
 
 You bind the Text property to the intermediate property type whose value the Int Value Accumulator increments. The binding converts the integer to a string that the Text Block node can show.
 
 ## Using Value Accumulators in the API
-
 
 To create an Int Value Accumulator:
 
@@ -389,7 +374,6 @@ node->addNodeComponent(accumulator);
 
 ```
 
-
 To create a Float Value Accumulator:
 
 ```
@@ -421,7 +405,6 @@ accumulator->setBoundType(ValueAccumulatorBase::BoundType::Loop);
 node->addNodeComponent(accumulator);
 
 ```
-
 
 To use per-frame increment mode with an Int Value Accumulator:
 

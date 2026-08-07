@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/release-notes/kanzi-4.0/kanzi-4.0.0-rele
 
 # Kanzi 4.0.0 release notes
 
-
 These notes list all features, changes and notable fixes from the Kanzi 4.0.0 alpha and beta releases.
 ## Kzm file format
-
 
 In Kanzi Studio, introduced the kzm file format to replace the kzproj file format. When you use the kzm file format, Kanzi Studio stores the project in multiple kzm files, instead of a single project file.
 
@@ -19,14 +17,12 @@ The goal of the kzm file format is to improve change review, teamwork, and colla
 - Simplifying the sharing of project items between different projects
 - Enabling scriptable modifications through diff-friendly files
 
-
 Kanzi Studio now saves all new projects in the kzm file format. See Kzm file format.
 
 Kanzi Studio can still open kzproj projects, but when you save such a project, Kanzi Studio automatically converts it to kzm and removes the kzproj file. This conversion is not reversible. Once you save a project in kzm format, you can no longer revert that project to the kzproj format.
 
 Kanzi Studio shows a notification to inform you about the conversion before completing the save operation.
 ## Kanzi graphics
-
 
 Introduced Kanzi graphics (kzgfx), the render hardware interface (RHI) for Kanzi. Kanzi graphics supports Kanzi applications running on OpenGL 3.3+, OpenGL ES 3.0+, or Vulkan 1.1+. See Kanzi graphics. For information on how to select which API to use, see Graphics library.
 
@@ -38,14 +34,11 @@ In the application configuration, you can:
 - Enable the statistics and validation layers for the Kanzi graphics library. Use this information to check whether your application correctly uses the graphics API. See GraphicsStatisticEnabled and GraphicsValidationEnabled.
 - The supported ASTC graphics formats have been extended to include HDR formats, that are exposed as texture formats in Kanzi Studio. See Using the ASTC algorithm
 
-
 To migrate your Kanzi application, see Introduction of Kanzi Graphics.
 ## Prism graph editor
 
-
 Introduced the Prism graph editor, a visual node tool for creating render graphs. You can add or remove rendering nodes and quickly iterate on visual effects. Graphs provide a clear overview of rendering operations, let you adjust properties, and show results instantly. See Prism graphs.
 ## Android
-
 
 - Updated all Android application templates to use the latest Gradle 8+ tooling. The templates now support Android Studio Ladybug and JDK 21.
 - Refactored the integration of Kanzi into Gradle, replacing the Kanzi Gradle plugin with a transparent, modifiable and copyable sub-project. This means that you can introduce Kanzi into your Android application by copying this sub-project to your Android application. See Adding Kanzi Android framework (droidfw) to your Android application.
@@ -58,24 +51,19 @@ To learn more about this workflow, see Integrating Kanzi as a prebuilt library (
 
 ## Fallback fonts support
 
-
 Kanzi now allows you to define a chain of fallback fonts for a font family. If a glyph is missing in the primary font, Kanzi uses the next font in the list to render that glyph. See Font fallback
 ## Color fonts
 
-
 Kanzi can now render text with fonts that contain emoji and other colored glyphs. See Color fonts.
 ## Text layout optimization
-
 
 - Kanzi now caches shaped text. This improves layout performance when rendering the same text under different constraints.
 - When rendering text, Kanzi no longer clips text that fits inside the padding area, but extends beyond the text layout area.
 
 ## Resources
 
-
 Introduced a new Asset Toolkit with easy to use, ready-made components and materials with a similar structure and set of properties, that you can use to create Kanzi applications faster. See Asset Toolkit.
 ## Kanzi Studio Preview
-
 
 - In Kanzi Studio, you can now take screenshots directly from the Preview window using the Screenshot button . See Taking a screenshot of the Preview.
 - In Kanzi Studio, the visualization of the Debug Objects has been updated.
@@ -83,7 +71,6 @@ Introduced a new Asset Toolkit with easy to use, ready-made components and mater
 - You can now enable experimental selection outline in User Preferences > Experimental tab
 
 ## Kanzi Studio usability
-
 
 - Improved tooltips in Kanzi Studio:
 
@@ -126,7 +113,6 @@ See Creating simple bindings.
 
 ## Documentation
 
-
 - Get answers about Kanzi from the Documentation AI tools. In Documentation:
 
   - Click Ask AI to start a conversation with the Kanzi AI assistant
@@ -138,7 +124,6 @@ See Creating simple bindings.
 - The `Android data source` example now matches the tutorial code.
 
 ## Platforms
-
 
 - Kanzi Engine now reports mouse wheel events on QNX.
 - You can now list EGL attributes in a comma-separated format. See `listEGLAttributes`.
@@ -164,7 +149,6 @@ In the Kanzi Engine C++ API reference, see `qnx::DefaultQnxEGLGraphicsOutput`.
 - Changed Wayland class names related to XDG and IVI to follow CamelCase notation. For example, `XDGToplevel` was changed to `XdgToplevel`.
 - All platforms now use Kanzi graphics by default. To migrate your Kanzi application, see Introduction of Kanzi Graphics.
 
-
 - These backends now correctly set the EGL window surface color space attribute:
 
   - Android WS
@@ -180,7 +164,6 @@ In the Kanzi Engine C++ API reference, see `qnx::DefaultQnxEGLGraphicsOutput`.
 - Moved all the platform-dependent windowing and input code into a separate library (kzplatform). The entire externally facing API of kzplatform is considered experimental, and may change in future releases. System libraries are now linked into kzplatform instead of kzcoreui.
 
 ## Kanzi Engine C++ API
-
 
 - Added these helper methods for working with `span`:
 
@@ -219,7 +202,6 @@ See Changes to the Pinch Manipulator.
   - `Renderer::setOverrideMaterial`
   - `Renderer::setOverrideMaterialCallback`
 
-
 See Changes to the Renderer API.
 - Suspension wake-up signal sources now have an interface you can query with `WakeupSignalSource`. See Changes to suspension handling.
 - Attaching an event source to the domain using the `Application` class no longer registers the associated event handle with the main loop scheduler. See Changes to event handling.
@@ -230,7 +212,6 @@ See Changes to the Renderer API.
 - You can now load a kzb file from a memory buffer using `Application::loadKzbFile` `(ConstByteSpan fileData, bool setStartupPrefab)`. Keep the memory buffer alive until you destroy the application.
 - Removed the default stack states from the `CompositionStack`. All stack states must be explicitly pushed onto the stack. See Changes to the Composition Stack.
 - Removed deprecated functions `Renderer::getColorReadFormat` and `Renderer::getColorReadType`. See Changes to the Renderer API.
-
 
 - Removed deprecated class `kanzi::TextureSwizzleMask`.
 - Removed the `kanzi::Tag` class as an abstraction to manipulate tags in nodes. See Changes to Tags.
@@ -243,20 +224,15 @@ See Changes to the Renderer API.
 - Deprecated and removed `ProgressiveRenderingViewport2D.MultisampleLevel`. See Changes to Progressive Rendering Viewport 2D properties.
 - Win32 string utilities found inside `kanzi/core/platform/cpp/win32/string_conversion.hpp` have been moved from the `kanzi` namespace to `win32`
 
-
 - The default `SurfaceColorSpace` for Kanzi Engine applications when a configuration is not present was changed from `SurfaceColorSpace::sRGB` to `SurfaceColorSpace::Standard`. This value is consistent with the color workflow configured by default in new Kanzi Studio projects.
-
 
 - Introduced the `FontFamily` and `FontRuntime` methods to manage fallback font chains.
 
-
 - Changed the signatures of the `GlyphRun` and `TextFormat` methods. See Changes to text rendering.
-
 
 - Added interface to the `TriggerTemplate` that enables you to add Actions and conditions to a Trigger template.
 
 ## Activities
-
 
 - Introduced the OptimizeMemory parameter for Activities. When enabled, Kanzi automatically unloads resources used by these Activities once they are deactivated.
 
@@ -265,7 +241,6 @@ See Virtualization.
 
   - In the Kanzi C++ API, in the `ActivityCodeBehind` class, replaced the `onActive`, `onInactive`, `onActivating`, and `onDeactivating` callbacks with `ActivityCodeBehind::onStatusChange`.
   - In both Kanzi C++ (`ActivityCodeBehind`) and Kanzi Java API (`ActivityCodeBehind`), removed `registerStatusChange`, `registerStatusChangeOverride`, `unregisterStatusChange`, and `unregisterStatusChangeOverride`.
-
 
 To migrate your Kanzi application, see Changes to the ActivityCodeBehind class.
 - Changed the `ActivityElementImpl` and `ActivityHostConceptImpl` classes:
@@ -277,7 +252,6 @@ To migrate your Kanzi application, see Changes to the ActivityCodeBehind class.
     - `getActivityInfo`
 
   - The `ActivityElementImpl::onAttachedOverride` method is no longer virtual.
-
 
 The derived classes must not override these methods because the `ActivityElementImpl` and `ActivityHostConceptImpl` classes use the CRTP pattern.
 
@@ -292,10 +266,8 @@ See Using a Fallback State.
 
 ## Animations
 
-
 To set a Bezier interpolation in the Animation Clip Editor, you can now enter exact values for one or more Bezier handles. See Setting the easing function between keyframes.
 ## Bindings
-
 
 - You can now use Boolean, integer, floating-point, vector, color, and matrix types as any of the parameters for:
 
@@ -308,15 +280,12 @@ To set a Bezier interpolation in the Animation Clip Editor, you can now enter ex
   - In binding expressions, an implicit cast of a Boolean constant to a string now results in lower case `true` or `false` instead of `True` or `False`.
   - In the Kanzi Engine C++ API, a Boolean to string property binding now writes `true` or `false` instead of 1 or 0.
 
-
 See Changes to properties and bindings.
 
 ## Focus
 
-
 In your custom focus scope, you can now override the focus candidate selection. See `FocusScope::selectFocusCandidate`.
 ## Kanzi Engine application configuration
-
 
 - Removed the `MultisamplePreference` application configuration file option, because Kanzi Engine no longer supports implicit multisampling.
 - You can now set the surface present mode in application configuration. See PresentMode.
@@ -325,26 +294,21 @@ In your custom focus scope, you can now override the focus candidate selection. 
 
 ## Kzb version
 
-
 Changed the version of the kzb file format to 36.0.
 ## List Box
-
 
 Renamed these List Box messages:
 
 - List Box: Item Hidden to List Box: Item Unloaded
 - List Box: Item Visible to List Box: Item Loaded
 
-
 To migrate your Kanzi application code, see Changes to List Box.
 ## List Box nodes
-
 
 The default directional navigation keys now move the key focus in the Grid List Box and Trajectory List Box 3D nodes. See Handling the key focus in a List Box node.
 
 To migrate your application, see Changes to the List Box nodes.
 ## Rendering
-
 
 - Renamed the Legacy color workflow to Standard that is now also the default setting for new projects. See Color workflow.
 - Kanzi now loads 24-bit RGB PNG and JPEG images into memory as RGBA with the default alpha channel.
@@ -359,10 +323,8 @@ This change also fixes the issue where mipmaps were not generated before blittin
 
 ## Tracing
 
-
 Added a tracing system to Kanzi Engine. The tracing system allows inspection of Kanzi Engine internals and can help you identify performance issues. The tracing system replaces the profiling system. Tracing is disabled for Release builds. See `Tracing` and Tracing.
 ## Kanzi Engine Lua API
-
 
 - Functions that take a `PropertyType` argument no longer silently fail by returning `nil` when objects of other types are passed. They now terminate script execution and log a warning.
 - Added `log` module with Kanzi logging functions. See Logging.
@@ -370,16 +332,13 @@ Added a tracing system to Kanzi Engine. The tracing system allows inspection of 
 
 ## Lua Data Source
 
-
 You can now define and simulate the external data dependencies of your application alongside your design in Kanzi Studio using Lua scripts, without the need to write or compile any native code. See Defining a data source using Lua.
 ## Windowing
-
 
 - For Wayland backends, added the option to ignore the `frame()` events sent by the compositor, and process input immediately. This is useful when the compositor does not send `frame()` events properly. See Wayland input mode.
 - You can now programmatically set usage flags for the QNX Screen property. See QnxUsageFlags.
 
 ## Changes
-
 
 - Kanzi now requires Visual Studio 2022. Kanzi no longer includes libraries for Visual Studio 2017 and 2019. See Upgrade to Visual Studio 2022.
 - Kanzi now requires C++17.
@@ -410,7 +369,6 @@ You can now define and simulate the external data dependencies of your applicati
 
 ### Kanzi Engine
 
-
 - Fixed the issue that prevented Kanzi Engine from overriding the Scroll View position through the Scroll Position property during scrolling. (FMW-688)
 - Fixed the issue that caused Kanzi to incorrectly forward message arguments in a Message Trigger when one of the Actions triggered the same Message Trigger again. (FMW-707)
 - Fixed the issue that prevented using kzAssert macros in constexpr functions. (454808)
@@ -439,7 +397,6 @@ You can now define and simulate the external data dependencies of your applicati
 
 ### Kanzi Studio
 
-
 - Fixed the issue that caused Kanzi to import the DefaultBlitMaterial when you create a BlitRenderPass that uses a built-in material. (FMW-416)
 - Fixed these bindings issues (FMW-553):
 
@@ -455,7 +412,6 @@ You can now define and simulate the external data dependencies of your applicati
 - Fixed issues in the Activity Browser, that caused Kanzi Studio to terminate with exceptions when:
 
   - You tried to create an Activity Property with a name beginning or ending with the `.` character, or with multiple `.` characters next to each other. (FMW-618)
-
 
   - You tried to add a C++ Code Behind to an Activity whose name includes characters that are not allowed in file names. (FMW-722)
 
@@ -504,18 +460,15 @@ You can now define and simulate the external data dependencies of your applicati
 
 ### Kanzi Android framework (droidfw)
 
-
 - Fixed the issue that caused a Kanzi Android framework (droidfw)-based view to stop processing user input after receiving a multitouch gesture cancellation from Android. (ANDROID-1386)
 - Fixed the issue that caused a KanziViewAdapter instance to continue to render and process user input, after being hidden with `KanziViewAdapter.handleVisibilityChange`. (ANDROID-1317)
 - Fixed the issue that incorrectly positioned the Performance HUD in applications based on Kanzi Android framework (droidfw). (ANDROID-1166)
 
 ## Kanzi Engine Lua API
 
-
 - Fixed the issue that caused static linkage of Kanzi Engine Lua API to fail, by including the necessary dependencies into Kanzi installation. (ANDROID-1630)
 
 ### Platforms
-
 
 - Fixed the problem with polling Wayland events during idle state, that caused libwayland internal ring buffer to overflow. (INTE-806)
 - Fixed the problem with touch on Wayland, where reusing a touch ID within the same touch frame caused Kanzi to terminate with assertion, when compiled in debug mode. (INTE-795)

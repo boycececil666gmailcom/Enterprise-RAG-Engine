@@ -5,14 +5,12 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/logging/write-log-action.ht
 
 # Using Write Log action
 
-
 Use a Write Log action to write a message to the Log window.
 
 To open the Log window, in the main menu select Window > Log.
 
 Kanzi prints to the Log window messages, warnings, and errors.
 ## Writing to the Log window
-
 
 When you want to write a message to the Log window, use a Write Log action in any trigger.
 
@@ -35,12 +33,9 @@ In the Node Components > Triggers, press Alt and right-click the trigger that yo
 
 In the Write Log action, set the Log Text property to the message that you want to write to the Log window when the trigger is set off.
 
-
 In the Preview, when you scroll the Scroll View and the scrolling stops, Kanzi prints to the Log window the message that you set in the Log Text property.
-
-> **Tip:** To open the Log window, in the main menu select Window > Log.
+**Tip:** To open the Log window, in the main menu select Window > Log.
 ## Using Write Log action macros
-
 
 Use a Write Log action macro to add to your log message content that Kanzi replaces with the value of that macro.
 
@@ -79,10 +74,8 @@ Inserts the name of the trigger that executes a Write Log action. |
 
 After you add a property value or a message argument, inserts the value of that item. See Logging values from properties or message arguments. |
 
-
 In the Preview, when you scroll the Scroll View and the scrolling stops, Kanzi prints to the Log window the message that you set in the Log Text property.
 ## Logging values from properties or message arguments
-
 
 You can use a Write Log action to write to the Log window values from properties or message arguments.
 
@@ -128,21 +121,13 @@ For example, set the Log Text property to:
 New position. Y axis: {1}, X axis: {0}.
 
 ```
-
-
-> **Tip:** To change the order of values in a Write Log action, use the arrows next to the value.
->
-> 5.
->
-> (Optional). You can apply formatting to the property values. To learn how to format log messages, see Log message argument format specification.
->
-> For example, set the Log Text property to:
->
-> ```
-> New position. Y axis {1:+.2}, X axis {0:+.2}.
->
-> ```
-
+**Tip:** To change the order of values in a Write Log action, use the arrows next to the value.
+5.
+(Optional). You can apply formatting to the property values. To learn how to format log messages, see Log message argument format specification.
+For example, set the Log Text property to:
+```
+New position. Y axis {1:+.2}, X axis {0:+.2}.
+```
 
 This way you format the property values to:
 

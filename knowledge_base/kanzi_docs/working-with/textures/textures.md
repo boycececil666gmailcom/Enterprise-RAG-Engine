@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/textures/textures.html
 
 # Textures
 
-
 Use textures to show content in Image nodes, to set the look of textured materials, and to show content in Texture Brush brushes. You can create textures from common image file formats.
 
 See Images.
@@ -25,7 +24,6 @@ If your target hardware does not support the selected texture compression algori
 See Compressing textures.
 
 ## Texture types
-
 
 These textures are available in Kanzi:
 |
@@ -57,7 +55,6 @@ See Creating cubemap reflections.  |    |
 You can use .exr, .dds, and .hdr images with half float and floating point data to bring HDR images to your Kanzi project. See Setting the color format of textures.
 ## Setting the image target format
 
-
 When you export your project to a kzb file, Kanzi Studio reads the images in the project using the format of the original image and writes the images to a kzb file in the format you set with the Target Format property for each image.
 
 If the file format of the original image is the same as the format you select in the Target Format property, Kanzi Studio does not modify the image when it writes the image to a kzb file under these conditions:
@@ -73,7 +70,6 @@ You can set the value of the Generate Mipmaps property in each image file.
 You can set the value of the Round up Image Dimensions to Nearest Power of Two property in the Project > Properties.
 
 When you enable the Round up Image Dimensions to Nearest Power of Two property, Kanzi Studio rounds up the width and height of the images in your project to the nearest power of two during kzb file export. For example, Kanzi Studio exports an image of the size 40 by 30 pixels to the kzb file in the size 64 by 32 pixels.
-
 
 If your image is in JPEG or PNG format and you do not want Kanzi Studio to modify the image that it exports to a kzb file, in the image Properties enable the Use Original Image property.
 
@@ -112,10 +108,8 @@ This is the default value and results in the fewest artifacts in sRGB images.
 
 This can give better results for images created for the standard color workflow.
 
-
 See Preparing images in third-party tools.
 
 ## Using textures in the API
-
 
 For details, see the `Texture` class.

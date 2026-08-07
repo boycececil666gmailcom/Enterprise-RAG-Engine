@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/best-practices/performance/cpu-throttlin
 
 # Application idle state
 
-
 To improve the CPU performance Kanzi does not redraw the application content when your Kanzi application is idle.
 
 Kanzi suspends the main loop when there is no input, tasks, timers, animations, or when there is nothing in the application that updates the rendering.
@@ -20,7 +19,6 @@ See MaximumFPS.
 See ApplicationIdleState.
 - When your application is in idle state and the application makes changes to the render pass tree, Kanzi does not trigger the rendering to render the changes. To render the changes in such case, you must manually trigger the rendering by calling on any node the `Node::invalidateDraw` function.
 
-
 If you want to effectively use the application idle state in your Kanzi application, keep in mind:
 
 - Task dispatcher. The task dispatcher allows other threads to schedule execution of tasks in the UI thread. This way you can wake up the UI thread when changes happen only in other threads. When you add tasks to the task dispatcher, each task wakes up the UI thread. If you want to optimize the CPU performance of your application, add tasks to the task dispatcher only when you need to.
@@ -29,6 +27,5 @@ If you want to effectively use the application idle state in your Kanzi applicat
 
   - When the Affect Layout setting is enabled in a property that you use to set the size of a node, the application stays awake until Kanzi completes recalculation of the layout and renders the new layout.
   - When the Affect Rendering setting is enabled in a property that you use to render a node, but the change does not have an impact on the node size (the Affect Layout setting is disabled), Kanzi does not recalculate the layout, but only renders again. The application stays awake until Kanzi renders the change.
-
 
 You can set the application idle state in the application configuration. See ApplicationIdleState.

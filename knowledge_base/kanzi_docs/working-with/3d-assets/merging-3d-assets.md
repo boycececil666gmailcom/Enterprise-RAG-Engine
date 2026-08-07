@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/3d-assets/merging-3d-assets
 
 # Merging 3D assets
 
-
 Merging 3D assets allows you to bring to your project all or only selected items from an asset file. It is very useful when you change the 3D assets outside of Kanzi Studio and want to take the changes into use in your project. Additionally, merging allows you to update only specific properties. For example, if you plan to edit object transformations in Kanzi Studio, you can discard the transformation properties when merging assets with your project.
 
 When you want to bring the 3D assets created with a third-party tool to Kanzi Studio you have to import or merge the assets. You can import or merge 3D assets in these formats:
@@ -15,14 +14,12 @@ When you want to bring the 3D assets created with a third-party tool to Kanzi St
 - Filmbox (fbx) for meshes, animations, skins, morphs, and splines
 - Geometry definitions (obj) for meshes
 
-
 Different exporters in third-party tools handle content differently. For example, if you cannot get the expected result using the fbx format, try using the dae format.
 
 In Kanzi Studio you can also merge entire projects. See Merging projects.
 
 If you want to import the assets that you created with third-party tools, use Kanzi Studio importing tools. See Importing.
 ## Merging 3D assets in a Kanzi Studio project
-
 
 To merge 3D assets in a Kanzi Studio project:
 
@@ -45,7 +42,6 @@ For example, when you check the Select referenced items checkbox and select a me
 
     - Target Project: <ProjectName> to keep the materials you use for the objects in the target. Kanzi Studio remembers all material changes you made to the objects in Kanzi Studio.
     - Source Project: <ProjectName> to import the materials you use for the objects in the source.
-
 
 3.
 
@@ -72,7 +68,6 @@ When using three-way merge, this is how conflict resolution works in Kanzi Studi
     - If the change is between both the base project and the target, and the source and the target, you have to resolve the conflict.
 
   - To resolve conflicts manually, select the item in the source tree and in the conflicts pane select for each property whether you want to keep the value used in the target or the source.
-
 
 Once you have resolved all the conflicts, the font color of the item name in the source tree changes to green.
 5.

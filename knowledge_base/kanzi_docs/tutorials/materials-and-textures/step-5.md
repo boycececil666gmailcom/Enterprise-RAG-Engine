@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/materials-and-textures/step-5.
 
 # Step 5 - Adjust materials
 
-
 Now that you have set the basic rendering parameters for the car model, you can start changing the properties of materials to get different rendering results. By changing just a few properties you can get a completely different look and feel of your model.
 
 In this final step of the tutorial you change the properties of the materials to:
@@ -14,12 +13,10 @@ In this final step of the tutorial you change the properties of the materials to
 - Change the ambient color
 - Create two-tone paint effect
 
-
 Before you start making changes, you can make a copy of your project so that you can easily return to the initial state.
 
 To make a copy of the project, select File > Save Project Asâ¦ and select the new name and location for the project.
 ## Adjust the intensity of the colors
-
 
 When you want to change the intensity of the color of a material, adjust the Blend Intensity property for that material.
 
@@ -31,17 +28,11 @@ In the Library > Materials and Textures > Materials select the MainBody_1 materi
 2.
 
 Repeat the previous step for the Rim and Chrome materials.
-
-
-> **Tip:** When you want to make the color of a material brighter, increase the intensity of the lights in the scene instead of increasing the lightness of the color properties of the material.
->
-> In a light color property the Intensity (I) property field sets the exposure of the light. Increasing the intensity by one unit doubles the amount of light and decreasing the intensity by one unit halves the amount of light.
->
-> For example, in the Node Tree select each Point Light node and in the Properties set the Point Light Color property Intensity (I) property field to +1.
->
-> This way you double the brightness of the point lights.
+**Tip:** When you want to make the color of a material brighter, increase the intensity of the lights in the scene instead of increasing the lightness of the color properties of the material.
+In a light color property the Intensity (I) property field sets the exposure of the light. Increasing the intensity by one unit doubles the amount of light and decreasing the intensity by one unit halves the amount of light.
+For example, in the Node Tree select each Point Light node and in the Properties set the Point Light Color property Intensity (I) property field to +1.
+This way you double the brightness of the point lights.
 ## Change the ambient color
-
 
 When you want to change the base color of a material, adjust the Ambient Color property of that material. By changing the Ambient Color property of a material, you set the color of that material as it is when lights are not present.
 
@@ -58,7 +49,6 @@ In the Library > Materials and Textures > Materials select MainBody_1, and in th
     - Lightness (L) to 127
 
   - Blend Intensity to 1
-
 
 This way you clearly see the effect of the changes you make in the next step.
 2.
@@ -104,7 +94,6 @@ Magenta |
 
 ## Create two-tone paint effect
 
-
 When you want to create a two-tone paint effect, first set the Ambient Color property and then set the color of the second paint by adjusting the property fields of the Specular Color property of the same material.
 
 To create two-tone paint effect:
@@ -119,7 +108,6 @@ In the Library > Materials and Textures > Materials select MainBody_1, and in th
     - Hue (H) to a desired base color. See Change the ambient color.
     - Saturation (S) to 255
     - Lightness (L) to 127
-
 
 This way you clearly see the effect of the changes you make in the next steps.
 2.
@@ -213,10 +201,8 @@ Red |
 
 0 |
 
-
 Previous step
 ## Whatâs next?
-
 
 In this tutorial you learned the basics of working with materials and textures in Kanzi Studio. Now you can:
 

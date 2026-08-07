@@ -363,254 +363,128 @@ See Using the Object Type Filter.  Outline Effect 2D
 Use the Outline Effect 2D effect to apply an outline to the content of a 2D node.
 
 See Using the Outline Effect 2D effect.  Page node
-
-> **Note:** The Page and Page Host nodes are deprecated. Use the Activity and Activity Host nodes to build navigable UIs for your application. See Activities.
->
-> Use a Page node to add structure to your Kanzi application. For example, if your Kanzi application contains several applications, such as a music player, a photo album, and a calendar, create each on its own Page, and then use Page nodes to create the structure for each of these applications.
->
-> See Using the Page and Page Host nodes.  Page Host node
->
-> Note
->
-> The Page and Page Host nodes are deprecated. Use the Activity and Activity Host nodes to build navigable UIs for your application. See Activities.
->
-> Use a Page Host node to handle the navigation and transitions between Page nodes.
->
-> See Using the Page and Page Host nodes.  Pan Manipulator
->
-> Use the Pan Manipulator to enable users to move nodes in your Kanzi application.
->
-> See Using the Pan Manipulator and Handling user input.  Parallel Activity Host node
->
-> An Activity Host node defines the rules for when an Activity node is active.
->
-> Parallel Activity Host can activate more than one of its child Activities at a time. When you activate an Activity, a Parallel Activity Host brings that Activity to the front.
->
-> For example, you can use a Parallel Activity Host to implement the showing of critical messages, such as engine failure, in front of regular notifications, such as a phone call notification.
->
-> See Parallel Activity Host.  Pinch Manipulator
->
-> Use the Pinch Manipulator to enable users to zoom and rotate nodes in your Kanzi application.
->
-> See Using the Pinch Manipulator and Handling user input.  Pipeline State render pass
->
-> Use a Pipeline State render pass to set depth and stencil testing, transparency, and culling for the child render passes.
->
-> See Pipeline State render pass.  Plane node
->
-> Plane node is a primitive mesh node in the shape of a 2D plane and is centered in the origin.
->
-> See Using meshes.  Plugins
->
-> With Kanzi plugins, you can extend the functionality of Kanzi and customize Kanzi to fit your application development requirements. When you create a Kanzi plugin, you can share the extended functionality with any Kanzi user.
->
-> See Kanzi Engine plugins and Kanzi Studio plugins.  Point Light node
->
-> Point Light emits light from a specific location uniformly to all directions (360 degrees).
->
-> See Using the light nodes.  Prefab Placeholder node
->
-> Use a Prefab Placeholder node to instantiate a node prefab which you do not intend to change during application runtime.
->
-> See Prefab Placeholder and Prefab View nodes.  Prefab View node
->
-> Use a Prefab View node to dynamically change a prefab, or to asynchronously load the resources which the prefab uses.
->
-> See Prefab Placeholder and Prefab View nodes.  Prefabs
->
-> Use prefabs (prefabricated templates) to structure your application and to create consistent interfaces. Prefabs allow you to create the building blocks of your application and make the application easier to maintain.
->
-> See Using node prefabs.  Preview window
->
-> In the Preview window you can see in real time what the Kanzi project that you are working on looks like. In the Preview window you can directly move, scale, and rotate nodes, and see structural information for your project and individual nodes.
->
-> See Preview.  Project
->
-> You can use one or more Kanzi Studio projects to create your Kanzi application.
->
-> See Projects.  Property Driven Animation Player
->
-> Use the Property Driven Animation Player when you want to use a property type instead of time to control a keyframe animation.
->
-> See Creating property-driven animations.  Property Is Equal Filter
->
-> Property Is Equal Filter collects 3D nodes that contain, or do not contain a specific property the value of which matches a specific value.
->
-> See Using the Property Is Equal Filter.  Property Target Easing Interpolator
->
-> Use the Property Target Easing Interpolator when you want to dynamically set the target value for a property and want to interpolate the current value to the target value over time using an easing function. Easing functions enable you to create lifelike animations that offer a more pleasant user experience.
->
-> See Interpolating property values using easing functions.  Property Target Interpolator
->
-> Use the Property Target Interpolator when you want to dynamically set the target value for a property and want to interpolate the current value to the target value over time.
->
-> See Interpolating property values.  Rectangle Trajectory
->
-> Use a Rectangle Trajectory to create a path in the shape of a rectangle in 3D space.
->
-> Use trajectories as paths along which Trajectory Layout 3D and Trajectory Layout 2D nodes arrange their child nodes, and along which Trajectory List Box 3D nodes move their items.
->
-> See Using rectangle trajectories, Trajectories, and Using the Trajectory Layout nodes.  Render Target Texture
->
-> Use a Render Target Texture to render content to a texture or to apply anti-aliasing to only a part of your application. You can use render target textures like any other texture. For example, you can use it in a Texture Brush or as an image in an Image node.
->
-> See Using render target textures.  Render to Texture Pass
->
-> Render to Texture Pass creates the render passes and texture you need to render to a texture.
->
-> See Rendering to texture.  Resource dictionary
->
-> A resource dictionary is a collection of resource IDs pointing to resources. You can add a resource dictionary to any node.
->
-> See Using resource dictionaries.  Resource Files
->
-> Kanzi Studio lists in the Library > Resource Files references to files in the resource directories of a Kanzi project. Kanzi Studio synchronizes the content of Resource Files with the files in the resource directories.
->
-> See Using resource files.  Scene node
->
-> Use the Scene node to show 3D content in your Kanzi application.
->
-> See Using the Scene node.  Screen node
->
-> Use the Screen node to set the metrics and the content of the screen of the target device on which your Kanzi application is rendered.
->
-> See Setting the Screen node.  Scroll View node
->
-> Use the Scroll View nodes to define an area where to generate scrolling messages in response to user input and physics-based animation.
->
-> See Using the Scroll View nodes.  Shaders
->
-> Use Shaders to produce appropriate levels of light and color within an image, to produce special effects, or to do post-processing.
->
-> See Shaders.  Shadow Effect 2D
->
-> Use the Shadow Effect 2D effect to apply a shadow to the content of a 2D node.
->
-> See Using the Shadow Effect 2D effect.  Single Texture
->
-> Single textures use a single image for the texture.
->
-> See Using single textures.  Slider node
->
-> Use the Slider nodes when you want to allow users to change numerical values using a visual indicator between a minimum and a maximum value.
->
-> See Using the Slider nodes.  Sorting Filter
->
-> Sorting Filter either orders 3D nodes by their position on the z axis or groups them by their material type.
->
-> See Using the Sorting Filter.  Spiral Trajectory
->
-> Use a Spiral Trajectory to create a path in the shape of a spiral in 3D space.
->
-> Use trajectories as paths along which Trajectory Layout 3D and Trajectory Layout 2D nodes arrange their child nodes, and along which Trajectory List Box 3D nodes move their items.
->
-> See Using spiral trajectories, Trajectories, and Using the Trajectory Layout nodes.  Spline Trajectory
->
-> Use a Spline Trajectory to import a trajectory defined by a set of points and control points in 3D space you created in a third-party tool.
->
-> Use trajectories as paths along which Trajectory Layout 3D and Trajectory Layout 2D nodes arrange their child nodes, and along which Trajectory List Box 3D nodes move their items.
->
-> See Using spline trajectories, Trajectories and Using the Trajectory Layout nodes.  Spot Light node
->
-> Spot Light emits light from a specific location towards a specified direction in the shape of a cone.
->
-> See Using the light nodes.  Stack Layout node
->
-> Use the Stack Layout nodes to arrange nodes next to each other on the selected axis.
->
-> See Using the Stack Layout nodes.  State Managers
->
-> Use a State Manager to create different states in your Kanzi application.
->
-> For example, you can define the appearance and behavior of a button during different states, such as how the button reacts when a user selects, presses, holds, or releases the button.
->
-> See State manager.  Styles
->
-> Use styles to set the property values of one or more nodes of a certain type.
->
-> You can set a Style so that it applies to all nodes of a certain type in the selected scope, or to individual nodes.
->
-> See Using styles.  Tag Filter
->
-> Tag Filter collects 3D nodes that have a specific tag assigned.
->
-> See Using the Tag Filter.  Tags
->
-> Use tags to group, find, and filter nodes in your project. You can assign multiple tags to a single node.
->
-> See Using tags.  Text Block node
->
-> Use the Text Block nodes to show a small amount of text in your application.
->
-> See Using the Text Block nodes.  Text Box node
->
-> Use the Text Box nodes to add single-line text input to your application.
->
-> See Using the Text Box nodes.  Texture Brush
->
-> Use a Texture Brush to fill a 2D node with a texture.
->
-> See Filling 2D nodes with a texture.  Theme Group
->
-> Use a Theme Group to define a collection of themes.
->
-> See Using Themes.  Theme
->
-> Use a Theme to set the resources which define the look and feel of your application.
->
-> Themes enable you to use a single Kanzi Studio project for multiple variants of your product.
->
-> See Tutorial: Theme your application and Using Themes.  Timeline Entry
->
-> Use a Timeline Entry to manipulate animations, including repetition, scaling, targeting, and blending, and to define the type of animation input: time or property value.
->
-> See Editing timeline sequences.  Timeline Sequence
->
-> Use a Timeline Sequence to combine a set of Timeline Entry resources.
->
-> Timeline entries can target specific items inside the scope of a Timeline Sequence.
->
-> See Editing timeline sequences.  To-source binding
->
-> A to-source binding pushes a property value to a node or another project item, or to a resource used by that item.
->
-> See To-source bindings.  Toggle Button Group node
->
-> Use the Toggle Button Group nodes to allow users to select only one option from a set of options that are mutually exclusive.
->
-> See Using the Toggle Button Group nodes and Buttons.  Toggle Button node
->
-> Use the Toggle Button nodes to create interactions through buttons that can have multiple toggle states.
->
-> See Using the Toggle Button nodes and Buttons.  Trajectory Layout node
->
-> Use the Trajectory Layout nodes to arrange items along a trajectory path.
->
-> See Using the Trajectory Layout nodes and Trajectories.  Trajectory List Box 3D node
->
-> Use the Trajectory List Box 3D node to create scrollable lists of items arranged along a trajectory in 3D space.
->
-> See Using the Trajectory List Box 3D node and Trajectories.  Trapezoid Trajectory
->
-> Use a Trapezoid Trajectory to create a path in the shape of a trapezoid in 3D space.
->
-> Use trajectories as paths along which Trajectory Layout 3D and Trajectory Layout 2D nodes arrange their child nodes, and along which Trajectory List Box 3D nodes move their items.
->
-> See Using trapezoid trajectories, Trajectories, and Using the Trajectory Layout nodes.  Triggers
->
-> Use Triggers to create interactions based on user input. With triggers you can set actions, such as printing to the Log window, setting a property to a certain value, activating an Activity, or playing an animation.
->
-> See Triggers.  Value source binding
->
-> A value source binding sets the local value of an entire property and provides the value for that property during application runtime.
->
-> See Value source bindings.  Viewport node
->
-> Use the Viewport nodes to set the size of a render target surface onto which Kanzi projects content.
->
-> See Viewport nodes.  Volume Texture
->
-> Volume textures use a single 2D image, made up of many cross-section slices of a 3D shape, to define a 3D volume texture. This technique is often used for effects like smoke, fire, or clouds, where 3D data would be too resource intensive or difficult to generate procedurally.
->
-> See Using volume textures.
->
+**Note:** The Page and Page Host nodes are deprecated. Use the Activity and Activity Host nodes to build navigable UIs for your application. See Activities.
+Use a Page node to add structure to your Kanzi application. For example, if your Kanzi application contains several applications, such as a music player, a photo album, and a calendar, create each on its own Page, and then use Page nodes to create the structure for each of these applications.
+See Using the Page and Page Host nodes.  Page Host node
+Note
+The Page and Page Host nodes are deprecated. Use the Activity and Activity Host nodes to build navigable UIs for your application. See Activities.
+Use a Page Host node to handle the navigation and transitions between Page nodes.
+See Using the Page and Page Host nodes.  Pan Manipulator
+Use the Pan Manipulator to enable users to move nodes in your Kanzi application.
+See Using the Pan Manipulator and Handling user input.  Parallel Activity Host node
+An Activity Host node defines the rules for when an Activity node is active.
+Parallel Activity Host can activate more than one of its child Activities at a time. When you activate an Activity, a Parallel Activity Host brings that Activity to the front.
+For example, you can use a Parallel Activity Host to implement the showing of critical messages, such as engine failure, in front of regular notifications, such as a phone call notification.
+See Parallel Activity Host.  Pinch Manipulator
+Use the Pinch Manipulator to enable users to zoom and rotate nodes in your Kanzi application.
+See Using the Pinch Manipulator and Handling user input.  Pipeline State render pass
+Use a Pipeline State render pass to set depth and stencil testing, transparency, and culling for the child render passes.
+See Pipeline State render pass.  Plane node
+Plane node is a primitive mesh node in the shape of a 2D plane and is centered in the origin.
+See Using meshes.  Plugins
+With Kanzi plugins, you can extend the functionality of Kanzi and customize Kanzi to fit your application development requirements. When you create a Kanzi plugin, you can share the extended functionality with any Kanzi user.
+See Kanzi Engine plugins and Kanzi Studio plugins.  Point Light node
+Point Light emits light from a specific location uniformly to all directions (360 degrees).
+See Using the light nodes.  Prefab Placeholder node
+Use a Prefab Placeholder node to instantiate a node prefab which you do not intend to change during application runtime.
+See Prefab Placeholder and Prefab View nodes.  Prefab View node
+Use a Prefab View node to dynamically change a prefab, or to asynchronously load the resources which the prefab uses.
+See Prefab Placeholder and Prefab View nodes.  Prefabs
+Use prefabs (prefabricated templates) to structure your application and to create consistent interfaces. Prefabs allow you to create the building blocks of your application and make the application easier to maintain.
+See Using node prefabs.  Preview window
+In the Preview window you can see in real time what the Kanzi project that you are working on looks like. In the Preview window you can directly move, scale, and rotate nodes, and see structural information for your project and individual nodes.
+See Preview.  Project
+You can use one or more Kanzi Studio projects to create your Kanzi application.
+See Projects.  Property Driven Animation Player
+Use the Property Driven Animation Player when you want to use a property type instead of time to control a keyframe animation.
+See Creating property-driven animations.  Property Is Equal Filter
+Property Is Equal Filter collects 3D nodes that contain, or do not contain a specific property the value of which matches a specific value.
+See Using the Property Is Equal Filter.  Property Target Easing Interpolator
+Use the Property Target Easing Interpolator when you want to dynamically set the target value for a property and want to interpolate the current value to the target value over time using an easing function. Easing functions enable you to create lifelike animations that offer a more pleasant user experience.
+See Interpolating property values using easing functions.  Property Target Interpolator
+Use the Property Target Interpolator when you want to dynamically set the target value for a property and want to interpolate the current value to the target value over time.
+See Interpolating property values.  Rectangle Trajectory
+Use a Rectangle Trajectory to create a path in the shape of a rectangle in 3D space.
+Use trajectories as paths along which Trajectory Layout 3D and Trajectory Layout 2D nodes arrange their child nodes, and along which Trajectory List Box 3D nodes move their items.
+See Using rectangle trajectories, Trajectories, and Using the Trajectory Layout nodes.  Render Target Texture
+Use a Render Target Texture to render content to a texture or to apply anti-aliasing to only a part of your application. You can use render target textures like any other texture. For example, you can use it in a Texture Brush or as an image in an Image node.
+See Using render target textures.  Render to Texture Pass
+Render to Texture Pass creates the render passes and texture you need to render to a texture.
+See Rendering to texture.  Resource dictionary
+A resource dictionary is a collection of resource IDs pointing to resources. You can add a resource dictionary to any node.
+See Using resource dictionaries.  Resource Files
+Kanzi Studio lists in the Library > Resource Files references to files in the resource directories of a Kanzi project. Kanzi Studio synchronizes the content of Resource Files with the files in the resource directories.
+See Using resource files.  Scene node
+Use the Scene node to show 3D content in your Kanzi application.
+See Using the Scene node.  Screen node
+Use the Screen node to set the metrics and the content of the screen of the target device on which your Kanzi application is rendered.
+See Setting the Screen node.  Scroll View node
+Use the Scroll View nodes to define an area where to generate scrolling messages in response to user input and physics-based animation.
+See Using the Scroll View nodes.  Shaders
+Use Shaders to produce appropriate levels of light and color within an image, to produce special effects, or to do post-processing.
+See Shaders.  Shadow Effect 2D
+Use the Shadow Effect 2D effect to apply a shadow to the content of a 2D node.
+See Using the Shadow Effect 2D effect.  Single Texture
+Single textures use a single image for the texture.
+See Using single textures.  Slider node
+Use the Slider nodes when you want to allow users to change numerical values using a visual indicator between a minimum and a maximum value.
+See Using the Slider nodes.  Sorting Filter
+Sorting Filter either orders 3D nodes by their position on the z axis or groups them by their material type.
+See Using the Sorting Filter.  Spiral Trajectory
+Use a Spiral Trajectory to create a path in the shape of a spiral in 3D space.
+Use trajectories as paths along which Trajectory Layout 3D and Trajectory Layout 2D nodes arrange their child nodes, and along which Trajectory List Box 3D nodes move their items.
+See Using spiral trajectories, Trajectories, and Using the Trajectory Layout nodes.  Spline Trajectory
+Use a Spline Trajectory to import a trajectory defined by a set of points and control points in 3D space you created in a third-party tool.
+Use trajectories as paths along which Trajectory Layout 3D and Trajectory Layout 2D nodes arrange their child nodes, and along which Trajectory List Box 3D nodes move their items.
+See Using spline trajectories, Trajectories and Using the Trajectory Layout nodes.  Spot Light node
+Spot Light emits light from a specific location towards a specified direction in the shape of a cone.
+See Using the light nodes.  Stack Layout node
+Use the Stack Layout nodes to arrange nodes next to each other on the selected axis.
+See Using the Stack Layout nodes.  State Managers
+Use a State Manager to create different states in your Kanzi application.
+For example, you can define the appearance and behavior of a button during different states, such as how the button reacts when a user selects, presses, holds, or releases the button.
+See State manager.  Styles
+Use styles to set the property values of one or more nodes of a certain type.
+You can set a Style so that it applies to all nodes of a certain type in the selected scope, or to individual nodes.
+See Using styles.  Tag Filter
+Tag Filter collects 3D nodes that have a specific tag assigned.
+See Using the Tag Filter.  Tags
+Use tags to group, find, and filter nodes in your project. You can assign multiple tags to a single node.
+See Using tags.  Text Block node
+Use the Text Block nodes to show a small amount of text in your application.
+See Using the Text Block nodes.  Text Box node
+Use the Text Box nodes to add single-line text input to your application.
+See Using the Text Box nodes.  Texture Brush
+Use a Texture Brush to fill a 2D node with a texture.
+See Filling 2D nodes with a texture.  Theme Group
+Use a Theme Group to define a collection of themes.
+See Using Themes.  Theme
+Use a Theme to set the resources which define the look and feel of your application.
+Themes enable you to use a single Kanzi Studio project for multiple variants of your product.
+See Tutorial: Theme your application and Using Themes.  Timeline Entry
+Use a Timeline Entry to manipulate animations, including repetition, scaling, targeting, and blending, and to define the type of animation input: time or property value.
+See Editing timeline sequences.  Timeline Sequence
+Use a Timeline Sequence to combine a set of Timeline Entry resources.
+Timeline entries can target specific items inside the scope of a Timeline Sequence.
+See Editing timeline sequences.  To-source binding
+A to-source binding pushes a property value to a node or another project item, or to a resource used by that item.
+See To-source bindings.  Toggle Button Group node
+Use the Toggle Button Group nodes to allow users to select only one option from a set of options that are mutually exclusive.
+See Using the Toggle Button Group nodes and Buttons.  Toggle Button node
+Use the Toggle Button nodes to create interactions through buttons that can have multiple toggle states.
+See Using the Toggle Button nodes and Buttons.  Trajectory Layout node
+Use the Trajectory Layout nodes to arrange items along a trajectory path.
+See Using the Trajectory Layout nodes and Trajectories.  Trajectory List Box 3D node
+Use the Trajectory List Box 3D node to create scrollable lists of items arranged along a trajectory in 3D space.
+See Using the Trajectory List Box 3D node and Trajectories.  Trapezoid Trajectory
+Use a Trapezoid Trajectory to create a path in the shape of a trapezoid in 3D space.
+Use trajectories as paths along which Trajectory Layout 3D and Trajectory Layout 2D nodes arrange their child nodes, and along which Trajectory List Box 3D nodes move their items.
+See Using trapezoid trajectories, Trajectories, and Using the Trajectory Layout nodes.  Triggers
+Use Triggers to create interactions based on user input. With triggers you can set actions, such as printing to the Log window, setting a property to a certain value, activating an Activity, or playing an animation.
+See Triggers.  Value source binding
+A value source binding sets the local value of an entire property and provides the value for that property during application runtime.
+See Value source bindings.  Viewport node
+Use the Viewport nodes to set the size of a render target surface onto which Kanzi projects content.
+See Viewport nodes.  Volume Texture
+Volume textures use a single 2D image, made up of many cross-section slices of a 3D shape, to define a 3D volume texture. This technique is often used for effects like smoke, fire, or clouds, where 3D data would be too resource intensive or difficult to generate procedurally.
+See Using volume textures.

@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/empty-nodes/using-empty-nod
 
 # Using the Empty Node nodes
 
-
 Use the Empty Node nodes to group nodes and to set property values of their child nodes.
 
 By default, Empty Node nodes do not have a visual representation, or any functionality other than a transparent background and that they can act as a parent node to other nodes. Empty Node nodes do not have any properties specific only to them.
@@ -16,19 +15,16 @@ For example, use Empty Node nodes to:
 - Apply transformation to all its child nodes. See Tutorial: Create reflections.
 - Replace the root node of a node prefab. See Replacing the root node of a node prefab.
 
-
 An Empty Node is a node into which you can put any other node and has these properties:
 
 - It allows absolute positioning of its child nodes.
 - Does not restrict the movement of its child nodes.
 - Is not a compacting layout.
 
-
 Empty Node does not have inherent layout characteristics. Empty Node does not resize its child nodes, but places them to a position you specify. The default values of the Layout Height and Layout Width properties of an Empty Node are 0, but it stretches by default to take all the space its child nodes need.
 
 You can use the Horizontal Alignment and Vertical Alignment properties to align the child nodes of an Empty Node only after you specify the Layout Height and Layout Width properties of that Empty Node.
 ## Creating an Empty Node node
-
 
 To create an Empty Node node:
 
@@ -48,7 +44,6 @@ For example, if you created an Empty Node 3D node, add Sphere nodes, if you crea
 
 ## Setting the appearance of an Empty Node 2D node
 
-
 To set the appearance of 2D nodes:
 
 - You can fill 2D nodes with a solid color, a texture, or a material. See Adjusting the appearance of 2D nodes.
@@ -58,7 +53,6 @@ To set the appearance of 2D nodes:
 - You can render a 2D node as pixel-perfect. See Rendering pixel-perfect 2D nodes.
 
 ## Using the Empty Node 3D node in the API
-
 
 To create an Empty Node 3D node using the API:
 
@@ -72,10 +66,8 @@ emptyNode->addChild(cube);
 
 ```
 
-
 For details, see the `EmptyNode3D` class.
 ## Using the Empty Node 2D node in the API
-
 
 To create an Empty Node 2D node using the API:
 
@@ -90,9 +82,7 @@ empty2D->addChild(image);
 
 ```
 
-
 For details, see the `EmptyNode2D` class.
 ## Empty Node property types and messages
-
 
 For lists of the available property types and messages for the Empty Node nodes, see Empty Node 2D and Empty Node 3D.

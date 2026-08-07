@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/filters/using-property-is-e
 
 # Using the Property Is Equal Filter
 
-
 Property Is Equal Filter collects 3D nodes that contain, or do not contain a specific property the value of which matches a specific value.
 
 To use the Property Is Equal Filter:
@@ -35,7 +34,6 @@ To take the Property Is Equal Filter into use, either:
 
 Use a Node List render pass when you want to filter anything but the 3D nodes that you want to render, such as Light nodes. Draw Objects render pass, Draw Objects With Material render pass, and Gather Lights render passes can use the result node list of the same Node List render pass.
 
-
 For example:
 
   1.
@@ -56,8 +54,6 @@ In the Node Tree select the Viewport 2D node to which you want to apply the filt
 
 Kanzi Studio renders the nodes collected by the filter.
 
-
 ## Using Property Is Equal Filter filters in the API
-
 
 For details, see the `PropertyIsEqualFilter` class.

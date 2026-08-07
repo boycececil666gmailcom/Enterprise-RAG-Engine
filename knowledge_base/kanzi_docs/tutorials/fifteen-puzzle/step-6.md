@@ -5,12 +5,10 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/fifteen-puzzle/step-6.html
 
 # Step 6 - Send messages
 
-
 In this step, you learn how to send messages from a Lua script.
 
 You first create a function that checks whether the puzzle is solved and then add the functionality to show a message when the puzzle is solved.
 ## Detect a solved puzzle
-
 
 To detect a solved puzzle:
 
@@ -55,7 +53,6 @@ end
 
 ```
 
-
 Now when you solve the puzzle, the script prints `Victory!` to the **Log**. Send a message âââââ
 
 To send a message:
@@ -96,17 +93,14 @@ end
 
 ```
 
-
 Now the Lua script contains the complete game logic that:
 
 - Fills the grid with pieces in random order.
 - Reacts to input messages by moving the pieces according to the puzzle logic.
 - Detects when the puzzle is solved and reacts by sending a message that displays the victory message in the application.
 
-
 Previous step
 ## Whatâs next?
-
 
 In this tutorial, you learned the basics of programming application logic in Kanzi with Lua.
 

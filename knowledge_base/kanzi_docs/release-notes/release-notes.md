@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/release-notes/release-notes.html
 
 # Release notes and migration guides
 
-
 Here you can find Kanzi release notes and migration guides:
 
 - Release notes list changes between releases.

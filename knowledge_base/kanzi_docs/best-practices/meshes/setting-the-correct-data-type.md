@@ -7,7 +7,6 @@ source: https://docs.kanzi.com/4.1.0/en/best-practices/meshes/setting-the-correc
 
 ## Editing the origin of nodes
 
-
 Use an Empty Node node to set the origin of 3D and 2D nodes and to create an external transformation pivot point. This is particularly useful when you want to edit the origin of a mesh, but want to keep the pivot point centered to the mesh.
 
 When the pivot point of a mesh is centered to the mesh, you can use the half-float accuracy for the vertex attributes. When you use half-float accuracy for vertex attributes, instead of float, you decrease the mesh data size by half.
@@ -44,9 +43,7 @@ For example, to animate the node around the new origin, animate the Empty Node n
   - In the Properties add and set the Render Transformation property to place the Empty Node node where you want to position its child nodes.
   - In the Preview select the Node tool , set the target transformation to Render Transformation (), and use the Node tool to place the Empty Node node where you want to position its child nodes.
 
-
 ## Setting the accuracy of vertex attributes
-
 
 By default Kanzi uses half-float accuracy for the vertex attributes.
 

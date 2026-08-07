@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/plugins/reference-for-keybo
 
 # Key input codes reference
 
-
 Here you can find the reference for the key input codes which you can use in your Kanzi Studio plugin to create interaction with the keyboard. You can create key input using the Key Manipulator and Navigation Manipulator triggers.
 |
 |

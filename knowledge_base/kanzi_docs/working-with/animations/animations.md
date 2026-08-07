@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/animations/animations.html
 
 # Animations
 
-
 Animations change properties of objects. Animations map input values to output property values.
 
 Kanzi Studio stores animations in the Library > Animations.
@@ -17,7 +16,6 @@ In Kanzi you can create keyframe animations that:
 
   - Float property types, where you can animate, for example, light intensity, or material color.
   - Boolean property types, where you can animate, for example, values such as visibility when you map a property to the timeline values 0 and 1.
-
 
 In Kanzi keyframe animations are formed using:
 
@@ -46,14 +44,10 @@ Timeline entries can blend an animation clip they contain. This functionality is
 
 Use a Timeline Sequence to combine a set of Timeline Entry resources.
 
-
 You can also create an animation by incrementing the value of a property type over time using a Float Value Accumulator or an Int Value Accumulator. For example, you can use a Value Accumulator to create a stopwatch or a timer, move a texture on a 3D model, or rotate a 3D model to create an animation. See Incrementing the value of a property type.
-
-> **Tip:** In the Kanzi Studio Node Tree window, an indicator next to a node shows when a State Manager, Binding, Data Source Binding, or an Animation overrides the values of some properties in that node.
->
-> To navigate to the source of the override in the Kanzi Studio project, right-click the override indicator and select the source you wish to navigate to from the context menu.
+**Tip:** In the Kanzi Studio Node Tree window, an indicator next to a node shows when a State Manager, Binding, Data Source Binding, or an Animation overrides the values of some properties in that node.
+To navigate to the source of the override in the Kanzi Studio project, right-click the override indicator and select the source you wish to navigate to from the context menu.
 ## Animation sharing and targeting
-
 
 Animation sharing means that one animation animates several or a group of nodes. All animations in Kanzi are shared. You can reuse Animation Clip and Animation Data resources in different nodes. See Using keyframe animations.
 

@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/2d-content/applying-custom-
 
 # Applying custom rendering to 2D nodes
 
-
 Apply custom rendering to 2D nodes to create post-processing effects.
 
 For example, you can convert color images in a 2D node to grayscale.
@@ -54,7 +53,6 @@ In the shader, use these Kanzi default uniforms:
     - `ContentTexture` to define the texture that the rendered node provides when rendering
     - `RenderOpacity` to define the opacity of the rendered node
 
-
 See Shader uniforms.
 
 ```
@@ -80,7 +78,6 @@ void main()
 }
 
 ```
-
 
 2.
 

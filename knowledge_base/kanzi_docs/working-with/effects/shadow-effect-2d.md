@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/effects/shadow-effect-2d.ht
 
 # Using the Shadow Effect 2D effect
 
-
 Use the Shadow Effect 2D effect to apply a shadow to the content of a 2D node.
 ## Creating a shadow effect for a 2D node
-
 
 To create a shadow effect for a 2D node:
 
@@ -30,7 +28,6 @@ Kanzi applies to the visual shape of the content in the 2D node a partially tran
 To adjust the appearance of the shadow, in the Library select the Shadow Effect 2D effect and in the Properties add and set the Shadow Effect 2D properties.
 |
 
-
 Shadow Blend Mode sets the blend mode that Kanzi uses to render the shadow.
 
 The default is Alpha: Premultiplied.
@@ -41,10 +38,8 @@ See Blending and compositing 2D nodes.  |
    |
 |
 
-
 Shadow Blur Radius sets the softness of the shadow by defining the distance in pixels that the shadow blur extends outward from each edge of the shadow. The higher the value, the blurrier the shadow is. The default radius is 8 pixels.  |    |
 |
-
 
 Shadow Type sets the type of the shadow:
 
@@ -53,33 +48,26 @@ Shadow Type sets the type of the shadow:
   |    |
 |
 
-
 Shadow Distance sets how far from an object the shadow falls. The default distance is 10 pixels.  |    |
 |
 
-
 Shadow Angle sets the direction of the shadow as an angle relative to the positive x axis in the clockwise direction. The default angle is 45 degrees.  |    |
 |
-
 
 Override Shadow Offset sets the offset of the shadow from the object along the x and y axes. The default offset is 7 pixels along both axes.
 
 When you set this property, the Shadow Distance and Shadow Angle properties have no effect.  |    |
 |
 
-
 Shadow Color sets the color of the shadow.  |    |
 |
-
 
 Shadow Only sets whether to render only the shadow without the visual content of the node.  |    |
 |
 
-
 Shadow Quality sets the visual quality of the shadow. Lower quality uses less computing and memory resources.  |    |
 
 ## Customizing an instance of a shadow effect
-
 
 When you edit the properties of an effect in the Library > Effects, you change the appearance of that effect for all nodes that use it. You can customize each effect instance by overriding the effect property values. For example:
 
@@ -87,7 +75,6 @@ When you edit the properties of an effect in the Library > Effects, you change t
 - When you create a Mask Effect 2D effect, you can vary the size of the mask in different instances of that effect.
 - When you create a Blur Effect 2D effect, you can vary the amount of blur in different instances of that effect.
 - When you create an Outline Effect 2D effect, you can vary the color of the outline in different instances of that effect.
-
 
 To customize an instance of an effect:
 
@@ -120,11 +107,9 @@ For example, in the Properties, add the Shadow Effect 2D Properties > ShadowEffe
 3.
 
 (Optional) Repeat the previous step for each effect property that you want to customize.
+**Tip:** When you want to remove from a node a property and its To Source binding, right-click that property and select Remove Property And Binding.
 
-> **Tip:** When you want to remove from a node a property and its To Source binding, right-click that property and select Remove Property And Binding.
->
 ## Using the Shadow Effect 2D effect in the API
-
 
 To create a shadow effect:
 
@@ -156,6 +141,5 @@ shadowEffect->setDistance(15.f);
 shadowEffect->setAngle(55.f);
 
 ```
-
 
 For details, see the `ShadowEffect2D` class.

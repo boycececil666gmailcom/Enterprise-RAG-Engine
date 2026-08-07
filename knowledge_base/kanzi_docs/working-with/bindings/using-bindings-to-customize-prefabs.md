@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/bindings/using-bindings-to-
 
 # Customizing instances of prefabs
 
-
 When you customize an instance of a prefab, you modify property values of that prefab instance, but keep the structure of the prefab.
 
 In Kanzi, these types of prefabs are available:
@@ -21,7 +20,6 @@ See Using render passes.
 See Effects for 2D nodes.
 
 ## Customizing instances of a node prefab
-
 
 A node prefab can contain a tree of nodes, each with their own properties. When you edit the nodes in a prefab or any of its instances in a project, you change those nodes in all instances of that prefab. You can customize each instance of a prefab to have its own property values by overriding the property values of the prefab. For example, when you create a prefab for an address book entry, you want to show a different name, number, and photo for each address book entry.
 
@@ -52,7 +50,6 @@ Only this instance of the prefab uses the value that you set.
 
 ## Customizing instances of a render pass prefab
 
-
 A render pass can contain a hierarchy of render passes, each with their own properties. When you edit the render passes, you change how those render passes render content in all Viewport 2D nodes that use them. You can customize individual instances of a render passes to have individual values by overriding the values in the default render pass. For example, when you create a hierarchy of render passes that blits a composition target to the screen, you can blit the content using a different material in different instances of the render passes.
 
 To customize instances of render passes:
@@ -81,11 +78,9 @@ In the Properties click  next to the property that you customized and set the va
 Kanzi Studio adds to the Viewport 2D node a to-source binding which pushes the value of that property to the render pass prefab instance made available through the `Viewport2D::RenderPassProperty` property of the Viewport 2D node.
 
 You can set multiple Viewport 2D nodes to use the same render pass prefab and in each Viewport 2D node you can add and set the render pass prefab property to have different values.
+**Tip:** When you want to remove from a node a property and its To Source binding, right-click that property and select Remove Property And Binding.
 
-> **Tip:** When you want to remove from a node a property and its To Source binding, right-click that property and select Remove Property And Binding.
->
 ## Customizing instances of a 2D effect prefab
-
 
 When you edit the properties of an effect in the Library > Effects, you change the appearance of that effect for all nodes that use it. You can customize each effect instance by overriding the effect property values. For example:
 
@@ -93,7 +88,6 @@ When you edit the properties of an effect in the Library > Effects, you change t
 - When you create a Mask Effect 2D effect, you can vary the size of the mask in different instances of that effect.
 - When you create a Blur Effect 2D effect, you can vary the amount of blur in different instances of that effect.
 - When you create an Outline Effect 2D effect, you can vary the color of the outline in different instances of that effect.
-
 
 To customize an instance of an effect:
 
@@ -126,6 +120,4 @@ For example, in the Properties, add the Shadow Effect 2D Properties > ShadowEffe
 3.
 
 (Optional) Repeat the previous step for each effect property that you want to customize.
-
-> **Tip:** When you want to remove from a node a property and its To Source binding, right-click that property and select Remove Property And Binding.
->
+**Tip:** When you want to remove from a node a property and its To Source binding, right-click that property and select Remove Property And Binding.

@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/input/pan-manipulator.html
 
 # Using the Pan Manipulator
 
-
 Use the Pan Manipulator to enable users to move nodes in your Kanzi application.
 
 For example, you can use the Pan Manipulator to enable users to move a map. See Enabling the pan gesture for a node.
@@ -20,7 +19,6 @@ See Using input manipulators.
 
 Learn how to use the Pan Manipulator by completing a tutorial. See Tutorial: Pan, zoom, tap.
 ## Enabling the pan gesture for a node
-
 
 To enable the pan gesture for a node:
 
@@ -78,19 +76,13 @@ In Kanzi Studio, select File > Open Kanzi Command Prompt.
 The Kanzi Command Prompt opens the Windows Command Prompt with the Kanzi environment variables set for the version of Kanzi for which you open a Kanzi Command Prompt.
 
 Use the Kanzi Command Prompt to access Kanzi utilities and build tools, such as Gradle and CMake, without using absolute paths or setting environment variables.
-
-> **Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
->
-> When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
-> 8.
->
-> In the Kanzi Command Prompt in the `<ProjectName>/Application` directory, run the script that generates a Visual Studio solution for the application.
->
-> ```
-> generate_cmake_vs2022_solution.bat
->
-> ```
-
+**Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
+When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
+8.
+In the Kanzi Command Prompt in the `<ProjectName>/Application` directory, run the script that generates a Visual Studio solution for the application.
+```
+generate_cmake_vs2022_solution.bat
+```
 
 This script generates a Visual Studio solution for the application in the directory `<ProjectName>/Application/build_vs2022`.
 9.
@@ -183,7 +175,6 @@ void onProjectLoaded() override
 
 ```
 
-
 10.
 
 Build and run your application. See Deploying Kanzi applications.
@@ -191,7 +182,6 @@ Build and run your application. See Deploying Kanzi applications.
 In the application click and drag the node for which you enabled the pan gesture.
 
 ## Using the Pan Manipulator triggers
-
 
 Use the Pan Manipulator triggers to react to the pan gesture. For example, you can set the appearance of a node when the user pans that node.
 
@@ -203,7 +193,6 @@ The Pan Manipulator has these triggers:
 - Pan Canceled trigger is set off when focus moves away from the node during the pan gesture.
 - Pan Entered trigger is set off when the pan gesture enters the node.
 - Pan Left trigger is set off when the pan gesture leaves the node.
-
 
 To use the Pan Manipulator triggers:
 
@@ -237,7 +226,6 @@ For example, select Dispatch Message Action > State Manager > Go to State, and i
 
     - Target Item to the node for which you enabled the pan gesture
     - State to the state which sets the appearance of the node when the Pan Started trigger is set off
-
 
 4.
 

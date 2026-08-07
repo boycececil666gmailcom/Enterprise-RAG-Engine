@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/activity-transitions/activity-
 
 # Tutorial: Animate transitions between Activities
 
-
 In this tutorial, you learn how to create animated transitions between Activities.
 
 This video shows the result of the tutorial.
@@ -17,7 +16,6 @@ This tutorial assumes that you understand the basics of working with Kanzi Studi
 
 ## Get the tutorial
 
-
 To get the tutorial, in the Kanzi Studio Quick Start window, click Projects and select the Tutorials tab. Next to the Activity transitions tutorial, click .
 
 Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` directory. You can find:
@@ -28,7 +26,6 @@ To learn about the content of this project and how to create such a project, see
 - The completed tutorial in the `<KanziWorkspace>/Tutorials/Activity transitions/Completed` directory.
 
 ## Add a transition between Activities
-
 
 Activities use a State Manager to define the transitions for status changes. If you do not create a state manager and define transitions, the transitions between Activity statuses are immediate.
 
@@ -63,19 +60,15 @@ From the Library > State Managers, drag the Maximized Widget State Manager to th
   - WidgetMusicMaximized
   - WidgetNavigationMaximized
 
-
 This way, you add the Maximized Widget State Manager State Manager to all Activities in the MaximizedWidget Exclusive Activity Host. You use the same State Manager to apply the same transition animation to all Activities in an Exclusive Activity Host.
-
 
 Now, when in the Preview you click the buttons on the left to switch between the Activities, Kanzi applies to them the animated horizontal flip transition.
 ## Adjust the transition to animate multiple properties
-
 
 In the previous section, you added a predefined Activity transition. When Kanzi animates a transition between Activities, each Activity goes through one of these sets of states:
 
 - Inactive â> Activating â> Active
 - Active â> Deactivating â> Inactive
-
 
 You can set the property values that Kanzi applies to an Activity in each of these states.
 
@@ -83,7 +76,6 @@ In this section, you:
 
 - Animate the opacity of the Activities during a transition.
 - Make the Activities at the same time flip horizontally and scale down and back to their original size.
-
 
 To adjust the transition to animate multiple properties:
 
@@ -93,7 +85,6 @@ In the Library > State Managers > Maximized Widget State Manager > ActivityState
 
   - In the Perspective Transformation property, set the Scale property fields to 0.5.
   - Add and set the Node > Opacity property to 0.
-
 
 This way, in the Inactive state, you scale the dimensions of the Activity down to half of their original value and make the Activity completely transparent.
 2.
@@ -108,9 +99,7 @@ Select the Activating and Deactivating states. In the Properties:
   - In the Perspective Transformation property, set the Scale property fields to 0.5.
   - Add and set the Node > Opacity property to 0.2.
 
-
 This way, in the Activating and Deactivating states, you scale the dimensions of the Activity down to half of their original value and make the Activity look faded.
-
 
 Now, when you switch between the Activities, the transition animation:
 
@@ -119,7 +108,6 @@ Now, when you switch between the Activities, the transition animation:
 - Fades out the deactivating Activity and fades in the activating Activity.
 
 ## Adjust the curve and speed of the transition
-
 
 In Kanzi, you can use different easing functions to create more lifelike transition animations that offer a more pleasant user experience. An easing function defines the animation curve, that is, the rate at which a property value changes. By default, Kanzi uses a linear easing function.
 
@@ -147,7 +135,6 @@ The Back easing function makes the animation go past the target value and return
 
 This way, you set how far past the target value the Back easing function makes the animation go.
 
-
 Click Save.
 
 With this transition animation, you make the size of the activating Activity increase past the original size, then return to the original size in the Active state. Kanzi applies the default linear transition animation to the opacity and rotation of the Activities.
@@ -168,11 +155,9 @@ Repeat the previous step for these state transitions:
     - Active â> Deactivating
     - Deactivating â> Inactive
 
-
 Now, when you switch between the Activities, Kanzi animates the transitions at a higher speed.
 
 ## Whatâs next?
-
 
 In this tutorial, you learned how to work with the Activity transition animations.
 

@@ -5,16 +5,13 @@ source: https://docs.kanzi.com/4.1.0/en/examples/virtual-list-box/virtual-list-b
 
 # Virtual list box example
 
-
 This example shows how to create a list box component that displays a set of objects that come from an external data source. In the example, the external data source is a text file which contains a list of image file names. The list box shows the images and their filenames. Because image loading is slow and takes a lot of memory, the displayed images are only loaded on demand when the user scrolls the list box. Build and run the example application using Visual Studio.
 ## Getting the example
-
 
 To get the example, in the Kanzi Studio Quick Start window, click Projects and select the Examples tab. Next to the Virtual_list_box example, click .
 
 Kanzi Studio downloads the example to the `<KanziWorkspace>/Examples/Virtual_list_box` directory.
 ## Content of the example
-
 
 The main parts of the tool project are:
 
@@ -25,7 +22,6 @@ The application code defines the CustomObjectGenerator, which reads a text file 
 
 ## Running the example
 
-
 To run the example:
 
 1.
@@ -35,19 +31,13 @@ In Kanzi Studio, select File > Open Kanzi Command Prompt.
 The Kanzi Command Prompt opens the Windows Command Prompt with the Kanzi environment variables set for the version of Kanzi for which you open a Kanzi Command Prompt.
 
 Use the Kanzi Command Prompt to access Kanzi utilities and build tools, such as Gradle and CMake, without using absolute paths or setting environment variables.
-
-> **Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
->
-> When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
-> 2.
->
-> In the Kanzi Command Prompt in the `<KanziWorkspace>/Examples/Virtual_list_box/Application` directory run the script that generates a Visual Studio solution for the example application.
->
-> ```
-> generate_cmake_vs2022_solution.bat
->
-> ```
-
+**Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
+When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
+2.
+In the Kanzi Command Prompt in the `<KanziWorkspace>/Examples/Virtual_list_box/Application` directory run the script that generates a Visual Studio solution for the example application.
+```
+generate_cmake_vs2022_solution.bat
+```
 
 This script generates a Visual Studio solution for the application in the directory `<KanziWorkspace>/Examples/Virtual_list_box/Application/build_vs2022`.
 3.

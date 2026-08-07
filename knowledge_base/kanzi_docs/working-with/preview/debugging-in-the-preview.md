@@ -5,14 +5,12 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/preview/debugging-in-the-pr
 
 # Analyzing your application in the Preview
 
-
 In the Preview, click  to analyze the performance and structure of your application.
 
 When in the Analyze mode, right-click  or use the Preview main menu to select the type of items that you want to analyze.
 
 In addition to the Preview Analyze mode, Kanzi provides other ways to help you analyze your application. See Troubleshooting the performance of your application and Best practices.
-
-> **Tip:** To customize how Kanzi Studio shows different types of items in the Analyze mode, select Edit > User Preferences, and in the Preview tab set the color and line thickness for the items.
+**Tip:** To customize how Kanzi Studio shows different types of items in the Analyze mode, select Edit > User Preferences, and in the Preview tab set the color and line thickness for the items.
 ## Selection and layout
 
 |   |
@@ -80,7 +78,6 @@ Vertex normals visualizes the normals of mesh vertices as RGB colors.
 The values of the red, green, and blue color channels represent the x, y, and z values of the normal direction vector in the local space of the mesh. Kanzi calculates the value of each color channel from the value of the corresponding direction vector component according to this formula:   \[ColorChannel = 0.5 + 0.5 * VectorComponent\]   |
 ## Performance
 
-
 - Performance HUD shows the overall performance indicators of your Kanzi application during the last 500 frames including:
 
   - Frame Duration (ms) shows the time in milliseconds it took to render the last frame, and the average, highest, and lowest times.
@@ -117,16 +114,13 @@ You can access the number of animations in the Kanzi Engine API:
     - To get the number of active animations, use `TimelineClock::getActiveTimelinePlaybackCount`.
     - To get the number of all animations, use `TimelineClock::getTimelinePlaybackCount`.
 
-
 - Frame time HUD shows these frame time indicators of your Kanzi application during the last 500 frames:
 
   - Frame Duration (ms) shows the time in milliseconds it took to render the last frame, and the average, highest, and lowest times.
   - Frames Per Second shows the number of frames rendered per second.
   - Animation Duration (Î¼s) shows the time in microseconds it takes to execute all animations in the application for the last frame, and the average, highest, and lowest times.
 
-
 ## The Preview log file
-
 
 Kanzi Studio stores the Preview log messages in the `%USERPROFILE%\AppData\Local\Temp\KanziStudioLogs\KanziPreview.log` file.
 
@@ -138,14 +132,12 @@ To set the level of logging detail, in the `<KanziInstallation>\Studio\Bin\Kanzi
 When you set the log level to `VERBOSE`, the large amount of log messages can reduce the performance of Kanzi Studio.
 - `NONE` sets Kanzi Studio to not log any messages to the `KanziPreview.log` file.
 
-
 For example, to log all communication between Kanzi Studio and the Preview, open the `KanziPreview.exe.config` file in a text editor, and set:
 
 ```
 <add key="logLevel" value="VERBOSE"/>
 
 ```
-
 
 To apply the changes to the `KanziPreview.exe.config`, save the `KanziPreview.exe.config` file and press Ctrl F8 to restart the Preview. See Controlling the Preview.
 

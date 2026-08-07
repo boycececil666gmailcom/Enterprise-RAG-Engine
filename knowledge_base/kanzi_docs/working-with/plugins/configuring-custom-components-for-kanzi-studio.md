@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/plugins/configuring-custom-
 
 # Extending the functionality of Kanzi Engine
 
-
 With a Kanzi Engine plugin you can extend the functionality of Kanzi Engine and set how Kanzi Studio shows the custom content you create:
 
 - Create your own nodes and property types. See Creating custom nodes and property types.
@@ -16,7 +15,6 @@ With a Kanzi Engine plugin you can extend the functionality of Kanzi Engine and 
 - Set the icons for the node types you create. See Setting the icon for your node type.
 
 ## Creating custom nodes and property types
-
 
 In a Kanzi Engine plugin you can create custom nodes with custom property types. You can set how Kanzi Studio shows and lets users interact with these nodes.
 
@@ -65,7 +63,6 @@ PropertyTypeEditorInfoSharedPtr MyPlugin::makeEditorInfo()
 
 ```
 
-
 2.
 
 Create the custom property types and their metadata.
@@ -81,7 +78,6 @@ KZ_METACLASS_BEGIN(MyPlugin, Node3D, "CustomComponentType")
 KZ_METACLASS_END()
 
 ```
-
 
 with
 
@@ -129,7 +125,6 @@ Whether the value of the property type is inheritable. See Inheritable property 
     5.
 
 The metadata about the property type for Kanzi Studio. See Reference for showing Kanzi Engine plugin custom types in Kanzi Studio.
-
 
 For example, to define the custom property types that you created in the previous step:
 
@@ -207,7 +202,6 @@ PropertyType<ResourceSharedPtr> MyPlugin::MaterialRefBySharedPtrProperty(
 
 ```
 
-
 3.
 
 Build and install your plugin. See Adding a Kanzi Engine plugin to a Kanzi Studio project.
@@ -226,14 +220,12 @@ In the Node Tree select a node to which you want to add your node, press Alt and
 
 ## Creating custom message types
 
-
 You can create and configure custom message types that you use to add functionality to your application. For example, use a message type to make your node type react to an event.
 
 For every custom message type that you define, Kanzi Studio creates a message action and a message trigger type, which let you dispatch and react to the message type, respectively.
 
 When you are using Kanzi Connect you can use custom message types to get information about a Kanzi Connect server or service that your application uses.
 ### Creating custom message triggers
-
 
 In a Kanzi Engine plugin, you can create a custom message type that Kanzi Studio shows as a message trigger. A message type enables you to subscribe to notifications when a certain event occurs.
 
@@ -289,9 +281,7 @@ MessageType<FuelIndicator::OnFuelLevelChangedMessageArguments> FuelIndicator::On
 
 ```
 
-
 ### Creating custom actions
-
 
 In a Kanzi Engine plugin, you can create a custom message type that Kanzi Studio shows as an action.
 
@@ -385,9 +375,7 @@ MessageType<FuelIndicator::FuelIndicatorUpdateLevelMessageArguments> FuelIndicat
 
 ```
 
-
 ## Creating custom node components
-
 
 A custom node component is an isolated piece of logic, which you implement in a Kanzi Engine plugin and you can attach to any node, in order to add custom functionality to that node. For example, you can print the value of a property to the Kanzi Log every time the value of that property changes or define animation playback with variable speed.
 
@@ -647,9 +635,7 @@ In the Log Property Value Component set the Logged Property Type property to the
 
 In Kanzi Studio, when you change the value of that property, you can see the log messages in the Kanzi Studio Log window.
 
-
 ## Setting custom property types
-
 
 To pass to Kanzi Studio information about the custom property types you create in a Kanzi Engine plugin, you declare metadata that describe these property types.
 
@@ -679,7 +665,6 @@ PropertyType<string> VideoView2D::VideoFileNameProperty(
 
 ```
 
-
 When the user creates a VideoView2D node, Kanzi Studio adds to the properties of the node in the category Video the Video Filename property, which has a text editor with a Browse button, a tooltip, and the default value set to video.mp4. See Ordering property categories in the Properties window.
 
 Property type names cannot contain:
@@ -694,7 +679,6 @@ Property type names cannot contain:
 - At signs (@)
 
 ## Setting the default value of a property type
-
 
 In a custom node you can set the default value of any property type that is defined in the node on which you base your node.
 
@@ -721,10 +705,8 @@ PropertyTypeEditorInfoSharedPtr MyNode::makeEditorInfo()
 
 ```
 
-
 See host.
 ## Setting the icon for your node type
-
 
 If you do not set the icon for your node type, Kanzi Studio uses the default icon (). To make it easier for Kanzi Studio users to visually keep track of the nodes in the Node Tree, you can set your own icons for your nodes.
 
@@ -740,19 +722,13 @@ In Kanzi Studio, select File > Open Kanzi Command Prompt.
 The Kanzi Command Prompt opens the Windows Command Prompt with the Kanzi environment variables set for the version of Kanzi for which you open a Kanzi Command Prompt.
 
 Use the Kanzi Command Prompt to access Kanzi utilities and build tools, such as Gradle and CMake, without using absolute paths or setting environment variables.
-
-> **Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
->
-> When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
-> 3.
->
-> In the Kanzi Command Prompt in the `<ProjectName>/Application` directory, run the script that generates a Visual Studio solution for the application.
->
-> ```
-> generate_cmake_vs2022_solution.bat
->
-> ```
-
+**Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
+When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
+3.
+In the Kanzi Command Prompt in the `<ProjectName>/Application` directory, run the script that generates a Visual Studio solution for the application.
+```
+generate_cmake_vs2022_solution.bat
+```
 
 This script generates a Visual Studio solution for the application in the directory `<ProjectName>/Application/build_vs2022`.
 4.
@@ -782,10 +758,8 @@ In Kanzi Studio in the Library > Kanzi Engine Plugins right-click the plugin tha
 
 When Kanzi Studio loads the plugin, it shows changes in the properties and classes defined in the plugin.
 
-
 For an example where a custom node type uses its own icon, see Node2D plugin example.
 ## Creating a debug visualization for your 3D node type
-
 
 For your 3D node type, you can create a debug visualization that is visible in Kanzi Studio when the Preview is in the Analyze mode. Use debug visualizations to render information that is helpful while you develop your plugin.
 
@@ -800,6 +774,5 @@ Use the `Module::registerDebugRenderingFunctions` function to register the funct
 3.
 
 To see the debug visualization in Kanzi Studio, in the Preview click  to enter the Analyze mode, right-click , and select Debug objects.
-
 
 For an example of a debug visualization, see the Node3D plugin example.

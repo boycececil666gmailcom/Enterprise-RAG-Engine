@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/theming/step-2.html
 
 # Step 2 - Create a theme for a car variant
 
-
 In this step of the tutorial you learn how to use one Kanzi Studio project for two variants of a product. In the previous step you created two themes (Classic and Modern) for the gasoline variant of the car. In this step you modify that project and create the themes for the hybrid variant of the car.
 ## Theme the cluster structure
-
 
 In this section you set for each car variant the visual appearance of the cluster background, the car model shown between the primary gauges, and the car variant name shown in the center of the RPM gauge.
 
@@ -35,24 +33,16 @@ In the Add Resources to a Theme Group window:
     - Cluster frame inner.Model3D.Mesh to Cluster frame inner
     - Cluster frame outer.Model3D.Mesh to Cluster frame outer
 
-
 Click Add.
-
-> **Tip:** When you use for resource IDs names which are meaningful in the context of your project, you create a project that is easier to theme and maintain. If you cannot pick a good name when you add a resource ID to a theme group, you can rename resource IDs in the Theme Editor.
-> 5.
->
-> In the Theme Editor for the Car variant theme group set the resource IDs:
->
-> - For the Gasoline theme set:
->
-> - The Cluster frame outer resource ID to point to the Cluster frame outer Gasoline mesh
-> - The Cluster frame inner resource ID to point to the Cluster frame inner Gasoline mesh
->
-> - For the Hybrid theme set:
->
-> - The Cluster frame outer resource ID to point to the Cluster frame outer Hybrid mesh
-> - The Cluster frame inner resource ID to point to the Cluster frame inner Hybrid mesh
-
+**Tip:** When you use for resource IDs names which are meaningful in the context of your project, you create a project that is easier to theme and maintain. If you cannot pick a good name when you add a resource ID to a theme group, you can rename resource IDs in the Theme Editor.
+5.
+In the Theme Editor for the Car variant theme group set the resource IDs:
+- For the Gasoline theme set:
+- The Cluster frame outer resource ID to point to the Cluster frame outer Gasoline mesh
+- The Cluster frame inner resource ID to point to the Cluster frame inner Gasoline mesh
+- For the Hybrid theme set:
+- The Cluster frame outer resource ID to point to the Cluster frame outer Hybrid mesh
+- The Cluster frame inner resource ID to point to the Cluster frame inner Hybrid mesh
 
 6.
 
@@ -66,38 +56,24 @@ In the Add Resources to a Theme Group window:
   - Set the Theme Group to Car variant.
   - Rename the Car.PrefabViewConcept.Prefab resource ID to Car.
 
-
 Click Add.
-
-> **Tip:** If you accidentally add resource IDs to a wrong theme group, in the Dictionaries click  next to the resource ID you want to move, and drop the resource ID in the theme group where you want to use it.
-> 8.
->
-> In the Theme Editor for the Car variant theme group set the Car resource ID:
->
-> - For the Gasoline theme set the resource ID to point to the Car Gasoline prefab.
-> - For the Hybrid theme set the resource ID to point to the Car Hybrid prefab.
->
-> 9.
->
-> In the Prefabs right-click Primary gauges Classic > Primary gauges grid Classic > Table RPM and select Add Resources to a Theme Group.
->
-> Here you add to the Car variant the resources for the car variant name shown in the center of the RPM gauge.
-> 10.
->
-> In the Add Resources to a Theme Group window:
->
-> 1.
->
-> Set the Theme Group to Car variant.
-> 2.
->
-> Click  to enable the viewing of the Text Block nodes.
->
-> In the top right part of the window, you can select which types of resources you want to show in the window.
-> 3.
->
-> Select and rename the G A S O L I N E resource ID to Variant.
-
+**Tip:** If you accidentally add resource IDs to a wrong theme group, in the Dictionaries click  next to the resource ID you want to move, and drop the resource ID in the theme group where you want to use it.
+8.
+In the Theme Editor for the Car variant theme group set the Car resource ID:
+- For the Gasoline theme set the resource ID to point to the Car Gasoline prefab.
+- For the Hybrid theme set the resource ID to point to the Car Hybrid prefab.
+9.
+In the Prefabs right-click Primary gauges Classic > Primary gauges grid Classic > Table RPM and select Add Resources to a Theme Group.
+Here you add to the Car variant the resources for the car variant name shown in the center of the RPM gauge.
+10.
+In the Add Resources to a Theme Group window:
+1.
+Set the Theme Group to Car variant.
+2.
+Click  to enable the viewing of the Text Block nodes.
+In the top right part of the window, you can select which types of resources you want to show in the window.
+3.
+Select and rename the G A S O L I N E resource ID to Variant.
 
 Click Add.
 11.
@@ -107,10 +83,8 @@ In the Theme Editor for the Car variant theme group double-click the cell for ea
   - For the Gasoline theme enter G A S O L I N E.
   - For the Hybrid theme enter H Y B R I D.
 
-
 Now when you select in the Dictionaries a theme in the Car variant theme group, the Preview shows the resources you defined so far for the two car variants.
 ## Theme the color of the primary gauges
-
 
 In this section you set for each car variant the color of the primary gauges.
 
@@ -126,7 +100,6 @@ In the Add Resources to a Theme Group window:
   - Set the Theme Group to Car variant.
   - Select and rename the Gauge.Node.Style resource ID to Primary gauges color Classic.
 
-
 Click Add.
 3.
 
@@ -135,20 +108,16 @@ In the Theme Editor for the Car variant theme group set the Primary gauges color
   - For the Gasoline theme set the resource ID to point to the Primary gauges color Classic Gasoline style.
   - For the Hybrid theme set the resource ID to point to the Primary gauges color Classic Hybrid style.
 
-
 These styles set the Emissive Color property for the material which the Gauge Model nodes which define both primary gauges use.
-
 
 Now when you select in the Dictionaries a theme in the Car variant theme group, the Preview shows the resources you defined so far for the two car variants.
 ## Theme the secondary gauges
-
 
 In this section you set for each car variant the visual appearance of the secondary gauges to enable the changing of:
 
 - The color of the gauges
 - The icon for the left gauge
 - The source of the value, the gauge scale, and the unit of the left secondary gauge
-
 
 To theme the secondary gauges:
 
@@ -184,7 +153,6 @@ Select and rename these resource IDs:
     - Value.Node.Style to Secondary gauges value Left
     - Â° to Secondary gauges unit Left
 
-
 Click Add.
 4.
 
@@ -216,10 +184,8 @@ This style sets the binding to get the value for the engine temperature gauge fr
     - Secondary gauges value Left to the Secondary gauges Left gauge value Hybrid style
     - Secondary gauges unit Left to %
 
-
 Now when you select in the Dictionaries a theme in the Car variant theme group, the Preview shows the resources you defined so far for the two car variants.
 ## Change the Primary gauges Modern prefab
-
 
 In this section you change the Primary gauges Modern prefab so that you can use the same prefab for both the Gasoline and Hybrid car variant themes.
 
@@ -268,7 +234,6 @@ In the Prefabs right-click Primary gauges Modern, select Add Resources to a Them
     - Left gauge.Node.Style to Primary gauges Modern Left gauge
     - Speed value trajectory.Node.Style to Primary gauges Modern Value
 
-
 Click Add.
 5.
 
@@ -295,7 +260,6 @@ This style sets the position of the Speed value trajectory and RPM value traject
     - Primary gauges Modern Top to point to the Primary gauges color Modern Hybrid style
     - Primary gauges Modern Left gauge to point to the Primary gauges left position Modern Hybrid style
     - Primary gauges Modern Value to point to the Primary gauges value Modern Hybrid style
-
 
 Now when you select in the Dictionaries Modern theme in the Cluster theme theme group and change the theme in the Car variant theme group, the Preview shows the resources for the two car variants in the Modern theme.
 

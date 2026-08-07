@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/shaders/shaders.html
 
 # Shaders
 
-
 Use Shaders to produce appropriate levels of light and color within an image, to produce special effects, or to do post-processing.
 
 Shaders in Kanzi are based on the OpenGL ES shading language. You can also use the Shader Graph Editor to build fragment shaders visually without writing code. The Shader Graph Editor is an experimental feature.
@@ -51,12 +50,10 @@ You can find the shaders that come with Kanzi in the `<KanziInstallation>/Studio
 - `Unlit` directory contains material types with shaders that do not use lights. See Unlit shaders.
 - `VertexPhong` directory contains material types with vertex-based Phong shaders. See Vertex-based Phong shaders.
 
-
 You can also write your own shaders. See Editing shaders.
 
 To reuse shader code across projects, you can use the Kanzi shader include library. See Using the shader include library.
 ## General-purpose shaders
-
 
 The `MaterialTypes/Common` directory in the `<KanziInstallation>/Studio/Asset Library/` project contains material types with general-purpose shaders.
 |
@@ -116,7 +113,6 @@ Textured
 Displays texture data. See Textures and Creating textured materials.  |    |
 ## Pixel-based Phong shaders
 
-
 The `MaterialTypes/FragmentPhong` directory in the `<KanziInstallation>/Studio/Asset Library/` project contains material types with pixel-based Phong shaders. Most of the GPU specific computation, including applying lights using the Phong reflection model, is done in the fragment shader. This offers better image quality often at the cost of performance.
 |
 
@@ -175,7 +171,6 @@ FragmentPhongTexturedSkinnedMorph
 Combines the FragmentPhongMorph, FragmentPhongSkinned, and FragmentPhongTextured shaders.  |    |
 ## Vertex-based Phong shaders
 
-
 The `MaterialTypes/VertexPhong` directory in the `<KanziInstallation>/Studio/Asset Library/` project contains material types with vertex-based Phong shaders. Most of the GPU specific computation, including applying lights using the Phong reflection model, is done in the vertex shader. This is a good starting point for most devices.
 |
 
@@ -199,7 +194,6 @@ VertexPhongSkinned
 - Displays skinned mesh data. This shader transforms vertices based on multiple transformations and weights, and combines the result with the Phong shading.
 - If you define the matrix palette and weights in a third-party content creation tool, they are part of mesh attributes.
 - This shader is not compatible with geometry that does not contain skin data (matrix palette and weights) in mesh data.
-
 
 See Using skinned meshes.  |    |
 |
@@ -233,7 +227,6 @@ VertexPhongTexturedSkinnedMorph
 
 Combines the VertexPhongMorph, VertexPhongSkinned, and VertexPhongTextured shaders.  |    |
 ## Physically-based shaders
-
 
 The `MaterialTypes/PhysicallyBasedRendering` directory in the `<KanziInstallation>/Studio/Asset Library/` project contains material types with physically-based shaders. These shaders implement physically-based rendering (PBR) principles. The properties of physically-based materials represent physical properties, such as metalness, and are therefore intuitive to control. Most of the GPU specific computation, including applying lights using a physically-based lighting model, is done in the fragment shader. This offers a more realistic rendering result in many lighting conditions.
 |
@@ -273,7 +266,6 @@ PostProcessTonemap
 
 Full-screen post-processing material which by default applies Reinhard tone mapping.  |    |
 ## Unlit shaders
-
 
 The `MaterialTypes/Unlit` directory in the `<KanziInstallation>/Studio/Asset Library/` project contains material types with shaders that use the unlit shading model defined by the `KHR_materials_unlit` glTF extension. The unlit shaders provide an alternative to physically-based shaders, which you can use for performance or aesthetic reasons. For example, you can use unlit materials to achieve a âhand-drawnâ look where you do not want lighting.
 |

@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/best-practices/rendering/rendering-best-
 
 # Rendering best practices
 
-
 By optimizing the rendering performance you can significantly improve the performance of your application.
 
 Kanzi renders nodes as follows:
@@ -17,7 +16,6 @@ Kanzi renders nodes as follows:
 - 2D nodes with the Visible property disabled are not rendered and their child nodes are not rendered, but are transformed.
 
 ## Optimizing rendering performance of your applications
-
 
 To optimize rendering performance of your applications consider:
 
@@ -43,7 +41,6 @@ To optimize rendering performance of your applications consider:
 - Instead of rendering effects in real-time, bake the effects into textures. For example, create textures to simulate shadows and depth of field. Improves the performance, but also increases the memory consumption.
 
 ## Viewing nodes that are rendered into texture
-
 
 Switching between framebuffer objects can cause significant performance reduction on some platforms. Conditions when Kanzi renders a node into a texture can be complex. For example, rotation, scale, or opacity can cause render to texture to occur.
 

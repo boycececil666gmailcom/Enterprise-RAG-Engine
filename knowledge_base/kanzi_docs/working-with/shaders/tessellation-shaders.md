@@ -5,12 +5,10 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/shaders/tessellation-shader
 
 # Using tessellation shaders
 
-
 Tessellation subdivides patches of vertex data into smaller primitives:
 
 - Tessellation Control Shader determines the amount of tessellation.
 - Tessellation Evaluation Shader computes the value for each generated vertex.
-
 
 Tessellation is an optional shader stage after the Vertex Shader and before the optional Geometry Shader.
 
@@ -49,7 +47,6 @@ void main()
 }
 
 ```
-
 
 Click Save.
 4.
@@ -94,7 +91,6 @@ void main() {
 }
 
 ```
-
 
 Click Save.
 
@@ -154,7 +150,6 @@ void main()
 
 ```
 
-
 Click Save.
 
 6.
@@ -174,7 +169,6 @@ void main()
 }
 
 ```
-
 
 Click Save.
 7.

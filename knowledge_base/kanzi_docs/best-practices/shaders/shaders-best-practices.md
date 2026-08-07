@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/best-practices/shaders/shaders-best-prac
 
 # Shaders best practices
 
-
 Your application spends a considerable amount of time executing shader programs. Especially with mobile and embedded hardware, shaders can be the source of many problems, including performance bottlenecks and graphical artifacts. When used properly, shaders can help you produce amazing graphical quality and performance by distributing computation between the CPU and the GPU. You have to decide whether to perform computations in the fragment or the vertex shader.
 
 A vertex shader of a shader program is run once for each vertex while its fragment shader is run once for each pixel. Usually there are an order of magnitude more pixels than vertices. For this reason, the best practice is to calculate as much as possible in the vertex shader and use the results in the fragment shader.
@@ -19,7 +18,6 @@ Some of the most common shader bottlenecks are:
 - Displays with a lot of fragments that require filling a lot of pixels on the screen.
 - Vertices that are sent to the GPU and processed by a vertex shader. Triangle count provides a hint of vertex count drawn per frame. See Troubleshooting the performance of your application.
 
-
 Kanzi Studio provides these templates for different shader profiles:
 
 - High performance vertex shaders template is intended for low precision and high performance applications. It contains vertex-based shaders. Most of the GPU specific computation, including applying lights using the Phong reflection model, is done in the vertex shader. This is a good starting point for most devices.
@@ -27,7 +25,6 @@ Kanzi Studio provides these templates for different shader profiles:
 The vertex-based shading offered in the High performance vertex shaders material type is a good choice for mobile GPUs, because of the lower cost of vertex-based shading.
 - High quality fragment shaders template is intended for high-precision applications. It contains pixel-shader based materials. Most of the GPU specific computation, including applying lights using the Phong reflection model, is done in the fragment shader. This offers better image quality often at the cost of performance.
 - Physically based rendering template is intended for modern applications. It contains materials based on shaders that implement physically-based rendering (PBR) principles. The properties of these materials represent physical properties, such as metalness, and are therefore intuitive to control. Most of the GPU specific computation, including applying lights using a physically-based lighting model, is done in the fragment shader. This offers a more realistic rendering result in many lighting conditions.
-
 
 Depending on the graphics hardware and the complexity of the scene, shaders can have a big impact on application performance.
 
@@ -37,7 +34,6 @@ For mobile and embedded devices, use:
 
 - Low precision for all variables that range [-2..2].
 - Medium precision for other variables that do not require the full precision of 32-bit floating point.
-
 
 Shaders are material-specific. You can modify shaders directly in Kanzi Studio. See Editing shaders.
 

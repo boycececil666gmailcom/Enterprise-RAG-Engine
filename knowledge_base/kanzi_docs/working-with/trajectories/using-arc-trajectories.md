@@ -5,14 +5,12 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/trajectories/using-arc-traj
 
 # Using arc trajectories
 
-
 Use an Arc Trajectory to create a path in the shape of an arc in 3D space.
 
 Use trajectories as paths along which Trajectory Layout 3D and Trajectory Layout 2D nodes arrange their child nodes, and along which Trajectory List Box 3D nodes move their items.
 
 See Using the Trajectory Layout nodes and Using the Trajectory List Box 3D node.
 ## Creating an arc trajectory
-
 
 To create an arc trajectory:
 
@@ -41,6 +39,5 @@ For example:
 To take the trajectory into use, in the Node Tree select a Trajectory Layout or a Trajectory List Box 3D node and in the Properties set the Trajectory property to the trajectory you want to use. See Using the Trajectory List Box 3D node and Using the Trajectory Layout nodes.
 
 ## Arc Trajectory property types
-
 
 For a list of the available property types for arc trajectories, see Arc Trajectory.

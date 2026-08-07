@@ -5,14 +5,12 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/trajectories/using-spline-t
 
 # Using spline trajectories
 
-
 Use a Spline Trajectory to import a trajectory defined by a set of points and control points in 3D space you created in a third-party tool.
 
 Use trajectories as paths along which Trajectory Layout 3D and Trajectory Layout 2D nodes arrange their child nodes, and along which Trajectory List Box 3D nodes move their items.
 
 You can import and convert curves, including NURBS curves, to Kanzi splines from .fbx files. Make sure that your third-party software exports splines as curves. See Adjusting a spline created from a NURBS curve.
 ## Creating a spline trajectory
-
 
 To create a spline trajectory:
 
@@ -30,7 +28,6 @@ In the Properties set the Spline property to the spline you imported.
 To take the trajectory into use, in the Node Tree select a Trajectory Layout or a Trajectory List Box 3D node and in the Properties set the Trajectory property to the trajectory you want to use. See Using the Trajectory List Box 3D node and Using the Trajectory Layout nodes.
 
 ## Adjusting a spline created from a NURBS curve
-
 
 When you use a NURBS curve for a spline trajectory you can adjust the number of subdivisions when importing the NURBS curve to Kanzi Studio. Kanzi uses the value you provide to tesselate the NURBS curve as a Kanzi spline. See Using the Trajectory List Box 3D node and Using the Trajectory Layout nodes.
 
@@ -52,6 +49,5 @@ In the Library > Resource Files > 3D Assets right-click the .fbx file that conta
 In the Library > Trajectories select the spline trajectory that uses the NURBS curve you imported and in the Properties set the Spline property to the spline you imported.
 
 ## Spline Trajectory property types
-
 
 For a list of the available property types for spline trajectories, see Spline Trajectory.

@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/2d-content/setting-the-pers
 
 # Creating a 3D perspective effect for 2D nodes
 
-
 Use the Perspective Transformation property to create a 3D perspective effect for 2D nodes. With the Layout Transformation Rotation property field you can rotate a node only in the 2D space, around the z axis. With the Perspective Transformation Rotation X, Y, and Z property fields you can rotate a 2D node around all three axes, creating a 3D perspective effect.
 
 The Perspective Transformation property transforms the node after it applies the layout pass, but before it renders the node.
@@ -26,7 +25,6 @@ In the Properties in the Perspective Transformation property set:
   - Rotation Y to the number of degrees you want to rotate the node around the y axis.
   - Rotation Z to the number of degrees you want to rotate the node around the z axis.
 
-
 For example, set the Perspective Transformation Rotation Y property field to 45 to rotate the image 45 degrees around the y axis.
 4.
 
@@ -34,7 +32,6 @@ For example, set the Perspective Transformation Rotation Y property field to 45 
 
   - X to the percentage of the node width you want to set the origin on the x axis
   - Y to the percentage of the node height you want to set the origin on the y axis
-
 
 In Kanzi by default the origin of all 2D nodes is in the upper left corner of the node. You use the Render Transformation Origin property to set the origin of the node.
 

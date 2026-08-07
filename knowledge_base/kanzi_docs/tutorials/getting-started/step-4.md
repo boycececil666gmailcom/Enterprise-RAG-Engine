@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/getting-started/step-4.html
 
 # Step 4 - Create interactions
 
-
 In this step, you learn how to create interactions in your application with triggers and actions.
 ## Create interactions
-
 
 Use triggers and actions to create interactions. Use triggers to set off actions, such as setting a property to a certain value or setting the state of an application.
 
@@ -57,10 +55,8 @@ In the main menu select Window > Log to open the Log window.
 
 Kanzi prints to the Log window messages, warnings, and errors.
 
-
 In the Preview window, when you click the area of the Next Button 2D node, you set off the Button: Click trigger that executes the Write Log action that writes the name of the node to the Log window.
 ## Create navigation
-
 
 In this section, you create the application navigation and define the look of the button that you created in the previous section.
 
@@ -92,7 +88,6 @@ In the Prefabs window, select the Next node. In the Properties window, add and s
   - Horizontal Alignment to Right
   - Vertical Alignment to Center
 
-
 This way you align the node to the right and center of the application screen.
 5.
 
@@ -105,7 +100,6 @@ In the Navigate to Next Activity action, set:
 
   - Target Item to Relative and #Application Screens
   - Loop Activity to enabled
-
 
 When the Button: Click trigger executes this action, the action navigates to the next Activity in the Application Screens Activity Host. When you reach the last Activity, the action navigates to the first Activity.
 7.
@@ -137,7 +131,6 @@ In the Node Components, press Alt and right-click the Button: Click trigger, sel
 12.
 
 In the Preview window, click  to exit the Analyze mode.
-
 
 In the Preview window, when you click the Next and Previous buttons, you set off the Button: Click triggers in these buttons and use the Navigate to Next Activity and Navigate to Previous Activity actions to go to the next and previous Activity of the Application Screens Activity Host.
 

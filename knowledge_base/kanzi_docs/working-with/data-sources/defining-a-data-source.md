@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/data-sources/defining-a-dat
 
 # Defining a data source
 
-
 To use data from an external data source in your Kanzi application:
 
 1.
@@ -15,10 +14,8 @@ Define your data source in a Kanzi Engine plugin. See Defining a data source.
 
 Use in your Kanzi Studio project the data source plugin which defines your data source. See Taking a data source plugin into use.
 
-
 To learn how to use a data source in your Kanzi Studio project, see Using a data source.
 ## Defining a data source
-
 
 To define a data source:
 
@@ -43,19 +40,13 @@ In Kanzi Studio, select File > Open Kanzi Command Prompt.
 The Kanzi Command Prompt opens the Windows Command Prompt with the Kanzi environment variables set for the version of Kanzi for which you open a Kanzi Command Prompt.
 
 Use the Kanzi Command Prompt to access Kanzi utilities and build tools, such as Gradle and CMake, without using absolute paths or setting environment variables.
-
-> **Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
->
-> When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
-> 3.
->
-> In the Kanzi Command Prompt in the `<ProjectName>/Application` directory, run the script that generates a Visual Studio solution for the application.
->
-> ```
-> generate_cmake_vs2022_solution.bat
->
-> ```
-
+**Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
+When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
+3.
+In the Kanzi Command Prompt in the `<ProjectName>/Application` directory, run the script that generates a Visual Studio solution for the application.
+```
+generate_cmake_vs2022_solution.bat
+```
 
 This script generates a Visual Studio solution for the application in the directory `<ProjectName>/Application/build_vs2022`.
 4.
@@ -73,7 +64,6 @@ When you add or remove files that your Kanzi application or Kanzi Engine plugin 
 
   - When you change the files that you use in your Kanzi application, update `<ProjectName>/Application/src/executable/CMakeLists.txt`
   - When you change the files that you use in your Kanzi Engine plugin, update `<ProjectName>/Application/src/plugin/CMakeLists.txt`
-
 
 For example, to add the `tinyxml2.cpp` and `tinyxml2.h` files to your Kanzi Engine plugin, update `<ProjectName>/Application/src/plugin/CMakeLists.txt` to include these files
 
@@ -104,7 +94,6 @@ If the Kanzi Studio project that uses this plugin is opened, before you start bu
 
 ## Taking a data source plugin into use
 
-
 Once you have your data source plugin ready, you have to either enable it in your Kanzi Studio project, or import the plugin into another Kanzi Studio project where you want to use the same type of the data source.
 
 To define a data source, see Defining a data source.
@@ -121,36 +110,22 @@ You have to update the plugin metadata every time you make a change to the plugi
   2.
 
 In the Library > Kanzi Engine Plugins select the plugin and in the Properties make sure that the Is Enabled property is enabled.
-
-> **Tip:** Use the Is Enabled property to enable or disable any Kanzi Engine plugin in your project.
->
-> - In any other Kanzi Studio project where you want to use the plugin where you defined your data source:
->
-> 1.
->
-> In Kanzi Studio create a project, and in the New tab of the Quick Start window, select the Application, Application with data source plugin, or Application with Kanzi Engine plugin project template.
-> 2.
->
-> In Kanzi Studio, select File > Open Kanzi Command Prompt.
->
-> The Kanzi Command Prompt opens the Windows Command Prompt with the Kanzi environment variables set for the version of Kanzi for which you open a Kanzi Command Prompt.
->
-> Use the Kanzi Command Prompt to access Kanzi utilities and build tools, such as Gradle and CMake, without using absolute paths or setting environment variables.
->
-> Tip
->
-> You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
->
-> When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
-> 3.
->
-> In the Kanzi Command Prompt in the `<ProjectName>/Application` directory, run the script that generates a Visual Studio solution for the application.
->
-> ```
-> generate_cmake_vs2022_solution.bat
->
-> ```
-
+**Tip:** Use the Is Enabled property to enable or disable any Kanzi Engine plugin in your project.
+- In any other Kanzi Studio project where you want to use the plugin where you defined your data source:
+1.
+In Kanzi Studio create a project, and in the New tab of the Quick Start window, select the Application, Application with data source plugin, or Application with Kanzi Engine plugin project template.
+2.
+In Kanzi Studio, select File > Open Kanzi Command Prompt.
+The Kanzi Command Prompt opens the Windows Command Prompt with the Kanzi environment variables set for the version of Kanzi for which you open a Kanzi Command Prompt.
+Use the Kanzi Command Prompt to access Kanzi utilities and build tools, such as Gradle and CMake, without using absolute paths or setting environment variables.
+Tip
+You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
+When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
+3.
+In the Kanzi Command Prompt in the `<ProjectName>/Application` directory, run the script that generates a Visual Studio solution for the application.
+```
+generate_cmake_vs2022_solution.bat
+```
 
 This script generates a Visual Studio solution for the application in the directory `<ProjectName>/Application/build_vs2022`.
   4.
@@ -177,5 +152,4 @@ Select the plugin DLL that defines your data source and click Open.
   9.
 
 In the Library > Kanzi Engine Plugins select the plugin and in the Properties make sure that the Is Enabled property is enabled.
-
-> **Tip:** Use the Is Enabled property to enable or disable any Kanzi Engine plugin in your project.
+**Tip:** Use the Is Enabled property to enable or disable any Kanzi Engine plugin in your project.

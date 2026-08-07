@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/bloom/step-1.html
 
 # Step 1 - Render the car and headlights
 
-
 In this step of the tutorial, you create the render passes that you need to render the car and the headlights separately.
 ## Get the tutorial
-
 
 To get the tutorial, in the Kanzi Studio Quick Start window, click Projects and select the Tutorials tab. Next to the Bloom tutorial, click .
 
@@ -19,7 +17,6 @@ Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` director
 - The completed tutorial in the `<KanziWorkspace>/Tutorials/Bloom/Completed` directory.
 
 ## Render the scene
-
 
 In this section, you create the render passes to render the entire scene.
 
@@ -46,7 +43,6 @@ For example, to clear the first color buffer with a different color, set the Cle
     - Gather Lights render pass collects the Light nodes in the Viewport 2D node that you set to use the Compose and Blit Pass, and passes them to its child Draw Objects render pass.
 
       - Draw Objects render pass named Draw Objects allows you to set a Camera node to render a specific list of nodes, to filter those nodes, and to control frustum culling. Draw Objects render pass by default renders nodes using the lights provided by its nearest ancestor Gather Lights render pass. By default the Draw Objects render pass uses the default Camera node to render all nodes in a Viewport 2D node.
-
 
   - Blit render pass blits one or more single textures or cubemap textures on the screen using a specific material.
 
@@ -83,7 +79,6 @@ See the documentation of the device on which you want to run your Kanzi applicat
 
 ## Render the headlights
 
-
 In this section, you create the render passes and material that you need to render only the car headlights to which you later apply the bloom effect.
 
 To render the headlights:
@@ -114,13 +109,11 @@ In the Properties, add and set:
   - Material to BloomThresholdMaterial
   - Material Properties > Threshold to 0.9
 
-
 You use this render pass to draw to the screen only those regions of the car node that are brighter than the value of the Threshold property. Later you apply a Gaussian blur to these regions to create the bloom effect.
 5.
 
 In the Library in the Render Bloom render pass, create a Composition Target render pass and name it Bloom Threshold. Drag the Blit Bloom Threshold render pass to the Bloom Threshold render pass.
 
 You use the Bloom Threshold render pass to render the Blit Bloom Threshold render pass to a composition target, which you later use as input to the render passes that apply the bloom effect. Because Kanzi renders the Blit Bloom Threshold render pass to a composition target, the Preview does not show it.
-
 
 Introduction Next step

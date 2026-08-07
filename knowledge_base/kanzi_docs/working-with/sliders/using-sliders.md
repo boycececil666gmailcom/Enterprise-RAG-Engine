@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/sliders/using-sliders.html
 
 # Using the Slider nodes
 
-
 Use the Slider nodes when you want to allow users to change numerical values using a visual indicator between a minimum and a maximum value.
 
 As you move the knob along the trajectory the slider generates messages: drag started, drag finished, and value changed.
@@ -19,10 +18,8 @@ The Slider nodes have the Focusable property enabled and can receive focus by de
 - â and â to move the knob of a horizontal slider
 - â and â to move the knob of a vertical slider
 
-
 To move a slider knob with the arrow keyboard keys, in that Slider node set the amount that the knob moves for each key press with the Step Value property.
 ## Using the slider from the Factory Content
-
 
 The Kanzi Factory Content asset package contains a 2D slider that you can customize to suit your needs.
 
@@ -49,9 +46,7 @@ Kanzi Studio imports the Slider asset to your project, creates from the slider a
   - Rail Background Color to set the color of the rail from the knob until the end of the rail.
   - Rail Fill Color to set the color of the rail from the start of the rail until the knob.
 
-
 ## Creating your own slider
-
 
 When the slider that comes with Kanzi does not meet your requirements, you can create your own slider.
 
@@ -88,7 +83,6 @@ Kanzi Studio creates and uses a circle trajectory by default. You can use an ang
 
 For example, create a Content Layout 2D node and name it Knob.
 
-
 3.
 
 Select the node you want to use as the knob, in the Properties click + Add Binding, and in the Binding Editor set:
@@ -100,7 +94,6 @@ Select the node you want to use as the knob, in the Properties click + Add Bindi
 {@../../RangeConcept.NormalizedValue}
 
 ```
-
 
 Click Save. See Using bindings.
 4.
@@ -138,12 +131,10 @@ Drag the slider you created from the Prefabs to the Node Tree and drop it on the
 
 ## Updating the slider value with a property
 
-
 You can control the value of a slider by binding its Value property to some other property. For example:
 
 - To change the slider value when the value of some other property changes, use a to-source binding.
 - To change the slider value when the value of some other property changes, and the other way around, use a two-way binding. See Using a slider to scroll a Grid List Box node.
-
 
 When you move the slider knob, the slider internally overrides any one-way binding that targets the Value property. See Bindings.
 
@@ -179,14 +170,12 @@ In the Node Tree, select the Slider node. In the Properties, add and set:
   - Minimum Value to the same value as the Lower Bound of your custom property.
   - Maximum Value to the same value as the Upper Bound of your custom property.
 
-
 To adjust the slider value:
 
 - In the Preview, move the slider knob.
 - In the Properties, adjust the value of the custom property.
 
 ## Using a slider to scroll a Grid List Box node
-
 
 You can use a Slider node to scroll a Grid List Box node. In this example you use a slider to scroll a vertical contacts list.
 
@@ -226,25 +215,17 @@ In the Node Tree select the Slider node, in the Properties click + Add Binding, 
 
 ```
 
-
 This way you make the length of the slider rail match the height of the Contact List node.
-
-> **Tip:** You can start creating a binding for a property by right-clicking a property and selecting Create Binding.
->
-> This way you automatically add the property to the Binding Editor.
-> 3.
->
-> In the Properties add the Transform 2D > Layout Transformation property and set the Rotation property field to 90.
->
-> This way you make the slider vertical.
-> 4.
->
-> In the Properties click + Add Binding and in the Binding Editor set:
->
-> - Property to Maximum Value
-> - Expression to
->
-> ```
+**Tip:** You can start creating a binding for a property by right-clicking a property and selecting Create Binding.
+This way you automatically add the property to the Binding Editor.
+3.
+In the Properties add the Transform 2D > Layout Transformation property and set the Rotation property field to 90.
+This way you make the slider vertical.
+4.
+In the Properties click + Add Binding and in the Binding Editor set:
+- Property to Maximum Value
+- Expression to
+```
 # Get the number of items in the Contact List node.
 itemCount = {@../Contact List/ListBoxConcept.ItemCount}
 
@@ -258,7 +239,6 @@ listBoxHeight = {@../Contact List/Node.Height}
 itemCount * itemHeight - listBoxHeight
 
 ```
-
 
 You bind the highest value of the Slider node to the height of the invisible area of the Contact List node. The lowest value of the Slider node is by default 0. This way you set the range of values in the slider to match the length of the contacts list.
 
@@ -277,13 +257,10 @@ For example, set it to:
 
 ```
 
-
 You bind the Value property of the Slider node to the Scroll Position property Y property field of the Contact List node. This way you create a two-way connection between the position of the slider knob and the vertical scroll position of the list box.
-
 
 In the Preview when you move the slider knob, the contacts list scrolls, and when you scroll the contacts list, the slider knob moves.
 ## Creating a color picker with a slider
-
 
 You can use a Slider node to create a color picker where the slider value sets the color of a color swatch.
 
@@ -328,48 +305,29 @@ Create a Trajectory Layout 2D node that acts as the rail along which you move th
 For example, set them to 665.
       - Horizontal Alignment and Vertical Alignment to Center
 
-
 This way you position the trajectory layout over the color wheel.
-
-> **Tip:** To see the trajectory, in the Preview click  to enter the Analyze mode, right-click , and select Debug objects.
-> 3.
->
-> In the Trajectory Layout 2D node, create an Image node that you use as the visual representation of the slider knob.
->
-> 5.
->
-> In the Prefabs, select the Trajectory Layout 2D node. In the Properties next to the Trajectory property, click  to go to that resource and set:
->
-> - Radius to half of the width of the Trajectory Layout 2D node
->
-> For example, set it to 332.
-> - Angle to 180
->
-> You set the starting point of the trajectory to the color red, whose hue is 0.
->
-> 6.
->
-> Create an alias that Kanzi uses to tell the slider which trajectory to use as the rail of the slider:
->
-> 1.
->
-> In the Prefabs, select the Color Picker prefab. In the Dictionaries, click + Add Resource, select Create > Alias, and name the alias $layout.
-> 2.
->
-> Set the $layout alias to point to the Trajectory Layout 2D node in the Color Picker prefab.
->
-> 7.
->
-> In the Prefabs, select the Knob node. In the Properties, click + Add Binding and in the Binding Editor, set:
->
-> - Property to Trajectory Override Offset
-> - Expression to
->
-> ```
-> {@../../RangeConcept.NormalizedValue}
->
-> ```
-
+**Tip:** To see the trajectory, in the Preview click  to enter the Analyze mode, right-click , and select Debug objects.
+3.
+In the Trajectory Layout 2D node, create an Image node that you use as the visual representation of the slider knob.
+5.
+In the Prefabs, select the Trajectory Layout 2D node. In the Properties next to the Trajectory property, click  to go to that resource and set:
+- Radius to half of the width of the Trajectory Layout 2D node
+For example, set it to 332.
+- Angle to 180
+You set the starting point of the trajectory to the color red, whose hue is 0.
+6.
+Create an alias that Kanzi uses to tell the slider which trajectory to use as the rail of the slider:
+1.
+In the Prefabs, select the Color Picker prefab. In the Dictionaries, click + Add Resource, select Create > Alias, and name the alias $layout.
+2.
+Set the $layout alias to point to the Trajectory Layout 2D node in the Color Picker prefab.
+7.
+In the Prefabs, select the Knob node. In the Properties, click + Add Binding and in the Binding Editor, set:
+- Property to Trajectory Override Offset
+- Expression to
+```
+{@../../RangeConcept.NormalizedValue}
+```
 
 Click Save.
 
@@ -420,7 +378,6 @@ sRGBToLinear(srgbColor)
 
 ```
 
-
 Click Save.
 
 You bind the ColorPicker.Color property to a color value that you calculate based on the Value property of the slider. To convert between color spaces, you use the hslToSrgb and sRGBToLinear binding functions.
@@ -437,7 +394,6 @@ In the Node Tree, create an Empty Node 2D node and name it Color Swatch. In the 
     - Layout Width and Layout Height to 300
     - Horizontal Alignment and Vertical Alignment to Center
 
-
 You use this node to show the color that the user selects in the color wheel with the slider.
   2.
 
@@ -453,15 +409,11 @@ In the Node Tree, select the Color Swatch node. In the Properties, click + Add B
 
 ```
 
-
 Click Save.
 
 This way you set the value of the Brush Color property for the brush that is used by the Foreground Brush of the Color Swatch node. You bind the value of the Brush Color property to the value of the ColorPicker.Color property in the Color Picker node.
-
-> **Tip:** You can start creating a binding for a property by right-clicking a property and selecting Create Binding.
->
-> This way you automatically add the property to the Binding Editor.
-
+**Tip:** You can start creating a binding for a property by right-clicking a property and selecting Create Binding.
+This way you automatically add the property to the Binding Editor.
 
 In the Preview, when you drag the knob along the color wheel, the color swatch shows the color under the knob.
 4.
@@ -497,9 +449,7 @@ In the Prefabs, select the Color Picker prefab. In the Properties, set the Layou
 
 For example, set the Layout Width and Layout Height to 710.
 
-
 ## Controlling whether a Slider node is in use
-
 
 To control whether a Slider node is in use, use the Input > Enabled property. A disabled Slider node does not react to user input. When you disable a Slider node, Kanzi stops ongoing gestures and preserves the slider value.
 
@@ -510,7 +460,6 @@ To observe whether a node is effectively enabled, use the Input > Effectively En
 See Controlling how a node reacts to input.
 ## Setting the appearance of a Slider 2D node
 
-
 To set the appearance of 2D nodes:
 
 - You can fill 2D nodes with a solid color, a texture, or a material. See Adjusting the appearance of 2D nodes.
@@ -520,7 +469,6 @@ To set the appearance of 2D nodes:
 - You can render a 2D node as pixel-perfect. See Rendering pixel-perfect 2D nodes.
 
 ## Using the Slider 3D node in the API
-
 
 To create a Slider 3D node with a custom appearance:
 
@@ -578,10 +526,8 @@ trajectoryLayout->setDepthAlignment(Node::DepthAlignmentStretch);
 
 ```
 
-
 For details, see the `Slider3D` class.
 ## Using the Slider 2D node in the API
-
 
 To create a Slider 2D node with a custom appearance:
 
@@ -638,9 +584,7 @@ knobInstance->setBinding(binding, TrajectoryLayout2D::OverrideOffsetProperty, Pr
 
 ```
 
-
 For details, see the `Slider2D` class.
 ## Slider property types and messages
-
 
 For lists of the available property types and messages for the Slider nodes, see Slider 2D and Slider 3D.

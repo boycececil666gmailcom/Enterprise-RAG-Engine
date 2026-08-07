@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/list-box/step-1.html
 
 # Step 1 - Create a contacts list and get contacts from a data source
 
-
 In this step of the tutorial you first create the Grid List Box node which you use as a contacts list. You then set the Grid List Box to receive the contacts data from a data source.
 ## Get the tutorial
-
 
 To get the tutorial, in the Kanzi Studio Quick Start window, click Projects and select the Tutorials tab. Next to the List box tutorial, click .
 
@@ -17,14 +15,12 @@ Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` director
 - The tutorial starting point project in the `<KanziWorkspace>/Tutorials/List box/Start/Tool_project` directory.
 - The completed tutorial in the `<KanziWorkspace>/Tutorials/List box/Completed` directory.
 
-
 This tutorial depends on a plugin from the Data source tutorial.
 
 To get the Data sources tutorial, in the Kanzi Studio Quick Start window, click Projects and select the Tutorials tab. Next to the Data sources tutorial, click .
 
 Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` directory.
 ## Content of the starting point project
-
 
 The starting point project contains the content that you need to complete this tutorial:
 
@@ -34,14 +30,12 @@ The starting point project contains the content that you need to complete this t
   - The ContactPhoto node shows the photo for a contact.
   - The ContactName node shows the name for a contact.
 
-
 You can find the ContactItem node in the Prefabs window.
 - XML data source data source plugin which you use to get the data for contact entries from an XML file. This plugin uses the `ContactsList.xml` file as the source of data for the contact entries in this tutorial. You can find the `ContactsList.xml` file in the `Application/bin` directory.
 
 To view the Data Sources window, in the Kanzi Studio main menu select Window > Data Sources.
 
 ## Create a Grid List Box node
-
 
 In this section you create the Grid List Box node that you use to show the list of contacts.
 
@@ -60,7 +54,6 @@ In the Node Tree select the ContactsList node, in the Properties add the Item Te
 With the Item Template property you set which prefab template you want a Grid List Box node to use for the items in its list.
 
 ## Get the List Box items from a data source
-
 
 In this section you use a data source to populate the ContactsList that you created in the previous section.
 
@@ -100,10 +93,8 @@ Repeat the previous step for the ContactItem > ContactName node but drag the XML
 
 This data object provides the name for each contact item in the contacts list.
 
-
 The ContactsList node now receives the photos and names for the contact items from the `ContactsList.xml` using the XML data source data source. In the Preview you can see the contact data.
 ## Set the layout of the Grid List Box node
-
 
 In this section you set the layout for the ContactsList node and the size of the list items to present the content in the application.
 
@@ -121,10 +112,8 @@ You set the area in which the items in the Grid List Box node are visible. If al
 
 This way you align the ContactsList node horizontally to the center of the Container node.
 
-
 The Preview now shows the updated layout for the list box and its items. To change the name of a contact in the contacts list, in a text editor change the values in the `ContactsList.xml` file, and save the `ContactsList.xml` file.
 ## Set the selected item to move to the center of the Grid List Box node
-
 
 In this section you set the selected item to move to the center of the Grid List Box node.
 

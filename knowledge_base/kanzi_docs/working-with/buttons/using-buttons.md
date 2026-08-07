@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/buttons/using-buttons.html
 
 # Using the Button nodes
 
-
 Use the Button nodes to create interactions through clicking, tapping, or pressing a key on the keyboard.
 
 Use Button 3D to create a 3D button and Button 2D to create a 2D button.
@@ -14,7 +13,6 @@ Kanzi allows you to create buttons using:
 
 - State managers
 - Triggers and actions
-
 
 The difference between the two approaches is that when you use the state manager you always know in which state the button is. For example, when a user clicks a button created with triggers and actions, the action sends the message, but your application is not aware of the state of the button. When you use the state manager, you can always check which state the button is in and even revert the state when needed. See Using state managers.
 
@@ -35,7 +33,6 @@ The Kanzi Factory Content asset package contains a 2D button that you can custom
 To learn how to create a button, complete Tutorial: Creating a button.
 ## Creating a button
 
-
 To create a button:
 
 1.
@@ -48,21 +45,15 @@ You can create a 3D node only in a 3D node, such as the Scene node, and a 2D nod
 Define the content and appearance of the button.
 
 For example, if you created a Button 2D node, add to it a Text Block 2D node that shows the button label, and in the Button 2D node set the Layout Width, Layout Height, and Background Brush properties. See Adjusting the appearance of 2D nodes.
+**Tip:** Use a Content Layout node to create the layout for a button that contains multiple content nodes. See Using the Content Layout nodes.
+3.
+In the Prefabs or Node Tree select the Button node, in the Node Components > Triggers section in the Button: Click message trigger press Alt and right-click Actions, and select an action that you want to set off when the user presses the button.
+For example, select the Write Log action and set its Log Text property to <Name>. In the Preview when you click the visual representation of the button, the Write Log action writes the name of that node to the Log window.
+To learn more about the Write Log action, see Using Write Log action.
+4.
+(Optional) Use the Button triggers that come with Kanzi to define the behavior of Button nodes. See Using triggers and Button node triggers.
 
-> **Tip:** Use a Content Layout node to create the layout for a button that contains multiple content nodes. See Using the Content Layout nodes.
-> 3.
->
-> In the Prefabs or Node Tree select the Button node, in the Node Components > Triggers section in the Button: Click message trigger press Alt and right-click Actions, and select an action that you want to set off when the user presses the button.
->
-> For example, select the Write Log action and set its Log Text property to <Name>. In the Preview when you click the visual representation of the button, the Write Log action writes the name of that node to the Log window.
->
-> To learn more about the Write Log action, see Using Write Log action.
-> 4.
->
-> (Optional) Use the Button triggers that come with Kanzi to define the behavior of Button nodes. See Using triggers and Button node triggers.
->
 ## Controlling the behavior of a Button node
-
 
 In Kanzi, to control the behavior of a Button node you can:
 
@@ -71,7 +62,6 @@ In Kanzi, to control the behavior of a Button node you can:
 - Enable users to double-click or double-tap Button nodes. See Enabling the double-click gesture for a Button node.
 
 ### Using a state manager to set button states
-
 
 Use a state manager to define how a Button node reacts to user input. For example, you can set how a button looks when the user presses or releases that button. You can see how to use state managers in Using state managers. To learn more about creating buttons using a state manager, see Tutorial: Creating a button.
 
@@ -115,10 +105,8 @@ In the State Tools, click Edit State Manager to deactivate the State Tools.
 
 (Optional) To set Kanzi to transition instantly between the button states, in the State Tools click the Any -> Any transition, in the State Transition Settings set the Duration property to 0, and click Save.
 
-
 In the Preview when you click the button, the button enters the Pressed state and its appearance changes. The button stays in the Pressed state as long as you hold down the mouse button. When you release the mouse button, the button returns to the Default state.
 ### Controlling whether a Button node is in use
-
 
 To control whether a Button node is in use, use the Input > Enabled property. A disabled Button node does not produce user events, such as button presses.
 
@@ -128,7 +116,6 @@ To observe whether a node is effectively enabled, use the Input > Effectively En
 
 See Controlling how a node reacts to input.
 ### Using the Button triggers
-
 
 Use the Button triggers that come with Kanzi to define the behavior of Button nodes. To learn more about using triggers, see Using triggers.
 
@@ -154,7 +141,6 @@ Use the Button triggers that come with Kanzi to define the behavior of Button no
 
 ### Enabling the double-click gesture for a Button node
 
-
 Use the double-click gesture to enable users to double-click or double-tap buttons in your Kanzi application. Use the Multi-Click trigger to react to the double-click gesture. For example, you can change the appearance of a Button node when the user double-clicks or double-taps that node.
 
 To enable the double-click gesture for a Button node:
@@ -173,7 +159,6 @@ In the Node Components > Triggers press Alt and right-click the Multi-Click trig
 
 ## Setting the appearance of a Button 2D node
 
-
 To set the appearance of 2D nodes:
 
 - You can fill 2D nodes with a solid color, a texture, or a material. See Adjusting the appearance of 2D nodes.
@@ -184,13 +169,10 @@ To set the appearance of 2D nodes:
 
 ## Using the Button 3D node in the API
 
-
 For details, see the `Button3D` class.
 ## Using the Button 2D node in the API
 
-
 For details, see the `Button2D` class.
 ## Button property types and messages
-
 
 For lists of the available property types and messages for the Button nodes, see Button 2D and Button 3D.

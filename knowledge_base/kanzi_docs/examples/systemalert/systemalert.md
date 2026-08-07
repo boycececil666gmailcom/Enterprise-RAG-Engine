@@ -5,22 +5,18 @@ source: https://docs.kanzi.com/4.1.0/en/examples/systemalert/systemalert.html
 
 # Android System Alert example
 
-
 This example shows how you can integrate a Kanzi Android framework (droidfw) view in an Android System Alert window.
 ## Getting the example
-
 
 To get the example, in the Kanzi Studio Quick Start window, click Projects and select the Examples tab. Next to the SystemAlert example, click .
 
 Kanzi Studio downloads the example to the `<KanziWorkspace>/Examples/Android/SystemAlert` directory.
 ## Content of the example
 
-
 The main activity of the example contains an Android button and does not contain Kanzi content. When you click the button, the example shows an Android System Alert window that has an embedded Kanzi view.
 
 To dismiss the alert, click the alert. When you dismiss the alert, the Kanzi main loop is inactive and does not consume any CPU.
 ## Running the example
-
 
 To run the example:
 

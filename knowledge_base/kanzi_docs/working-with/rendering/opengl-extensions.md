@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/rendering/opengl-extensions
 
 # OpenGL extensions used in Kanzi
 
-
 This table lists the OpenGL extensions that Kanzi uses.
 |
 

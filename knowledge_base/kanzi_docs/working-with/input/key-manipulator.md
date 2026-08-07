@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/input/key-manipulator.html
 
 # Using the Key Manipulator
 
-
 Use the Key Manipulator to set the keys that the user can use to navigate your application. For example, you can override the default focus navigation keys and use a specific key to set focus to a node, set a key to open or close a popup-type window, or move focus in the focus chain.
 ## Default keyboard navigation keys
-
 
 These are the default keyboard keys that you can use to move focus in your application:
 
@@ -22,7 +20,6 @@ These are the default keyboard keys that you can use to move focus in your appli
   - â and â to move the knob of a horizontal slider
   - â and â to move the knob of a vertical slider
 
-
 To move a slider knob with the arrow keyboard keys, in that Slider node set the amount that the knob moves for each key press with the Step Value property.
 - The Scroll View nodes that you create in Kanzi Studio have the Focusable property enabled and can receive focus by default. When a Scroll View node has focus, to scroll that node, you can use the default keyboard keys â, â, â, and â.
 - When a List Box node has the focus, you can use these default keyboard keys to navigate the focusable list items:
@@ -32,7 +29,6 @@ To move a slider knob with the arrow keyboard keys, in that Slider node set the 
   - Home to move the focus to the first focusable item.
   - End to move the focus to the last focusable item.
   - Page Up and Page Down to move the focus backward or forward by one page in a Grid List Box node. One page corresponds to the size of the visible area of the Grid List Box node.
-
 
 See Handling the key focus in a List Box node.
 - When a Text Box node is in the editing state, to move the cursor in that text box, you can use these default keyboard keys:
@@ -44,7 +40,6 @@ See Handling the key focus in a List Box node.
   - Home to move the cursor to the beginning of the text content.
   - End to move the cursor to the end of the text content.
 
-
 When a Text Box node is in the editing state, to modify the text selection in that text box, you can use these default keyboard keys:
 
   - Shift â to move the active cursor in the text selection one character backward.
@@ -55,9 +50,7 @@ When a Text Box node is in the editing state, to modify the text selection in th
   - Shift End to move the active cursor in the text selection to the end of the text content.
   - Ctrl A to select all text.
 
-
 ## Using the Key Manipulator triggers
-
 
 Use the Key Manipulator triggers to react when the user presses or releases a key. For example, you can override the default focus navigation keys and use a specific key to set focus to a node, show or hide an overlay, or move focus in the focus chain. See Default keyboard navigation keys.
 
@@ -66,7 +59,6 @@ The Key Manipulator has these triggers:
 - Key Pressed trigger is set off when the user presses a specific key on their keyboard.
 - Key Released trigger is set off when the user releases a specific key on their keyboard.
 - Key Canceled trigger is set off when the user cancels a key press gesture.
-
 
 To use the Key Manipulator triggers:
 
@@ -95,7 +87,6 @@ For example, to hide an overlay when the user presses the Enter key, set the Log
 
 For example, to set the node to react when the user presses the Ctrl key and the key that you set in the Logical Key property, set the Key Modifiers to Control.
 
-
 2.
 
 In the Node Components add one of the Key Manipulator triggers.
@@ -121,13 +112,10 @@ For example, if you set an overlay to both open and close when the user presses 
     - Type of B to Fixed
     - Fixed Value to disabled
 
-
 With this condition you set the trigger to handle the first key press. This way if the application user holds the key down, the overlay does not open and close repeatedly.
-
 
 When the user presses the key that you set in the Key Manipulator (Enter), the Key Pressed trigger sets off the action which closes the overlay and sets the focus to the previously focused user interface element.
 ## Using the key manipulator in the API
-
 
 To handle the press and release of the A key:
 
@@ -149,14 +137,12 @@ anyNode->addMessageHandler(KeyManipulator::KeyReleasedMessage, onKeyReleased);
 
 ```
 
-
 To handle the Left Ctrl modifier key as a key gesture:
 
 ```
 keyManipulator->setKey(LogicalKey::LeftControl);
 
 ```
-
 
 To handle a key gesture composed of the Shift A keys:
 
@@ -165,7 +151,6 @@ keyManipulator->setKey(LogicalKey::A, KeyModifier::Shift);
 
 ```
 
-
 To handle the Left Alt and Left Ctrl modifier keys, set the Left Alt key as the modifier key:
 
 ```
@@ -173,13 +158,11 @@ keyManipulator->setKey(LogicalKey::LeftControl, KeyModifier::LeftAlt);
 
 ```
 
-
 The key press order matters. Pressing Left Ctrl first and then Left Alt does not result in the same key gesture as pressing first Left Alt, then Left Ctrl. To handle the Left Ctrl + Left Alt key gesture:
 
 ```
 keyManipulator->setKey(LogicalKey::LeftAlt, KeyModifier::LeftControl);
 
 ```
-
 
 For details, see the `KeyManipulator` class.

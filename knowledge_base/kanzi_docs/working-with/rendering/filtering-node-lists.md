@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/rendering/filtering-node-li
 
 # Collecting nodes for rendering
 
-
 Use the Node List render pass to filter and hold a list of 3D nodes that you want to render using other render passes.
 
 The Draw Objects render pass and Draw Objects With Material render passes draw 3D content in a scene.

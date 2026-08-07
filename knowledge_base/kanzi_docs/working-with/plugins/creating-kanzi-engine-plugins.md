@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/plugins/creating-kanzi-engi
 
 # Creating Kanzi Engine plugins
 
-
 Kanzi Engine plugins extend the functionality of Kanzi Engine. Kanzi Engine executes these plugins on target platforms.
 
 Use a Kanzi Engine plugin to:
@@ -14,14 +13,12 @@ Use a Kanzi Engine plugin to:
 - Create custom property types and messages using the Kanzi Engine API, and use them in your Kanzi Studio projects.
 - Define the data entry points to your Kanzi application, and form the contract between the Kanzi application designer and developer.
 
-
 To learn how you can use Kanzi Engine plugins, see:
 
 - Extending the functionality of Kanzi Engine
 - Tutorial: Get application data from a data source
 - Node2D plugin example
 - Node3D plugin example
-
 
 To create a native Kanzi Engine plugin:
 
@@ -40,7 +37,6 @@ Install the plugin. See Adding a Kanzi Engine plugin to a Kanzi Studio project.
 Debug the plugin. See Debugging native Kanzi Engine plugins.
 
 ## Creating a native Kanzi Engine plugin using a template
-
 
 You can create a native Kanzi Engine plugin using a template that is installed with Kanzi.
 
@@ -68,19 +64,13 @@ In Kanzi Studio, select File > Open Kanzi Command Prompt.
 The Kanzi Command Prompt opens the Windows Command Prompt with the Kanzi environment variables set for the version of Kanzi for which you open a Kanzi Command Prompt.
 
 Use the Kanzi Command Prompt to access Kanzi utilities and build tools, such as Gradle and CMake, without using absolute paths or setting environment variables.
-
-> **Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
->
-> When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
-> 4.
->
-> In the Kanzi Command Prompt in the `<ProjectName>/Application` directory, run the script that generates a Visual Studio solution for the application.
->
-> ```
-> generate_cmake_vs2022_solution.bat
->
-> ```
-
+**Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
+When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
+4.
+In the Kanzi Command Prompt in the `<ProjectName>/Application` directory, run the script that generates a Visual Studio solution for the application.
+```
+generate_cmake_vs2022_solution.bat
+```
 
 This script generates a Visual Studio solution for the application in the directory `<ProjectName>/Application/build_vs2022`.
 5.
@@ -100,7 +90,6 @@ When you add or remove files that your Kanzi application or Kanzi Engine plugin 
 
   - When you change the files that you use in your Kanzi application, update `<ProjectName>/Application/src/executable/CMakeLists.txt`
   - When you change the files that you use in your Kanzi Engine plugin, update `<ProjectName>/Application/src/plugin/CMakeLists.txt`
-
 
 For example, to add the `tinyxml2.cpp` and `tinyxml2.h` files to your Kanzi Engine plugin, update `<ProjectName>/Application/src/plugin/CMakeLists.txt` to include these files
 
@@ -128,7 +117,6 @@ Build your Kanzi Engine plugin:
   - To build only the Kanzi Engine plugin DLL, right-click the `<ProjectName>` project and select Build.
   - To build the Kanzi Engine plugin DLL and your Kanzi application, right-click the <ProjectName>_executable project and select Build.
 
-
 Visual Studio builds:
 
   - Plugin DLL in the `<ProjectName>/Application/lib/<PlatformName>/<ConfigurationName>` and the `<ProjectName>/Application/build_vs<Version>/runtime/<ConfigurationName>` directories
@@ -150,7 +138,6 @@ For example, if you use the Release solution configuration in Visual Studio 2022
     - Preview Visual Studio Version to 2022
     - Preview Working Directory to `..\Application\bin`.
 
-
 With these settings you set the Kanzi Studio Preview to work with the plugin.
   2.
 
@@ -160,12 +147,9 @@ This way you update the plugin and take into use the changes that you made in th
   3.
 
 In the Properties make sure that the Is Enabled property is enabled.
-
-> **Tip:** Use the Is Enabled property to enable or disable any Kanzi Engine plugin in your project.
-
+**Tip:** Use the Is Enabled property to enable or disable any Kanzi Engine plugin in your project.
 
 ## Creating a native Kanzi Engine plugin manually
-
 
 To create a native Kanzi Engine plugin manually:
 
@@ -273,19 +257,13 @@ In Kanzi Studio, select File > Open Kanzi Command Prompt.
 The Kanzi Command Prompt opens the Windows Command Prompt with the Kanzi environment variables set for the version of Kanzi for which you open a Kanzi Command Prompt.
 
 Use the Kanzi Command Prompt to access Kanzi utilities and build tools, such as Gradle and CMake, without using absolute paths or setting environment variables.
-
-> **Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
->
-> When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
-> 7.
->
-> In the Kanzi Command Prompt in the `<ProjectName>/Application` directory, run the script that generates a Visual Studio solution for the application.
->
-> ```
-> generate_cmake_vs2022_solution.bat
->
-> ```
-
+**Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
+When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
+7.
+In the Kanzi Command Prompt in the `<ProjectName>/Application` directory, run the script that generates a Visual Studio solution for the application.
+```
+generate_cmake_vs2022_solution.bat
+```
 
 This script generates a Visual Studio solution for the application in the directory `<ProjectName>/Application/build_vs2022`.
 8.
@@ -303,7 +281,6 @@ When you add or remove files that your Kanzi application or Kanzi Engine plugin 
 
   - When you change the files that you use in your Kanzi application, update `<ProjectName>/Application/src/executable/CMakeLists.txt`
   - When you change the files that you use in your Kanzi Engine plugin, update `<ProjectName>/Application/src/plugin/CMakeLists.txt`
-
 
 For example, to add the `tinyxml2.cpp` and `tinyxml2.h` files to your Kanzi Engine plugin, update `<ProjectName>/Application/src/plugin/CMakeLists.txt` to include these files
 
@@ -331,7 +308,6 @@ Build your Kanzi Engine plugin:
   - To build only the Kanzi Engine plugin DLL, right-click the `<ProjectName>` project and select Build.
   - To build the Kanzi Engine plugin DLL and your Kanzi application, right-click the <ProjectName>_executable project and select Build.
 
-
 Visual Studio builds:
 
   - Plugin DLL in the `<ProjectName>/Application/lib/<PlatformName>/<ConfigurationName>` and the `<ProjectName>/Application/build_vs<Version>/runtime/<ConfigurationName>` directories
@@ -339,9 +315,7 @@ Visual Studio builds:
 Kanzi Studio uses the plugin DLL in the `<ProjectName>/Application/lib` directory. See Adding a Kanzi Engine plugin to a Kanzi Studio project.
   - Application executable in the `<ProjectName>/Application/build_vs<Version>/runtime/<ConfigurationName>` directory.
 
-
 ## Creating a Java Kanzi Engine plugin using a template
-
 
 You can create a Java Kanzi Engine plugin using a template that is installed with Kanzi.
 
@@ -396,12 +370,9 @@ This way you update the plugin and take into use the changes that you made in th
   2.
 
 In the Properties make sure that the Is Enabled property is enabled.
-
-> **Tip:** Use the Is Enabled property to enable or disable any Kanzi Engine plugin in your project.
-
+**Tip:** Use the Is Enabled property to enable or disable any Kanzi Engine plugin in your project.
 
 ## Creating a Java Kanzi Engine plugin manually
-
 
 To create a Java Kanzi Engine plugin manually:
 
@@ -486,69 +457,54 @@ public class MyKanziPlugin extends Plugin {
 }
 
 ```
-
-
-> **Tip:** The string returned from `Plugin.getName` must match the name of the Jar file.
-> 4.
->
-> In the `MyKanziplugin/src/main` directory create the `AndroidManifest.xml` file and add to it the plugin Android manifest.
->
-> ```
-> <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-> package="com.rightware.kanzi.mykanziplugin">
-> </manifest>
->
-> ```
->
-> 5.
->
-> In the `Application/configs/platforms/android_gradle/MyKanziplugin` directory create the `build.gradle` file and add to it the Gradle build instructions.
->
-> ```
-> apply plugin: 'com.android.library'
->
-> android {
-> compileSdkVersion 34
-> defaultConfig {
-> minSdkVersion 26
-> targetSdkVersion 28
-> versionCode 1
-> versionName "1.0"
-> }
->
-> buildTypes {
-> release {
-> minifyEnabled false
-> proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-> }
-> }
-> }
->
-> android.buildTypes.all { buildType ->
-> task "exportJar${buildType.name.capitalize()}"(type: Jar, group: 'Kanzi') {
-> archiveBaseName = project.name
-> destinationDir = file("${rootDir}/../../../lib/java/${buildType.name.capitalize()}")
-> description "Export ${buildType.name} JAR plugin into ${destinationDirectory.get().toString()}."
-> manifest {
-> attributes 'Plugin-Version': "${android.defaultConfig.versionName}",
-> 'Plugin-Class': 'com.rightware.kanzi.mykanziplugin.MyKanziPlugin'
-> }
-> from("build/intermediates/javac/${buildType.name}/classes/")
-> dependsOn("assemble${buildType.name.capitalize()}")
-> }
-> }
->
-> java {
-> sourceCompatibility = JavaVersion.VERSION_11
-> targetCompatibility = JavaVersion.VERSION_11
-> }
->
-> dependencies {
-> implementation 'com.rightware.kanzi:kzjava@aar'
-> }
->
-> ```
-
+**Tip:** The string returned from `Plugin.getName` must match the name of the Jar file.
+4.
+In the `MyKanziplugin/src/main` directory create the `AndroidManifest.xml` file and add to it the plugin Android manifest.
+```
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+package="com.rightware.kanzi.mykanziplugin">
+</manifest>
+```
+5.
+In the `Application/configs/platforms/android_gradle/MyKanziplugin` directory create the `build.gradle` file and add to it the Gradle build instructions.
+```
+apply plugin: 'com.android.library'
+android {
+compileSdkVersion 34
+defaultConfig {
+minSdkVersion 26
+targetSdkVersion 28
+versionCode 1
+versionName "1.0"
+}
+buildTypes {
+release {
+minifyEnabled false
+proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+}
+}
+}
+android.buildTypes.all { buildType ->
+task "exportJar${buildType.name.capitalize()}"(type: Jar, group: 'Kanzi') {
+archiveBaseName = project.name
+destinationDir = file("${rootDir}/../../../lib/java/${buildType.name.capitalize()}")
+description "Export ${buildType.name} JAR plugin into ${destinationDirectory.get().toString()}."
+manifest {
+attributes 'Plugin-Version': "${android.defaultConfig.versionName}",
+'Plugin-Class': 'com.rightware.kanzi.mykanziplugin.MyKanziPlugin'
+}
+from("build/intermediates/javac/${buildType.name}/classes/")
+dependsOn("assemble${buildType.name.capitalize()}")
+}
+}
+java {
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+}
+dependencies {
+implementation 'com.rightware.kanzi:kzjava@aar'
+}
+```
 
 3.
 
@@ -590,7 +546,6 @@ mRuntimeRef.get().getDomain().registerPlugin(new MyKanziPlugin());
 
 ```
 
-
 4.
 
 In Android Studio build your Kanzi Engine plugin:
@@ -598,30 +553,22 @@ In Android Studio build your Kanzi Engine plugin:
   - To build the Kanzi Engine plugin JAR that Kanzi Studio uses, run the `exportJarDebug` or `exportJarRelease` Gradle target.
   - To build the Kanzi Engine plugin and your Kanzi application, select the app Java Module and then select Build > Make Project.
 
-
 Android Studio builds the JAR file that Kanzi Studio uses in `Application/lib/java/<buildType>/MyKanziplugin.jar`. To use the plugin, import it to Kanzi Studio. See Adding a Kanzi Engine plugin to a Kanzi Studio project.
 
 ## Adding a Kanzi Engine plugin to a Kanzi Studio project
-
 
 To add a Kanzi Engine plugin to a Kanzi Studio project:
 
 1.
 
 In the Library right-click Kanzi Engine Plugins and select Import Kanzi Engine Plugin.
-
-> **Tip:** You can automate the importing of Kanzi Engine plugins using a script. See Importing a Kanzi Engine plugin using a script.
-> 2.
->
-> Select the DLL or JAR file of the plugin that you want to import and click Open.
->
-> Note
->
-> Starting with Kanzi Studio 3.9.5, the path of Kanzi Java plugins must follow this pattern:
->
-> - For debug, the path must be `lib/java/Debug/<PluginName>.jar`.
-> - For release, the path must be `lib/java/Release/<PluginName>.jar`.
-
+**Tip:** You can automate the importing of Kanzi Engine plugins using a script. See Importing a Kanzi Engine plugin using a script.
+2.
+Select the DLL or JAR file of the plugin that you want to import and click Open.
+Note
+Starting with Kanzi Studio 3.9.5, the path of Kanzi Java plugins must follow this pattern:
+- For debug, the path must be `lib/java/Debug/<PluginName>.jar`.
+- For release, the path must be `lib/java/Release/<PluginName>.jar`.
 
 See Changes in support for Debug and Release build types for Kanzi Engine Java plugins.
 
@@ -636,16 +583,11 @@ For example, if you use the Release solution configuration in Visual Studio 2022
   - Preview Visual Studio Version to 2022
   - Preview Working Directory to `..\Application\bin`.
 
-
 With these settings you set the Kanzi Studio Preview to work with the plugin.
 4.
 
 In the Library > Kanzi Engine Plugins select the plugin and in the Properties make sure that the Is Enabled property is enabled.
-
-> **Tip:** Use the Is Enabled property to enable or disable any Kanzi Engine plugin in your project.
-> 5.
->
-> Restart the Preview by pressing Ctrl F8, or by selecting Preview > Restart Preview.
->
-> You can now use the content provided by the Kanzi Engine plugin in your Kanzi Studio project.
->
+**Tip:** Use the Is Enabled property to enable or disable any Kanzi Engine plugin in your project.
+5.
+Restart the Preview by pressing Ctrl F8, or by selecting Preview > Restart Preview.
+You can now use the content provided by the Kanzi Engine plugin in your Kanzi Studio project.

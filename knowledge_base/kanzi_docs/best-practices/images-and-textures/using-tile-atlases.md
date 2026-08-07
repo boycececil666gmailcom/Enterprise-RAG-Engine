@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/best-practices/images-and-textures/using
 
 # Using a tile atlas
 
-
 A tile atlas is an image that contains several smaller images.
 
 Use a tile atlas to improve application framerate by decreasing the number of texture switches that your application must make during runtime.
@@ -176,7 +175,4 @@ For example, set the color to white.
 To use the secondary color, set the UseSecondaryColor property to enabled. Use these properties when you want to use a different color for the second state of that image.
 
 For example, to apply the color that you set in the SecondaryColor property, you can use a State Manager to set the value of the UseSecondaryColor property.
-
-
-> **Tip:** You can use a tile atlas to show a different image for different states of a telltale. Create a State Manager and in each state set the properties that change between the states, such as OffsetInTileAtlas and PrimaryColor. See Tutorial: Create cluster indicators.
->
+**Tip:** You can use a tile atlas to show a different image for different states of a telltale. Create a State Manager and in each state set the properties that change between the states, such as OffsetInTileAtlas and PrimaryColor. See Tutorial: Create cluster indicators.

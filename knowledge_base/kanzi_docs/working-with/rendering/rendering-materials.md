@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/rendering/rendering-materia
 
 # Setting materials for rendering
 
-
 In Kanzi you can use these render passes to set materials for rendering:
 
 - Draw Objects With Material render pass allows you to render nodes in a Viewport 2D node with a specific material.
@@ -16,7 +15,6 @@ For example, use the Draw Objects With Material render pass to create different 
 For example, use the Material Setup render pass to set the output of a Composition Target render pass as the texture of a material. See Creating an infinity mirror.
 
 ## Creating a night vision mode
-
 
 You can use the Draw Objects With Material render pass to render all nodes under a Viewport 2D node with a specific material. For example, you can create a night vision mode.
 
@@ -61,7 +59,6 @@ Gather Lights render pass allows you to collect from a list of nodes the light n
 
 In the Gather Lights render pass create a Draw Objects With Material render pass.
 
-
 You can use a Draw Objects With Material render pass to render all nodes under a Viewport 2D node with a specific material that you set in the Draw Objects With Material render pass.
 
 Because you have not yet set the Material property in the Draw Objects With Material render pass, Kanzi uses the default materials to render the content in the Viewport 2D node which uses the Night Vision render pass.
@@ -73,37 +70,26 @@ Create the material that you want to use for the night vision mode.
 For example, in the Library > Materials and Textures > Material Types press Alt and right-click VertexPhong, select Material, and name the material Night Vision Material.
 
 This way you create a material which uses the VertexPhong material type.
-
-> **Tip:** If your project does not contain the VertexPhong material type, in the Library > Materials and Textures press Alt and right-click Material Types, and select VertexPhong.
-> 4.
->
-> In the Library > Rendering > Render Pass Prefabs select the Draw Objects With Material render pass and in the Properties set the Material property to the material that you created in the previous step.
->
-> Kanzi now renders all nodes in the Viewport 2D node, which uses the Night Vision render pass prefab, with the material that you created.
-> 5.
->
-> In the Properties click the  next to the Material property to open the properties of the material that you created, and set the properties of the material to achieve the look you want.
-> 6.
->
-> In the Library > Rendering > Render Pass Prefabs select the Clear render pass, in the Properties add the Clear Color 0 property, and set the Lightness (L) property field to 0.
->
-> This way you clear the color buffer with black color to make the background of your scene black in the night vision mode.
-> 7.
->
-> Control the switching between the day and night vision modes.
->
-> For example, create a State Manager where you define states for:
->
-> - Day mode, which sets in your Viewport 2D node the Render Pass Prefab property to DefaultRenderPassPrefab.
-> - Night vision mode, which sets in your Viewport 2D node the Render Pass Prefab property to the Night Vision render pass prefab.
-
+**Tip:** If your project does not contain the VertexPhong material type, in the Library > Materials and Textures press Alt and right-click Material Types, and select VertexPhong.
+4.
+In the Library > Rendering > Render Pass Prefabs select the Draw Objects With Material render pass and in the Properties set the Material property to the material that you created in the previous step.
+Kanzi now renders all nodes in the Viewport 2D node, which uses the Night Vision render pass prefab, with the material that you created.
+5.
+In the Properties click the  next to the Material property to open the properties of the material that you created, and set the properties of the material to achieve the look you want.
+6.
+In the Library > Rendering > Render Pass Prefabs select the Clear render pass, in the Properties add the Clear Color 0 property, and set the Lightness (L) property field to 0.
+This way you clear the color buffer with black color to make the background of your scene black in the night vision mode.
+7.
+Control the switching between the day and night vision modes.
+For example, create a State Manager where you define states for:
+- Day mode, which sets in your Viewport 2D node the Render Pass Prefab property to DefaultRenderPassPrefab.
+- Night vision mode, which sets in your Viewport 2D node the Render Pass Prefab property to the Night Vision render pass prefab.
 
 See Creating a state manager.
 
 Now when you switch between the states you created, Kanzi alternates between rendering your content normally and in night vision mode.
 
 ## Creating an infinity mirror
-
 
 Material Setup render pass allows you to set properties for a material so that all successive rendering with that material uses the property values that you set in this render pass.
 
@@ -160,7 +146,6 @@ For example, to clear the first color buffer with a different color, set the Cle
 
         - Draw Objects render pass named Draw Objects allows you to set a Camera node to render a specific list of nodes, to filter those nodes, and to control frustum culling. Draw Objects render pass by default renders nodes using the lights provided by its nearest ancestor Gather Lights render pass. By default the Draw Objects render pass uses the default Camera node to render all nodes in a Viewport 2D node.
 
-
     - Blit render pass blits one or more single textures or cubemap textures on the screen using a specific material.
 
 By default, this Blit render pass draws on the screen the first color texture to which the Composition Target render pass renders its content.
@@ -197,6 +182,5 @@ Here you set the value of the Texture property for the material that you created
   7.
 
 In the Library select the Compose and Blit Pass > Composition Target render pass > Clear render pass and in the Properties set the Clear Color 0 property to the color that you want to use as the background color of the scene in the mirror.
-
 
 Kanzi now recursively renders the contents of the Viewport 2D node in the mirror.

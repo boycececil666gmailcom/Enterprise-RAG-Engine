@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/triggers/reference-for-trig
 
 # Triggers reference
 
-
 Here you can find the reference for the triggers you can use in Kanzi Studio. To learn more about triggers, see Using triggers.
 ## Activity triggers
-
 
 You can use the Activity triggers in Kanzi Studio with Activity nodes to react when the status of an Activity changes. For example, you can set the application to enter a specific state when a certain Activity is activated.
 |
@@ -49,7 +47,6 @@ To learn more about using Activities and Activity Hosts, see:
 
 ## Activity Host triggers
 
-
 You can use the Activity Host triggers in Kanzi Studio with Activity Hosts to react when the prefab of an Activity is attached to the node tree. For example, you can set the application to enter a specific state when a certain Activity Host attaches the prefab of its specific child Activity to the node tree.
 |
 
@@ -73,7 +70,6 @@ To learn more about using Activities and Activity Hosts, see:
 - UI structure
 
 ## Animation triggers
-
 
 You can use the animation triggers with animations. For example, you can set the application to navigate to a Page or enter a state when an animation has finished playing.
 |
@@ -102,10 +98,8 @@ To learn more about creating keyframe animations, see:
 - Tutorial: Create keyframe animations
 - Using keyframe animations
 
-
 To learn more about using the Property Driven Animation Player, see Creating property-driven animations.
 ## Button node triggers
-
 
 You can use the Button triggers with the Button nodes. For example, you can set the application to activate an Activity when the user presses the button or change the appearance of the button based on user input.
 |
@@ -159,7 +153,6 @@ Long Press trigger is set off when the user presses down the button and holds th
 
 To learn more about the Button node triggers, see Using the Button nodes.
 ## Focus triggers
-
 
 You can use the focus triggers to handle how UI elements in your application receive focus. For example, you can set how an overlay reacts to user input when the user opens that overlay.
 |
@@ -226,7 +219,6 @@ Overlay Sent To Back trigger is set off when an overlay focus scope is sent to t
 To learn more about using the focus triggers, see Using focus.
 ## General triggers
 
-
 You can use the general triggers in Kanzi Studio with any nodes to react when a node is attached to the node tree, when a property value changes, or at specific time intervals.
 |
 
@@ -255,14 +247,12 @@ On Timer |
 On Timer trigger is set off between the time interval you set in the trigger. |
 ## Input manipulator triggers
 
-
 You can use the input manipulator triggers to handle the user input, such as gestures and touch events. Use the input manipulator triggers to bind the user input to UI components or application functionality.
 
 Only nodes that have the Hit Testable property enabled can receive input. See Enabling the click gesture for a node.
 
 To learn more about input manipulator triggers, see Handling user input.
 ### Click Manipulator triggers
-
 
 Use the Click Manipulator triggers to react to the click gesture. For example, you can change the appearance of a node when the user clicks that node.
 
@@ -315,7 +305,6 @@ Leave trigger is set off:
 To learn more about using the Click Manipulator, see Using the Click Manipulator.
 ### Drag-And-Drop Manipulator triggers
 
-
 Use the Drag-And-Drop Manipulator triggers to react to the drag-and-drop gesture. For example, you can set the appearance of a node when the user drags and drops that node.
 |
 
@@ -350,7 +339,6 @@ To learn more about using the Drag-And-Drop Manipulator, see:
 
 ### Key Manipulator triggers
 
-
 You can use the Key Manipulator triggers to create interaction with the keyboard. For example, you can set your application to navigate to a Page node or set focus to a node when the user presses a specific key on their keyboard.
 |
 
@@ -375,7 +363,6 @@ Key Released trigger is set off when the user releases a specific key on their k
 
 To learn more about using the Key Manipulator triggers, see Using the Key Manipulator.
 ### Long-Press Manipulator triggers
-
 
 Use the Long-Press Manipulator triggers to react to the long-press gesture. For example, you can change the appearance of a node when the user clicks and holds the click on that node for the amount of time set in that trigger.
 
@@ -402,7 +389,6 @@ To learn more about using the Long-Press Manipulator, see:
 - Using the Long-Press Manipulator
 
 ### Multi-Click Manipulator triggers
-
 
 Use the Multi-Click Manipulator triggers to react to the multi-click gesture. For example, you can change the appearance of a node when the user clicks that node multiple times consecutively.
 
@@ -435,7 +421,6 @@ To learn more about using the Multi-Click Manipulator, see:
 
 ### Navigation Manipulator triggers
 
-
 You can use the Navigation Manipulator triggers to create directional keyboard navigation. For example, you can set your application to move focus to the next node in the focus chain when the user presses a specific key on their keyboard.
 |
 
@@ -464,7 +449,6 @@ For example, this happens when the user presses a navigation key on their keyboa
 
 To learn more about using the Navigation Manipulator, see Using the Navigation Manipulator.
 ### Pan Manipulator triggers
-
 
 Use the Pan Manipulator triggers to react to the pan gesture. For example, you can set the appearance of a node when the user pans that node.
 |
@@ -510,7 +494,6 @@ To learn more about using the Pan Manipulator, see:
 
 ### Pinch Manipulator triggers
 
-
 Use the Pinch Manipulator triggers to react to the pinch gesture. For example, you can set the appearance of a node when the user zooms and rotates the node using the pinch gesture.
 |
 
@@ -544,7 +527,6 @@ To learn more about using the Pinch Manipulator, see:
 - Using the Pinch Manipulator
 
 ## List Box triggers
-
 
 You can use the list box triggers with the List Box nodes. For example, you can set the application to navigate to a Page when the user selects an item in a List Box node.
 |
@@ -611,66 +593,42 @@ To learn more about using the List Box nodes, see:
 - Using the List Box Item Container prefabs
 - Tutorial: Create a contacts list with a Grid List Box
 
-
 For an example of how to use the List Box nodes, see:
 
 - Trajectory list box example
 - Virtual list box example
 
 ## Page Host triggers
+**Note:** The Page and Page Host nodes are deprecated. Use the Activity and Activity Host nodes to build navigable UIs for your application. See Activities.
+Use the Page Host triggers with Page Host nodes. For example, you can set the application to enter a state when a Page Host node starts to navigate to a Page.
+|
+Name |
+Description |
+|
+Page Navigation Finished |
+Page Navigation Finished trigger is set off when a Page Host node finishes navigating to a page. |
+|
+Page Navigation Started |
+Page Navigation Started trigger is set off when a Page Host starts to navigate to a page. |
+To learn more about using Page and Page Host nodes, see:
+- Using the Page and Page Host nodes
 
-
-> **Note:** The Page and Page Host nodes are deprecated. Use the Activity and Activity Host nodes to build navigable UIs for your application. See Activities.
->
-> Use the Page Host triggers with Page Host nodes. For example, you can set the application to enter a state when a Page Host node starts to navigate to a Page.
-> |
->
-> Name |
->
-> Description |
-> |
->
-> Page Navigation Finished |
->
-> Page Navigation Finished trigger is set off when a Page Host node finishes navigating to a page. |
-> |
->
-> Page Navigation Started |
->
-> Page Navigation Started trigger is set off when a Page Host starts to navigate to a page. |
->
-> To learn more about using Page and Page Host nodes, see:
->
-> - Using the Page and Page Host nodes
->
 ## Page triggers
+**Note:** The Page and Page Host nodes are deprecated. Use the Activity and Activity Host nodes to build navigable UIs for your application. See Activities.
+Use the Page triggers with Page nodes. For example, you can set the application to set the focus to a node when a Page node is activated.
+|
+Name |
+Description |
+|
+Page Activated |
+Page Activated trigger is set off when a Page or Page Host node becomes active. |
+|
+Page Deactivated |
+Page Deactivated trigger is set off when a Page or Page Host node becomes inactive. |
+To learn more about using Page and Page Host nodes, see:
+- Using the Page and Page Host nodes
 
-
-> **Note:** The Page and Page Host nodes are deprecated. Use the Activity and Activity Host nodes to build navigable UIs for your application. See Activities.
->
-> Use the Page triggers with Page nodes. For example, you can set the application to set the focus to a node when a Page node is activated.
-> |
->
-> Name |
->
-> Description |
-> |
->
-> Page Activated |
->
-> Page Activated trigger is set off when a Page or Page Host node becomes active. |
-> |
->
-> Page Deactivated |
->
-> Page Deactivated trigger is set off when a Page or Page Host node becomes inactive. |
->
-> To learn more about using Page and Page Host nodes, see:
->
-> - Using the Page and Page Host nodes
->
 ## Prefab triggers
-
 
 You can use the prefab triggers with prefabs. You can use a Prefab View node to load resources asynchronously from a prefab in the project.
 |
@@ -712,10 +670,8 @@ To learn more about using the Property Target Interpolator, see:
 - Interpolating property values
 - Tutorial: Interpolate property values
 
-
 To learn more about using the Property Target Easing Interpolator, see Interpolating property values using easing functions.
 ## Range triggers
-
 
 You can use the range triggers with components which use range properties. For example, you can set the application to set off an action when the user changes the value of a slider.
 |
@@ -739,7 +695,6 @@ Value Changed |
 
 Value Changed trigger is set off when the range value changes. |
 ## Scroll View triggers
-
 
 You can use the Scroll View triggers with the Scroll View nodes. For example, you can set the application to enter a state or change the value of a property when the user starts to scroll or stops scrolling a scroll view.
 |
@@ -788,10 +743,8 @@ To learn more about using the Scroll View nodes, see:
 - Using the Scroll View nodes
 - Tutorial: Rotate a 3D model
 
-
 For an example of how to use the Scroll View nodes, see Scroll view example.
 ## State Manager triggers
-
 
 You can use the State Manager triggers with State Managers. For example, you can set the application to play an animation when a state manager enters a state.
 |
@@ -824,7 +777,6 @@ To learn more about using state managers, see Using state managers.
 
 To learn more about the Entered State and Left State triggers, see Reacting when a node enters or leaves a state.
 ## Text Box triggers
-
 
 You can use the Text Box triggers with the Text Box nodes. For example, you can set the appearance of a Text Box node when the user starts editing the text in that node.
 |
@@ -927,7 +879,6 @@ Text Changed trigger is set off when the user modifies the text in a Text Box no
 To learn more about using the Text Box nodes, see Using the Text Box nodes.
 ## Toggle Button triggers
 
-
 You can use the Toggle Button triggers with the Toggle Button nodes. For example, you can create a navigation bar with toggle buttons which navigate between Page nodes in the application.
 |
 
@@ -952,7 +903,6 @@ Toggled On trigger is set off when a Toggle Button node with two states is toggl
 
 To learn more about using the Toggle Button nodes, see Using the Toggle Button nodes.
 ## Toggle Button Group triggers
-
 
 You can use the Toggle Button Group triggers with the Toggle Button Group nodes.
 |

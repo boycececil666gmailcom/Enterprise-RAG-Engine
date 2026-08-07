@@ -5,16 +5,13 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/hello-world/step-1.html
 
 # Step 1 - Create project with C++ application and print to debug console
 
-
 In this step, you first create a Kanzi Studio project with a C++ application. You then add the code to the C++ application to print Hello world! to the Kanzi debug console.
 ## Get the tutorial
-
 
 To get the tutorial, in the Kanzi Studio Quick Start window, click Projects and select the Tutorials tab. Next to the Hello world tutorial, click .
 
 Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` directory. You can find the completed tutorial in the `<KanziWorkspace>/Tutorials/Hello world/Completed` directory.
 ## Create a project with C++ application and print to debug console
-
 
 To create a project with a C++ application and print to the Kanzi debug console:
 
@@ -30,7 +27,6 @@ Select the Application item from the list of available project templates.
 Choose the name and location for your project.
 
 For example, name your project Hello world.
-
 
 Click Create.
 
@@ -56,19 +52,13 @@ In Kanzi Studio, select File > Open Kanzi Command Prompt.
 The Kanzi Command Prompt opens the Windows Command Prompt with the Kanzi environment variables set for the version of Kanzi for which you open a Kanzi Command Prompt.
 
 Use the Kanzi Command Prompt to access Kanzi utilities and build tools, such as Gradle and CMake, without using absolute paths or setting environment variables.
-
-> **Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
->
-> When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
-> 4.
->
-> In the Kanzi Command Prompt in the `<ProjectName>/Application` directory, run the script that generates a Visual Studio solution for the application.
->
-> ```
-> generate_cmake_vs2022_solution.bat
->
-> ```
-
+**Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
+When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
+4.
+In the Kanzi Command Prompt in the `<ProjectName>/Application` directory, run the script that generates a Visual Studio solution for the application.
+```
+generate_cmake_vs2022_solution.bat
+```
 
 This script generates a Visual Studio solution for the application in the directory `<ProjectName>/Application/build_vs2022`.
 5.
@@ -136,7 +126,6 @@ The `log.hpp::kzLogInfo` function prints **Hello world!** to the Kanzi debug con
 
 When you run the application in the debug mode, Kanzi shows the debug console. By default, a Kanzi Studio project contains an empty scene.
 
-
 This is what your `hello_world.cpp` looks like when you complete this step.
 
 ```
@@ -184,6 +173,5 @@ Application* createApplication()
 }
 
 ```
-
 
 Introduction Next step

@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/first/step-4.html
 
 # Step 4 - Create states for the Car screen
 
-
 In this step, you use the Kanzi state machine to show the car in your application from different angles and to animate the transition between those states.
 ## Create the car shadow
-
 
 In this section, in the Car Settings Activity you adjust the material used for the car shadow.
 
@@ -29,7 +27,6 @@ This way you go to the properties of the Shadow material.
 In the Shadow material Properties, set the Blend Mode property to Alpha: Automatic.
 
 ## Create states
-
 
 In this section, you create different states for the car, each state focusing on a different part of the car. In the next section, you create the UI controls to move between these states.
 
@@ -86,7 +83,6 @@ Orbit Camera lets you move around:
   - The nodes that you select in the Node Tree.
   - The node that you set with the Constraints > Look At property of the camera.
 
-
 To move with the orbit camera, use these controls:
 |
 
@@ -129,7 +125,6 @@ In the State Tools, click Edit State Manager to deactivate the State Tools.
 
 ## Create the controls to transition between states
 
-
 In this section, you create the controls to transition between the states that you created in the previous section.
 
 To create the controls to transition between states:
@@ -156,34 +151,22 @@ In the Prefabs, select the Button 2D > Image node. In the Properties, add and se
   - Next to the Image property click .
 
 This enables you to show a different image for each instance of that prefab in your project.
-
-
-> **Tip:** To add a property, in the Properties, right-click, select Add Property, and select the property that you want to add.
-> 5.
->
-> From the Prefabs, drag the Button 2D prefab to the Node Tree and drop it on the Car Settings > Viewport 2D > CarControl node. Drag the prefab three times to create three buttons.
->
-> Kanzi Studio instantiates the Button 2D prefabs in the CarControl node.
-> 6.
->
-> Select each Button 2D prefab instance, press F2, and rename them to Brakes, Roof, and Suspension.
-> 7.
->
-> In the Node Tree, in the CarControl node, select the first of the instantiated Button 2D prefabs:
->
-> 1.
->
-> In the Properties, add the FirstApplication.Button2D.Image property and set it to the StateBrakes image.
-> 2.
->
-> In the Node Components, press Alt and right-click Triggers, and select Message Trigger > Button > Click.
-> 3.
->
-> In the Node Components, press Alt and right-click the Button: Click trigger, select Dispatch Message Action > State Manager > Go to State, and in the State Manager: Go to State action set:
->
-> - Target Item to Prefabs/Car/Car/RootNode/Camera_Root
-> - State to Camera_Root State Manager/StateGroup/Brakes
-
+**Tip:** To add a property, in the Properties, right-click, select Add Property, and select the property that you want to add.
+5.
+From the Prefabs, drag the Button 2D prefab to the Node Tree and drop it on the Car Settings > Viewport 2D > CarControl node. Drag the prefab three times to create three buttons.
+Kanzi Studio instantiates the Button 2D prefabs in the CarControl node.
+6.
+Select each Button 2D prefab instance, press F2, and rename them to Brakes, Roof, and Suspension.
+7.
+In the Node Tree, in the CarControl node, select the first of the instantiated Button 2D prefabs:
+1.
+In the Properties, add the FirstApplication.Button2D.Image property and set it to the StateBrakes image.
+2.
+In the Node Components, press Alt and right-click Triggers, and select Message Trigger > Button > Click.
+3.
+In the Node Components, press Alt and right-click the Button: Click trigger, select Dispatch Message Action > State Manager > Go to State, and in the State Manager: Go to State action set:
+- Target Item to Prefabs/Car/Car/RootNode/Camera_Root
+- State to Camera_Root State Manager/StateGroup/Brakes
 
 8.
 
@@ -191,24 +174,16 @@ Repeat the previous step to set the remaining two Button 2D prefabs:
 
   - Use the StateRoof and StateSuspension images.
   - Set the Go to State action to point to the states Roof and Suspension.
-
-
-> **Tip:** To add triggers that have a similar setup, in the Node Components:
->
-> 1.
->
-> Right-click a trigger and select Copy.
-> 2.
->
-> Select the node where you want to add the trigger, in the Node Components, right-click Triggers, and select Paste.
-> 3.
->
-> Edit the trigger and its actions.
-
+**Tip:** To add triggers that have a similar setup, in the Node Components:
+1.
+Right-click a trigger and select Copy.
+2.
+Select the node where you want to add the trigger, in the Node Components, right-click Triggers, and select Paste.
+3.
+Edit the trigger and its actions.
 
 In the Preview, when you click the buttons in the CarControl node, Kanzi Studio transitions to that state using the default linear transition. You can adjust the transitions using the State Transition Editor. See Using state transitions.
 ## Adjust the position of the buttons
-
 
 In this section, you adjust the position of the buttons that control the states of the car.
 
@@ -223,6 +198,5 @@ In the Activity Browser, activate the Car Settings Activity. In the Prefabs, sel
 
   - Translation X to 20
   - Translation Y to 75
-
 
 Previous step Next step

@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/interpolate/step-2.html
 
 # Step 2 - React to a completed interpolation
 
-
 In this step you set the compass background based on the relative bearing. Relative bearing is the difference between the destination and the direction of travel.
 ## React to a completed interpolation
-
 
 In this section you use the Property Target Interpolator: Interpolation Completed trigger to find out when the Property Target Interpolator completes the rotation of the compass dial. When the interpolation completes and the direction of travel and the destination align, you use the State Manager in the RootNode node to set the compass background.
 
@@ -37,7 +35,6 @@ abs(mod({@./Interpolate.Destination} - {@./Interpolate.Direction}, 360))
 
 ```
 
-
 Click Save.
 
 You use this binding to store the difference in degrees between the destination and the direction of travel to the Interpolate.RelativeBearing property you created in the previous step. You use the modulo function to wrap the value of Interpolate.RelativeBearing to the range from 0 to 359 degrees.
@@ -50,7 +47,6 @@ In the Node Tree select the Direction > Value node, in the Properties in the Bin
 mod({#RootNode/Interpolate.Direction}, 360)
 
 ```
-
 
 Click Save.
 
@@ -85,7 +81,6 @@ In the Node Components in the Property Target Interpolator: Interpolation Comple
       - Type of B to Fixed
       - Fixed Value to 0
 
-
 You use this trigger condition to set off this Property Target Interpolator: Interpolation Completed trigger only when the interpolation completes and when the value of the Interpolate.RelativeBearing property is 0. When the value of the Interpolate.RelativeBearing property is 0, the direction of travel aligns with the destination.
   4.
 
@@ -94,19 +89,15 @@ In the Node Components in the Property Target Interpolator: Interpolation Comple
     - Target Property to Interpolate.OnCourse
     - Fixed Value to enabled
 
-
 You use this action to set the value of the Interpolate.OnCourse property to true when the Property Target Interpolator: Interpolation Completed trigger is set off and when the value of the Interpolate.RelativeBearing property is 0. When the Interpolate.OnCourse property is set to true, the State Manager in the RootNode node sets the Background Brush property in the RootNode node to Green.
-
 
 Now when you change the value in the direction XML element in the `Compass.xml` file and save the changes, after the interpolation completes the compass background turns green if the destination and the direction of travel align.
 ## Adjust the compass behavior
-
 
 In the previous section you added an Property Target Interpolator: Interpolation Completed trigger that uses the State Manager in the RootNode node to set the compass background color. However, that state manager sets the background color only when the interpolation of the compass dial rotation completes and the destination and the direction of travel align. In this section you add the On Property Change triggers to react when:
 
 - The destination or direction of travel changes, and the destination and the direction of travel do not align.
 - The destination changes, and the destination and the direction of travel align.
-
 
 To adjust the compass behavior:
 
@@ -134,7 +125,6 @@ In the On RelativeBearing Change trigger create a Set Property action and set:
     - Target Property to Interpolate.OnCourse
     - Fixed Value to disabled
 
-
 You use this action to set the Interpolate.OnCourse property to false when the value of the Interpolate.RelativeBearing property changes and when the value of the Interpolate.RelativeBearing property is not 0. When the Interpolate.OnCourse property is set to false, the State Manager in the RootNode node sets the Background Brush property in the RootNode node to Black.
 
 2.
@@ -157,7 +147,6 @@ In the Property Target Interpolator: Interpolation Completed trigger copy the Se
 
 You use this action to set the Interpolate.OnCourse property to true when the value of the Interpolate.RelativeBearing property changes and when the value of the Interpolate.RelativeBearing property is 0. When the Interpolate.OnCourse property is set to true, the State Manager in the RootNode node sets the Background Brush property in the RootNode node to Green.
 
-
 Now when you change the values in the direction or destination XML elements in the `Compass.xml` file and save the file, the compass background changes as follows:
 
 - When you change the value in the direction XML element:
@@ -170,10 +159,8 @@ Now when you change the values in the direction or destination XML elements in t
   - If the destination and direction of travel align, the background turns green instantly.
   - If the destination and direction of travel do not align, the background turns black instantly.
 
-
 Previous step
 ## Whatâs next?
-
 
 In this tutorial you learned how to use the Property Target Interpolator to dynamically set the target value for a property and interpolate the current value to the target value over time. You also learned how to use the Property Target Interpolator: Interpolation Completed trigger to react to the completed interpolation.
 

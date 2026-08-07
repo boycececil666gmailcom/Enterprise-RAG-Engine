@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/brushes/using-brushes.html
 
 # Using brushes
 
-
 Brushes are graphics objects that describe how 2D content is drawn.
 
 Use Brushes to set the appearance of the foreground and background of 2D nodes. For example, with brushes you can define the color of text in a Text Block 2D node, fill a background of a 2D node with an image pattern, or apply a material effect on 2D content.
@@ -24,7 +23,6 @@ See Filling 2D nodes with a texture.
 
 See Filling 2D nodes with a material.
 
-
 Kanzi Studio stores brushes in the Library > Materials and Textures > Brushes.
 
 For example, with the brushes you can:
@@ -34,7 +32,6 @@ For example, with the brushes you can:
 - Create post-processing effects for 2D nodes. See Applying custom rendering to 2D nodes.
 
 ## Filling 2D nodes with a solid color
-
 
 Use a Color Brush to fill a 2D node with a solid color.
 
@@ -53,11 +50,9 @@ For example, create a Button 2D node, in the Properties add the Background Brush
 In the Properties click  next to the property you added in the previous step and set the color of the color brush you created in the previous step.
 
 In the Preview you can see that the Color Brush you created fills the node for which you set the property.
+**Tip:** To quickly edit a brush, in the Properties next to the Background Brush or Foreground Brush property click  and edit the brush.
 
-> **Tip:** To quickly edit a brush, in the Properties next to the Background Brush or Foreground Brush property click  and edit the brush.
->
 ## Filling 2D nodes with a texture
-
 
 Use a Texture Brush to fill a 2D node with a texture.
 
@@ -80,9 +75,7 @@ In the Properties click  next to the property that you added in the previous ste
   - Brush Vertical Tiling affects the scale of the texture coordinates to set the vertical tiling of the texture.
   - Brush Texture sets the texture for the brush.
 
-
 ## Filling 2D nodes with a material
-
 
 Use a Material Brush to fill a 2D node with a material.
 
@@ -112,9 +105,7 @@ For example, to change the ambient color, texture, and blending of the material 
 
 For example, to change the ambient color, texture, and blending of the material for a node, add and set the Ambient Color, Texture, and Blend Mode properties in that node.
 
-
 ## Setting the color of text in 2D text nodes
-
 
 To set the color of text in a Text Block 2D or Text Box 2D node:
 
@@ -127,11 +118,9 @@ In the Properties add the Foreground Brush property.
 3.
 
 Set the Foreground Brush property to an existing Color Brush or select + Color Brush, name the brush, click  next to the property, and set the color of the Color Brush you created.
+**Tip:** To quickly edit a brush, in the Properties next to the Background Brush or Foreground Brush property click  and edit the brush.
 
-> **Tip:** To quickly edit a brush, in the Properties next to the Background Brush or Foreground Brush property click  and edit the brush.
->
 ## Controlling the appearance of brushes
-
 
 You can define the appearance of brushes in different application states. For example, when you use a brush to fill a Button 2D node, you can change the appearance of the brush when the user presses the button.
 
@@ -159,10 +148,8 @@ Set the appearance of the brush in the Released and Pressed states.
 
 For example, in the Properties next to the Background Brush property click , set the Brush Modulate Color property, and in the State Tools click  in the Pressed state to save the property value to the Pressed state.
 
-
 Now when you interact with the node in the Preview, Kanzi changes the appearance of the brush that you created.
 ## Applying custom rendering to 2D nodes
-
 
 Apply custom rendering to 2D nodes to create post-processing effects.
 
@@ -212,7 +199,6 @@ In the shader, use these Kanzi default uniforms:
     - `ContentTexture` to define the texture that the rendered node provides when rendering
     - `RenderOpacity` to define the opacity of the rendered node
 
-
 See Shader uniforms.
 
 ```
@@ -239,7 +225,6 @@ void main()
 
 ```
 
-
 2.
 
 In the Library, press Alt and right-click Materials and Textures and select Material Brush. In the Properties, set the Material property to the material that you created in the previous step.
@@ -255,12 +240,9 @@ In the Properties, add and set:
   - (Optional) Render Target > Multisample Level to the number of anti-aliasing samples that you want to apply to the content
   - (Optional) Node > Opacity to control the translucency of the node
 
-
 ## Using brushes in the API
-
 
 For details, see the `Brush` class.
 ## Brush property types
-
 
 For a list of the available property types for brushes, see Brush.

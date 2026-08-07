@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/pan-zoom-tap/step-2.html
 
 # Step 2 - Zoom and rotate the map
 
-
 Use the Pinch Manipulator to enable users to zoom and rotate nodes in your Kanzi application.
 
 To calculate the amount by which to zoom and rotate a node, the pinch gesture continuously tracks the position and distance between two fingers that move on the device screen.
@@ -20,7 +19,6 @@ In this step you first use the pinch manipulator to enable zooming and rotating 
 
 You deploy the tutorial application to an Android device, because the pinch gesture requires multitouch support.
 ## Zoom and rotate the map
-
 
 In this section you create and use the pinch manipulator to zoom and rotate the map when the user pinches the map.
 
@@ -153,13 +151,11 @@ In the Kanzi Studio main menu select File > Export > Build Android Package.
 
 Kanzi Studio creates an Android package from your Kanzi Studio project, deploys, and runs it on your Android device.
 
-
 On your Android device use the pinch gesture to zoom and rotate the map.
 
 The map rotates around its center point because the origin of the Map node is set to the center.
 
 ## Reset the position, zoom level, and rotation
-
 
 In this section you create and use the Multi-Click Manipulator component and multi-click manipulator to reset the position, zoom level, and rotation angle of the map when the user double-taps the map.
 
@@ -225,6 +221,5 @@ void onProjectLoaded() override
 Build and deploy the application to your Android device.
 
 In the application first use the pinch gesture to zoom and rotate the map, and the pan gesture to move the map. Then double-tap the map to set it to the initial position, zoom level, and rotation angle.
-
 
 Previous step Next step

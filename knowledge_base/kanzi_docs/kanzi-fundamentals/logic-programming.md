@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/kanzi-fundamentals/logic-programming.htm
 
 # Logic programming
 
-
 In Kanzi you can program application and control logic using several technologies that are geared towards different users and use cases:
 |   |
 

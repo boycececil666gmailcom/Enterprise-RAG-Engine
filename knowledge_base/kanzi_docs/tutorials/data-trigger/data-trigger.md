@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/data-trigger/data-trigger.html
 
 # Tutorial: Control application UI
 
-
 In this tutorial, you learn how to use conditions to control the application UI. You learn how to control the activation state of Activities that make up the UI by creating popup windows that an application shows only when a condition in a Data Trigger is met. In the Data Trigger, you use an Apply Activation Action to activate a specific Activity.
 
 A Data Trigger with an Apply Activation Action keeps an Activity active for as long as the condition in that Data Trigger is met.
@@ -16,7 +15,6 @@ This video shows the result of the tutorial.
 
 This tutorial assumes that you understand the basics of working with the Activity system. The best entry point for that is the Tutorial: Structure application UI.
 ## Get the tutorial
-
 
 To get the tutorial, in the Kanzi Studio Quick Start window, click Projects and select the Tutorials tab. Next to the Data Trigger tutorial, click .
 
@@ -29,7 +27,6 @@ To learn about the content of this project and how to create such a project, see
 
 ## Content of the starting point project
 
-
 The starting point project contains the content that you need to complete this tutorial:
 
 - These prefabs:
@@ -40,7 +37,6 @@ The starting point project contains the content that you need to complete this t
 - The Datatrigger.ActivityProperty.Cluster.MainView property type that you use to control and check the state of the cluster. In Data Triggers, you use the value of this property to decide which Activity you want to activate.
 
 ## Create the structure
-
 
 In this section, you create the structure for the popup windows.
 
@@ -103,9 +99,7 @@ In the Prefabs, select the MinimizedLeft > PopupMinimized > MinimizedWidget Acti
 
 In the Prefabs, select the MinimizedWidget Activity Host. In the Properties, remove the Horizontal Padding and Vertical Padding properties.
 
-
 ## Use conditions to control the activation state of Activities
-
 
 In this section, you learn how to use a Data Trigger with an Apply Activation Action to control the activation state of an Activity when a condition in that Data Trigger is met.
 
@@ -145,7 +139,6 @@ In the Data Trigger, in the Condition Expression, click , select the Properties 
 
 ```
 
-
 A condition expression in a Data Trigger must evaluate to either `True` or `False`.
 
 Click Save.
@@ -154,7 +147,6 @@ This way, you set the Data Trigger to keep an Apply Action in that Data Trigger 
 
     - The Datatrigger.ActivityProperty.Cluster.MainView is set to Drive (enumeration value 0).
     - The Datatrigger.ActivityProperty.IncomingCall is enabled (Boolean value `True`).
-
 
 You add an Apply Activation Action in the next step.
 
@@ -174,7 +166,6 @@ In the Node Tree, select the Cluster node. In the Node Components, in the Apply 
 
     - Activity Host Path to < Relative > and .
     - Activity Activation Path to the path that you copied from the Activity Browser and from the beginning of the path remove `Cluster/`
-
 
 The path to the Activity that you set in the Activity Activation Path property is relative to the Activity Host node that you set in the Activity Host Path property.
 
@@ -198,7 +189,6 @@ In the Condition Expression, edit the expression to
 
 ```
 
-
 Click Apply.
   3.
 
@@ -221,43 +211,30 @@ In the Prefabs, select the PopupControl > IncomingCall node. In the Properties, 
     - Property to Toggle State
     - Expression to
 
-
 ```
 {#Cluster/Datatrigger.ActivityProperty.IncomingCall}
 
 ```
 
-
 Click Save.
 
 This binding enables the IncomingCall Toggle Button to get and set the value of the Datatrigger.ActivityProperty.IncomingCall property in the Cluster Activity Host. This way the Toggle Button controls the state of the IncomingCall Activity.
+**Tip:** During the application development, use these Data Trigger tools in the Activity Browser side panel:
+|
+Tool |
+Description |
+|   |
+Shows where a Data Trigger is and where the source and target Activitites of that Data Trigger are. |
+|   |
+Simulates the state when you apply a Data Trigger.
+This enables you to see the state of your application when the conditions for a Data Trigger are met without having to change the property values in your application.  |
+|   |
+Shows the selected Data Trigger in the Node Components window. |
+You can now control the activation state of the IncomingCall popup in these ways:
+- In the Preview, click the  Toggle Button.
+- In the Activity Browser, select the Cluster Activity Host and in the side panel, set the IncomingCall property.
 
-
-> **Tip:** During the application development, use these Data Trigger tools in the Activity Browser side panel:
-> |
->
-> Tool |
->
-> Description |
-> |   |
->
-> Shows where a Data Trigger is and where the source and target Activitites of that Data Trigger are. |
-> |   |
->
-> Simulates the state when you apply a Data Trigger.
->
-> This enables you to see the state of your application when the conditions for a Data Trigger are met without having to change the property values in your application.  |
-> |   |
->
-> Shows the selected Data Trigger in the Node Components window. |
->
-> You can now control the activation state of the IncomingCall popup in these ways:
->
-> - In the Preview, click the  Toggle Button.
-> - In the Activity Browser, select the Cluster Activity Host and in the side panel, set the IncomingCall property.
->
 ## Create additional popup windows
-
 
 To create popup windows for a new message notification and control that notification with a Data Trigger, repeat the procedures above with these differences:
 
@@ -282,7 +259,6 @@ In the Cluster Activity Host, in the Node Components, duplicate the PopupIncomin
 
 ```
 
-
 Click Apply.
   - In the Apply Activation Action, set the Activity Activation Path property to the activation path of the PopupNewMessageMaximized Activity.
 
@@ -297,7 +273,6 @@ In the Cluster Activity Host, in the Node Components, duplicate the PopupNewMess
 
 ```
 
-
 Click Apply.
   - In the Apply Activation Action, set the Activity Activation Path property to the activation path of the PopupNewMessageMinimized Activity.
 
@@ -309,12 +284,10 @@ In the Prefabs, select the PopupControl > NewMessage node. In the Properties, cl
   - Property to Toggle State
   - Expression to
 
-
 ```
 {#Cluster/Datatrigger.ActivityProperty.NewMessage}
 
 ```
-
 
 Click Save.
 
@@ -328,14 +301,12 @@ This way you set the priority of the PopupIncomingCallMaximized Activity to be h
 
 Repeat the previous step for the PopupIncomingCallMinimized Activity.
 
-
 You can now control the activation state of the NewMessage popup in these ways:
 
 - In the Preview, click the  Toggle Button.
 - In the Activity Browser, select the Cluster Activity Host and in the side panel set the NewMessage property.
 
 ## Whatâs next?
-
 
 In this tutorial, you learned how to control the activation state of Activities with condition expressions. The application shows popup windows only when a condition in a Data Trigger is met.
 
@@ -369,7 +340,6 @@ In the Activity Browser:
     - PopupAccidentAheadMinimized
     - PopupBatteryLowMinimized
 
-
 4.
 
 In the Prefabs, drag:
@@ -401,7 +371,6 @@ In the Node Components, duplicate an existing Data Trigger and set:
 
 ```
 
-
 Click Apply.
   - Activity Activation Path to the path of the PopupAccidentAheadMaximized Activity
 
@@ -416,12 +385,10 @@ In the Prefabs, select the PopupControl > BatteryLow node. In the Properties, cl
   - Property to Toggle State
   - Expression to
 
-
 ```
 {#Cluster/Datatrigger.ActivityProperty.BatteryLow}
 
 ```
-
 
 Click Save.
 10.
@@ -432,6 +399,5 @@ Repeat the previous step for the PopupControl > AccidentAhead node, but set the 
 {#Cluster/Datatrigger.ActivityProperty.AccidentAhead}
 
 ```
-
 
 The completed tutorial project has the popup window functionality that you can control from the Cluster Activity Host for both the left- and right-hand areas. You can find the completed Kanzi Studio project in the `<KanziWorkspace>/Tutorials/Data trigger/Completed` directory.

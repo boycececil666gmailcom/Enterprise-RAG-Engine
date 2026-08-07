@@ -5,14 +5,12 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/workspaces/customizing-your
 
 # Customizing the Kanzi Studio interface
 
-
 You can customize the Kanzi Studio interface. You can open new, rearrange, dock, and close windows to make the environment that best suits your needs.
 
 To restore the workspace to the default state, in the main menu select Window > Reset Workspace.
 
 This is how Kanzi Studio looks when you create a new project.
 ## Opening windows
-
 
 To open a new window select Window and select the window that you want to open:
 
@@ -52,11 +50,8 @@ See Editing your application in the Preview.
 - State Tools shows the tools you can use to create, set, and manage states in your application. See State manager.
 - Textures shows the textures in your project. See Textures.
 - Trajectories shows the trajectories in your project. See Trajectories.
-
-
-> **Tip:** To expand or collapse all elements under an item in any tree view, click the expander  while holding down Ctrl.
+**Tip:** To expand or collapse all elements under an item in any tree view, click the expander  while holding down Ctrl.
 ## Rearranging windows in your workspace
-
 
 You can rearrange your workspace by docking, undocking, opening and closing windows.
 
@@ -82,7 +77,6 @@ Release the mouse button to dock the window in the indicated position.
 
 ## Adding any window as a tab to another window
 
-
 You can add any window as a tab to any other window to see more than one type of content in the same window.
 
 To add any window as a tab to another window:
@@ -96,9 +90,7 @@ Release the mouse button to add the window as a tab.
 
 ## Ordering property categories in the Properties window
 
-
 To set the order of property categories in the Properties window, select Edit > User Preferences, in the Properties tab in the Property Category dropdown select a property category, and set the position of the property category.
 
 For example, you can set the Transform 2D and your own My Property Category categories to be shown after the Description category.
-
-> **Note:** The General and Description property categories are always shown on the top.
+**Note:** The General and Description property categories are always shown on the top.

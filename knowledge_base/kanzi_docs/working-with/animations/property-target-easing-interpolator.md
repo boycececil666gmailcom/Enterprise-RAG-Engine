@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/animations/property-target-
 
 # Interpolating property values using easing functions
 
-
 Use the Property Target Easing Interpolator when you want to dynamically set the target value for a property and want to interpolate the current value to the target value over time using an easing function. Easing functions enable you to create lifelike animations that offer a more pleasant user experience.
 
 Easing functions available in Kanzi:
@@ -169,7 +168,6 @@ Ease in out |   |
 
 For example, use the Property Target Easing Interpolator to create a welcome animation which moves the fuel and battery needles first to their maximum position and then to the current position.
 ## Interpolating property values using an easing function
-
 
 To interpolate property values using an easing function:
 
@@ -387,11 +385,9 @@ Ease in out |   |
 
   - Notify Interpolation Completed to set whether the Property Target Easing Interpolator dispatches a message when it completes an easing interpolation. See Getting information about completion of an easing interpolation.
 
-
 When you change the value of the property that you set in the Interpolated Property Type, the Property Target Easing Interpolator interpolates the current value to the target value over the time that you set in the Interpolation Duration property, and using the Easing Function and Easing Mode that you set.
 
 ## Getting information about completion of an easing interpolation
-
 
 When Property Target Easing Interpolator completes the interpolation of the property it interpolates, it sends a message. You can intercept that message to find out when the property it interpolated reached its final value.
 
@@ -430,7 +426,6 @@ For example, add the Set Property action to set the value of another property.
 
 ## Using Property Target Easing Interpolator in the API
 
-
 To use a Property Target Easing Interpolator to interpolate a property value:
 
 ```
@@ -449,7 +444,6 @@ node->addNodeComponent(interpolator);
 
 ```
 
-
 To create a property target easing timeline and set its target property and interpolation settings:
 
 ```
@@ -462,7 +456,6 @@ timeline->setEasingMode(AnimationEaseIn);
 
 ```
 
-
 To create playback for property target easing timeline:
 
 ```
@@ -473,7 +466,6 @@ auto playback = timeline->createPlayback(context);
 
 ```
 
-
 To add playback of property target easing timeline to the clock:
 
 ```
@@ -482,6 +474,5 @@ To add playback of property target easing timeline to the clock:
 domain->getRootTimelineClock()->addTimelinePlayback(playback);
 
 ```
-
 
 For details, see the `PropertyTargetEasingInterpolator`, `PropertyTargetEasingTimeline`, and `PropertyTargetEasingTimelinePlayback` classes in the Kanzi Engine C++ API reference.

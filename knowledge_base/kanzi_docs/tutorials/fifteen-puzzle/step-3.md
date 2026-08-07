@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/fifteen-puzzle/step-3.html
 
 # Step 3 - Instantiate prefabs
 
-
 In this step, you learn how to instantiate prefabs from a Lua script.
 
 To instantiate a prefab to the node tree:
@@ -19,7 +18,6 @@ Create a node from the prefab with `instantiate`.
 3.
 
 Add the node to the node tree with `addChild`.
-
 
 ```
 -- Find the node with the alias "Grid".
@@ -38,7 +36,6 @@ grid:addChild(node)
 ```
 
 ## Add pieces to the puzzle grid
-
 
 Instantiate **Piece** prefabs to populate the puzzle grid with 15 pieces in order from 1 to 15. You leave the last grid slot empty so that you can play the game.
 
@@ -90,7 +87,6 @@ end
 print("Exiting new_game.lua")
 
 ```
-
 
 When you save the script and in the **Preview** click , the script populates the grid with 15 pieces in order from 1 to 15 and leaves the last slot in the grid empty.
 

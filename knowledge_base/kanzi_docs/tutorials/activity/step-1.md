@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/activity/step-1.html
 
 # Step 1 - Create application structure
 
-
 In this step of the tutorial you learn:
 
 - About different types of Activity nodes
@@ -13,7 +12,6 @@ In this step of the tutorial you learn:
 - How to control the activation state of Activity nodes using a State Manager
 
 ## Get the tutorial
-
 
 To get the tutorial, in the Kanzi Studio Quick Start window, click Projects and select the Tutorials tab. Next to the Activity tutorial, click .
 
@@ -23,7 +21,6 @@ Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` director
 - The completed tutorial in the `<KanziWorkspace>/Tutorials/Activity/Completed` directory.
 
 ## Content of the starting point project
-
 
 The starting point project contains the content that you need to complete this tutorial:
 
@@ -35,7 +32,6 @@ The starting point project contains the content that you need to complete this t
 - The Library contains the Brushes that you use in the application.
 
 ## Create the application structure
-
 
 In this section you learn how to use the Activity Browser and different types of Activity nodes to create the structure of an application.
 
@@ -64,37 +60,26 @@ Kanzi Studio creates a Parallel Activity Host node under the Screen node in the 
 An Activity Host defines the rules for when its child Activities are active. A Parallel Activity Host can activate more than one of its child Activities at a time. This feature often makes it the most suitable type of Activity Host for a top-level node of an application.
 
 The Activity Browser shows all the possible UI states of an application, including Kanzi Studio solutions that include multiple projects. Use the Activity Browser to create, inspect, and interact with the UI states in your application.
-
-> **Tip:** To pan and zoom in the Activity Browser window, use these shortcuts:
-> |
->
-> Action |
->
-> Shortcut |
-> |
->
-> Pan |
->
-> - Click and drag the middle mouse button.
-> - Press the Space key, and click and drag the left mouse button.
-> |
-> |
->
-> Zoom |
->
-> - Scroll the mouse wheel.
-> - Press the Shift and Alt keys, and click and drag the left mouse button.
-> |
-> 2.
->
-> In the Properties, add and set:
->
-> - Background Brush to Background
-> - Layout Width to 1920
-> - Layout Height to 720
->
-> You set the Layout Width and Layout Height properties so that the Cluster node has the same size as the Screen node.
-
+**Tip:** To pan and zoom in the Activity Browser window, use these shortcuts:
+|
+Action |
+Shortcut |
+|
+Pan |
+- Click and drag the middle mouse button.
+- Press the Space key, and click and drag the left mouse button.
+|
+|
+Zoom |
+- Scroll the mouse wheel.
+- Press the Shift and Alt keys, and click and drag the left mouse button.
+|
+2.
+In the Properties, add and set:
+- Background Brush to Background
+- Layout Width to 1920
+- Layout Height to 720
+You set the Layout Width and Layout Height properties so that the Cluster node has the same size as the Screen node.
 
 All Activity and Activity Host nodes are Content Layouts. By default the size of a Content Layout node is determined by the size of its child nodes.
 
@@ -124,26 +109,17 @@ Makes the Activity visible.
     4.
 
 Sets the key focus to the Activity, if the Activity Host has key focus and is not configured differently. Controlling whether to set focus to an activating Activity.
-
-
-> **Tip:** In the Activity Browser, when you want to fit the Activity tree to the size of the Activity Browser window, in the upper-right corner click .
-> 2.
->
-> In the Activity Browser, select the Header Activity and in the side panel set the InitiallyActive property to enabled.
->
-> This way you set an Activity to be active when its Activity Host is active. To indicate this, the Activity Browser shows the  icon for all such Activities.
-> 3.
->
-> In the Prefabs, drag the HeaderImage prefab to the Header prefab.
->
-> The nodes that you add to an Activity prefab are visible and users can interact with them when the Activity that uses that prefab is active.
-> 4.
->
-> In the Prefabs, select the Header prefab and in the Properties add and set:
->
-> - Layout Width to 1920
-> - Layout Height to 720
-
+**Tip:** In the Activity Browser, when you want to fit the Activity tree to the size of the Activity Browser window, in the upper-right corner click .
+2.
+In the Activity Browser, select the Header Activity and in the side panel set the InitiallyActive property to enabled.
+This way you set an Activity to be active when its Activity Host is active. To indicate this, the Activity Browser shows the  icon for all such Activities.
+3.
+In the Prefabs, drag the HeaderImage prefab to the Header prefab.
+The nodes that you add to an Activity prefab are visible and users can interact with them when the Activity that uses that prefab is active.
+4.
+In the Prefabs, select the Header prefab and in the Properties add and set:
+- Layout Width to 1920
+- Layout Height to 720
 
 5.
 
@@ -177,9 +153,7 @@ In the Prefabs, select the MainGauge prefab, and in the Properties add and set:
     - Layout Width to 1920
     - Layout Height to 720
 
-
 ## Control Activities with a state manager
-
 
 In this section you learn how to control an Activity node with a state manager.
 
@@ -209,42 +183,26 @@ In the Library > Property Types, select the Activity > ActivityProperty > Cluste
 
   - Drive to 0
   - Browse to 1
-
-
-> **Tip:** To quickly access a custom property type from the Properties, right-click a custom property type and select Select in Library.
-> 4.
->
-> Create a state manager that you use to switch between the Drive and Browse states:
->
-> 1.
->
-> In the Library > State Managers, create a state manager named Cluster that has states Drive and Browse.
-> 2.
->
-> From the Library > State Managers, drag the Cluster state manager to the Node Tree and drop it on the Cluster node.
->
-> This way you add the Cluster state manager to the Cluster node. When you drop a state manager on a node, Kanzi Studio adds the Resources > State Manager property, and sets it to the state manager that you dropped.
-> 3.
->
-> In the Library > State Managers > Cluster state manager, select the State Group and in the Properties set the Controller Property to the Activity.ActivityProperty.Cluster.MainView property.
->
-> You use the Activity.ActivityProperty.Cluster.MainView property to control this state manager.
-> 4.
->
-> In the Library > State Managers > Cluster state manager, select the Browse state and in the Properties set the Activity.ActivityProperty.Cluster.MainView property to Browse.
->
-> In the Drive state, the value of the controller property is already set to Drive.
-> 5.
->
-> In the Drive state, create a State Object, name it MainGauge, and in the Properties add and set:
->
-> - Target Object Path to
->
-> ```
-> #Cluster/GaugeView/GaugeViewActivityHost/MainGauge/MainGaugeImage
->
-> ```
-
+**Tip:** To quickly access a custom property type from the Properties, right-click a custom property type and select Select in Library.
+4.
+Create a state manager that you use to switch between the Drive and Browse states:
+1.
+In the Library > State Managers, create a state manager named Cluster that has states Drive and Browse.
+2.
+From the Library > State Managers, drag the Cluster state manager to the Node Tree and drop it on the Cluster node.
+This way you add the Cluster state manager to the Cluster node. When you drop a state manager on a node, Kanzi Studio adds the Resources > State Manager property, and sets it to the state manager that you dropped.
+3.
+In the Library > State Managers > Cluster state manager, select the State Group and in the Properties set the Controller Property to the Activity.ActivityProperty.Cluster.MainView property.
+You use the Activity.ActivityProperty.Cluster.MainView property to control this state manager.
+4.
+In the Library > State Managers > Cluster state manager, select the Browse state and in the Properties set the Activity.ActivityProperty.Cluster.MainView property to Browse.
+In the Drive state, the value of the controller property is already set to Drive.
+5.
+In the Drive state, create a State Object, name it MainGauge, and in the Properties add and set:
+- Target Object Path to
+```
+#Cluster/GaugeView/GaugeViewActivityHost/MainGauge/MainGaugeImage
+```
 
 You use the Cluster alias that you created earlier and the path from the Cluster node to the content that you want to control with this state.
     - Transform 2D > Render Transformation
@@ -272,26 +230,20 @@ In the Prefabs, select the MainViewSwitcher prefab, in the Properties click + Ad
     - Property to Toggle State
     - Expression to
 
-
 ```
 {#Cluster/Activity.ActivityProperty.Cluster.MainView}
 
 ```
 
-
 Click Save.
 
 This binding enables the MainViewSwitcher Toggle Button to get and set the value of the Activity.ActivityProperty.Cluster.MainView property in the Cluster Activity Host. This way the Toggle Button controls the state of the Cluster Activity Host.
-
-> **Tip:** You can start creating a binding for a property by right-clicking a property and selecting Create Binding.
->
-> This way you automatically add the property to the Binding Editor.
-
+**Tip:** You can start creating a binding for a property by right-clicking a property and selecting Create Binding.
+This way you automatically add the property to the Binding Editor.
 
 You can now switch between the Drive or Browse states of the Cluster in these ways:
 
 - In the Preview, click the MainViewSwitcher Toggle Button
 - In the Activity Browser, select the Cluster Activity Host and in the side panel change the value of the MainView property
-
 
 Introduction Next step

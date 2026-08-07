@@ -5,14 +5,12 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/trajectories/using-circle-t
 
 # Using circle trajectories
 
-
 Use a Circle Trajectory to create a path in the shape of a circle in 3D space.
 
 Use trajectories as paths along which Trajectory Layout 3D and Trajectory Layout 2D nodes arrange their child nodes, and along which Trajectory List Box 3D nodes move their items.
 
 If you do not have any trajectories in your project, Kanzi Studio automatically creates a circle trajectory when you create a Trajectory Layout 3D or a Trajectory List Box 3D object. See Using the Trajectory Layout nodes and Using the Trajectory List Box 3D node.
 ## Creating a circle trajectory
-
 
 To create a circle trajectory:
 
@@ -40,6 +38,5 @@ For example:
 To take the trajectory into use, in the Node Tree select a Trajectory Layout or a Trajectory List Box 3D node and in the Properties set the Trajectory property to the trajectory you want to use. See Using the Trajectory List Box 3D node and Using the Trajectory Layout nodes.
 
 ## Circle Trajectory property types
-
 
 For a list of the available property types for circle trajectories, see Circle Trajectory.

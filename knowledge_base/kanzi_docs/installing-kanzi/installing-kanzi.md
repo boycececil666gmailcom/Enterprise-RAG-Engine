@@ -7,7 +7,6 @@ source: https://docs.kanzi.com/4.1.0/en/installing-kanzi/installing-kanzi.html
 
 ## System requirements
 
-
 Minimum system requirements for using Kanzi Studio:
 
 - A computer with an x86-64 architecture CPU
@@ -21,26 +20,21 @@ Minimum system requirements for using Kanzi Studio:
   - Microsoft .NET Framework 4.8
   - Microsoft Visual C++ 2015-2022 Redistributable, both x86 and x64 versions
 
-
 During Kanzi installation the installer prompts you to install these.
-
 
 To use the Debug build configuration of the Kanzi Studio Preview, install the Visual Studio version for the configuration that you want to use. For example, use the Debug build configuration to debug your Kanzi Engine plugins. See Debugging native Kanzi Engine plugins.
 ## Platform requirements
 
 ### Windows
 
-
 To run Kanzi applications on Windows, you need:
 
 - Microsoft Visual C++ 2015-2022 Redistributable (x86)
-
 
 To develop Kanzi applications and Kanzi Engine plugins, you need:
 
 - Visual Studio 2022 with the latest updates
 - CMake 3.25 or newer (3.x versions only)
-
 
 To develop Kanzi Studio plugins, you need:
 
@@ -48,7 +42,6 @@ To develop Kanzi Studio plugins, you need:
 - .NET framework 4.8
 
 ### Android
-
 
 To develop Android applications with Kanzi, you need Android Studio, which you can download from https://developer.android.com/studio. The version of Android Studio you can use depends on the version of Android Gradle plugin your project uses, see https://developer.android.com/studio/releases#android_gradle_plugin_and_android_studio_compatibility.
 
@@ -88,7 +81,6 @@ The application templates of these frameworks are compatible with:
 - JDK 17 or 21
 - CMake 3.25 or newer (3.30.5 as default provided by Android SDK)
 
-
 You can use other versions of AGP and Gradle, but this requires manual adjustments to your project.
 
 For AGP and Gradle upgrades, we recommend that you use the Android Gradle plugin upgrade assistant. See https://developer.android.com/build/agp-upgrade-assistant.
@@ -98,13 +90,11 @@ To use Android features in Kanzi Studio, such as deployment of projects to Andro
 Note that you can use Java plugins only with Kanzi Android framework (droidfw) applications.
 ### Other platforms
 
-
 To build and deploy Kanzi applications for platform packages that use CMake, you need:
 
 - CMake 3.25 or newer (3.x versions only)
 
 ## Kanzi Hub and Kanzi Account
-
 
 Kanzi Hub allows you to manage your Kanzi projects and installations, download Kanzi software, and access online resources. To access content through Kanzi Hub, you need a Kanzi Account.
 
@@ -118,7 +108,6 @@ Download Kanzi Hub from https://download.rightware.com/releases/public/kanzi_hub
 Install Kanzi Hub and follow the instructions to create a Kanzi Account.
 
 ## Installing and activating Kanzi
-
 
 To get Kanzi, go to [www.rightware.com/get-kanzi](http://www.rightware.com/get-kanzi) or contact Rightware sales team at [sales@rightware.com](mailto:sales%40rightware.com?subject=Kanzi%20Sales%20Inquiry).
 
@@ -145,12 +134,10 @@ Activate your Kanzi license:
   - If you have a Kanzi dongle license, see Using a dongle license to activate Kanzi Studio.
   - If you are using Kanzi floating licenses, see Using a floating license.
 
-
 To find out what Kanzi installs on your computer, see What is installed with Kanzi?
 
 For technical support use the Kanzi Support Portal at [http://support.rightware.com](http://support.rightware.com/). See Technical support.
 ## Installing Kanzi Package Manager
-
 
 The Kanzi installer bundles the Package Manager installer and can run it for you as a post-install step. The Package Manager lets you browse, install, and share the assets and plugins that your Kanzi projects depend on. For more information, see Package Manager.
 
@@ -166,7 +153,6 @@ Click Finish.
 
 Confirm the dialog that reports the installation result.
 
-
 Once the Package Manager installation is complete, it has:
 
 - Installed **Conan 2.10.0**.
@@ -178,12 +164,10 @@ Once the Package Manager installation is complete, it has:
 - Added the necessary Conan profiles and configurations required by Kanzi.
 - Installed the Package Manager Kanzi Studio plugin.
 
-
 After a successful installation, the Package Manager appears in the Kanzi Studio main menu.
 
 When you install Kanzi unattended, the installer deploys the Package Manager automatically.
 ## Installing Kanzi unattended
-
 
 Use unattended installation when you want to avoid user interaction during the installation of Kanzi. This is useful when you want to automate the installation.
 
@@ -206,9 +190,7 @@ Run this command:
 
 ```
 
-
 ## Whatâs next?
-
 
 Now that you installed Kanzi you can:
 
@@ -219,7 +201,6 @@ Now that you installed Kanzi you can:
 - Set up your build environment for Android >
 
 ## Searching Documentation
-
 
 The Documentation site at https://docs.kanzi.com offers a unified search across all Kanzi documentation: Kanzi framework, feature packs, and tools. Click the magnifier icon at the top of any page to open the search overlay.
 
@@ -232,7 +213,6 @@ To help you search faster and find more relevant matches:
 - **Hand off to Ask Kanzi.** If full-text search does not surface what you need, hand the same query off to the Ask Kanzi assistant for a longer, conversational answer.
 
 ## Using Kanzi documentation offline
-
 
 When you are connected to the Internet, and in Kanzi Studio you press or select Help > Documentation, Kanzi Studio points your default web browser to the Kanzi documentation at https://docs.kanzi.com.
 
@@ -252,12 +232,10 @@ When this option is disabled, Kanzi Studio uses the documentation in the `<Kanzi
 
 ## Telemetry
 
-
 To help us understand how we can improve Kanzi Studio, you can let Kanzi Studio send to Rightware these anonymized telemetry data:
 
 - Error reports contain diagnostic information when an error occurs in Kanzi Studio or Kanzi Studio crashes. These reports help us understand what caused the error or crash and what we must change to prevent such events.
 - Usage data contains information about how Kanzi Studio features are used and how they perform. This data helps us understand how we can improve our product.
-
 
 Before Kanzi Studio sends these telemetry data, it removes all information that would enable us to link it to you.
 

@@ -5,14 +5,12 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/cameras/creating-and-using-
 
 # Using the Camera node
 
-
 Use the Camera node to show the content of a Scene in Kanzi Studio Preview and in your Kanzi application.
 
 In the Kanzi Studio Preview, you see a Scene through the Camera node that is set as the preview camera of that Scene node. Turning a Camera node into a preview camera.
 
 Do not scale a Camera node, or its ancestor nodes, using the Render Transformation or Layout Transformation property. When you scale a Camera node, you affect the projection so that it does not match the parameters that you set.
 ## Setting the position of a Camera node
-
 
 To set the position of a Camera node:
 
@@ -27,7 +25,6 @@ In the Camera tool, you can select the Orbit Camera or Free Camera:
 
     - The nodes that you select in the Node Tree.
     - The node that you set with the Constraints > Look At property of the camera.
-
 
 To move with the orbit camera, use these controls:
 |
@@ -168,16 +165,11 @@ Select the Camera node through which you want to view the current scene. |
  |
 
 Set the field of view for the camera in degrees when working with 3D nodes. |
-
-
-> **Tip:** You can control the position of a Camera node when you use the Node tool in the Preview window.
->
-> To move with the Orbit Camera, hold down Alt and use these controls:
->
-> - Click and drag the left mouse button to rotate.
-> - Click and drag the middle mouse button to pan.
-> - Scroll the mouse wheel to zoom.
-
+**Tip:** You can control the position of a Camera node when you use the Node tool in the Preview window.
+To move with the Orbit Camera, hold down Alt and use these controls:
+- Click and drag the left mouse button to rotate.
+- Click and drag the middle mouse button to pan.
+- Scroll the mouse wheel to zoom.
 
 To move with the Free Camera, hold down the right mouse button and use these controls:
 
@@ -187,13 +179,9 @@ To move with the Free Camera, hold down the right mouse button and use these con
 - Scroll the mouse wheel to set the camera speed.
 - Hold down Shift to double the speed when moving.
 - Use F to bring the camera to the 3D object selected in the Preview
-
-
-> **Tip:** To place:
->
-> - A node to the position of the current view of the Camera in the Preview, in the Node Tree, right-click that node and select Align With View.
-> - The Preview view to the location of any node, in the Node Tree, right-click that node and select Align View To Selected.
-
+**Tip:** To place:
+- A node to the position of the current view of the Camera in the Preview, in the Node Tree, right-click that node and select Align With View.
+- The Preview view to the location of any node, in the Node Tree, right-click that node and select Align View To Selected.
 
 For example, to place a Camera node to the position of any node in a Scene node:
 
@@ -203,11 +191,8 @@ Right-click the node to whose position you want to place a Camera node and selec
 2.
 
 To store that position to the Camera, right-click the Camera and select Align With View.
-
-
-> **Tip:** You can focus the current view of the Camera on the selected node by using the Focus To Selected command from the context menu, or with a double-click (for non-prefab nodes) on the selected node in the node tree.
+**Tip:** You can focus the current view of the Camera on the selected node by using the Focus To Selected command from the context menu, or with a double-click (for non-prefab nodes) on the selected node in the node tree.
 ## Turning a Camera node into a preview camera
-
 
 In the Kanzi Studio Preview, you see a Scene through the Camera node that is set as the preview camera of that Scene node. By default, the Preview uses the default camera of the Scene.
 
@@ -215,7 +200,6 @@ To turn a Camera node into a preview camera, in the Node Tree either:
 
 - Double-click that Camera node.
 - Right-click that Camera node and select Activate Camera in Preview.
-
 
 When you set the preview camera, Kanzi Studio:
 
@@ -225,7 +209,6 @@ When you set the preview camera, Kanzi Studio:
 Keep in mind that your Kanzi application uses the camera that is set in the Scene node with the Camera property. In the Node Tree, Kanzi Studio marks this camera with (Default).
 
 ## Viewing the active Scene from the preset viewpoints
-
 
 The Camera tool allows you to quickly view the content of an entire Scene from one of the preset viewpoints: front, back, top, bottom, left, or right side. Unless you switch on the option to store the current position of the camera (), the preset viewpoints do not change the position of the Camera nodes in a Scene. See Setting the position of a Camera node.
 
@@ -291,7 +274,6 @@ To set your own shortcut keys, in the main menu, select Edit > User Preferences 
 
 ## Creating a Camera node
 
-
 In the Node Tree or Prefabs, you can create a Camera node in a Scene node or any 3D node.
 
 To create a Camera node in the Preview:
@@ -306,10 +288,8 @@ Use either the Orbit Camera or Free Camera to move to the location where you wan
 
 Click .
 
-
 Kanzi Studio creates a Camera node in the position of the camera.
 ## Setting the projection type of a Camera node
-
 
 3D projection makes it possible to display 3D objects on a 2D surface.
 
@@ -320,7 +300,6 @@ These projection types are available in Kanzi:
 - Orthographic projection shows a 2D view of a 3D scene without providing a sense of depth. See Orthographic projection.
 
 ### Perspective projection
-
 
 Use perspective projection to provide a realistic view of a 3D scene. Perspective projection sets a camera to show objects closer to the Camera node larger than those that are further away. This is the projection type most commonly used for 3D scenes, and the default projection type in Kanzi.
 
@@ -345,9 +324,7 @@ This is the default value.
 
 The default is 45 degrees.
 
-
 ### Asymmetric perspective projection
-
 
 Use asymmetric perspective projection when you want to control the field of view of perspective projection separately toward the left, right, up, and down.
 
@@ -370,9 +347,7 @@ For example, to match a perspective projection with the default 45-degree field 
     - Up property field to -22.5
     - Down property field to 22.5
 
-
 ### Orthographic projection
-
 
 Use orthographic projection to show a 2D view of a 3D scene without providing a sense of depth. The orthographic projection lines are orthogonal to the projection plane, and the distance from the camera does not affect the drawing size of objects.
 
@@ -396,12 +371,9 @@ In the Properties, add and set:
     - When FOV Type is set to Y FOV (default value), Orthogonal Plane Size sets the height of the view plane.
     - When FOV Type is set to X FOV, Orthogonal Plane Size sets the width of the view plane.
 
-
 The default value is 1.0.
 
-
 ## Setting the camera for render passes
-
 
 When you use render passes to define the rendering of 3D content, you can set in each render pass the Camera node that the render pass and its descendants use to render content. See Rendering.
 
@@ -417,12 +389,10 @@ The Draw Objects render pass calculates the values of these properties from the 
 - Calculated Projection Matrix sets the `kzProjectionMatrix` uniform.
 - Calculated Projection Near And Far Planes sets the `kzCameraNearFarPlane` uniform.
 
-
 See Shader uniforms.
 
 You can set these properties in a render pass. The values that you set override the property values that you set in the Camera node.
 ## Using the Camera node in the API
-
 
 To create a camera with an orthographic projection:
 
@@ -439,7 +409,6 @@ camera->setZNear(-1.0f);
 camera->setZFar(1.0f);
 
 ```
-
 
 To create a camera with a perspective projection:
 
@@ -458,9 +427,7 @@ camera->setZFar(100.0f);
 
 ```
 
-
 For details, see the `Camera` class.
 ## Camera property types and messages
-
 
 For a list of the available property types and messages for the Camera node, see Camera.

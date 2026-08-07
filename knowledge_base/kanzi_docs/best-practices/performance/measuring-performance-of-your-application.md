@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/best-practices/performance/measuring-per
 
 # Troubleshooting the performance of your application
 
-
 Kanzi provides different means of measuring the performance of your application and displays various performance parameters. Use these means and parameters to improve the performance of your application.
 ## Viewing the application performance in Kanzi Studio
-
 
 To analyze the performance and inner structure of your application in Kanzi Studio, in the Preview click  to enter the Analyze mode, right-click , and select:
 
@@ -48,15 +46,12 @@ You can access the number of animations in the Kanzi Engine API:
     - To get the number of active animations, use `TimelineClock::getActiveTimelinePlaybackCount`.
     - To get the number of all animations, use `TimelineClock::getTimelinePlaybackCount`.
 
-
 - Framebuffer objects marks with translucent yellow moving stripes node which are rendered into textures and cause a framebuffer object switch.
 - Transparency marks transparent nodes with translucent blue moving stripes. See Configuring nodes for efficient rendering.
 - Overdraw visualization indicates areas where Kanzi renders multiple times to the same pixel. Lighter green color indicates higher amount of overdraw.
 
-
 See Preventing overdraw with the Sorting Filter.
 ## Viewing the overall performance
-
 
 To view the overall performance of your Kanzi application:
 
@@ -68,7 +63,6 @@ PerformanceInfoLevel = 2
 
 ```
 
-
 See PerformanceInfoLevel.
 - Enable the display of the Performance HUD in the application code in the `Application::onConfigure` function
 
@@ -76,7 +70,6 @@ See PerformanceInfoLevel.
 configuration.performanceInfoLevel = ApplicationProperties::PerformanceInfoLevelFull;
 
 ```
-
 
 See PerformanceInfoLevel.
 - In the `application.hpp`, enable the display of Performance HUD by calling the `Application::getPerformanceInfoLevel` and `Application::setPerformanceInfoLevel` functions:
@@ -96,14 +89,11 @@ void setPerformanceInfoLevel(ApplicationProperties::PerformanceInfoLevel level)
 - You can retrieve the current frame rate value by calling the `Application::getFramesPerSecond` function in the `application.hpp`.
 - To get the amount of time it takes to render a frame, use the `MainLoopScheduler` timing interface `MainLoopScheduler::getLastFrameDuration`.
 
-
 See Application configuration reference.
 ## Viewing the loading times of resources
 
-
 In the `application.cfg` file or in the application code in the `Application::onConfigure` function you can set Kanzi to print to the debug console the amount of time it takes to load the resources kzb files that your application uses. See Measuring the loading and deployment time of resources.
 ## Viewing the graphics performance
-
 
 In the `application.cfg` file or in the application code in the `Application::onConfigure` function you can set Kanzi to print to the debug console:
 
@@ -111,7 +101,6 @@ In the `application.cfg` file or in the application code in the `Application::on
 - List of graphics-related properties on application startup, such as swap behavior, display size, and your application window size. See LogSurfaceInformation.
 
 ## Viewing the overdraw of nodes
-
 
 Overdraw visualization indicates areas where Kanzi renders multiple times to the same pixel. Lighter green color indicates higher amount of overdraw.
 
@@ -123,16 +112,13 @@ The overdraw visualization does not show:
 - Parts of the nodes that are clipped when you set in their ancestor node the Clip Children property to enabled.
 - Nodes that are completely translucent or nodes that are not visible, including their descendant nodes.
 
-
 To view overdraw in your application, in the Kanzi Studio Preview click  to enter the Analyze mode, right-click , and select Overdraw.
 ## Viewing nodes that are rendered into texture
-
 
 Switching between framebuffer objects can cause significant performance reduction on some platforms. Conditions when Kanzi renders a node into a texture can be complex. For example, rotation, scale, or opacity can cause render to texture to occur.
 
 To see whether a node is rendered into a texture, and causing a framebuffer object switch, in the Preview click  to enter the Analyze mode, right-click , and select Framebuffer objects. The Preview highlights the layers that are rendered into texture with transparent, orange stripes.
 ## Viewing nodes rendered to a composition render target
-
 
 In Kanzi Studio you can see which 2D nodes in your application Kanzi renders to a composition render target.
 

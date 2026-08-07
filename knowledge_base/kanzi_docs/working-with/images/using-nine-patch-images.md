@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/images/using-nine-patch-ima
 
 # Using the Nine Patch Image node
 
-
 Use the Nine Patch Image node to create a scalable button background that scales with the size of the Nine Patch Image content.
 
 A Nine Patch Image scales its images in a controlled way, instead of scaling them as one unit. It places nine images in a 3x3 grid: the images on the edges form the frame, while the center image holds the content of a Nine Patch Image.
@@ -17,7 +16,6 @@ When you use Nine Patch Image, keep in mind:
 - By default as the size of a Nine Patch Image changes, the top, bottom, right, and left textures scale according to the change in space between the corner textures. You can control this setting with the Wrap Mode and the texture type properties for each texture. See Creating a Nine Patch Image node.
 
 ## Creating a Nine Patch Image node
-
 
 To create a Nine Patch Image node:
 
@@ -105,7 +103,6 @@ Tile the texture when the width or height of the space between the corner textur
 
 ## Setting the target format for images
 
-
 When you export your project to a kzb file, Kanzi Studio reads the images in the project using the format of the original image and writes the images to a kzb file in the format you set with the Target Format property for each image.
 
 If the file format of the original image is the same as the format you select in the Target Format property, Kanzi Studio does not modify the image when it writes the image to a kzb file under these conditions:
@@ -121,7 +118,6 @@ You can set the value of the Generate Mipmaps property in each image file.
 You can set the value of the Round up Image Dimensions to Nearest Power of Two property in the Project > Properties.
 
 When you enable the Round up Image Dimensions to Nearest Power of Two property, Kanzi Studio rounds up the width and height of the images in your project to the nearest power of two during kzb file export. For example, Kanzi Studio exports an image of the size 40 by 30 pixels to the kzb file in the size 64 by 32 pixels.
-
 
 If your image is in JPEG or PNG format and you do not want Kanzi Studio to modify the image that it exports to a kzb file, in the image Properties enable the Use Original Image property.
 
@@ -160,11 +156,9 @@ This is the default value and results in the fewest artifacts in sRGB images.
 
 This can give better results for images created for the standard color workflow.
 
-
 See Preparing images in third-party tools.
 
 ## Using the PNG compression
-
 
 When you use PNG compression keep in mind that because the compressed PNG images do not go to the GPU in compressed format, PNG compression affects the loading of a PNG image data from a kzb file to the device memory.
 
@@ -187,12 +181,9 @@ In the Properties set the PNG Compression Level property to the compression you 
   - Best compression speed (zlib level 1) creates a larger file, but compresses quickly
   - Default (zlib level 6) creates a smaller file, but takes longer to compress. This is the default option of the FreeImage library which Kanzi Studio uses for PNG images.
   - Best compression (zlib level 9) creates the smallest file, but takes the most time to compress
+**Tip:** You can set the value of the PNG Compression Level property in the Project > Properties and in the properties for each image file.
 
-
-> **Tip:** You can set the value of the PNG Compression Level property in the Project > Properties and in the properties for each image file.
->
 ## Setting the appearance of a Nine Patch Image
-
 
 To set the appearance of 2D nodes:
 
@@ -204,9 +195,7 @@ To set the appearance of 2D nodes:
 
 ## Nine Patch Image property types and messages
 
-
 For a list of the available property types and messages for the Nine Patch Image node, see Nine Patch Image.
 ## Using the Nine Patch Image node in the API
-
 
 For details, see the `NinePatchImage2D` class.

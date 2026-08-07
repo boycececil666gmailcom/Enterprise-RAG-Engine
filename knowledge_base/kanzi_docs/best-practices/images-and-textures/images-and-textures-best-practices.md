@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/best-practices/images-and-textures/image
 
 # Images and textures best practices
 
-
 The required memory bandwidth that rendering of large textures and images use can slow down your application. Use these tips to improve the performance of your application by creating and using optimal images and textures:
 
 - The easiest way to optimize the performance of your application is to reduce the amount of detail in your images by using smaller data sizes. See Adjusting the data size.
@@ -40,7 +39,6 @@ When you enable this property Kanzi Studio:
   - Removes the ICC profile from a png, jpg, or exr image file.
   - Does not perform gamma correction for the image.
 
-
 When you import to your Kanzi Studio project a glTF or glb asset, Kanzi Studio automatically enables the Ignore Embedded Color Profile property in the image resources used by that asset.
 - Make sure that all image resources that use the ASTC, ETC2, JPEG, or PNG format have the sRGB Content property set correctly:
 
@@ -59,6 +57,5 @@ This is the default value and results in the fewest artifacts in sRGB images.
   - Color space of the image, usually sRGB, set the Linear Premultiply property to disabled.
 
 This can give better results for images created for the standard color workflow.
-
 
 See Preparing images in third-party tools.

@@ -5,12 +5,10 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/android/android-appfw.html
 
 # Developing for Android with the Kanzi application framework (appfw)
 
-
 Use the Kanzi application framework (appfw) when you want to create an application for multiple platforms and you intend to share non-trivial application code between the platforms.
 
 Kanzi application framework (appfw) is a framework for developing cross-platform applications. You write application and plugin code in C++ and extending Android-specific functionality requires writing JNI glue code. When you use Kanzi application framework (appfw), you can render a Kanzi application to only one Android View at a time.
 ## Android lifecycle events in a Kanzi application
-
 
 The Android lifecycle events set how your Kanzi application behaves when the activity state changes. Each event maps to an Android activity callback method. A Kanzi application uses these lifecycle events:
 
@@ -62,18 +60,15 @@ KanziNativeLibrary.resizeEvent(width, height);
 
 ```
 
-
 Kanzi does not use the `LifeCycle.Event.ON_PAUSE` and `Lifecycle.Event.ON_RESUME` events because they do not tell whether the application surface is ready for rendering. To pause and resume rendering, `KanziView` uses these functions:
 
 - `SurfaceHolder.Callback.surfaceCreated` (`KanziView.surfaceCreated`)
 - `SurfaceHolder.Callback.surfaceDestroyed` (`KanziView.surfaceDestroyed`)
 
-
 See https://developer.android.com/reference/androidx/lifecycle/Lifecycle.Event.html and https://developer.android.com/reference/android/view/SurfaceHolder.Callback.
 
 This diagram shows the initialization sequence of a Kanzi application on the Android platform.
 ## Adding Kanzi application framework (appfw) to your Android application
-
 
 To use Kanzi application framework (appfw) with your existing Android Studio application project:
 
@@ -82,7 +77,6 @@ To use Kanzi application framework (appfw) with your existing Android Studio app
 - Import Kanzi Studio project assets
 
 ### Integrating Kanzi libraries into an Android Studio project
-
 
 You can add Kanzi to your Android application by making your Android Studio project depend on prebuilt Kanzi Android library and native Kanzi libraries as an Android library sub-project.
 

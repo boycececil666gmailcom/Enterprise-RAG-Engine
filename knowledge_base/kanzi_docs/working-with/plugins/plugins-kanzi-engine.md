@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/plugins/plugins-kanzi-engin
 
 # Kanzi Engine plugins
 
-
 With Kanzi plugins, you can extend the functionality of Kanzi and customize Kanzi to fit your application development requirements. When you create a Kanzi plugin, you can share the extended functionality with any Kanzi user.
 
 In Kanzi, you can create and use these types of plugins:
@@ -17,12 +16,10 @@ You can create:
   - Native plugins in C++. These plugins work on all supported platforms.
   - Kanzi Engine plugins in Java. These plugins work on Windows and Android. Together with Kanzi Android framework (droidfw), Java Kanzi Engine plugins allow you to extend your Kanzi application functionality on Android operating system without the need to write native glue code.
 
-
 See Creating Kanzi Engine plugins.
 - Kanzi Studio plugins extend the functionality of Kanzi Studio and run in Kanzi Studio.
 
 See Kanzi Studio plugins.
-
 
 Use a Kanzi Engine plugin to:
 
@@ -30,14 +27,12 @@ Use a Kanzi Engine plugin to:
 - Create custom property types and messages using the Kanzi Engine API, and use them in your Kanzi Studio projects.
 - Define the data entry points to your Kanzi application, and form the contract between the Kanzi application designer and developer.
 
-
 To learn how you can use Kanzi Engine plugins, see:
 
 - Extending the functionality of Kanzi Engine
 - Tutorial: Get application data from a data source
 - Node2D plugin example
 - Node3D plugin example
-
 
 Deployment of native Kanzi Engine plugins is flexible. You can use:
 
@@ -65,12 +60,10 @@ For example, do this to extend the functionality.
 This is not supported on Android and QNX with the LLVM C++ library.
   - You can reference the classes from a plugin indirectly through the content in a kzb file.
 
-
 Some platforms do not support or have limited support for dynamically linked libraries:
 
   - Android does not support independent updates of .apk content.
   - Android and QNX with the LLVM C++ library require you to link the dynamically linked plugins during the build time.
-
 
 Use dynamically linked Kanzi Engine plugins only with Kanzi applications that are built with the dynamic Kanzi Engine libraries, which Rightware ships in a dynamic platform package.
 

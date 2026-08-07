@@ -5,12 +5,10 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/bloom/step-2.html
 
 # Step 2 - Show the bloom effect
 
-
 In this step, you first apply the bloom effect to the headlights of the car. Then you show the bloom effect by blending it on top of the normally rendered scene.
 
 In the next step, you fine-tune the bloom effect by applying it three more times.
 ## Apply the bloom
-
 
 To apply the bloom:
 
@@ -43,7 +41,6 @@ This way, you set the strength of the blur effect.
 
 This way, you set the intensity of the bloom effect.
 
-
 You use this render pass to draw the Bloom Threshold render pass using the GaussianBloom07Material material to apply to the Car node the bloom effect with Gaussian blur in the horizontal direction.
   3.
 
@@ -74,7 +71,6 @@ In the Library, select the Vertical Bloom > Blit Horizontal Bloom render pass. I
 
 ```
 
-
 Click Save.
     - Set the Blur Direction:
 
@@ -84,7 +80,6 @@ Click Save.
 This way, you apply the blur effect in the vertical direction.
 
 You use the value 0.5 because you divided the resolution of the Horizontal Bloom render pass by 2. This way, you create a symmetrical blur effect.
-
 
 You use this render pass to draw the Horizontal Bloom render pass using the GaussianBloom07Material material to apply to the Car node the bloom effect with Gaussian blur in the vertical direction.
 
@@ -108,11 +103,9 @@ In the Library > Rendering > Render Pass Prefabs > Bloom > Render Bloom, create 
   - From the Library, drag the Vertical Bloom render pass to the Properties window, and drop it on the Texture 0 property of the Blit Combined Bloom render pass.
   - In the Properties, set Material to CombineMaterial.
 
-
 You use this render pass to draw the Vertical Bloom render pass to the screen using the CombineMaterial. In the next step of this tutorial, you apply the bloom effect three more times and use this render pass to combine the outputs of all four passes.
 
 ## Show the car with the headlights turned on
-
 
 In this section, you create the render passes and material that you need to show the car with the headlights turned on.
 
@@ -152,8 +145,6 @@ In the Library in the Bloom render pass prefab, create a Blit render pass, name 
 
 This way you, set the brightness of the bloom effect.
 
-
 You use this render pass to draw the Bloom Out render pass using the BlitBloomMaterial material to show the bloom effect.
-
 
 Previous step Next step

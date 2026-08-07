@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/data-sources/step-3.html
 
 # Step 3 - Define and use a static list data source
 
-
 In this step of the tutorial you first define the data source for a static list in the data source plugin and then use it in the Kanzi Studio project to get the data for items in a Grid List Box node from a data source.
 ## Add the functionality to generate list data objects
-
 
 In this section you add the functionality which enables the data source plugin to generate list data objects.
 
@@ -44,19 +42,13 @@ In Kanzi Studio, select File > Open Kanzi Command Prompt.
 The Kanzi Command Prompt opens the Windows Command Prompt with the Kanzi environment variables set for the version of Kanzi for which you open a Kanzi Command Prompt.
 
 Use the Kanzi Command Prompt to access Kanzi utilities and build tools, such as Gradle and CMake, without using absolute paths or setting environment variables.
-
-> **Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
->
-> When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
-> 4.
->
-> In the Kanzi Command Prompt in the `<KanziWorkspace>/Tutorials/Data sources/Start/Application` directory run
->
-> ```
-> generate_cmake_vs2022_solution.bat
->
-> ```
-
+**Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
+When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
+4.
+In the Kanzi Command Prompt in the `<KanziWorkspace>/Tutorials/Data sources/Start/Application` directory run
+```
+generate_cmake_vs2022_solution.bat
+```
 
 You must regenerate the Visual Studio solution after adding or removing files from your application.
 5.
@@ -144,7 +136,6 @@ static void addDataObjectsRecursively(Domain* domain, DataObjectSharedPtr parent
 
 ```
 
-
 with
 
 ```
@@ -172,7 +163,6 @@ static void addDataObjectsRecursively(Domain* domain, DataObjectSharedPtr parent
 
 ```
 
-
 7.
 
 In Kanzi Studio press F8 to exit the Preview.
@@ -184,7 +174,6 @@ In Visual Studio in the Solution Explorer right-click the XML_data_source_start 
 After Visual Studio builds the plugin, in Kanzi Studio press F5 to start the Preview.
 
 ## Get list data from a data source
-
 
 In this section you set a Grid List Box 2D node in the project to get data for its items from a list data object, which the plugin generates from the data source.
 
@@ -218,13 +207,10 @@ Repeat the previous step for the ContactLastName and ContactNumber:
   - For the ContactLastName node from the Data Sources drag and drop the Cluster > contacts > Item > contact > lastname data object on the Text property.
   - For the ContactNumber node from the Data Sources drag and drop the Cluster > contacts > Item > contact > phone data object on the Text property.
 
-
 The list of contacts now receives the data from the `ClusterWithList.xml` data source. Use a text editor to change the values in the `ClusterWithList.xml` file, save the `ClusterWithList.xml` file, and Kanzi Studio Preview and the Data Sources window show the updated data objects and their values.
-
 
 Previous step
 ## Whatâs next?
-
 
 In this tutorial you learned how to define an XML data source and how to use the data from that data source in a Kanzi Studio project to provide the data to a Kanzi application. Now you can:
 

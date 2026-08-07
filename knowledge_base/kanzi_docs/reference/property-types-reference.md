@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/reference/property-types-reference.html
 
 # Property types reference
 
-
 This table lists all default property types available in Kanzi. See Property system, Creating property types, and Node and resource reference.
 |
 

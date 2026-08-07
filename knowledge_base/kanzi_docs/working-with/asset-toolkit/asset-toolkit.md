@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/asset-toolkit/asset-toolkit
 
 # Asset Toolkit
 
-
 The Asset Toolkit contains easy, ready-made components and materials with a similar structure and set of properties, that you can use to create Kanzi applications faster.
 
 Here you can find all the Asset Toolkit content:
@@ -20,10 +19,8 @@ Here you can find all the Asset Toolkit content:
 - Scrollable lists that can present collections of items. See Scroll list UI Components.
 - Example components that shows ways to combine these assets into more complex, reusable components. See Examples.
 
-
 To use the Asset Toolkit assets in your Kanzi Studio project, from the Asset Packages drag an asset to a node in the Node Tree, to the Prefabs, or to the Preview. See Using the Asset Toolkit assets.
 ## Car
-
 
 Use the Car to add a car model into your scene.
 
@@ -31,7 +28,6 @@ To position the car, in the Preview use either the Node tool or the Camera tool.
 
 To set the material for the different parts of the car, you can drag materials from the Assets window to the Car in the Preview window, or on the part of the car in the Node Tree. See Using the Asset Toolkit assets.
 ## Materials
-
 
 The Asset Toolkit includes Physically Based Rendering (PBR) materials that you can apply to 3D content in your project.
 
@@ -48,16 +44,13 @@ PBR Plastic
 To learn about using materials from the Asset Toolkit in your Kanzi application, see Using Asset Toolkit materials in your project.
 ## Environments
 
-
 The Asset Toolkit includes two environment textures which are also included in the car and PBR materials, but provided independently for use with your own materials or models.
 
 - Use Environment Studio Irradiance to provide diffused ambient lighting to materials in your scene, as is done with glass and plastics in the assets.
 
-
 Environment Studio Irradiance
 
 - Use Environment Studio Specular to provide a sharp, smooth reflective surface to materials in your scene, as is done with metals and paint in the assets.
-
 
 Environment Studio Specular
 
@@ -65,7 +58,6 @@ To use an environment texture in your project, from the Assets window right-clic
 
 To learn more about environment textures, see Using environment textures.
 ## Material types
-
 
 The Asset Toolkit includes two Material Types that can be used to animate display of content in your application:
 
@@ -80,7 +72,6 @@ To use the Flipbook Material Type in your project:
   - In the Flipbook Material Type properties window, set the grid to correspond to the layout of the images in the texture atlas.
   - Set the static image to display by setting the Static Image Index property.
   - Play out an animated flipbook sequence by advancing the Time property value.
-
 
 To learn about using tile atlases, see Using a tile atlas.
 - The Transition Material Type allows you to transition between nodes in either a Fade, Sweep or Noise motion.
@@ -109,9 +100,7 @@ To use the Transition Material Type in your project:
 
     - Additionally, control the granularity of the noise by setting the Transition Noise Scale property.
 
-
 ## Interactivity Control components
-
 
 Use the UI Components provided in the Asset Toolkit to receive user input, and provide an interactive user experience in your application.
 
@@ -131,14 +120,12 @@ For example, to adjust the appearance and behavior of the Button, after you add 
 - UI - Segments to divide the button background into segments, and set its number and weight.
 - UI - Stroke to apply an outline to the button, and set its color and weight.
 
-
 Use any combination of these properties to adjust the appearance of the UI components. Each are enabled individually by marking the property Active.
 
 You can use bindings to control the UI - Progress property. See Using bindings.
 
 To learn more about the interactivity controls, see Interactivity controls.
 ## Radial UI Components
-
 
 Use the Radial UI Components provided in the Asset Toolkit display values to progress in a round control.
 
@@ -156,12 +143,10 @@ For example, to adjust the appearance and behavior of the Gauge Progress control
 - UI - Segments to divide the gauge into segments, and set its number and weight.
 - UI - Stroke to apply an outline to the gauge, and set its color and weight.
 
-
 Use any combination of these properties to adjust the appearance of the Radial UI components. Each are enabled individually by marking the property Active.
 
 You can use bindings to control the UI - Progress property. See Using bindings.
 ## Simple Shape UI Components
-
 
 Use the simple shape UI components provided in the Asset Toolkit to add basic shapes to your application without the need of a plugin.
 
@@ -170,7 +155,6 @@ Use the simple shape UI components provided in the Asset Toolkit to add basic sh
 
 ## Scroll list UI Components
 
-
 Use the scroll list UI components provided in the Asset Toolkit to add scrollable lists to your application in one of a four layout patterns.
 
 - Use the Scroll List Vertical to present items two dimensionally in a vertical scrollable list.
@@ -178,12 +162,10 @@ Use the scroll list UI components provided in the Asset Toolkit to add scrollabl
 - Use the Scroll Trajectory 3D Horizontal to present the items three dimensionally in on horizontal plane.
 - Use the Scroll Trajectory 3D Arc to present the items three dimensionally in an arc.
 
-
 To learn more about list, see List Box nodes.
 
 To use a data source to display your own data in a list component, see Using a data source, and Tutorial: Get application data from a data source.
 ## Examples
-
 
 Expand the Asset Toolkit to find a folder with example components that show possible ways to combine these assets into more complex, reusable components.
 

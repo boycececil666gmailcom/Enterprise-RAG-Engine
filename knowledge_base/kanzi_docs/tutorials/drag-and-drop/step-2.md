@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/drag-and-drop/step-2.html
 
 # Step 2 - Implement the drag and drop functionality
 
-
 In this step you implement the drag and drop functionality.
 ## Create the drag functionality
-
 
 In this section you first use the Kanzi Engine API to instantiate the Drag Item prefab template that you created in the previous step of the tutorial. Then you define the behavior when the user starts the drag-and-drop gesture and drags a button. Finally, you create and configure a drag-and-drop manipulator for each button in the navigation bar.
 
@@ -146,7 +144,6 @@ void onDragMoved(DragAndDropManipulator::MovedMessageArguments& messageArguments
 
 ```
 
-
 4.
 
 Create and configure a drag-and-drop manipulator for each button:
@@ -203,7 +200,6 @@ void onProjectLoaded() override
 
 ```
 
-
 5.
 
 Build and run your application.
@@ -213,7 +209,6 @@ In the application long-press a button and drag it in the horizontal direction.
 You drag an instance of the Drag Item prefab. The left side of the Drag Item is positioned at the input pointer, and the Drag Item does not yet show an icon. In the next section you complete the drag functionality.
 
 ## Complete the drag functionality
-
 
 In this section you first set the icon and position of the button that the user drags. You then reposition the icons of the buttons as the user drags one of the buttons.
 
@@ -316,9 +311,7 @@ void updateItems()
 
 ```
 
-
 ## Create the drop functionality
-
 
 In the previous sections you implemented the dragging of a button. When the user ends the drag-and-drop gesture, the Drag Item stays visible in the exact position where the user releases the pointer. In this section you add the code to make the button look like it falls into its place when the user drops it.
 
@@ -368,6 +361,5 @@ void createDragAndDropManipulator(NodeSharedPtr dragAndDropNode)
 Build and run your application.
 
 When you end the drag-and-drop gesture, the Drag Item becomes invisible.
-
 
 Previous step Next step

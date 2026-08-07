@@ -5,12 +5,10 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/effects/multiple-effects.ht
 
 # Using multiple effects
 
-
 Use an Effect Stack 2D effect prefab to apply multiple effects to a 2D node.
 
 Kanzi Studio comes with the Default Effect Stack 2D preset that you can use to quickly apply multiple effects to a 2D node. See Using the Default Effect Stack 2D preset.
 ## Applying multiple effects to a 2D node
-
 
 To apply multiple effects to a 2D node:
 
@@ -51,11 +49,9 @@ For example, this way, when you apply the Shadow Effect 2D after the Outline Eff
 
 This is the default mode for the Shadow Effect 2D and Outline Effect 2D effects.
 
-
 The Effect Stacking Mode property has no impact on the Mask Effect 2D and Blur Effect 2D effects, which always use the Chained mode.
 
 ## Using the Default Effect Stack 2D preset
-
 
 To help you get started with the Effect Stack 2D, Kanzi Studio comes with the Default Effect Stack 2D preset.
 
@@ -71,7 +67,6 @@ Kanzi Studio creates in the Library > Effects > 2D Effects an Effect Stack 2D ef
   - Shadow Effect 2D effect named Shadow
   - Outline Effect 2D effect named Outline
   - Blur Effect 2D effect named Blur
-
 
 The most common properties of each effect have bindings to the Default Effect Stack 2D. This way you can set each effect in the Default Effect Stack 2D.
 2.
@@ -96,13 +91,10 @@ For example, add and set:
   - Outline Color to the color that you want to use for the outline
   - Shadow Distance to 20
 
-
 For each property that you add, Kanzi Studio adds to the node a To Source binding that pushes the property value to the Default Effect Stack 2D preset.
+**Tip:** When you want to remove from a node an effect stack property and its To Source binding, right-click that property and select Remove Property And Binding.
 
-> **Tip:** When you want to remove from a node an effect stack property and its To Source binding, right-click that property and select Remove Property And Binding.
->
 ## Creating a frosted glass effect
-
 
 In this procedure, you use the Effect Stack 2D effect prefab with the Blur Effect 2D, Mask Effect 2D, and Shadow Effect 2D effects to create a frosted glass effect.
 
@@ -173,7 +165,6 @@ void main()
 
 ```
 
-
 Click Save.
   3.
 
@@ -199,7 +190,6 @@ void main()
 
 ```
 
-
 Click Save.
   4.
 
@@ -219,9 +209,7 @@ Adds to the BackgroundCaptureBlit material type these properties that you define
       - Brush Modulate Color (`Brush.ModulateColor`)
       - Brush Texture (`TextureBrush.RenderTexture`)
 
-
 You can now set these properties in the BackgroundCaptureBlitMaterial material that uses the BackgroundCaptureBlit material type.
-
 
 3.
 
@@ -305,7 +293,6 @@ offset
 
 ```
 
-
 Click Save.
 
 5.
@@ -368,7 +355,6 @@ For example, in the Login Activity prefab, create the input fields for a login s
 
 ## Assigning multiple effects to a 2D node using the Kanzi Engine API
 
-
 To assign multiple effects to a 2D node using the Kanzi Engine API:
 
 ```
@@ -398,6 +384,5 @@ NodeEffectPrefab2DSharedPtr effectStackPrefab =
 node->setEffectPrefab(effectStackPrefab);
 
 ```
-
 
 For details, see the `EffectStack2D` class.

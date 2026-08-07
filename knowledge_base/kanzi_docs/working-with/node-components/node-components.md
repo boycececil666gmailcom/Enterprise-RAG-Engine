@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/node-components/node-compon
 
 # Node components
 
-
 Use node components to add functionality to a node.
 
 For example, a trigger executes an action when a condition is met and an Animation Player animates properties of the node to which it is attached.
@@ -20,7 +19,6 @@ In Kanzi these triggers are available:
   - On Attached trigger sets off when Kanzi attaches a node with that trigger to the node tree.
   - On Property Change trigger sets off when a property value changes.
   - On Timer trigger sets off at specific time intervals.
-
 
 See Triggers reference.
 - Animation. Use animation players to play keyframe animations and interpolate property values to dynamic target values. See Animation system.
@@ -96,6 +94,5 @@ See Using the Pan Manipulator.
 A custom node component is an isolated piece of logic, which you implement in a Kanzi Engine plugin and you can attach to any node. See Kanzi Engine plugins and Creating custom node components.
 
 ## Using node components in the API
-
 
 For details, see the `NodeComponent` class.

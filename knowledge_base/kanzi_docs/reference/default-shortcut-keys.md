@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/reference/default-shortcut-keys.html
 
 # Default shortcut keys
 
-
 Here you can find the reference for the default shortcut keys in Kanzi Studio. To set your own shortcut keys, select Edit > User Preferences and there select the Shortcut Keys tab.
 ## Basic Editing
 

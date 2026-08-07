@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/performance-profiling/resou
 
 # Resource profiling reference
 
-
 Here you can find the reference for resource profiling data.
 
 Use resource profiling to measure during runtime how long it takes to load and deploy resources and prefabs in your Kanzi application.
@@ -18,7 +17,6 @@ Kanzi resource profiling data contains:
 - Resource profiling data samples (`"ResourceProfilingDataSamples"`). See Resource profiling data samples.
 
 ## Resource profiling contexts
-
 
 A resource profiling context represents a scope that executes code path which triggers resource loading or deployment. A resource profiling context sampler creates a resource profiling context when the execution of the scope where the sampler is defined, triggers resource loading or deployment. The duration of a resource profiling context is the same as the duration of the resource loading or deployment triggered by the execution of the corresponding scope.
 
@@ -220,7 +218,6 @@ The profiler creates this context when the resource that the application is acqu
 
 N/A |
 ## Resource profiling data samples
-
 
 A resource profiling data sample includes a summary of profiling information related to a profiled resource, including references to the resource profiling contexts in which the resource is acquired, loaded, and deployed.
 

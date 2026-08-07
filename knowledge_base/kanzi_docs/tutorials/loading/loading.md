@@ -5,14 +5,12 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/loading/loading.html
 
 # Tutorial: Load and deploy resources asynchronously
 
-
 In this tutorial, you learn how to asynchronously load resources that you want to show in a List Box node. When you load resources asynchronously, your Kanzi application stays responsive because asynchronous loading does not block the user interface. When the user scrolls a list, you load each item when that item becomes visible instead of keeping all the items in working memory. In this tutorial, you set the application to show placeholder content while the application is loading resources.
 
 Load resources asynchronously when you want to:
 
 - Show in a List Box node content that can take a long time to load, but want to keep your application responsive. For example, to load parts of a map on demand when the user scrolls that map or to show a loading screen while a part of your application is loading.
 - Save memory by loading content only when your application needs that content and removing the content when the application no longer needs it.
-
 
 This tutorial shows how to asynchronously load resources using a list item generator. To asynchronously load resources for single prefabs, in Kanzi Studio use triggers and actions. See Loading node prefab resources asynchronously.
 
@@ -23,11 +21,9 @@ Before you start this tutorial, make sure you have your Kanzi development enviro
 - CMake 3.25 or newer
 - Visual Studio 2022 with the latest updates
 
-
 - Android Studio. See Deploying Kanzi applications to Android.
 
 You use Android Studio to deploy your Kanzi application to an Android device.
-
 
 This tutorial assumes you understand the basics of working with Kanzi Studio. The best entry points for getting familiar with Kanzi are:
 
@@ -37,7 +33,6 @@ This tutorial assumes you understand the basics of working with Kanzi Studio. Th
 
 ## Get the tutorial
 
-
 To get the tutorial, in the Kanzi Studio Quick Start window, click Projects and select the Tutorials tab. Next to the Loading tutorial, click .
 
 Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` directory. You can find:
@@ -46,7 +41,6 @@ Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` director
 - The completed tutorial in the `<KanziWorkspace>/Tutorials/Loading/Completed` directory.
 
 ## Content of the starting point project
-
 
 The starting point project contains the content that you need to complete this tutorial:
 
@@ -60,7 +54,6 @@ For example, if you set the value of the Keep Alive Item Count property to 5, th
 - The Placeholder prefab is what the Trajectory List Box 3D node shows while the application is asynchronously loading an item.
 
 ## Create a list item generator
-
 
 In this section, you use the Kanzi Engine API to create a list item generator that provides the items for the Trajectory List Box 3D node. You use the list item generator to define how your application loads and displays the list items.
 
@@ -76,19 +69,13 @@ In Kanzi Studio, select File > Open Kanzi Command Prompt.
 The Kanzi Command Prompt opens the Windows Command Prompt with the Kanzi environment variables set for the version of Kanzi for which you open a Kanzi Command Prompt.
 
 Use the Kanzi Command Prompt to access Kanzi utilities and build tools, such as Gradle and CMake, without using absolute paths or setting environment variables.
-
-> **Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
->
-> When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
-> 3.
->
-> In the Kanzi Command Prompt in the `<KanziWorkspace>/Tutorials/Loading/Start/Application` directory, run the script that generates a Visual Studio solution for the tutorial application.
->
-> ```
-> generate_cmake_vs2022_solution.bat
->
-> ```
-
+**Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
+When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
+3.
+In the Kanzi Command Prompt in the `<KanziWorkspace>/Tutorials/Loading/Start/Application` directory, run the script that generates a Visual Studio solution for the tutorial application.
+```
+generate_cmake_vs2022_solution.bat
+```
 
 This script generates a Visual Studio solution for the application in the directory `<KanziWorkspace>/Tutorials/Loading/Start/Application/build_vs2022`.
 4.
@@ -325,9 +312,7 @@ private:
 
 ```
 
-
 ## Asynchronously load the list items
-
 
 In this section, you learn how to asynchronously load the resources for each item that becomes visible as the user scrolls the Trajectory List Box 3D node. You set the application to show a placeholder item until the application loads the resources for that item.
 
@@ -420,10 +405,8 @@ Select the solution configuration that you want to use and run your application.
 
 During development, select the Debug configuration. When you are ready to create a version for production, select the Release configuration.
 
-
 When you run the application and scroll the Trajectory List Box 3D, the application shows the Placeholder prefab while it asynchronously loads the resources for each list item.
 ## Whatâs next?
-
 
 In this tutorial you learned how to asynchronously load resources that you want to show in a List Box node when the user scrolls that List Box. Now you can:
 

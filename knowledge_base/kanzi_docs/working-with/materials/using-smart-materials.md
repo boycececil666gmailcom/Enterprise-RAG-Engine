@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/materials/using-smart-mater
 
 # Using smart materials
 
-
 In a material type, you can use material rules to automate the definition of shader preprocessors for material inputs and vertex attributes.
 ## Using the Kanzi default smart materials
-
 
 Kanzi Studio comes with these smart material types:
 
@@ -16,12 +14,10 @@ Kanzi Studio comes with these smart material types:
 - SmartVertexPhong. See Using the smart Phong materials.
 - SmartFragmentPhong. See Using the smart Phong materials.
 
-
 To create your own smart materials, see Creating your own smart material.
 
 When you add properties to a smart material, Kanzi Studio automatically creates a variant of the material type with the correct preprocessor definition values and properties set to support the properties that you added.
 ## Using the smart physically-based material
-
 
 To use the smart physically-based material:
 
@@ -49,7 +45,6 @@ By default, the SmartPhysicallyBasedMaterial uses the metallic-roughness workflo
     - For a dielectric material, set the value to 0.
     - For a material whose reflective behavior fully resembles that of a metal, set the value to 1.
 
-
 The properties that you can add to the material are available in the Add Property > Material context menu. For example, you can:
 
   - Set the material to use textures. See Creating a physically-based textured material.
@@ -64,7 +59,6 @@ When you enable a feature:
   - Kanzi Studio adds to the material the properties that you can use to configure the feature.
   - Properties that you can use to fine-tune the feature become available in the Add Property > Material category.
 
-
 For example, to use the specular-glossiness workflow, add the Configuration > Workflow property, and set it to Specular Glossiness.
 
 Kanzi Studio adds to the material these properties:
@@ -77,15 +71,12 @@ Kanzi Studio adds to the material these properties:
 
   - Specular Color Factor sets the specular color of the material.
 
-
 ## Using the smart Phong materials
-
 
 These smart Phong materials are available:
 
 - SmartFragmentPhong is a pixel-based Phong material. Most of the GPU-specific computation, including applying lights using the Phong reflection model, is done in the fragment shader. This offers better image quality often at the cost of performance.
 - SmartVertexPhong is a vertex-based Phong material. Most of the GPU-specific computation, including applying lights using the Phong reflection model, is done in the vertex shader.
-
 
 To use a smart Phong material:
 
@@ -111,9 +102,7 @@ When you add the Texture property, the Texture Offset and Texture Tiling propert
 When you add the TextureCube property, the CubemapColor property become available in the Add Property > Material context menu.
   - By default, the smart Phong materials support one spot light. If your Scene contains multiple Spot Light nodes, add the Material > Limit Spot Lights property, and set it to the number of spot lights that you want to use.
 
-
 ## Creating your own smart material
-
 
 Here you use material rules to create your own smart material that enables rendering either a color or a texture, or both.
 
@@ -156,7 +145,6 @@ void main()
 }
 
 ```
-
 
 Click Save.
   3.
@@ -208,7 +196,6 @@ void main()
 
 ```
 
-
 Click Save.
   4.
 
@@ -216,7 +203,6 @@ In the Library, select the SmartColorTexture material type. In the Properties, i
 
     - USE_COLOR key and set its value to 0
     - USE_TEXTURE key and set its value to 0
-
 
 Next, you create material rules that control the values of these preprocessor definitions based on the properties that the user adds to the material.
 
@@ -240,7 +226,6 @@ For example, set it to Use Color.
       - Material Rule Properties are custom properties that you can use in material rule. See Using a custom property type in a material rule.
       - Material Properties are Kanzi properties that are present in a material when you add them to that material.
 
-
 For example, set Material Looks For to the Material Properties > Ambient property type.
 
 When you add the Ambient Color property to a material of the SmartColorTexture material type, Kanzi Studio executes the action that you next add to this rule.
@@ -257,7 +242,6 @@ In the Material Rule that you created, right-click Actions and select:
 This action assigns a tangent space normal map to a mesh that has no tangents. If a mesh already has tangents, this action does not regenerate them.
     - Make Property Available to make a property available for a material only when that material finds the property that you selected in the Material Looks For dropdown of the material rule.
 
-
 For example, select Set Preprocessor Value, and set:
 
     - Preprocessor Definition Name to USE_COLOR
@@ -267,7 +251,6 @@ This way, you set the value of the preprocessor macro to a constant value.
 
 To copy the value of the Material Looks For property to the preprocessor macro, use the Copy value method.
     - Preprocessor Definition Value to 1
-
 
 When the user adds the Ambient Color property to a material of the SmartColorTexture material type, this action sets the value of the USE_COLOR preprocessor macro to 1.
 
@@ -305,11 +288,9 @@ When you add the Texture property, Kanzi Studio adds to the material also the Te
 
 By default, the material uses Opaque blend mode.
 
-
 When you add properties that you use in the material rules, Kanzi Studio creates in the Library > Materials and Textures > Material Types > SmartColorTexture a version of the material type with the preprocessor definitions set to the values that you defined in the material rules.
 
 ## Using a custom property type in a material rule
-
 
 To use a custom property type in a material rule:
 
@@ -320,10 +301,8 @@ Create a property type. See Creating a property type.
 
 In the New Property Type window, enable the Material Rule Property flag.
 
-
 You can now use your property type in a material rule. The property type appears in the Property Type dropdown menu under Material Rule Properties.
 ## Using mesh features in a material rules
-
 
 To use mesh settings in a material type, select the specific mesh feature as the input property:
 
@@ -359,7 +338,6 @@ The value is equal to the number of morph targets for the mesh, or 0 if there is
 The value is equal to the number of bones in the skeleton, or 0 if there is no armature data.
 
 ## Adding conditions to a material rule
-
 
 In a material rule, you can create conditions that must be met for the rule to execute its actions. A material rule condition uses a relational operator to compare the value of the rule property type to a constant value.
 

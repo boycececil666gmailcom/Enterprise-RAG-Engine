@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/controls/controls.html
 
 # Interactivity controls
 
-
 Use interactivity controls to make your application interactive.
 |
 

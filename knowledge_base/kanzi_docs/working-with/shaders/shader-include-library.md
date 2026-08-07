@@ -5,12 +5,10 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/shaders/shader-include-libr
 
 # Using the shader include library
 
-
 The shader include library provides a set of reusable `.glsl` files that Kanzi Studio installs alongside itself. You can include these system shader files in any project shader without copying them into your project directory. Kanzi Studio does not include system shaders in project save data, so existing projects that do not use them are not affected.
 
 See also Reusing shader code.
 ## System shader directory
-
 
 Kanzi Studio maintains a system shader directory that contains the `.glsl` files shipped with Kanzi. Kanzi Studio watches this directory for external changes and picks up additions, removals, and modifications while Studio is running. You do not need to restart Studio.
 
@@ -20,7 +18,6 @@ Any `.glsl` file placed in the system shader directory is automatically availabl
 
 The system shader directory is read-only from within Kanzi Studio. To customize a system shader for your project, clone it first. See Cloning a system shader to your project.
 ## Including system shaders
-
 
 The `#include` directive supports two forms that follow C/C++ include conventions:
 |
@@ -53,7 +50,6 @@ For example:
 ```
 
 ## Cloning a system shader to your project
-
 
 To customize a system shader for your project, you can clone it. Cloning copies the system shader file into your project directory, where you can edit it freely. The command copies the file to the project Shaders root and does not preserve the original subdirectory prefix. After cloning, quoted includes (`#include "file.glsl"`) in your project shaders resolve to the cloned file instead of the system original.
 

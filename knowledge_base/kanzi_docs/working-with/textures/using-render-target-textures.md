@@ -5,14 +5,12 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/textures/using-render-targe
 
 # Using render target textures
 
-
 Use a Render Target Texture to render content to a texture or to apply anti-aliasing to only a part of your application. You can use render target textures like any other texture. For example, you can use it in a Texture Brush or as an image in an Image node.
 
 See Applying anti-aliasing and Textures.
 
 For example, if your Kanzi application has more than one scene, you can use render target textures to show the content of other scenes in the current scene.
 ## Rendering content to a texture
-
 
 To render content to a texture:
 
@@ -70,7 +68,6 @@ Usually the best starting point for setting texture filtering is to set:
   - Minification Filter to Linear
   - Magnification Filter to Linear
   - Mipmap Mode to Nearest. If you are sure that the texture is not minified select Base, otherwise start with Nearest. For example, the default value for a Render Target Texture is Base. With this setting, the texture does not have mipmap levels and the base level is always sampled. See Using mipmaps.
-
 
 Note that some texture formats are available with OpenGL ES versions higher than 2.0. To set the OpenGL ES version, in the main menu select Project > Properties and in the Properties set the Target Graphics API property.
 
@@ -137,6 +134,5 @@ Use this combination when you want the best quality and your platform is powerfu
 This combination has the largest negative impact on performance.  |
 
 ## Render Target Texture property types
-
 
 For a list of the available property types for render target textures, see Render Target Texture and Texture.

@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/lights/using-lights.html
 
 # Using the light nodes
 
-
 Use the light nodes to create sources of light for a Scene in your Kanzi application.
 
 Kanzi has these light node types:
@@ -27,12 +26,10 @@ In Kanzi, the VertexPhong, FragmentPhong, and PhysicallyBased materials by defau
 - Two point lights
 - One spot light
 
-
 See Setting the number of lights for a smart material and Setting the number of lights for a material type.
 
 You can use uniform bindings to control property types of light nodes. See Controlling light uniforms.
 ## Creating a light node
-
 
 To create a light node:
 
@@ -54,7 +51,6 @@ For example, to adjust the color of a Spot Light, set the value of the Spot Ligh
 
 ## Adjusting the brightness of a light
 
-
 To adjust the brightness of a light, set the intensity of the light color.
 
 For example, to set the brightness of a Point Light, set the value of the Point Light Color property Intensity (I) property field.  [](../../_images/sphere-and-point-light.png)
@@ -64,7 +60,6 @@ Light intensity in Kanzi works similarly to exposure in photography:
 - Increase of intensity by one unit doubles the amount of light.
 - Decrease of intensity by one unit halves the amount of light.
 
-
 For example, when you change the intensity:
 
 - From 0 to +2, you quadruple the brightness.
@@ -72,10 +67,8 @@ For example, when you change the intensity:
  [](../../_images/intensity-4.png) [](../../_images/intensity-3.png) [](../../_images/intensity-2.png) [](../../_images/intensity-1.png) [](../../_images/intensity1.png) [](../../_images/intensity2.png) [](../../_images/intensity3.png) [](../../_images/intensity4.png)
 ## Turning off a light
 
-
 To turn off a light, select the light node, and in the Properties add and disable the Node > Visible property.
 ## Setting the number of lights for a smart material
-
 
 In a material that uses the SmartPhysicallyBased, SmartVertexPhong, or SmartFragmentPhong material type, you can set the type and number of lights that the material can use. See Using smart materials.
 
@@ -100,13 +93,11 @@ By default, the material supports two point lights.
 
 By default, the material supports one spot light.
 
-
 For example, to set the material to render the first three Point Light nodes in the scene, add the Limit Point Lights property and set it to 3.
 
 If a scene contains more than three point lights, only the first three of them affect the rendering of the nodes that use this material.
 
 ## Setting the number of lights for a material type
-
 
 For a material type, you can set the type and number of lights that the materials based on that material type can use.
 
@@ -127,13 +118,11 @@ In the Properties, in the Preprocessor Definitions, for each light type set the 
   - KANZI_SHADER_NUM_POINT_LIGHTS to set the number of point lights
   - KANZI_SHADER_NUM_SPOT_LIGHTS to set the number of spot lights
 
-
 For example, to set a material to use four spot lights, set the KANZI_SHADER_NUM_SPOT_LIGHTS Value to 4 and press the Enter key. Now all the materials that use this material type can render four spot lights. If a scene contains more than four spot lights, only the first four lights in that scene affect the rendering of the nodes which use the material with that material type.
 
 When you press the Enter key, Kanzi Studio updates in the Uniforms the uniform arrays for the properties of the light types that you changed.
 
 ## Controlling light uniforms
-
 
 In a material type, vertex and fragment shaders define the uniforms and property types that you can use in that material. When rendering 3D nodes with a specific material type, uniform bindings allow Kanzi to write values to the render state and use those values for uniforms and property types.
 
@@ -178,7 +167,6 @@ See Using lights in rendering.
   - To perform accumulation operations on a range of lights, use the `...` operator followed by an arithmetic operator.
   - To refer to the result of a temporary variable binding in the same material type, use the `{##Self/[temporaryVariableProperty]}` syntax, where `temporaryVariableProperty` is the target property of the temporary variable binding. See Temporary variable bindings.
 
-
 See Light uniform bindings.
 
 For example:
@@ -208,9 +196,7 @@ rangeA * totalOpacity
 
 ```
 
-
 ## Using the light nodes in the API
-
 
 To create and set a Directional Light:
 
@@ -225,7 +211,6 @@ directionalLight->setLayoutTransformation(layoutTransformation);
 directionalLight->setDirectionalLightColor(ThemeRed);
 
 ```
-
 
 To create and set a Point Light:
 
@@ -248,7 +233,6 @@ spotLight->setSpotLightAttenuation(Vector3(1.3f, 0.0f, 0.0f));
 
 ```
 
-
 To create and set a Spot Light:
 
 ```
@@ -265,10 +249,8 @@ pointLight->setPointLightAttenuation(Vector3(0.8f, 0.0f, 0.0f));
 
 ```
 
-
 For details, see the `Light` class.
 ## Light node property types
-
 
 For lists of the available property types for the light nodes, see:
 

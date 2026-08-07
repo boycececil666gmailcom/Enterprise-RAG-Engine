@@ -5,14 +5,12 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/localization/using-locales.
 
 # Using locales
 
-
 Kanzi uses locale as an ID to select the resources associated with a language and location.
 
 If you do not define the resources for a locale, Kanzi uses the resources set in the default locale.
 
 Learn how to localize your Kanzi applications by completing a tutorial. See Tutorial: Localize your application.
 ## Setting the application locale
-
 
 Use the Locale property in the Screen node to set which locale your application uses.
 
@@ -24,7 +22,6 @@ For example:
 - To find out when locale in your application changed, use the On Property Change trigger and in the Trigger Settings set.
 
 ## Creating locale packs
-
 
 A locale pack is a kzb file that contains only the resources for a specific locale. Using Kanzi Engine API you can load the application resources used by a certain locale when you set that locale. That way you reduce the size of kzb files in your application.
 
@@ -54,7 +51,6 @@ Tutorial: Localize your application.
 
 ## Adding a locale manually
 
-
 Kanzi uses locale as an ID to select the resources associated with a language and location.
 
 If you do not define the resources for a locale, Kanzi uses the resources set in the default locale.
@@ -75,7 +71,6 @@ In the Localization Editor click + Create Locale, enter the name for the locale,
 Kanzi Studio adds the locale to all localization tables in your project.
 
 ## Changing the name of an existing locale
-
 
 To change the name of an existing locale:
 

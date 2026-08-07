@@ -5,18 +5,15 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/localization/step-2.html
 
 # Step 2 - Create locale packs for additional locales
 
-
 A locale pack is a kzb file that contains only the resources for a specific locale. Using the Kanzi Engine API, you can load the application resources used by a specific locale when you set that locale. That way you reduce the size of kzb files in your application.
 
 In this step of the tutorial you first prepare the Kanzi Studio project for loading additional locales and then create styles and locale packs for the Japanese, Chinese, and Korean locales.
 ## Prepare the Kanzi Studio project for loading additional locales
 
-
 In this section, you modify the Kanzi Studio project that you created in the first step of the tutorial:
 
 - You import the PO files that contain the resources for the additional locales.
 - You prepare the project so that the instances of the LocaleButton prefab in the LocaleSelector node use a custom property to control the locale of the application.
-
 
 To prepare the project for loading additional locales:
 
@@ -41,7 +38,6 @@ In the New Property Type window, set:
     - Data Type to Text
     - Editor to Locale selector
 
-
 Click Save.
 
 You use this custom property type to set the locale using the buttons in the LocaleSelector node.
@@ -60,7 +56,6 @@ In the Prefabs, select the LocaleButton prefab. In the Node Components in the To
 
 This way you get the value for the Screen node Locale property from the prefab instance used for setting the locale.
   - Source Property to Localization.LocaleID
-
 
 With this Set Property action, you set the application to switch locale when the user toggles an instance of the LocaleButton prefab. The action gets the value for the locale from the Localization.LocaleID property of the prefab instance.
 5.
@@ -95,7 +90,6 @@ You use this alias to access the LocaleSelector node using the Kanzi Engine API 
 
 ## Create the styles for the additional locales
 
-
 In this section, you create the styles for the additional locales that use fonts which contain the Japanese, Chinese, and Korean glyphs.
 
 To create the styles for additional locales:
@@ -107,7 +101,6 @@ In the Kanzi Studio main menu, select File > Import > Import Fonts. In the Impor
   - For Japanese, use Noto Sans CJK JP.
   - For Korean, use Noto Sans CJK KR.
   - For Chinese, use Noto Sans CJK SC.
-
 
 Make sure that the font you use includes all the glyphs for the text that you want to include in your Kanzi application.
 2.
@@ -138,7 +131,6 @@ For example:
     - For the Korean locale style LocaleStyle-kr, set the Font Family property to Noto Sans CJK KR.
     - For the Chinese locale style LocaleStyle-zh, set the Font Family property to Noto Sans CJK SC.
 
-
 3.
 
 In the Localization Table in the column for each locale where you want to apply the styles that you created, double-click the LocaleStyle cell and select the style that you want to apply to that locale.
@@ -156,7 +148,6 @@ In the Node Tree in the LocaleSelector node, select all instances of the LocaleB
 This way you set the font family for the locale name of the English, Finnish, and Spanish locales.
 
 ## Create the locale packs
-
 
 A locale pack is a kzb file that contains only the resources for a specific locale.
 
@@ -188,7 +179,6 @@ Because you want the users of this locale to find their locale, use the native n
     - For Korean, enter íêµ­ì´.
     - For Chinese, enter ä¸­æ.
 
-
 2.
 
 In the Localization Table, set the images that you want to use for the Japanese, Korean, and Chinese locales.
@@ -211,6 +201,5 @@ In Kanzi Studio, select File > Export > Export KZB. This command:
   - Creates one kzb file for each locale that you marked in the localization table as a locale pack. When Kanzi Studio exports locale packs, it names the kzb files after the locale whose resources they contain. Each locale pack file contains only the resources used by that locale.
   - Creates the main kzb file that contains the entire Kanzi Studio project, except the resources of locales that you mark as locale packs in the localization table.
   - Stores the locale pack kzb files in the `<ProjectName>/Application/bin/Locale_packs` directory, or the `Locale_packs` directory in the location that you specify in the Project > Properties in the Binary Export Directory property.
-
 
 Previous step Next step

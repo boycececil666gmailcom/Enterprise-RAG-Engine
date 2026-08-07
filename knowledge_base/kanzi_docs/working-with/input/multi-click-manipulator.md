@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/input/multi-click-manipulat
 
 # Using the Multi-Click Manipulator
 
-
 Use the Multi-Click Manipulator to enable users to multi-click nodes in your Kanzi application.
 
 See Enabling the multi-click gesture for a node.
@@ -15,14 +14,12 @@ You can react to the multi-click gesture using:
 - Multi-Click Manipulator triggers in Kanzi Studio. See Using the Multi-Click Manipulator triggers.
 - Kanzi Engine API. See Reacting to the multi-click gesture using the Kanzi Engine API.
 
-
 The Multi-Click Manipulator is one of the input manipulators you can use to add gesture recognition to nodes in your Kanzi application. See Using input manipulators.
 
 To enable the click gesture for nodes, use the Click Manipulator. See Using the Click Manipulator.
 
 Learn how to use the Multi-Click Manipulator by completing a tutorial. See Tutorial: Pan, zoom, tap.
 ## Enabling the multi-click gesture for a node
-
 
 This section explains how you can enable the multi-click gesture for any node.
 
@@ -70,7 +67,6 @@ See Using the Multi-Click Manipulator triggers.
 
 ## Using the Multi-Click Manipulator triggers
 
-
 Use the Multi-Click Manipulator triggers to react to the multi-click gesture. For example, you can change the appearance of a node when the user clicks that node multiple times consecutively.
 
 The Multi-Click Manipulator has these triggers:
@@ -78,7 +74,6 @@ The Multi-Click Manipulator has these triggers:
 - Multi-Click trigger is set off when the user clicks multiple times in the node area.
 - Multi-Click Canceled trigger is set off when focus moves away from the node during the multi-click gesture.
 - Intermediate Click trigger is set off when the user clicks in the node area during the multi-click gesture before the desired click count is reached.
-
 
 To use the Multi-Click Manipulator triggers:
 
@@ -113,9 +108,7 @@ For example, select Dispatch Message Action > State Manager > Next State, and in
     - Target Item to the node which uses the state manager you created to set the appearance of a node when the Multi-Click trigger is set off repeatedly
     - State Group to the state group which contains the states between which you want to switch when the Multi-Click trigger is set off
 
-
 ## Reacting to the multi-click gesture using the Kanzi Engine API
-
 
 You can define in application code how your application reacts to the multi-click gesture.
 
@@ -150,19 +143,13 @@ In Kanzi Studio, select File > Open Kanzi Command Prompt.
 The Kanzi Command Prompt opens the Windows Command Prompt with the Kanzi environment variables set for the version of Kanzi for which you open a Kanzi Command Prompt.
 
 Use the Kanzi Command Prompt to access Kanzi utilities and build tools, such as Gradle and CMake, without using absolute paths or setting environment variables.
-
-> **Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
->
-> When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
-> 6.
->
-> In the Kanzi Command Prompt in the `<ProjectName>/Application` directory, run the script that generates a Visual Studio solution for the application.
->
-> ```
-> generate_cmake_vs2022_solution.bat
->
-> ```
-
+**Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
+When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
+6.
+In the Kanzi Command Prompt in the `<ProjectName>/Application` directory, run the script that generates a Visual Studio solution for the application.
+```
+generate_cmake_vs2022_solution.bat
+```
 
 This script generates a Visual Studio solution for the application in the directory `<ProjectName>/Application/build_vs2022`.
 7.
@@ -206,7 +193,6 @@ void onProjectLoaded() override
 }
 
 ```
-
 
 8.
 

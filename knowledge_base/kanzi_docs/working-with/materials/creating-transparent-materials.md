@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/materials/creating-transpar
 
 # Creating transparent materials
 
-
 To create a transparent material:
 
 1.
@@ -23,7 +22,6 @@ Sets the blend mode to either:
 
       - Alpha: Premultiplied when the Premultiply Alpha property for the project or an image is enabled. This is the default value.
       - Alpha: Mixed when the Premultiply Alpha property for the project or an image is disabled.
-
 
 See Alpha premultiplication.
     - Alpha: Premultiplied

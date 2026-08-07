@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/activities/activity-transit
 
 # Creating transitions between Activities
 
-
 Activities use a State Manager to define the transitions for status changes. If you do not create a state manager and define transitions, the transitions between Activity statuses are immediate.
 ## Activity transition types
-
 
 To see the animation of a transition, hover over the image of that transition.
 ### Basic
@@ -101,7 +99,6 @@ Rotate Corner Bottom Right From Top Cross Fade |   |
 |  ![image](../../_static/multimedia/working-with/activity-transitions/rotate-corner-bottom-right-bottom.png) ![image](../../_static/multimedia/working-with/activity-transitions/rotate-corner-bottom-right-bottom.gif)  |   ![image](../../_static/multimedia/working-with/activity-transitions/rotate-corner-bottom-right-top.png) ![image](../../_static/multimedia/working-with/activity-transitions/rotate-corner-bottom-right-top.gif)  |   |
 ## Adding a transition between Activities
 
-
 To add a transition between Activities:
 
 1.
@@ -120,7 +117,6 @@ When you run this command, Kanzi Studio:
 Repeat the previous step for all Activities for which you want to create transitions. If you want to use the same State Manager for transitions between Activities, set in those Activities the State Manager property to the same State Manager.
 
 ## Creating a custom transition between Activities
-
 
 You can create your own transitions between Activities.
 

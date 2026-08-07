@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/rendering/using-render-pass
 
 # Using Kanzi Studio render pass presets
 
-
 Use render passes to define the rendering of 3D content in your Kanzi application.
 
 To help you get started, Kanzi Studio comes with these render pass presets:
@@ -22,7 +21,6 @@ See Rendering content to composition targets
 See Rendering cubemaps for dynamic image-based lighting.
 
 ## Using the Default render pass
-
 
 Use the Default render pass preset to create a basic set of render passes you need to get started.
 
@@ -51,7 +49,6 @@ By default the Clear render pass in the Default render pass clears the depth buf
 Draw Objects render pass allows you to set a Camera node to render a specific list of nodes, to filter those nodes, and to control frustum culling. Draw Objects render pass by default renders nodes using the lights provided by its nearest ancestor Gather Lights render pass.
       - Draw Objects render pass named Draw Objects Transparent renders the nodes picked by the Transparent filter.
 
-
 2.
 
 In the Node Tree select the Viewport 2D node whose content you want to render, and in the Properties set the Render Pass Prefab property to the Default render pass you created.
@@ -67,7 +64,6 @@ This way you set the Default render pass to first render transparent nodes and t
 (Optional) To set the background of the Viewport 2D node the content of which you want to render, in the Default render pass you created select the Clear render pass and in the Properties add and set the Clear Color 0 property.
 
 ## Rendering to texture
-
 
 Use the Render to Texture Pass preset to create the render passes that you need to render content to a texture.
 
@@ -88,7 +84,6 @@ By default the Clear render pass in the Render to Texture Pass clears the first 
 
     - Draw Objects render pass named Draw Objects allows you to set a Camera node to render a specific list of nodes, to filter those nodes, and to control frustum culling. Draw Objects render pass by default renders nodes using the lights provided by its nearest ancestor Gather Lights render pass. By default the Draw Objects render pass uses the default Camera node to render all nodes in a Viewport 2D node.
 
-
 2.
 
 In the Node Tree select the Viewport 2D node whose content you want to render to a texture, and in the Properties set the Render Pass Prefab property to the Render to Texture Pass you created.
@@ -107,9 +102,7 @@ In the Node Tree, press Alt and right-click and select Image.
 
 In the Node Tree, select the Image node. In the Properties, set the Image property to the Render Target Texture that you want to show in the Image node.
 
-
 ## Rendering cubemaps for dynamic image-based lighting
-
 
 Use the Image-Based Lighting Filter Pass preset to create dynamic cubemap textures for real-time image-based lighting. You can use this preset only as part of a render pass tree that renders content of a scene and you cannot use it directly in a Viewport 2D node.
 
@@ -148,7 +141,6 @@ Create a Box or Sphere node that you use to render the skybox. In the Properties
 
 When this property is enabled, Kanzi renders the cubemap texture inside the mesh.
 
-
 2.
 
 Create content on which you want to show dynamic reflections with image-based lighting:
@@ -179,7 +171,6 @@ For example, create a Sphere node. In the Properties, add and set:
     - Mesh Material to PhysicallyBased Image-Based Lighting Material
     - Material > Roughness Factor to 0.2
 
-
 3.
 
 Create the render pass tree that renders the environment and the content:
@@ -197,7 +188,6 @@ Cubemap render pass
     2.
 
 Default render pass
-
 
 4.
 
@@ -235,7 +225,6 @@ Create a Clear render pass, and add the Clear Color 0 property.
 
 Create a Gather Lights render pass and under it a Draw Objects render pass.
 
-
 6.
 
 Select the content to render in the Cubemap render pass:
@@ -268,7 +257,6 @@ Kanzi Studio creates in the Library:
       - Environment Ambient Texture as irradiance texture for diffuse lighting
       - Environment Reflection Texture as reflection texture for reflective lighting
 
-
 To learn how to use the resulting cubemap textures in your project that uses Physically-Based Rendering materials, see Using image-based lighting cubemap textures.
     - In Rendering > Render Pass Prefabs a Group render pass named Image-Based Lighting Filter Pass and contains these render passes:
 
@@ -288,7 +276,6 @@ To learn how to use the resulting cubemap textures in your project that uses Phy
 
         - Blit render pass named Blit Base Level Pass, which renders the base mipmap level of Environment Reflection Texture.
 
-
   2.
 
 Drag the Image-Based Lighting Filter Pass to the Group render pass and place it between the Cubemap render pass and Default render pass.
@@ -298,7 +285,6 @@ Select the instance of the Image-Based Lighting Filter Pass, in the Properties c
 
     - Set Property to the Cubemap render pass Result Texture property of the Image-Based Lighting render pass.
     - In the Library > Rendering > Render Pass Prefabs select the Cubemap render pass and from the Properties drag the Result Texture to the Binding Editor and drop it on the Expression editor.
-
 
 Click Save.
   4.
@@ -310,7 +296,6 @@ In the Node Tree select the Scene node. In the Properties add and set:
 
     - Material > Environment Ambient Texture to Environment Ambient Render Target Texture
     - Material > Environment Reflection Texture to Environment Reflection Render Target Texture
-
 
 Image-Based Lighting Filter Pass creates and dynamically updates these textures.
 
@@ -329,7 +314,6 @@ Select the Empty Node 3D and in the Properties add and set:
 
     - Tag to CubemapContent
     - Render Transformation Translation X to 3
-
 
 This way Kanzi renders the node and its child nodes as part of the environment and you move it away from the reflective surface.
   3.
@@ -362,7 +346,6 @@ These properties control the Environment Reflection Texture sample count:
   - Reflection Sample Count Progression controls how the sample count increases from the Reflection Sample Count Minimum. Every mipmap level after the first after base level increases the sample count by this value multiplied by \(2^{mipmap - 1} - 1\).
   - Reflection Sample Count Maximum limits the sample count progression to this value.
 
-
 For example, if the minimum, progression and maximum are 32, 32, and 128 respectively, the sample count for:
 
   - The first mipmap level after the base level is 32
@@ -370,8 +353,6 @@ For example, if the minimum, progression and maximum are 32, 32, and 128 respect
   - The third mipmap level is 128
   - The fourth mipmap level is 128
 
-
 The sample count does not increase after the fourth mipmap level.
-
 
 When you move the object that you created to be reflected, its reflection moves accordingly.

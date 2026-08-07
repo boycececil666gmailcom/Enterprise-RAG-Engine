@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/kanzi-fundamentals/animation-system.html
 
 # Animation system
 
-
 Animation system allows you to animate properties over time, control playback, map property value changes to animation.
 
 The Kanzi animation system consists:
@@ -75,16 +74,12 @@ See Interpolating property values using easing functions.  |
 
 ## How the property timeline animations work
 
-
 Property timeline uses the Kanzi property manager modifier stack. Kanzi applies the animation to the base value of the property, or the previous modifier in the stack (which can be another animation). That way you can stack animations that affect the same property.
 
 When the animation ends it remains alive. The object describing the animation still exists so that the modifier can provide the property value when requested. When you use the Kanzi Engine API to apply multiple animations to an object you have to remove them, otherwise they keep consuming resources. Other systems, like the state manager and the Animation Player, keep track of animations themselves, so that you do not need to.
-
-> **Tip:** In the Kanzi Studio Node Tree window, an indicator next to a node shows when a State Manager, Binding, Data Source Binding, or an Animation overrides the values of some properties in that node.
->
-> To navigate to the source of the override in the Kanzi Studio project, right-click the override indicator and select the source you wish to navigate to from the context menu.
+**Tip:** In the Kanzi Studio Node Tree window, an indicator next to a node shows when a State Manager, Binding, Data Source Binding, or an Animation overrides the values of some properties in that node.
+To navigate to the source of the override in the Kanzi Studio project, right-click the override indicator and select the source you wish to navigate to from the context menu.
 ## The workflow of animating an object
-
 
 To animate an object:
 

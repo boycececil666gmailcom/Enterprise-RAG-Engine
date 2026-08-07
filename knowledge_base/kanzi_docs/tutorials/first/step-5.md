@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/first/step-5.html
 
 # Step 5 - Create the content for the Media screen
 
-
 In this step, you create the content for the Media screen to show a list of albums in a list box. You first create a prefab template for an album item and then create a Trajectory List Box 3D node to enable users to browse the album items.
 ## Create the prefab for the Media screen items
-
 
 In this section, you create a prefab that defines the template for the items shown in the Media screen.
 
@@ -39,7 +37,6 @@ This enables you to display a different texture for each instance of the prefab.
     - Translation Y property field to 0.5
     - Translation Z property field to 0.1
 
-
 4.
 
 In the Prefabs, select the Item > Shadow node. In the Properties, add and set:
@@ -65,9 +62,7 @@ This enables you to display a different text for each instance of the prefab.
     - Translation Y property field to -1.9
     - Translation Z property field to 0.1
 
-
 ## Create the control to scroll media content
-
 
 In this section, you create a Trajectory List Box 3D node that allows the users to scroll the media content.
 
@@ -119,6 +114,5 @@ FirstApplication.Item.Text to the description of the that album.
 7.
 
 Click the Screen tab under the main menu to show the entire application in the Preview.
-
 
 Previous step Next step

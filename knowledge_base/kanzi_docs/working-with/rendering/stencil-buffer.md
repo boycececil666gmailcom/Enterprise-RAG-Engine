@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/rendering/stencil-buffer.ht
 
 # Applying a stencil to 3D content
 
-
 Use render passes and the stencil buffer to apply a stencil to 3D content so that Kanzi renders only a selected area of the content.
 
 The stencil buffer is an image in the current framebuffer which you can use to control which pixels Kanzi renders. You use render passes to discard or render specific pixels in your content depending on the values of the stencil buffer. This way you can limit the area of rendering to the shape of a node you use as a stencil. The shape of the node works as the gap in the stencil, determining which parts of your content are visible.
@@ -106,7 +105,6 @@ See Stencil operations.
 
 You write to the stencil buffer the shape of the Stencil node with the value 1, and leave the value 0 everywhere else.
 
-
 7.
 
 Render the node to which you want to apply the stencil.
@@ -135,12 +133,9 @@ In the Library > Rendering > Render Pass Prefabs > Stencil render pass select St
     - Stencil Test Function to Equal
     - Stencil Function Reference Value to 1
 
-
 This way you limit the area of rendering of the ContactsList node to those pixels which have the stencil value 1, so that the render pass draws only the part of the ContactsList node which overlaps the Stencil node.
 
-
 ## Stencil test functions
-
 
 Use the Stencil Test Function property to compare the Stencil Function Reference Value to the value in the stencil buffer.
 
@@ -195,7 +190,6 @@ You can use the Stencil Function Mask property to perform a bitwise AND operatio
 
 For example, if you set Stencil Function Mask to 2, Kanzi Studio preserves only the second bit of the stencil reference value and the stencil buffer value. This way you can use different bits of the stencil buffer to mask different elements on the screen.
 ## Stencil operations
-
 
 Use the Stencil Fail Operation, Stencil Pass Depth Fail Operation and Stencil Pass Depth Pass Operation properties to set the values in the stencil buffer depending on the results of stencil and depth test. By default Kanzi Studio keeps the current value.
 

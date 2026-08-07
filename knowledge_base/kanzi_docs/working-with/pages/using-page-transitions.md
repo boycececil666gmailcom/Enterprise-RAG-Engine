@@ -4,19 +4,13 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/pages/using-page-transition
 ---
 
 # Setting transitions between Page nodes
-
-
-> **Note:** The Page and Page Host nodes are deprecated. Use the Activity and Activity Host nodes to build navigable UIs for your application. See Activities.
->
-> Kanzi by default uses the Push transition for transitions between Page and Page Host nodes. You can create your own transitions using:
->
-> - Transition Presets to set to and from transitions between Page and Page Host nodes.
-> - Animations to set or customize transitions between Page and Page Host nodes.
-
+**Note:** The Page and Page Host nodes are deprecated. Use the Activity and Activity Host nodes to build navigable UIs for your application. See Activities.
+Kanzi by default uses the Push transition for transitions between Page and Page Host nodes. You can create your own transitions using:
+- Transition Presets to set to and from transitions between Page and Page Host nodes.
+- Animations to set or customize transitions between Page and Page Host nodes.
 
 In Kanzi transitions are resources you can reuse. You can see transitions in a Kanzi Studio project in the Library > Page Transitions.
 ## Setting transitions between Page and Page Host nodes
-
 
 To set the transitions between Page and Page Host nodes:
 
@@ -72,9 +66,7 @@ To configure the transition, in the Transitions editor click  and in the popup w
     - Bidirectional applies the transition to the transition from the node in the From property to the node in the To property, and from the node in the To property to the node in the From property.
     - Unidirectional applies the transition only to the node in the From property to the node in the To property.
 
-
 ## Creating transition animations
-
 
 Use transition animations to set transitions between Page and Page Host nodes, or to customize transitions.
 
@@ -102,7 +94,6 @@ To set a Page or Page Host to use the transition animation you created, in the N
 
 ## Adding transition animations to transitions
 
-
 To customize a transition you can add a transition animation to an existing transition.
 
 To add a transition animation to a transition:
@@ -122,9 +113,7 @@ For example, drag the Scale animation to the Default transition to add scale ani
   - Start Value to the value of the Transition Property when the animation starts.
   - End Value to the value of the Transition Property when the animation ends.
 
-
 ## Starting transitions between Page nodes in your application
-
 
 When you click a Page or a Page Host node in the Pages, in the Preview you can see the transition. However, to transition between the nodes in your application you need to use a trigger with one of the Navigate to actions.
 
@@ -147,7 +136,6 @@ In the Node Tree select the control you created in the previous step, in the Nod
   - Page Host: Navigate to Previous goes to the sibling node which is on the left side of the current node as shown in the Pages.
   - Page: Navigate to Parent goes to the node that is the parent node of the node you select in this action.
 
-
 For example, select the Page Host: Navigate to Next action and set the action to the RootPage node.
 4.
 
@@ -161,14 +149,11 @@ In the action settings, set:
       - Data Type to Project Item
       - Editor to Page selector
 
-
 See Creating property types.
 
   - (Optional) To make the transition without a transition animation, set the Immediate property to enabled.
 
-
 In the Preview click the control you created to navigate between Page and Page Host nodes. Every time you click the control you advance one page to the right: Home to Music, Music to Car, Car to Home, and so on.
 ## Using page transitions in the API
-
 
 For details, see the `PageTransitionCollection` class.

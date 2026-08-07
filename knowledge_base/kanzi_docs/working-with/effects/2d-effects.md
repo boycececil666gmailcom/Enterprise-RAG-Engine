@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/effects/2d-effects.html
 
 # Effects for 2D nodes
 
-
 Use effects to apply post-processing effects to 2D nodes.
 
 In Kanzi Studio you can find the effects in the Library > Effects.
@@ -38,12 +37,10 @@ Use an Effect Stack 2D effect prefab to apply multiple effects to a 2D node.
 See Using multiple effects.  |    |
 ## How Kanzi applies 2D effects
 
-
 Kanzi applies 2D effects to the visual shape of the content in a node and its descendant nodes.
 
 When you want to apply an effect to a node but not to its descendant nodes, place the descendant nodes in a sibling node of the node to which you apply the effect. Position that sibling node in the node tree below the node to which you apply the effect. Make sure that the sibling nodes are of the same size, layout, transformation, and opacity.
 ## Effects and layout
-
 
 When you use effects, keep in mind that:
 
@@ -54,7 +51,6 @@ For example, in a layout that contains a Text Block 2D node where you apply a dr
 
 ## Impact of effects on application performance
 
-
 For every instance of an effect Kanzi requests the composition manager to provide a temporary composition target. Kanzi composition manager reuses temporary composition targets if they are compatible in size and parameters.
 
 The final performance of an application that uses effects depends on:
@@ -63,14 +59,12 @@ The final performance of an application that uses effects depends on:
 - The number of draw calls
 - The number of render target or texture switches
 
-
 To find the most efficient way of using effects, test the performance of your application with these approaches:
 
 - Apply a separate effect to each UI element to minimize the area.
 - Apply an effect to a group of UI elements that cover a larger area.
 
 ## Applying anti-aliasing
-
 
 When you apply an effect to a 2D node, Kanzi renders that node to a composition target. By default, Kanzi does not apply anti-aliasing to the child nodes of a composited node. For example, when you rotate these nodes, their edges can look jaggy.
 

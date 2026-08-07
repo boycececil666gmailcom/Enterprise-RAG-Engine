@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/android/droidfw/migrating-f
 
 # Migrating from Kanzi application framework (appfw) to Kanzi Android framework (droidfw)
 
-
 Follow these instructions to migrate a Kanzi application from Kanzi application framework (appfw) to Kanzi Android framework (droidfw).
 
 For example, to migrate the Coin example application from Kanzi application framework (appfw) to Kanzi Android framework (droidfw):
@@ -35,7 +34,6 @@ dependencies {
     implementation 'com.rightware.kanzi:kanziruntime@aar'
 
 ```
-
 
 with
 
@@ -67,7 +65,6 @@ android {
 
 ```
 
-
 6.
 
 In the `app/src/main/res/layout/main.xml`, change the View type from
@@ -76,7 +73,6 @@ In the `app/src/main/res/layout/main.xml`, change the View type from
 com.rightware.kanzi.KanziView
 
 ```
-
 
 to
 
@@ -120,7 +116,6 @@ public void onConfigurationChanged(Configuration newConfig)
 
 ```
 
-
 to
 
 ```
@@ -133,7 +128,6 @@ public void onConfigurationChanged(Configuration newConfig)
 
 ```
 
-
 8.
 
 In the CMake configuration `Application/CMakeLists.txt`:
@@ -145,7 +139,6 @@ if(ANDROID)
     target_link_libraries(Coin -Wl,--whole-archive Kanzi::kzappfw -Wl,--no-whole-archive)
 
 ```
-
 
 with
 
@@ -162,7 +155,6 @@ target_link_libraries(Coin Kanzi::kzui Kanzi::kzcoreui)
 
 ```
 
-
 with
 
 ```
@@ -170,10 +162,8 @@ target_link_libraries(Coin Kanzi::kzui Kanzi::kzcoreui Kanzi::kzinterop Kanzi::k
 
 ```
 
-
 Now the application uses Kanzi Android framework (droidfw) and you can run it on your Android device.
 ## Migrating application code
-
 
 After you migrate an application from Kanzi application framework (appfw) to Kanzi Android framework (droidfw), the C++ code in that application is no longer in use. You can migrate the existing C++ code of the application to Java application or plugin code, or refactor the functionality to a C++ Kanzi Engine plugin. Java API does not implement the complete Kanzi Engine API and therefore the approach to migrating the application code depends on the functionality of your application.
 
@@ -212,7 +202,6 @@ mView.addListener(new KanziViewListener() {
 });
 
 ```
-
 
 This is what the `app/src/main/java/com/rightware/kanzi/coin/Coin.java` looks like when you make the changes:
 
@@ -292,7 +281,6 @@ public class Coin extends FragmentActivity
 
 ## Troubleshooting
 
-
 Here are some of the most common issues that you can encounter while porting a Kanzi application from Kanzi application framework (appfw) to Kanzi Android framework (droidfw).
 
 - Error:
@@ -306,7 +294,6 @@ location: variable mView of type KanziView
 
 ```
 
-
 Reason: Kanzi Android framework (droidfw) does not have this API. You do not have to manually register Activity lifecycle callbacks.
 
 Solution: You can remove this call.
@@ -319,7 +306,6 @@ Solution: You can remove this call.
          at com.rightware.kanzi.KanziViewAdapter.handleAttachedToWindow(KanziViewAdapter.java:274)
 
 ```
-
 
 Reason: Your application does not meet the Kanzi Android framework (droidfw) minimum Java language version requirement.
 
@@ -339,7 +325,6 @@ Solution: In the `app/build.gradle`, set `compileOptions` to Java version 8 or n
 
 ```
 
-
 Reason: Your application is linking to `Kanzi::kzappfw` instead of `Kanzi::kzdroidfw`.
 
 Solution: In the `Application/CMakeLists.txt` change the linking from `Kanzi::kzappfw` to `Kanzi::kzdroidfw`.
@@ -358,7 +343,6 @@ java.lang.RuntimeException: Unable to start activity ComponentInfo{com.rightware
     ...
 
 ```
-
 
 Reason: The application cannot find the native backing for `Kanzi::kzjava`.
 

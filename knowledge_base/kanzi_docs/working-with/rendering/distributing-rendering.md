@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/rendering/distributing-rend
 
 # Distributing rendering across several frames
 
-
 You can distribute the rendering workload across several frames to reduce the amount of work and time required to render one whole frame.
 
 To distribute the rendering workload, you can:
@@ -15,7 +14,6 @@ To distribute the rendering workload, you can:
 - Set the update rate of cubemap reflections rendered by a Cubemap render pass. See Distributing the rendering of cubemap reflections.
 
 ## Using the Progressive Rendering Viewport 2D node
-
 
 Use the Progressive Rendering Viewport 2D node to distribute the rendering workload across several frames to reduce the amount of work and time required to render one whole frame.
 
@@ -32,7 +30,6 @@ In a Progressive Rendering Viewport 2D, Kanzi renders one render pass in one fra
 - Textures that are similar in size
 - Similar number of textures
 
-
 For example, use the Progressive Rendering Viewport 2D node to render the content at different update frequencies. To render part of the content at 60 fps and the rest of the content at 30 fps, all content together must render in 16 ms or less (1000 ms / 60 fps = 16.6 ms). If the longest time it takes to render your 60 fps content is 10 ms, to display the rest of the content at 30 fps:
 
 1.
@@ -45,24 +42,15 @@ To render your 60 fps content every frame at 60 fps, the total render time of bo
 Use the Progressive Rendering Viewport 2D node to render the 30 fps content.
 
 If you split the content into two parts, Kanzi renders the entire 30 fps content every two frames. If you split the content into three parts, Kanzi renders the entire 30 fps content every three frames.
-
-
-> **Tip:** When splitting content into parts, to find out how much time it takes to render each part:
->
-> 1.
->
-> To display the Performance HUD, either:
->
-> - In the Kanzi Studio Preview, click  to enter the Analyze mode. Right-click  and select the Performance HUD. See Analyzing your application in the Preview.
-> - Set the `PerformanceInfoLevel` in the `application.cfg` file or `Application::onConfigure` function when using the Kanzi Engine API. See PerformanceInfoLevel.
->
-> 2.
->
-> Hide the content that you do not want to render. In Kanzi Studio in the Node Tree, select the nodes that you want to hide and either:
->
-> - Press Ctrl H
-> - In the Properties, add and disable the Node > Visible property.
-
+**Tip:** When splitting content into parts, to find out how much time it takes to render each part:
+1.
+To display the Performance HUD, either:
+- In the Kanzi Studio Preview, click  to enter the Analyze mode. Right-click  and select the Performance HUD. See Analyzing your application in the Preview.
+- Set the `PerformanceInfoLevel` in the `application.cfg` file or `Application::onConfigure` function when using the Kanzi Engine API. See PerformanceInfoLevel.
+2.
+Hide the content that you do not want to render. In Kanzi Studio in the Node Tree, select the nodes that you want to hide and either:
+- Press Ctrl H
+- In the Properties, add and disable the Node > Visible property.
 
 Learn how to use the Progressive Rendering Viewport 2D node by completing a tutorial. See Tutorial: Progressive rendering.
 
@@ -126,7 +114,6 @@ In the Library, in the Clear render pass, add and set the Clear Color 0 property
 
 ### Using animations with progressive rendering
 
-
 You cannot use an Animation Player or a state transition to animate nodes in a Progressive Rendering Viewport 2D node.
 
 To use animations with progressive rendering:
@@ -140,16 +127,13 @@ In the Properties set the Timeline property to the Animation, Animation Clip or 
 
 ### Applying anti-aliasing to content rendered by a Progressive Rendering Viewport 2D node
 
-
 To apply anti-aliasing to the content rendered by a Progressive Rendering Viewport 2D node, in the Node Tree select the Progressive Rendering Viewport 2D node, in the Properties add the Multisample Level property, and set it to the number of anti-aliasing samples that you want to use.
 
 See the documentation of the device on which you want to run your Kanzi application for supported values, because the number of anti-aliasing samples depends on the device. If you set the Multisample Level property to a value that your device does not support, Kanzi Engine clamps the value to the largest value supported by the device driver.
 ### Progressive Rendering Viewport 2D property types and messages
 
-
 For a list of the available property types and messages for the Progressive Rendering Viewport 2D node, see Progressive Rendering Viewport 2D.
 ## Distributing the rendering of composition targets
-
 
 To reduce the amount of per-frame rendering workload, you can set the rate at which Kanzi updates the composition targets of a Composition Target render pass.
 
@@ -173,18 +157,14 @@ In the Properties, add and set:
 This way, you can distribute the rendering of multiple render passes to different frames.
 
 For example, when you have two Composition Target render passes whose content you update every other frame, in one of those render passes, set the Update Rate Offset to 1. This way, Kanzi updates the content rendered by those render passes at alternating frames.
+**Tip:** To set the Update Rate and Update Rate Offset properties to different values in multiple Viewport 2D nodes that use the same render pass prefab, you can customize the instances of that render pass prefab. See Customizing instances of render passes.
 
-
-> **Tip:** To set the Update Rate and Update Rate Offset properties to different values in multiple Viewport 2D nodes that use the same render pass prefab, you can customize the instances of that render pass prefab. See Customizing instances of render passes.
->
 ## Distributing the rendering of cubemap reflections
-
 
 To reduce the amount of per-frame rendering workload, you can set the rate at which Kanzi updates:
 
 - The content that a Cubemap render pass renders.
 - The faces in the cubemap texture to which a Cubemap render pass renders its content.
-
 
 To distribute the rendering of cubemap reflections
 

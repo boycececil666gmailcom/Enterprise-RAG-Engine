@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/layouts/using-flow-layouts.
 
 # Using the Flow Layout nodes
 
-
 Use the Flow Layout nodes to arrange nodes along a line. When a line runs out of space, the Flow Layout node places its child nodes in a new line.
 
 You can use a Flow Layout node to arrange content in the same way you would arrange it on a page.
@@ -15,7 +14,6 @@ Flow Layout node iterates through its child nodes in the order you add them and 
 You can set the direction and the starting point for arranging Flow Layout 3D child nodes on x, y, and z axes, and Flow Layout 2D child nodes on x and y axes.
 ## Creating a Flow Layout node
 
-
 To create a Flow Layout node:
 
 1.
@@ -23,30 +21,20 @@ To create a Flow Layout node:
 In the Node Tree press Alt and right-click the node where you want to create a Flow Layout node and select either Flow Layout 3D, or Flow Layout 2D.
 
 You can create a 3D node only in a 3D node, such as the Scene node, and a 2D node only in a 2D node.
-
-> **Tip:** In the Preview select the Flow Layout 2D tool  to create a Flow Layout 2D node by clicking and dragging in the Preview.
->
-> - When you create a layout whose width is greater than its height, the direction of the layout is Left to Right.
-> - When you create a layout whose height is greater than its width, the direction of the layout is Top to Bottom.
->
-> 2.
->
-> In the Node Tree, add child nodes to the layout that you created in the previous step.
->
-> For example, if you created a Flow Layout 3D node, add several Empty Node 3D nodes that contain 3D content. If you created a Flow Layout 2D node, add several Image nodes.
->
-> As you add child nodes, the Flow Layout node positions them along the axes defined by the Primary Direction and Secondary Direction properties.
-> 3.
->
-> (Optional) To clear the area around child nodes in a layout, in the Node Tree select child nodes in the layout, in the Properties click , and add and set the margin properties:
->
-> - Depth Margin to clear the area in the back and the front of a child node.
-> - Horizontal Margin to clear the area on the left and the right sides of a child node.
-> - Vertical Margin to clear the area on the bottom and the top of a child node.
-
+**Tip:** In the Preview select the Flow Layout 2D tool  to create a Flow Layout 2D node by clicking and dragging in the Preview.
+- When you create a layout whose width is greater than its height, the direction of the layout is Left to Right.
+- When you create a layout whose height is greater than its width, the direction of the layout is Top to Bottom.
+2.
+In the Node Tree, add child nodes to the layout that you created in the previous step.
+For example, if you created a Flow Layout 3D node, add several Empty Node 3D nodes that contain 3D content. If you created a Flow Layout 2D node, add several Image nodes.
+As you add child nodes, the Flow Layout node positions them along the axes defined by the Primary Direction and Secondary Direction properties.
+3.
+(Optional) To clear the area around child nodes in a layout, in the Node Tree select child nodes in the layout, in the Properties click , and add and set the margin properties:
+- Depth Margin to clear the area in the back and the front of a child node.
+- Horizontal Margin to clear the area on the left and the right sides of a child node.
+- Vertical Margin to clear the area on the bottom and the top of a child node.
 
 ## Setting the direction of a Flow Layout node
-
 
 For a Flow Layout node you can set both the starting point and the direction in which the Flow Layout node arranges its child nodes.
 
@@ -68,7 +56,6 @@ For example, to set a Flow Layout node where child nodes are first added from th
 
 Note that in order to make the Flow Layout node go in the direction defined by the Secondary Direction property, you must set the limit for the Primary Direction property.
 
-
 For example, to arrange items in a flow layout according to the rules used in:
 
   - Left-to-right languages, set properties:
@@ -86,9 +73,7 @@ For example, to arrange items in a flow layout according to the rules used in:
     - Primary Direction to Top to Bottom
     - Secondary Direction to Right to Left
 
-
 ## Setting the appearance of a Flow Layout 2D node
-
 
 To set the appearance of 2D nodes:
 
@@ -100,7 +85,6 @@ To set the appearance of 2D nodes:
 
 ## Using the Flow Layout 3D node in the API
 
-
 To create a Flow Layout 3D node:
 
 ```
@@ -109,7 +93,6 @@ To create a Flow Layout 3D node:
 FlowLayout3DSharedPtr flow = FlowLayout3D::create(domain, "Flow");
 
 ```
-
 
 To set the width of a Flow Layout 3D node:
 
@@ -121,7 +104,6 @@ To set the width of a Flow Layout 3D node:
 flow->setWidth(6.0f);
 
 ```
-
 
 To add items to a Flow Layout 3D node:
 
@@ -147,10 +129,8 @@ flow->addChild(item5);
 
 ```
 
-
 For details, see the `FlowLayout3D` class.
 ## Using the Flow Layout 2D node in the API
-
 
 To create a Flow Layout 2D node:
 
@@ -160,7 +140,6 @@ To create a Flow Layout 2D node:
 FlowLayout2DSharedPtr flow = FlowLayout2D::create(domain, "Flow");
 
 ```
-
 
 To set the width of a Flow Layout 2D node:
 
@@ -172,7 +151,6 @@ To set the width of a Flow Layout 2D node:
 flow->setWidth(600.0f);
 
 ```
-
 
 To add items to a Flow Layout 2D node:
 
@@ -198,9 +176,7 @@ flow->addChild(item5);
 
 ```
 
-
 For details, see the `FlowLayout2D` class.
 ## Flow Layout property types and messages
-
 
 For lists of the available property types and messages for the Flow Layout nodes, see Flow Layout 2D and Flow Layout 3D.

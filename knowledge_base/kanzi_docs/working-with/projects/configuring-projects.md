@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/projects/configuring-projec
 
 # Configuring Kanzi Studio projects
 
-
 To configure a Kanzi Studio project:
 
 1.
@@ -38,9 +37,7 @@ In the Properties set the properties in these property categories to configure y
 
 To view the timeline, select Window > Toolbar > Timeline.
 
-
 ## Setting the default assets
-
 
 You can set which assets you want to use when you create new nodes and resources.
 
@@ -58,9 +55,7 @@ In the Properties in the Default Assets category set which assets you want to us
   - Default Cubemap Texture sets the cubemap texture that Kanzi Studio sets to all new materials that use cubemap textures.
   - Import Material Type sets the material type to which Kanzi Studio assigns the materials that you import with 3D asset files.
 
-
 ## Setting how Kanzi loads a kzb file
-
 
 The presence of the Screen node in a kzb file determines how Kanzi loads a kzb file.
 
@@ -70,6 +65,5 @@ To set whether Kanzi Studio exports the Screen node to the kzb file of that proj
 - Enabled to export the kzb file without the Screen node. You can load a kzb file without a Screen node only during application runtime, when your Kanzi application already has a Screen node.
 
 ## Project property types
-
 
 For a list of the available property types for a Kanzi Studio project, see Project.

@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/rendering/lights-rendering.
 
 # Using lights in rendering
 
-
 Use the Gather Lights render pass to collect from a list of nodes the light nodes for lighting 3D nodes in a scene.
 ## Collecting lights
-
 
 The Gather Lights render pass collects light nodes for lighting 3D nodes in a scene.
 
@@ -37,14 +35,12 @@ For example, to collect the light nodes provided by a sibling Node List render p
 
 ```
 
-
 Click Save.
 3.
 
 Render 3D content using the light nodes that you collected. See Lighting 3D nodes.
 
 ## Lighting 3D nodes
-
 
 Use the Draw Objects render pass and Draw Objects With Material render passes to draw 3D nodes. Kanzi by default lights the 3D nodes drawn by a Draw Objects render pass or Draw Objects With Material render pass using the light nodes provided by the nearest ancestor Gather Lights render pass.
 
@@ -73,7 +69,6 @@ In the Properties click + Add Binding, and in the Binding Editor set:
     - Output Point Lights for Point Light nodes
     - Output Spot Lights for Spot Light nodes
 
-
 For example, to use the Directional Light nodes of the sibling Gather Lights render pass of the render pass to which you add the binding, set:
 
   - Property to Directional Lights
@@ -83,7 +78,6 @@ For example, to use the Directional Light nodes of the sibling Gather Lights ren
 {@../Gather Lights/GatherLightsRenderPass.OutputDirectionalLights}
 
 ```
-
 
 Click Save.
 

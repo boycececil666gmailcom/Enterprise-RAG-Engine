@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/projects/documenting-a-proj
 
 # Documenting a project
 
-
 Add documentation for nodes and resources in your Kanzi Studio project to describe the purpose of items in your project.
 ## Documenting your project
-
 
 To document your project:
 
@@ -27,8 +25,5 @@ Use the Description property editor to format the content. You can include hyper
 Select File > Export > Export Descriptions.
 
 Kanzi Studio exports a plain text file that includes the name, path, and description of items that have the Description property. Kanzi Studio exports this file in the same directory where the project file of the project is stored. When you export a kzb file, Kanzi Studio excludes the Description property.
-
-> **Tip:** Kanzi Studio by default names the descriptions file `<project_name>_descriptions.txt`. You can set the name of the file in the Project > Properties using the Descriptions File Name property.
->
-> When Kanzi Studio exports the descriptions, it adds the link to the text file in the Status Bar, which you can find below the Library window and in the Log window. Click the link to open the directory that contains the exported file.
->
+**Tip:** Kanzi Studio by default names the descriptions file `<project_name>_descriptions.txt`. You can set the name of the file in the Project > Properties using the Descriptions File Name property.
+When Kanzi Studio exports the descriptions, it adds the link to the text file in the Status Bar, which you can find below the Library window and in the Log window. Click the link to open the directory that contains the exported file.

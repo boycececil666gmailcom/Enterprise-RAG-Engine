@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/fifteen-puzzle/step-2.html
 
 # Step 2 - Access nodes and properties
 
-
 In this step, you learn how to access nodes and properties from a Lua script.
 
 For example:
@@ -88,10 +87,8 @@ assert(grid)
 
 ```
 
-
 You can find the list of Kanzi built-in property types that you can use in Lua in the Kanzi Lua API reference.
 ## Modify the grid and indices of pieces
-
 
 For the puzzle to work, each piece must have a unique index.
 
@@ -124,7 +121,6 @@ end
 print("Exiting new_game.lua")
 
 ```
-
 
 When you save the script and in the **Preview** click , the script moves the three pieces in the grid to the third row and assigns a unique number to each piece.
 

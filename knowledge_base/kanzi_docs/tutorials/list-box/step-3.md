@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/list-box/step-3.html
 
 # Step 3 - Define the appearance for the selected item
 
-
 In this step you define the appearance for the currently selected list item. First you change the color of the arrow in the currently selected contact, then you show a vertical bar next to the photo of the currently selected contact.
 ## Define the appearance for the selected item in the List Box Item Container 2D
-
 
 In this section you define the appearance for the currently selected list item. In the List Box Item Container 2D prefab you define the color of the selection arrow.
 
@@ -50,10 +48,8 @@ In the State Tools click the Any -> Any transition, in the State Transition Sett
 
 When you set the duration of a state transition to 0, Kanzi transitions instantly between the selected states.
 
-
 In the Preview when you select a list item, the arrow for that item turns green.
 ## Define the appearance for the selected item by modifying the item template
-
 
 In this section you define the appearance for the currently selected list item. You modify the ContactItem prefab to show a vertical bar next to the photo of the currently selected contact.
 
@@ -90,20 +86,16 @@ In the Prefabs select the SelectionBar node, in the Properties click + Add Bindi
 
 ```
 
-
 You access the List Box Item Container 2D prefab using the alias that you created in the previous step.
-
 
 Click Save.
 
 By binding the Visible property of the SelectionBar node to the Selected property of the List Box Item Container 2D prefab you make the SelectionBar node visible only in the selected item.
 
-
 In the Preview when you select a list item, the green selection bar appears in that item.
 
 Previous step
 ## Whatâs next?
-
 
 In this tutorial you learned how to use a Grid List Box node to create a scrollable list of contacts which receives data from a data source. You also learned how to use a List Box Item Container to set the appearance of the list items and to change the appearance of the item that the user selects in the list. Now you can:
 

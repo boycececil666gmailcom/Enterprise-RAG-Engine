@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/layouts/using-content-layou
 
 # Using the Content Layout nodes
 
-
 Use the Content Layout nodes to present content in a UI control as a single item.
 
 For example, use a Content Layout node to create the layout for a list item or a button with a border, a background, an icon, and a label.
@@ -20,7 +19,6 @@ Content Layout allows you to create layouts where:
 - Content of a Content Layout node adapts to the size that you set. See Creating a Content Layout where content adapts to a fixed size.
 
 ## Creating a Content Layout node
-
 
 To create a Content Layout node:
 
@@ -44,9 +42,7 @@ To add space around the content of the Content Layout node, in the Node Tree sel
   - Horizontal Padding to add space on the left and the right sides of the content
   - Vertical Padding to add space on the bottom and the top of the content
 
-
 ## Creating a Content Layout node that adapts to the size of its content
-
 
 You can use a Content Layout node to create a layout that adapts to the size of its content. In this example, you create the layout of a 2D button with a border, a background, an icon, and a label.
 
@@ -81,7 +77,6 @@ For example, create a Stack Layout 2D node, and in the Stack Layout 2D node crea
     - Text to set the button label
     - Vertical Alignment to Center
 
-
 The Content Layout 2D node takes the space needed by the content that you add to it.
 4.
 
@@ -92,9 +87,7 @@ In the Node Tree select the Content Layout 2D node and in the Properties add and
 This way you set the amount of space between the button borders and content.
   - Horizontal Margin and Vertical Margin to set the thickness of the button border.
 
-
 ## Creating a Content Layout where content adapts to a fixed size
-
 
 You can use a Content Layout node to create a layout where the content adapts to the size that you set. In this example, you create the layout of a fixed-sized 2D button with a border, a background, an icon, and a label.
 
@@ -127,7 +120,6 @@ For example, in the Node Tree select the Stack Layout 2D node, in the Properties
 
 ## Setting the appearance of a Content Layout 2D node
 
-
 To set the appearance of 2D nodes:
 
 - You can fill 2D nodes with a solid color, a texture, or a material. See Adjusting the appearance of 2D nodes.
@@ -138,13 +130,10 @@ To set the appearance of 2D nodes:
 
 ## Using the Content Layout 3D node in the API
 
-
 For details, see the `ContentLayout3D` class.
 ## Using the Content Layout 2D node in the API
 
-
 For details, see the `ContentLayout2D` class.
 ## Content Layout property types and messages
-
 
 For lists of the available property types and messages for the Content Layout nodes, see Content Layout 2D and Content Layout 3D.

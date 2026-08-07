@@ -5,12 +5,10 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/activities/pah.html
 
 # Parallel Activity Host
 
-
 Parallel Activity Host can activate more than one of its child Activities at a time. When you activate an Activity, a Parallel Activity Host brings that Activity to the front.
 
 In a Parallel Activity Host you can group Activities, to show the groups in the same order that you defined in the node tree. When you activate an Activity in a group, a Parallel Activity Host brings to the front the Activity in that group. For example, this way you can implement the showing of critical messages, such as engine failure, in front of regular notifications, such as a phone call notification. In both groups a Parallel Activity Host shows the Activities in order of activation.
 ## Using a Parallel Activity Host
-
 
 To use a Parallel Activity Host:
 
@@ -39,24 +37,16 @@ In the Node Tree select the node that you created in the previous step, in the N
   - Activation Path to the path in the Parallel Activity Host to the Activity that you want to activate.
 
 If you nest Activity nodes in other types of nodes, include in the path only the ancestor Activity nodes.
-
-> **Tip:** To get the full activation path to an Activity, in the Activity Browser right-click an Activity and select Copy Activation Path. This command copies the entire path from the top-level Activity Host to that Activity.
->
-> The Activity Activation Path contains only Activities and Activity Hosts.
->
-> 5.
->
-> In the Node Components > Triggers press Alt and right-click the trigger that you want to use to deactivate an Activity, select the Deactivate Activity action, and in the action set:
->
-> - Activation Path to the path in the Parallel Activity Host to the Activity that you want to deactivate.
->
-> If you nest Activity nodes in other types of nodes, include in the path only the ancestor Activity nodes.
-> - Target Item to the Parallel Activity Host that contains the Activity that you want to deactivate.
-
+**Tip:** To get the full activation path to an Activity, in the Activity Browser right-click an Activity and select Copy Activation Path. This command copies the entire path from the top-level Activity Host to that Activity.
+The Activity Activation Path contains only Activities and Activity Hosts.
+5.
+In the Node Components > Triggers press Alt and right-click the trigger that you want to use to deactivate an Activity, select the Deactivate Activity action, and in the action set:
+- Activation Path to the path in the Parallel Activity Host to the Activity that you want to deactivate.
+If you nest Activity nodes in other types of nodes, include in the path only the ancestor Activity nodes.
+- Target Item to the Parallel Activity Host that contains the Activity that you want to deactivate.
 
 In the Preview click the toggle buttons to activate and deactivate the Activities in the Parallel Activity Host.
 ## Controlling virtualization in a Parallel Activity Host
-
 
 By default, when you deactivate an Activity, Kanzi serializes the values of Activity properties for that Activity and its child Activities. Besides the values of Activity properties that you add, this includes information about the focus and activation state of Activities. Keep in mind that Kanzi does not serialize the runtime state of other, non-Activity properties.
 
@@ -68,7 +58,6 @@ You can control virtualization of Activities:
 - With an Action. See Controlling virtualization with an Action.
 
 ### Controlling virtualization in an Activity
-
 
 With the Preserve History property you can control the serialization of Activity properties in an Activity when Kanzi deactivates that Activity.
 
@@ -82,7 +71,6 @@ When you enable serialization and deactivate an Activity, Kanzi preserves the va
 When you disable serialization and deactivate an Activity, Kanzi does not preserve the values of the Activity properties for this Activity and its child Activities. When you activate that Activity, Kanzi resets the values of Activity properties in these nodes.
 
 ### Controlling virtualization with an Action
-
 
 With an Action you can control the serialization of Activity properties in an Activity, before activating or after deactivating that Activity. By default, Kanzi restores the serialized state when you activate an Activity.
 
@@ -103,7 +91,6 @@ To control virtualization when activating and Activity, in the trigger that you 
   - Disabled to restore the serialized values of Activity properties when the user activates that Activity. This is the default value.
   - Enabled to reset the serialized values of Activity properties when the user activates that Activity.
 
-
 1.
 
 To control virtualization when deactivating an Activity, in the trigger that you created, create a Dispatch Message Action > Activity Host > Deactivate Activity Action.
@@ -111,7 +98,6 @@ To control virtualization when deactivating an Activity, in the trigger that you
 For example, use this approach to reset the state of application UI shown by an Activity when user cancels a selection and the application deactivates that Activity.
 
 ## Controlling Activity persistence in a Parallel Activity Host
-
 
 By default, when you deactivate an Activity, Kanzi detaches the Activity from the node tree and deletes the Activity instance.
 
@@ -125,7 +111,6 @@ To control Activity persistence, in the Activity Browser or Prefabs, select the 
 This way you can skip Activity instantiation when you activate the Activity again.
 
 ## Activating Activities
-
 
 When you activate an Activity, Kanzi:
 
@@ -142,7 +127,6 @@ Makes the Activity visible.
 
 Sets the key focus to the Activity, if the Activity Host has key focus and is not configured differently. Controlling whether to set focus to an activating Activity.
 
-
 By default, when you deactivate an Activity, Kanzi serializes the values of Activity properties for that Activity and its child Activities. Besides the values of Activity properties that you add, this includes information about the focus and activation state of Activities. Keep in mind that Kanzi does not serialize the runtime state of other, non-Activity properties.
 
 See Controlling virtualization in a Parallel Activity Host.
@@ -154,28 +138,23 @@ You can activate an Activity using:
 
 ### Finding out whether an Activity is active
 
-
 To find out whether an Activity is active, check the value of the Activity Status property for that Activity node.
 ### Setting the initially active Activities
-
 
 To set which Activities in a Parallel Activity Host are initially active:
 
 - In the Activity Browser, select the Activity you want to be active when the Parallel Activity Host becomes active.
 - In the side panel, enable the InitiallyActive property.
 
-
 When you enable the InitiallyActive property for an Activity, the Parallel Activity Host activates it when the Host itself becomes active, without explicitly activating it.
 
 In a Parallel Activity Host, you can enable the InitiallyActive property for multiple Activities.
 ### Activating an Activity with the Activate Activity Message
 
-
 Use the Activate Activity Message when:
 
 - The condition for activating an Activity is too complex to be expressed with the value of a property
 - You do not know in advance the number of Activities in an Activity Host
-
 
 To activate an Activity with the Activate Activity Message:
 
@@ -195,19 +174,13 @@ In the Node Tree select the node with the trigger that you created in the previo
   - Activation Path to the path from the Activity Host to the Activity that you want to activate.
 
 If you nest Activity nodes in other types of nodes, include in the path only the ancestor Activity nodes.
-
-> **Tip:** To get the full activation path to an Activity, in the Activity Browser right-click an Activity and select Copy Activation Path. This command copies the entire path from the top-level Activity Host to that Activity.
->
-> The Activity Activation Path contains only Activities and Activity Hosts.
->
-> 4.
->
-> To deactivate an Activity in a Parallel Activity Host, repeat the previous step but add the Dispatch Message Action > Activity Host > Deactivate Activity Message to the trigger that you want to use to deactivate that Activity.
-
+**Tip:** To get the full activation path to an Activity, in the Activity Browser right-click an Activity and select Copy Activation Path. This command copies the entire path from the top-level Activity Host to that Activity.
+The Activity Activation Path contains only Activities and Activity Hosts.
+4.
+To deactivate an Activity in a Parallel Activity Host, repeat the previous step but add the Dispatch Message Action > Activity Host > Deactivate Activity Message to the trigger that you want to use to deactivate that Activity.
 
 In the Preview click the toggle buttons to activate and deactivate the Activities in the Parallel Activity Host.
 ### Activating Activities with an Apply Activation Action
-
 
 An Apply Activation Action keeps an Activity activated for as long as the condition is met in a Data Trigger that contains this action. When the trigger condition is no longer met, Kanzi rolls back the state of the Activity to the state before the action was applied. Use the Apply Activation Action only with a Data Trigger.
 
@@ -255,7 +228,6 @@ In the Data Trigger in the Expression click , in the Node Tree select the Slider
 
 ```
 
-
 This condition expression must evaluate to either `True` or `False`. As a source you can use either a property or a data object from a data source.
 
 Click Save.
@@ -271,16 +243,11 @@ In the Apply Activation Action set:
     - Activity Host Path to .
     - Activity Activation Path to LowBattery
 
-
 The path to the Activity that you set in the Activity Activation Path property is relative to the Activity Host node that you set in the Activity Host Path property.
 
 The Activity Browser indicates that an Activity Host has a Data Trigger with the  icon.
-
-
-> **Tip:** To get the full activation path to an Activity, in the Activity Browser right-click an Activity and select Copy Activation Path. This command copies the entire path from the top-level Activity Host to that Activity.
->
-> The Activity Activation Path contains only Activities and Activity Hosts.
-
+**Tip:** To get the full activation path to an Activity, in the Activity Browser right-click an Activity and select Copy Activation Path. This command copies the entire path from the top-level Activity Host to that Activity.
+The Activity Activation Path contains only Activities and Activity Hosts.
 
 In the Preview drag the slider knob:
 
@@ -290,26 +257,17 @@ An Apply Activation Action keeps an Activity activated for as long as the condit
 - When the value of the Value property of the slider equals 21 or higher, the Data Trigger deactivates the Activity that you set in the Apply Activation Action.
 
 When the trigger condition is no longer met, Kanzi rolls back the state of the Activity to the state before the action was applied.
-
-
-> **Tip:** During the application development, use these Data Trigger tools in the Activity Browser side panel:
-> |
->
-> Tool |
->
-> Description |
-> |   |
->
-> Shows where a Data Trigger is and where the source and target Activitites of that Data Trigger are. |
-> |   |
->
-> Simulates the state when you apply a Data Trigger.
->
-> This enables you to see the state of your application when the conditions for a Data Trigger are met without having to change the property values in your application.  |
-> |   |
->
-> Shows the selected Data Trigger in the Node Components window. |
+**Tip:** During the application development, use these Data Trigger tools in the Activity Browser side panel:
+|
+Tool |
+Description |
+|   |
+Shows where a Data Trigger is and where the source and target Activitites of that Data Trigger are. |
+|   |
+Simulates the state when you apply a Data Trigger.
+This enables you to see the state of your application when the conditions for a Data Trigger are met without having to change the property values in your application.  |
+|   |
+Shows the selected Data Trigger in the Node Components window. |
 ## Using Activities in the API
-
 
 For details, see the `Activity2D`, `Activity3D`, `ParallelActivityHost2D`, and `ParallelActivityHost3D` classes.

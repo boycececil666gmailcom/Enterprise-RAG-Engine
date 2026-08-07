@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/triggers/using-messages.htm
 
 # Using messages
 
-
 The message system provides a way to notify about events and to exchange information.
 ## Messages and arguments
-
 
 `MessageArguments` is the base class for arguments passed in messages. Kanzi provides built-in message types for different nodes and triggers. For example, the `ButtonConcept::ClickedMessageArguments` message for the Button: Click trigger and the `Page::ActivatedMessageArguments` message for the Page Activated trigger.
 
@@ -23,10 +21,8 @@ For example, `ClickManipulator::ClickMessage` and `ListBoxConcept::ItemSelectedM
 
 For example, the `InputManipulator::InputMessageArguments::HitTestPointProperty` and `ListBoxConcept::ItemSelectedMessageArguments::SelectedItemIndexProperty` properties.
 
-
 You can describe and access the message arguments with the `PropertyType` objects. `MessageArguments::setArgument` function sets and `MessageArguments::getArgument` function retrieves arguments with the underlying storage type for arguments, such as float, boolean, and vector3.
 ## Creating custom messages in Kanzi Studio
-
 
 To create a custom message in Kanzi Studio:
 
@@ -44,18 +40,15 @@ In the Properties set:
     - Tunneling mode passes the message through the outermost parent node of the recipient node.
     - Bubbling mode passes the message through the closest parent node of the recipient node.
 
-
 See Setting the handling of trigger messages.
 ## Using messages in the Kanzi Engine API
 
 ### Dispatching messages
 
-
 To dispatch messages use `Node::dispatchMessage`. This function defines the message type and arguments and calls all the handlers and filters which are registered for the node for that message type. `Node::dispatchMessage` notifies the handlers and filters immediately before the function call returns, which enables the handlers and filters to react to the message immediately.
 
 When you dispatch a message it travels in two phases: first tunneling, then bubbling. During the tunneling phase the message travels down the node tree from the first child node of the Screen node (the root node) to the node where the message originated. From there the message bubbles back up the node tree to the root node.
 ### Reacting to messages
-
 
 All messages in Kanzi are routed messages. When a message is dispatched, the system walks through the node tree from the first child node of the Screen node (the root node) to the source node of the message in a process called tunneling, and then walks back up the node tree to the root node in a process called bubbling. When you want nodes to react to a message when that message passes, add message handlers or filters to those nodes. A message filter intercepts messages from any node while a message handler listens only to messages from a specific source node.
 
@@ -65,7 +58,6 @@ To register message handlers and filters that react to:
 
 - Bubbling messages use `Node::addMessageHandler` and `Node::addMessageFilter`
 - Tunneling messages use `Node::addTunnelingHandler` and `Node::addTunnelingFilter`
-
 
 To remove all types of handlers and filters use `Node::removeMessageHandler`.
 
@@ -118,7 +110,6 @@ MessageType<MessageArguments> ExampleNode::exampleMessageType(kzMakeFixedString(
 
 ```
 
-
 To add a handler that consumes the messages sent by the node itself with `Node::addMessageHandler`:
 
 ```
@@ -130,7 +121,6 @@ Node::MessageSubscriptionToken token = node->addMessageHandler(ExampleNode::exam
 
 ```
 
-
 To remove the handler with `Node::removeMessageHandler`:
 
 ```
@@ -138,7 +128,6 @@ To remove the handler with `Node::removeMessageHandler`:
 node->removeMessageHandler(token);
 
 ```
-
 
 To add a bubbling handler with `Node::addMessageHandler`:
 
@@ -154,7 +143,6 @@ Node::MessageSubscriptionToken bubblingToken = node->addMessageHandler(ExampleNo
 
 ```
 
-
 To remove a bubbling handler with `Node::removeMessageHandler`:
 
 ```
@@ -162,7 +150,6 @@ To remove a bubbling handler with `Node::removeMessageHandler`:
 node->removeMessageHandler(bubblingToken);
 
 ```
-
 
 To add a tunneling filter with `Node::addTunnelingFilter`:
 
@@ -172,7 +159,6 @@ Node::MessageSubscriptionToken tunnelingToken = node->addTunnelingFilter(Example
 
 ```
 
-
 To remove a tunneling filter with `Node::removeMessageHandler`:
 
 ```
@@ -180,7 +166,6 @@ To remove a tunneling filter with `Node::removeMessageHandler`:
 node->removeMessageHandler(tunnelingToken);
 
 ```
-
 
 To dispatch a message use `Node::dispatchMessage`:
 

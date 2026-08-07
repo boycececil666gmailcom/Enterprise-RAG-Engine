@@ -5,16 +5,13 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/ai-tools/kanzi-documentatio
 
 # Kanzi Documentation MCP server
 
-
 The Kanzi Documentation MCP server connects your AI assistant to the Kanzi documentation sources. This allows your AI assistant to search and retrieve information from the Kanzi documentation to answer your questions about Kanzi concepts, features, workflows, and best practices.
 
 The Kanzi Documentation MCP server is available at `https://docs.mcp.kanzi.com/mcp`.
-
-> **Tip:** You can set up the Kanzi Documentation MCP server in Claude Desktop and VS Code from two places on the Documentation website: from the AI assistant button next to any topic title, or from the **Get Kanzi guidance in your IDE** pill inside Ask Kanzi.
+**Tip:** You can set up the Kanzi Documentation MCP server in Claude Desktop and VS Code from two places on the Documentation website: from the AI assistant button next to any topic title, or from the **Get Kanzi guidance in your IDE** pill inside Ask Kanzi.
 ## Setting up the Kanzi Documentation MCP server
 
 ### Setting up in Claude Desktop
-
 
 To set up the Kanzi Documentation MCP server in Claude Desktop:
 
@@ -32,7 +29,6 @@ Double-click the mcpb file to open it in Claude Desktop.
 In Claude Desktop, click **Install**.
 
 ### Setting up in VS Code
-
 
 To set up the Kanzi Documentation MCP server in VS Code:
 
@@ -65,7 +61,6 @@ Open the **Chat** window with Ctrl Alt I.
 
 ### Setting up in Claude Code
 
-
 To set up the Kanzi Documentation MCP server in Claude Code:
 
 ```
@@ -74,7 +69,6 @@ claude mcp add --scope user --transport http kanzi-docs https://docs.mcp.kanzi.c
 ```
 
 ### Setting up in other tools
-
 
 To set up the Kanzi Documentation MCP server in other AI tools that support MCP, refer to the documentation of that tool. In the tool configuration, use the server URL with `mcp-remote`:
 
@@ -95,7 +89,6 @@ To set up the Kanzi Documentation MCP server in other AI tools that support MCP,
 ```
 
 ### Available tools
-
 
 The Kanzi Documentation MCP server provides these tools:
 

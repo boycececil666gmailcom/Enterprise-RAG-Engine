@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/factory-content/factory-con
 
 # Factory Content assets
 
-
 The Factory Content asset packages contain ready-made components and materials that you can use to create prototype projects faster.
 
 Here you can find all the Factory Content assets:
@@ -17,14 +16,11 @@ Here you can find all the Factory Content assets:
 - Materials that you can apply to 3D content in your project. See Materials.
 - Render Passes that you can use to add effects to your project. See Render Passes.
 
-
 To use the Factory Content assets in your Kanzi Studio project, from the Asset Packages drag an asset to a node in the Node Tree, to the Prefabs, or to the Preview. See Using the Factory Content assets.
 ## Interactivity control components
 
-
 Use 2D interactivity control components to make your application interactive.
 ### Button
-
 
 Use the Button to create a button that receives user input.
 
@@ -39,7 +35,6 @@ To adjust the appearance and behavior of the Button, after you add the Button to
 
 For example, to make the button corners right-angle, set Rounding Radius to 0.
 
-
 In the Node Components use triggers and actions to set how the button reacts to user input. See Using the Button nodes and Using triggers.
 
 The Button uses a state manager that sets the appearance and behavior of the Button when:
@@ -50,7 +45,6 @@ The Button uses a state manager that sets the appearance and behavior of the But
 When you disable the Enabled property in the Button node, the button does not react to user input.
 
 ### Checkbox
-
 
 Use the Checkbox to create a checkbox that receives user input.
 
@@ -63,12 +57,10 @@ When you disable the Enabled property in the Checkbox node, the checkbox does no
 
 ### Radio Buttons
 
-
 Use the Radio Buttons to create radio buttons that receive user input.
 
 In the Node Components use triggers and actions to set how radio buttons react to user input. See Using the Button nodes and Using triggers.
 ### Slider
-
 
 Use the Slider to create a slider that receives user input.
 
@@ -86,10 +78,8 @@ To adjust the appearance and behavior of the Slider, after you add the Slider to
 - Rail Background Color to set the color of the rail from the knob until the end of the rail.
 - Rail Fill Color to set the color of the rail from the start of the rail until the knob.
 
-
 The Slider uses a state manager that sets the appearance and behavior of the slider when the value of the Enabled property changes. When you disable the Enabled property in the Slider node, the slider does not react to user input.
 ### Toggle Button
-
 
 Use the Toggle Button to create a toggle button that receives user input.
 
@@ -98,10 +88,8 @@ The Toggle Button uses a state manager that sets the appearance of the Toggle Bu
 In the Node Components use triggers and actions to set how the toggle button reacts to user input. See Using the Toggle Button nodes and Using triggers.
 ## Progress components
 
-
 Use the progress components to show that a task is in progress.
 ### Processing Indicator
-
 
 Use the Processing Indicator to show that the application is processing a task.
 
@@ -116,13 +104,11 @@ In the masking texture:
   - Black pixels form the mask that hides areas of the processing indicator.
   - White pixels form the gaps in the mask that show areas of the processing indicator.
 
-
 By default the Processing Indicator is masked by a texture that shows a ring of circles.
 - Offset to set the rotation angle of the processing indicator.
 - Step Count to set the number of segments in the processing indicator.
 
 ### Progress Bar
-
 
 Use the Progress Bar to show that a task is in progress, expressed both visually and as a percentage.
 
@@ -130,7 +116,6 @@ To set the value of the Progress Bar, in the Properties set the value of the Pro
 
 To set the length of the gradient in the end of the progress bar, in the Properties set the value of the Smoothing property.
 ### Progress Indicator
-
 
 Use the Progress Indicator to show that a task is in progress, expressed both visually and as a percentage.
 
@@ -145,14 +130,12 @@ To adjust the appearance of the Progress Indicator, after you add the Progress I
 
 ## List components
 
-
 Use the list components to present collections of items arranged in scrollable lists.
 
 Each list component uses a List Box node to arrange its items. See List Box nodes.
 
 Use a data source to display your own data in a list component. See Using a data source, and Tutorial: Get application data from a data source.
 ### Contact List
-
 
 Use the Contact List to create a contact list that shows the name, profile picture, and phone number for each contact.
 
@@ -163,7 +146,6 @@ To set the content and behavior of the Contact List, in the Properties add and s
 
 ### Cover Flow
 
-
 Use the Cover Flow to present album covers.
 
 To set the content and behavior of the Cover Flow, in the Node Tree or Prefabs select the Cover Flow > Scene> Trajectory List Box 3D node and in the Properties add and set:
@@ -172,7 +154,6 @@ To set the content and behavior of the Cover Flow, in the Node Tree or Prefabs s
 - Selection Behavior to set whether the list box brings an item to the center of the list box area when the user selects that item.
 
 ### Poster Flow
-
 
 Use the Poster Flow to present media posters.
 
@@ -185,10 +166,8 @@ To set the content and behavior of the Poster Flow, in the Node Tree or Prefabs 
 
 ## Complete user interface components
 
-
 Factory Content includes complete user interface components that you can use to add functionality to your application.
 ### Car
-
 
 Use the Car to add a car model.
 
@@ -197,24 +176,20 @@ To position the car, in the Preview use either the Node tool or the Camera tool.
 To set the material for the different parts of the car, you can drag materials from the Assets window to the Car in the Preview window. See Using the Factory Content assets.
 ### Music Player
 
-
 Use the Music Player to create a music player with buttons that receive user input.
 
 In the Node Components use triggers and actions to set how the Music Player buttons react to user input. See Using triggers.
 ### Navigation Bar
-
 
 Use the Navigation Bar to create a navigation bar with toggle buttons that receive user input.
 
 In the Node Components use triggers and actions to set how the Navigation Bar buttons react to user input. See Using triggers
 ### Notification Popup
 
-
 Use the Notification Popup to create a notification dialog with buttons that receive user input.
 
 In the Node Components use triggers and actions to set how the Notification Popup buttons react to user input. See Using triggers.
 ### Traditional Gauges
-
 
 Use the Traditional Gauges to create a car cluster with speed, RPM, fuel, and temperature gauges.
 
@@ -228,7 +203,6 @@ To move the indicators, in the Properties add and set:
 - Temperature to move the temperature indicator.
 
 ## Materials
-
 
 Factory Content includes materials that you can apply to 3D content in your project.
 
@@ -259,10 +233,8 @@ Uses normal map textures.
 To learn about using Factory Content materials in your Kanzi application, see Using Factory Content materials in your project.
 ## Render Passes
 
-
 Factory Content includes render passes that you can use to add effects to your project.
 ### Skybox render pass
-
 
 Use the Skybox render pass to draw a Cubemap as a background into your Scene.
 

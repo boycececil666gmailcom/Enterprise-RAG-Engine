@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/indicator/step-2.html
 
 # Step 2 - Create the headlights indicator
 
-
 In this step of the tutorial you create the headlights indicator and use a state manager to set the appearance of the headlights indicator in different states.
 ## Create the headlights indicator
-
 
 In this section you create the headlights indicator.
 
@@ -23,32 +21,23 @@ In the Node Tree select the Headlights node and in the Properties click  next to
 3.
 
 In the Node Tree select the Headlights node, in the Preview select the Node tool  and drag the Headlights node to the right side of the clock.
-
-> **Tip:** Hold down the Shift key when you drag a node with the Node tool to move the node in a true horizontal or vertical line.
-> 4.
->
-> In the Node Tree select the Headlights node, in the Properties right-click the SecondaryColor property and select Remove.
-> 5.
->
-> In the Node Tree select the Headlights node and in the Properties set:
->
-> - Layout Width to 41 and Layout Height to 31
->
-> This way you set the size of the headlights indicator image that you want to draw from the TileAtlas texture.
-> - OffsetInTileAtlas property fields:
->
-> - X to 0
-> - Y to 0
-
+**Tip:** Hold down the Shift key when you drag a node with the Node tool to move the node in a true horizontal or vertical line.
+4.
+In the Node Tree select the Headlights node, in the Properties right-click the SecondaryColor property and select Remove.
+5.
+In the Node Tree select the Headlights node and in the Properties set:
+- Layout Width to 41 and Layout Height to 31
+This way you set the size of the headlights indicator image that you want to draw from the TileAtlas texture.
+- OffsetInTileAtlas property fields:
+- X to 0
+- Y to 0
 
 This way you set the distance in pixels from the top left corner of the TileAtlas texture to the low beam headlights indicator image that you want to show.
   - PrimaryColor property field Hue (H) to 95
 
 This way you draw the headlights indicator using green color.
 
-
 ## Control the headlights indicator
-
 
 In this section you use a state manager to set the appearance of the headlights indicator in different states.
 
@@ -77,7 +66,6 @@ In the State Tools click <No Controller Property>, select + Create Property Type
 
   - Name to Indicator.Headlights
   - Type to Enum
-
 
 In the Library > Property Types > Indicator Kanzi Studio creates the Indicator.Headlights enumeration property type whose enumeration keys have the names of the states that you created. You use this custom property type to switch the Headlights indicator between the Off, Low, and High states.
 4.
@@ -112,17 +100,14 @@ In the State Tools click  to deactivate the State Tools.
 
 In the Node Tree select the Headlights node, in the Properties right-click, and select Add Property > Controller Properties > Indicator.Headlights.
 
-
 In the Node Tree, select the Headlights node and in Properties set the Indicator.Headlights property to:
 
 - Off to turn the headlights indicator off
 - Low to show the low beam headlights indicator
 - High to show the high beam headlights indicator
 
-
 Previous step
 ## Whatâs next?
-
 
 In this tutorial you learned how to create cluster indicators. You learned how to use a tile atlas and how to control the indicators using bindings and state managers. You can use the same approach that you learned in this tutorial to add other indicators from the TileAtlas texture to the cluster. Here are the property values that set the size and position for each indicator in the TileAtlas texture.
 |
@@ -169,7 +154,6 @@ To control the visibility of each indicator you can either:
 
 - Add and use the Visible property in the node of each indicator
 - Create your own property type and use a binding to set the value of the Visible property of the node of each indicator.
-
 
 You can also:
 

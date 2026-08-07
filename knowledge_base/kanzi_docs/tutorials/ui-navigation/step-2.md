@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/ui-navigation/step-2.html
 
 # Step 2 - Visualize the focus
 
-
 In this step, you visualize the key focus in application lists by changing the appearance of:
 
 1.
@@ -16,7 +15,6 @@ The list item that has the key focus.
 The list that contains the item with key focus.
 
 ## Set the appearance of a focused node
-
 
 In this section, you visualize focus in application lists by changing the appearance of the focused list item.
 
@@ -84,14 +82,12 @@ In the Prefabs, select the PlaylistItem, RadioItem, and SettingsItem prefabs. In
 
 This way, you set all lists in your application to use the List Item State Manager to change the appearance of the item that has the key focus.
 
-
 When you select the Preview window, you can use these default keyboard keys to move the key focus in a list:
 
 - â (Down) to the next focusable item
 - â (Up) to the previous focusable item
 - Home and End to the first and last item
 - Page Up and Page Down to the beginning and end of the visible area of the list
-
 
 In a List Box node, by default, the key focus and item selection are synchronized. When the key focus moves to a list item, Kanzi sets that list item as selected.
 
@@ -100,26 +96,18 @@ Now, when you move the key focus between the list items:
 - The label of the item that receives key input becomes blue and uses normal font weight.
 - The labels of all other items are gray and use light font weight.
 
-
 On the Media screen, you can use these default keyboard keys to navigate the key focus between the lists:
 
 - Tab to the right, to the next list in the focus chain
 - Shift Tab to the left, to the previous list in the focus chain
-
-
-> **Tip:** In this tutorial step, you use the default keyboard keys to navigate the key focus between the lists. To set different keys to navigate the key focus:
->
-> 1.
->
-> In the Media prefab, create a Navigation Manipulator and set the Left Navigation Key and Right Navigation Key to the keys that you want to use.
-> 2.
->
-> Create Key Navigation Started triggers and conditions for left and right navigation. Use the Focus: Move Scope Focus Backward and Focus: Move Scope Focus Forward actions to move the focus.
-
+**Tip:** In this tutorial step, you use the default keyboard keys to navigate the key focus between the lists. To set different keys to navigate the key focus:
+1.
+In the Media prefab, create a Navigation Manipulator and set the Left Navigation Key and Right Navigation Key to the keys that you want to use.
+2.
+Create Key Navigation Started triggers and conditions for left and right navigation. Use the Focus: Move Scope Focus Backward and Focus: Move Scope Focus Forward actions to move the focus.
 
 In this tutorial project, each list item prefab has a Button: Click trigger with a Write Log action that prints a message to the log. When a Button node has the key focus, you can use the Enter or Space key to press that button. This sets off the Button: Click trigger. For example, when the third item in the Albums list has the key focus and you press the Enter key, Kanzi prints to the Log window `Play album "Float"`.
 ## Set the key focus to the list item that the user presses
-
 
 To set the key focus to the list item that the user presses:
 
@@ -132,20 +120,16 @@ In the Prefabs, select these prefabs:
   - RadioItem
   - SettingsItem
 
-
 These prefabs are Button nodes. Interactivity control nodes, such as the Button and Slider nodes, are by default hit testable and focusable, which means that they can by default receive the key focus and press.
 2.
 
 In the Properties, add the Focus > Focus On Press property and set it to Node.
 
 This way, you move the key focus from anywhere in the application to the list item that the user presses.
-
-> **Tip:** A node inherits the value of the Focus On Press property from its parent. For example, to set all interactive nodes in an application screen to receive focus at press, it is enough to set the Focus On Press property in the root node of that application screen.
-
+**Tip:** A node inherits the value of the Focus On Press property from its parent. For example, to set all interactive nodes in an application screen to receive focus at press, it is enough to set the Focus On Press property in the root node of that application screen.
 
 Now, when you click a list item, that item gets the key focus.
 ## Show when a list contains the key focus
-
 
 In this section, you set the lists on the Media and Settings screens to change appearance based on whether they contain the item that has the key focus. You do this with the List State Manager that comes with the starting point project of this tutorial.
 
@@ -157,7 +141,6 @@ For a focus scope, the values of the Focus State property have these meanings:
 - Logical Focus: A node in the focus scope is the logical focus node of the overlay to which the scope belongs. By default, a Kanzi application has one overlay, the Screen node.
 - Key Focus: A node in the focus scope is the key focus node, which receives key input.
 
-
 To show when a list contains the key focus:
 
 1.
@@ -168,7 +151,6 @@ In the Prefabs, select:
 
 In the Media Activity prefab, the Albums, Playlists, and Radio are instances of the MediaList prefab.
   - The Settings > SettingsFrame node.
-
 
 These nodes are Content Layout 2D nodes that have the Horizontal Padding and Vertical Padding properties set to create a border around their child node. This border is not visible, because the MediaList and SettingsFrame nodes have no background brush.
 2.
@@ -184,7 +166,6 @@ The List State Manager sets the Background Brush property of a node:
 
     - In the KeyFocus state, to the Blue Brush color brush.
     - In the NoFocus and LogicalFocus states, to the White Brush color brush.
-
 
 Now, the list that contains the key focus has a blue border.
 
@@ -202,10 +183,8 @@ This way:
   - When you navigate forward with the Tab key, and the focus reaches the last list, the focus moves to the first list.
   - When you navigate backward by pressing the Shift Tab keys, and the focus reaches the first list, the focus moves back to the last list.
 
-
 Previous step
 ## Whatâs next?
-
 
 In this tutorial, you learned how to create UI navigation for your application.
 

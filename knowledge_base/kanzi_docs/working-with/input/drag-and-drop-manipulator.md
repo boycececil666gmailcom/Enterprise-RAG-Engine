@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/input/drag-and-drop-manipul
 
 # Using the Drag-And-Drop Manipulator
 
-
 Use the Drag-And-Drop Manipulator to enable users to drag and drop nodes in your Kanzi application.
 
 See Enabling the drag-and-drop gesture for a node.
@@ -18,7 +17,6 @@ The Drag-And-Drop Manipulator is one of the input manipulators you can use to ad
 
 Learn how to use the Drag-And-Drop Manipulator by completing a tutorial. See Tutorial: Drag and drop.
 ## Enabling the drag-and-drop gesture for a node
-
 
 To enable the drag-and-drop gesture for a node:
 
@@ -60,19 +58,13 @@ In Kanzi Studio, select File > Open Kanzi Command Prompt.
 The Kanzi Command Prompt opens the Windows Command Prompt with the Kanzi environment variables set for the version of Kanzi for which you open a Kanzi Command Prompt.
 
 Use the Kanzi Command Prompt to access Kanzi utilities and build tools, such as Gradle and CMake, without using absolute paths or setting environment variables.
-
-> **Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
->
-> When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
-> 7.
->
-> In the Kanzi Command Prompt in the `<ProjectName>/Application` directory, run the script that generates a Visual Studio solution for the application.
->
-> ```
-> generate_cmake_vs2022_solution.bat
->
-> ```
-
+**Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
+When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
+7.
+In the Kanzi Command Prompt in the `<ProjectName>/Application` directory, run the script that generates a Visual Studio solution for the application.
+```
+generate_cmake_vs2022_solution.bat
+```
 
 This script generates a Visual Studio solution for the application in the directory `<ProjectName>/Application/build_vs2022`.
 8.
@@ -170,7 +162,6 @@ void onProjectLoaded() override
 
 ```
 
-
 9.
 
 Build and run your application. See Deploying Kanzi applications.
@@ -178,7 +169,6 @@ Build and run your application. See Deploying Kanzi applications.
 In the application long-press and drag the node for which you enabled the drag-and-drop gesture.
 
 ## Using the Drag-And-Drop Manipulator triggers
-
 
 Use the Drag-And-Drop Manipulator triggers to react to the drag-and-drop gesture. For example, you can set the appearance of a node when the user drags and drops that node.
 
@@ -188,7 +178,6 @@ The Drag-And-Drop Manipulator has these triggers:
 - Drag and Drop Moved trigger is set off when the user drags the node with the drag-and-drop gesture.
 - Drag and Drop Finished trigger is set off when the user ends the drag-and-drop gesture by lifting their finger or releasing the mouse button.
 - Drag and Drop Canceled trigger is set off when focus moves away from the node during the drag-and-drop gesture.
-
 
 To use the Drag-And-Drop Manipulator triggers:
 
@@ -220,7 +209,6 @@ For example, select Dispatch Message Action > State Manager > Go to State, and i
 
     - Target Item to the node for which you enabled the drag-and-drop gesture
     - State to the state which sets the appearance of the node when the Drag and Drop Started trigger is set off
-
 
 4.
 

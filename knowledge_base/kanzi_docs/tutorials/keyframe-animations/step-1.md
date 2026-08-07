@@ -5,14 +5,12 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/keyframe-animations/step-1.htm
 
 # Step 1 - Create the animation
 
-
 Kanzi creates keyframe animations by gradually changing the value of the animated properties between keyframes. When creating a keyframe animation that changes the values of the Render Transformation property the attributes of which define the position and size of a node, you create movement keyframe animation. However, you can also create a keyframe animation that changes the values of any other Kanzi property, such as color.
 
 In Kanzi you create keyframe animations in Animation Clip and Animation Data items. To create more complex animations, you can organize animations into Timeline Entry and Timeline Sequence items. See Animations.
 
 In this step of the tutorial you create the keyframe animation and use the Animation Player to play the animation.
 ## Get the tutorial
-
 
 To get the tutorial, in the Kanzi Studio Quick Start window, click Projects and select the Tutorials tab. Next to the Keyframe animations tutorial, click .
 
@@ -22,7 +20,6 @@ Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` director
 - The completed tutorial in the `<KanziWorkspace>/Tutorials/Keyframe animations/Completed` directory.
 
 ## Create the animation
-
 
 In this section you create the keyframe animation that bounces the BeachBall node on top of the Ground node.
 
@@ -69,7 +66,6 @@ This keyframe returns the BeachBall node to the position in which it was in the 
 
 ## Play the animation
 
-
 Use the Animation Player to control a keyframe animation.
 
 To start the animation:
@@ -88,7 +84,6 @@ Autoplay Enabled sets whether the animation starts immediately after Kanzi attac
   - Repeat Count Infinite to enabled.
 
 In the Repeat Count property when you enable the Infinite property, the Animation Player plays the animation infinite amount of times.
-
 
 In the Preview, you can see the BeachBall bouncing off the Ground.
 

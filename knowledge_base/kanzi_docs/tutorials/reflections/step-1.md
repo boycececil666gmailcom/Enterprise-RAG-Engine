@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/reflections/step-1.html
 
 # Step 1 - Prepare the nodes in your project
 
-
 Before you can create reflections, you have to prepare the nodes for which you want to create reflections. In this step you use the Instantiator node to create a visual copy of the nodes for which you want to create reflections, and create a reflection plane. You use tags to mark the nodes in your project either as origin or a reflection. In the next step of the tutorial you use these tags to collect the nodes with two tag filters and pass each to a different render pass for rendering and culling.
 ## Get the tutorial
-
 
 To get the tutorial, in the Kanzi Studio Quick Start window, click Projects and select the Tutorials tab. Next to the Reflections tutorial, click .
 
@@ -18,7 +16,6 @@ Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` director
 - The completed tutorial in the `<KanziWorkspace>/Tutorials/Reflections/Completed` directory.
 
 ## Prepare the nodes in your project
-
 
 To prepare the nodes in your project:
 
@@ -60,7 +57,6 @@ By setting the Scale Y property field you create the mirror reflection of the no
 
 With the Translation Y property field you control the distance between the origin and its reflection.
 
-
 4.
 
 Create the reflection plane:
@@ -87,6 +83,5 @@ You can do this either in the Preview using the Node tool , or in the Properties
     - Scale X to 1.4
     - Rotation X to -90
     - Translation Y to -0.3
-
 
 Introduction Next step

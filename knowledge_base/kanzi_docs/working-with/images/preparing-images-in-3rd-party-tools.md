@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/images/preparing-images-in-
 
 # Preparing images in third-party tools
 
-
 When you are preparing in a third-party tool the images that contain transparency, keep in mind that Kanzi by default premultiplies the alpha channel of an image in linear color space. This is the colorimetrically correct way and results in the fewest artifacts.
 
 When preparing images, configure your tool to blend RGB colors in linear color space. This way when you import the images to Kanzi Studio, they by default look the same in Kanzi Studio as they do in the tool where you created them.

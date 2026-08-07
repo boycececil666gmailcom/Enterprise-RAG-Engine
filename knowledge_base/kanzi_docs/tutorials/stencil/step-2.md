@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/stencil/step-2.html
 
 # Step 2 - Apply the stencil
 
-
 In this step you use render passes and the Stencil node to show only a selected part of the ContactsList node.
 
 You use render passes to first write to the stencil buffer the shape of the Stencil node. Then you use the stencil testing to draw to the screen only the parts of the ContactsList node which the Stencil node covers and that you wrote to the stencil buffer.
@@ -70,7 +69,6 @@ This way you replace the current value in the stencil buffer with the value of t
 
 This way you write to the stencil buffer the shape of the Stencil node with the value 1, and leave the value 0 everywhere else.
 
-
 5.
 
 Render the list of contacts:
@@ -97,13 +95,10 @@ In the Library > Rendering > Render Pass Prefabs > Stencil render pass select St
     - Stencil Test Function to Equal
     - Stencil Function Reference Value to 1
 
-
 This way you limit the area of rendering of the ContactsList node to those pixels which have the stencil value 1, so that the render pass draws only the part of the ContactsList node which overlaps the Stencil node.
-
 
 Previous step
 ## Whatâs next?
-
 
 In this tutorial you learned how to apply a stencil to 3D content so that Kanzi renders only a selected area of the content. Now you can:
 

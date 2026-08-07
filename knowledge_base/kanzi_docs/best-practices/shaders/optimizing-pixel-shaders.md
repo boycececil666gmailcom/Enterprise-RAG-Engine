@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/best-practices/shaders/optimizing-pixel-
 
 # Optimizing fragment shaders
 
-
 Depending on the underlying GPU architecture, the GPU can execute many stages of rendering, such as vertex processing, fragment processing, and memory reading in parallel for each draw call. The draw call waits until Kanzi finishes processing all the fragments. If the fragment shader executes slower than the vertex shader, or other stages, the other stages need to wait for the fragment shader execution to complete.
 
 You can optimize fragment shaders by:
@@ -14,7 +13,6 @@ You can optimize fragment shaders by:
 - Using the vertex shader to calculate the values that stay constant and are calculated only a few times. See Moving calculations from pixel to vertex.
 
 ## Decreasing the precision of a fragment shader
-
 
 If fragment shading is a performance bottleneck, you can decrease the precision of the shader from full 32-bit floating point to 16-bit floating point. Many GPUs support operations at double rate when you decrease the precision.
 
@@ -84,7 +82,6 @@ void main()
 
 ```
 
-
 Do not use this code:
 
 ```
@@ -105,9 +102,7 @@ void main()
 
 ```
 
-
 ## Moving calculations from pixel to vertex
-
 
 Vertex shaders perform operations such as fetching vertices and calculating transformations. Kanzi executes a vertex shader once per vertex.
 
@@ -121,7 +116,6 @@ Use the vertex shader to calculate:
 - Lighting calculations that can interpolate results between vertices without losing too much quality.
 
 For example, in the Kanzi default VertexPhong material types, the vertex shader performs the lighting calculations. These material types offer higher performance than the FragmentPhong material types, whose fragment shader performs the lighting calculations.
-
 
 In this example, you create a simple material type that calculates the color of the material in the vertex shader.
 
@@ -184,7 +178,6 @@ void main()
 
 ```
 
-
 Do not use this code for the vertex shader:
 
 ```
@@ -204,7 +197,6 @@ void main()
 }
 
 ```
-
 
 Do not use this code for the fragment shader:
 
@@ -257,10 +249,8 @@ For example, set:
     - Maximum Value to 6.283
     - Increment Time Interval to 150
 
-
 This way, you set the value of the counter property to change by 0.2 every 150 milliseconds until it reaches the value 6.283, that is, approximately \(2 * pi\). The Value Accumulator by default wraps the value when it reaches the maximum value.
 
 To learn more about using the Value Accumulators, see Incrementing the value of a property type.
-
 
 The Value Accumulator animates the color of the node whose material uses the counter property to control the color of the material.

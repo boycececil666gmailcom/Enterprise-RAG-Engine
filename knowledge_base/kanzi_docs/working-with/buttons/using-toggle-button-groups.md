@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/buttons/using-toggle-button
 
 # Using the Toggle Button Group nodes
 
-
 Use the Toggle Button Group nodes to allow users to select only one option from a set of options that are mutually exclusive.
 
 Toggle buttons in a toggle button group behave like radio buttons, where only one toggle button can be active at a time.
@@ -16,7 +15,6 @@ A toggle button group is a node that can contain Toggle Button nodes and manages
 
 When a Toggle Button node in a Toggle Button Group has focus, it receives click input from the keyboard keys Space, Enter, and Enter on the numeric pad by default.
 ## Creating a toggle button group
-
 
 To create a toggle button group:
 
@@ -47,23 +45,15 @@ When you create a Toggle Button node, the value of its Index in Group property i
 
 If you remove the Index in Group property from a Toggle Button node, that Toggle Button does not belong to a Toggle Button Group.
   - Gets a group index based on its position among the Toggle Button nodes in the same Toggle Button Group node. The first Toggle Button in a Toggle Button Group gets the index 0, the second one gets the index 1, and so on.
-
-
-> **Tip:** Use the Toggle Button Group > Current Button Index property to access the index of the Toggle Button node that is toggled on in a Toggle Button Group node.
->
-> To update the Current Button Index property with a binding, use a to-source or two-way binding. When the toggled state of a Toggle Button in a Toggle Button Group changes, Kanzi internally overrides any one-way binding that targets this property. See Bindings.
->
-> For example, you can create an application navigation bar to allow the user to switch between application screens. See Activating Activities with a Toggle Button Group.
-> 5.
->
-> (Optional) To set one of the Toggle Button nodes in the Toggle Button Group node to be toggled on when the application starts, select the Toggle Button Group node, in the Properties add the Current Button Index property, and set it to the index of the Toggle Button node that you want to toggle on.
->
-> For example, if you did not manually set the indexes of the Toggle Button nodes, to set the first Toggle Button in the Toggle Button Group to be toggled on when the application starts, set the Current Button Index property to 0.
-
+**Tip:** Use the Toggle Button Group > Current Button Index property to access the index of the Toggle Button node that is toggled on in a Toggle Button Group node.
+To update the Current Button Index property with a binding, use a to-source or two-way binding. When the toggled state of a Toggle Button in a Toggle Button Group changes, Kanzi internally overrides any one-way binding that targets this property. See Bindings.
+For example, you can create an application navigation bar to allow the user to switch between application screens. See Activating Activities with a Toggle Button Group.
+5.
+(Optional) To set one of the Toggle Button nodes in the Toggle Button Group node to be toggled on when the application starts, select the Toggle Button Group node, in the Properties add the Current Button Index property, and set it to the index of the Toggle Button node that you want to toggle on.
+For example, if you did not manually set the indexes of the Toggle Button nodes, to set the first Toggle Button in the Toggle Button Group to be toggled on when the application starts, set the Current Button Index property to 0.
 
 In the Preview when you click the Toggle Button nodes in the Toggle Button Group node, the Toggle Button Group node toggles the states in Toggle Button nodes.
 ## Reacting when any Toggle Button in a Toggle Button Group is toggled
-
 
 You can set off a trigger when the user toggles the state of any Toggle Button in a Toggle Button Group. To learn how to react when the user toggles a specific Toggle Button in a Toggle Button Group, see Reacting to toggle changes.
 
@@ -81,12 +71,10 @@ In the Node Components > Triggers press Alt and right-click the Toggle Button Gr
 
 For example, select the Write Log action and set Log Text to the message that you want to write to the Log window when the trigger is set off. The Write Log action is useful when you want to verify that the node received the input.
 
-
 Now when you change the toggle state of any of the buttons in the Toggle Button Group, Kanzi prints to the Log window the message that you set as the value of the Log Text property.
 
 To open the Log window, in the main menu select Window > Log.
 ## Activating Activities with a Toggle Button Group
-
 
 You can use the Toggle Button nodes in a Toggle Button Group to activate Activities in an Activity Host. For example, you can create an application navigation bar to allow the user to switch between application screens.
 
@@ -112,15 +100,12 @@ Select the Toggle Button Group, in the Properties click + Add Binding, and in th
 You use the Current Button Index property to access the index of the Toggle Button that is toggled on in the Toggle Button Group.
   - Source to the controller property in the Activity Host that controls which Activity is active in that Activity Host.
 
-
 Click Save.
 
 With this binding you create a two-way connection between the toggle button that is toggled on in the toggle button group and the Activity that is active in the Activity Host.
 
-
 Now when you activate an Activity, Kanzi toggles on the corresponding Toggle Button, and when you toggle on a Toggle Button, Kanzi activates the corresponding Activity.
 ## Setting the appearance of a Toggle Button Group 2D node
-
 
 To set the appearance of 2D nodes:
 
@@ -131,7 +116,6 @@ To set the appearance of 2D nodes:
 - You can render a 2D node as pixel-perfect. See Rendering pixel-perfect 2D nodes.
 
 ## Using the Toggle Button Group 3D node in the API
-
 
 To create a Toggle Button Group 3D node with three Toggle Button nodes:
 
@@ -172,10 +156,8 @@ std::cout << (currentButtonIndexAfterToggle ? *currentButtonIndexAfterToggle : -
 
 ```
 
-
 For details, see the `ToggleButtonGroup3D` class.
 ## Using the Toggle Button Group 2D node in the API
-
 
 To create a Toggle Button Group 2D node with three Toggle Button nodes:
 
@@ -216,9 +198,7 @@ std::cout << (currentButtonIndexAfterToggle ? *currentButtonIndexAfterToggle : -
 
 ```
 
-
 For details, see the `ToggleButtonGroup2D` class.
 ## Toggle Button Group property types and messages
-
 
 For lists of the available property types and messages for the Toggle Button Group nodes, see Toggle Button Group 2D and Toggle Button Group 3D.

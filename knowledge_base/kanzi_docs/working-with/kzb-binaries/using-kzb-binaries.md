@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/kzb-binaries/using-kzb-bina
 
 # Using kzb files
 
-
 A kzb file contains contents of a Kanzi Studio project. To run your Kanzi application, you must export the contents of the Kanzi Studio project of that application to a kzb file.
 ## Creating a kzb file from a Kanzi Studio project
-
 
 To create a kzb file from a Kanzi Studio project, open your Kanzi Studio project and select File > Export > Export KZB.
 
@@ -28,17 +26,11 @@ To set whether you want to export this file, select Edit > User Preferences and 
 - (Optional) `<project_name>.kza` contains your project in XML format.
 
 To create this file, before you export the kzb file select Edit > User Preferences and in the Advanced tab enable the Create XML version (kza) of kzb file setting.
-
-
-> **Tip:** Kanzi Studio by default names the kzb file `<project_name>.kzb`. You can set the name of the kzb file in the Project > Properties using the Binary File Name property.
->
-> Tip
->
-> When you want to permanently remove all kzb files exported from a project, select File > Export > Delete Exported Binaries.
->
-> Kanzi Studio deletes all exported files from the directory set in the Node Tree > Properties in the Binary Export Directory property. This command deletes all exported files, including those from other projects.
+**Tip:** Kanzi Studio by default names the kzb file `<project_name>.kzb`. You can set the name of the kzb file in the Project > Properties using the Binary File Name property.
+Tip
+When you want to permanently remove all kzb files exported from a project, select File > Export > Delete Exported Binaries.
+Kanzi Studio deletes all exported files from the directory set in the Node Tree > Properties in the Binary Export Directory property. This command deletes all exported files, including those from other projects.
 ## Opening a kzb file
-
 
 Kanzi comes with the kzb Player you can use to open kzb files on Windows. For example, open kzb files with the kzb Player to visually inspect the content in kzb files. You can find the kzb Player in the `<KanziInstallation>/Studio/Bin` directory.
 
@@ -62,9 +54,7 @@ kzb_player_GL_vs2022_Release_DLL.exe "C:\<KanziWorkspace>\Projects\MyProject\Bin
 
 ```
 
-
 ## Setting how Kanzi loads a kzb file
-
 
 The presence of the Screen node in a kzb file determines how Kanzi loads a kzb file.
 

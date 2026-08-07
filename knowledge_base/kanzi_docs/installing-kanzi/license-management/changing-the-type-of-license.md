@@ -5,14 +5,12 @@ source: https://docs.kanzi.com/4.1.0/en/installing-kanzi/license-management/chan
 
 # Changing the type of Kanzi Studio license
 
-
 If you have a valid Kanzi Studio license of a different type than your current Kanzi Studio license, you can change the type in the License Manager. For example, if you are using a dongle license, but you also have a product key license, or if you are using a floating license, but want to change to a product key license.
 
 Before you start changing a floating license to a non-floating license you need:
 
 - A valid Kanzi Studio product key.
 - A floating license available on your license server. You need this license only until you change the license type to a non-floating license.
-
 
 To change the type of Kanzi Studio license:
 
@@ -27,7 +25,6 @@ Select:
 
   - Activate a new license to start using a new license
   - Release this license to release the license you are currently using. For example, select this option if you want to transfer this license to another computer.
-
 
 Click Next.
 
@@ -49,6 +46,5 @@ Click Browse, select the license file, and click Next.
 5.
 
 If the license activation is successful, click OK, and start using Kanzi Studio.
-
 
 For technical support use the Kanzi Support Portal at [http://support.rightware.com](http://support.rightware.com/). See Technical support.

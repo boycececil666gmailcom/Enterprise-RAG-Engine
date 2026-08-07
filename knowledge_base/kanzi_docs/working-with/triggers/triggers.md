@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/triggers/triggers.html
 
 # Triggers
 
-
 Use triggers and actions to create interactions. Use triggers to set off actions, such as setting a property to a certain value or setting the state of an application.
 
 For example, Kanzi generates messages from user input and these messages are handled by nodes according to specified behavior.

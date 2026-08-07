@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/blur/blur.html
 
 # Tutorial: Create a Gaussian blur effect
 
-
 In this tutorial, you learn how to apply a Gaussian blur effect and how to apply that effect when a condition is met.
 
 This video shows the result of the tutorial.
@@ -17,7 +16,6 @@ This tutorial assumes that you understand the basics of working with Kanzi Studi
 
 ## Get the tutorial
 
-
 To get the tutorial, in the Kanzi Studio Quick Start window, click Projects and select the Tutorials tab. Next to the Blur tutorial, click .
 
 Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` directory. You can find:
@@ -27,7 +25,6 @@ Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` director
 
 ## Content of the starting point project
 
-
 The starting point project contains the content that you need to complete this tutorial:
 
 - The Button prefab is a customized version of the Factory Content Button.
@@ -35,7 +32,6 @@ The starting point project contains the content that you need to complete this t
 - The PopupBackground texture provides the background for the popup notification.
 
 ## Create the blur effect
-
 
 In this section, you create the blur effect.
 
@@ -49,41 +45,26 @@ In the Activity Browser, the Root Parallel Activity Host contains the CarScreen 
 
   - The Car node that shows a 3D car model.
   - The ProfileButton that you use in this tutorial to show a popup notification.
-
-
-> **Tip:** If you cannot see the entire content in the Preview, you can adjust the Preview zoom level in the upper right corner of the Preview.
-> 2.
->
-> In the Library, press Alt and right-click Effects and select Blur Effect 2D.
->
-> The Blur Effect 2D effect applies a Gaussian blur to the content of a 2D node.
-> 3.
->
-> From the Library, drag the Blur Effect 2D effect to the Prefabs and drop it on the CarScreen > Car node.
->
-> This way, you set in the Car node the Effect Prefab property to the Blur Effect 2D.
->
-> The Blur Effect 2D effect by default applies to a 2D node a blur where the radius of the circular area of pixels that blend to each other is 8 pixels.
-> 4.
->
-> Control the amount of blur:
->
-> 1.
->
-> In the Library > Effects, select the Blur Effect 2D effect. In the Properties, next to the Blur Radius property, click . In the Publish Property dialog, click OK.
->
-> Kanzi Studio creates from the Blur Radius property a custom property and creates a `##Template` binding to that property in the Blur Effect 2D.
-> 2.
->
-> In the Prefabs, select the CarScreen > Car node. In the Properties, add the Blur.BlurEffect2D.Radius property.
->
-> Kanzi Studio adds to the Car node a To Source binding which pushes the value of the Blur.BlurEffect2D.Radius property to the Blur Effect 2D instance made available through the `Node2D.Effect` property of the node.
-
+**Tip:** If you cannot see the entire content in the Preview, you can adjust the Preview zoom level in the upper right corner of the Preview.
+2.
+In the Library, press Alt and right-click Effects and select Blur Effect 2D.
+The Blur Effect 2D effect applies a Gaussian blur to the content of a 2D node.
+3.
+From the Library, drag the Blur Effect 2D effect to the Prefabs and drop it on the CarScreen > Car node.
+This way, you set in the Car node the Effect Prefab property to the Blur Effect 2D.
+The Blur Effect 2D effect by default applies to a 2D node a blur where the radius of the circular area of pixels that blend to each other is 8 pixels.
+4.
+Control the amount of blur:
+1.
+In the Library > Effects, select the Blur Effect 2D effect. In the Properties, next to the Blur Radius property, click . In the Publish Property dialog, click OK.
+Kanzi Studio creates from the Blur Radius property a custom property and creates a `##Template` binding to that property in the Blur Effect 2D.
+2.
+In the Prefabs, select the CarScreen > Car node. In the Properties, add the Blur.BlurEffect2D.Radius property.
+Kanzi Studio adds to the Car node a To Source binding which pushes the value of the Blur.BlurEffect2D.Radius property to the Blur Effect 2D instance made available through the `Node2D.Effect` property of the node.
 
 You can now control the amount of blur in the Car node by adjusting the value of the Blur.BlurEffect2D.Radius property in that node.
 
 ## Control the blur effect with a state manager
-
 
 In this section, you create a state manager that you use to control the blur effect in the Car node. You use the state manager to animate the transitions between the normally rendered and blurred states. In the next sections, you create a popup notification and use the state manager to blur the content of the Car node when that notification is shown.
 
@@ -105,7 +86,6 @@ Click <No Controller Property>, select + Create Property Type, and set:
 
   - Name to Blur.BlurScreen
   - Type to Boolean
-
 
 In a state manager, the value of the property that you select as the Controller Property defines the conditions when each state in a state group is active.
 4.
@@ -142,7 +122,6 @@ When the Blur.BlurScreen property is disabled, Kanzi renders the Car node withou
 
 ## Create a popup notification
 
-
 In this section, you create a popup notification that you show on top of the CarScreen. In the next section, you blur the content of the Car node when the popup notification is shown.
 
 To create a popup notification:
@@ -170,7 +149,6 @@ In the Prefabs, select the UpdateNotification prefab. In the Properties, add and
   - Horizontal Alignment to Center
   - Vertical Alignment to Center
 
-
 This way, you set the background and size of the popup, and align the popup to the center of the Root Activity Host.
 5.
 
@@ -183,7 +161,6 @@ In the Prefabs, select the UpdateNotification > Button node. In the Properties, 
   - Label to Install Now
   - Vertical Alignment to Bottom
   - Layout.Item > Vertical Margin property Bottom property field to 55
-
 
 In the next section of the tutorial, you use this button to close the popup.
 7.
@@ -200,13 +177,10 @@ In the Library > State Managers, select the UpdateNotification State Manager > A
   - Inactive â> Activating
   - Deactivating â> Inactive
 
-
 You keep the state transitions that define the transitions to and from the Active state, where the UpdateNotification Activity has full opacity.
-
 
 Now when you simulate the activation and deactivation of the UpdateNotification Activity, the popup notification takes 500 milliseconds to fade in and fade out.
 ## Control the popup notification and the blur effect
-
 
 In this section, you set the blur effect and the popup notification so that when the notification is shown, the content of the Car node behind the notification is blurred.
 
@@ -264,7 +238,6 @@ In the Popup Blur Data Trigger, set the Expression to
 
 ```
 
-
 Click Apply.
 
 You set this Data Trigger to keep an Action in that Data Trigger applied only when in the UpdateNotification Activity, the Activity Status property is Active (enumeration value 0), that is, the Activity is active.
@@ -276,9 +249,7 @@ In the Node Components, press Alt and right-click the Popup Blur Data Trigger, s
     - Target Property to Blur.BlurScreen
     - Fixed Value to enabled
 
-
 This way, you set the Popup Blur Data Trigger to keep the Blur.BlurScreen property in the Car node enabled when the UpdateNotification Activity is active.
-
 
 Now when in the Preview you:
 
@@ -286,7 +257,6 @@ Now when in the Preview you:
 - Click the Install Now button, Kanzi closes the popup and renders the car without applying the blur effect.
 
 ## Whatâs next?
-
 
 In this tutorial, you learned how to use the Blur Effect 2D effect and how to apply that effect when a condition is met. Now you can:
 

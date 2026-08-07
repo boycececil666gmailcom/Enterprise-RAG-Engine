@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/performance-profiling/resou
 
 # Measuring the loading and deployment time of resources
 
-
 In Kanzi resource profiling enables you to measure the amount of time it takes to load and deploy resources and prefabs in your Kanzi application.
 
 In Kanzi, a resource is an item that you can reuse in different parts of your application. For example, a Mesh Data resource defines the geometry of a Model node, and you can use the same Color Brush in different nodes to set the Foreground Brush or Background Brush properties.
@@ -26,7 +25,6 @@ To measure the performance of the loading and deployment of resources in your Ka
 
 ## Enabling resource profiling
 
-
 To start resource profiling you must enable the resource profiling category.
 
 To enable resource profiling in the application configuration, use the ProfilingCategoryFilter setting in either:
@@ -45,7 +43,6 @@ configuration.profilingCategoryFilter = "ResourceLoading=on";
 
 ```
 
-
 To enable or disable resource profiling during application execution, enable or disable the corresponding profiling category:
 
 - To enable resource profiling:
@@ -62,10 +59,8 @@ kzProfilingCategorySetRuntimeState(KZ_PROFILING_RESOURCE_LOADING_CATEGORY, KZ_PR
 
 ```
 
-
 After you enable resource profiling, you can collect resource profiling data and write the data to a file. See Logging resource profiling data.
 ## Logging resource profiling data
-
 
 To analyze the loading and deployment of resources in your Kanzi application, log the resource profiling data. Before you can log resource profiling data you must enable resource profiling. See Enabling resource profiling.
 
@@ -143,12 +138,10 @@ Application\build_vs<Version>\runtime\Profiling\My_application.exe > MyApplicati
 
 ```
 
-
 Kanzi writes to the output file the resource profiling data, which contains:
 
 - Resource profiling contexts for the Kanzi resource manager main thread (`"Resource manager main thread"`) and loading threads (`"Resource manager loader thread N"`). See Resource profiling contexts.
 - Resource profiling data samples (`"ResourceProfilingDataSamples"`). See Resource profiling data samples.
-
 
 ```
 ...
@@ -187,10 +180,8 @@ Kanzi writes to the output file the resource profiling data, which contains:
 
 ```
 
-
 For an example of resource profiling data logged for the Scroll view example, see Analyzing resource profiling data.
 ## Analyzing resource profiling data
-
 
 After you enable resource profiling and gather the data, analyze the data collected by the resource profiler.
 
@@ -198,7 +189,6 @@ Resource profiling data contains:
 
 - Resource profiling contexts for the Kanzi resource manager main thread (`"Resource manager main thread"`) and loading threads (`"Resource manager loader thread N"`). See Resource profiling contexts.
 - Resource profiling data samples (`"ResourceProfilingDataSamples"`). See Resource profiling data samples.
-
 
 For example, collect and analyze the resource profiling data of the Scroll view example application.
 
@@ -209,7 +199,6 @@ The resource profiling data contains information about:
 - Resource deployment
 
 ### Resource acquisition
-
 
 Usually at application startup Kanzi acquires the `StartupPrefab` prefab template and instantiates it as a Screen node. To optimize the performance of loading resources, after acquiring the startup prefab Kanzi iterates the descendant nodes of the Screen node and collects the URLs of all resources that those nodes use. Kanzi then acquires those resources asynchronously.
 
@@ -257,7 +246,6 @@ The `AcquireResourcesAsynchronously` context has dependency contexts which are r
 
 ### Resource loading
 
-
 The Kanzi loading threads load in parallel those resources that are set to be loaded asynchronously. For each asynchronously loaded resource Kanzi creates a loading task and places the task to the loading queue from which the loading threads pick up loading tasks to execute. Whenever a loading thread executes a loading task, the resource profiler creates a `ResourceLoading` context for that loading thread.
 
 The `ResourceLoading` context of the City mesh is one of the resource loading contexts of the `"Resource manager loader thread 1"` thread. In a `ResourceLoading` context:
@@ -265,7 +253,6 @@ The `ResourceLoading` context of the City mesh is one of the resource loading co
 - `ResourceLoadingDuration` shows in nanoseconds how long it took for the loading thread to load the resource.
 - `TimeStamp` shows when the loading of the resource started.
 - `LoadedResourceID` is a unique identifier of the loaded resource. You can use the identifier to distinguish between different occasions of loading the same resource again after the application purged the resource.
-
 
 ```
 "Resource manager loader thread 1": [
@@ -285,12 +272,10 @@ The `ResourceLoading` context of the City mesh is one of the resource loading co
 
 ```
 
-
 After the loading thread finishes loading the City mesh resource, it places the loading task of the resource to the finishing queue of the resource manager to be further processed by the Kanzi main thread. The Kanzi main thread processes the finishing queue when loading threads place completed tasks to the queue.
 
 When debugging, you can provide your own callbacks for when Kanzi creates a thread and when Kanzi gives a loading task to the thread with `[Domain::setOnThreadCreation` and `ResourceManager::setOnNewLoadingTask`.
 ### Resource deployment
-
 
 When the Kanzi main thread processes the loading task of the City mesh resource, the resource profiler creates the `FinishingQueue::processTask` context. In the `FinishingQueue::processTask` context the `Description` attribute shows the task index of the loading task and the number of tasks in the finishing queue. The processing of the loading task includes resource deployment which is the last stage of resource acquisition. The `ResourceDeployment` context is a dependency context of the `FinishingQueue::processTask` context.
 
@@ -330,7 +315,6 @@ When the Kanzi main thread processes the loading task of the City mesh resource,
                             ...
 
 ```
-
 
 The City mesh uses a 3D asset and several materials. Kanzi acquires these resources during the deployment of the City mesh. The `ResourceAcquire` contexts of those resources that the City mesh depends on are added to the `ResourceDeployment` context of the City mesh as dependency contexts.
 

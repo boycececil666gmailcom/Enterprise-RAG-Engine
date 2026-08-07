@@ -5,16 +5,13 @@ source: https://docs.kanzi.com/4.1.0/en/examples/multi-view/multi-view.html
 
 # Mixing Kanzi and Android UI
 
-
 This example shows several use cases on how to mix Kanzi and Android UI in an Android application. This example is configured to use the Target Preview on Android.
 ## Getting the example
-
 
 To get the example, in the Kanzi Studio Quick Start window, click Projects and select the Examples tab. Next to the Multi_view example, click .
 
 Kanzi Studio downloads the example to the `<KanziWorkspace>/Examples/Android/Multi_view` directory.
 ## Structure of the example
-
 
 The application contains these activities:
 
@@ -24,12 +21,10 @@ The application contains these activities:
 - ThemeActivity shows how Kanzi themes work with Kanzi views. See `ThemeActivity.java`.
 - NoKanziUIActivity contains only Android UI. Kanzi does not require being present in every activity of the application. See `NoKanziUIActivity.java`.
 
-
 To navigate between these activities, use the Next button.
 
 When you run the example on a device with two displays, the application shows Kanzi UI on both displays.
 ## Running the example
-
 
 To run the example:
 

@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/input/click-manipulator.htm
 
 # Using the Click Manipulator
 
-
 Use the Click Manipulator to enable users to click nodes in your Kanzi application.
 
 See Enabling the click gesture for a node and Enabling the click gesture for a node using the Kanzi Studio Preview tools.
@@ -15,12 +14,10 @@ You can react to the click gesture using:
 - Click Manipulator triggers in Kanzi Studio. See Using the Click Manipulator triggers.
 - Kanzi Engine API. See Reacting to the click gesture using the Kanzi Engine API.
 
-
 The Click Manipulator is one of the input manipulators you can use to add gesture recognition to nodes in your Kanzi application. See Using input manipulators.
 
 To enable the double-click gesture for nodes, use the Multi-Click Manipulator. See Using the Multi-Click Manipulator.
 ## Enabling the click gesture for a node
-
 
 To enable the click gesture for a node:
 
@@ -46,7 +43,6 @@ Use the Click Manipulator triggers to react to the click gesture. For example, y
 See Using the Click Manipulator triggers.
 
 ## Enabling the click gesture for a node using the Kanzi Studio Preview tools
-
 
 To enable the click gesture for a node using the Kanzi Studio Preview tools:
 
@@ -90,7 +86,6 @@ In the Preview when you click the node which you set to react to clicks, the tri
 
 ## Using the Click Manipulator triggers
 
-
 Use the Click Manipulator triggers to react to the click gesture. For example, you can change the appearance of a node when the user clicks that node.
 
 The Click Manipulator has these triggers:
@@ -113,7 +108,6 @@ The Click Manipulator has these triggers:
   - When the user presses a node and releases the press.
   - When the user sets off a Long Press trigger.
   - When the user presses a node and then moves the pointer outside of the node area.
-
 
 To use the Click Manipulator triggers:
 
@@ -148,9 +142,7 @@ For example, select Dispatch Message Action > State Manager > Go to State, and i
     - Target Item to the node for which you enabled the click gesture
     - State to the state which sets the appearance of the node when the Click trigger is set off
 
-
 ## Reacting to the click gesture using the Kanzi Engine API
-
 
 To react to the click gesture using the Kanzi Engine API:
 
@@ -183,19 +175,13 @@ In Kanzi Studio, select File > Open Kanzi Command Prompt.
 The Kanzi Command Prompt opens the Windows Command Prompt with the Kanzi environment variables set for the version of Kanzi for which you open a Kanzi Command Prompt.
 
 Use the Kanzi Command Prompt to access Kanzi utilities and build tools, such as Gradle and CMake, without using absolute paths or setting environment variables.
-
-> **Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
->
-> When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
-> 6.
->
-> In the Kanzi Command Prompt in the `<ProjectName>/Application` directory, run the script that generates a Visual Studio solution for the application.
->
-> ```
-> generate_cmake_vs2022_solution.bat
->
-> ```
-
+**Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
+When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
+6.
+In the Kanzi Command Prompt in the `<ProjectName>/Application` directory, run the script that generates a Visual Studio solution for the application.
+```
+generate_cmake_vs2022_solution.bat
+```
 
 This script generates a Visual Studio solution for the application in the directory `<ProjectName>/Application/build_vs2022`.
 7.
@@ -253,7 +239,6 @@ void onProjectLoaded() override
 }
 
 ```
-
 
 8.
 

@@ -5,12 +5,10 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/textures/using-single-textu
 
 # Using single textures
 
-
 Single textures use a single image for the texture.
 
 Before you can create a texture in Kanzi Studio you first have to have an image you use in that texture. You can create the texture image in a third-party tool and import the image to Kanzi Studio. See Importing images.
 ## Creating a single texture
-
 
 To create a single texture:
 
@@ -35,7 +33,6 @@ Usually the best starting point for setting texture filtering is to set:
   - Minification Filter to Linear
   - Magnification Filter to Linear
   - Mipmap Mode to Nearest. If you are sure that the texture is not minified select Base, otherwise start with Nearest. For example, the default value for a Render Target Texture is Base. With this setting, the texture does not have mipmap levels and the base level is always sampled. See Using mipmaps.
-
 
 Note that some texture formats are available with OpenGL ES versions higher than 2.0. To set the OpenGL ES version, in the main menu select Project > Properties and in the Properties set the Target Graphics API property.
 
@@ -103,13 +100,11 @@ This combination has the largest negative impact on performance.  |
 
 ## Using a single texture
 
-
 You can use single textures on Model and Image nodes:
 
 - To use a texture on a mesh, set the material that supports textures to use your texture, and then set the mesh to use that material. See Creating textured materials.
 - To use a single texture on an Image node, in the Node Tree select the Image node, and in the Properties set the Image property to the single texture you want to use on that Image node. See Using the Image node.
 
 ## Single Texture property types
-
 
 For a list of the available property types for single textures, see Single Texture and Texture.

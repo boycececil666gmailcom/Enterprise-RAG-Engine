@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/localization/step-3.html
 
 # Step 3 - Load locale packs
 
-
 In this step, you use the Kanzi Engine API to load the locale packs you created in the previous step of this tutorial in the Kanzi application.
 ## Use the Kanzi Engine API to load the locale packs
-
 
 In this section, you use the Kanzi Engine API to load the locale packs that you created in the previous section. The application initializes the locale packs on startup and triggers loading the resources from locale packs for all locales stored in the `Application/bin/Locale_packs` directory.
 
@@ -34,19 +32,13 @@ In Kanzi Studio, select File > Open Kanzi Command Prompt.
 The Kanzi Command Prompt opens the Windows Command Prompt with the Kanzi environment variables set for the version of Kanzi for which you open a Kanzi Command Prompt.
 
 Use the Kanzi Command Prompt to access Kanzi utilities and build tools, such as Gradle and CMake, without using absolute paths or setting environment variables.
-
-> **Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
->
-> When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
-> 3.
->
-> In the Kanzi Command Prompt in the `<KanziWorkspace>/Tutorials/Localization/Start/Application` directory, run the script that generates a Visual Studio solution for the tutorial application.
->
-> ```
-> generate_cmake_vs2022_solution.bat
->
-> ```
-
+**Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
+When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
+3.
+In the Kanzi Command Prompt in the `<KanziWorkspace>/Tutorials/Localization/Start/Application` directory, run the script that generates a Visual Studio solution for the tutorial application.
+```
+generate_cmake_vs2022_solution.bat
+```
 
 This script generates a Visual Studio solution for the application in the directory `<KanziWorkspace>/Tutorials/Localization/Start/Application/build_vs2022`.
 4.
@@ -156,12 +148,10 @@ Select the solution configuration that you want to use and run your application.
 
 During development, select the Debug configuration. When you are ready to create a version for production, select the Release configuration.
 
-
 In the application, Kanzi loads the locale packs from the kzb files listed in the `binaries.cfg` file, and in the LocaleSelector node instantiates one LocaleButton prefab for each locale.
 
 Previous step
 ## Whatâs next?
-
 
 In this tutorial, you learned how to localize Kanzi applications and use in your applications additional kzb files that contain only localized resources for locales. To take this tutorial further, you can use the localization table POT template file to translate the content of this Kanzi application to additional languages. Additionally, you can create other resource types and create different resources for different locales. For example, create several animations and use each for a different locale:
 

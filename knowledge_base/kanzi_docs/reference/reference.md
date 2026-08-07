@@ -169,9 +169,6 @@ When you use Unicode characters, make sure you insert them correctly. On Windows
 To learn more about the gettext PO file format, see [The Format of PO Files](http://www.gnu.org/software/gettext/manual/gettext.html#PO-Files).
 
 If you want to define your own import and export format for the localized text resources, use the Kanzi Studio localization plugin API to create a Kanzi Studio plugin. You can find an example of such plugin, which uses CSV to export and import text into localization tables, in the `<KanziWorkspace>/Examples/CsvPlugin` directory.
-
-> **Note:** When localized text contains a combination of simple and complex scripts, or left-to-right and right-to-left locales, in some cases the Kanzi Studio Localization Editor renders the text differently from the Kanzi Studio Preview. To fine-tune the text, use the Unicode control characters in the Localization Editor or in the PO files.
->
-> See CSV plugin example.  |
->
-> Kanzi Studio localization plugin API reference |
+**Note:** When localized text contains a combination of simple and complex scripts, or left-to-right and right-to-left locales, in some cases the Kanzi Studio Localization Editor renders the text differently from the Kanzi Studio Preview. To fine-tune the text, use the Unicode control characters in the Localization Editor or in the PO files.
+See CSV plugin example.  |
+Kanzi Studio localization plugin API reference |

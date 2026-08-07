@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/kanzi-fundamentals/kanzi-fundamentals.ht
 
 # Kanzi fundamentals
 
-
 Here you can learn about the fundamental Kanzi concepts, which can help you understand why Kanzi works the way it works.  [](presentation.html)
 
 Presentation   [](layouts.html)

@@ -5,12 +5,10 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/materials-and-textures/step-4.
 
 # Step 4 - Define material properties for the windows and the headlight glass
 
-
 The car is still missing transparent windows and the headlight glass. Again, you use the same cubemap texture for the windows and the headlight glass as you did for the main body of the car, because you want to have the same environment reflection on the windows and the headlight glass as you do on the car.
 
 In this step you define the material properties for the windows and the headlight glass.
 ## Define the material properties for the windows
-
 
 1.
 
@@ -28,9 +26,7 @@ In the Properties make windows transparent by setting the Windows_1 material pro
   - Blend Intensity to 0.66
   - Blend Mode to Alpha: Premultiplied
 
-
 ## Define the material properties for the headlight glass
-
 
 1.
 
@@ -47,6 +43,5 @@ In the Properties make the headlight glass transparent by setting the HeadlightG
 
   - Blend Intensity to 0.42
   - Blend Mode to Alpha: Premultiplied
-
 
 Previous step Next step

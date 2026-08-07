@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/property-types/property-typ
 
 # Property types
 
-
 Properties provide the means to specify and examine the state, appearance, and behavior of nodes. For example, a property can define a color, indicate whether a button is pressed, or specify the alignment of an item.
 
 Properties provide a uniform way to access data of Kanzi nodes, so that many Kanzi subsystems can manipulate the data. That way you can, for example, animate property values, provide bindings between property values, and monitor property value changes.
@@ -16,7 +15,6 @@ You can create custom property types to support the logic of your Kanzi applicat
 
 - In Kanzi Studio. See Creating property types.
 - In a Kanzi Engine plugin. See Kanzi Engine plugins.
-
 
 To learn how to work with properties in Kanzi Studio, see Using properties in Kanzi Studio.
 

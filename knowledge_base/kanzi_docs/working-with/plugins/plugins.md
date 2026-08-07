@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/plugins/plugins.html
 
 # Kanzi Studio plugins
 
-
 With Kanzi plugins, you can extend the functionality of Kanzi and customize Kanzi to fit your application development requirements. When you create a Kanzi plugin, you can share the extended functionality with any Kanzi user.
 
 In Kanzi you can create and use these types of plugins:
@@ -25,7 +24,6 @@ See Creating Kanzi Studio window plugins.
 
 See Creating Kanzi Engine plugins.
 
-
 Kanzi Studio plugins extend the functionality of Kanzi Studio and run in Kanzi Studio.
 
 For example, you can extend the functionality of Kanzi Studio to:
@@ -35,7 +33,6 @@ For example, you can extend the functionality of Kanzi Studio to:
 - Create editors that abstract the details and speed up the workflow, such as visualization tools that support work on your projects in Kanzi Studio.
 
 ## Kanzi Studio data model
-
 
 Kanzi Studio project is a hierarchical structure of project nodes. Each node has a set of properties and can have a set of child nodes or items. Different types of project items, such as nodes, models, textures, and animations have their own characteristics. For example, textures specify the image used in the texture and filtering. To change the data in the project Kanzi Studio uses commands. For example, set values to properties, or create new items.
 

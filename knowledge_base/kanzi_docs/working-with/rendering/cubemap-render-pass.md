@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/rendering/cubemap-render-pa
 
 # Creating cubemap reflections
 
-
 Use the Cubemap render pass to create dynamic reflections of the environment on the surface of 3D nodes.
 
 Cubemap render pass uses a specific Camera node that functions as a reflection probe. You position this Camera node in the center of the nodes that show meshes on whose surface you want to reflect the environment.
@@ -16,7 +15,6 @@ To reflect the environment on the surface of nodes, set the cubemap composition 
 
 Each Scene node can have one reflection probe.
 ## Using the Cubemap render pass to create cubemap reflections
-
 
 To create cubemap reflections:
 
@@ -41,7 +39,6 @@ In the Node Tree, select that node.
   2.
 
 In the Properties next to the material, click  to go to that material, and set the Material Type property to a material type that supports cubemap reflections.
-
 
 For example, use the VertexPhongTexturedCube material type. If your project does not contain the VertexPhongTexturedCube material type, in the Library > Materials and Textures press Alt and right-click Material Types, and select VertexPhongTexturedCube.
 
@@ -109,7 +106,6 @@ In the Gather Lights render pass, create a Draw Objects render pass and name it 
 
 You use the Object Source property to tell a Draw Objects render pass which nodes you want it to render.
 
-
 The Cubemap render pass draws the environment to a cubemap composition target, which is why you cannot see the result in the Preview.
 
 5.
@@ -165,12 +161,10 @@ For example, you can set the rate at which Kanzi updates the cubemap reflections
 
 ## Distributing the rendering of cubemap reflections across several frames
 
-
 To reduce the amount of per-frame rendering workload, you can set the rate at which Kanzi updates:
 
 - The content that a Cubemap render pass renders.
 - The faces in the cubemap texture to which a Cubemap render pass renders its content.
-
 
 To distribute the rendering of cubemap reflections
 

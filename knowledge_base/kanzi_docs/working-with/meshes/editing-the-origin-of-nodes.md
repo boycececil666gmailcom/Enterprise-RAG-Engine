@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/meshes/editing-the-origin-o
 
 # Editing the origin of nodes
 
-
 Use an Empty Node node to set the origin of 3D and 2D nodes and to create an external transformation pivot point. This is particularly useful when you want to edit the origin of a mesh, but want to keep the pivot point centered to the mesh.
 
 When the pivot point of a mesh is centered to the mesh, you can use the half-float accuracy for the vertex attributes. When you use half-float accuracy for vertex attributes, instead of float, you decrease the mesh data size by half.

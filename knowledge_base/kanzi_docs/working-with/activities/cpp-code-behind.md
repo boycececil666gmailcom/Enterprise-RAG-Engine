@@ -5,14 +5,12 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/activities/cpp-code-behind.
 
 # Programming Activities with C++ Code Behind
 
-
 Learn how to program Activities with the C++ Code Behind workflow by completing the Tutorial: Program Activities with C++ Code Behind.
 
 Before you can program Activities with the C++ Code Behind, make sure that you have your Kanzi development environment set up. For developing application logic with Kanzi Engine API, you need:
 
 - CMake 3.25 or newer
 - Visual Studio 2022 with the latest updates
-
 
 To program Activities with C++ Code Behind:
 
@@ -72,8 +70,6 @@ In the Properties add the Command property and set it to the command that you cr
 
 When you activate the Activity with the Button 2D node that you created earlier, and in the Preview click that button, the Log window shows the default message of the MyFirstCommand.
 
-
 ## Using C++ Code Behind in the API
-
 
 For details, see the `CodeBehind` class.

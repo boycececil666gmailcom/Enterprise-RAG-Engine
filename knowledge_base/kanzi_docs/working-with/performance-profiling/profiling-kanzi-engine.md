@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/performance-profiling/profi
 
 # Measuring the performance of Kanzi Engine
 
-
 Use the Profiling build to measure the performance of different parts of Kanzi Engine. This build includes profiled Kanzi libraries.
 ## Performance profiling categories in the Profiling build
-
 
 The Profiling build comes with performance profiling categories and profilers that you can use to measure the performance of different parts of Kanzi Engine:
 
@@ -24,7 +22,6 @@ For example, use the main loop profiler to measure the amount of time it takes t
 See Main loop profiler.
 
 ### Startup performance profiling categories
-
 
 The startup performance profilers measure the time Kanzi Engine spends on different tasks during application startup. The startup performance profilers are registered in `StartupProfilerRegistry`. By default, all startup performance profiling categories are enabled. To set the state of a category in the application configuration, use the **Configuration name**. See ProfilingCategoryFilter.
 
@@ -150,7 +147,6 @@ Domain initialization |
 `StartupProfilerRegistry::m_resumeGLProfiler` |
 ### Main loop profiler
 
-
 The main loop profiler measures the time that Kanzi Engine spends on different tasks on each iteration of the Kanzi main loop. You can enable the main loop profiler by adding the `MainLoop` category in the application configuration. See ProfilingCategoryFilter.
 
 You can access the main loop profiler though the main loop scheduler interface `MainLoopScheduler::getProfiler`. You can access the main loop scheduler from `Application` using `Application::getMainLoopScheduler`.
@@ -159,7 +155,6 @@ In the Performance HUD you can show the performance measurement graphs for the m
 
 In the application configuration you can set the sample buffer size in the main loop performance profilers. See MainLoopProfilingSampleBufferCount.
 ## Showing the performance measurement graphs in the Performance HUD
-
 
 You can show performance profiling graphs for any main loop task in the Profiling build, including custom tasks that you add in your application code.
 
@@ -183,7 +178,6 @@ configuration.performanceInfoLevel = ApplicationProperties::PerformanceInfoLevel
 
 ```
 
-
 See Application development and PerformanceInfoLevel.
 2.
 
@@ -203,7 +197,6 @@ configuration.performanceInfoProperties.fontSize = 14;
 
 ```
 
-
 See PerformanceInfoFontSize.
 3.
 
@@ -222,7 +215,6 @@ ProfilingCategoryFilter="MainLoop=on"
 configuration.profilingCategoryFilter = "MainLoop=on";
 
 ```
-
 
 See ProfilingCategoryFilter.
 4.
@@ -244,7 +236,6 @@ PerformanceInfoGraphFilter="TickAnimations;Render"
 configuration.performanceInfoProperties.graphFilter = "TickAnimations;Render";
 
 ```
-
 
 See PerformanceInfoGraphFilter.
 5.
@@ -280,7 +271,6 @@ performanceInfo.setFontColor(ColorRGBA(0.0f, 0.0f, 0.0f));
 
 ```
 
-
 6.
 
 Build and run your application. See Deploying Kanzi applications.
@@ -289,16 +279,13 @@ To show the performance graphs, you must use the Profiling build of Kanzi.
 
 For example, on Windows build your application in Visual Studio using the Profiling build configuration.
 
-
 When you run the application, the Performance HUD shows the performance measurement graphs.
 
 If you do not see the graphs, make the application window larger.
 ## Logging Kanzi Engine performance profiling data
 
-
 To analyze the performance of Kanzi Engine, log the performance profiling data.
 ### Logging startup performance information
-
 
 You can use the Kanzi startup performance profilers in the Profiling build to measure the time Kanzi Engine spends on different tasks during application startup. See Startup performance profiling categories.
 
@@ -317,7 +304,6 @@ Open the command line on your computer and run the application so that you direc
 <MyProject>\Application\bin> ..\build_vs<Version>\runtime\Profiling\MyApplication.exe > MyApplicationProfiling.log
 
 ```
-
 
 Kanzi writes the startup performance measurement information to the log.
 
@@ -347,7 +333,6 @@ info:profiling> Startup profiling data logging took   1 712 800 ns
 
 ### Logging data from a profiler
 
-
 You can log data from specific profilers:
 
 - To log all data samples from a profiler, use the `AbstractProfiler::logAllData` function.
@@ -368,9 +353,7 @@ getStartupProfilerRegistry().m_initializationProfiler->logAggregateData();
 
 ```
 
-
 ### Logging data from a profiler registry
-
 
 You can log data from all profilers registered in a specific profiler registry by iterating through the profilers and calling the `AbstractProfiler::logAggregateData` or `AbstractProfiler::logAllData` function.
 

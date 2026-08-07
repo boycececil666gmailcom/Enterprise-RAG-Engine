@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/effects/mask-effect-2d.html
 
 # Using the Mask Effect 2D effect
 
-
 Use the Mask Effect 2D effect to apply a mask to a 2D node.
 ## Creating a mask effect for a 2D node
-
 
 To create a mask effect for a 2D node:
 
@@ -28,24 +26,20 @@ This way you set in that 2D node the Effect Prefab property to the Mask Effect 2
 In the Library select the Mask Effect 2D effect and in the Properties add and set the Mask Effect 2D properties.
 |
 
-
 Mask Texture sets the texture that you want to use as the mask.
 
 To use the mask effect, you must set this property.  |    |
 |
-
 
 Mask Width sets the width of the mask.
 
 By default the width of the mask is the width of the texture that you set as the Mask Texture.  |    |
 |
 
-
 Mask Height sets the height of the mask.
 
 By default the height of the mask is the height of the texture that you set as the Mask Texture.  |    |
 |
-
 
 Mask Horizontal Alignment sets the horizontal alignment of the mask:
 
@@ -56,7 +50,6 @@ Mask Horizontal Alignment sets the horizontal alignment of the mask:
   |    |
 |
 
-
 Mask Vertical Alignment sets the vertical alignment of the mask:
 
   - Top aligns the top edge of the mask with the top edge of the node. This is the default value.
@@ -66,24 +59,20 @@ Mask Vertical Alignment sets the vertical alignment of the mask:
   |    |
 |
 
-
 Mask Offset sets the mask offset along the x and y axes.
 
 Kanzi applies this property after the Mask Stretch, Mask Horizontal Alignment, Mask Vertical Alignment, and Mask Scale properties.  |    |
 |
-
 
 Mask Scale sets the factor by which to scale the mask.
 
 Kanzi applies this property after the Mask Stretch, Mask Horizontal Alignment, and Mask Vertical Alignment properties.  |    |
 |
 
-
 Use Screen Space sets whether to layout the mask relative to the screen.
 
 By default Kanzi layouts a mask relative to the node that uses the mask effect.  |    |
 |
-
 
 Mask Stretch sets the stretch mode of the mask:
 
@@ -95,7 +84,6 @@ Mask Stretch sets the stretch mode of the mask:
   |    |
 |
 
-
 Mask Channel sets the channel in the Mask Texture that you want to use as input for the mask:
 
   - Alpha uses the alpha channel from the texture. This is the default value.
@@ -106,10 +94,8 @@ Mask Channel sets the channel in the Mask Texture that you want to use as input 
   |    |
 |
 
-
 Invert Mask sets whether to invert the mask so that transparent areas in the mask become opaque and the other way around.  |    |
 |
-
 
 Mask Strength sets the strength of the mask in the range from 0 to 1:
 
@@ -120,14 +106,12 @@ Mask Strength sets the strength of the mask in the range from 0 to 1:
 
 ## Customizing an instance of a mask effect
 
-
 When you edit the properties of an effect in the Library > Effects, you change the appearance of that effect for all nodes that use it. You can customize each effect instance by overriding the effect property values. For example:
 
 - When you create a Shadow Effect 2D effect, you can vary the softness of the shadow in different instances of that effect.
 - When you create a Mask Effect 2D effect, you can vary the size of the mask in different instances of that effect.
 - When you create a Blur Effect 2D effect, you can vary the amount of blur in different instances of that effect.
 - When you create an Outline Effect 2D effect, you can vary the color of the outline in different instances of that effect.
-
 
 To customize an instance of an effect:
 
@@ -160,11 +144,9 @@ For example, in the Properties, add the Shadow Effect 2D Properties > ShadowEffe
 3.
 
 (Optional) Repeat the previous step for each effect property that you want to customize.
+**Tip:** When you want to remove from a node a property and its To Source binding, right-click that property and select Remove Property And Binding.
 
-> **Tip:** When you want to remove from a node a property and its To Source binding, right-click that property and select Remove Property And Binding.
->
 ## Using the Mask Effect 2D effect in the API
-
 
 To create a mask effect:
 
@@ -192,6 +174,5 @@ MaskEffect2DSharedPtr maskEffect = dynamic_pointer_cast<MaskEffect2D>(node2d->ge
 maskEffect->setStretch(MaskEffect2D::Stretch::Uniform);
 
 ```
-
 
 For details, see the `MaskEffect2D` class.

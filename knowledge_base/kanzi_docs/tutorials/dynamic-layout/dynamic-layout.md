@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/dynamic-layout/dynamic-layout.
 
 # Tutorial: Making applications with dynamic layout
 
-
 In this tutorial you learn how to create user interfaces that respond to the changes of the device screen resolution. A user interface with a dynamic layout looks good and is easy to use regardless of the device and its screen resolution.
 
 This video shows the result of the tutorial.
@@ -17,7 +16,6 @@ This tutorial assumes that you understand the basics of working with Kanzi Studi
 
 ## Get the tutorial
 
-
 To get the tutorial, in the Kanzi Studio Quick Start window, click Projects and select the Tutorials tab. Next to the Dynamic layout tutorial, click .
 
 Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` directory. You can find:
@@ -26,7 +24,6 @@ Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` director
 - The completed tutorial in the `<KanziWorkspace>/Tutorials/Dynamic layout/Completed` directory.
 
 ## Content of the starting point project
-
 
 User interfaces with dynamic layout respond to changes in device screen orientation and resolution. Grid Layout nodes form the base of dynamic layouts. To make your Kanzi application layout dynamic, you have to place inside Grid Layout nodes all content for which you want that it responds to the changes in the screen resolution. Then you set up the Grid Layout nodes so that they position and distribute the content the way you want.
 
@@ -40,7 +37,6 @@ The starting point project contains the two Grid Layout 2D nodes you need to com
 - Controls node sets the position of the song title, artist and album name, and the controls of the player. The columns and rows of the node are set to Proportional with value 1 so that their size is the same in proportion to each other and the size of the entire Controls Grid Layout 2D node.
 
 ## Make the layout of the user interface dynamic
-
 
 In this section you make the layout of the user interface (Player and Controls Grid Layout 2D nodes) respond to the changes of the device screen orientation and resolution.
 
@@ -70,7 +66,6 @@ clamp(400, 1200, {@../Node.ActualHeight} - 300)
 
 ```
 
-
 Click Save.
 
 The Player Grid Layout 2D node sets the position and size of the media player application (the content with white background). This binding sets the height of the node based on the height of the RootNode node. You use the clamp binding function to constrain the height of the Player node to be:
@@ -92,7 +87,6 @@ clamp(500, {@../Node.ActualWidth}, {@../Node.ActualWidth} - 300)
 
 ```
 
-
 Click Save.
 
 This binding sets the width of the Player Grid Layout 2D node based on the width of the RootNode node. You use the clamp binding function to constrain the width of the Player node to be:
@@ -101,7 +95,6 @@ This binding sets the width of the Player Grid Layout 2D node based on the width
 
 Because the Horizontal Alignment property of the Player node is set to Center, this creates 150-pixel margins on the left and right.
     - Always at least 500 pixels
-
 
 4.
 
@@ -119,26 +112,18 @@ In the Node Tree select the Controls node, in the Properties click + Add Binding
 
 ```
 
-
 Click Save.
 
 The Controls Grid Layout 2D node sets the position and size of the song title, artist and album name, and the controls of the player. This binding sets the height of the Controls node to be the same as the height of the Player node.
-
-> **Tip:** You can start creating a binding for a property by right-clicking a property and selecting Create Binding.
->
-> This way you automatically add the property to the Binding Editor.
-> 2.
->
-> In the Properties click + Add Binding, and in the Binding Editor set:
->
-> - Property to Layout Width
-> - Expression to
->
-> ```
-> clamp(500, 1300, {@../Node.Width} - 300)
->
-> ```
-
+**Tip:** You can start creating a binding for a property by right-clicking a property and selecting Create Binding.
+This way you automatically add the property to the Binding Editor.
+2.
+In the Properties click + Add Binding, and in the Binding Editor set:
+- Property to Layout Width
+- Expression to
+```
+clamp(500, 1300, {@../Node.Width} - 300)
+```
 
 Click Save.
 
@@ -149,9 +134,7 @@ This binding sets the width of the Controls Grid Layout 2D node based on the wid
 Because the Horizontal Alignment property of the Controls node is set to Center, this creates 150-pixel margins on the left and right.
     - Always between 500 and 1300 pixels
 
-
 ## Make the content in the user interface responsive
-
 
 In this section you make the content of the Controls Grid Layout 2D node respond to the changes of the device screen orientation and resolution. That way the controls in the user interface change with changes of the screen resolution.
 
@@ -173,7 +156,6 @@ clamp(10, 60, {@../Node.Height} / 20)
 
 ```
 
-
 Click Save.
 
 The Song list Image node is the leftmost control in the player controls. This binding sets the height of the Song list node based on the height of the Controls node. You use the clamp binding function to constrain the height of the Song list node to be:
@@ -190,7 +172,6 @@ clamp(10, 60, {@../Node.Width} / 20)
 
 ```
 
-
 Click Save.
 
 This result of this binding is the same as for the binding in the previous step, but sets the Layout Width of the Song list node.
@@ -198,32 +179,20 @@ This result of this binding is the same as for the binding in the previous step,
 2.
 
 Apply the same bindings you created in the Song list node to the other Image nodes in the Controls node.
-
-> **Tip:** To create the same binding in multiple nodes, in the Node Tree, select the nodes and in the Properties, click + Add Binding, or right-click a property and select Create Binding.
->
-> 1.
->
-> In the Node Tree select the Song list node, in the Properties right-click Bindings, and select Copy.
-> 2.
->
-> In the Node Tree select the Back node, press the Shift key and click the More node.
-> 3.
->
-> In the Properties right-click Bindings and select Paste Binding(s). This way you add and apply the copied bindings to all selected nodes.
->
-> 3.
->
-> Set the size of the Play node:
->
-> 1.
->
-> In the Node Tree select the Play node, in the Properties click the Layout Height binding, and in the Binding Editor set Expression to
->
-> ```
-> clamp(50, 120, {@../../../Node.ActualHeight} / 5)
->
-> ```
-
+**Tip:** To create the same binding in multiple nodes, in the Node Tree, select the nodes and in the Properties, click + Add Binding, or right-click a property and select Create Binding.
+1.
+In the Node Tree select the Song list node, in the Properties right-click Bindings, and select Copy.
+2.
+In the Node Tree select the Back node, press the Shift key and click the More node.
+3.
+In the Properties right-click Bindings and select Paste Binding(s). This way you add and apply the copied bindings to all selected nodes.
+3.
+Set the size of the Play node:
+1.
+In the Node Tree select the Play node, in the Properties click the Layout Height binding, and in the Binding Editor set Expression to
+```
+clamp(50, 120, {@../../../Node.ActualHeight} / 5)
+```
 
 Click Save.
 
@@ -237,7 +206,6 @@ clamp(50, 120, {@../../../Node.ActualWidth} / 5)
 
 ```
 
-
 Click Save.
 
 4.
@@ -247,7 +215,6 @@ In Kanzi Studio select File > Export > Export as KZB Player for Windows and open
 When you adjust the size of the application window you simulate the changes in the resolution of the device screen. Notice how the size of the user interface changes according to the bindings you created in the project.
 
 ## Whatâs next?
-
 
 In this tutorial you learned how to create a user interface the size of which responds to the changes of the device screen resolution. This project contains Text Block nodes the text of which stays the same regardless of the changes in the device screen resolution. You can use the approach you learned in this tutorial to make the size of the text in the Text Block nodes respond to the changes of the device screen resolution.
 

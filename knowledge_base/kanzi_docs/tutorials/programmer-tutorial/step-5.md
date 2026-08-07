@@ -5,12 +5,10 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/programmer-tutorial/step-5.htm
 
 # Step 5 - Create the interaction for the widget description panel
 
-
 In this step of the tutorial you implement the functionality that handles the interactions in the description panel of the application:
 
 - Create an event handler for the Back button in the Widget Description Layer node that runs in reverse the widget highlight animations.
 - Make invisible the Widget Description Layer that represents the widget description panel when the user clicks the Back button.
-
 
 To create the interaction for the widget description panel:
 
@@ -148,6 +146,5 @@ Select the solution configuration that you want to use and run your application.
 During development, select the Debug configuration. When you are ready to create a version for production, select the Release configuration.
 
 When you click the Back button in the Widget Description Layer node, the application plays the highlight animation in reverse and initiates the animation that brings the Camera node back to show the entire Widget Grid List Box. Note that the functionality of the Buy button is not covered in this tutorial.
-
 
 Previous step Next step

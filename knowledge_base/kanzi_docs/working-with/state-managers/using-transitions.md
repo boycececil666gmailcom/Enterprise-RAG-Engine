@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/state-managers/using-transi
 
 # Using state transitions
 
-
 Use state transitions to define how the state manager reacts when the application state changes, such as when the user clicks a button. For example, you can:
 
 - Define the duration and start time of a transition
@@ -13,7 +12,6 @@ Use state transitions to define how the state manager reacts when the applicatio
 - Use a custom animation. See Using custom easing functions in state transitions.
 
 ## Setting transitions between any to any state
-
 
 When you create states the state manager uses the default transition to transition between states.
 
@@ -222,9 +220,7 @@ Ease in out |   |
 
     - Transition Animations enables you to use a custom animation for the transition. See Using custom easing functions in state transitions.
 
-
 ## Setting transitions between specific states
-
 
 You can set custom transitions between specific states. You can add states to the State Transition Editor canvas and configure transition settings between them.
 
@@ -246,7 +242,6 @@ In the State Tools you see the transitions that you define in the State Transiti
 
 ## Using custom easing functions in state transitions
 
-
 You can use animations to define custom easing functions for transitions between states. For example, define a custom easing function to make a phone call alert blink when you enter that state.
 
 To use custom easing functions in state transitions:
@@ -266,7 +261,6 @@ Create for the Image node a state manager that has one state group with the stat
 
     - For the Default state set it to 0 This way you hide the incoming call image in the Default state when the phone is not ringing.
     - For the Incoming Call state set it to 1 This way you show the incoming call image in the Incoming Call state when the phone is ringing.
-
 
 2.
 
@@ -301,9 +295,7 @@ Kanzi Studio shows in the Property Type dropdown menu only the properties with d
 
 For example, set it to Animation.
 
-
 ## Configuring easing functions
-
 
 You can configure some of the easing functions in the State Transition Settings to define the values in the function that sets the transition curve.
 
@@ -326,9 +318,7 @@ The easing functions that you can configure in the State Transition Settings are
 
   - Use the Power property to set the speed by which the transition curve accelerates.
 
-
 ## Crossfading animations between states
-
 
 When the states in a state group contain Animation Player node components with the same name, the State Manager automatically crossfades between the outgoing and incoming animations over the transition duration. The crossfade uses a linear blend regardless of the easing function configured on the transition.
 

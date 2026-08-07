@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/triggers/reference-for-acti
 
 # Actions and messages reference
 
-
 Here you can find the reference for the actions you can use with triggers in Kanzi Studio. To learn about triggers, see Using triggers.
 ## Activity Host actions
-
 
 Use the Activity Host actions to set an Activity Host to activate or deactivate a specific Activity.
 |
@@ -34,7 +32,6 @@ To learn about using Activities and Activity Hosts, see:
 
 ## Apply actions
 
-
 Use an Apply action when you want to apply a value to a property or activate an Activity node only when a condition expression in an Data Trigger evaluates to true. When the condition expression in that Data Trigger no longer evaluates to true, Kanzi reverts the changes that you set in an Apply action.
 
 You can use an Apply action only in a Data Trigger.
@@ -58,7 +55,6 @@ To learn about data triggers, see Data Triggers.
 
 To learn about the Activity nodes, see Activities.
 ## Animation Player actions
-
 
 Use the Animation Player actions to control the playback of animations an application.
 |
@@ -90,7 +86,6 @@ Stops a running animation. |
 To learn about animation actions, see Using keyframe animations.
 ## Exclusive Activity Host actions
 
-
 Use the Exclusive Activity Host actions to set an Activity Host to navigate to an Activity.
 |
 
@@ -114,7 +109,6 @@ To learn about using Activities and Activity Hosts, see:
 - UI structure
 
 ## Focus actions
-
 
 Use the Focus actions to set the application to set focus to a node or to move the focus in the focus chain.
 |
@@ -145,7 +139,6 @@ Sets the focus to the node that you set in this action. |
 
 To learn about using focus actions, see Using focus.
 ## General actions
-
 
 Use the general actions to create interactions based on user input.
 |
@@ -208,53 +201,32 @@ Sets the key focus in a List Box node to the item at the index that you set in t
 
 To learn about using the List Box nodes, see List Box nodes.
 ## Page actions
-
-
-> **Note:** The Page and Page Host nodes are deprecated. Use the Activity and Activity Host nodes to build navigable UIs for your application. See Activities.
->
-> Use the Page actions to set the application to navigate to a specific Page node.
-> |
->
-> Name |
->
-> Description |
-> |
->
-> Navigate to Page |
->
-> Navigates to the Page node that you set in the action. |
-> |
->
-> Navigate to Parent |
->
-> Navigates to the parent Page Host node of the Page node that you set in the action. |
->
-> To learn about using the Page and Page Host nodes, see Using the Page and Page Host nodes.
+**Note:** The Page and Page Host nodes are deprecated. Use the Activity and Activity Host nodes to build navigable UIs for your application. See Activities.
+Use the Page actions to set the application to navigate to a specific Page node.
+|
+Name |
+Description |
+|
+Navigate to Page |
+Navigates to the Page node that you set in the action. |
+|
+Navigate to Parent |
+Navigates to the parent Page Host node of the Page node that you set in the action. |
+To learn about using the Page and Page Host nodes, see Using the Page and Page Host nodes.
 ## Page Host actions
-
-
-> **Note:** The Page and Page Host nodes are deprecated. Use the Activity and Activity Host nodes to build navigable UIs for your application. See Activities.
->
-> Use the Page Host actions to navigate to either the previous or next Page node in a Page Host node.
-> |
->
-> Name |
->
-> Description |
-> |
->
-> Navigate to Next |
->
-> Navigates to the next Page node in a Page Host node that you set in the action. |
-> |
->
-> Navigate to Previous |
->
-> Navigates to the next Page node in a Page Host node that you set in the action. |
->
-> To learn about using the Page and Page Host nodes, see Using the Page and Page Host nodes.
+**Note:** The Page and Page Host nodes are deprecated. Use the Activity and Activity Host nodes to build navigable UIs for your application. See Activities.
+Use the Page Host actions to navigate to either the previous or next Page node in a Page Host node.
+|
+Name |
+Description |
+|
+Navigate to Next |
+Navigates to the next Page node in a Page Host node that you set in the action. |
+|
+Navigate to Previous |
+Navigates to the next Page node in a Page Host node that you set in the action. |
+To learn about using the Page and Page Host nodes, see Using the Page and Page Host nodes.
 ## Prefab View actions
-
 
 Use the Prefab View actions to load resources asynchronously from a prefab in your Kanzi application.
 |
@@ -270,7 +242,6 @@ Starts the asynchronous loading of resources from the prefab you set in the acti
 
 To learn about loading prefabs asynchronously, see Using node prefabs.
 ## Scroll View actions
-
 
 Use the Scroll View actions to set the application to scroll a Scroll View node or a Grid List Box node in a specific direction or to a specific position.
 |
@@ -335,14 +306,12 @@ To learn about using the Scroll View nodes, see:
 - Tutorial: Rotate a 3D model
 - Scroll view example
 
-
 To learn about using the Grid List Box nodes, see:
 
 - Using the Grid List Box nodes
 - Tutorial: Create a contacts list with a Grid List Box
 
 ## State Manager actions
-
 
 Use the State Manager actions to set the application to enter or leave a specific state.
 |
@@ -369,7 +338,6 @@ Sets a State Manager to the previous state in the state group that you define in
 To learn about using state managers, see Using state managers.
 ## Theme actions
 
-
 Use the Theme actions to control themes.
 |
 
@@ -388,7 +356,6 @@ To learn about using themes, see:
 - Tutorial: Theme your application
 
 ## Value Accumulator messages
-
 
 Use a Value Accumulator to increment a value of a property type over time. You can use the Value Accumulator messages to control the playback of Value Accumulators.
 |
@@ -419,7 +386,6 @@ Starts the animation applied by a Value Accumulator to its target property value
 
 To learn about using Value Accumulators, see Incrementing the value of a property type.
 ## Text Box actions
-
 
 Use the Text Box actions to select and edit text in Text Box nodes.
 |

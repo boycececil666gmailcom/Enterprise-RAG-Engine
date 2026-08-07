@@ -5,16 +5,13 @@ source: https://docs.kanzi.com/4.1.0/en/examples/wallpaper/wallpaper.html
 
 # Android Wallpaper example
 
-
 This example is the use case of the Kanzi Android framework (droidfw) in a viewless context, specifically as the renderer of `WallpaperService`.
 ## Getting the example
-
 
 To get the example, in the Kanzi Studio Quick Start window, click Projects and select the Examples tab. Next to the Wallpaper example, click .
 
 Kanzi Studio downloads the example to the `<KanziWorkspace>/Examples/Android/Wallpaper` directory.
 ## Running the example
-
 
 To run the example:
 

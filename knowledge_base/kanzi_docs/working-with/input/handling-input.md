@@ -5,14 +5,12 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/input/handling-input.html
 
 # Handling user input
 
-
 You can set how and which elements in your application react to user input. In Kanzi, to handle user input you can:
 
 - Enable gesture and key recognition for nodes. See Using input manipulators.
 - Control how nodes react to input. See Controlling how a node reacts to input.
 - Define which nodes receive input. See Defining which node receives input.
 - Set the size of the input area of 3D nodes. See Setting the size of the input area of 3D nodes.
-
 
 For these Kanzi nodes you do not have to create input manipulators manually, because they handle input by default:
 
@@ -24,24 +22,20 @@ For these Kanzi nodes you do not have to create input manipulators manually, bec
 - Slider nodes. See Using the Slider nodes.
 - Text Box nodes. See Using the Text Box nodes.
 
-
 Use triggers and actions to create interactions based on user input.
 
 See Using triggers.
 ## Using input manipulators
-
 
 Kanzi provides low and high-level access to input:
 
 - The high-level system provides input in terms of gestures, such as click, pan, pinch, and so on. It is recommended to use the high-level system to bind gestures to the UI components or application functionality.
 - The low-level input system reports raw touch events as they happen in nodes.
 
-
 Kanzi provides input manipulators to enable gesture recognition for nodes in your Kanzi application. You can create and configure the manipulators:
 
 - In Kanzi Studio using the Input Manipulators node components and input manipulator triggers
 - Through the Kanzi Engine API
-
 
 Kanzi provides these input manipulators:
 |   |
@@ -94,7 +88,6 @@ In Kanzi Studio when you select a node and in the Node Components > Input Manipu
 - Navigation Manipulator
 - Pan Manipulator
 
-
 In the Kanzi Engine API `InputManipulator` is the base class for input manipulators, and functions, such as `ClickManipulator::create` and `PanManipulator::create` create input manipulators responsible for the corresponding gesture recognition.
 
 When you create an input manipulator, to recognize a gesture, attach it to the node with `Node::addInputManipulator`. This function attaches all the children of that node, too.
@@ -102,22 +95,14 @@ When you create an input manipulator, to recognize a gesture, attach it to the n
 The attached input manipulator generates messages in response to user actions. Each manipulator uses messages to report different events during gesture recognition, such as `PanManipulator::StartedMessage`, `PanManipulator::MovedMessage`, `PanManipulator::FinishedMessage` for the pan manipulator, and so on.
 ## Controlling how a node reacts to input
 
-
 Use the Input > Enabled property to control how a node reacts to input.
-
-> **Tip:** The Button, List Box, Scroll View, Slider, and Text Box nodes handle input by default and do not react to input when they are disabled.
->
-> When you disable the Enabled property of a node, you effectively disable that node and its descendant nodes in the same overlay focus scope.
->
-> This means that when you disable the Enabled property of a node that contains an overlay focus scope node, the nodes in that overlay stay effectively enabled.
->
-> Kanzi delivers input also to effectively disabled nodes. This enables you to control the behavior of a disabled node.
->
-> When you effectively disable a node:
->
-> - When the node is focused, it receives key input until the focus moves to another node.
-> - When the node is not focused, it is not part of the focus chain and does not receive key input.
-
+**Tip:** The Button, List Box, Scroll View, Slider, and Text Box nodes handle input by default and do not react to input when they are disabled.
+When you disable the Enabled property of a node, you effectively disable that node and its descendant nodes in the same overlay focus scope.
+This means that when you disable the Enabled property of a node that contains an overlay focus scope node, the nodes in that overlay stay effectively enabled.
+Kanzi delivers input also to effectively disabled nodes. This enables you to control the behavior of a disabled node.
+When you effectively disable a node:
+- When the node is focused, it receives key input until the focus moves to another node.
+- When the node is not focused, it is not part of the focus chain and does not receive key input.
 
 To observe whether a node is effectively enabled, use the Input > Effectively Enabled property in a state manager or a binding. For example, to visually indicate to the user whether a node is in use, create a state manager and use the Effectively Enabled property as its controller property.
 
@@ -160,10 +145,8 @@ This way you set your application to use:
 
 In the State Tools, click Edit State Manager to deactivate the State Tools.
 
-
 When you change the value of the Input > Enabled property, the appearance of the node changes. When you disable the Enabled property and try to interact with the node in the Preview, the node does not react.
 ## Defining which node receives input
-
 
 When creating a user interface, pay attention to how your application handles input, because only one node can receive input at a time. For example, define whether a click is handled by the node in the front or by the one behind it.
 
@@ -183,9 +166,7 @@ For example, if you place two Box nodes so that the BoxFront node is in front of
   - Hit Testable property of the BoxFront node is disabled
   - Hit Testable property of the BoxRear node is enabled
 
-
 ## Setting the size of the input area of 3D nodes
-
 
 In Kanzi, hit testing for a 3D node is by default based on the bounding box of that node.
 
@@ -200,12 +181,10 @@ For these nodes, the Hit Testable Container property is enabled by default:
 - Scroll View 3D
 - Slider 3D
 
-
 To set the size of the input area for a 3D node of some other type, add and enable these properties:
 
 - Hit Testable Container
 - Hit Testable
-
 
 Keep in mind that if a node is not a layout control node or the child of a layout control node, the actual layout size of that node is zero. For example, the actual layout size of an Empty Node 3D or a Model node whose parent node is not a layout control node, is zero. When you want to use such a node to set the size of the input area, place that node in a layout control node. See Layout control nodes.
 
@@ -215,7 +194,6 @@ For example, a Stack Layout 3D node which contains a Box node receives click inp
 - When the Hit Testable Container property of the Stack Layout 3D node is enabled, from the area defined by the Layout Width, Layout Height, and Layout Depth properties of either the Stack Layout 3D or the Box node
 
 ## Disabling input handling in your application
-
 
 A Kanzi application handles input by default. To optimize performance, you can disable input handling in an application that does not need it. When you disable input, Kanzi does not spend CPU resources on the input events that it receives from the platform. Keep in mind that when you disable input handling, the application cannot manage the key focus, either.
 

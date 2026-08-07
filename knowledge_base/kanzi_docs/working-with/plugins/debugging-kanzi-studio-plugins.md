@@ -7,7 +7,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/plugins/debugging-kanzi-stu
 
 ## Debugging a Kanzi Studio plugin
 
-
 To debug a Kanzi Studio plugin:
 
 1.
@@ -29,7 +28,6 @@ In Visual Studio select Debug > Attach to Process â¦, in the Available Proce
 Open Kanzi Studio and run the plugin.
 
 ## Using the Kanzi Studio Command History
-
 
 Use the Kanzi Studio Command History to view the commands you have executed in a Kanzi Studio project.
 

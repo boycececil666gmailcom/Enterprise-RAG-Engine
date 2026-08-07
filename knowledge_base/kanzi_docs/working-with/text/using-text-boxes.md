@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/text/using-text-boxes.html
 
 # Using the Text Box nodes
 
-
 Use the Text Box nodes to add single-line text input to your application.
 
 Use Text Box 3D to add text input in 3D space and Text Box 2D to add text input in 2D space.
@@ -21,7 +20,6 @@ When a Text Box node is in the editing state, to move the cursor in that text bo
 - Home to move the cursor to the beginning of the text content.
 - End to move the cursor to the end of the text content.
 
-
 When a Text Box node is in the editing state, to modify the text selection in that text box, you can use these default keyboard keys:
 
 - Shift â to move the active cursor in the text selection one character backward.
@@ -31,25 +29,19 @@ When a Text Box node is in the editing state, to modify the text selection in th
 - Shift Ctrl â to move the active cursor in the text selection to the word boundary that follows the current position.
 - Shift End to move the active cursor in the text selection to the end of the text content.
 - Ctrl A to select all text.
+**Note:** The TextBox2D is only implemented for Windows platforms, and to use it you need to include the following snippet to `registerMetadataOverride` in your application code:
+```
+#if defined WIN32
+WindowsImeBackend::registerModule(getDomain());
+#endif
+```
 
-
-> **Note:** The TextBox2D is only implemented for Windows platforms, and to use it you need to include the following snippet to `registerMetadataOverride` in your application code:
->
-> ```
-> #if defined WIN32
-> WindowsImeBackend::registerModule(getDomain());
-> #endif
->
-> ```
->
 ## Editing the text in a Text Box node
-
 
 A Text Box node by default:
 
 - Enters the editing state when focus moves to that Text Box node. This happens when the application user taps the node or sets focus to the node using the focus chain navigation. See Focus.
 - Exits the editing state when focus moves from that Text Box node to another node.
-
 
 See Controlling manually when a Text Box node is in the editing state.
 
@@ -97,18 +89,15 @@ When the trigger, to which you added the action, is set off, Kanzi executes the 
 
 ## Controlling manually when a Text Box node is in the editing state
 
-
 The application user can edit the text in a Text Box node when that node is in the editing state. Only one Text Box node can be in the editing state at a time. A Text Box node always leaves the editing state when:
 
 - Another Text Box node enters the editing state.
 - That Text Box node is disabled. See Controlling whether a Text Box node is in use.
 
-
 A Text Box node by default:
 
 - Enters the editing state when focus moves to that Text Box node. This happens when the application user taps the node or sets focus to the node using the focus chain navigation. See Focus.
 - Exits the editing state when focus moves from that Text Box node to another node.
-
 
 To manually control when a Text Box node is in the editing state:
 
@@ -124,7 +113,6 @@ This way you set a Text Box node to:
     - A trigger executes the Text Box: Leave Editing State action.
     - Another Text Box node enters the editing state.
 
-
 2.
 
 Create a trigger that sets the Text Box node to the editing state.
@@ -138,14 +126,12 @@ For example, to set the Text Box node to exit the editing state when it loses fo
 
 ## Limiting the length of text in a Text Box node
 
-
 In the Text Box nodes you can set:
 
 - The length of the text that the Text Box node can show. See Setting the length of text that a Text Box node can show.
 - The length of the text that the user can enter in the Text Box node. See Setting the length of text that the user can enter in a Text Box node.
 
 ### Setting the length of text that a Text Box node can show
-
 
 To set the length of text that a Text Box node can show at a time, in the Node Tree select that node and in the Properties set the value of the Layout Width property.
 
@@ -154,10 +140,8 @@ When the text in a Text Box node is longer than the width of that node, in the e
 To let the length of the text in a Text Box node determine the width of that Text Box node, remove the Layout Width property.
 ### Setting the length of text that the user can enter in a Text Box node
 
-
 To set the length of text that the user can enter in a Text Box node, in the Node Tree select the Text Box node, in the Properties add the Maximum Text Length property, and set it to the number of UTF-8 characters to which you want to limit the text that the user can enter in that Text Box node.
 ## Setting the color of text in a Text Box 2D node
-
 
 To set the color of text in a Text Block 2D or Text Box 2D node:
 
@@ -170,11 +154,9 @@ In the Properties add the Foreground Brush property.
 3.
 
 Set the Foreground Brush property to an existing Color Brush or select + Color Brush, name the brush, click  next to the property, and set the color of the Color Brush you created.
+**Tip:** To quickly edit a brush, in the Properties next to the Background Brush or Foreground Brush property click  and edit the brush.
 
-> **Tip:** To quickly edit a brush, in the Properties next to the Background Brush or Foreground Brush property click  and edit the brush.
->
 ## Setting the color of text in a Text Box 3D node
-
 
 To set the color of text in a 3D text node:
 
@@ -186,7 +168,6 @@ In the Node Tree create or select a Text Block 3D or Text Box 3D node.
 In the Properties add and set the Font Color property.
 
 ## Setting the appearance of the cursor
-
 
 You can set the appearance of a Text Box cursor. To see the cursor of a Text Box node in the Kanzi Studio Preview click that Text Box node.
 
@@ -207,7 +188,6 @@ If the cursor does not fit in a Text Box 2D node, in the Text Box 2D node set th
 
 ## Setting the appearance of the text selection in a Text Box 2D node
 
-
 In a Text Box node you can set the color of the selected text, its background, and the handles to change the selected text.
 
 To select a word in a Text Box node, double-click that word. To modify the selection, drag the handles in the top-left and bottom-right corners of the selected text.
@@ -225,10 +205,8 @@ Selection Start Prefab to the prefab that you want to use for the selection hand
 |
 
 Selection End Prefab to the prefab that you want to use for the selection handle at the end of the selection. |    |
-
-> **Tip:** If a prefab that you use as a selection handle does not fit in a Text Box 2D node, in the Text Box 2D node set the Horizontal Padding and Vertical Padding properties to at least half of the width and height of the selection handle prefab.
+**Tip:** If a prefab that you use as a selection handle does not fit in a Text Box 2D node, in the Text Box 2D node set the Horizontal Padding and Vertical Padding properties to at least half of the width and height of the selection handle prefab.
 ## Setting the appearance of the text selection in a Text Box 3D node
-
 
 In a Text Box node you can set the color of the selected text, its background, and the handles to change the selected text.
 
@@ -249,7 +227,6 @@ Selection Background Color to the color that you want to use to fill the backgro
 Selection Font Color to the color that you want to use to fill the selected text. |    |
 ## Setting the appearance of the composition text in a Text Box 2D node
 
-
 Composition text is an instance of text that the application user produces using an input method editor (IME). An input method editor is an application that enables the user to use their input devices to type characters and symbols that are not natively available on those input devices.
 
 In a Text Box node you can set the color of the composition text and its background.
@@ -261,7 +238,6 @@ To set the appearance of the composition text, in the Node Tree select a Text Bo
 
 ## Setting the appearance of the composition text in a Text Box 3D node
 
-
 Composition text is an instance of text that the application user produces using an input method editor (IME). An input method editor is an application that enables the user to use their input devices to type characters and symbols that are not natively available on those input devices.
 
 In a Text Box node you can set the color of the composition text and its background.
@@ -272,7 +248,6 @@ To set the appearance of the composition text, in the Node Tree select a Text Bo
 - Composition Font Color to the color that you want to use to fill the composition text.
 
 ## Showing placeholder content
-
 
 You can set a Text Box node to show placeholder content when the Text Box is empty. For example, you can use this placeholder content to show text that tells the user what they can enter in a Text Box node.
 
@@ -290,9 +265,7 @@ In the Node Tree select a Text Box node and in the Properties add and set:
   - Text Hint Prefab to the prefab that you want to use as the placeholder content
   - (Optional) Hide Text Hint When Editing to enabled to hide the placeholder content whenever that Text Box node is in the editing state. By default Kanzi keeps the placeholder content visible until the user enters some text in the Text Box.
 
-
 ## Masking passwords
-
 
 You can set how to mask the password characters that the user enters in a Text Box node.
 
@@ -304,7 +277,6 @@ To set how Kanzi masks passwords in a Text Box node, in the Node Tree select tha
 
 ## Setting truncation in a Text Box
 
-
 When a Text Box node is not in the editing state, if the text in the node is longer than the width of that node, Kanzi by default truncates the end part of the text with ellipsis. When a Text Box node is in the editing state, Kanzi does not truncate the text. Instead, the user can scroll the text by moving the cursor.
 
 You can set:
@@ -315,7 +287,6 @@ You can set:
 
 ### Setting the part to truncate
 
-
 To set which part of the text to truncate, add the Text Concept > Truncation Direction property and set it to:
 
 - Trailing to truncate the end part of the text. Default value.  [](../../_images/preview-truncation-mode-trailing.png)
@@ -323,7 +294,6 @@ To set which part of the text to truncate, add the Text Concept > Truncation Dir
 - Leading to truncate the beginning part of the text.  [](../../_images/preview-truncation-mode-leading.png)
 
 ### Setting the truncation boundary
-
 
 To set the truncation boundary type, add the Text Concept > Truncation property and set it to:
 
@@ -333,10 +303,8 @@ To set the truncation boundary type, add the Text Concept > Truncation property 
 
 ### Setting the characters that indicate truncation
 
-
 To set the characters that indicate truncation, add and set the Overflow property.  [](../../_images/text-box-overflow-characters-in-preview.png)
 ## Using a binding to update the text in a Text Box node
-
 
 To update the text in a Text Box node with a binding, use a to-source or two-way binding. See Bindings.
 
@@ -365,7 +333,6 @@ Select the Text Box node that you created. In the Properties, click + Add Bindin
 
 ```
 
-
 4.
 
 (Optional) Create another binding and in the Binding Editor, set:
@@ -378,9 +345,7 @@ int(getCurrentValue())
 
 ```
 
-
 This binding gets the current value of the Text property and converts it to an integer.
-
 
 Now, in the Preview:
 
@@ -388,7 +353,6 @@ Now, in the Preview:
 - When you edit the text, the slider knob moves.
 
 ## Controlling whether a Text Box node is in use
-
 
 To control whether a Text Box node is in use, use the Input > Enabled property. A disabled Text Box node does not react to user input. When you disable a Text Box node, that Text Box node leaves the editing state and stays in that state while it is disabled.
 
@@ -398,7 +362,6 @@ To observe whether a node is effectively enabled, use the Input > Effectively En
 
 See Controlling how a node reacts to input.
 ## Setting the appearance of a Text Box 2D node
-
 
 To set the appearance of 2D nodes:
 
@@ -410,7 +373,6 @@ To set the appearance of 2D nodes:
 
 ## Using the Text Box 3D node in the API
 
-
 To create a Text Box 3D node:
 
 ```
@@ -419,7 +381,6 @@ TextBox3DSharedPtr textBoxNode = TextBox3D::create(this->getDomain(), "Text Box"
 
 ```
 
-
 To set the initial text content in a Text Box 3D node:
 
 ```
@@ -427,7 +388,6 @@ To set the initial text content in a Text Box 3D node:
 textBoxNode->setText("Initial text that the Text Box contains before editing.");
 
 ```
-
 
 To set the appearance of the text in a Text Box 3D node:
 
@@ -448,7 +408,6 @@ textBoxNode->setHintingPreference(FontHintingPreference::AutoHinting);
 
 ```
 
-
 To show placeholder content in a Text Box 3D node:
 
 ```
@@ -456,7 +415,6 @@ To show placeholder content in a Text Box 3D node:
 textBoxNode->setTextHintPrefab(textHintPrefab);
 
 ```
-
 
 To set the position of the cursor in a Text Box 3D node:
 
@@ -466,7 +424,6 @@ textBoxNode->setCursorPosition(0u);
 
 ```
 
-
 To set the appearance of the cursor in a Text Box 3D node:
 
 ```
@@ -474,7 +431,6 @@ To set the appearance of the cursor in a Text Box 3D node:
 textBoxNode->setCursorPrefab(cursorPrefab);
 
 ```
-
 
 To set the appearance of the text selection in a Text Box 3D node:
 
@@ -490,7 +446,6 @@ textBoxNode->setCursorPrefab(selectionEndPrefab);
 
 ```
 
-
 To set the appearance of the composition text in a Text Box 3D node:
 
 ```
@@ -500,7 +455,6 @@ textBoxNode->setSelectionFontColor(ThemeRed);
 textBoxNode->setSelectionBackgroundColor(ThemeGray);
 
 ```
-
 
 To make a Text Box 3D node behave as a password field:
 
@@ -514,10 +468,8 @@ textBoxNode->setPasswordEchoTimeout(500);
 
 ```
 
-
 For details, see the `TextBox3D` class.
 ## Using the Text Box 2D node in the API
-
 
 To create a Text Box 2D node:
 
@@ -527,7 +479,6 @@ TextBox2DSharedPtr textBoxNode = TextBox2D::create(this->getDomain(), "Text Box"
 
 ```
 
-
 To set the initial text content in a Text Box 2D node:
 
 ```
@@ -535,7 +486,6 @@ To set the initial text content in a Text Box 2D node:
 textBoxNode->setText("Initial text that the Text Box contains before editing.");
 
 ```
-
 
 To set the appearance of the text in a Text Box 2D node:
 
@@ -556,7 +506,6 @@ textBoxNode->setHintingPreference(FontHintingPreference::AutoHinting);
 
 ```
 
-
 To show placeholder content in a Text Box 2D node:
 
 ```
@@ -564,7 +513,6 @@ To show placeholder content in a Text Box 2D node:
 textBoxNode->setTextHintPrefab(textHintPrefab);
 
 ```
-
 
 To set the position of the cursor in a Text Box 2D node:
 
@@ -574,7 +522,6 @@ textBoxNode->setCursorPosition(0u);
 
 ```
 
-
 To set the appearance of the cursor in a Text Box 2D node:
 
 ```
@@ -582,7 +529,6 @@ To set the appearance of the cursor in a Text Box 2D node:
 textBoxNode->setCursorPrefab(cursorPrefab);
 
 ```
-
 
 To set the appearance of the text selection in a Text Box 2D node:
 
@@ -598,7 +544,6 @@ textBoxNode->setCursorPrefab(selectionEndPrefab);
 
 ```
 
-
 To set the appearance of the composition text in a Text Box 2D node:
 
 ```
@@ -608,7 +553,6 @@ textBoxNode->setCompositionBackgroundBrush(compositionTextBackgroundBrush);
 textBoxNode->setCompositionForegroundBrush(compositionTextColorBrush);
 
 ```
-
 
 To make a Text Box 2D node behave as a password field:
 
@@ -622,9 +566,7 @@ textBoxNode->setPasswordEchoTimeout(500);
 
 ```
 
-
 For details, see the `TextBox2D` class.
 ## Text Box property types and messages
-
 
 For lists of the available property types and messages for the Text Box nodes, see Text Box 2D and Text Box 3D.

@@ -5,14 +5,11 @@ source: https://docs.kanzi.com/4.1.0/en/best-practices/shaders/using-binary-shad
 
 # Using binary shaders
 
-
 By default Kanzi uses online shaders, which Kanzi Studio exports to a kzb file as source code. When you start a Kanzi application on a target device, the application loads and compiles the shaders using the driver. This compilation increases the loading time of the application.
 
 Use cached binary shaders to reduce the loading time of a Kanzi application.
-
-> **Note:** Kanzi 4.0 no longer supports offline compiled binary shaders.
+**Note:** Kanzi 4.0 no longer supports offline compiled binary shaders.
 ## Caching shader binaries
-
 
 On performance-constrained platforms, shader compilations can considerably slow down the application startup and decrease runtime performance. You can use a shader binary cache primed with the set of shaders that your application requires. This way, your application does not have to compile shaders from source at runtime.
 
@@ -30,7 +27,6 @@ Enable the caching. See ShaderBinaryCacheEnabled.
 4.
 
 (Optional) When your application is ready for production, you can make the shader binary cache read-only. See ShaderBinaryCacheReadOnly.
-
 
 For example, either:
 
@@ -55,6 +51,5 @@ configuration.shaderBinaryCacheDirectory = "/tmp/shader-cache/";
 configuration.shaderBinaryCacheEnabled = true;
 
 ```
-
 
 The caching of shader binaries requires that Kanzi Studio exports the source code of the shaders to the kzb file. In Kanzi Studio, in the Project > Properties, make sure that the Export Shader Source Code property is enabled. This is the default value.

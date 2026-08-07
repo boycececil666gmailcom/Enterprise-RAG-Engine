@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/trajectories/using-trajecto
 
 # Using the Trajectory List Box 3D node
 
-
 Use the Trajectory List Box 3D node to create scrollable lists of items arranged along a trajectory in 3D space.
 
 Kanzi Studio comes with several types of trajectories. When you need a different type of trajectory, create a spline trajectory in a third-party tool and import it to your Kanzi Studio project. See Trajectories.
@@ -15,14 +14,10 @@ The items in a Trajectory List Box 3D node appear in the order that you add them
 The size of the trajectory defines the interactive area for click and drag gestures. If the trajectory is too small, the user is not able to select the items in the Trajectory List Box 3D node. To avoid this, make sure that the trajectory is large enough. See Trajectories.
 
 The Trajectory List Box 3D nodes that you create in Kanzi Studio are focus scopes and handle the key focus and key input by default. See Handling the key focus in a List Box node.
-
-> **Note:** Items in all list box nodes (Grid List Box nodes and Trajectory List Box 3D node) are not its child nodes, even though in Kanzi Studio it seems so when you add items to a list box. Because list box items are not child nodes of a list box, you cannot refer to these items from outside of a list box using paths or aliases. If you need to refer from a list box item to an object outside of a list box, use bindings and aliases. See Binding to properties outside of a Grid List Box node and Navigating to Page nodes from a Trajectory List Box 3D node.
->
-> Trajectory List Box 3D node is an interactive version of the Trajectory Layout 3D node. See Using the Trajectory Layout nodes.
->
-> For an example of how to use the Trajectory List Box 3D node to create an interactive scrollable list of items, see the Trajectory list box example.
+**Note:** Items in all list box nodes (Grid List Box nodes and Trajectory List Box 3D node) are not its child nodes, even though in Kanzi Studio it seems so when you add items to a list box. Because list box items are not child nodes of a list box, you cannot refer to these items from outside of a list box using paths or aliases. If you need to refer from a list box item to an object outside of a list box, use bindings and aliases. See Binding to properties outside of a Grid List Box node and Navigating to Page nodes from a Trajectory List Box 3D node.
+Trajectory List Box 3D node is an interactive version of the Trajectory Layout 3D node. See Using the Trajectory Layout nodes.
+For an example of how to use the Trajectory List Box 3D node to create an interactive scrollable list of items, see the Trajectory list box example.
 ## Creating a Trajectory List Box 3D node
-
 
 To create a Trajectory List Box 3D node:
 
@@ -31,27 +26,18 @@ To create a Trajectory List Box 3D node:
 In the Node Tree, press Alt and right-click the 3D node where you want to create a Trajectory List Box 3D node and select Trajectory List Box 3D.
 
 For example, create a Trajectory List Box 3D node in the Scene node.
+**Tip:** To see the trajectory, in the Preview click  to enter the Analyze mode, right-click , and select Debug objects.
+2.
+In the Node Tree, add items to the Trajectory List Box 3D node.
+Use a data source to add items to a List Box node. See Using a data source.
+For example, to create an album list, add several nodes that represent the albums in the list. See Using the List Box Item Container prefabs.
+As you add items, the Trajectory List Box 3D node arranges them along the trajectory used by the Trajectory List Box 3D node.
+To browse the items in a Trajectory List Box 3D node, in the Preview, click and drag the items in the Trajectory List Box 3D node.
+3.
+(Optional)
+Kanzi Studio creates and uses a circle trajectory by default. You can use an angle, arc, circle, ellipse, line, rectangle, spiral, spline, or a trapezoid trajectory. See Trajectories.
 
-> **Tip:** To see the trajectory, in the Preview click  to enter the Analyze mode, right-click , and select Debug objects.
-> 2.
->
-> In the Node Tree, add items to the Trajectory List Box 3D node.
->
-> Use a data source to add items to a List Box node. See Using a data source.
->
-> For example, to create an album list, add several nodes that represent the albums in the list. See Using the List Box Item Container prefabs.
->
-> As you add items, the Trajectory List Box 3D node arranges them along the trajectory used by the Trajectory List Box 3D node.
->
-> To browse the items in a Trajectory List Box 3D node, in the Preview, click and drag the items in the Trajectory List Box 3D node.
-> 3.
->
-> (Optional)
->
-> Kanzi Studio creates and uses a circle trajectory by default. You can use an angle, arc, circle, ellipse, line, rectangle, spiral, spline, or a trapezoid trajectory. See Trajectories.
->
 ## Fine-tuning the mechanics of a Trajectory List Box 3D node
-
 
 You can fine-tune the mechanics of a Trajectory List Box 3D node. You can set the list box to:
 
@@ -76,7 +62,6 @@ To set how the items look at different points on the trajectory, use the Item Ar
 For example, if you use the Visible Amount In Parent property to gradually change the visibility of an item, set the Item Area Begin property to a larger value and the Item Area End property to a smaller value. This way you limit the area where that item is visible.
 
 ## Nesting Trajectory List Box 3D nodes
-
 
 You can nest Trajectory List Box 3D nodes to create a Trajectory List Box 3D node within a Trajectory List Box 3D node, each of which you can scroll independently. For example, you can create a Trajectory List Box 3D which you use to scroll on a circle trajectory Trajectory Layout 3D nodes which contain sets of albums.
 
@@ -119,7 +104,6 @@ You can add items to a Trajectory List Box 3D using a data source. See Using a d
 
 ## Binding to properties outside of a Trajectory List Box 3D node
 
-
 Use an alias when you want to bind a property of a list box item to a property of a node outside of the list box.
 
 For example, if you have a Grid List Box 3D or a Trajectory List Box 3D node with a Text Block 3D node item and want to set the Text property value of the Text Block 3D node to a value of an Empty Node 3D node property that is not in the list box:
@@ -154,50 +138,32 @@ For example, use this binding expression:
 
 ```
 
-
 The Text property in the Text Block 3D node gets the value of the Text property from the Empty Node 3D node.
   3.
 
 Click Save.
 
-
 ## Navigating to Page nodes from a Trajectory List Box 3D node
-
-
-> **Note:** The Page and Page Host nodes are deprecated. Use the Activity and Activity Host nodes to build navigable UIs for your application. See Activities.
->
-> Use an alias when you want to navigate to a Page node from a node that is inside a list box node. For example, if you use a Grid List Box or a Trajectory List Box 3D node to create an address book and want to show the content of an address book entry in a Page node.
->
-> To navigate to Page nodes from a list box node:
->
-> 1.
->
-> In the Node Tree press Alt and right-click each Page node to which you want to navigate to and select Alias. Kanzi Studio creates an alias that points to the node from which you created it, and places the alias to the nearest resource dictionary.
-> 2.
->
-> In the Dictionaries make sure that the aliases you created are in the resource dictionary that the list box node can access.
->
-> For example, place all aliases to the resource dictionary of the Screen node, or create a resource dictionary in the list box node and place the aliases to that resource dictionary. See Using resource dictionaries.
-> 3.
->
-> Add and set the Navigate to Page action:
->
-> 1.
->
-> In the Node Tree in the list box node select the node that contains the trigger that you want to use to navigate to one of the Page nodes for which you created the alias in the first step.
-> 2.
->
-> In the Node Components > Triggers press Alt and right-click the trigger that you want to use to navigate to the Page node, and create a Navigate to Page action.
-> 3.
->
-> In the Navigate to Page action set the Target Item property to the alias of the Page node to which you want to navigate.
->
-> All aliases start with a # sign.
-
+**Note:** The Page and Page Host nodes are deprecated. Use the Activity and Activity Host nodes to build navigable UIs for your application. See Activities.
+Use an alias when you want to navigate to a Page node from a node that is inside a list box node. For example, if you use a Grid List Box or a Trajectory List Box 3D node to create an address book and want to show the content of an address book entry in a Page node.
+To navigate to Page nodes from a list box node:
+1.
+In the Node Tree press Alt and right-click each Page node to which you want to navigate to and select Alias. Kanzi Studio creates an alias that points to the node from which you created it, and places the alias to the nearest resource dictionary.
+2.
+In the Dictionaries make sure that the aliases you created are in the resource dictionary that the list box node can access.
+For example, place all aliases to the resource dictionary of the Screen node, or create a resource dictionary in the list box node and place the aliases to that resource dictionary. See Using resource dictionaries.
+3.
+Add and set the Navigate to Page action:
+1.
+In the Node Tree in the list box node select the node that contains the trigger that you want to use to navigate to one of the Page nodes for which you created the alias in the first step.
+2.
+In the Node Components > Triggers press Alt and right-click the trigger that you want to use to navigate to the Page node, and create a Navigate to Page action.
+3.
+In the Navigate to Page action set the Target Item property to the alias of the Page node to which you want to navigate.
+All aliases start with a # sign.
 
 In the Preview when you click the node that contains the Navigate to Page action, you activate the Page node selected in the action.
 ## Reacting when the user interacts with a Trajectory List Box 3D node
-
 
 Use the List Box triggers to react when the user interacts with a Trajectory List Box 3D node. For example, you can set the appearance of a Trajectory List Box 3D when the user scrolls that list box.
 
@@ -290,10 +256,8 @@ Repeat the previous step to add and configure more List Box triggers.
 
 For example, add the List Box: Scroll Finished trigger. In the State Manager: Go to State action of the trigger, set State to the state that sets the appearance of the node when that trigger is set off.
 
-
 In the Preview, when you scroll the Trajectory List Box 3D node that you created, the triggers you added are set off.
 ## Controlling whether a Trajectory List Box 3D node is in use
-
 
 To control whether a Trajectory List Box 3D node is in use, use the Input > Enabled property. A disabled Trajectory List Box 3D node does not react to user input. When you disable a Trajectory List Box 3D node, Kanzi stops ongoing gestures and preserves the selected item and scroll position of that Trajectory List Box 3D node.
 
@@ -303,7 +267,6 @@ To observe whether a node is effectively enabled, use the Input > Effectively En
 
 See Controlling how a node reacts to input.
 ## Enabling the double-click gesture for Trajectory List Box items
-
 
 When you add to a List Box node items that support the double-click gesture, you must enable the double-click gesture for those items in the List Box Item Container prefab.
 
@@ -322,7 +285,6 @@ When you enable the Double-Click Enabled property, Kanzi installs in the List Bo
 
 ## Trajectory list box example
 
-
 This example shows the use of the Trajectory List Box 3D node to create an interactive scrollable list of items. The example implements a simple gallery of photos with a selection effect using an animation.
 
 The Trajectory List Box 3D node, its Circle Trajectory, content shown in the Trajectory List Box 3D, and animation that highlights the centered photo are created in Kanzi Studio. The point of time at which a highlight-animation is launched is defined based on the scroll speed and focused item data available from the user input events that the trajectory list box component produces.
@@ -335,12 +297,10 @@ The Trajectory List Box 3D node in the example uses these features:
 
 ### Getting the example
 
-
 To get the example, in the Kanzi Studio Quick Start window, click Projects and select the Examples tab. Next to the Trajectory_list_box example, click .
 
 Kanzi Studio downloads the example to the `<KanziWorkspace>/Examples/Trajectory_list_box` directory.
 ## Using the Trajectory List Box 3D node in the API
-
 
 To create a Trajectory List Box 3D node:
 
@@ -349,7 +309,6 @@ To create a Trajectory List Box 3D node:
 TrajectoryListBox3DSharedPtr trajectoryListBox = TrajectoryListBox3D::create(domain, "MyListBox");
 
 ```
-
 
 To set the trajectory that you want the Trajectory List Box 3D node to use:
 
@@ -365,7 +324,6 @@ trajectoryListBox->setDepth(10.0f);
 trajectoryListBox->setHeight(3.0f);
 
 ```
-
 
 To add items to the Trajectory List Box 3D node:
 
@@ -385,7 +343,6 @@ trajectoryListBox->addItem(item5);
 
 ```
 
-
 To make the Trajectory List Box 3D node loop its items:
 
 ```
@@ -393,7 +350,6 @@ To make the Trajectory List Box 3D node loop its items:
 trajectoryListBox->setLooping(true);
 
 ```
-
 
 To set how the Trajectory List Box 3D node reacts to items selection:
 
@@ -405,9 +361,7 @@ trajectoryListBox->setCursorOffset(0.25f);
 
 ```
 
-
 For details, see the `TrajectoryListBox3D` class.
 ## Trajectory List Box 3D property types
-
 
 For a list of the available property types for the Trajectory List Box 3D node, see Trajectory List Box 3D.

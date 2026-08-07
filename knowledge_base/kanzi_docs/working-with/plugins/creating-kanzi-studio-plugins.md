@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/plugins/creating-kanzi-stud
 
 # Creating Kanzi Studio command plugins
 
-
 Kanzi Studio plugins extend the functionality of Kanzi Studio and run in Kanzi Studio.
 
 For example, you can extend the functionality of Kanzi Studio to:
@@ -14,12 +13,10 @@ For example, you can extend the functionality of Kanzi Studio to:
 - Import and export content from Kanzi Studio, such as localization tables in a format that Kanzi Studio does not support
 - Create editors that abstract the details and speed up the workflow, such as visualization tools that support work on your projects in Kanzi Studio.
 
-
 You can present a Kanzi Studio plugin either:
 
 - In a Kanzi Studio window that contains the plugin user interface.
 - As commands that users can execute from the Kanzi Studio main menu or from a context menu, running the plugin without a user interface.
-
 
 This topic covers how to create Kanzi Studio command plugins. To learn how to create Kanzi Studio window plugins, see Creating Kanzi Studio window plugins.
 
@@ -40,14 +37,12 @@ Add functionality to your Kanzi Studio plugin. See Adding functionality to your 
 
 Debug your Kanzi Studio plugin. See Debugging a Kanzi Studio plugin.
 
-
 To find detailed information about the Kanzi Studio plugin API see:
 
 - Overview of Kanzi Studio plugin API
 - Kanzi Studio plugin API reference
 
 ## Creating the base for a Kanzi Studio command plugin
-
 
 Kanzi Studio command plugins are plugins that you execute as commands and do not have a user interface. For example, use the command plugins to execute a command on the entire or the selected part of the node tree in your project.
 
@@ -108,7 +103,6 @@ public class Class1
 
 ```
 
-
 to
 
 ```
@@ -129,7 +123,6 @@ throw new NotImplementedException();
 
 ```
 
-
 Make sure that your plugin handles all its internal exceptions and does not let them reach the Kanzi Studio interface.
 
 For example, set the functions in the `Class1` class to:
@@ -138,7 +131,6 @@ For example, set the functions in the `Class1` class to:
 
     - To show the plugin in the main menu use `ContextMenuPlacement.NONE`.
     - To show the plugin in the context menus invoked from nodes and resources, and the main menu use `ContextMenuPlacement.PROJECT_ITEM`.
-
 
 ```
 public CommandPlacement CommandPlacement
@@ -150,65 +142,49 @@ public CommandPlacement CommandPlacement
 }
 
 ```
-
-
-> **Tip:** To hide a plugin from the main and context menus, set the `CommandPlacement` function to return `null`. For example, hide a plugin when you want to execute a plugin command only by using a script to run Kanzi Studio commands. See Automating Kanzi Studio tasks.
->
-> ```
-> public CommandPlacement CommandPlacement
-> {
-> get
-> {
-> return null;
-> }
-> }
->
-> ```
->
-> - Use the `PluginContent.Name` function to set the internal name of your plugin. Kanzi uses the internal name of the plugin so that you can change the display name of your plugin without additional changes to the plugin.
->
-> ```
-> public string Name
-> {
-> get
-> {
-> return "Internal plugin name";
-> }
-> }
->
-> ```
->
-> - Use the `PluginContent.DisplayName` function to show the plugin name in the Kanzi Studio menu where you can launch the plugin.
->
-> ```
-> public string DisplayName
-> {
-> get
-> {
-> return "Plugin display name";
-> }
-> }
->
-> ```
->
-> - Use the `PluginContent.Description` function to set a brief description of what your Kanzi Studio plugin does. Kanzi Studio shows this description as a tooltip when a user hovers the mouse pointer over the plugin name in the menu.
->
-> ```
-> public string Description
-> {
-> get
-> {
-> return "A tooltip with short description of what the plugin does.";
-> }
-> }
->
-> ```
->
-> - Use the `CanExecute` function to set whether users can launch your plugin, and where they can launch your plugin:
->
-> - When set to `false`, Kanzi Studio shows the plugin in the main menu and the context menu, but users cannot launch the plugin.
-> - When set to `true`, users can launch the plugin.
-
+**Tip:** To hide a plugin from the main and context menus, set the `CommandPlacement` function to return `null`. For example, hide a plugin when you want to execute a plugin command only by using a script to run Kanzi Studio commands. See Automating Kanzi Studio tasks.
+```
+public CommandPlacement CommandPlacement
+{
+get
+{
+return null;
+}
+}
+```
+- Use the `PluginContent.Name` function to set the internal name of your plugin. Kanzi uses the internal name of the plugin so that you can change the display name of your plugin without additional changes to the plugin.
+```
+public string Name
+{
+get
+{
+return "Internal plugin name";
+}
+}
+```
+- Use the `PluginContent.DisplayName` function to show the plugin name in the Kanzi Studio menu where you can launch the plugin.
+```
+public string DisplayName
+{
+get
+{
+return "Plugin display name";
+}
+}
+```
+- Use the `PluginContent.Description` function to set a brief description of what your Kanzi Studio plugin does. Kanzi Studio shows this description as a tooltip when a user hovers the mouse pointer over the plugin name in the menu.
+```
+public string Description
+{
+get
+{
+return "A tooltip with short description of what the plugin does.";
+}
+}
+```
+- Use the `CanExecute` function to set whether users can launch your plugin, and where they can launch your plugin:
+- When set to `false`, Kanzi Studio shows the plugin in the main menu and the context menu, but users cannot launch the plugin.
+- When set to `true`, users can launch the plugin.
 
 Kanzi Studio provides the `KanziStudio` object to plugins. The `KanziStudio` object is the root object for data access and provides the current project, available commands, global undo and redo, and events related to project opening and closing.
 
@@ -243,17 +219,14 @@ public void Initialize(KanziStudio studio)
 
 ```
 
-
 8.
 
 Build and run the plugin. See Building and running a Kanzi Studio plugin.
-
 
 Here you created just the base structure for your Kanzi Studio plugin, which only prints a message to the Kanzi Studio Log window. To make your plugin do more than that, add the code that you want your plugin to run to the `Execute` function. See Adding functionality to your Kanzi Studio command plugin and Add multiple commands to your Kanzi Studio command plugin.
 
 To further develop your Kanzi Studio plugin, see Overview of Kanzi Studio plugin API and Kanzi Studio plugin API reference.
 ## Building and running a Kanzi Studio plugin
-
 
 To build and run a Kanzi Studio plugin:
 
@@ -265,25 +238,17 @@ In Visual Studio select Build > Build Solution to build the plugin .dll.
 Copy the Kanzi Studio plugin DLL file to the `%ProgramData%\Rightware\<KanziVersion>\plugins` directory.
 
 If the `plugins` directory does not exist in `%ProgramData%\Rightware\<KanziVersion>`, create it.
+**Tip:** In File Explorer, create a shortcut from your Kanzi Studio plugin DLL file and move the shortcut to the `%ProgramData%\Rightware\<KanziVersion>\plugins` directory.
+When you build the plugin, you can see in the Output window the location where Visual Studio stored the plugin DLL file.
+Tip
+If your plugin has dependency DLLs, use a plugin manifest to declare the entry point. See Installing Kanzi Studio plugins.
+3.
+Open Kanzi Studio.
+Kanzi Studio loads the plugins in the `plugins` directory and adds them to either the main menu or the context menus invoked from nodes and resources.
+4.
+In Kanzi Studio select the plugin main menu and select the plugin, or right-click a node in the Node Tree and select the name of your plugin to run your plugin.
 
-> **Tip:** In File Explorer, create a shortcut from your Kanzi Studio plugin DLL file and move the shortcut to the `%ProgramData%\Rightware\<KanziVersion>\plugins` directory.
->
-> When you build the plugin, you can see in the Output window the location where Visual Studio stored the plugin DLL file.
->
-> Tip
->
-> If your plugin has dependency DLLs, use a plugin manifest to declare the entry point. See Installing Kanzi Studio plugins.
-> 3.
->
-> Open Kanzi Studio.
->
-> Kanzi Studio loads the plugins in the `plugins` directory and adds them to either the main menu or the context menus invoked from nodes and resources.
-> 4.
->
-> In Kanzi Studio select the plugin main menu and select the plugin, or right-click a node in the Node Tree and select the name of your plugin to run your plugin.
->
 ## Adding functionality to your Kanzi Studio command plugin
-
 
 After you create the base for a Kanzi Studio command plugin, add functionality to your plugin so that it does something useful. Here you create a plugin that deletes all Empty Node nodes that do not have child nodes.
 
@@ -382,20 +347,16 @@ When you execute the command, the plugin removes the Empty Node nodes which do n
   - If you execute the plugin command from the main menu, the plugin removes the Empty Node nodes without child nodes in the entire project.
   - If you right-click a node in the Node Tree and execute the plugin command from the context menu, the plugin removes the Empty Node nodes without child nodes in the context of the selected node.
 
-
 To further develop your Kanzi Studio plugin, see Overview of Kanzi Studio plugin API and Kanzi Studio plugin API reference.
 ## Add multiple commands to your Kanzi Studio command plugin
-
 
 After you create the base for a Kanzi Studio command plugin, add functionality to your plugin. You can create a Kanzi Studio command plugin that implements multiple commands. Here you create a plugin with commands that:
 
 - Print to the Log the invalid kzb URLs in a Kanzi Studio project. See Logging invalid kzb URLs.
 - Remove the invalid kzb URLs from a Kanzi Studio project. See Removing invalid kzb URLs.
 
-
 The plugin finds and removes from the active project invalid kzb URLs that point to resources in the same project or a loaded referenced project.
 ### Logging invalid kzb URLs
-
 
 To log invalid kzb URLs in a Kanzi Studio project:
 
@@ -571,7 +532,6 @@ When you execute the command, the plugin prints to the Log the invalid kzb URLs,
 
 ### Removing invalid kzb URLs
 
-
 To remove invalid kzb URLs from a Kanzi Studio project:
 
 1.
@@ -682,6 +642,5 @@ In the `Execute` function write the code that your plugin executes when you invo
 Build and run the plugin. See Building and running a Kanzi Studio plugin.
 
 When you execute the command, the plugin removes the invalid kzb URLs.
-
 
 To further develop your Kanzi Studio plugin, see Overview of Kanzi Studio plugin API and Kanzi Studio plugin API reference.

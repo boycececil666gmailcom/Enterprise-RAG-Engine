@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/data-sources/step-1.html
 
 # Step 1 - Define a data source
 
-
 In this step of the tutorial you create a Kanzi Engine plugin in which you define a data source. You use the data source to provide the data to your application.
 ## Get the tutorial
-
 
 To get the tutorial, in the Kanzi Studio Quick Start window, click Projects and select the Tutorials tab. Next to the Data sources tutorial, click .
 
@@ -23,7 +21,6 @@ Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` director
 - The completed tutorial in the `<KanziWorkspace>/Tutorials/Data sources/Completed` directory.
 
 ## Define a data source
-
 
 To define a data source:
 
@@ -55,19 +52,13 @@ In Kanzi Studio, select File > Open Kanzi Command Prompt.
 The Kanzi Command Prompt opens the Windows Command Prompt with the Kanzi environment variables set for the version of Kanzi for which you open a Kanzi Command Prompt.
 
 Use the Kanzi Command Prompt to access Kanzi utilities and build tools, such as Gradle and CMake, without using absolute paths or setting environment variables.
-
-> **Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
->
-> When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
-> 4.
->
-> In the Kanzi Command Prompt in the `<KanziWorkspace>/Tutorials/Data sources/Start/Application` directory run the script that generates a Visual Studio solution for the tutorial application.
->
-> ```
-> generate_cmake_vs2022_solution.bat
->
-> ```
-
+**Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
+When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
+4.
+In the Kanzi Command Prompt in the `<KanziWorkspace>/Tutorials/Data sources/Start/Application` directory run the script that generates a Visual Studio solution for the tutorial application.
+```
+generate_cmake_vs2022_solution.bat
+```
 
 This script generates a Visual Studio solution for the application in the directory `<KanziWorkspace>/Tutorials/Data sources/Start/Application/build_vs2022`.
 5.
@@ -97,7 +88,6 @@ public:
 
 ```
 
-
 with
 
 ```
@@ -125,7 +115,6 @@ In the protected section after the `Application::initialize` function declare:
     - The helper function `parseFile` to parse the XML file that the user selects
     - The function that Kanzi calls after loading the kzb file of the application
 
-
 ```
 class XML_DATA_SOURCE_API XMLDataSource : public DataSource
 {
@@ -144,7 +133,6 @@ protected:
 };
 
 ```
-
 
 7.
 
@@ -356,9 +344,7 @@ void XMLDataSource::onLoaded()
 
 ```
 
-
 ## Update the data source
-
 
 In this section you add the functionality to update a data source by checking every second whether the file, which you use as a source of data, has changed.
 
@@ -379,7 +365,6 @@ private:
     DataObjectSharedPtr m_root;
 
 ```
-
 
 with
 
@@ -420,7 +405,6 @@ explicit XMLDataSource(Domain* domain, string_view name):
 
 ```
 
-
 with
 
 ```
@@ -445,7 +429,6 @@ public:
     ~XMLDataSource();
 
 ```
-
 
 2.
 
@@ -585,9 +568,7 @@ XMLDataSource::~XMLDataSource()
 
 ```
 
-
 ## Build the data source plugin
-
 
 After you are done creating the plugin, build the plugin dll. In the next step of this tutorial you use this plugin in the Kanzi Studio project to get the data for your application from an XML file.
 
@@ -603,6 +584,5 @@ During development select the Debug configuration. When you are ready to create 
 In the Solution Explorer right-click the XML_data_source_start project and select Build.
 
 Visual Studio builds the plugin DLL in the `<ProjectName>/Application/lib/<PlatformName>/<ConfigurationName>` and the `<ProjectName>/Application/build_vs<Version>/runtime/<ConfigurationName>` directories. Kanzi Studio uses the plugin DLL in the `<ProjectName>/Application/lib` directory.
-
 
 Introduction Next step

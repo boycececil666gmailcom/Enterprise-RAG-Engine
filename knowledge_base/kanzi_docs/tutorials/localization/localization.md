@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/localization/localization.html
 
 # Tutorial: Localize your application
 
-
 In this tutorial, you learn how to localize your Kanzi application. When you localize your application, you translate and customize it for a specific locale (language and location).
 
 Localization involves creation and use of different resources, such as text, textures, and styles, for locales that you want to support in your application.
@@ -19,12 +18,10 @@ Before you start this tutorial, make sure that you have your Kanzi development e
 - CMake 3.25 or newer
 - Visual Studio 2022 with the latest updates
 
-
 This tutorial assumes that you understand the basics of working with Kanzi Studio. The best entry points for getting familiar with Kanzi Studio are:
 
 - Tutorial: Getting started with Kanzi Studio
 - Tutorial: Create a simple in-vehicle infotainment application
 - Tutorial: Hello world!
-
 
 Start with the tutorial

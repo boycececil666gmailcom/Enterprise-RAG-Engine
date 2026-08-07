@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/input/long-press-manipulato
 
 # Using the Long-Press Manipulator
 
-
 Use the Long-Press Manipulator to enable users to long-press nodes in your Kanzi application.
 
 This way you can make the application react when the user presses and holds the pointer pressed on a node for the amount of time that you set in the Long-Press Manipulator.
@@ -17,12 +16,10 @@ You can react to the long-press gesture using:
 - Long-Press Manipulator triggers in Kanzi Studio. See Using the Long-Press Manipulator triggers.
 - Kanzi Engine API. See Reacting to the long-press gesture using the Kanzi Engine API.
 
-
 The Long-Press Manipulator is one of the input manipulators you can use to add gesture recognition to nodes in your Kanzi application. See Using input manipulators.
 
 Learn how to use the Long-Press Manipulator by completing a tutorial. See Tutorial: Pan, zoom, tap.
 ## Enabling the long-press gesture for a node
-
 
 This section explains how you can enable the long-press gesture for any node. To enable long press for a Button node, see Using the Button triggers.
 
@@ -57,14 +54,12 @@ See Using the Long-Press Manipulator triggers.
 
 ## Using the Long-Press Manipulator triggers
 
-
 Use the Long-Press Manipulator triggers to react to the long-press gesture. For example, you can change the appearance of a node when the user clicks and holds the click on that node for the amount of time set in that trigger.
 
 The Long-Press Manipulator has these triggers:
 
 - Long Press trigger is set off when the user presses down in the node area and holds the node pressed for 500 milliseconds or the amount of milliseconds set by the Long Press Duration property of the Long-Press Manipulator in that node.
 - Long Press Cancel trigger is set off when focus moves away from the node during the long-press gesture.
-
 
 To use the Long-Press Manipulator triggers:
 
@@ -99,9 +94,7 @@ For example, select Dispatch Message Action > State Manager > Next State, and in
     - Target Item to the node which uses the state manager you created to set the appearance of a node when the Long Press trigger is set off repeatedly
     - State Group to the state group which contains the states between which you want to switch when the Long Press trigger is set off
 
-
 ## Reacting to the long-press gesture using the Kanzi Engine API
-
 
 You can define in application code how your application reacts to the long-press gesture.
 
@@ -136,19 +129,13 @@ In Kanzi Studio, select File > Open Kanzi Command Prompt.
 The Kanzi Command Prompt opens the Windows Command Prompt with the Kanzi environment variables set for the version of Kanzi for which you open a Kanzi Command Prompt.
 
 Use the Kanzi Command Prompt to access Kanzi utilities and build tools, such as Gradle and CMake, without using absolute paths or setting environment variables.
-
-> **Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
->
-> When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
-> 6.
->
-> In the Kanzi Command Prompt in the `<ProjectName>/Application` directory, run the script that generates a Visual Studio solution for the application.
->
-> ```
-> generate_cmake_vs2022_solution.bat
->
-> ```
-
+**Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
+When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
+6.
+In the Kanzi Command Prompt in the `<ProjectName>/Application` directory, run the script that generates a Visual Studio solution for the application.
+```
+generate_cmake_vs2022_solution.bat
+```
 
 This script generates a Visual Studio solution for the application in the directory `<ProjectName>/Application/build_vs2022`.
 7.
@@ -193,7 +180,6 @@ void onProjectLoaded() override
 }
 
 ```
-
 
 8.
 

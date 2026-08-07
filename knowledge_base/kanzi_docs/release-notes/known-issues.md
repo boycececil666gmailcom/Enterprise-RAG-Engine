@@ -7,7 +7,6 @@ source: https://docs.kanzi.com/4.1.0/en/release-notes/known-issues.html
 
 ## Known issues in Kanzi Engine
 
-
 - Some parts of Kanzi API are written in C. In the future Kanzi releases we will continue the effort of converting the API to C++.
 - When linking applications to the libraries provided with SDK without sources generates warning about missing debug information.
 - Clipping of rotated child 2D nodes is ignored because of performance reasons. For example, if an Image node has a child Image node, and you rotate the child Image node, the parent Image node does not clip the child Image node.
@@ -43,7 +42,6 @@ Press F5 to start the Preview.
 
 ## Known issues in Kanzi Studio
 
-
 - Kanzi Studio may fail to launch on virtual machines and periodically on desktop Windows installations, reporting an unhandled exception error.
 
 The Windows Event Log and/or Kanzi Studio Logs will contain an entry similar to this:
@@ -53,7 +51,6 @@ Unhandled exception: System.InvalidProgramException: Common Language Runtime det
   at Rightware.Kanzi.Tool.ApplicationCommon.EnvironmentInitializer.***********(IEnumerable1  , Boolean  )
 
 ```
-
 
 Workaround: Restart Windows or the virtual machine.
 - When importing kzm files, Kanzi Studio is unable to load kzm files from subdirectories.
@@ -135,10 +132,9 @@ Workaround: To build a Code Behind project, manually open and build the Code Beh
 FAILURE: Build failed with an exception.
 * What went wrong:
 A problem occurred configuring project ':app'.
-> NDK at C:\Users\<User>\AppData\Local\Android\Sdk\ndk\21.1.6352462 did not have a source.properties file
+NDK at C:\Users\<User>\AppData\Local\Android\Sdk\ndk\21.1.6352462 did not have a source.properties file
 
 ```
-
 
 This is an issue in the Android Gradle Plugin version 4.1.3 that erroneously defaults to NDK 21.1.6352462 even when `app/build.gradle` sets `android.ndkVersion` to 21.3.6528147.
 
@@ -151,7 +147,6 @@ Workaround: To build the tutorial application, remove the `C:/Users/<User>/AppDa
 [create-vertexinputstate-attributesize] Binding 1 must provide attributes.
 
 ```
-
 
 Workaround:
 
@@ -171,14 +166,12 @@ Select the project saved in step 1.
 
 ## Known issues with Kanzi Activities
 
-
 - The Activity Browser is functional only when the Preview is active. Because the Activity Browser reflects the runtime state of the Preview application, it is disabled when the Preview is not active.
 - Preview Tools do not currently support Activities. Activity and Activity Host nodes lack Preview visualization and interaction capabilities:
 
   - The Preview does not display a selection overlay for selected Activity or Activity Host nodes.
   - You cannot modify or interact with Activity or Activity Host nodes, or their content, in the Preview.
   - The Node Tool does not function with Activity or Activity Host nodes.
-
 
 Workaround: To use Preview tools with an Activity, open the corresponding Activity Prefab in the Preview Composition tab. In this context, all Preview visualization and interaction features are fully supported for the Activity.
 - The Activate Activity Message and Deactivate Activity Message require an Activity Activation Path that is relative to the Activity Host. However, the Copy Activation Path command copies the full path including the root node, which is incompatible with the message argument format.
@@ -196,11 +189,9 @@ Workaround: Use the Activity Browser to create and manage Activity structures to
 
 ## Known issues in the Kanzi SDK
 
-
 - The Coin example does not run on the x86/x86_64 Android emulator.
 
 ## Known issues on platforms
-
 
 - The standalone android-freetype and android-freetype-itype platform packages contain an unnecessary header file: `Engine/libraries/platforms/android-r21d-aarch64/opengl_es_2_0/include/EGL/eglplatform.h`.
 - QNX deprecated the use of QCC as CXX compiler. The compilation of a QNX application fails with the error
@@ -209,7 +200,6 @@ Workaround: Use the Activity Browser to create and manage Activity structures to
 QCC is not a full path and was not found in the PATH.
 
 ```
-
 
 For workaround, see Known issues on QNX.
 - On the QNX platform, these window format values are hardcoded:

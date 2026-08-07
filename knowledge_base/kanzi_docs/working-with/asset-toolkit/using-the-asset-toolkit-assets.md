@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/asset-toolkit/using-the-ass
 
 # Using the Asset Toolkit assets
 
-
 You can add assets from the Asset Toolkit asset source to your Kanzi application in Kanzi Studio. For a list of the Asset Toolkit assets, see Asset Toolkit.
 ## Using Asset Toolkit in your project
-
 
 To use Asset Toolkit in your project:
 
@@ -25,7 +23,6 @@ For example, drag the Car to the Preview. When you drag an item from the Asset P
 
 ## Using Asset Toolkit materials in your project
 
-
 To use Asset Toolkit materials in your project:
 
 1.
@@ -41,6 +38,5 @@ For example, to use a paint material to turn the sunroof on the car to a metal, 
 
   - Preview and drop it on the car body part.
   - Node Tree and drop it on the Model node that shows the mesh for the car body part.
-
 
 When you use a Asset Toolkit material in your project, Kanzi Studio adds that material to the Library > Materials and Textures > Materials, and the shaders used by the material to the Library > Resource Files > Shaders.

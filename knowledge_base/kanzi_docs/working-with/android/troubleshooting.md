@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/android/troubleshooting.htm
 
 # Troubleshooting Android application development with Kanzi
 
-
 - When you receive errors similar to these while building an Android package or opening a project in Android Studio:
 
 ```
@@ -13,19 +12,16 @@ Your build is currently configured to use incompatible Java 21.0.3 and Gradle 7.
 
 ```
 
-
 ```
 Unsupported Java.
 Your build is currently configured to use Java 17.0.6 and Gradle 6.7.1.
 
 ```
 
-
 ```
 Unsupported class file major version 61.
 
 ```
-
 
 These errors occur because of a mismatch between the Gradle tools and the active JDK. To resolve these errors:
 
@@ -39,10 +35,9 @@ FAILURE: Build failed with an exception.
 
 * What went wrong:
 Execution failed for task ':app.packageDebug'.
-> Failed to obtain compression information for entry
+Failed to obtain compression information for entry
 
 ```
-
 
 Make sure that you are using Android Studio version 4.1.3 or newer. This error occurs on Android Studio version 3.1.
 - When you receive this error while building an Android package:
@@ -52,10 +47,9 @@ FAILURE: Build failed with an exception.
 
 * What went wrong:
 Execution failed for task ':app.packageDebug'.
-> Java heap space
+Java heap space
 
 ```
-
 
 Increase the available heap amount in the Gradle build system. For example, in Android Studio open the `<ProjectName>/Application/configs/platforms/android_gradle` project, in that project open the `gradle.properties` file and set:
 
@@ -74,10 +68,9 @@ Build file 'Engine\configs\platforms\android_gradle\kanziruntime\build.gradle' l
 
 * What went wrong:
 A problem occurred evaluating project ':kanziruntime'.
-> <PathToKanziWorkspace>\Engine\version.txt not found
+<PathToKanziWorkspace>\Engine\version.txt not found
 
 ```
-
 
 In the `<ProjectName>/Application/configs/platforms/android_gradle` directory of your project create a file called `local.properties` and in that file set the correct location of your workspace. For example, set:
 
@@ -96,7 +89,6 @@ the Android Gradle Plugin will throw an error in this case
 
 ```
 
-
 Update the Kanzi Gradle plugin to version 0.7.1.
 - When you receive one of these exceptions when running your Android application:
 
@@ -104,7 +96,6 @@ Update the Kanzi Gradle plugin to version 0.7.1.
 java.lang.BootstrapMethodError: Exception from call site #0 bootstrap method
 
 ```
-
 
 ```
 E/AndroidRuntime: FATAL EXCEPTION: main
@@ -114,7 +105,6 @@ java.lang.NoSuchMethodError: No static method metafactory(Ljava/lang/invoke/Meth
   at com.rightware.kanzi.KanziViewAdapter.setStartupPrefabUrl(KanziViewAdapter.java:196)
 
 ```
-
 
 Your application is most likely using an incompatible version of Java. Kanzi Android framework (droidfw) and Kanzi Java API require Java 8 (1.8).
 
@@ -142,7 +132,6 @@ Dependency: androidx.core:core-ktx:1.8.0-alpha01.
 
 ```
 
-
 Make sure that the version of Kotlin is compatible with your project. For example, if your project uses compileSdkVersion 28, downgrade Kotlin to version 1.6.0.
 
 Replace
@@ -152,14 +141,12 @@ implementation "androidx.core:core-ktx:+"
 
 ```
 
-
 with
 
 ```
 implementation "androidx.core:core-ktx:1.6.0"
 
 ```
-
 
 or
 
@@ -175,12 +162,10 @@ I/Kanzi: [info:generic] kzsEGLConfigure(): no EGL configurations with GLES3 supp
 
 ```
 
-
 ```
 E/Kanzi: [error:generic] Half-float is not supported by current platform, please re-export kzb file(s) without half-floats.
 
 ```
-
 
 The application uses features that are available only in OpenGL ES 3.0. In the Android Emulator, enable OpenGL ES 3.0. See Enabling OpenGL ES 3.0 in the Android Emulator.
 - When you receive this error while configuring a CMake build for Android:
@@ -192,7 +177,6 @@ Android Gradle Plugin cannot package native shared libraries when the
 workspace path contains spaces.
 
 ```
-
 
 This error occurs because CMakeâs file-based API quotes library paths in its JSON response when the path contains spaces. Android Gradle Plugin does not strip these quotes, which causes it to skip imported shared libraries. The result is an APK with no native `.so` files, leading to `UnsatisfiedLinkError` at runtime.
 

@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/progressive-rendering/step-2.h
 
 # Step 2 - Distribute rendering across frames
 
-
 In this step, you create render passes and a Progressive Rendering Viewport 2D node to distribute the rendering of the content of the Car Scene node across several frames.
 ## Distribute rendering among render passes
-
 
 In this section, you create the render passes among which you distribute the rendering of the content of the Car Scene node.
 
@@ -60,7 +58,6 @@ In the Gather Lights Pass 2 render pass, select the Draw Objects Pass 1 render p
     - Name to Draw Objects Pass 2
     - Object Source to Filter Pass 2
 
-
 You set the Draw Objects Pass 2 render pass to render the Pass 2 Models node collected by the Filter Pass 2 tag filter.
 
 6.
@@ -68,7 +65,6 @@ You set the Draw Objects Pass 2 render pass to render the Pass 2 Models node col
 To render the node that shows the car shadow, repeat the previous step, but rename the render passes to Gather Lights Pass 3 and Draw Objects Pass 3, and set the Object Source property to Filter Pass 3.
 
 ## Distribute rendering across frames
-
 
 In this section, you create a Progressive Rendering Viewport 2D node to distribute the rendering of the content in the Car Scene node across several frames.
 
@@ -98,12 +94,10 @@ In the Library > Rendering > Render Pass Prefabs > Progressive Rendering, select
   - Lightness (L) to 0
   - Alpha (A) to 0
 
-
 This way you clear the color buffer with transparent black color.
 5.
 
 To take the changes into use in the Preview, in the Preview click Restart.
-
 
 Kanzi now uses the Progressive Rendering Viewport 2D node to update the content in the Car Model node in four frames:
 
@@ -119,7 +113,6 @@ Collect lights and render the Pass 2 Models node.
 4.
 
 Collect lights and render the Car Shadow node.
-
 
 Kanzi updates the content in the Viewport 2D node Gauges every frame.
 

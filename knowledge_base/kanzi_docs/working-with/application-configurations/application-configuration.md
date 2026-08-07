@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/application-configurations/
 
 # Application development
 
-
 There are several ways to add or customize your Kanzi application behavior and functionality:
 
 - Using configuration you can set the most common startup and runtime parameters for your application. For example, you can configure the application resolution, the kzb files that the application uses, and so on. See Configuring your application.
@@ -16,14 +15,12 @@ There are several ways to add or customize your Kanzi application behavior and f
 
 ## Configuring your application
 
-
 Using configuration you can set the most common startup and runtime parameters for your application. For example, you can configure the application resolution, the kzb files that the application uses, and so on.
 
 You can configure your Kanzi application:
 
 - In the C++ application override the `Application::onConfigure` function of your application class. Kanzi calls this function as part of application initialization before it reads the `application.cfg` and before it initializes the graphics subsystem. Use this function to configure application properties.
 - In `application.cfg` by setting the parameters for Kanzi Studio projects without recompiling your application or even without a C++ application.
-
 
 The configuration you specify in `application.cfg` overrides the configuration you specify in `Application::onConfigure`.
 
@@ -35,7 +32,6 @@ BinaryName = "my_application.kzb"
 
 ```
 
-
 To set the kzb file to load in `Application::onConfigure`
 
 ```
@@ -44,12 +40,10 @@ configuration.binaryName = "my_application.kzb";
 
 ```
 
-
 For a list of all the configuration settings you can use for your Kanzi application, see Application configuration reference.
 ## Reacting to application lifecycle events
 
 ### Adding startup logic
-
 
 You can define the startup logic of your application in these functions:
 
@@ -80,10 +74,8 @@ void onProjectLoaded() override
 
 ```
 
-
 This diagram shows the callbacks for startup and shutdown logic. [](../../_images/reacting-to-lifecycle-events.svg)
 ### Observing application state
-
 
 You can observe the application state to find out whether an application is running, minimized, or suspended.
 
@@ -94,7 +86,6 @@ A Kanzi application is always in one of these states:
 
 In this state, Kanzi stops normal input handling and rendering, and waits to be put back to the `MainLoopState::Running` state. Additionally, it is typical for applications to halt heavy work when in this state.
 - `MainLoopState::Quitting` state. This state indicates that either application or the platform requested the application to quit by calling `MainLoopScheduler::quit`. In this state, applications must avoid starting work, unless that work is related to uninitialization.
-
 
 This diagram shows the states of a Kanzi application. [](../../_images/states.svg)
 
@@ -123,7 +114,6 @@ void doSomethingRepeatedly()
 ```
 
 ### Reacting to application state changes
-
 
 Use these functions to react to application state changes:
 |
@@ -154,6 +144,5 @@ Kanzi calls this function when the application main loop returns from the `MainL
 
 Kanzi calls this function immediately before the application uninitialization. |
 ## Modifying the main loop logic
-
 
 The main loop consists of a sequence of stages, where each stage consists of a sequence of tasks. A task is any callable item, including functions, function objects, and lambdas.

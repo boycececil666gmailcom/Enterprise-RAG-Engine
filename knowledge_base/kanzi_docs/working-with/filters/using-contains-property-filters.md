@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/filters/using-contains-prop
 
 # Using the Contains Property Filter
 
-
 Contains Property Filter collects 3D nodes that contain, or do not contain a specific property.
 
 To use the Contains Property Filter:
@@ -24,7 +23,6 @@ In the Properties set:
     - Include to collect the nodes that contain the property you set in the Property Type property.
     - Exclude to leave out the nodes that contain the property you set in the Property Type property.
 
-
 3.
 
 To take the Contains Property Filter into use, either:
@@ -33,7 +31,6 @@ To take the Contains Property Filter into use, either:
   - In the Node List render pass that you use to hold the nodes that you want to render using other render passes, set the Filter property to the filter or to an object source that collects the filter.
 
 Use a Node List render pass when you want to filter anything but the 3D nodes that you want to render, such as Light nodes. Draw Objects render pass, Draw Objects With Material render pass, and Gather Lights render passes can use the result node list of the same Node List render pass.
-
 
 For example:
 
@@ -55,8 +52,6 @@ In the Node Tree select the Viewport 2D node to which you want to apply the filt
 
 Kanzi Studio renders the nodes collected by the filter.
 
-
 ## Using Contains Property Filter filters in the API
-
 
 For details, see the `ContainsPropertyFilter` class.

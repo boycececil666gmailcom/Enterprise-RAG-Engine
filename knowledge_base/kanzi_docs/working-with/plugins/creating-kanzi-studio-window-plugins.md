@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/plugins/creating-kanzi-stud
 
 # Creating Kanzi Studio window plugins
 
-
 Kanzi Studio plugins extend the functionality of Kanzi Studio and run in Kanzi Studio.
 
 For example, you can extend the functionality of Kanzi Studio to:
@@ -14,12 +13,10 @@ For example, you can extend the functionality of Kanzi Studio to:
 - Import and export content from Kanzi Studio, such as localization tables in a format that Kanzi Studio does not support
 - Create editors that abstract the details and speed up the workflow, such as visualization tools that support work on your projects in Kanzi Studio.
 
-
 You can present a Kanzi Studio plugin either:
 
 - In a Kanzi Studio window that contains the plugin user interface.
 - As commands that users can execute from the Kanzi Studio main menu or from a context menu, running the plugin without a user interface.
-
 
 This topic covers how to create Kanzi Studio window plugins. To learn how to create Kanzi Studio command plugins, see Creating Kanzi Studio command plugins.
 
@@ -45,14 +42,12 @@ Group project changes in your Kanzi Studio window plugin for undo and redo. See 
 
 Debug your Kanzi Studio plugin. See Debugging a Kanzi Studio plugin.
 
-
 To find detailed information about the Kanzi Studio plugin API see:
 
 - Overview of Kanzi Studio plugin API
 - Kanzi Studio plugin API reference
 
 ## Creating the base for a Kanzi Studio window plugin
-
 
 Kanzi Studio window plugins are plugins that you use in a Kanzi Studio window and have a user interface. For example, use the window plugins to create an editor or to visualize the content in your project.
 
@@ -110,7 +105,6 @@ public partial class UserControl1 : UserControl
 
 ```
 
-
 to
 
 ```
@@ -132,7 +126,6 @@ private KanziStudio studio;
 
 ```
 
-
 7.
 
 In all functions replace this line with the code you want to execute:
@@ -141,7 +134,6 @@ In all functions replace this line with the code you want to execute:
 throw new NotImplementedException();
 
 ```
-
 
 Make sure that your plugin handles all its internal exceptions and does not let them reach the Kanzi Studio interface.
 
@@ -161,7 +153,6 @@ public UserControl1(KanziStudio studio)
   - Use the `Icon` function to set the plugin window icon shown in the top-left corner of the plugin window:
 
     - Return an empty string to use the Kanzi Studio default plugin icon.
-
 
 ```
 public string Icon
@@ -226,7 +217,6 @@ public class Class1
 
 ```
 
-
 to
 
 ```
@@ -258,7 +248,6 @@ throw new NotImplementedException();
 
 ```
 
-
 Make sure that your plugin handles all its internal exceptions and does not let them reach the Kanzi Studio interface.
 
 For example, set the functions in the `Class1` class to:
@@ -288,7 +277,6 @@ get
     - When set to `false`, Kanzi Studio shows the plugin in the main menu and the context menu, but users cannot launch the plugin.
     - When set to `true`, users can launch the plugin.
 
-
 Kanzi Studio provides the `KanziStudio` object to plugins. The `KanziStudio` object is the root object for data access and provides the current project, available commands, global undo and redo, and events related to project opening and closing.
 
 For example, use this to enable the command only when a Kanzi Studio project is open
@@ -306,7 +294,6 @@ public bool CanExecute(PluginCommandParameter parameter)
 
     - To show the plugin in the main menu use `ContextMenuPlacement.NONE`.
     - To show the plugin in the context menus invoked from nodes and resources, and the main menu use `ContextMenuPlacement.PROJECT_ITEM`.
-
 
 ```
 public CommandPlacement CommandPlacement
@@ -368,17 +355,14 @@ public void Initialize(KanziStudio studio)
 
 ```
 
-
 12.
 
 Build and run the plugin. See Building and running a Kanzi Studio plugin.
-
 
 Here you created just the base structure for your Kanzi Studio window plugin, which only opens an empty window. To make your plugin do more than that, add functionality to the window. See Adding functionality to your Kanzi Studio window plugin and Grouping project changes in your Kanzi Studio window plugin.
 
 To further develop your Kanzi Studio plugin, see Overview of Kanzi Studio plugin API and Kanzi Studio plugin API reference.
 ## Building and running a Kanzi Studio plugin
-
 
 To build and run a Kanzi Studio plugin:
 
@@ -390,19 +374,14 @@ In Visual Studio select Build > Build Solution to build the plugin .dll.
 Copy the Kanzi Studio plugin DLL file to the `%ProgramData%\Rightware\<KanziVersion>\plugins` directory.
 
 If the `plugins` directory does not exist in `%ProgramData%\Rightware\<KanziVersion>`, create it.
+**Tip:** If your plugin has dependency DLLs, use a plugin manifest to declare the entry point. See Installing Kanzi Studio plugins.
+3.
+Open Kanzi Studio.
+Kanzi Studio loads the plugins in the `plugins` directory and adds them to either the main menu or the context menus invoked from nodes and resources.
+4.
+In Kanzi Studio select the plugin main menu and select the plugin, or right-click a node in the Node Tree and select the name of your plugin to run your plugin.
 
-> **Tip:** If your plugin has dependency DLLs, use a plugin manifest to declare the entry point. See Installing Kanzi Studio plugins.
-> 3.
->
-> Open Kanzi Studio.
->
-> Kanzi Studio loads the plugins in the `plugins` directory and adds them to either the main menu or the context menus invoked from nodes and resources.
-> 4.
->
-> In Kanzi Studio select the plugin main menu and select the plugin, or right-click a node in the Node Tree and select the name of your plugin to run your plugin.
->
 ## Adding functionality to your Kanzi Studio window plugin
-
 
 After you create the base for a Kanzi Studio window plugin, add functionality to your plugin so that it does something useful. Here you create a plugin that shows the kzb file URL of the currently selected node or resource.
 
@@ -492,7 +471,6 @@ For example, open the `UserControl1.xaml` file and replace
 
 ```
 
-
 with
 
 ```
@@ -513,7 +491,6 @@ Build and run the plugin. See Building and running a Kanzi Studio plugin.
 Select in the Node Tree a node or in the Library a resource. The plugin window shows the kzb URL for the selected project item.
 
 ## Grouping project changes in your Kanzi Studio window plugin
-
 
 Group project changes in your Kanzi Studio window plugin to make the changes appear as one command to the Kanzi Studio user. This way you set undo and redo commands to affect the whole group of changes instead of individual changes. For example, group project changes when your Kanzi Studio window plugin applies a series of modifications to the project when the user clicks a button, and you want Kanzi Studio to undo all those modifications at once when the user selects Edit > Undo.
 
@@ -639,7 +616,6 @@ For example, open the `UserControl1.xaml` file and replace
 
 ```
 
-
 with
 
 ```
@@ -682,9 +658,6 @@ Build and run the plugin. See Building and running a Kanzi Studio plugin.
 In your plugin window set the properties which determine the number of and distance between the horizontal and vertical guides you want to create and click the **Create Guides** button.
 
 Kanzi Studio creates in the Preview window the horizontal and vertical guides.
-
-> **Tip:** To see the guides in you Kanzi Studio project, in the Preview click  to enter the Analyze mode, right-click , and select Rulers and guides.
-> 8.
->
-> To check that your batch modification works, use the Kanzi Studio Command History. See Using the Kanzi Studio Command History.
->
+**Tip:** To see the guides in you Kanzi Studio project, in the Preview click  to enter the Analyze mode, right-click , and select Rulers and guides.
+8.
+To check that your batch modification works, use the Kanzi Studio Command History. See Using the Kanzi Studio Command History.

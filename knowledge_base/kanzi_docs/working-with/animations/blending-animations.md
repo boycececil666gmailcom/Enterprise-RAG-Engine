@@ -7,7 +7,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/animations/blending-animati
 
 ## Crossfading animations between states
 
-
 When your application transitions between states that each drive a different animation, you can make the change smooth by crossfading between the outgoing and incoming animations. The outgoing animation fades out and the incoming animation fades in over the duration you set in the state transition, instead of switching abruptly.
 
 To make the State Manager crossfade between two animations, configure an Animation Player with the same name in each of the two states. When the State Manager transitions between the states, it blends the outgoing and incoming Animation Player playbacks over the transition duration.
@@ -45,12 +44,9 @@ For example:
 5.
 
 Set the duration of the transition between the states. See Using state transitions.
-
-> **Note:** The easing function configured on the state transition does not affect the crossfade. The blend always follows a linear curve for the configured duration.
-
+**Note:** The easing function configured on the state transition does not affect the crossfade. The blend always follows a linear curve for the configured duration.
 
 When the State Manager transitions between the states, the outgoing animation continues playing and fades out while the incoming animation starts and fades in over the transition duration you set.
 
 Properties not animated by the incoming animation blend smoothly toward their default values instead of switching abruptly.
-
-> **Note:** Crossfading is not supported when the incoming Animation Player uses Relative Playback. If the incoming player has Relative Playback enabled, the transition completes immediately without a crossfade.
+**Note:** Crossfading is not supported when the incoming Animation Player uses Relative Playback. If the incoming player has Relative Playback enabled, the transition completes immediately without a crossfade.

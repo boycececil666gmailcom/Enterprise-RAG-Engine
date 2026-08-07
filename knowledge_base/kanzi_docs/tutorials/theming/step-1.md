@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/theming/step-1.html
 
 # Step 1 - Create a theme for a cluster
 
-
 In this step of the tutorial you learn how to create a theme for a cluster. You start with a project which contains a cluster with round primary gauges (speed and RPM) and bar secondary gauges (engine temperature and fuel), and create a modern theme for that cluster.
 ## Get the tutorial
-
 
 To get the tutorial, in the Kanzi Studio Quick Start window, click Projects and select the Tutorials tab. Next to the Theming tutorial, click .
 
@@ -22,7 +20,6 @@ Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` director
 - The completed tutorial in the `<KanziWorkspace>/Tutorials/Theming/Completed` directory.
 
 ## Content of the starting point project
-
 
 The starting point project contains the content that you need to complete this tutorial:
 
@@ -55,7 +52,6 @@ This prefab contains:
     - The Gauges node contains both secondary gauges.
     - The Secondary gauges grid Grid Layout node sets the layout of the secondary gauges in the cluster.
 
-
 - User interface elements. In the Prefabs you can find the user interface elements you need to create the themes in this tutorial.
 
   - The Car Gasoline prefab contains the car model shown between the speed and RPM gauges in the Gasoline car variant of the Classic theme.
@@ -65,9 +61,7 @@ This prefab contains:
   - The Table Speed prefab contains the content for the panel shown in the speed gauge.
   - The Theme selector prefab contains the control you can use to change non-baked themes in this application. You learn about different options for exporting themes and how to change the application theme using the Kanzi Engine API in the last step of this tutorial.
 
-
 ## Create cluster themes
-
 
 In this section you create the Classic and Modern themes for the cluster and theme the primary gauges. You use a separate prefab for each theme, because the change in the cluster appearance and layout of the primary gauges between the two themes is big. The starting point project of this tutorial already contains prefabs for both themes, but you learn about the Theme Group and `Theming` resources. You also learn how to set which theme the Preview shows.
 
@@ -107,7 +101,6 @@ Rename the Primary gauges.PrefabViewConcept.Prefab resource ID to Primary gauges
   3.
 
 Click Add.
-
 
 When you use the Add Resources to a Theme Group window to add resources to a theme group, Kanzi Studio:
 
@@ -149,7 +142,6 @@ In the Dictionaries click Locales and Themes to enable the viewing of theme grou
 
 ## Theme the secondary gauges
 
-
 In this section you apply different styles to the themes you created in the previous section. You use these styles to change the position of the secondary gauge icons.
 
 In the previous section the change in the cluster appearance and layout of the primary gauges between the two themes was big. This is why for each theme you used a separate prefab with a different layout. However, when a change between themes is small, you can use the same prefab and change the appearance and functionality by applying styles.
@@ -188,7 +180,6 @@ In the Add Resources to a Theme Group window select and rename only these resour
     - Left gauge icon.Node.Style to Left gauge icon
     - Right gauge icon.Node.Style to Right gauge icon
 
-
 Click Add.
   3.
 
@@ -203,7 +194,6 @@ Open the Cluster theme theme group in the Theme Editor and set the resource IDs:
 
       - Left gauge icon to the Secondary gauges Left gauge icon Modern style
       - Right gauge icon to the Secondary gauges Right gauge icon Modern style
-
 
 Now when you select in the Dictionaries a theme in the Cluster theme theme group, the Preview shows the resources you defined for the selected theme.
 

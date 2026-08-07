@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/tags/using-tags.html
 
 # Using tags
 
-
 Use tags to group, find, and filter nodes in your project. You can assign multiple tags to a single node.
 
 For example, you can use tags to:
@@ -15,7 +14,6 @@ For example, you can use tags to:
 - Render only specific nodes in your project. See Using the Tag Filter.
 
 ## Tagging a node
-
 
 You can create a tag and tag a node in the Properties of that node.
 
@@ -35,9 +33,7 @@ Kanzi Studio creates the tag and tags the node with the tag.
 
 Kanzi Studio uses the existing tag to tag the node.
 
-
 ## Creating a tag without tagging a node
-
 
 You can create a tag without tagging a node at the same time.
 
@@ -54,7 +50,6 @@ Kanzi Studio creates the tag and lists it in the Library > Tags.
 
 ## Finding tagged nodes in the Node Tree
 
-
 To find tagged nodes in the Node Tree:
 
 1.
@@ -67,7 +62,6 @@ In the Node Tree, in the search box, enter the tag name that you are looking for
 The Node Tree shows only the nodes that contain the tag you entered in the search box.
 
 ## Finding tagged nodes using the Find Project Item tool
-
 
 To find tagged nodes using the Find Project Item tool:
 
@@ -100,6 +94,5 @@ Click Search.
 The Find Project Item shows all nodes with the tag you selected.
 
 ## Using tags in the API
-
 
 For details, see the `Node` tag interface. The relevant functions are `Node::acquireTag`, `Node::hasTag`, `Node::setTag` and `Node::removeTag`.

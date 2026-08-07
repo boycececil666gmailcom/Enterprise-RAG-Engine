@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/images/importing-images.htm
 
 # Importing images
 
-
 When you import images Kanzi Studio automatically creates textures from those images.
 
 Use image files to bring bitmap assets to Kanzi Studio. You can import images to Kanzi in these file formats:
@@ -18,7 +17,6 @@ Use image files to bring bitmap assets to Kanzi Studio. You can import images to
 
 ## Importing images to a Kanzi Studio project
 
-
 To import images:
 
 1.
@@ -27,7 +25,6 @@ In the Assets window click Import Assets.
 2.
 
 Select the files that you want to import and click Open.
-
 
 When you import images, Kanzi Studio adds those images to the Library > Resource Files > Images, and creates from them textures in the Library > Materials and Textures > Textures:
 

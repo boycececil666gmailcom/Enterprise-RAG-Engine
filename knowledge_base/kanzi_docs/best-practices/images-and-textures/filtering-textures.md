@@ -5,12 +5,10 @@ source: https://docs.kanzi.com/4.1.0/en/best-practices/images-and-textures/filte
 
 # Filtering textures
 
-
 By applying texture filtering you can improve the image quality in 3D scenes with slight decrease in performance. The baseline point sampling requires storing the whole texture data into memory, whereas when you use mipmapping (or any of the filtering options), when the texture area is small, you can use a smaller sized version of the texture. See Using mipmaps.
 
 Select the texture filtering option that best reflects the requirements of your application.
 ## Using texture filtering
-
 
 To use texture filtering:
 
@@ -30,7 +28,6 @@ Usually the best starting point for setting texture filtering is to set:
   - Minification Filter to Linear
   - Magnification Filter to Linear
   - Mipmap Mode to Nearest. If you are sure that the texture is not minified select Base, otherwise start with Nearest. For example, the default value for a Render Target Texture is Base. With this setting, the texture does not have mipmap levels and the base level is always sampled. See Using mipmaps.
-
 
 Note that some texture formats are available with OpenGL ES versions higher than 2.0. To set the OpenGL ES version, in the main menu select Project > Properties and in the Properties set the Target Graphics API property.
 

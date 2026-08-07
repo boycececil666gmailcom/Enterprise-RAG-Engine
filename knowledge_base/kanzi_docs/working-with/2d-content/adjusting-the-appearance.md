@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/2d-content/adjusting-the-ap
 
 # Adjusting the appearance of 2D nodes
 
-
 You can adjust the appearance of 2D nodes by filling their background or foreground with a brush. For example, you can set the background color of an Activity node, fill a Text Block 2D node with a texture, or apply a material to a Button 2D node.
 
 You can fill 2D nodes with:
@@ -15,7 +14,6 @@ You can fill 2D nodes with:
 - Material. See Filling 2D nodes with a material.
 
 ## Filling 2D nodes with a solid color
-
 
 Use a Color Brush to fill a 2D node with a solid color.
 
@@ -34,11 +32,9 @@ For example, create a Button 2D node, in the Properties add the Background Brush
 In the Properties click  next to the property you added in the previous step and set the color of the color brush you created in the previous step.
 
 In the Preview you can see that the Color Brush you created fills the node for which you set the property.
+**Tip:** To quickly edit a brush, in the Properties next to the Background Brush or Foreground Brush property click  and edit the brush.
 
-> **Tip:** To quickly edit a brush, in the Properties next to the Background Brush or Foreground Brush property click  and edit the brush.
->
 ## Filling 2D nodes with a texture
-
 
 Use a Texture Brush to fill a 2D node with a texture.
 
@@ -61,9 +57,7 @@ In the Properties click  next to the property that you added in the previous ste
   - Brush Vertical Tiling affects the scale of the texture coordinates to set the vertical tiling of the texture.
   - Brush Texture sets the texture for the brush.
 
-
 ## Filling 2D nodes with a material
-
 
 Use a Material Brush to fill a 2D node with a material.
 
@@ -93,14 +87,10 @@ For example, to change the ambient color, texture, and blending of the material 
 
 For example, to change the ambient color, texture, and blending of the material for a node, add and set the Ambient Color, Texture, and Blend Mode properties in that node.
 
-
 ## Rendering pixel-perfect 2D nodes
-
 
 Pixel-perfect rendering ensures sharp rendering of a 2D node by rounding the translation and scale of the node to a full pixel.
 
 Kanzi does not by default render 2D nodes as pixel-perfect. When you position a 2D node at a fractional pixel location, anti-aliasing can cause that node to have blurry edges.
-
-> **Tip:** A Kanzi Studio project by default has a style that makes Kanzi render the text in all Text Block 2D nodes as pixel-perfect. See Rendering pixel-perfect text in a Text Block 2D node.
->
-> To render a pixel-perfect 2D node, in the Node Tree or Prefabs, select that node and in the Properties, add and enable the Node 2D > Snap to Pixel property.
+**Tip:** A Kanzi Studio project by default has a style that makes Kanzi render the text in all Text Block 2D nodes as pixel-perfect. See Rendering pixel-perfect text in a Text Block 2D node.
+To render a pixel-perfect 2D node, in the Node Tree or Prefabs, select that node and in the Properties, add and enable the Node 2D > Snap to Pixel property.

@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/resources/resources.html
 
 # Resources
 
-
 In Kanzi, a resource is an item that you can reuse in different parts of your application. For example, a Mesh Data resource defines the geometry of a Model node, and you can use the same Color Brush in different nodes to set the Foreground Brush or Background Brush properties.
 
 You can find all resources in a Kanzi Studio project in the Library window.
@@ -16,7 +15,6 @@ The Dictionaries window shows the resources in:
 - The localization tables and theme groups in the project. See Localization and Theming your applications.
 
 ## Library views
-
 
 By default, the Library shows all the resources in a project. Kanzi Studio provides Library views to show only selected resources in your project. You can enable these views in the Window menu:
 
@@ -31,12 +29,10 @@ By default, the Library shows all the resources in a project. Kanzi Studio provi
 - Textures shows the textures in your project. See Textures.
 - Trajectories shows the trajectories in your project. See Trajectories.
 
-
 You can add any window as a tab to any other window to see more than one type of content in the same window.
 
 See Customizing the Kanzi Studio interface.
 ## Load resources asynchronously
-
 
 In Kanzi, you can load resource dictionaries of prefabs you use in your project before your Kanzi application shows them to users. For example, you can create a loading screen that your users see while Kanzi is loading the resource dictionaries of the rest of your application in the background.
 

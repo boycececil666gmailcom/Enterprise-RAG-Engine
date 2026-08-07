@@ -5,12 +5,10 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/trajectories/using-trajecto
 
 # Using the Trajectory Layout nodes
 
-
 Use the Trajectory Layout nodes to arrange items along a trajectory path.
 
 Kanzi Studio comes with several types of trajectories. When you need a different type of trajectory, create a spline trajectory in a third-party tool and import it to your Kanzi Studio project. See Trajectories.
 ## Creating a Trajectory Layout node
-
 
 To create a Trajectory Layout node:
 
@@ -19,23 +17,16 @@ To create a Trajectory Layout node:
 In the Node Tree, press Alt and right-click the node where you want to create a Trajectory Layout node and select either Trajectory Layout 3D, or Trajectory Layout 2D.
 
 You can create a 3D node only in a 3D node, such as the Scene node, and a 2D node only in a 2D node.
+**Tip:** To see the trajectory, in the Preview click  to enter the Analyze mode, right-click , and select Debug objects.
+2.
+In the Node Tree, add child nodes to the layout that you created in the previous step.
+For example, if you created a Trajectory Layout 3D node, add several Sphere nodes. If you created a Trajectory Layout 2D node, add several Image nodes.
+As you add child nodes, the Trajectory Layout node positions them along the trajectory used by the Trajectory Layout node.
+3.
+(Optional)
+Kanzi Studio creates and uses a circle trajectory by default. You can use an angle, arc, circle, ellipse, line, rectangle, spiral, spline, or a trapezoid trajectory. See Trajectories.
 
-> **Tip:** To see the trajectory, in the Preview click  to enter the Analyze mode, right-click , and select Debug objects.
-> 2.
->
-> In the Node Tree, add child nodes to the layout that you created in the previous step.
->
-> For example, if you created a Trajectory Layout 3D node, add several Sphere nodes. If you created a Trajectory Layout 2D node, add several Image nodes.
->
-> As you add child nodes, the Trajectory Layout node positions them along the trajectory used by the Trajectory Layout node.
-> 3.
->
-> (Optional)
->
-> Kanzi Studio creates and uses a circle trajectory by default. You can use an angle, arc, circle, ellipse, line, rectangle, spiral, spline, or a trapezoid trajectory. See Trajectories.
->
 ## Stretching the trajectory to fill the layout
-
 
 By default, the size of the trajectory used by a Trajectory Layout node determines the amount of space that the trajectory occupies in the layout. For example, in a Circle Trajectory, the Radius property determines the size of the trajectory.
 
@@ -50,7 +41,6 @@ In the Properties, add and enable the Trajectory Layout > Stretch property.
 
 ## Adjusting the distance between items in a Trajectory Layout node
 
-
 A Trajectory Layout node automatically calculates the distance between its child nodes.
 
 To adjust the distance between the child nodes in a Trajectory Layout node:
@@ -63,7 +53,6 @@ Select a Trajectory Layout node.
 In the Properties, add and set the Trajectory Layout > Override Distance property.
 
 ## Adjusting the position of items in a Trajectory Layout node
-
 
 By default, a Trajectory Layout node arranges its child nodes from the start of the trajectory spline.
 
@@ -78,7 +67,6 @@ In the Properties, add and set the Trajectory Layout > Start Offset property.
 
 ## Setting the appearance of a Trajectory Layout 2D node
 
-
 To set the appearance of 2D nodes:
 
 - You can fill 2D nodes with a solid color, a texture, or a material. See Adjusting the appearance of 2D nodes.
@@ -89,7 +77,6 @@ To set the appearance of 2D nodes:
 
 ## Using the Trajectory Layout node in the API
 
-
 To create a Trajectory Layout 3D node:
 
 ```
@@ -97,7 +84,6 @@ To create a Trajectory Layout 3D node:
 TrajectoryLayout3DSharedPtr trajectoryLayout = TrajectoryLayout3D::create(domain, "Trajectory");
 
 ```
-
 
 To create a trajectory and use it in the Trajectory Layout 3D node:
 
@@ -108,7 +94,6 @@ TrajectorySharedPtr trajectory = Trajectory::createCircle(Vector3(), Vector3::po
 trajectoryLayout->setTrajectory(trajectory);
 
 ```
-
 
 To add items to the Trajectory Layout 3D node:
 
@@ -128,7 +113,6 @@ trajectoryLayout->addChild(item5);
 
 ```
 
-
 To manually position items in the Trajectory Layout 3D node:
 
 ```
@@ -140,9 +124,7 @@ trajectoryLayout->setOverrideDistance(0.3f);
 
 ```
 
-
 For details, see the `TrajectoryLayout3D` and `TrajectoryLayout2D` classes.
 ## Trajectory Layout property types and messages
-
 
 For lists of the available property types and messages for the Trajectory Layout nodes, see Trajectory Layout 2D and Trajectory Layout 3D.

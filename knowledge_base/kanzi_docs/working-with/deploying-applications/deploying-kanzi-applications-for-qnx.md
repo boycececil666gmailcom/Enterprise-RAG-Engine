@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/deploying-applications/depl
 
 # Deploying Kanzi applications to QNX
 
-
 Before you can build a Kanzi application for your target platforms, set up and configure the Kanzi build environment for your target platforms. The build environment includes tools that the Kanzi build system uses to build your application for your target platforms.
 ## Requirements
-
 
 To build and deploy Kanzi applications to QNX, you need:
 
@@ -18,14 +16,11 @@ Library requirements from the QNX software development platform:
 
   - slog2
 
-
 You can get the QNX development tools at [https://blackberry.qnx.com](https://blackberry.qnx.com/).
 - For Cmake-based platform package: CMake 3.25 and Ninja 1.10.x
 
-
 Before deploying your Kanzi application to your QNX target device, make sure that device is running the QNX Screen service. See https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.screen/topic/manual/cscreen_about.html.
 ## Supported build systems, STDLIB implementation, and library linking
-
 
 Kanzi platform packages support these build systems:
 
@@ -33,12 +28,10 @@ Kanzi platform packages support these build systems:
 
 The platform package contains the `Engine/cmake/toolchains/<toolchain_file>.cmake` file that lists the CMake options used to create it.
 
-
 Kanzi offers QNX platform packages that are based on these STDLIB implementations:
 
 - LLVM. Platform packages explicitly mention `cxx` in the name of the platform package archive.
 - GNU. Platform packages explicitly mention `gpp` in the name of the platform package archive.
-
 
 Kanzi platform packages support these library linking options:
 
@@ -49,12 +42,10 @@ To build an application with statically linked libraries, use the CMake define `
 
 To build an application with dynamically linked libraries, use the CMake define `-DBUILD_SHARED_LIBS:BOOL=ON`
 
-
 On QNX with the LLVM C++ library, when you use in your Kanzi application a kzb file with a plugin dependency, do not use the runtime linker. Link the plugin SO to the application when you build the application executable. See https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.sys_arch/topic/dll.html and https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.utilities/topic/q/qcc.html.
 ## Building Kanzi applications for QNX
 
 ### Building Kanzi applications using CMake
-
 
 For example, to build the kzb_player application on Linux for QNX 7.1 using CMake:
 
@@ -93,9 +84,7 @@ cmake --install .
 
 ```
 
-
 ## Deploying Kanzi applications to a QNX device
-
 
 To deploy Kanzi applications to QNX:
 
@@ -134,9 +123,7 @@ On the command line start the application on your QNX target device:
 
 ```
 
-
 ## Printing Screen display information
-
 
 You can list QNX Screen display information for your Kanzi application.
 
@@ -154,7 +141,6 @@ Run the application with the `-enum-qnx-displays` command-line argument:
 
 ```
 
-
 The application prints for each display this information and exits:
 
 - Display ID
@@ -167,13 +153,10 @@ The application prints for each display this information and exits:
   - All available video modes
   - Current video mode
 
-
 ## Setting QNX Screen usage flags
-
 
 You can programmatically set the usage flags for the QNX Screen property. Screen usage flags are properties that you can use to constrain the allocated QNX window buffers. See QnxUsageFlags.
 ## Known issues on QNX
-
 
 - When you run multiple Kanzi applications and receive an error like this
 
@@ -184,7 +167,6 @@ Process 1482838 (ClusterApp) terminated SIGSEGV code=1 fltno=11 ip=000000121378c
 
 ```
 
-
 In each Kanzi application, you must set the `NativeWindowProperties::groupName` to a unique name. See GroupName.
 - QNX deprecated the use of QCC as CXX compiler. The compilation of a QNX application fails with the error
 
@@ -192,7 +174,6 @@ In each Kanzi application, you must set the `NativeWindowProperties::groupName` 
 QCC is not a full path and was not found in the PATH.
 
 ```
-
 
 When you compile a QNX application for Kanzi versions before 3.9.4, in build configuration files replace the deprecated QCC compiler command with the q++ command.
 
@@ -202,7 +183,6 @@ When you compile a QNX application for Kanzi versions before 3.9.4, in build con
 set(CMAKE_CXX_COMPILER QCC)
 
 ```
-
 
 with
 
@@ -221,7 +201,6 @@ default.env["CXX"] = os.path.join(toolchain_bin, "QCC")
 
 ```
 
-
 with
 
 ```
@@ -236,7 +215,6 @@ default.env["CXX"] = os.path.join(toolchain_bin, "q++")
 re.compile(r'^([^/]*/)*QCC$'),
 
 ```
-
 
 with
 

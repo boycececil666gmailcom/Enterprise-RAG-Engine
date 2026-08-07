@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/installing-kanzi/upgrading-computer-hard
 
 # Upgrading computer hardware or operating system
 
-
 An active Kanzi license is tied to your computer hardware and operating system. When you make a significant change on your computer, your Kanzi license becomes void. For example, before you change your computer hard drive, or upgrade your operating system, release your Kanzi license before you make the change, and then activate the Kanzi license after you complete the change.
 
 To make a significant change on your computer:

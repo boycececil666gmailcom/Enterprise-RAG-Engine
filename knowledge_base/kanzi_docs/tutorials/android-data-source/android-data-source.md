@@ -5,13 +5,11 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/android-data-source/android-da
 
 # Tutorial: Data sources for Android
 
-
 In this tutorial you learn how to create a data source for Kanzi applications for Android. You learn how to:
 
 - Create a data source using Kanzi Java API.
 - Use Android APIs to back the data source.
 - Ensure compatibility with the Kanzi Studio Preview where the Android APIs are not available.
-
 
 This video shows the result of the tutorial.
 
@@ -19,7 +17,6 @@ This tutorial assumes that you are familiar with developing Android applications
 
 - Tutorial: Getting started with Kanzi Studio
 - Tutorial: Getting started with Kanzi Android framework (droidfw)
-
 
 Before you start this tutorial, make sure that you have your Kanzi development environment for Android set up. See Requirements for Android application development with Kanzi.
 
@@ -30,7 +27,6 @@ To run the application that you create in this tutorial in an Android virtual de
 
 ## Get the tutorial
 
-
 To get the tutorial, in the Kanzi Studio Quick Start window, click Projects and select the Tutorials tab. Next to the Android data source tutorial, click .
 
 Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` directory. You can find:
@@ -39,7 +35,6 @@ Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` director
 - The completed tutorial in the `<KanziWorkspace>/Tutorials/Android data source/Completed` directory.
 
 ## Create a one-way data source
-
 
 In this section you create a data source that you can read from a Kanzi application. You create a widget that shows the battery level of an Android device.
 
@@ -91,14 +86,12 @@ root.addChild(DataObjectReal.create(domain, "Real value", 0.5).get());
 
 ```
 
-
 with
 
 ```
 root.addChild(DataObjectReal.create(domain, BATTERY_LEVEL, 0.5f).get());
 
 ```
-
 
   3.
 
@@ -149,7 +142,6 @@ In the Node Tree in the Battery Widget node, create a Text Block 2D node. In the
     - Vertical Alignment to Bottom
     - Text to Battery
 
-
 4.
 
 In Kanzi Studio, create a data source and take it into use:
@@ -174,7 +166,6 @@ In the Data Sources window, click Create Data Source and create a data source wi
     - Name to Android data source
     - Data Source Type to JavaDataSource
 
-
 In the Data Sources window, you can see the BatteryLevel data object that you defined in Android Studio.
   5.
 
@@ -188,12 +179,10 @@ In the Node Tree, select the Progress Indicator node. In the Properties, click +
     - Property to Progress
     - Expression to
 
-
 ```
 {DataContext.BatteryLevel} * 100
 
 ```
-
 
 Click Save.
 
@@ -309,7 +298,6 @@ root.addChild(DataObjectReal.create(domain, BATTERY_LEVEL, mDataProvider.getBatt
 
 ```
 
-
 7.
 
 In Android Studio, build and run the app.
@@ -317,7 +305,6 @@ In Android Studio, build and run the app.
 When you run the application on an Android device, the battery widget shows the current battery level of that device.
 
 ## Create a two-way data source
-
 
 In this section you create a widget that you can use to control the silent mode of an Android device.
 
@@ -420,7 +407,6 @@ public boolean isSilentMode()
 
 ```
 
-
   4.
 
 In the `JavaDataSource` class:
@@ -457,7 +443,6 @@ silentMode.addModifiedNotificationHandler(new ModifiedSubscriptionFunction() {
 });
 
 ```
-
 
   5.
 
@@ -523,7 +508,6 @@ BOOL({DataContext.SilentMode})
 
 ```
 
-
 Click Save.
 
 With this binding you make the Icon Silent On image visible when the value of the SilentMode data object is `true`.
@@ -561,12 +545,10 @@ In the Node Tree, select the Toggle Button node. In the Properties:
 
 ```
 
-
 Click Save.
 
 With this binding you create a two-way connection between the toggle state of the Toggle Button node and the SilentMode data object.
     - Add the Vertical Alignment property and set it to Bottom
-
 
 5.
 
@@ -578,7 +560,6 @@ In Android Studio, build, and run the app.
 When you run the application on an Android device, the Silent Mode widget shows the icon that indicates the silent mode status of that device.
 
 ## Update data sources based on external changes
-
 
 In the previous section, you added the functionality to read constant data from an Android device at application startup. In this section, you set the data source to respond to Android callbacks and update the data source when the silent mode or battery level changes.
 
@@ -669,7 +650,6 @@ androidContext.registerReceiver(mRingerModeReceiver, new IntentFilter(AudioManag
 
 ```
 
-
 3.
 
 Modify `JavaDataSource` class to handle data updates:
@@ -737,24 +717,20 @@ silentMode.addModifiedNotificationHandler(new ModifiedSubscriptionFunction() {
 
 ```
 
-
 4.
 
 In Android Studio, build, and run the app.
 
 When you run the application on an Android device, the Silent Mode widget updates when the ringer mode changes. To test this, enable and disable silent mode through the device user interface, or use the toggle button in the Silent Mode widget.
+**Note:** To change the ringer mode when Do Not Disturb is active, the application requires notification policy access permission. On the first launch, the application will prompt you to grant this permission.
 
-> **Note:** To change the ringer mode when Do Not Disturb is active, the application requires notification policy access permission. On the first launch, the application will prompt you to grant this permission.
->
 ## Whatâs next?
-
 
 In this tutorial you learned how to:
 
 - Create a data source using Kanzi Java API.
 - Use Android APIs to back the data source.
 - Ensure compatibility with the Kanzi Studio Preview where the Android APIs are not available.
-
 
 To learn more about how to use Kanzi Android framework (droidfw) and Java API see:
 

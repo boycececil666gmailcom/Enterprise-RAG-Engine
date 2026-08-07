@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/ui-navigation/step-1.html
 
 # Step 1 - Navigate the application screens
 
-
 In this step, you learn how to create navigation for application screens. You enable the user to navigate the application screens using both touch and key input.
 ## Get the tutorial
-
 
 To get the tutorial, in the Kanzi Studio Quick Start window, click Projects and select the Tutorials tab. Next to the UI navigation tutorial, click .
 
@@ -17,14 +15,12 @@ Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` director
 - The tutorial starting point project in the `<KanziWorkspace>/Tutorials/UI navigation/Start/Tool_project` directory.
 - The completed tutorial in the `<KanziWorkspace>/Tutorials/UI navigation/Completed` directory.
 
-
 This tutorial depends on a plugin from the Data source tutorial.
 
 To get the Data sources tutorial, in the Kanzi Studio Quick Start window, click Projects and select the Tutorials tab. Next to the Data sources tutorial, click .
 
 Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` directory.
 ## Content of the starting point project
-
 
 The starting point project contains the content that you need to complete this tutorial:
 
@@ -42,7 +38,6 @@ In this tutorial, you use these toggle buttons to activate the application scree
     - Maps contains a static image.
     - Settings contains a settings menu.
 
-
 In this tutorial, you learn how enable the user to move between these screens and interact with UI elements in each screen using both touch and key input.
 
 - The AlbumItem, PlaylistItem, RadioItem, and SettingsItem prefabs are the templates for the items in different types of lists.
@@ -53,7 +48,6 @@ In this tutorial, you learn how enable the user to move between these screens an
 You use this state manager in Step 2 of this tutorial.
 
 ## Navigate the application screens with touch input
-
 
 In this section, you create touch navigation for the application screens. You enable the user to navigate between the application screens by clicking the buttons in the navigation bar.
 
@@ -74,7 +68,6 @@ An Exclusive Activity Host uses the Controller Property to set and control which
   2.
 
 Name the property ApplicationScreens.ApplicationScreen and click OK.
-
 
 Kanzi Studio:
 
@@ -102,15 +95,11 @@ This way, you set the Source to
 
 ```
 
-
 Click Save.
 
 This binding creates a two-way connection between the toggled on menu button and the active Activity in the ApplicationScreens Activity Host.
-
-> **Tip:** You can start creating a binding for a property by right-clicking a property and selecting Create Binding.
->
-> This way you automatically add the property to the Binding Editor.
-
+**Tip:** You can start creating a binding for a property by right-clicking a property and selecting Create Binding.
+This way you automatically add the property to the Binding Editor.
 
 Now when you:
 
@@ -118,7 +107,6 @@ Now when you:
 - In the Activity Browser activate an Activity of an application screen, Kanzi selects the corresponding navigation menu button.
 
 ## Set the focus at application startup
-
 
 In this section, you set the node that receives the key focus when application starts.
 
@@ -139,17 +127,14 @@ This way, you set the key focus to the Home Activity that the application activa
 
 When the Home Activity activates, Kanzi moves the focus to that Activity. The Home Activity forwards the focus to its only focusable node, the Slider node. The Slider node becomes the key focus node, which receives key input.
 
-
 Now, when you select the Preview window, you can use these keys to adjust the temperature using the slider on the home screen:
 
 - â (Up) and â (Down) to move the knob
 - Home to move the slider knob to the bottom of the rail
 - End to move the slider knob to the top of the rail
 
-
 Slider nodes handle the input from these keys by default.
 ## Navigate the application screens with key input
-
 
 In this section, you create key navigation for the application screens. You enable the user to navigate between the application screens using the L and R keys.
 
@@ -173,7 +158,6 @@ In the Navigation Manipulator, add and set:
 
   - Left Navigation Key to L
   - Right Navigation Key to R
-
 
 This way, you set the Navigation Manipulator to respond to the L and R key presses.
 4.
@@ -199,7 +183,6 @@ In the Left Navigation trigger, right-click Conditions, select Trigger Condition
 
       - Type of B to Fixed
       - Fixed Value to Left
-
 
 With this condition, you set the Left Navigation trigger to set off only when the user presses the L key, which you set in the Navigation Manipulator as the Left Navigation Key.
   3.
@@ -231,11 +214,9 @@ In the Right Navigation trigger, press Alt and right-click Actions and select Di
 
 With this action, you set the ApplicationScreens Activity Host to activate the next Activity in the ApplicationScreens Activity Host. By enabling the Loop Activity property, you set the ApplicationScreens Activity Host to activate its first Activity when the Right Navigation trigger sets off while the last Activity is active.
 
-
 Now, when you select the Preview window and press:
 
 - The L key, you navigate left through the application screens.
 - The R key, you navigate right through the application screens.
-
 
 Introduction Next step

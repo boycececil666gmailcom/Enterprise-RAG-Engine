@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/version-control/version-con
 
 # Using version control systems with Kanzi
 
-
 When you add your Kanzi projects to a version control system, do not add these files and directories:
 
 - `.kzproj_N`
@@ -22,11 +21,8 @@ When you add your Kanzi projects to a version control system, do not add these f
 - `output`
 - `lib`
 - `thumbnails`
-
-
-> **Note:** The `cubemaps` and `mipmaps` directories excluded above hold the generated faces and roughness mipmaps of image-based lighting cubemap textures. Kanzi Studio regenerates them from the source image when they are missing, such as after a fresh clone. Therefore, also add to version control the source hdr or exr image from which you created each image-based lighting cubemap texture. See Using image-based lighting cubemap textures.
+**Note:** The `cubemaps` and `mipmaps` directories excluded above hold the generated faces and roughness mipmaps of image-based lighting cubemap textures. Kanzi Studio regenerates them from the source image when they are missing, such as after a fresh clone. Therefore, also add to version control the source hdr or exr image from which you created each image-based lighting cubemap texture. See Using image-based lighting cubemap textures.
 ## Merging projects using version control tools
-
 
 After configuring your version control tool you can use the Kanzi merge tool for Kanzi project updating and merging. For the integration Kanzi requires a version control tool that provides the necessary parameters to the Kanzi merge tool.
 |
@@ -56,7 +52,6 @@ MERGED |
 The parameter for the merged project. |
 ## Integrating the Kanzi merge tool with a version control tool
 
-
 To integrate the Kanzi merge tool with a version control tool:
 
 1.
@@ -71,7 +66,6 @@ Set the version control tool parameters for the Kanzi merge tool. For example, t
 
 ## Integrating the Kanzi merge tool with SVN version control software
 
-
 To integrate the Kanzi merge tool with SVN version control software, add Kanzi merge tool as an external program for merging files with the .kzproj extension.
 
 For example, if you are using Tortoise SVN, in TortoiseSVN select SVN > Settings > External Programs > Merge Tool > Advanced and set:
@@ -83,7 +77,6 @@ For example, if you are using Tortoise SVN, in TortoiseSVN select SVN > Settings
 <KanziInstallation>/Studio/Bin/KanziMergeTool.bat "<KanziInstallation>/Studio/Bin/KanziStudio.exe"  %mine %theirs %base %merged
 
 ```
-
 
 For example, if your installation of Kanzi is in `C:\Program Files\Rightware\Kanzi`, use
 

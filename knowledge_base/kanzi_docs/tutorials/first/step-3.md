@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/first/step-3.html
 
 # Step 3 - Navigate between screens
 
-
 In this step, you first create a header and a footer in the RootNode node, then you create the buttons to navigate between the Activity nodes that you created in the previous step.
 ## Create the header and footer
-
 
 In this section, you create the application header and footer.
 
@@ -43,7 +41,6 @@ In Kanzi, these brushes are available:
     2.
 
 Click  next to the Background Brush property and set the color that you want to use for the Header and Footer background.
-
 
 3.
 
@@ -87,11 +84,9 @@ This way you create a 10 pixel margin on the right side of the nodes.
 In the Node Tree, select the Stack Layout 2D node. In the Preview, select the Node tool  and click the center square in the Align tool .
 
 This way you align the Stack Layout 2D to the center of the Header node.
+**Tip:** Use the Align tool to set the Horizontal Alignment and Vertical Alignment properties.
 
-> **Tip:** Use the Align tool to set the Horizontal Alignment and Vertical Alignment properties.
->
 ## Create a prefab for the navigation button
-
 
 Use prefabs (prefabricated templates) to structure your application and to create consistent interfaces. Prefabs allow you to create the building blocks of your application and make the application easier to maintain.
 
@@ -137,7 +132,6 @@ Adds the custom property type to the root node of the prefab.
   3.
 
 Creates a `##Template` binding to the property in the root node of the prefab.
-
 
 That way you can set in the root of the prefab instance the text that you want the Text Block 2D node to show.
 4.
@@ -191,14 +185,12 @@ In the Activity Host: Activate Activity action set:
     - Target Item to the Exclusive Activity Host 2D that holds the Activities
     - Activity Activation Path to the Activity to which you want the button to navigate
 
-
 For example, in the Car toggle button, set the action to go to the Car Settings Activity.
   4.
 
 In the Preview, click  to enter the Interact mode.
 
 In the Interact mode, you can interact with your application in the Preview window as you would on a device.
-
 
 When you restart the Preview and click each button in the Footer node, the trigger in the button sets off an action that transitions to the Activity node you set in each button.
 

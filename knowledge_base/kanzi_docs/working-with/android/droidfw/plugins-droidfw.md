@@ -7,7 +7,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/android/droidfw/plugins-dro
 
 ## Using Kanzi Engine Java plugins
 
-
 To learn about creating Kanzi Engine Java plugins, see Creating Kanzi Engine Java plugins.
 
 To use a plugin in your Android application, either:

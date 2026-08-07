@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/installing-kanzi/license-management/dong
 
 # Using a dongle license to activate Kanzi Studio
 
-
 After you purchase a Kanzi Studio dongle license, but before you can start using a dongle Kanzi Studio license, you have to receive a USB dongle and a license file from Rightware.
 
 Once you set up a Kanzi Studio dongle license, you can use the same dongle license on multiple computers, but only on one computer at a time.
@@ -34,6 +33,5 @@ Click Browse, select the license file, and click Next.
 
   - If the license activation is successful, click OK and start using Kanzi Studio.
   - If the license activation was not successful, the License Manager displays a message saying what went wrong.
-
 
 For technical support use the Kanzi Support Portal at [http://support.rightware.com](http://support.rightware.com/). See Technical support.

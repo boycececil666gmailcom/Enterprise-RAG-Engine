@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/plugins/debugging-kanzi-eng
 
 # Debugging native Kanzi Engine plugins
 
-
 You can debug your native Kanzi Engine plugins in the Kanzi Studio Preview using Visual Studio.
 
 To debug a native Kanzi Engine plugin:
@@ -57,13 +56,11 @@ In the Attach to box make sure that these code types are listed:
 
 Click Attach.
 
-
 6.
 
 In Visual Studio insert the breakpoints in the Kanzi Engine plugin source code.
 7.
 
 In the Debug Preview dialog click OK.
-
 
 Now when you interact with your application in the Kanzi Studio Preview, whenever one of the breakpoints you inserted in the code is hit, Visual Studio stops executing the code and you can debug your Kanzi Engine plugin.

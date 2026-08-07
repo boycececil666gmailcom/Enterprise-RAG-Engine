@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/installing-kanzi/upgrading.html
 
 # Upgrading Kanzi
 
-
 You can have more than one version of Kanzi installed on your computer at the same time. However, if you want to have only one version installed and are upgrading your version of Kanzi, install the newer version of Kanzi before uninstalling the older version.
 
 To upgrade Kanzi to a newer version:
@@ -17,10 +16,8 @@ Install the newer version of Kanzi. See Installing Kanzi.
 
 (Optional) Uninstall the older version of Kanzi using the Windows Control Panel.
 
-
 To use the Kanzi Build Environment you already have installed, set the environment variables in `%ProgramData%\Rightware\<KanziVersion>\kanzi_environment_variables.bat`. See Setting up Android environment for Kanzi Studio.
 ## Upgrading computer hardware and operating system
-
 
 An active Kanzi license is tied to your computer hardware and operating system. When you make a significant change on your computer, your Kanzi license becomes void. For example, before you change your computer hard drive, or upgrade your operating system, release your Kanzi license before you make the change, and then activate the Kanzi license after you complete the change.
 

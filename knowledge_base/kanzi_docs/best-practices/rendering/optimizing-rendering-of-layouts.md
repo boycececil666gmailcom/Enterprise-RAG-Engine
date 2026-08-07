@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/best-practices/rendering/optimizing-rend
 
 # Optimizing the rendering of layouts
 
-
 Calculating a layout for a node or a sub-tree in the node tree can be a computationally intensive task. In general, any movement in any node of, for example, a Grid Layout node, causes recalculation of the layout, which in turn slows down framebuffer updating.
 
 To optimize the rendering of layouts instead of the Layout Transformation property use the Render Transformation whenever possible. Render transformations do not recalculate a layout and can significantly decrease the amount of recalculations in a layout with many child nodes.
@@ -18,7 +17,6 @@ In the Preview select the Node tool  and set the transformation tool to use the 
 2.
 
 Use the Node tool to move, rotate, or scale the node in the Preview. See Editing your application in the Preview.
-
 
 or
 

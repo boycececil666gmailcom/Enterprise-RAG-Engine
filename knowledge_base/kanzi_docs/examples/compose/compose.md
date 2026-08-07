@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/examples/compose/compose.html
 
 # Jetpack Compose example
 
-
 This example shows how to use Kanzi Android framework (droidfw) with Jetpack Compose on Android. For the Gradle files, the example uses Kotlin DSL.
 
 Requirements:
@@ -17,12 +16,10 @@ Requirements:
 
 ## Getting the example
 
-
 To get the example, in the Kanzi Studio Quick Start window, click Projects and select the Examples tab. Next to the Compose example, click .
 
 Kanzi Studio downloads the example to the `<KanziWorkspace>/Examples/Android/Compose` directory.
 ## Content of the example
-
 
 The main activity `ComposeActivity` contains these Kanzi-based composables:
 
@@ -30,7 +27,6 @@ The main activity `ComposeActivity` contains these Kanzi-based composables:
 - `End` instantiates a Kanzi Text Block node and sets the text that the node shows.
 
 ## Running the example
-
 
 To run the example:
 

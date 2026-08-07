@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/state-managers/using-state-
 
 # Using state managers
 
-
 Use states to define the look and behavior of your Kanzi application in different states. For example, you can use states to:
 
 - Set the size of items in a layout to emphasize when an item is selected.
@@ -13,18 +12,12 @@ Use states to define the look and behavior of your Kanzi application in differen
 - Enable or disable controls, such as buttons, in your application based on the state of the application.
 - Animate your application.
 
-
 Properties set in states override the default, inherited, and local property values. See Property precedence.
-
-> **Tip:** In the Kanzi Studio Node Tree window, an indicator next to a node shows when a State Manager, Binding, Data Source Binding, or an Animation overrides the values of some properties in that node.
->
-> To navigate to the source of the override in the Kanzi Studio project, right-click the override indicator and select the source you wish to navigate to from the context menu.
->
-> You can define the changes between states in these ways:
->
-> - Set a controller property for a state group and a value for that property for each state. These can be implicit properties, such as the Is Down property of the Button nodes. The state changes when the property changes, whether as part of the inherent logic of the node or a specified Set Property action or animation. See Using a controller property to set states.
-> - Using the State Manager actions Go to State, Next State, and Previous State. If you use the State Manager actions and a controller property, note that when the controller property changes, it overrides the previously set state. See Using state manager actions to set states.
-
+**Tip:** In the Kanzi Studio Node Tree window, an indicator next to a node shows when a State Manager, Binding, Data Source Binding, or an Animation overrides the values of some properties in that node.
+To navigate to the source of the override in the Kanzi Studio project, right-click the override indicator and select the source you wish to navigate to from the context menu.
+You can define the changes between states in these ways:
+- Set a controller property for a state group and a value for that property for each state. These can be implicit properties, such as the Is Down property of the Button nodes. The state changes when the property changes, whether as part of the inherent logic of the node or a specified Set Property action or animation. See Using a controller property to set states.
+- Using the State Manager actions Go to State, Next State, and Previous State. If you use the State Manager actions and a controller property, note that when the controller property changes, it overrides the previously set state. See Using state manager actions to set states.
 
 Learn how to use state managers by completing one of these tutorials:
 
@@ -33,7 +26,6 @@ Learn how to use state managers by completing one of these tutorials:
 - Create a turn indicator and control it with a custom property. See Tutorial: Create cluster indicators.
 
 ## Creating a state manager
-
 
 Use state managers in your Kanzi application to control the states of nodes.
 
@@ -69,15 +61,10 @@ For example, in the Preview use the Node tool to position the indicator.
   2.
 
 Repeat the previous step for the Off state and in the State Tools save the current position of the toggle button indicator to that state.
-
-
-> **Tip:** In the Kanzi Studio Properties window, properties with its value is set by a State Manager are marked in blue type, and has the State Manager icon  next to it:
->
-> Orange type marks properties with several override sources:
->
-> If a property has multiple override sources, only the one with the highest precedence will take effect. See Property system.
+**Tip:** In the Kanzi Studio Properties window, properties with its value is set by a State Manager are marked in blue type, and has the State Manager icon  next to it:
+Orange type marks properties with several override sources:
+If a property has multiple override sources, only the one with the highest precedence will take effect. See Property system.
 ## Using a controller property to set states
-
 
 In a state manager, the value of the property that you select as the Controller Property defines the conditions when each state in a state group is active.
 
@@ -110,10 +97,8 @@ For example:
 
 In the State Tools, click Edit State Manager to deactivate the State Tools.
 
-
 When you click the toggle button in the Preview you toggle between the On and Off states you defined in the state manager that you created in the Toggle Button 2D node.
 ## Using state manager actions to set states
-
 
 Use the State Manager actions to set your Kanzi application to enter different states.
 
@@ -125,7 +110,6 @@ See Setting a state manager to a specific state.
 - Next State and Previous State actions set a state manager to the next and previous state in the state group that you define in the action. See Setting a state manager to the next or previous state.
 
 ### Setting a state manager to a specific state
-
 
 Use the Go to State action to set a state manager to a specific state.
 
@@ -159,17 +143,14 @@ In the Node Components > Triggers press Alt and right-click the trigger, which y
     - Target Item to the node that uses the state manager to a state of which you want to transition
     - State to the state to which you want the node to transition
 
-
 4.
 
 Repeat the previous step for all the states that you created earlier in this procedure.
 
 For example, create a Button node for each state, and add to the Button: Click trigger of each button the Go to State action.
 
-
 When you click one of the buttons that you created, you set off the trigger that executes the action which tells the state manager to go to the state which you set in the action.
 ### Setting a state manager to the next or previous state
-
 
 Use the Next State and Previous State actions to set a state manager to the next or previous state in a state group. See Using state groups.
 
@@ -203,10 +184,8 @@ For example, in the Node Components > Triggers press Alt and right-click the But
   - (Optional) Loop State to enabled to make the state manager go back to the first state after it reaches the last state
   - (Optional) Immediate to disabled to set the state manager to use the animation you set in the state manager to transition between states. When you enable this property the state manager changes the state instantly, without playing a transition animation. See Using state transitions.
 
-
 When you click the button, you set off the trigger that executes the action which tells the state manager to go to the state which you set in the action.
 ## Reacting when a node enters or leaves a state
-
 
 When a node transitions between states, Kanzi:
 
@@ -234,7 +213,6 @@ In the Node Tree select the node in which you want to react to entering or leavi
 
   - Entered State message trigger to react when the node enters a state
   - Left State message trigger to react when the node leaves a state
-
 
 For example:
 
@@ -273,12 +251,10 @@ For example, for the Left State trigger in the trigger condition set:
 
 For example, set it to State A.
 
-
 When the node leaves the state that you specified in the trigger condition, Kanzi prints to the Log window the message that you entered in the Write Log action.
 
 To open the Log window, in the main menu select Window > Log.
 ## Using state groups
-
 
 State groups contain states, define controller properties, and transitions between states in a state group. Use state groups to smoothly control the states and transitions in your application. For example, a state manager for a button can contain three state groups: button pressed, button released, and hover over button. In each state group you create states, which use state objects to define how the button behaves in each state.
 
@@ -294,6 +270,5 @@ In the State Tools bring the mouse pointer over a state group to set the propert
 To duplicate or remove a state group, hover over the state group and select Duplicate or Remove.
 
 ## Using state managers in the API
-
 
 For details, see the `StateManager` class.

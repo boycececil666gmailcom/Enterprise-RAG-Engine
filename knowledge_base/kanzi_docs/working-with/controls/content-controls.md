@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/controls/content-controls.h
 
 # Content control nodes
 
-
 Use content control nodes to display content in your application.
 ## Images and text
-
 
 Use image and text objects to show content.
 |

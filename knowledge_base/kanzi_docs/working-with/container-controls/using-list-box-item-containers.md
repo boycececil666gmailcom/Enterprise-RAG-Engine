@@ -5,14 +5,12 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/container-controls/using-li
 
 # Using the List Box Item Container prefabs
 
-
 Use the List Box Item Container prefabs to set the appearance and behavior of items in List Box nodes. For example, use a List Box Item Container prefab to add decorative elements to List Box items or change the appearance of the currently selected item.
 
 Learn how to use a List Box Item Container 2D prefab to set the appearance of the selected item in a Grid List Box 2D node by completing a tutorial. See Tutorial: Create a contacts list with a Grid List Box.
 
 For an example of how to use a List Box Item Container 3D prefab to set the appearance of the selected item in a Trajectory List Box 3D node, see the Trajectory list box example.
 ## Creating a List Box Item Container prefab
-
 
 To create a List Box Item Container prefab:
 
@@ -36,11 +34,9 @@ In the List Box Item Container prefab, set the functionality and decoration that
   - Set the placement of the list box item in the node tree of the List Box Item Container prefab. See Setting the placement of List Box items in a List Box Item Container.
   - Set the appearance of the selected list box item. See Using a List Box Item Container to set the appearance of the selected item in a List Box.
 
-
 The List Box Item Container prefab is by default a focus group and handles the key focus and key input. This enables Kanzi to synchronize the item selection and key focus in the List Box node that uses the List Box Item Container. See Handling the key focus in a List Box node.
 
 ## Setting the placement of List Box items in a List Box Item Container
-
 
 When you set a List Box Item Container prefab as the Item Container Template of a List Box node, Kanzi by default places the list box item as a child node of the List Box Item Container prefab. You can set a Content Layout node in the List Box Item Container prefab as the root node of the list box item.
 
@@ -67,9 +63,7 @@ Name the alias $layout and set it to point to the Content Layout node that you w
 
 This way, you set Kanzi to place the list box item in the Content Layout node. If you do not specify the $layout alias, Kanzi places the list box item as the last child node of the List Box Item Container prefab.
 
-
 ## Using a List Box Item Container to set the appearance of the selected item in a List Box
-
 
 You can use the List Box Item Container prefabs to change the appearance of the currently selected item in a List Box node. For example, to highlight the selected item, you can make it slightly larger than the other items or change its background color.
 
@@ -111,10 +105,8 @@ For example, to change the background color of the selected list box item, add t
 
 In the State Tools, click Edit State Manager to deactivate the State Tools.
 
-
 In the Preview, when you click an item in the List Box node to select it, its appearance changes.
 ## Enabling the double-click gesture for List Box items
-
 
 When you add to a List Box node items that support the double-click gesture, you must enable the double-click gesture for those items in the List Box Item Container prefab.
 
@@ -133,13 +125,10 @@ When you enable the Double-Click Enabled property, Kanzi installs in the List Bo
 
 ## Using the List Box Item Container 3D prefab in the API
 
-
 For details, see the `ListBoxItemContainer3D` class.
 ## Using the List Box Item Container 2D prefab in the API
 
-
 For details, see the `ListBoxItemContainer2D` class.
 ## List Box Item Container property types
-
 
 For lists of the available property types for the List Box Item Container prefabs, see List Box Item Container 2D and List Box Item Container 3D.

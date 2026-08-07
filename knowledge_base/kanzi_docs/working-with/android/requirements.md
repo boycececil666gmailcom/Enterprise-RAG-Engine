@@ -5,12 +5,10 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/android/requirements.html
 
 # Requirements for Android application development with Kanzi
 
-
 When you are developing Kanzi applications for Android you can use Android Studio, the Clang toolchain, and the Gradle build system. This development approach is tested on:
 
 - Ubuntu/Linux 18.04.1
 - Windows 10
-
 
 To develop Android applications with Kanzi, you need Android Studio, which you can download from https://developer.android.com/studio. The version of Android Studio you can use depends on the version of Android Gradle plugin your project uses, see https://developer.android.com/studio/releases#android_gradle_plugin_and_android_studio_compatibility.
 
@@ -50,7 +48,6 @@ The application templates of these frameworks are compatible with:
 - JDK 17 or 21
 - CMake 3.25 or newer (3.30.5 as default provided by Android SDK)
 
-
 You can use other versions of AGP and Gradle, but this requires manual adjustments to your project.
 
 For AGP and Gradle upgrades, we recommend that you use the Android Gradle plugin upgrade assistant. See https://developer.android.com/build/agp-upgrade-assistant.
@@ -63,7 +60,6 @@ To deploy an application to the Android Emulator, in the Android Emulator enable
 ## Setting up Android Studio environment
 
 ### Installing JDK
-
 
 Android Studio comes with JDK that it usually installs to `C:\Program Files\Android\Android Studio\jbr` or `C:\Users\<user>\AppData\Local\Programs\Android Studio\jbr`.
 
@@ -87,14 +83,12 @@ In the Download JDK window, set:
   - Version to the version that you want to use. Kanzi Android templates are compatible with JDK 17 or 21.
   - Vendor to a trusted source. For example, Eclipse Temurin (AdoptOpenJDK Hotspot).
 
-
 Click Download.
 5.
 
 Synchronize your project with Gradle.
 
 ### Installing native build tools
-
 
 To install native build tools for Android Studio:
 
@@ -108,11 +102,9 @@ In the SDK Manager window in the SDK Tools tab, select:
   - NDK 28.2.13676358
   - CMake 3.25 or newer (3.30.5 as default provided by Android SDK)
 
-
 Click OK.
 
 ## Setting up Android environment for Kanzi Studio
-
 
 You must set up the Android environment for Kanzi Studio to use Android and Java functionality in Kanzi Studio.
 
@@ -139,10 +131,8 @@ You can use the JDK that you installed with Android Studio. See Installing JDK.
 
 Alternatively, you can install a standalone JDK. For example, from https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.8.1%2B1/OpenJDK17U-jdk_x64_windows_hotspot_17.0.8.1_1.zip.
 
-
 Kanzi Studio stores the environment variables in the `%ProgramData%\Rightware\<KanziVersion>\kanzi_environment_variables.bat` file. The Kanzi Command Prompt uses the environment variables set in this file. See Using the Kanzi Command Prompt.
 
 ## Kanzi Android build process
-
 
 This diagram shows the process that Kanzi uses to build an Android package.

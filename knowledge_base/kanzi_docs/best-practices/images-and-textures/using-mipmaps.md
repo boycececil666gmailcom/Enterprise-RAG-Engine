@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/best-practices/images-and-textures/using
 
 # Using mipmaps
 
-
 Use mipmaps to create a set of downscaled sublevels from a large texture. Mipmaps increase the GPU memory use by one third, but improve the performance when the full texture does not have to be sampled. Use mipmaps to improve the performance whenever you scale a textured node.
 
 For example, a 256 by 256 pixels texture has mipmap levels that reduce the texture to 128 by 128, 64 by 64, and so on until 1 by 1 pixel. The performance improves because smaller mipmap levels fit better in the fixed-size texture cache in the GPU.
@@ -14,7 +13,6 @@ When you create mipmaps in a third-party tool and include them in a .dds file, K
 
 Avoid creating mipmaps from .jpeg textures, because the .jpeg image format causes the quality of the mipmaps to degrade.
 ## Generating mipmaps for a texture
-
 
 When you import an image that does not contain mipmaps, you can generate the mipmaps for the texture from that image in Kanzi Studio.
 
@@ -34,15 +32,11 @@ In the Library > Materials and Textures > Textures, select the texture that uses
 4.
 
 When you export the kzb file of your project and Kanzi Studio asks whether you want to preprocess the images, click Yes. If you do not preprocess images in Kanzi Studio, Kanzi Engine generates mipmaps when it loads your application on the target device. This increases the loading time of your application.
+**Note:** Kanzi cannot generate mipmaps for images that use ASTC or ETC compression.
+Tip
+To manually generate mipmaps for images, in the Library right-click the image for which you want to generate mipmaps and select Preprocess images.
 
-> **Note:** Kanzi cannot generate mipmaps for images that use ASTC or ETC compression.
->
-> Tip
->
-> To manually generate mipmaps for images, in the Library right-click the image for which you want to generate mipmaps and select Preprocess images.
->
 ## Creating mipmaps for composition targets
-
 
 You can create mipmaps for composition targets when you render 3D content with a Composition Target render pass or Cubemap render pass. For example, use this to create a low-quality blur effect that is quick to render.
 
@@ -82,7 +76,6 @@ For example, to set the material for Composition Target 0, add and set the Color
 
 For example, set it to the DefaultDepthMipmapFilterMaterial. If your project does not contain this material, in the Library > Materials and Textures press Alt and right-click Material Types, and select DefaultDepthMipmapFilter.
 
-
 The default mipmap filtering materials can use these properties as inputs to their shaders:
 
   - Current Mipmap Level reports the mipmap level that is being rendered.
@@ -93,7 +86,6 @@ The default mipmap filtering materials can use these properties as inputs to the
 (Optional) By default, Kanzi generates the mipmaps when the Composition Target render pass or Cubemap render pass creates the composition target. When you continue rendering to the same composition target in another render pass, creating the mipmaps immediately is likely to waste GPU time. To avoid this, in the render that creates the composition target, add and disable the Composition Target render pass > Resolve Immediately or Cubemap render pass > Resolve Immediately property.
 
 ## Creating mipmaps for a Render Target Texture
-
 
 You can create mipmaps for a Render Target Texture to which you render 3D content with a Composition Target render pass. For example, use this to create a low-quality blur effect that is quick to render.
 

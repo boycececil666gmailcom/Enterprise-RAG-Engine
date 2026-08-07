@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/best-practices/rendering/anti-aliasing.h
 
 # Applying anti-aliasing
 
-
 You can apply anti-aliasing to an entire Kanzi application, or only to selected nodes:
 
 - If most of the content in your application requires anti-aliasing, apply anti-aliasing to the entire application. See Applying anti-aliasing to an entire application.
@@ -14,12 +13,10 @@ You can apply anti-aliasing to an entire Kanzi application, or only to selected 
   - Multisampling requires less computation, but not all hardware supports it. See Using multisampling.
   - Supersampling requires more resources, but you can use it on a wider range of hardware. See Using supersampling.
 
-
 By default, the Kanzi Studio Preview and the Kanzi Application Player on Windows apply anti-aliasing using 4 samples. For both, you can configure the amount of anti-aliasing that you want to use.
 
 See Setting anti-aliasing in the Preview and Application Player.
 ## Applying anti-aliasing to an entire application
-
 
 When you apply anti-aliasing for the entire application, you set the number of anti-aliasing surface samples that you want to use. Because this value depends on the device on which you want to run your Kanzi application, check the documentation of that device for supported values. If you set the number of anti-aliasing surface samples to a value that your device does not support, Kanzi Engine clamps the value to the largest value supported by the device driver.
 
@@ -34,7 +31,6 @@ SurfaceSamplesAntialiasing = 4
 
 ```
 
-
 or
 
 - In the C++ application in the `Application::onConfigure` function, set the `configuration.defaultSurfaceProperties.antiAliasing` parameter to the number of anti-aliasing surface samples that you want to use.
@@ -46,10 +42,8 @@ configuration.defaultSurfaceProperties.antiAliasing = 4;
 
 ```
 
-
 See SurfaceSamplesAntialiasing.
 ## Setting anti-aliasing in the Preview and Application Player
-
 
 By default, the Kanzi Studio Preview and the Kanzi Application Player on Windows apply anti-aliasing using 4 samples. For both, you can configure the amount of anti-aliasing that you want to use.
 
@@ -79,14 +73,12 @@ In Kanzi Studio, restart the Preview.
 
 ## Using multisampling
 
-
 Use multisampling (MSAA) to reduce aliasing in selected parts of your Kanzi application. Multisampling requires less resources than supersampling. When rasterizing a polygon, multisampling generates extra samples only for the fragments at the edges of the polygon, while supersampling generates extra samples for all fragments in the polygon.
 
 When using tile-based multisampling, usually on mobile platforms, the GPU generates multiple samples only for one GPU tile at a time. The GPU resolves the samples implicitly when writing that tile back to texture memory, saving memory and GPU bandwidth.
 
 In the first image, no anti-aliasing is applied. In the second image, multisampling with 8 samples is applied.
 ### Multisampling 3D content
-
 
 To apply multisample anti-aliasing to 3D content that Kanzi renders to a composition target, in the Composition Target render pass that you use to render your content, set the Multisample Level property to the number of anti-aliasing samples that you want to use.
 
@@ -113,7 +105,6 @@ For example, to clear the first color buffer with a different color, set the Cle
 
       - Draw Objects render pass named Draw Objects allows you to set a Camera node to render a specific list of nodes, to filter those nodes, and to control frustum culling. Draw Objects render pass by default renders nodes using the lights provided by its nearest ancestor Gather Lights render pass. By default the Draw Objects render pass uses the default Camera node to render all nodes in a Viewport 2D node.
 
-
   - Blit render pass blits one or more single textures or cubemap textures on the screen using a specific material.
 
 By default, this Blit render pass draws on the screen the first color texture to which the Composition Target render pass renders its content.
@@ -131,10 +122,8 @@ For example, set Multisample Level to 8.
 
 See the documentation of the device on which you want to run your Kanzi application for supported values, because the number of anti-aliasing samples depends on the device. If you set the Multisample Level property to a value that your device does not support, Kanzi Engine clamps the value to the largest value supported by the device driver.
 
-
 Kanzi now applies anti-aliasing to the content of the Viewport 2D node.
 ### Multisampling 2D content
-
 
 You can apply multisample anti-aliasing to 2D nodes whose content Kanzi renders to a composition target. Use the Render Target > Multisample Level property to set the number of anti-aliasing samples that you want to use.
 
@@ -166,10 +155,8 @@ See the documentation of the device on which you want to run your Kanzi applicat
 
 ## Using supersampling
 
-
 Use supersampling (SSAA) to reduce aliasing in selected parts of your Kanzi application if your hardware does not support multisampling. Supersampling requires more resources than multisampling. When rasterizing a polygon, supersampling generates extra samples for all fragments in the polygon, while multisampling generates extra samples only for the fragments at the edges of the polygon.
 ### Supersampling a composition target
-
 
 You can supersample a composition target texture when you render 3D content with a Composition Target render pass. To supersample a composition target texture you must use the composition target which the Composition Target render pass creates automatically.
 
@@ -194,7 +181,6 @@ For example, to clear the first color buffer with a different color, set the Cle
 
       - Draw Objects render pass named Draw Objects allows you to set a Camera node to render a specific list of nodes, to filter those nodes, and to control frustum culling. Draw Objects render pass by default renders nodes using the lights provided by its nearest ancestor Gather Lights render pass. By default the Draw Objects render pass uses the default Camera node to render all nodes in a Viewport 2D node.
 
-
   - Blit render pass blits one or more single textures or cubemap textures on the screen using a specific material.
 
 By default, this Blit render pass draws on the screen the first color texture to which the Composition Target render pass renders its content.
@@ -209,7 +195,6 @@ Kanzi now renders the scene in the Viewport 2D node using the Compose and Blit P
 In the Composition Target render pass that you use to render the nodes which you want to supersample, add the Resolution Multiplier property, and set it to the value by which you want to multiply the resolution of the composition target texture.
 
 ### Supersampling a render target texture
-
 
 You can supersample a render target texture which you use in a Texture Brush or as an image in an Image node.
 

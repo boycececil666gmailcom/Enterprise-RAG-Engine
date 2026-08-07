@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/data-sources/data-sources.h
 
 # Data sources
 
-
 Use data sources to separate the user interface from the application data and to remove the dependencies between a Kanzi Studio project and the application code which define the Kanzi application.
 
 Kanzi allows you to define the format and structure of your data source by defining a Kanzi Engine data source plugin.

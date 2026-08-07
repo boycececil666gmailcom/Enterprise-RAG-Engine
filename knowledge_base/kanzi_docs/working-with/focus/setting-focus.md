@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/focus/setting-focus.html
 
 # Using focus
 
-
 Key focus forwards hardware key messages to the correct user interface element in your application. For example, the user can press the arrow keys on the keyboard to move a slider or press the Enter key to click a button.
 
 You can set which user interface elements in your application can receive focus and use the default keys that Kanzi uses to navigate focus, or set a specific key.
@@ -22,7 +21,6 @@ For these nodes, the Focusable property is enabled by default:
 - Text Box
 - Scroll View nodes that you create in Kanzi Studio
 
-
 To handle focus in your Kanzi application, you can:
 
 - Set focus to a specific user interface element. See Setting focus.
@@ -32,10 +30,8 @@ To handle focus in your Kanzi application, you can:
 - Change the appearance of a user interface element when that element has focus. See Showing when a user interface element has focus.
 - Define keyboard navigation for your application. See Setting a specific key to move focus.
 
-
 Learn how to use focus by completing a tutorial. See Tutorial: Create UI navigation for an application.
 ## Default keyboard navigation keys
-
 
 These are the default keyboard keys you can use to move focus in your application:
 
@@ -49,7 +45,6 @@ These are the default keyboard keys you can use to move focus in your applicatio
   - â and â to move the knob of a horizontal slider
   - â and â to move the knob of a vertical slider
 
-
 To move a slider knob with the arrow keyboard keys, in that Slider node set the amount that the knob moves for each key press with the Step Value property.
 - The Scroll View nodes that you create in Kanzi Studio have the Focusable property enabled and can receive focus by default. When a Scroll View node has focus, to scroll that node, you can use the default keyboard keys â, â, â, and â.
 - When a List Box node has the focus, you can use these default keyboard keys to navigate the focusable list items:
@@ -60,20 +55,16 @@ To move a slider knob with the arrow keyboard keys, in that Slider node set the 
   - End to move the focus to the last focusable item.
   - Page Up and Page Down to move the focus backward or forward by one page in a Grid List Box node. One page corresponds to the size of the visible area of the Grid List Box node.
 
-
 See Handling the key focus in a List Box node.
 - The Text Box nodes have the Focusable property enabled and can receive focus by default. By default when a Text Box node has focus, that Text Box node is in the editing state.
 
 When a Text Box node is in the editing state, you can use keyboard keys to move the cursor and modify the text selection. See Using the Text Box nodes.
 
-
 To learn how to set custom keys for focus navigation, see Setting a specific key to move focus.
 ## Setting focus
 
-
 Set focus to a node when you want to enable the user to use keys to interact with the user interface element that that node represents.
 ### Setting focus with a Try Set Focus action
-
 
 To set focus with a Try Set Focus action:
 
@@ -99,11 +90,9 @@ For example, by creating a Try Set Focus action in a Button: Click trigger you s
 4.
 
 In the Try Set Focus action set the Target Item to the node to which you want to set the focus.
+**Tip:** Aliases provide a convenient way to set the node to which you want to set the focus. See Using aliases.
 
-> **Tip:** Aliases provide a convenient way to set the node to which you want to set the focus. See Using aliases.
->
 ### Setting focus to a node that the user presses
-
 
 To set focus to a node that the user presses:
 
@@ -135,16 +124,11 @@ In the Properties add the Focus On Press property and set it to:
   - Node or overlay to try to set the focus to the node and if that fails, set focus to the overlay scope that contains the node. The overlay scope node then forwards the focus according to its settings.
 
 Every Kanzi application contains at least one overlay scope, the Screen node.
-
-
-> **Tip:** A node inherits the value of the Focus On Press property from its parent. For example, to set all interactive nodes in an application screen to receive focus at press, it is enough to set the Focus On Press property in the root node of that application screen.
-
+**Tip:** A node inherits the value of the Focus On Press property from its parent. For example, to set all interactive nodes in an application screen to receive focus at press, it is enough to set the Focus On Press property in the root node of that application screen.
 
 In the Preview click the node in which you set the Focus On Press property. For example, if you set the property in a prefab, instantiate that prefab multiple times and click the instances.
-
-> **Tip:** Use a state manager or a binding to change the appearance of a user interface element when that element has focus. See Showing when a user interface element has focus.
+**Tip:** Use a state manager or a binding to change the appearance of a user interface element when that element has focus. See Showing when a user interface element has focus.
 ## Moving focus in the focus chain
-
 
 Focus chain is a sequence of nodes that defines the order in which Kanzi sets focus to those nodes. Kanzi includes in the focus chain all nodes in your project that have the Focusable property enabled.
 
@@ -153,18 +137,13 @@ These nodes have the Focusable property enabled and can receive focus by default
 - Button, Toggle Button, Slider, and Text Box nodes that you create using the Kanzi Engine API or Kanzi Studio.
 - Scroll View nodes that you create using Kanzi Studio.
 
-
 By default, the focus chain moves the focus from each node based on the order of the nodes in the node tree:
 
 - To the next focusable node in the focus scope when the user navigates in the forward direction by pressing the Tab key.
 - To the previous focusable node in the focus scope when the user navigates in the backward direction by pressing the BackTab key or the Shift Tab keys.
-
-
-> **Note:** In the default focus chain order, in a Viewport 2D node, the first child node is always the Scene node.
->
-> To control how the focus chain moves the focus, you can set for each focusable node the position of the node in the focus chain. See Setting the order of nodes in the focus chain.
+**Note:** In the default focus chain order, in a Viewport 2D node, the first child node is always the Scene node.
+To control how the focus chain moves the focus, you can set for each focusable node the position of the node in the focus chain. See Setting the order of nodes in the focus chain.
 ## Setting the order of nodes in the focus chain
-
 
 To manually set the order of nodes in the focus chain, in the Node Tree select each focusable node whose position in the focus chain you want to set and in the Properties add and set the Focus Order property.
 
@@ -176,7 +155,6 @@ For example, when the node whose Focus Order property is set to 1 has focus and 
 - In the descending order when the user navigates in the backward direction.
 
 ## Moving the focus within a group of nodes
-
 
 Use a focus group to handle navigation between nodes that form a user interface element.
 
@@ -196,38 +174,26 @@ These nodes have the Focusable property enabled and can receive focus by default
 
   - Button, Toggle Button, Slider, and Text Box nodes that you create using the Kanzi Engine API or Kanzi Studio.
   - Scroll View nodes that you create using Kanzi Studio.
+**Tip:** Use a state manager or a binding to change the appearance of a user interface element when that element has focus. See Showing when a user interface element has focus.
+2.
+(Optional) To make the focus move in the focus group cyclically, in the Properties add and enable the Focus Scope > Cyclic Focus Navigation property.
+When you enable the Cyclic Focus Navigation property:
+- When the user navigates forward by pressing the Tab key, and the focus reaches the last focusable node of the focus group, the focus moves back to the first focusable node.
+- When the user navigates backward by pressing the BackTab or Shift Tab keys, and the focus reaches the first focusable node of the focus group, the focus moves back to the last focusable node.
+3.
+(Optional) To manually set which node in the focus group first gets the focus, in the Node Tree select the child node of the focus scope node to which you want to set focus, in the Properties add the Focus > Focus Order property, and set it to 1.
+When focus moves to the focus group node for the first time, the child node with the smallest Focus Order property value receives focus. If the focus group node has several child nodes with the same smallest Focus Order property value, Kanzi sets focus to the first child node in the node tree of the focus scope.
+When the focus moves away from the focus group, the focus group remembers its last-focused node. When that focus group receives focus again, Kanzi sets focus to the node that was last focused - not to the node with the smallest Focus Order property value.
 
-
-> **Tip:** Use a state manager or a binding to change the appearance of a user interface element when that element has focus. See Showing when a user interface element has focus.
-> 2.
->
-> (Optional) To make the focus move in the focus group cyclically, in the Properties add and enable the Focus Scope > Cyclic Focus Navigation property.
->
-> When you enable the Cyclic Focus Navigation property:
->
-> - When the user navigates forward by pressing the Tab key, and the focus reaches the last focusable node of the focus group, the focus moves back to the first focusable node.
-> - When the user navigates backward by pressing the BackTab or Shift Tab keys, and the focus reaches the first focusable node of the focus group, the focus moves back to the last focusable node.
->
-> 3.
->
-> (Optional) To manually set which node in the focus group first gets the focus, in the Node Tree select the child node of the focus scope node to which you want to set focus, in the Properties add the Focus > Focus Order property, and set it to 1.
->
-> When focus moves to the focus group node for the first time, the child node with the smallest Focus Order property value receives focus. If the focus group node has several child nodes with the same smallest Focus Order property value, Kanzi sets focus to the first child node in the node tree of the focus scope.
->
-> When the focus moves away from the focus group, the focus group remembers its last-focused node. When that focus group receives focus again, Kanzi sets focus to the node that was last focused - not to the node with the smallest Focus Order property value.
->
 ## Creating an overlay
-
 
 You can create an overlay that opens on top of other parts of your application. For example, you can create dialog boxes, notifications, and menus that are overlays.
 ### Creating an overlay using an Activity
-
 
 The most convenient way to create an overlay in Kanzi is using an Activity. Kanzi handles the key and touch input for the overlay automatically based on the activity status of the Activity:
 
 - When you activate the Activity, the overlay opens and gets the focus.
 - When you deactivate the Activity, the overlay closes and loses the focus.
-
 
 See Activities.
 
@@ -238,64 +204,38 @@ To create an overlay using an Activity:
 In a Parallel Activity Host create the Activity that you want to show as an overlay.
 
 For example, create an Activity that shows a submenu of settings items.
-
-> **Tip:** Use a state manager or a binding to change the appearance of a user interface element when that element has focus. See Showing when a user interface element has focus.
-> 2.
->
-> In the Prefabs select the Activity prefab that you want to show as an overlay, in the Properties add the Focus Scope > Focus Scope Type property, and set it to:
->
-> - Modal to create an overlay that blocks the input that comes from outside of the overlay.
->
-> For example, use this overlay type to create a dialog that the user must interact with before returning to the main application screen.
-> - Modeless to create an overlay that propagates the input that comes from outside of the overlay.
->
-> For example, use this overlay type to create a popup that allows the user to interact with other parts of the application while the popup is visible.
-> - Auto-Closing Modal to create an overlay that closes with touch input outside of the overlay.
->
-> For example, use this overlay type to create a notification that closes when the user taps the application screen outside that notification.
-> - Auto-Closing Modeless to create overlay that closes with touch input outside of the overlay and propagates the input.
->
-> For example, use this overlay type to create a menu that closes when the user taps outside it. If the user closes the menu by touching an interactive element, that element receives the touch.
->
-> 3.
->
-> To open the overlay, activate the Activity. See Activating Activities.
->
-> When you activate an Activity that you set as an overlay, Kanzi sets the focus to that Activity.
->
-> For example, to open the overlay when the user presses a button, in the Prefabs select a Button node, in the Button: Click trigger create an Activity Host: Activate Activity action, and in that action set:
->
-> - Target Item to the Activity Host that contains the Activity that you want to activate.
-> - Activation Path to the path from the Activity Host to the Activity that you want to activate.
->
-> If you nest Activity nodes in other types of nodes, include in the path only the ancestor Activity nodes.
->
-> 4.
->
-> To close the overlay, deactivate the Activity.
->
-> When you deactivate an Activity that you set as an overlay, Kanzi removes the focus from that Activity and restores the focus to the overlay focus scope below the overlay that you deactivated.
->
-> If you set the Focus Scope Type property to Auto-Closing Modal or Auto-Closing Modeless, the user can close the overlay also by clicking outside the overlay.
->
-> For example, to close the overlay when the user presses a specific key:
->
-> 1.
->
-> In the Prefabs select the Activity that you set as the overlay, in the Node Components > Input Manipulators create a Key Manipulator, and set the Logical Key property to the keyboard key that you want to use to close the overlay.
->
-> For example, to close the overlay when the user presses the Escape key, set the Logical Key property to Escape.
->
-> Tip
->
-> To set the keys that the user can use to navigate to different directions in your application, use the Navigation Manipulator. See Using the Navigation Manipulator.
-> 2.
->
-> In the Node Components > Triggers create a Key Input: Key Pressed trigger with an Activity Host: Deactivate Activity action, and in that action set:
->
-> - Target Item to the Activity Host that contains the Activity that you want to deactivate.
-> - Activation Path to the path from the Activity Host to the Activity that you want to deactivate.
-
+**Tip:** Use a state manager or a binding to change the appearance of a user interface element when that element has focus. See Showing when a user interface element has focus.
+2.
+In the Prefabs select the Activity prefab that you want to show as an overlay, in the Properties add the Focus Scope > Focus Scope Type property, and set it to:
+- Modal to create an overlay that blocks the input that comes from outside of the overlay.
+For example, use this overlay type to create a dialog that the user must interact with before returning to the main application screen.
+- Modeless to create an overlay that propagates the input that comes from outside of the overlay.
+For example, use this overlay type to create a popup that allows the user to interact with other parts of the application while the popup is visible.
+- Auto-Closing Modal to create an overlay that closes with touch input outside of the overlay.
+For example, use this overlay type to create a notification that closes when the user taps the application screen outside that notification.
+- Auto-Closing Modeless to create overlay that closes with touch input outside of the overlay and propagates the input.
+For example, use this overlay type to create a menu that closes when the user taps outside it. If the user closes the menu by touching an interactive element, that element receives the touch.
+3.
+To open the overlay, activate the Activity. See Activating Activities.
+When you activate an Activity that you set as an overlay, Kanzi sets the focus to that Activity.
+For example, to open the overlay when the user presses a button, in the Prefabs select a Button node, in the Button: Click trigger create an Activity Host: Activate Activity action, and in that action set:
+- Target Item to the Activity Host that contains the Activity that you want to activate.
+- Activation Path to the path from the Activity Host to the Activity that you want to activate.
+If you nest Activity nodes in other types of nodes, include in the path only the ancestor Activity nodes.
+4.
+To close the overlay, deactivate the Activity.
+When you deactivate an Activity that you set as an overlay, Kanzi removes the focus from that Activity and restores the focus to the overlay focus scope below the overlay that you deactivated.
+If you set the Focus Scope Type property to Auto-Closing Modal or Auto-Closing Modeless, the user can close the overlay also by clicking outside the overlay.
+For example, to close the overlay when the user presses a specific key:
+1.
+In the Prefabs select the Activity that you set as the overlay, in the Node Components > Input Manipulators create a Key Manipulator, and set the Logical Key property to the keyboard key that you want to use to close the overlay.
+For example, to close the overlay when the user presses the Escape key, set the Logical Key property to Escape.
+Tip
+To set the keys that the user can use to navigate to different directions in your application, use the Navigation Manipulator. See Using the Navigation Manipulator.
+2.
+In the Node Components > Triggers create a Key Input: Key Pressed trigger with an Activity Host: Deactivate Activity action, and in that action set:
+- Target Item to the Activity Host that contains the Activity that you want to deactivate.
+- Activation Path to the path from the Activity Host to the Activity that you want to deactivate.
 
 5.
 
@@ -315,9 +255,7 @@ In the Preview you can now:
 
 If you set the Focus Scope Type property to Auto-Closing Modal or Auto-Closing Modeless, you can close the overlay also by clicking anywhere outside the overlay. When you close an auto-closing modeless overlay by clicking an interactive user interface element outside that overlay, Kanzi propagates that click to the element that you click.
 
-
 ### Creating an overlay using any node
-
 
 The most convenient way to create an overlay in Kanzi is using an Activity. See Creating an overlay using an Activity.
 
@@ -330,71 +268,44 @@ To create an overlay using any node:
 In the Node Tree create the node that you want to show as an overlay and add content to it.
 
 For example, create a node that shows a submenu of settings items.
-
-> **Tip:** Use a state manager or a binding to change the appearance of a user interface element when that element has focus. See Showing when a user interface element has focus.
-> 2.
->
-> In the Node Tree select the node that you want to show as an overlay, in the Properties add the Focus Scope > Focus Scope Type property, and set it to:
->
-> - Modal to create an overlay that blocks the input that comes from outside of the overlay.
->
-> For example, use this overlay type to create a dialog that the user must interact with before returning to the main application screen.
-> - Modeless to create an overlay that propagates the input that comes from outside of the overlay.
->
-> For example, use this overlay type to create a popup that allows the user to interact with other parts of the application while the popup is visible.
-> - Auto-Closing Modal to create an overlay that closes with touch input outside of the overlay.
->
-> For example, use this overlay type to create a notification that closes when the user taps the application screen outside that notification.
-> - Auto-Closing Modeless to create overlay that closes with touch input outside of the overlay and propagates the input.
->
-> For example, use this overlay type to create a menu that closes when the user taps outside it. If the user closes the menu by touching an interactive element, that element receives the touch.
->
-> 3.
->
-> In the Properties add and disable the Node > Visible property.
->
-> This way you hide the overlay when the application starts.
->
-> When you set a node to be an overlay focus scope and that node is not visible, the focus and input handling ignores that node.
-> 4.
->
-> Create a control to open the overlay.
->
-> In the Node Tree select the node that you want to use as the control to open the overlay and in the Node Components use a trigger with a Set Property action that makes the overlay visible.
->
-> When you make an overlay visible, Kanzi sets off the Overlay Brought To Front trigger and sets the focus to that overlay.
->
-> For example, select a Button node, in the Button: Click trigger create a Set Property action, and in that action set:
->
-> - Target Item to the overlay node
-> - Target Property to Visible (Node.Visible)
-> - Value From to Fixed value
-> - Fixed Value to enabled
->
-> 5.
->
-> Create a control to close the overlay.
->
-> In the Node Tree select the node that you want to use as the control to close the overlay and in the Node Components use a trigger with a Set Property action that makes the overlay invisible.
->
-> When you hide an overlay, Kanzi sets off the Overlay Sent To Back trigger and sets the focus to the node that had the focus before you made the overlay visible.
->
-> For example:
->
-> 1.
->
-> Select the overlay node, in the Node Components > Input Manipulators create a Key Manipulator, and set the Logical Key property to the keyboard key that you want to use to close the overlay.
->
-> For example, to close the overlay when the user presses the Escape key, set the Logical Key property to Escape.
-> 2.
->
-> In the Node Components > Triggers create a Key Input: Key Pressed trigger with a Set Property action, and in that action set:
->
-> - Target Item to the overlay node
-> - Target Property to Visible (Node.Visible)
-> - Value From to Fixed value
-> - Fixed Value to disabled
-
+**Tip:** Use a state manager or a binding to change the appearance of a user interface element when that element has focus. See Showing when a user interface element has focus.
+2.
+In the Node Tree select the node that you want to show as an overlay, in the Properties add the Focus Scope > Focus Scope Type property, and set it to:
+- Modal to create an overlay that blocks the input that comes from outside of the overlay.
+For example, use this overlay type to create a dialog that the user must interact with before returning to the main application screen.
+- Modeless to create an overlay that propagates the input that comes from outside of the overlay.
+For example, use this overlay type to create a popup that allows the user to interact with other parts of the application while the popup is visible.
+- Auto-Closing Modal to create an overlay that closes with touch input outside of the overlay.
+For example, use this overlay type to create a notification that closes when the user taps the application screen outside that notification.
+- Auto-Closing Modeless to create overlay that closes with touch input outside of the overlay and propagates the input.
+For example, use this overlay type to create a menu that closes when the user taps outside it. If the user closes the menu by touching an interactive element, that element receives the touch.
+3.
+In the Properties add and disable the Node > Visible property.
+This way you hide the overlay when the application starts.
+When you set a node to be an overlay focus scope and that node is not visible, the focus and input handling ignores that node.
+4.
+Create a control to open the overlay.
+In the Node Tree select the node that you want to use as the control to open the overlay and in the Node Components use a trigger with a Set Property action that makes the overlay visible.
+When you make an overlay visible, Kanzi sets off the Overlay Brought To Front trigger and sets the focus to that overlay.
+For example, select a Button node, in the Button: Click trigger create a Set Property action, and in that action set:
+- Target Item to the overlay node
+- Target Property to Visible (Node.Visible)
+- Value From to Fixed value
+- Fixed Value to enabled
+5.
+Create a control to close the overlay.
+In the Node Tree select the node that you want to use as the control to close the overlay and in the Node Components use a trigger with a Set Property action that makes the overlay invisible.
+When you hide an overlay, Kanzi sets off the Overlay Sent To Back trigger and sets the focus to the node that had the focus before you made the overlay visible.
+For example:
+1.
+Select the overlay node, in the Node Components > Input Manipulators create a Key Manipulator, and set the Logical Key property to the keyboard key that you want to use to close the overlay.
+For example, to close the overlay when the user presses the Escape key, set the Logical Key property to Escape.
+2.
+In the Node Components > Triggers create a Key Input: Key Pressed trigger with a Set Property action, and in that action set:
+- Target Item to the overlay node
+- Target Property to Visible (Node.Visible)
+- Value From to Fixed value
+- Fixed Value to disabled
 
 6.
 
@@ -435,9 +346,7 @@ In the Focus: Input Outside Overlay trigger create a Set Property action and set
     - Value From to Fixed value
     - Fixed Value to disabled
 
-
 This way you hide the overlay node when the user taps outside it.
-
 
 In the Preview you can now:
 
@@ -446,9 +355,7 @@ In the Preview you can now:
 
 If you set the Focus Scope Type property to Auto-Closing Modal or Auto-Closing Modeless, you can close the overlay also by clicking anywhere outside the overlay. When you close an auto-closing modeless overlay by clicking an interactive user interface element outside that overlay, Kanzi propagates that click to the element that you click.
 
-
 ## Showing when a user interface element has focus
-
 
 You can set a user interface element to change appearance when that element or any of its child elements has focus. For example, you can change the colors of a slider control when that slider has focus or highlight a group of UI controls when one of those controls has focus.
 
@@ -493,14 +400,12 @@ The node is the key focus node of the application. |
 
 A node in the focus scope is the key focus node of the application. |
 
-
 To visually indicate to the user whether a user interface element has focus, either:
 
 - Create a state manager and use the Focused or Focus State property as its controller property. See Using a state manager to show when a user interface element has focus.
 - Create a binding where you set a property based on the value of the Focused or Focus State property. See Using a binding to show when a user interface element has focus.
 
 ### Using a state manager to show when a user interface element has focus
-
 
 Using a state manager to show when a user interface element has focus is convenient when you want to change the values of multiple properties to visually indicate the focus. With a state manager you can also animate the change in the appearance.
 
@@ -513,50 +418,32 @@ To use a state manager to show when a user interface element has focus:
 Select the user interface element for which you want to create focus visualization.
 
 For example, create a prefab that contains a Slider and a Text Block node that shows the slider label.
-
-> **Tip:** The Kanzi Factory Content contains a 2D slider that you can use. See Using the slider from the Factory Content.
-> 2.
->
-> In the Properties, add the Focus Scope > Focus Scope Type property and set it to Group.
->
-> This way you make the node a focus scope. You can use the Focus State property to check the focus state of the nodes in a focus scope.
-> 3.
->
-> In the State Tools, create a state manager with two states, one that defines the appearance of the user interface element when none of its nodes have focus, and another that defines the user interface element when one of its nodes is the key focus node.
->
-> For example, name the states NoFocus and KeyFocus.
-> 4.
->
-> In the user interface element for which you create focus visualization, select each node whose appearance you want to change and set the values of the properties that you want to change when a node in the user interface element has the key focus.
->
-> For example, change the colors of the slider label and slider when the slider has focus.
-> 5.
->
-> In the State Tools, click  below the state which defines how the user interface element looks when a node in that user interface element has the key focus. This way you save the current property values to that state.
->
-> For example, click  below the KeyFocus state.
-> 6.
->
-> In the State Tools, set the Controller Property to Focus > Focus State.
->
-> The Focus State property reports the focus state of a focus scope. The property has the value Key Focus when a node in the focus scope has the key focus.
-> 7.
->
-> In the State Tools, set the value of the controller property in the KeyFocus state to Key Focus. Leave the value of the controller property in the NoFocus state set to No Focus.
->
-> This way you set your application to use:
->
-> - The NoFocus state when none of the nodes in the user interface element have focus.
-> - The KeyFocus state when a node in the user interface element has the key focus.
->
-> 8.
->
-> In the State Tools, click Edit State Manager to deactivate the State Tools.
-
+**Tip:** The Kanzi Factory Content contains a 2D slider that you can use. See Using the slider from the Factory Content.
+2.
+In the Properties, add the Focus Scope > Focus Scope Type property and set it to Group.
+This way you make the node a focus scope. You can use the Focus State property to check the focus state of the nodes in a focus scope.
+3.
+In the State Tools, create a state manager with two states, one that defines the appearance of the user interface element when none of its nodes have focus, and another that defines the user interface element when one of its nodes is the key focus node.
+For example, name the states NoFocus and KeyFocus.
+4.
+In the user interface element for which you create focus visualization, select each node whose appearance you want to change and set the values of the properties that you want to change when a node in the user interface element has the key focus.
+For example, change the colors of the slider label and slider when the slider has focus.
+5.
+In the State Tools, click  below the state which defines how the user interface element looks when a node in that user interface element has the key focus. This way you save the current property values to that state.
+For example, click  below the KeyFocus state.
+6.
+In the State Tools, set the Controller Property to Focus > Focus State.
+The Focus State property reports the focus state of a focus scope. The property has the value Key Focus when a node in the focus scope has the key focus.
+7.
+In the State Tools, set the value of the controller property in the KeyFocus state to Key Focus. Leave the value of the controller property in the NoFocus state set to No Focus.
+This way you set your application to use:
+- The NoFocus state when none of the nodes in the user interface element have focus.
+- The KeyFocus state when a node in the user interface element has the key focus.
+8.
+In the State Tools, click Edit State Manager to deactivate the State Tools.
 
 When you set focus to the slider in the slider control prefab that you created, the appearances of the slider and slider label change.
 ### Using a binding to show when a user interface element has focus
-
 
 Using a binding to show that a user interface element has focus is convenient when you want to change the value of only one property to visually indicate the focus.
 
@@ -621,7 +508,6 @@ The node is the key focus node of the application. |
 
 A node in the focus scope is the key focus node of the application. |
 
-
 For example, to set a brush in a focus scope node when a node in that focus scope has the key focus:
 
 ```
@@ -629,16 +515,12 @@ For example, to set a brush in a focus scope node when a node in that focus scop
 
 ```
 
-
 See ? (conditional) and acquire.
-
 
 Click Save.
 
-
 For example, when you add the binding to a focus group node that contains UI controls, the background brush of that node changes when any of those UI controls has the key focus.
 ## Controlling whether to set focus to an activating Activity
-
 
 You can control whether to set key focus to an Activity when that Activity activates.
 
@@ -652,7 +534,6 @@ The value of this property applies to all Activities in the Exclusive Activity H
 - In an Activity in a Parallel Activity Host the Focus On Activation property.
 
 The value of this property applies to the Activity in which you set this property.
-
 
 The available options are:
 
@@ -670,13 +551,11 @@ For example, use this for a non-urgent notification, which does not require user
 
 ## Setting a specific key to move focus
 
-
 When creating key navigation for your application, you can use:
 
 - Key Manipulator to set which keys the user can use to navigate the application. You can override the default focus navigation keys and use a specific key to set focus to a node, open or close an overlay, or move focus in the focus chain. See Using the Key Manipulator.
 - Navigation Manipulator to set the keys that the user can use to navigate to different directions in your application. See Using the Navigation Manipulator.
 
 ## Using focus in the API
-
 
 For details, see the `FocusManager` class.

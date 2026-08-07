@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/programmer-tutorial/step-6.htm
 
 # Step 6 - Build and deploy your application to an Android device
 
-
 In this step you build and deploy the application you created in this tutorial to an Android device.
 
 Before you start, make sure that you have a working Android build environment. See Deploying Kanzi applications to Android.
@@ -28,10 +27,8 @@ Select File > Export > Build Android Package.
 
 Kanzi Studio creates an Android package from your Kanzi Studio project, deploys, and runs it on your Android device.
 
-
 Previous step
 ## Whatâs next?
-
 
 In this tutorial you learned how to use the Kanzi Engine API to access nodes and resources from the kzb file you created in Kanzi Studio, get and set the property values of Kanzi nodes, use custom property types, instantiate prefabs, load and play animations, load resources from the kzb file, use Kanzi messages to define events, and deploy the completed application to an Android device.
 

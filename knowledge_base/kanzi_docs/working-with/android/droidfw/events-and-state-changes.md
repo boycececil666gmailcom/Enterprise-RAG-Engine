@@ -7,7 +7,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/android/droidfw/events-and-
 
 ## Observing state changes
 
-
 You can implement `KanziViewListener` to listen for state changes in `KanziView`. Use this to inject custom initialization and un-initialization logic.
 
 For example:

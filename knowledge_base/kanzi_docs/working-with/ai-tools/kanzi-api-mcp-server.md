@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/ai-tools/kanzi-api-mcp-serv
 
 # Kanzi API MCP server
 
-
 The Kanzi API MCP server connects your AI assistant to the Kanzi API reference documentation. This allows the AI assistant to look up API signatures, check deprecation status, resolve include directives, and compare APIs between Kanzi versions. The server covers Kanzi APIs across C++, Java, C#, Lua, and Rust.
 
 The Kanzi API MCP server prevents the AI assistant from hallucinating API signatures. Instead of guessing, the assistant retrieves verified API information directly from the server.
@@ -78,7 +77,6 @@ Kanzi Engine Rust API |
 
 ### Setting up in Claude Desktop
 
-
 To set up the Kanzi API MCP server in Claude Desktop, add the server to your Claude Desktop configuration file:
 
 1.
@@ -106,7 +104,6 @@ In your Claude Desktop configuration file, add the following:
 Restart Claude Desktop.
 
 ### Setting up in VS Code
-
 
 To set up the Kanzi API MCP server in VS Code:
 
@@ -139,7 +136,6 @@ Open the **Chat** window with Ctrl Alt I.
 
 ### Setting up in Claude Code
 
-
 To set up the Kanzi API MCP server in Claude Code, run:
 
 ```
@@ -148,7 +144,6 @@ claude mcp add --scope user --transport http kanzi-api https://api.mcp.kanzi.com
 ```
 
 ### Setting up in other tools
-
 
 To set up the Kanzi API MCP server in other AI tools that support MCP, refer to the documentation of that tool. In the tool configuration, use the server URL with `mcp-remote`:
 
@@ -170,10 +165,8 @@ To set up the Kanzi API MCP server in other AI tools that support MCP, refer to 
 
 ## Example queries
 
-
 After you set up the Kanzi API MCP server, you can ask your AI assistant questions like the following. The assistant uses the server tools to retrieve accurate API information.
 ### Basic lookups
-
 
 You can search for API members, verify signatures, check deprecation status, and get include directives:
 
@@ -184,7 +177,6 @@ You can search for API members, verify signatures, check deprecation status, and
 
 ### Cross-version migration
 
-
 The Kanzi API MCP server can compare APIs across versions, which helps you estimate the effort required for a migration and identify the changes that you need to address. This is where the server is most valuable, because no human could quickly diff tens of thousands of API records across multiple versions.
 
 - âI am migrating a Kanzi project from 3.9.8 to 4.0.0. What C++ APIs were removed or changed? Focus on the `Node` and `RenderPass` classes.â
@@ -192,7 +184,6 @@ The Kanzi API MCP server can compare APIs across versions, which helps you estim
 - âWhich Java APIs were added between Kanzi 3.9.9 and 3.9.12? I want to know what new capabilities became available.â
 
 ### API evolution tracking
-
 
 You can track how a specific API member changed across all available Kanzi versions:
 
@@ -202,7 +193,6 @@ You can track how a specific API member changed across all available Kanzi versi
 
 ### Cross-language comparison
 
-
 You can compare how the same functionality is exposed across different Kanzi language APIs:
 
 - âCompare how property types work in C++ versus Java versus Lua. Show me `PropertyType` or equivalent in each language.â
@@ -210,7 +200,6 @@ You can compare how the same functionality is exposed across different Kanzi lan
 - âHow does animation timeline creation differ between C++ and Java? Show signatures for `TimelinePlayer` or `AnimationPlayer`.â
 
 ### Real-world coding tasks
-
 
 You can ask the AI assistant to help you write code using verified API calls:
 
@@ -220,7 +209,6 @@ You can ask the AI assistant to help you write code using verified API calls:
 
 ## Configuring your AI assistant
 
-
 For best results, add instructions to your AI assistant that tell it how to use the Kanzi API MCP server tools effectively. These instructions help the AI assistant choose the right tool for each task, use the correct naming conventions, and verify API information before using it in code.
 
 How you add these instructions depends on the AI assistant that you use:
@@ -228,7 +216,6 @@ How you add these instructions depends on the AI assistant that you use:
 - In Claude Code, add the instructions to the `CLAUDE.md` file in your project root directory.
 - In VS Code with GitHub Copilot, add the instructions to the `.github/copilot-instructions.md` file in your project root directory.
 - In Claude Desktop, add the instructions to the system prompt of your project.
-
 
 The following instructions are a recommended starting point. You can adjust them based on your needs.
 
@@ -270,10 +257,8 @@ Workflow:
 
 ## Kanzi API MCP tools reference
 
-
 When you connect the Kanzi API MCP server to your AI assistant, the assistant gains access to these tools.
 ### list_apis
-
 
 Lists available Kanzi versions, API sets, and the number of records in each. Shows which version is currently active and what other versions are available.
 |
@@ -292,7 +277,6 @@ list_apis()
 ```
    |
 ### set_kanzi_version
-
 
 Switches to a different Kanzi version for all subsequent queries.
 |
@@ -313,7 +297,6 @@ set_kanzi_version(version="3.9.15")
 
 ```
 
-
 ```
 # Switch to Kanzi 4.0.0.
 set_kanzi_version(version="4.0.0")
@@ -321,7 +304,6 @@ set_kanzi_version(version="4.0.0")
 ```
    |
 ### search_kanzi_api
-
 
 Searches Kanzi API documentation by keyword. Use this tool to find Kanzi classes, methods, properties, and types.
 |
@@ -362,13 +344,11 @@ search_kanzi_api(query="RenderPass", member_type="class")
 
 ```
 
-
 ```
 # Search for touch handling in the Java API.
 search_kanzi_api(query="touch input", language="java", n_results=10)
 
 ```
-
 
 ```
 # Find all enums in the C++ runtime API.
@@ -377,7 +357,6 @@ search_kanzi_api(query="enum", language="cpp", member_type="enum", n_results=20)
 ```
    |
 ### get_method_signature
-
 
 Returns the exact signature of a Kanzi API member by name. Use this tool when you know the specific API and need its exact parameters, return type, and deprecation status. Also finds overloads through prefix matching.
 |
@@ -408,13 +387,11 @@ get_method_signature(name="kanzi::Node::setProperty")
 
 ```
 
-
 ```
 # Find all overloads of addChild in C++.
 get_method_signature(name="kanzi::Node::addChild", language="cpp")
 
 ```
-
 
 ```
 # Look up a Java method by short name.
@@ -423,7 +400,6 @@ get_method_signature(name="setName", language="java")
 ```
    |
 ### get_include
-
 
 Returns the correct include directive for a Kanzi type: `#include` for C++, `import` for Java, `using` for C#, or `use` for Rust.
 |
@@ -454,7 +430,6 @@ get_include(name="Button2D", language="cpp")
 
 ```
 
-
 ```
 # Get the Java import statement for Node.
 get_include(name="Node", language="java")
@@ -462,7 +437,6 @@ get_include(name="Node", language="java")
 ```
    |
 ### get_class_reference
-
 
 Returns a complete reference for a Kanzi class with all public methods, properties, and enums. Includes inherited members from parent classes and interfaces.
 |
@@ -493,13 +467,11 @@ get_class_reference(name="kanzi::Node", language="cpp")
 
 ```
 
-
 ```
 # Get the Java Button2D class reference.
 get_class_reference(name="Button2D", language="java")
 
 ```
-
 
 ```
 # Get the Lua API for Node.
@@ -508,7 +480,6 @@ get_class_reference(name="Node", language="lua")
 ```
    |
 ### get_deprecation_warnings
-
 
 Checks whether a Kanzi API member is deprecated and returns the replacement. Use this tool before using any API that you suspect might be outdated.
 |
@@ -539,7 +510,6 @@ get_deprecation_warnings(name="kanzi::Page", language="cpp")
 
 ```
 
-
 ```
 # Check deprecation status of a specific method.
 get_deprecation_warnings(name="kanzi::Node::setFocusable")
@@ -547,7 +517,6 @@ get_deprecation_warnings(name="kanzi::Node::setFocusable")
 ```
    |
 ### compare_versions
-
 
 Compares Kanzi APIs between two versions to find what changed. Use this tool for migration guidance. Shows APIs that were added, removed, changed, or deprecated between two versions.
 |
@@ -608,13 +577,11 @@ compare_versions(from_version="3.9.8", to_version="4.0.0", language="cpp")
 
 ```
 
-
 ```
 # Show only removed APIs in the Node class between two versions.
 compare_versions(from_version="3.9.13", to_version="4.0.0", class_name="Node", change_type="removed")
 
 ```
-
 
 ```
 # Show newly deprecated Java APIs between two versions.
@@ -623,7 +590,6 @@ compare_versions(from_version="3.9.9", to_version="3.9.12", language="java", cha
 ```
    |
 ### get_api_history
-
 
 Shows how a specific Kanzi API member evolved across all loaded versions. Use this tool to track when an API was introduced, its signature changed, or it was deprecated or removed.
 |
@@ -653,7 +619,6 @@ API set filter. Use `list_apis` to see available sets. |      |
 get_api_history(fqn="kanzi::Node::trySetFocus", language="cpp")
 
 ```
-
 
 ```
 # Track the history of ResourceManager::acquireResource.

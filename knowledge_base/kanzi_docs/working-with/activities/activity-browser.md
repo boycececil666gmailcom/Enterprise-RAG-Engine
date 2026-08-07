@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/activities/activity-browser
 
 # Using the Activity Browser
 
-
 Use the Activity Browser to create and inspect Activities and Activity Hosts, and to simulate the activation of Activities. The Activity Browser shows all possible UI states of Activities in your application.
 
 To access commands available for an Activity or Activity Host, right-click that item.
@@ -32,7 +31,6 @@ Zoom |
   |
 ## Simulating the activation of Activities
 
-
 In the Activity Browser, you can simulate the activation of Activities:
 
 - To simulate the activation of an Activity, in the Activity that you want to activate, click .
@@ -52,7 +50,6 @@ When you set the value of the Active Activity Index property in the Activity Bro
 Learn how to use Data-Driven Exclusive Activity Host by completing a tutorial. See Tutorial: Generate UI from a data source.
 
 ## Simulating the application of Data Triggers
-
 
 When you use Data Triggers, you can simulate the application of Data Triggers and show connections between a Data Trigger and Activities that the Data Trigger activates.
 
@@ -79,18 +76,15 @@ Shows the selected Data Trigger in the Node Components window. |
 Learn how to use Data Triggers by completing a tutorial. See Tutorial: Control application UI.
 ## Changing the order of nodes
 
-
 To change the order of Activities or Activity Hosts in the Activity Browser, enable the automatic layout tool  and drag the item to the desired position. When changing the order is available, the Activity Browser shows a placeholder in place of the new position.
 
 Keep in mind that you can only change the order of the nodes of the same type.
 ## Changing the parent of nodes
 
-
 To change the parent of an Activity or Activity Host in the Activity Browser, enable the automatic layout tool  and drag the item to a new parent.
 
 Keep in mind that an Activity cannot be a parent of another Activity.
 ## Viewing Activities and Activity Hosts
-
 
 The Activity Browser has these tools to organize and show the content:
 |

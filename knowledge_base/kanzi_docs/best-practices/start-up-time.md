@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/best-practices/start-up-time.html
 
 # Optimizing the startup time of your application
 
-
 To optimize the startup time of your Kanzi application:
 
 - For images in your applications use raw and compressed formats, instead of .png and .jpg formats. When you use raw and compressed formats Kanzi needs to process less data before it sends it to the GPU. See Images and textures best practices.

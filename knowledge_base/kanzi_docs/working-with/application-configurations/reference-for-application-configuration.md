@@ -5,16 +5,13 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/application-configurations/
 
 # Application configuration reference
 
-
 You can configure your Kanzi application:
 
 - In the C++ application override the `Application::onConfigure` function of your application class. Kanzi calls this function as part of application initialization before it reads the `application.cfg` and before it initializes the graphics subsystem. Use this function to configure application properties.
 - In `application.cfg` by setting the parameters for Kanzi Studio projects without recompiling your application or even without a C++ application.
 
-
 The configuration you specify in `application.cfg` overrides the configuration you specify in `Application::onConfigure`.
 ## Setting which `application.cfg` to use
-
 
 When you have more than one Kanzi application executable file in a directory, you can set a separate configuration file for each executable.
 
@@ -29,22 +26,18 @@ MyApplication.exe -config=myConfiguration.cfg
 
 ## Using the `application.cfg`
 
-
 To configure your Kanzi application using `application.cfg`, create an `application.cfg` file that contains the parameter names and their values in:
 
 - `<ProjectName>/Application Player` if you have a Kanzi Studio project without a C++ application
 - `<ProjectName>/Application/bin` if you have a Kanzi Studio project with a C++ application
 
-
 When you launch your Kanzi application, the application uses the parameters in the `application.cfg` to configure your application.
 ## Error handling for `application.cfg`
-
 
 If an `application.cfg` is missing or is corrupted, Kanzi application logs a corresponding error message and continues to run with the default settings.
 
 If you want to implement your own `application.cfg` error handling, you can create a custom logger to detect such errors. See Creating a custom logger.
 ## Running an application without reading the `application.cfg`
-
 
 On some embedded platforms reading the `application.cfg` file can have a performance impact.
 
@@ -60,7 +53,6 @@ MyApplication.exe -config=""
 ## Loading
 
 ### BinaryName
-
 
 You can set which kzb file or kzb configuration file your Kanzi application loads when you launch your Kanzi application.
 
@@ -93,7 +85,6 @@ BinaryName = "my_application.kzb"
 
 ```
 
-
 ```
 # Loads the kzb configuration file my_application.kzb.cfg that lists
 # all the kzb files that your Kanzi application loads.
@@ -111,7 +102,6 @@ configuration.binaryName = "my_application.kzb";
 
 ```
 
-
 ```
 // Loads the kzb configuration file my_application.kzb.cfg that lists
 // all the kzb files that your Kanzi application loads.
@@ -121,19 +111,16 @@ configuration.binaryName = "my_application.kzb.cfg";
    |
 ### FontEngine
 
-
 You can set which font engine you want to load at application startup to render the text in your application:
 
 - FreeType uses the FreeType rasterizer, HarfBuzz shaper, and ICU bidirectional library, and libunibreak for line breaking. This is the default font engine.
 - iType uses the Monotype iType rasterizer and WorldTypeÂ® Shaperâ¢ for shaping.
 - When you do not load a font engine, Kanzi does not render the text in your application.
 
-
 When loading a font engine, keep in mind that:
 
 - In a static build, you must statically link to the application the font engine that you want to load.
 - In a dynamic build, Kanzi loads the font engine library.
-
 
 You can also set which font engine you want the Kanzi Studio Preview to use to render text. See Setting the font engine for the Preview.
 |
@@ -160,18 +147,15 @@ To load the iType font engine:
 - In `application.cfg` use `IType`.
 - In `Application::onConfigure` use `ApplicationProperties::FontEngine::IType`.
 
-
 To load the FreeType font engine (the default value):
 
 - In `application.cfg` use `FreeType`. Default value.
 - In `Application::onConfigure` use `ApplicationProperties::FontEngine::FreeType`. Default value.
 
-
 To not load a font engine:
 
 - In `application.cfg` use `None`.
 - In `Application::onConfigure` use `ApplicationProperties::FontEngine::None`.
-
 
 When you do not load a font engine, Kanzi does not render the text in your application.  |      |
 |
@@ -195,7 +179,6 @@ configuration.fontEngine = ApplicationProperties::FontEngine::IType;
 ```
    |
 ### Font engine dictionaries
-
 
 You can customize how Kanzi iType font engine wraps words in Thai text by setting a Thai dictionary that you want to use instead of the one that is built into the iType font engine.
 
@@ -245,7 +228,6 @@ configuration.fontEngineDictionaryUrls[ApplicationProperties::FontEngine::IType]
    |
 ### ModuleNames
 
-
 You can set which plugins your Kanzi application loads when you launch your Kanzi application.
 |
 
@@ -286,7 +268,6 @@ configuration.moduleNames = {"MyPlugin1", "MyPlugin2"};
 ```
    |
 ### DeploymentQueueBudget
-
 
 Kanzi keeps a queue of resources that are deployed on the UI thread. Use `DeploymentQueueBudget` to control the amount of time that Kanzi spends each frame to deploy resources. When many small resources are in the deployment queue, time budget greater than 0 can significantly decrease the time to load application resources.
 
@@ -339,7 +320,6 @@ configuration.deploymentQueueBudget = 2;
    |
 ### LoadingThreadCount
 
-
 When users run your Kanzi application in an environment with a multi-core processor, Kanzi automatically uses multiple CPU cores to load the GPU resources in the kzb files to RAM.
 
 See Loading resources in parallel.
@@ -374,7 +354,6 @@ LoadingThreadCount = 0
 
 ```
 
-
 ```
 # Uses six threads to load your application.
 LoadingThreadCount = 5
@@ -392,7 +371,6 @@ configuration.loadingThreadCount = 0;
 
 ```
 
-
 ```
 // Uses six threads to load your application.
 configuration.loadingThreadCount = 5;
@@ -400,7 +378,6 @@ configuration.loadingThreadCount = 5;
 ```
    |
 ### MaxPendingResources
-
 
 You can set the maximum number of resources that the loading threads process at the same time. By increasing the number of resources you can speed up the loading, but at the same time you increase the peak memory use during loading because you can load more resources to the memory before they are deployed to the GPU.
 |
@@ -432,7 +409,6 @@ MaxPendingResources = 0
 
 ```
 
-
 ```
 # Sets the maximum number of resources processed by the loading
 # threads to 20 resources.
@@ -451,7 +427,6 @@ configuration.maxPendingResources = 0;
 
 ```
 
-
 ```
 // Sets the maximum number of resources processed by the loading
 // threads to 20 resources.
@@ -462,7 +437,6 @@ configuration.maxPendingResources = 20;
 ## Performance
 
 ### ApplicationIdleState
-
 
 Kanzi suspends the main loop when there is no input, tasks, timers, animations, or when there is nothing in the application that updates the rendering.
 
@@ -521,7 +495,6 @@ configuration.applicationIdleStateEnabled = 0;
    |
 ### MaximumFPS
 
-
 You can limit the number of frames rendered per second by setting the maximum frame rate.
 
 If your Kanzi application is showing an animation, Kanzi by default throttles the CPU to the maximum FPS. If there are no animations, Kanzi sets the application to idle state. For this reason to conserve the CPU and power, Kanzi by default limits the maximum frame rate to 60 frames per second. Use the application configuration to set the maximum frame rate for your application.
@@ -555,7 +528,6 @@ MaximumFPS = 32
 
 ```
 
-
 ```
 # Disables the limit.
 MaximumFPS = 0
@@ -572,7 +544,6 @@ configuration.frameRateLimit = 32;
 
 ```
 
-
 ```
 // Disables the limit.
 configuration.frameRateLimit = 0;
@@ -580,7 +551,6 @@ configuration.frameRateLimit = 0;
 ```
    |
 ### PerformanceInfoLevel
-
 
 You can enable the display of Performance HUD that shows the performance information for your Kanzi application. Use the Performance HUD to see how your application performs on target devices and to find performance bottlenecks.
 
@@ -612,7 +582,6 @@ You can access the number of animations in the Kanzi Engine API:
   - To get the number of active animations, use `getActiveTimelinePlaybackCount()`.
   - To get the number of all animations, use `getTimelinePlaybackCount()`.
 
-
 You can set the position of the Performance HUD inside the window of your Kanzi application. See PerformanceInfoPosition.
 
 See Best practices.
@@ -640,18 +609,15 @@ To disable the display of the Performance HUD:
 - In `application.cfg` use `0`. Default value.
 - In `Application::onConfigure` use `PerformanceInfoLevelDisabled`. Default value.
 
-
 To enable the display of the frames rendered per second (FPS):
 
 - In `application.cfg` use `1`.
 - In `Application::onConfigure` use `PerformanceInfoLevelFPS`.
 
-
 To enable the display of the full Performance HUD:
 
 - In `application.cfg` use `2`.
 - In `Application::onConfigure` use `PerformanceInfoLevelFull`.
-
 
 To enable the display of the Kanzi graphics Performance HUD:
 
@@ -679,7 +645,6 @@ configuration.performanceInfoLevel = ApplicationProperties::PerformanceInfoLevel
 ```
    |
 ### PerformanceInfoPosition
-
 
 You can set the position of the Performance HUD inside the window of your Kanzi application. To see the Performance HUD in the window of your Kanzi application, you must enable it. See PerformanceInfoLevel.
 |
@@ -735,7 +700,6 @@ configuration.performanceInfoProperties.positionY = 20;
    |
 ### PerformanceInfoFontSize
 
-
 You can set a font size for the Performance HUD.
 |
 
@@ -777,7 +741,6 @@ configuration.performanceInfoProperties.fontSize = 20;
    |
 ### PerformanceInfoGraphFilter
 
-
 You can choose which main loop tasks you want to show as graphs in the Performance HUD. For the names of the default main loop tasks, in the `application.hpp` see the implementation of `Application::initializeMainLoopTasks()`. To see the Performance HUD in the window of your Kanzi application, you must enable it. See PerformanceInfoLevel.
 |
 
@@ -818,7 +781,6 @@ configuration.performanceInfoProperties.graphFilter="Render;MyCustomTask"
 ```
    |
 ### ProfilingCategoryFilter
-
 
 You can control the state of performance profiling categories that you use to group performance profilers. See Measuring application performance and Measuring the loading and deployment time of resources.
 |
@@ -866,20 +828,17 @@ ProfilingCategoryFilter="MyProfiler=on;MainLoopRendering=off"
 
 ```
 
-
 ```
 # Enables all performance profiling categories.
 ProfilingCategoryFilter="*=on"
 
 ```
 
-
 ```
 # Enables categories Generic and MyProfilingCategory.
 ProfilingCategoryFilter="Generic|MyProfilingCategory=on"
 
 ```
-
 
 ```
 # Enables resource profiling.
@@ -897,20 +856,17 @@ configuration.profilingCategoryFilter="MyProfiler=on;MainLoopRendering=off"
 
 ```
 
-
 ```
 // Enables all performance profiling categories.
 configuration.profilingCategoryFilter = "*=on";
 
 ```
 
-
 ```
 // Enables categories Generic and MyProfilingCategory.
 configuration.profilingCategoryFilter = "Generic|MyProfilingCategory=on";
 
 ```
-
 
 ```
 // Enables resource profiling.
@@ -1041,7 +997,6 @@ Domain initialization |
 `StartupProfilerRegistry::m_resumeGLProfiler` |
 ### MainLoopProfilingSampleBufferCount
 
-
 You can set the sample buffer size of the main loop performance profiler that is included in the Profiling build. See Measuring the performance of Kanzi Engine and ProfilingCategoryFilter.
 |
 
@@ -1087,7 +1042,6 @@ configuration.mainLoopProfilingSampleBufferCount = 3600;
 
 ### TracingSampleMaxMemory
 
-
 You can control the amount of memory used by the tracing system to store tracing data. A large value allows storing of more samples before overwriting.
 
 Tracing is disabled for Release builds.
@@ -1131,7 +1085,6 @@ configuration.tracingConfiguration.sampleMaxMemory = 8388608;
    |
 ### TracingStartupInterval
 
-
 You can set a startup interval to automatically write a trace file to the current working directory at startup. This option provides a convenient method to record the application startup performance.
 
 Tracing is disabled for Release builds.
@@ -1163,7 +1116,6 @@ TracingStartupInterval = 5000
 
 ```
 
-
 ```
 # Disables writing a startup trace.
 TracingStartupInterval = 0
@@ -1180,7 +1132,6 @@ configuration.tracingConfiguration.startupInterval = chrono::milliseconds{ 5000 
 
 ```
 
-
 ```
 // Disables writing a startup trace.
 configuration.tracingConfiguration.startupInterval = chrono::milliseconds{ 0 };
@@ -1188,7 +1139,6 @@ configuration.tracingConfiguration.startupInterval = chrono::milliseconds{ 0 };
 ```
    |
 ### TracingTimeInterval
-
 
 You can set the time interval when Kanzi writes a trace file on a recurring basis after writing the startup trace. At every expiration of the interval, Kanzi writes a trace file to the current working directory and overwrites the previous trace file.
 
@@ -1221,7 +1171,6 @@ TracingTimeInterval = 5000
 
 ```
 
-
 ```
 # Disables writing a recurring trace.
 TracingTimeInterval = 0
@@ -1238,7 +1187,6 @@ configuration.tracingConfiguration.recurringTimeInterval = chrono::milliseconds{
 
 ```
 
-
 ```
 // Disables writing a recurring trace.
 configuration.tracingConfiguration.recurringTimeInterval = chrono::milliseconds{ 0 };
@@ -1246,7 +1194,6 @@ configuration.tracingConfiguration.recurringTimeInterval = chrono::milliseconds{
 ```
    |
 ### TracingFrameInterval
-
 
 You can set the frame interval when Kanzi writes a trace file on a recurring basis after writing the startup trace. At every expiration of the interval, Kanzi writes a trace file to the current working directory and overwrites the previous trace file.
 
@@ -1281,7 +1228,6 @@ TracingFrameInterval = 1000
 
 ```
 
-
 ```
 # Disables writing a recurring trace.
 TracingFrameInterval = 0
@@ -1298,7 +1244,6 @@ configuration.tracingConfiguration.recurringFrameInterval = 1000;
 
 ```
 
-
 ```
 // Disables writing a recurring trace.
 configuration.tracingConfiguration.recurringFrameInterval = 0;
@@ -1306,7 +1251,6 @@ configuration.tracingConfiguration.recurringFrameInterval = 0;
 ```
    |
 ## Glyph cache texture size
-
 
 When you use a Text Block Kanzi creates a glyph cache texture for every font and font size combination. You can set the height and width of glyph cache textures to adjust the size of the glyph cache texture either when it gets full, or to optimize the performance of your Kanzi application.
 
@@ -1379,7 +1323,6 @@ configuration.glyphCacheNonScalableWidth = 1280;
 
 ### InitializePlatform
 
-
 On the integrity_rcar_rwm_aarch64 platform you can set whether you want to initialize the application graphics. Use this approach only as a late-stage optimization when you want to manually synchronize the starting of multiple applications that initialize at the same time.
 
 This configuration controls the initialization of the graphics driver, device window manager, and whether the display is switched on. When you disable this configuration, to enable your Kanzi application to create a window, in the same process you must initialize:
@@ -1390,7 +1333,6 @@ This configuration controls the initialization of the graphics driver, device wi
 - (Optional) `R_WM_ScreenBgColorSet()`
 - `R_WM_ScreenEnable()`
 - Explicitly set the application window width and height. See Application window position and size.
-
 
 When you disable graphics initialization with this configuration, you must initialize graphics for each application separately where you disabled this setting.
 |
@@ -1438,12 +1380,10 @@ configuration.defaultWindowProperties.initializePlatform = 0;
    |
 ### MmapMode
 
-
 On operating systems that support it, you can set how Kanzi instructs the system to memory map files:
 
 - Lazy mapping waits for your Kanzi application to access file contents before mapping that portion of the file.
 - Eager mapping maps the whole file immediately.
-
 
 The behavior of the application is identical between the two strategies, but you can choose when to pay the runtime cost of mapping a file.
 
@@ -1478,20 +1418,17 @@ To use the system default:
 - In `Application::onConfigure` use `MmapMode::Default`. Default value.
 - On the command line use `default`.
 
-
 To use eager mapping:
 
 - In `application.cfg` use `eager`.
 - In `Application::onConfigure` use `MmapMode::Eager`.
 - On the command line use `eager`.
 
-
 To use lazy mapping:
 
 - In `application.cfg` use `lazy`.
 - In `Application::onConfigure` use `MmapMode::Lazy`.
 - On the command line use `lazy`.
-
 
 Command line settings take priority over `application.cfg`. When you specify multiple instances on the command line, Kanzi uses only the first one and ignores the others.  |      |
 |
@@ -1518,7 +1455,6 @@ configuration.mmapMode = MmapMode::Lazy;
 
 ### HandleGPUResources
 
-
 You can set how your Kanzi application handles in the paused state (`MainLoopState::Paused`) the GPU resources that are not stored in a kzb file.
 |
 
@@ -1544,12 +1480,10 @@ To do nothing (default value on all platforms except Android):
 - In `application.cfg` use `none`.
 - In `Application::onConfigure` use `ApplicationProperties::HandleGPUResources::NoHandling`.
 
-
 To invalidate the GPU resources (default value on Android):
 
 - In `application.cfg` use `invalidate`.
 - In `Application::onConfigure` use `ApplicationProperties::HandleGPUResources::Invalidate`.
-
 
 To destroy the GPU resources:
 
@@ -1579,7 +1513,6 @@ configuration.handleGPUResources = ApplicationProperties::HandleGPUResources::In
 ## Graphics performance logging
 
 ### LogOpenGLExtensions
-
 
 You can enable Kanzi to print to the debug console a list of the graphics-related extensions on application startup.
 |
@@ -1626,7 +1559,6 @@ configuration.extensionOutputEnabled = 1;
 ```
    |
 ### LogOpenGLInformation
-
 
 You can enable Kanzi to print to the debug console this graphics-related information on application startup:
 
@@ -1680,7 +1612,6 @@ configuration.informationOutputEnabled = 1;
    |
 ### LogSurfaceInformation
 
-
 You can enable Kanzi to print to the debug console these graphics-related properties on application startup:
 
 - Requested and acquired surface properties. See Surface properties.
@@ -1732,7 +1663,6 @@ configuration.propertyOutputEnabled = 1;
    |
 ## QNX system logger (slogger2)
 
-
 On QNX you can use the QNX system logger (slogger2) to write log messages. When you redirect log messages to slogger2, your Kanzi application continues writing the log messages to the default logger.
 
 A Kanzi application does not use the default slogger2 buffer, which allows you to use `slog2_set_default_buffer`. Kanzi provides slogger2 that supports logging to only one slogger2 buffer. When slogger2 stops logging, Kanzi calls `slog2_reset`. To change this behavior, see: Cleaning up after slogger2.
@@ -1745,7 +1675,6 @@ To use slogger2, you can either:
 - Provide a custom slogger2 buffer to the Kanzi logger. See customSlog2Buffer.
 
 ### QnxEnableSlogger2
-
 
 Before you can use slogger2 with your Kanzi application, you must enable it.
 |
@@ -1792,7 +1721,6 @@ configuration.slog2Config.enabled = true;
 ```
    |
 ### QnxSlogger2VerbosityLevel
-
 
 You can set which log messages you want slogger2 to log. The Kanzi application configuration verbosity levels map to the slogger2 log verbosity levels.
 |
@@ -1870,7 +1798,6 @@ configuration.slog2Config.verbosityLevel = Slog2VerbosityLevel::Slog2Info;
    |
 ### QnxSlogger2MaxRetries
 
-
 On QNX versions 7.0.4 and newer you can limit the amount of times slogger2 retries to obtain a buffer.
 
 When you set this limit and slogger2 reaches it, Kanzi drops the log message and increases the dropped message count. You can see the number of dropped messages in the slogger2 logs in the next non-dropped log entry of the variable `code` written before the log message.
@@ -1914,7 +1841,6 @@ configuration.slog2Config.maxRetries = 10;
    |
 ### pageCount
 
-
 You can set the multiple of 4KB pages that the QNX logger acquires for the internal slogger2 buffer.
 |
 
@@ -1944,10 +1870,8 @@ configuration.slog2Config.pageCount = 1;
    |
 ### customSlog2Buffer
 
-
 Kanzi enables you to register a custom slogger2 buffer and pass it to a Kanzi application. Your Kanzi application then uses the buffer to write logs. For example, you can register a custom slogger2 buffer when you want to give the buffer a custom name or if you want to set any of the properties from the `slog2_buffer_set_config_t` structure passed to `slog2_register`. See QNX system logger (slogger2).
 ## Graphics library
-
 
 On the Windows operating system you can select whether you want to use OpenGL ES, OpenGL, or Vulkan in the `Application::onConfigure` function, in the `application.cfg`, or using the command line arguments, if your target supports command line arguments.
 
@@ -1986,12 +1910,10 @@ To use OpenGL ES:
 - In `application.cfg` use `gles` or `opengles`.
 - In `Application::onConfigure` use `SurfaceClientAPI::OpenGLES`.
 
-
 To use OpenGL:
 
 - In `application.cfg` use `gl` or `opengl`.
 - In `Application::onConfigure` use `SurfaceClientAPI::OpenGL`.
-
 
 To use Vulkan:
 
@@ -2007,12 +1929,10 @@ To use WGL:
 - In `application.cfg` use `wgl`.
 - In `Application::onConfigure` use `GraphicsContextAPI::WGL`.
 
-
 To use EGL:
 
 - In `application.cfg` use `egl`.
 - In `Application::onConfigure` use `GraphicsContextAPI::EGL`.
-
 
 To use GLX:
 
@@ -2042,7 +1962,6 @@ configuration.defaultSurfaceProperties.contextAPI = GraphicsContextAPI::WGL;
 ```
    |
 ### GraphicsStatisticEnabled
-
 
 You can enable the statistics layer for the Kanzi graphics library of your application. The statistics layer is always enabled in the debug mode, regardless of the configuration. The statistics layer shows the information about the Kanzi graphics objects in the Performance HUD. See Showing the performance measurement graphs in the Performance HUD.
 |
@@ -2105,7 +2024,6 @@ Enables the statistics layer for the Kanzi graphics library.
    |
 ### GraphicsValidationEnabled
 
-
 You can enable the validation layer for the Kanzi graphics library of your application. The validation layer is always enabled in the debug mode, regardless of the configuration. Use the information in the validation layer to check whether your application correctly uses the graphics API. Kanzi shows validation errors in the default console.
 |
 
@@ -2167,14 +2085,12 @@ Enables the validation layer for the Kanzi graphics library.
    |
 ## Surface properties
 
-
 Surface properties control the properties of the hardware-accelerated graphics surface onto which Kanzi renders. They control the relation between image quality and rendering speed.
 
 The surface properties that you set are considered requests to be matched by the graphics system of the target hardware. Whether a given request is considered an upper bound, a lower bound, or an exact value, is platform-dependent.
 
 To get the platform-dependent default values of surface properties, call `kzsSurfaceGetDefaultProperties()`.
 ### Color format
-
 
 You can set the sizes of the RGB color channels and the alpha channel in bits.
 |
@@ -2240,7 +2156,6 @@ SurfaceBitsAlpha = 0
 
 ```
 
-
 ```
 # Let the platform choose the sizes of the color and alpha channels.
 SurfaceBitsRed = "unspecified"
@@ -2263,7 +2178,6 @@ configuration.defaultSurfaceProperties.bitsColorB = 5;
 configuration.defaultSurfaceProperties.bitsAlpha = 0;
 
 ```
-
 
 To let the platform choose the color and alpha channel sizes:
 
@@ -2289,7 +2203,6 @@ configuration.defaultSurfaceProperties.bitsAlpha = KZS_SURFACE_PROPERTY_DONT_CAR
 
   |
 ### SurfaceBitsStencil
-
 
 You can set the size of the stencil buffer in bits.
 |
@@ -2324,7 +2237,6 @@ SurfaceBitsStencil = 1
 
 ```
 
-
 ```
 # Let the platform choose the size of the stencil buffer.
 SurfaceBitsStencil = "unspecified"
@@ -2340,7 +2252,6 @@ SurfaceBitsStencil = "unspecified"
 configuration.defaultSurfaceProperties.bitsStencil = 1;
 
 ```
-
 
 To let the platform choose the size of the stencil buffer:
 
@@ -2360,7 +2271,6 @@ configuration.defaultSurfaceProperties.bitsStencil = KZS_SURFACE_PROPERTY_DONT_C
 
   |
 ### SurfaceBitsDepthBuffer
-
 
 You can set the size of the depth buffer in bits.
 |
@@ -2395,7 +2305,6 @@ SurfaceBitsDepthBuffer = 16
 
 ```
 
-
 ```
 # Let the platform choose the size of the depth buffer.
 SurfaceBitsDepthBuffer = "unspecified"
@@ -2411,7 +2320,6 @@ SurfaceBitsDepthBuffer = "unspecified"
 configuration.defaultSurfaceProperties.bitsDepthBuffer = 16;
 
 ```
-
 
 To let the platform choose the size of the depth buffer:
 
@@ -2431,7 +2339,6 @@ configuration.defaultSurfaceProperties.bitsDepthBuffer = KZS_SURFACE_PROPERTY_DO
 
   |
 ### SurfaceBitsPadding
-
 
 On QNX, you can set the size of the padding in bits to add to the color format of the Kanzi application window.
 |
@@ -2476,7 +2383,6 @@ configuration.defaultSurfaceProperties.bitsPadding = 2;
    |
 ### SurfaceColorSpace
 
-
 You can enable the initialization of OpenGL for the hardware that displays your Kanzi application.
 |
 
@@ -2508,14 +2414,12 @@ Enables the initialization of OpenGL for the hardware that displays the applicat
   -  In `Application::onConfigure` use `SurfaceColorSpace::sRGB`.
   - On the command line use `srgb`.
 
-
 Use this option when your application uses the linear color workflow, where Kanzi performs operations on color values in linear color space.
 
 The linear color workflow requires:
 
   - OpenGL extension GL_EXT_sRGB
   - EGL version 1.5 or later, or EGL version 1.4 with the EGL_KHR_gl_colorspace extension
-
 
 When you use the sRGB color space, Kanzi expects that in the Kanzi Studio project properties the Color Workflow property is set to Linear.
 
@@ -2525,7 +2429,6 @@ See Using the linear color workflow.
   - In `application.cfg` use `"standard"`.
   - In `Application::onConfigure` use `SurfaceColorSpace::Standard`.
   - On the command line use `standard`.
-
 
 This is the default.
 
@@ -2539,7 +2442,6 @@ See Using the standard color workflow.
   - In `application.cfg` use `"passthrough"`.
   -  In `Application::onConfigure` use `SurfaceColorSpace::Passthrough`.
   - On the command line use `passthrough`.
-
 
 Use this option when you want to perform custom gamma correction for the target display.
 
@@ -2581,7 +2483,6 @@ Set your application to use an unspecified color space.
 
 See Color workflow.
 ### SurfaceSamplesAntialiasing
-
 
 You can set the number of surface samples to use for anti-aliasing.
 |
@@ -2630,7 +2531,6 @@ configuration.defaultSurfaceProperties.antiAliasing = 4;
    |
 ### SwapBehavior
 
-
 You can set whether to swap or copy buffers during buffer swap.
 |
 
@@ -2658,7 +2558,6 @@ To copy the buffers:
 - In `application.cfg` use `"copy"`.
 - In `Application::onConfigure` use `SwapBehavior::Copy`.
 
-
 To swap the buffers:
 
 - In `application.cfg` use `"exchange"`.
@@ -2685,7 +2584,6 @@ configuration.defaultSurfaceProperties.swapBehaviorCopy = SwapBehavior::Copy;
 ```
    |
 ### PresentMode
-
 
 You can set the surface present mode. Not all platforms support this setting.
 |
@@ -2750,7 +2648,6 @@ configuration.defaultSurfaceProperties.presentMode = kanzi::platform::PresentMod
    |
 ### EGLIMGContextPriority
 
-
 You can create an EGL IMG context with a priority hint. By default, Kanzi lets the platform choose the priority.
 |
 
@@ -2784,13 +2681,11 @@ To set low priority:
 -  In `Application::onConfigure` use `EGLIMGContextPriority::Low`.
 - On the command line use `low`.
 
-
 To set medium priority:
 
 - In `application.cfg` use `"medium"`.
 - In `Application::onConfigure` use `EGLIMGContextPriority::Medium`.
 - On the command line use `medium`.
-
 
 To set high priority:
 
@@ -2808,7 +2703,6 @@ EGLIMGContextPriority = "high"
 
 ```
 
-
 ```
 # Let the platform choose the EGL IMG context priority.
 EGLIMGContextPriority = "unspecified"
@@ -2824,7 +2718,6 @@ EGLIMGContextPriority = "unspecified"
 configuration.defaultSurfaceProperties.priority = EGLIMGContextPriority::High;
 
 ```
-
 
 To let the platform choose the EGL IMG context priority:
 
@@ -2855,7 +2748,6 @@ Set the EGL IMG context priority to high.
 ```
    |
 ## Application window position and size
-
 
 You can set the position of your Kanzi application on the screen relative to the upper-left corner of the screen and the size of the application window in pixels. The default size of the window is 640x480 pixels and center of the device screen.
 
@@ -2940,7 +2832,6 @@ WindowY = 1
 
 ```
 
-
 ```
 # Places the application window in the top-left corner of the device screen.
 WindowX = 0
@@ -2948,13 +2839,11 @@ WindowY = 0
 
 ```
 
-
 ```
 # Sets the window order to 0.
 WindowOrder = 0
 
 ```
-
 
 ```
 # Sets the window order to 0xff.
@@ -2976,7 +2865,6 @@ configuration.defaultWindowProperties.y = 1;
 
 ```
 
-
 ```
 // Places the application window in the top-left corner of the device screen.
 configuration.defaultWindowProperties.x = 0;
@@ -2984,14 +2872,12 @@ configuration.defaultWindowProperties.y = 0;
 
 ```
 
-
 ```
 // Sets the window order to 0.
 configuration.defaultWindowProperties.order = 0;
 configuration.systemConfiguration[ConfigurationKeyDefaultWindowOrder] = "0";
 
 ```
-
 
 ```
 // Sets the window order to 0xff.
@@ -3001,7 +2887,6 @@ configuration.systemConfiguration[ConfigurationKeyDefaultWindowOrder] = "0xff";
 ```
    |
 ### WindowClassName
-
 
 You can set window class name for QNX and Win32 platforms.
 |
@@ -3045,7 +2930,6 @@ configuration.defaultWindowProperties.groupName = "kanzi";
 
 ```
 
-
 ```
 // Sets the window class name for the new graphics output.
 configuration.systemConfiguration[ConfigurationKeyDefaultWindowClassName] = "kanzi";
@@ -3064,7 +2948,6 @@ Sets the window class name to `kanzi` for the legacy and new graphics outputs.
 ```
    |
 ### Window title
-
 
 You can set Kanzi window title. The default window title is âKanziâ.
 |
@@ -3117,7 +3000,6 @@ Sets âkanziâ as window title.
 
 ### DeviceIdentifier
 
-
 On the platforms that use the GBM windowing system, you can set which graphics card you want your Kanzi application to use.
 |
 
@@ -3158,7 +3040,6 @@ configuration.defaultDesktopProperties.deviceIdentifier = "/dev/dri/card1";
 ```
    |
 ### Preferred Vulkan GPU
-
 
 You can set the GPU type to favor when the Kanzi Vulkan backend selects a device to use, where more than one GPU is available. By default Kanzi uses the first enumerated GPU.
 |
@@ -3227,7 +3108,6 @@ configuration.preferredGPU = gfx::GpuSelectionType::Integrated;
 ```
    |
 ## QNX context type selection
-
 
 On QNX, you can set the context type that you want your Kanzi application to use. In `application.cfg` and on the command line you can set only one context type. To set more than one context type, set it in the `Application::onConfigure`.
 |
@@ -3299,7 +3179,6 @@ Sets Kanzi to use the SCREEN_DISPLAY_MANAGER_CONTEXT context type.
 
 ### WindowStyle
 
-
 You can set the style of your Kanzi application window. Besides the default window with a border that users can resize, you can set your Kanzi application to launch in a window without a border, in a window of fixed size, and in a window that occupies the entire device screen.
 
 To set the position and size of the application window, see Application window position and size.
@@ -3325,18 +3204,15 @@ To set a window without borders or any other decorations that users cannot resiz
 - In `application.cfg` use `borderless`.
 - In `Application::onConfigure` use `window_properties.hpp::KzsWindowStyle::KZS_WINDOW_STYLE_BORDERLESS`.
 
-
 To set a window that users cannot resize:
 
 - In `application.cfg` use `fixed`.
 - In `Application::onConfigure` use `window_properties.hpp::KzsWindowStyle::KZS_WINDOW_STYLE_FIXED`.
 
-
 To set a window that occupies the whole device screen:
 
 - In `application.cfg` use `fullscreen`.
 - In `Application::onConfigure` use `window_properties.hpp::KzsWindowStyle::KZS_WINDOW_STYLE_FULL_SCREEN`.
-
 
 To set a window that users can resize:
 
@@ -3364,7 +3240,6 @@ configuration.defaultWindowProperties.style = KZS_WINDOW_STYLE_FULL_SCREEN;
 ```
    |
 ### DefaultDisplayIndex
-
 
 When you run your Kanzi application in full-screen mode on a system with more than one display, you can set the default display where your Kanzi application window appears.
 
@@ -3411,7 +3286,6 @@ configuration.defaultWindowProperties.defaultDisplayIndex = 1;
    |
 ### WindowBufferCount
 
-
 If the windowing system of your target device supports setting the number of window buffers, you can set the number of native window buffers that your Kanzi application window uses. For example, Renesas window manager and QNX Screen support the setting of the number of window buffers.
 |
 
@@ -3452,7 +3326,6 @@ configuration.defaultWindowProperties.bufferCount = 3;
 ```
    |
 ### QnxWindowBufferCount
-
 
 Sets the number of native window buffers that your Kanzi application window uses on QNX platform. To ensure compatibility, if you do not set this configuration option explicitly, Kanzi uses the value from the WindowBufferCount configuration option.
 |
@@ -3495,7 +3368,6 @@ configuration.systemConfiguration[ConfigurationKeyQnxWindowBufferCount] = 3;
    |
 ### QnxStreamBufferCount
 
-
 Sets the number of native stream buffers that your Kanzi application uses on QNX platform.
 |
 
@@ -3537,7 +3409,6 @@ configuration.systemConfiguration[ConfigurationKeyQnxStreamBufferCount] = 3;
    |
 ### GroupName
 
-
 On platforms with windowing systems that use the window group name, such as QNX, you can set the group name for the application window group. When you run multiple Kanzi applications, in each Kanzi application set a unique name for the window group.
 |
 
@@ -3563,7 +3434,6 @@ configuration.defaultWindowProperties.groupName = "Cluster";
 ```
    |
 ### QnxPipelineID
-
 
 You can set the QNX Screen pipeline ID for your Kanzi application window. A graphics pipeline ID is an identifier that refers to the hardware layering that is specific to your target device.
 
@@ -3612,7 +3482,6 @@ Sets the QNX Screen pipeline ID to 1.
 ```
    |
 ### QnxWindowSelfLayout
-
 
 On QNX platforms, enables self layout mode of the QNX Screen property for the Kanzi application window. When enabled, in your application you can control window properties that are otherwise managed by the QNX window manager.
 |
@@ -3668,7 +3537,6 @@ Enables self layout for this QNX window.
    |
 ### QnxUsageFlags
 
-
 For a Kanzi application window you can programmatically set the usage flags for the QNX Screen property. Screen usage flags enable you to constrain the allocated QNX window buffers.
 |
 
@@ -3698,7 +3566,6 @@ m_applicationProperties.defaultWindowProperties.usageFlags = SCREEN_USAGE_OPENGL
 ```
    |
 ### EGLGraphicsFormatID
-
 
 You can set the EGL graphics format ID for your Kanzi application. EGL graphics format ID is an identifier that refers to an EGL configuration for a Kanzi application that runs on EGL-supported platforms. Use the command line to list EGL configurations available for your Kanzi application.
 
@@ -3754,7 +3621,6 @@ Sets the EGL graphics format ID to 1.
 
 ```
 
-
 Lists EGL configurations available for the application.
 
 ```
@@ -3763,7 +3629,6 @@ Lists EGL configurations available for the application.
 ```
    |
 ### EGLContextClientVersion
-
 
 You can set the EGL context client version for these EGL graphics outputs:
 
@@ -3834,12 +3699,10 @@ Sets Kanzi to use ES2 context client version.
    |
 ## Input handling
 
-
 You can define how your application handles touch and pointer input. When you run your application on a device, you can set whether the application reacts to the pointer of the device, uses a touch screen, or both. You can also set the transformation matrix of the input event coordinates.
 
 A Kanzi application handles input by default. To disable input handling in your application, override the `Application::setScreenOverride()` function with an empty implementation. See Disabling input handling.
 ### InputTransform
-
 
 You can set the transformation matrix of the input event coordinates. This transformation only affects input event coordinates, not the orientation of the Kanzi application screen. For example, use this to rotate the touch screen in relation to your application screen.
 |
@@ -3884,7 +3747,6 @@ configuration.defaultEventSourceProperties.transformation = Matrix3x3::createTra
 The examples use this equation to calculate the transformation matrix:   \[\begin{split}\begin{bmatrix} 1 & 0 & 1280\\ 0 & 1 & 720\\ 0 & 0 & 1 \end{bmatrix} * \begin{bmatrix} cos(\pi) & -sin(\pi) & 0\\ sin(\pi) & cos(\pi) & 0\\ 0 & 0 & 1 \end{bmatrix} = \begin{bmatrix} -1 & 0 & 1280\\ 0 & -1 & 720\\ 0 & 0 & 1 \end{bmatrix}\end{split}\]
 ### InputTranslation
 
-
 You can set how Kanzi translates pointer and touch events.
 |
 
@@ -3910,24 +3772,20 @@ To not apply any translation:
 - In `application.cfg` use `none`. Default value.
 - In `Application::onConfigure` use `InputTranslation::TranslateNone`. Default value.
 
-
 To translate pointer events to touch events:
 
 - In `application.cfg` use `pointertotouch`.
 - In `Application::onConfigure` use `InputTranslation::TranslatePointerToTouch`.
-
 
 To translate pointer events to touch events, and preserve pointer events:
 
 - In `application.cfg` use `pointertotouchpreserve`.
 - In `Application::onConfigure` use `InputTranslation::TranslatePointerToTouchPreserve`.
 
-
 To translate touch events to pointer events:
 
 - In `application.cfg` use `touchtopointer`.
 - In `Application::onConfigure` use `InputTranslation::TranslateTouchToPointer`.
-
 
 To translate touch events to pointer events, and preserve touch events:
 
@@ -3955,7 +3813,6 @@ configuration.defaultEventSourceProperties.translation = TranslatePointerToTouch
 ```
    |
 ### InputDiscardPointer
-
 
 You can set whether the application reacts to the pointer of the device.
 |
@@ -4006,7 +3863,6 @@ configuration.defaultEventSourceProperties.discardPointerEvents = 1;
    |
 ### InputDiscardTouch
 
-
 You can set whether the application reacts to touch input.
 |
 
@@ -4056,7 +3912,6 @@ configuration.defaultEventSourceProperties.discardTouchEvents = 1;
    |
 ## Input event devices on Linux
 
-
 You can configure the input event devices that Kanzi listens to on Linux ports where the native windowing system does not provide input device handling.
 
 This way Kanzi can listen to events directly from the input event devices provided by the operating system.
@@ -4092,13 +3947,11 @@ InputEventDevice = "/dev/input/event1"
 
 ```
 
-
 ```
 # Listens to events from two input event devices.
 InputEventDevice = "/dev/input/event0;/dev/input/event1"
 
 ```
-
 
 ```
 # Disables listening to events from input event devices.
@@ -4116,13 +3969,11 @@ configuration.defaultEventSourceProperties.inputEventDevice = "/dev/input/event1
 
 ```
 
-
 ```
 // Listens to events from two input event devices.
 configuration.defaultEventSourceProperties.inputEventDevice = "/dev/input/event0;/dev/input/event1";
 
 ```
-
 
 ```
 // Disables listening to events from input event devices.
@@ -4133,7 +3984,6 @@ configuration.defaultEventSourceProperties.inputEventDevice = "none";
 ## Platform configuration
 
 ### PlatformLoggingEnabled
-
 
 You can enable additional logs for the Platform layer. Currently, affects Wayland and DRM/GBM.
 |
@@ -4197,10 +4047,8 @@ Sets Kanzi to produce additional logs for the Platform layer.
    |
 ## Wayland configuration
 
-
 When you use Kanzi on Wayland, you can configure Wayland-specific parameters.
 ### Wayland shell
-
 
 You can set which Wayland shell Kanzi uses.
 |
@@ -4264,7 +4112,6 @@ Sets Kanzi to use the IVI shell.
    |
 ### Wayland input mode
 
-
 If you do not want to wait for the pointer and touch `frame()` events, you can set Kanzi to process input events immediately.
 |
 
@@ -4326,7 +4173,6 @@ Enable immediate input mode.
    |
 ### Wayland app ID
 
-
 You can set Kanzi app ID. The default app ID is âkanziâ.
 |
 
@@ -4375,7 +4221,6 @@ Sets âkanziâ as app ID.
 ```
    |
 ### Wayland IVI surface ID
-
 
 When you use the Wayland IVI shell, you can set which IVI surface ID Kanzi uses.
 |
@@ -4434,10 +4279,8 @@ Sets IVI surface ID to 4000.
    |
 ## Wayland IVI extension configuration
 
-
 When you use [COVESA IVI extension](https://github.com/COVESA/wayland-ivi-extension) and have Kanzi built with IVI extension support, you can control Kanzi by setting various IVI parameters.
 ### Wayland IVI layer ID
-
 
 Kanzi requires a dedicated IVI layer to display its content. You can set which IVI layer Kanzi uses.
 |
@@ -4495,7 +4338,6 @@ Sets IVI layer ID to 4000.
 ```
    |
 ### Wayland IVI surface opacity
-
 
 You can set the Kanzi IVI surface opacity.
 |
@@ -4558,7 +4400,6 @@ Sets the IVI surface to be fully transparent.
    |
 ### Wayland IVI layer opacity
 
-
 You can set the Kanzi IVI layer opacity.
 |
 
@@ -4619,7 +4460,6 @@ Sets the IVI layer to be fully transparent.
 ```
    |
 ### Wayland IVI surface visibility
-
 
 You can set the Kanzi IVI surface visibility.
 |
@@ -4682,7 +4522,6 @@ Hides the Kanzi IVI surface.
    |
 ### Wayland IVI layer visibility
 
-
 You can set the Kanzi IVI layer visibility.
 |
 
@@ -4744,10 +4583,8 @@ Hides the Kanzi IVI layer.
    |
 ## Image loading
 
-
 Kanzi uses third-party image libraries, such as [libpng](http://www.libpng.org/pub/png/libpng.html) and [libjpeg](https://jpegclub.org/reference/), to support different image formats. To make your Kanzi application more secure, you can set limits for Kanzi to use when loading images using these libraries. For example, to prevent the loading of malicious files, you can limit the amount of memory to allocate for each object that Kanzi loads.
 ### libjpeg
-
 
 You can set the maximum amount of memory in bytes to allocate for each JPEG object that Kanzi loads using the [libjpeg](https://jpegclub.org/reference/) image library.
 |
@@ -4793,7 +4630,6 @@ configuration.imageLoad.libJPEGMaxMemory = 2000000;
 ```
    |
 ### libpng
-
 
 You can set the maximum number of ancillary chunks in a PNG datastream and the maximum amount of memory in bytes to allocate for a chunk that Kanzi loads using the [libpng](http://www.libpng.org/pub/png/libpng.html) image library.
 
@@ -4861,12 +4697,10 @@ configuration.imageLoad.libPNGChunkMallocMax = 2000000;
    |
 ## Shader binary cache
 
-
 On performance-constrained platforms, shader compilations can considerably slow down the application startup and decrease runtime performance. You can use a shader binary cache primed with the set of shaders that your application requires. This way, your application does not have to compile shaders from source at runtime.
 
 See Using binary shaders.
 ### ShaderBinaryCacheDirectory
-
 
 You can set the directory where you want your Kanzi application to cache shader binaries. At the time of caching, this directory must be writable. For production purposes, you can make the directory read-only. See ShaderBinaryCacheReadOnly.
 
@@ -4910,7 +4744,6 @@ configuration.shaderBinaryCacheDirectory = "/tmp/shader-cache/";
 ```
    |
 ### ShaderBinaryCacheEnabled
-
 
 You can set your application to cache shader binaries. Use this to optimize Kanzi application performance on platforms where offline shader compilation tools are not available.
 
@@ -4959,7 +4792,6 @@ configuration.shaderBinaryCacheEnabled = true;
 ```
    |
 ### ShaderBinaryCacheCollisionCheck
-
 
 By default, Kanzi stores in the filename of a cached shader binary only a hash of the shader source code. Kanzi then compares that hash to a hash value derived from the requested shader source. Hash collisions, which are rare but possible, result in the use of the wrong shader.
 
@@ -5012,7 +4844,6 @@ configuration.shaderBinaryCacheCollisionCheck = true;
 ```
    |
 ### ShaderBinaryCacheReadOnly
-
 
 By default, Kanzi can write to the shader binary cache. When your application is ready for production, you can make the shader binary cache read-only.
 |

@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/best-practices/shaders/reducing-shader-s
 
 # Reducing shader switches
 
-
 Kanzi must switch shaders every time a rendered batch has a different shader compared to the previous batch. Because materials can have their own vertex and fragment shaders, in some cases your application has to switch shaders several times during the rendering of a scene.
 
 Vertex and fragment shaders are each compiled into a shader program and are sent to the GPU whenever it needs to be used. The GPU only stores one program at a time. At least one shader switch must be made for each material in a scene. If objects are presented in an order that requires excessive switching between shader programs, the rendering can slow down.
@@ -18,7 +17,6 @@ Shader switching decreases the performance of your application, so keep shader s
 - Render objects by material type to improve performance. See Rendering nodes by material type.
 
 ## Rendering nodes by material type
-
 
 To render nodes by material type:
 
@@ -35,7 +33,6 @@ In the Properties set:
 
     - When enabled it reverses the current order of nodes.
     - When disabled it keeps the current order of nodes.
-
 
 3.
 

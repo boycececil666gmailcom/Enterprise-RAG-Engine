@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/program-activities/program-act
 
 # Tutorial: Program Activities with C++ Code Behind
 
-
 In this tutorial, you learn how to program Activities with the Code Behind workflow. Code Behind is a workflow where you associate code with an instance of an Activity node instead of a type.
 
 In this tutorial, you use C++ Code Behind to enable the user to select the widgets that they want to use by dragging and dropping a widget from a list of widgets.
@@ -17,7 +16,6 @@ Before you start this tutorial, make sure that you have your Kanzi development e
 - CMake 3.25 or newer
 - Visual Studio 2022 with the latest updates
 
-
 This tutorial assumes that you understand the basics of working with the Kanzi Activity system. The best entry points for that are tutorials:
 
 - Tutorial: Structure application UI
@@ -25,7 +23,6 @@ This tutorial assumes that you understand the basics of working with the Kanzi A
 - Tutorial: Generate UI from a data source
 
 ## Get the tutorial
-
 
 To get the tutorial, in the Kanzi Studio Quick Start window, click Projects and select the Tutorials tab. Next to the Program Activities tutorial, click .
 
@@ -37,7 +34,6 @@ To learn about the content of this project and how to create such a project, see
 - The completed tutorial in the `<KanziWorkspace>/Tutorials/Program Activities/Completed` directory.
 
 ## Content of the starting point project
-
 
 The starting point project contains the content that you need to complete this tutorial:
 
@@ -79,7 +75,6 @@ To learn more about this plugin and how to define your own data source, see Tuto
 - The Header Activity contains a Toggle Button node that enables you to switch between the Drive and Browse application modes.
 
 ## Create the content for the widget selection area
-
 
 In this section, you create the content and Activity system structure for the widget selection area in the application.
 
@@ -135,7 +130,6 @@ In the Prefabs, press Alt and right-click Widgets > Grid Layout 2D, select Exclu
     - Grid Layout > Column to 1
     - Grid Layout > Row to 0
 
-
 You use this Exclusive Activity Host to show the widget that the user selects for the left-hand area.
   2.
 
@@ -165,32 +159,21 @@ You use this property type in the C++ Code Behind application code to activate i
 The starting point project of this tutorial uses this property type to set the widgets in the left area of the cluster, both maximized and minimized. Here you use the same property type so that when the user drops a widget to the left widget area of the Widget Activity, the application applies the change to both maximized and minimized widgets in the application.
 
 The Cluster Parallel Activity Host sets the value of the ActivityProperty.LeftWidget property.
-
-> **Tip:** To see in the Activity Browser which Activity Host sets the value of a controller property, select an Exclusive Activity Host and in the side panel click .
->
-> 8.
->
-> Create the structure for the selection of the right-hand area widget:
->
-> 1.
->
-> In the Prefabs, right-click the WidgetSelectionLeft Activity Host and select Duplicate.
-> 2.
->
-> Select the duplicated Activity Host, press F2, and rename it to WidgetSelectionRight.
-> 3.
->
-> In the Properties, set the Column property to 2.
-> 4.
->
-> In the Prefabs, press Alt and right-click Widgets > Grid Layout 2D > WidgetSelectionRight and select Alias.
-> 5.
->
-> In the Activity Browser, select the WidgetSelectionRight Activity Host. In the side panel in the Controller Property, click , select Property, and set the Property to the ActivityProperty.RightWidget property type.
-
+**Tip:** To see in the Activity Browser which Activity Host sets the value of a controller property, select an Exclusive Activity Host and in the side panel click .
+8.
+Create the structure for the selection of the right-hand area widget:
+1.
+In the Prefabs, right-click the WidgetSelectionLeft Activity Host and select Duplicate.
+2.
+Select the duplicated Activity Host, press F2, and rename it to WidgetSelectionRight.
+3.
+In the Properties, set the Column property to 2.
+4.
+In the Prefabs, press Alt and right-click Widgets > Grid Layout 2D > WidgetSelectionRight and select Alias.
+5.
+In the Activity Browser, select the WidgetSelectionRight Activity Host. In the side panel in the Controller Property, click , select Property, and set the Property to the ActivityProperty.RightWidget property type.
 
 ## Add C++ Code Behind and create the functionality
-
 
 In this section, you add C++ Code Behind to the Widgets Activity and using the Kanzi Engine API create the drag-and-drop functionality that enables the user to select the widget that they want to show in the left- and right-hand areas of the cluster by dragging a widget in the Widgets Activity.
 
@@ -305,7 +288,6 @@ private:
     OptionalIntDynamicPropertyType m_rightWidgetPropertyType;
 
 ```
-
 
 4.
 
@@ -610,17 +592,14 @@ void ProgramActivitiesWidgetsActivityCode::updateDragAndDrop(Vector2 dragPositio
 
 ```
 
-
 5.
 
 In Kanzi Studio, restart the Preview.
 
 When you restart the Preview, Kanzi Studio rebuilds the C++ Code Behind code to take the updated code into use.
 
-
 In the Activity Browser, when you set in the Cluster the MainView property to Browse, you can drag a widget from the list and drop it on the left or right widget to set the widget that you want to use in the cluster.
 ## Whatâs next?
-
 
 In this tutorial, you learned how to program Activities with the Code Behind workflow. You used C++ Code Behind to enable the user to select widgets by dragging and dropping a widget from a list of widgets.
 

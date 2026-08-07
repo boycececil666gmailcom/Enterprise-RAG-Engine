@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/rendering/using-opengl-es-3
 
 # Using OpenGL ES 3.0+ in Kanzi
 
-
 Kanzi supports deployment to OpenGL ES 3.0, 3.1, and 3.2. Shader **source code** in your materials must use GLSL ES version 310 or later syntax regardless of the deployment target â Kanzi cross-compiles shaders to the GLSL ES dialect matching the projectâs Target Graphics API setting. With OpenGL ES 3.0 and above you can use integer textures, floating point, and multiple render targets. For example, this allows you to have more precision with the rendered images, you can apply better looking post-processing effects, use HDR for textures and cubemap textures, and create seamless cubemaps. With OpenGL ES 3.1 you can additionally use compute shaders, image load/store, and shader storage buffer objects. With OpenGL ES 3.2, you can also use geometry and tessellation shaders.
 
 Before you use OpenGL ES 3.0+, make sure that your target platform supports the API version.
@@ -35,34 +34,24 @@ Kanzi requires `#version 310 es` or later as the version tag in shader source co
 
 ```
 
-
 ## Setting the shader families to export
-
 
 When Kanzi Studio exports a kzb file, it compiles shaders for the families listed in the Target Shader Family property. By default, Kanzi Studio compiles shaders for all three families: OpenGL, OpenGL ES, and Vulkan. To reduce the size of the kzb file, remove the families that your target platform does not use.
 
 The GLSL or GLSL ES version that Kanzi Studio uses for the OpenGL and OpenGL ES families depends on the Target Graphics API setting.
-
-> **Note:** When Target Graphics API is Vulkan 1.2, Kanzi Studio exports only Vulkan SPIR-V shaders, regardless of the Target Shader Family setting.
->
-> To set the shader families to export:
->
-> 1.
->
-> In the Kanzi Studio main menu, select Project > Properties.
-> 2.
->
-> In the Binary Export category, set the Target Shader Family property. Click Shader family to select the families to include:
->
-> - OpenGL â Kanzi Studio compiles GLSL shaders for OpenGL desktop platforms.
-> - OpenGL ES â Kanzi Studio compiles GLSL ES shaders for OpenGL ES mobile and embedded platforms.
-> - Vulkan â Kanzi Studio compiles SPIR-V shaders for Vulkan platforms.
-
+**Note:** When Target Graphics API is Vulkan 1.2, Kanzi Studio exports only Vulkan SPIR-V shaders, regardless of the Target Shader Family setting.
+To set the shader families to export:
+1.
+In the Kanzi Studio main menu, select Project > Properties.
+2.
+In the Binary Export category, set the Target Shader Family property. Click Shader family to select the families to include:
+- OpenGL â Kanzi Studio compiles GLSL shaders for OpenGL desktop platforms.
+- OpenGL ES â Kanzi Studio compiles GLSL ES shaders for OpenGL ES mobile and embedded platforms.
+- Vulkan â Kanzi Studio compiles SPIR-V shaders for Vulkan platforms.
 
 To include multiple families, select each from the menu. Kanzi Studio shows the selected families as a comma-separated list in the property field.
 
 ## Setting the color format of textures
-
 
 You can import to your Kanzi Studio project HDR and floating point images in .dds format and set the color format of the textures that use these images.
 
@@ -85,9 +74,7 @@ In the Library > Materials and Textures > `Textures`, select the texture that us
   - Wrap Mode to Clamp
   - Mipmap Mode to Linear or Nearest
 
-
 ## Setting the format of a render target texture
-
 
 Set the format of a render target texture to define the target pixel format used by the GPU.
 
@@ -104,7 +91,6 @@ In the Properties, set the Format to the target pixel format that you want to us
 If your render target textures are in integer target format, set the Minification Filter and Magnification Filter properties to Nearest.
 
 ## Selecting runtime graphics backend
-
 
 On the Windows operating system you can select whether you want to use OpenGL ES, OpenGL, or Vulkan in the `Application::onConfigure` function, in the `application.cfg`, or using the command line arguments, if your target supports command line arguments.
 
@@ -143,12 +129,10 @@ To use OpenGL ES:
 - In `application.cfg` use `gles` or `opengles`.
 - In `Application::onConfigure` use `SurfaceClientAPI::OpenGLES`.
 
-
 To use OpenGL:
 
 - In `application.cfg` use `gl` or `opengl`.
 - In `Application::onConfigure` use `SurfaceClientAPI::OpenGL`.
-
 
 To use Vulkan:
 
@@ -164,12 +148,10 @@ To use WGL:
 - In `application.cfg` use `wgl`.
 - In `Application::onConfigure` use `GraphicsContextAPI::WGL`.
 
-
 To use EGL:
 
 - In `application.cfg` use `egl`.
 - In `Application::onConfigure` use `GraphicsContextAPI::EGL`.
-
 
 To use GLX:
 
@@ -199,7 +181,6 @@ configuration.defaultSurfaceProperties.contextAPI = GraphicsContextAPI::WGL;
 ```
    |
 ## Enabling OpenGL ES 3.0 in the Android Emulator
-
 
 When you deploy to the Android Emulator an application that uses OpenGL ES API level higher than 2.0, enable OpenGL ES 3.0 in the Android Emulator.
 

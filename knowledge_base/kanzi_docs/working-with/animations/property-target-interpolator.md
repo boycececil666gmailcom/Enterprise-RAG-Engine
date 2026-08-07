@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/animations/property-target-
 
 # Interpolating property values
 
-
 Use the Property Target Interpolator when you want to dynamically set the target value for a property and want to interpolate the current value to the target value over time.
 
 For example, use the Property Target Interpolator to interpolate the rotation of a gauge needle to a target value regardless of its current position.
@@ -14,7 +13,6 @@ The Property Target Interpolator emulates the behavior of a spring-damper system
 
 Learn how to use the Property Target Interpolator by completing a tutorial. See Tutorial: Interpolate property values.
 ## Interpolating a value of a property
-
 
 To interpolate a value of a property:
 
@@ -64,7 +62,6 @@ When you change the value of the property that you set in the Interpolated Prope
 
 ## Interpolating rotation of 3D nodes
 
-
 To interpolate rotation of 3D nodes:
 
 1.
@@ -101,7 +98,6 @@ createRotationZ({@./Interpolator})
 
 ```
 
-
 Click Save.
 7.
 
@@ -114,16 +110,13 @@ For example:
 
     - If you get the value for the rotation from a data source, set it to the data object that you want to use to control the rotation.
     - If you get the value for the rotation from another property in the project, set it to that property.
-
-> **Note:** If this property is in the same node which contains the Property Target Interpolator, you can see the interpolation only when you run the application, but not in the Preview.
-
+**Note:** If this property is in the same node which contains the Property Target Interpolator, you can see the interpolation only when you run the application, but not in the Preview.
 
 Click Save.
 
 When you change the value of the property which you use to control the rotation, the Property Target Interpolator gradually changes the value to the target value over time. To change the interpolation, in the Property Target Interpolator adjust the values of the Acceleration and Drag properties.
 
 ## Getting information about completion of an interpolation
-
 
 When Property Target Interpolator completes the interpolation of the property it interpolates, it sends a message. You can intercept that message to find out when the property it interpolated reached its final value.
 
@@ -157,7 +150,6 @@ For example, add the Animation Player > Start action to start an animation, or a
 
 ## Using Property Target Interpolator in the API
 
-
 To create a Property Target Interpolator and set its target property and interpolation settings:
 
 ```
@@ -171,7 +163,6 @@ interpolator->setDrag(1.0f);
 
 ```
 
-
 To attach a Property Target Interpolator to a node:
 
 ```
@@ -179,14 +170,12 @@ node->addNodeComponent(interpolator);
 
 ```
 
-
 To create property target interpolation timeline and set its target property and interpolation settings:
 
 ```
 PropertyTargetInterpolationTimelineSharedPtr timeline = PropertyTargetInterpolationTimeline::create(domain, ".", Node2D::OpacityProperty, PropertyFieldWhole, 2.0f, 1.0f);
 
 ```
-
 
 To create playback for property target interpolation timeline:
 
@@ -196,13 +185,11 @@ TimelinePlaybackSharedPtr playback = timeline->createPlayback(context);
 
 ```
 
-
 To add playback of property target interpolation timeline to the clock:
 
 ```
 domain->getRootTimelineClock()->addTimelinePlayback(playback);
 
 ```
-
 
 For details, see the `PropertyTargetInterpolator`, `PropertyTargetInterpolationTimeline`, and `PropertyTargetInterpolationTimelinePlayback` classes.

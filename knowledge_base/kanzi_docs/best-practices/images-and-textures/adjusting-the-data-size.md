@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/best-practices/images-and-textures/adjus
 
 # Adjusting the data size
 
-
 When you use the correct data sizes for images, textures and shaders you reduce the memory requirements. Adjust the data size to reflect the requirements of your application:
 
 - If the screen resolution of the target devices is low, make sure the texels of the texture match the pixels of the target screen. For example, when you have a 50 by 40 pixels textured button on a screen 320 by 200 pixels, the optimal size of the texture that returns the best quality is a 50 by 40 pixels texture. You can combine image downscaling with image compression. Try to find a compromise between required visual quality and application performance. See Compressing textures.
@@ -19,6 +18,5 @@ When the size and format of the images in a cubemap texture do not match, Kanzi 
 - Use mipmaps to create a set of downscaled sublevels from a large texture. Mipmaps increase the GPU memory use by one third, but improve the performance when the full texture does not have to be sampled. Use mipmaps to improve the performance whenever you scale a textured node.
 
 See Using mipmaps.
-
 
 Avoid creating textures from very large images. For example, do not create textures directly from digital camera pictures. Instead create textures from preprocessed and properly detailed graphics. - Make sure that the tools you use for creating and converting images create images of the smallest possible size. For example, if you are using PNG images, use tools like [pngcheck](http://www.libpng.org/pub/png/apps/pngcheck.html) and [Pngcrush](http://pmt.sourceforge.net/pngcrush/) to ensure that the images are of the correct type and do not contain any unnecessary data.

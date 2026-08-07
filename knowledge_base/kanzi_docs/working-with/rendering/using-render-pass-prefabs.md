@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/rendering/using-render-pass
 
 # Using render passes
 
-
 Use render passes to define the rendering of 3D content in your Kanzi application.
 
 For example, in render passes you can define:
@@ -17,7 +16,6 @@ For example, in render passes you can define:
 - The format of the composition target. See Rendering content to composition targets.
 - Post-processing effects. Creating a post-processing effect.
 
-
 To achieve a specific rendering result, create a hierarchy of render passes which together form a render pass prefab. In a Viewport 2D node the Render Pass Prefab property sets which render passes Kanzi uses to render the 3D content of that node. See Creating and using render passes.
 
 You can reuse render passes in your Kanzi Studio project in these ways:
@@ -25,7 +23,6 @@ You can reuse render passes in your Kanzi Studio project in these ways:
 - Customize render passes in each Viewport 2D node where you use them. See Customizing instances of render passes.
 - Reuse render passes in another render pass tree. See Reusing render passes.
 - Import render passes that you created in another Kanzi Studio project. See Reusing render passes by merging.
-
 
 Learn how to use render passes by completing these tutorials:
 
@@ -35,7 +32,6 @@ Learn how to use render passes by completing these tutorials:
 - Apply a bloom effect on 3D content. See Tutorial: Create a bloom effect.
 
 ## Creating and using render passes
-
 
 To create and use render passes:
 
@@ -67,9 +63,7 @@ For example:
   - Apply a stencil to 3D content so that Kanzi renders only a selected area of the content. See Applying a stencil to 3D content.
   - Reduce aliasing in your content. See Using multisampling.
 
-
 ## Customizing instances of render passes
-
 
 A render pass can contain a hierarchy of render passes, each with their own properties. When you edit the render passes, you change how those render passes render content in all Viewport 2D nodes that use them. You can customize individual instances of a render passes to have individual values by overriding the values in the default render pass. For example, when you create a hierarchy of render passes that blits a composition target to the screen, you can blit the content using a different material in different instances of the render passes.
 
@@ -99,11 +93,9 @@ In the Properties click  next to the property that you customized and set the va
 Kanzi Studio adds to the Viewport 2D node a to-source binding which pushes the value of that property to the render pass prefab instance made available through the `Viewport2D::RenderPassProperty` property of the Viewport 2D node.
 
 You can set multiple Viewport 2D nodes to use the same render pass prefab and in each Viewport 2D node you can add and set the render pass prefab property to have different values.
+**Tip:** When you want to remove from a node a property and its To Source binding, right-click that property and select Remove Property And Binding.
 
-> **Tip:** When you want to remove from a node a property and its To Source binding, right-click that property and select Remove Property And Binding.
->
 ## Reusing render passes
-
 
 You can reuse render passes in another render pass tree. In each instance of a render pass prefab you can set the property values of render passes in that render pass prefab. For example, reuse multiple instances of a render pass prefab to create render pass chains to achieve post-processing effects. See Tutorial: Create a bloom effect.
 
@@ -117,11 +109,8 @@ In the Library > Rendering > Render Pass Prefabs press Alt and right-click the r
 In the Properties add the Render Pass Prefab property and set it to the render pass prefab that you want to instantiate.
 
 Kanzi Studio shows in the Render Pass View all properties of the render pass prefab that the Render Pass View instantiates. See Customizing instances of render passes.
-
-
-> **Tip:** You can instantiate a render pass prefab by dragging it to a render pass or another render pass prefab.
+**Tip:** You can instantiate a render pass prefab by dragging it to a render pass or another render pass prefab.
 ## Reusing render passes by merging
-
 
 You can reuse render passes from another Kanzi Studio project by merging the render passes to the project in which you want to use them.
 
@@ -142,7 +131,6 @@ You set Kanzi Studio to automatically select all items to which the render pass 
   2.
 
 In Rendering > Render Pass Prefabs select the render pass prefab which contains the hierarchy of render passes that you want to use.
-
 
 Click Merge.
 3.

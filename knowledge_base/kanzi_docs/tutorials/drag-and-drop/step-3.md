@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/drag-and-drop/step-3.html
 
 # Step 3 - Animate the button that the user drags
 
-
 In this step you fine-tune the implementation of the drag and drop functionality by playing an animation that wiggles the button when the user drags it.
 
 To animate the button that the user drags:
@@ -39,10 +38,8 @@ In Visual Studio run your application.
 
 When you drag a button, it wiggles.
 
-
 Previous step
 ## Whatâs next?
-
 
 In this tutorial you learned how to use the drag-and-drop manipulator to reorder the buttons in a navigation bar. Now you can:
 

@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/animations/triggering-anima
 
 # Using keyframe animations
 
-
 Use the Animation Player to play and control the playback of keyframe animations.
 ## Playing keyframe animations
-
 
 To play a keyframe animation:
 
@@ -34,9 +32,7 @@ For example, if the initial value of a property you animate is 0 and at the end 
 
 To make it easier to reuse an animation, instead of setting these values in an Animation Player, set these values in a Trigger with which you control an animation in a Dispatch Message Action > Animation Player > Start action. See Controlling keyframe animations.
 
-
 ## Controlling keyframe animations
-
 
 You can control keyframe animations using the animation control actions in any trigger.
 
@@ -91,13 +87,11 @@ Set the animation playback:
 
 In the Repeat Count property when you enable the Infinite property, the Animation Player plays the animation infinite amount of times.
 
-
 Kanzi applies the values of the Playback Mode, Duration Scale, and Repeat Count properties in the Animation Player > Start action on top of the values set in the Animation Player.
 
 For example, if in the Animation Player the Playback Mode property is set to Reverse and the Repeat Count property is set to 2, and in the Animation Player > Start action the Playback Mode property is set to Ping pong, the Animation Player plays the animation timeline first twice in reverse and then twice in normal mode.
 
 ## Getting information about the animation state
-
 
 When Animation Player starts, stops, or reaches the end of the animation it plays, it sends messages you can intercept to find out about the state of that animation. For example, you can use these messages to chain animations.
 
@@ -132,7 +126,6 @@ For example, create an Animation Player > Start action and set it to start anoth
 
 ## Using Animation Player in the API
 
-
 To create an Animation Player and set its timeline:
 
 ```
@@ -143,14 +136,12 @@ animationPlayer->setTimeline(timeline);
 
 ```
 
-
 To attach the Animation Player to a node:
 
 ```
 node->addNodeComponent(animationPlayer);
 
 ```
-
 
 To start the animation:
 
@@ -165,7 +156,6 @@ node->dispatchMessage(AnimationPlayer::PlayMessage, playMessageArguments);
 
 ```
 
-
 To pause the animation:
 
 ```
@@ -175,7 +165,6 @@ AnimationPlayer::PauseMessageArguments pauseMessageArguments;
 node->dispatchMessage(AnimationPlayer::PauseMessage, pauseMessageArguments);
 
 ```
-
 
 To resume the animation:
 
@@ -187,7 +176,6 @@ node->dispatchMessage(AnimationPlayer::ResumeMessage, resumeMessageArguments);
 
 ```
 
-
 To stop the animation:
 
 ```
@@ -198,7 +186,6 @@ node->dispatchMessage(AnimationPlayer::StopMessage, stopMessageArguments);
 
 ```
 
-
 To detach the Animation Player from the node:
 
 ```
@@ -206,10 +193,8 @@ node->removeNodeComponent(*animationPlayer);
 
 ```
 
-
 For details, see the `AnimationPlayer` class.
 ## Crossfading animations between states
-
 
 When your application transitions between states that each drive a different animation, the Animation Player can crossfade between the outgoing and incoming animations. To use crossfading, add an Animation Player with the same name to each state. When the State Manager transitions between the states, it matches the Animation Player components by name, and crossfades between the outgoing and incoming animations over the transition duration.
 

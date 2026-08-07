@@ -5,14 +5,12 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/grids/using-grid-layouts.ht
 
 # Using the Grid Layout nodes
 
-
 Use the Grid Layout nodes to arrange nodes in a grid.
 
 You can let a Grid Layout node arrange its child nodes automatically from the top-left towards the bottom-right corner, or you can manually assign each child node to a specific row and column in the grid.
 
 The depth of a Grid Layout 3D node is the maximum depth for all the child nodes in that Grid Layout 3D node.
 ## Creating a Grid Layout node
-
 
 To create a Grid Layout node:
 
@@ -21,18 +19,13 @@ To create a Grid Layout node:
 In the Node Tree, press Alt and right-click the node where you want to create a Grid Layout node and select either Grid Layout 2D or Grid Layout 3D.
 
 You can create a 3D node only in a 3D node, such as the Scene node, and a 2D node only in a 2D node.
+**Tip:** In the Preview tools, use the Grid Layout 2D tool  to click and drag in the Preview to create a Grid Layout 2D node. To scale the columns and rows, click and drag those columns and rows in the Preview.
+2.
+In the Node Tree, add child nodes to the layout that you created in the previous step.
+For example, if you created a Grid Layout 2D node, add several Image nodes, if you created a Grid Layout 3D node, add several Sphere nodes.
+As you add child nodes, the Grid Layout node positions them in the grid from the top-left towards the bottom-right corner of the grid. To manually set the position of each child node in the Grid Layout node, in each child node set the Column and Row properties. See Assigning nodes to cells in a Grid Layout node.
 
-> **Tip:** In the Preview tools, use the Grid Layout 2D tool  to click and drag in the Preview to create a Grid Layout 2D node. To scale the columns and rows, click and drag those columns and rows in the Preview.
-> 2.
->
-> In the Node Tree, add child nodes to the layout that you created in the previous step.
->
-> For example, if you created a Grid Layout 2D node, add several Image nodes, if you created a Grid Layout 3D node, add several Sphere nodes.
->
-> As you add child nodes, the Grid Layout node positions them in the grid from the top-left towards the bottom-right corner of the grid. To manually set the position of each child node in the Grid Layout node, in each child node set the Column and Row properties. See Assigning nodes to cells in a Grid Layout node.
->
 ## Setting the direction in which a Grid Layout node arranges its child nodes
-
 
 When you let a Grid Layout node arrange its child nodes automatically, you can set the direction in which that Grid Layout node arranges its child nodes.
 
@@ -48,9 +41,7 @@ In the Properties, add and set the Layout Direction property to:
   - Down to make the Grid Layout node first place its child nodes in the first column. When the first column is full, the Grid Layout node starts placing its child nodes in the second column, and so on.
   - Right to make the Grid Layout node first place its child nodes in the first row. When the first row is full, the Grid Layout node starts placing its child nodes in the second row, and so on. This is the default value.
 
-
 ## Assigning nodes to cells in a Grid Layout node
-
 
 You can manually assign each child node to a specific row and column in a Grid Layout node.
 
@@ -74,22 +65,15 @@ You assign this node to the second column and second row.
   - For the third child node: Column to 0, Row to 2.
 
 You assign this node to the first column and third row.
+**Tip:** To assign a node to another Grid Layout 2D cell in the Preview:
+1.
+In the Node Tree, select the node.
+2.
+Hold down the Ctrl key.
+3.
+In the Preview, drag the node to the cell where you want to assign it.
 
-
-> **Tip:** To assign a node to another Grid Layout 2D cell in the Preview:
->
-> 1.
->
-> In the Node Tree, select the node.
-> 2.
->
-> Hold down the Ctrl key.
-> 3.
->
-> In the Preview, drag the node to the cell where you want to assign it.
->
 ## Spanning columns and rows in a Grid Layout node
-
 
 For each cell in a Grid Layout node, you can set the number of columns and rows that cell spans.
 
@@ -178,7 +162,6 @@ For example, to set the last image to span two rows and two columns, set the Col
 
 ## Setting how a Grid Layout node calculates the size of its columns and rows
 
-
 When you create columns and rows in a Grid Layout node, you can set how that Grid Layout node calculates the size of its columns and rows. For example, to distribute content equally in a Grid Layout node, you can use proportional sizes for rows and columns.
 
 To set how Grid Layout node calculates the size of its columns and rows:
@@ -204,9 +187,7 @@ For example:
     - To equally distribute the content in columns, select Proportional and for each column use the same value.
     - If you have three columns and you want the first one to occupy half of the Grid Layout node width, select Proportional, use value 2 for the first column, and 1 for the other two columns.
 
-
 ## Using Grid Layout nodes to create user interfaces for different screen sizes
-
 
 You can use Grid Layout nodes to create applications with consistent user interfaces across devices with different screen sizes. A Grid Layout node can distribute its child nodes so that they occupy the same relative amount of space in the application interface, regardless of screen size or device orientation. For example, with a Grid Layout node, you can place the user interface controls in the top-left and bottom-right corners, with strictly defined distances from the edges of the screen.
 
@@ -226,7 +207,6 @@ Select the Grid Layout node. In the Properties, set:
 
 To keep images pixel perfect, instead of setting the Horizontal Alignment and Vertical Alignment properties to Stretch, add the Snap to Pixel property to child nodes whose position changes with the application layout.
 
-
 With these settings, you set the Grid Layout node to distribute its content equally across its entire width and height, and set the Grid Layout node to stretch across the entire screen.
 3.
 
@@ -239,7 +219,6 @@ In the Node Tree, select the third child in the Grid Layout node. In the Propert
   - Horizontal Margin property Right property field to 20
   - Vertical Margin property Bottom property field to 20
 
-
 With these settings, you position the third child node of the Grid Layout node in the third column and third row of the Grid Layout node, and place it 20 pixels from the bottom-right corner of the screen. The third child node in the Grid Layout node stays in that position regardless of the screen size or orientation.
 4.
 
@@ -247,7 +226,6 @@ In the Node Tree, select the first child node of the Grid Layout node. In the Pr
 
   - Horizontal Margin property Left property field to 20
   - Vertical Margin property Top property field to 20
-
 
 With these settings you create a 20 pixel margin between the first child node and the edge of the screen.
 5.
@@ -259,11 +237,9 @@ In the Node Tree, select the second child node of the Grid Layout node. In the P
   - Horizontal Alignment to Center
   - Vertical Alignment to Center
 
-
 With these settings, you position the second child node in the second column and second row of the Grid Layout.
 
 ## Setting the appearance of a Grid Layout 2D node
-
 
 To set the appearance of 2D nodes:
 
@@ -274,7 +250,6 @@ To set the appearance of 2D nodes:
 - You can render a 2D node as pixel-perfect. See Rendering pixel-perfect 2D nodes.
 
 ## Using the Grid Layout 3D node in the API
-
 
 To create a Grid Layout 3D node with two columns and two rows with automatic cell size, and set the grid to arrange the items in the grid columns from top to bottom:
 
@@ -310,7 +285,6 @@ grid->addChild(child4);
 
 ```
 
-
 This example creates a Grid Layout 3D node with two columns and two rows, using both fixed and automatic cell size. By default, the Grid Layout 3D node automatically sets which cells its items occupy.
 
 ```
@@ -339,7 +313,6 @@ Model3DSharedPtr child3 = Model3D::createBox(domain, "Box3", Vector3(1.0f, 2.0f,
 grid->addChild(child3);
 
 ```
-
 
 This example creates a Grid Layout 3D node with two columns and three rows whose sizes the Grid Layout 3D node calculates in proportion to the sizes of other columns and rows in the grid. The example manually sets which cells each item in the grid occupies.
 
@@ -382,10 +355,8 @@ grid->addChild(child3);
 
 ```
 
-
 For details, see the `GridLayout3D` class.
 ## Using the Grid Layout 2D node in the API
-
 
 To create a Grid Layout 2D node with two columns and two rows with automatic cell size, and set the grid to arrange the items in the grid columns from top to bottom:
 
@@ -421,7 +392,6 @@ grid->addChild(child4);
 
 ```
 
-
 This example creates a Grid Layout 2D node with two columns and two rows, using both fixed and automatic cell size. By default, the Grid Layout 2D node automatically sets which cells its items occupy.
 
 ```
@@ -450,7 +420,6 @@ EmptyNode2DSharedPtr child3 = EmptyNode2D::create(domain, "Empty3", 128.0f, 128.
 grid->addChild(child3);
 
 ```
-
 
 This example creates a Grid Layout 2D node with two columns and three rows whose sizes the grid calculates in proportion to the sizes of other columns and rows in the grid. For each item in the grid, the example sets which cells that item occupies.
 
@@ -494,9 +463,7 @@ grid->addChild(child3);
 
 ```
 
-
 For details, see the `GridLayout2D` class.
 ## Grid Layout property types and messages
-
 
 For lists of the available property types and messages for the Grid Layout nodes, see Grid Layout 2D and Grid Layout 3D.

@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/screens/screens.html
 
 # Setting the Screen node
 
-
 Use the Screen node to set the metrics and the content of the screen of the target device on which your Kanzi application is rendered.
 
 You can:
@@ -15,7 +14,6 @@ You can:
 - Make your application fill the entire device screen. See Making an application that fills the entire screen.
 
 ## Setting the size of the Screen node
-
 
 To set the size of the Screen node, in the Node Tree select the Screen node and in the Properties set:
 
@@ -28,7 +26,6 @@ To set the size of the Screen node, in the Node Tree select the Screen node and 
 
 ## Setting the color of areas outside the Screen node
 
-
 When the resolution of the device screen is larger than the resolution of an application with a fixed size of the Screen node, you can set the color of the areas outside of the Screen node with the Screen Clear Color property.
 
 When you use the Screen Clear Color property, and you have Viewport 2D nodes in the node tree, you can render them with a render pass that does not perform color clear. The Screen performs the color clear already.
@@ -37,11 +34,9 @@ Set the Screen Clear Color when your Kanzi application does not use copy swap be
 
 - Target hardware uses tile-based architecture
 
-
 or
 
 - Target hardware does not use tile-based architecture, but significant screen area is not filled with opaque rendering, such as with a background image.
-
 
 To set the color of areas outside the Screen node:
 
@@ -56,13 +51,11 @@ When you set the Screen Clear Color property, Kanzi clears the screen outside of
 
 ## Making an application that fills the entire screen
 
-
 To make a Kanzi application that fills the entire device screen, in the Node Tree select the Screen node, and in the Properties set:
 
 - Screen Resolution property to Custom
 - Metrics Type to Relative
 - Width and Height to 1
-
 
 When you need to override the above settings in the root node of your application, such as RootNode:
 
@@ -77,9 +70,7 @@ In the Properties add these properties:
   - Layout Height
   - Aspect Ratio
 
-
 ## Using the Screen node in the API
-
 
 To set the locale of a Screen node:
 
@@ -89,7 +80,6 @@ screen->setLocale("en-US");
 
 ```
 
-
 To activate a theme for a Screen node:
 
 ```
@@ -97,7 +87,6 @@ To activate a theme for a Screen node:
 screen->activateTheme("kzb://project/Themes/MyThemeGroup/MyTheme");
 
 ```
-
 
 To set a Screen node to handle user input and manage the key focus:
 
@@ -116,9 +105,7 @@ screen->attach();
 
 ```
 
-
 For details, see the `Screen` class.
 ## Screen property types and messages
-
 
 For a list of the available property types and messages for the Screen node, see Screen.

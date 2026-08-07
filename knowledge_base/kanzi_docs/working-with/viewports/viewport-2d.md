@@ -5,12 +5,10 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/viewports/viewport-2d.html
 
 # Using the Viewport 2D node
 
-
 Viewport 2D node can render both a Scene, which is a 3D node, and 2D nodes, such as Image or Button 2D.
 
 When you create a Kanzi Studio project, that project contains a Viewport 2D node with a Scene that contains a Camera and a Directional Light. For Kanzi Engine, the Scene node is always the first child of a Viewport 2D node.
 ## Creating a Viewport 2D node
-
 
 To create a Viewport 2D node:
 
@@ -34,9 +32,7 @@ In the Scene node, create the 3D nodes that you want to show.
 
 See 3D assets.
 
-
 ## Controlling how Kanzi renders a Viewport 2D node
-
 
 You can control how Kanzi renders a Viewport 2D node. Kanzi renders the background brush before the content of the Viewport 2D node by default.
 
@@ -47,7 +43,6 @@ To control how Kanzi renders a Viewport 2D node, set the Foreground Hint propert
 - Occluding to not render the background brush. Use it when the entire Viewport 2D node is filled with 3D content.
 
 ## Using the Viewport 2D node in the API
-
 
 To create a Viewport 2D node:
 
@@ -75,9 +70,7 @@ sceneNode->addChild(box);
 
 ```
 
-
 For details, see the `Viewport2D` class.
 ## Viewport 2D property types and messages
-
 
 For a list of the available property types and messages for the Viewport 2D node, see Viewport 2D.

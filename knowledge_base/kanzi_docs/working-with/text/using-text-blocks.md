@@ -5,12 +5,10 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/text/using-text-blocks.html
 
 # Using the Text Block nodes
 
-
 Use the Text Block nodes to show a small amount of text in your application.
 
 A Text Block node uses the font that you select to render the text. Use Text Block 3D to show text in 3D space and Text Block 2D to show text in 2D space.
 ## Adding text to your application
-
 
 To add text to your application:
 
@@ -19,32 +17,21 @@ To add text to your application:
 In the Node Tree press Alt and right-click the node where you want to show text and select either Text Block 3D, or Text Block 2D.
 
 You can create a 3D node only in a 3D node, such as the Scene node, and a 2D node only in a 2D node.
-
-> **Tip:** In the Preview use the Text Block 2D tool  to click and drag to create a Text Block 2D node. To position the Text Block 2D node in a layout, click and drag that Text Block 2D node, press and hold Ctrl, and drop the node on top of the cell where you want to place it.
-> 2.
->
-> In the Properties in the Text property enter the text that you want to show. To add a new line press Shift Enter.
->
-> Use the Text Block nodes to show a small amount of text in your application.
->
-> You can set how Kanzi wraps and truncates text. See Wrapping and truncating text.
-> 3.
->
-> In the Properties set the Font properties to make the text look the way you want it to look. Kanzi applies all the settings that you set in a Text Block node to the entire node.
->
-> For example, in the Properties add and set:
->
-> - Font Size to define the size of the text.
-> - Font Family to the font family that you want to use.
->
-> The default font family in Kanzi is [Fira Sans Regular](https://mozilla.github.io/Fira/). The font file is stored in `<KanziInstallation>/Studio/Asset Library/Fonts`. When you want to use your own font, import it to your Kanzi Studio project.
->
-> See Importing fonts.
-> - Fixed Character Width to turn your font into a monospaced font.
-
+**Tip:** In the Preview use the Text Block 2D tool  to click and drag to create a Text Block 2D node. To position the Text Block 2D node in a layout, click and drag that Text Block 2D node, press and hold Ctrl, and drop the node on top of the cell where you want to place it.
+2.
+In the Properties in the Text property enter the text that you want to show. To add a new line press Shift Enter.
+Use the Text Block nodes to show a small amount of text in your application.
+You can set how Kanzi wraps and truncates text. See Wrapping and truncating text.
+3.
+In the Properties set the Font properties to make the text look the way you want it to look. Kanzi applies all the settings that you set in a Text Block node to the entire node.
+For example, in the Properties add and set:
+- Font Size to define the size of the text.
+- Font Family to the font family that you want to use.
+The default font family in Kanzi is [Fira Sans Regular](https://mozilla.github.io/Fira/). The font file is stored in `<KanziInstallation>/Studio/Asset Library/Fonts`. When you want to use your own font, import it to your Kanzi Studio project.
+See Importing fonts.
+- Fixed Character Width to turn your font into a monospaced font.
 
 ## Wrapping and truncating text
-
 
 When you restrict the width of a Text Block node, Kanzi by default clips the text that is longer than the width of that Text Block node. You can:
 
@@ -58,9 +45,7 @@ When you restrict the width of a Text Block node, Kanzi by default clips the tex
     - At word to truncate text by entire words
     - None to disable truncation
 
-
 Kanzi truncates the text to fit within the vertical and horizontal limits of the Text Block node and adds the characters from the **Overflow** property. If there is not enough vertical space to fit a single line of text, Kanzi truncates all text and does not show the **Overflow** characters.
-
 
 When you enable truncation, you can set which part of the text to truncate. Add the Truncation Direction property and set it to:
 
@@ -79,7 +64,6 @@ The value of the Overflow property indicates truncation at the end of the line t
 If Word Wrap property is set to disabled, Kanzi horizontally clips multiline text. Kanzi completely truncates leading lines of a multiline or word-wrapped text.
 
 The value of the Overflow property indicates truncation at the beginning of the first visible line.
-
 
 This table shows some options that you can use to set text layout.
 |
@@ -174,7 +158,6 @@ Truncate the middle part of single-line text, when the text is longer than the w
    |    |
 ## Fitting text into a Text Block node
 
-
 When you want to make sure that the entire text of a Text Block node fits into the width of that node, use the Horizontal Fit and Horizontal Fit Scale Limits properties.
 
 To fit text into a Text Block node:
@@ -204,9 +187,7 @@ For example:
     - 1.0, Kanzi does not stretch the glyphs
     - 2.0, Kanzi allows stretching the glyphs to up to double their size
 
-
 ## Setting the size and layout of a Text Block 3D node
-
 
 To render a Text Block 3D node, Kanzi first prepares the text as 2D text using pixels and then projects the prepared text to the 3D space.
 
@@ -222,7 +203,6 @@ For example, set the values of the Layout Width and Layout Height properties in 
 
 ## Setting the color of text in a Text Block 2D node
 
-
 To set the color of text in a Text Block 2D or Text Box 2D node:
 
 1.
@@ -234,11 +214,9 @@ In the Properties add the Foreground Brush property.
 3.
 
 Set the Foreground Brush property to an existing Color Brush or select + Color Brush, name the brush, click  next to the property, and set the color of the Color Brush you created.
+**Tip:** To quickly edit a brush, in the Properties next to the Background Brush or Foreground Brush property click  and edit the brush.
 
-> **Tip:** To quickly edit a brush, in the Properties next to the Background Brush or Foreground Brush property click  and edit the brush.
->
 ## Setting the color of text in a Text Block 3D node
-
 
 To set the color of text in a 3D text node:
 
@@ -251,10 +229,8 @@ In the Properties add and set the Font Color property.
 
 ## Changing the size of text dynamically
 
-
 To dynamically change the size of text in a Text Block node, use the Scale property field of either Render Transformation or Layout Transformation properties, instead of the Font Size property. For example, use this approach when you want to animate the size of text in a Text Block node. When you use the Font Size property to dynamically scale the text, Kanzi creates multiple textures for different font sizes and does not release them from the memory.
 ## Rendering pixel-perfect text in a Text Block 2D node
-
 
 When you create a project in Kanzi Studio, the Screen node has in its resource dictionary the Text Block 2D Style which enables the Snap to Pixel property for all Text Block 2D nodes in a Kanzi application.
 
@@ -262,7 +238,6 @@ The Snap to Pixel property rounds the translation and scale of a Text Block 2D o
 
 To disable the Snap to Pixel property, select the Text Block 2D node for which you want to disable that property and in the Properties add and disable the Snap to Pixel property.
 ## Setting the rendering of characters in a Text Block 2D node
-
 
 You can set how Kanzi renders each character in 2D text. In a Text Block 2D node these properties are by default enabled:
 
@@ -272,7 +247,6 @@ This improves text sharpness, but some characters can shift by a fraction of a p
 - The Fractional Character Width property enables the spacing between characters to vary and be a fraction of a pixel.
 
 In most cases this provides the best text rendering result. Fractional widths can cause characters of small font sizes to run together or have too much space. This can make the text more difficult to read.
-
 
 This table lists the options you can use to set the rendering of characters in a Text Block 2D node.
 |
@@ -316,7 +290,6 @@ Manually set the space between the characters. |
 Character Spacing to the amount of space you want between the characters   |    |
 ## Setting font hinting for a Text Block node
 
-
 Font hinting provides instructions for rasterization: mapping the outlines of fonts to screen pixels. Font hinting aims to both maintain the design aesthetic of a font and optimize the readability of the font at different sizes.
 
 Text nodes in Kanzi by default use the font hinting data included in a font.
@@ -330,7 +303,6 @@ To set font hinting for a Text Block or Text Box node, in the Node Tree select t
 - Auto hinting to render text using the hinter of the font engine rasterizer. See Setting the font engine for the Preview.
 
 ## Splitting text into multiple Text Block nodes
-
 
 You can use bindings to split text into parts and access each part of the text. For example, split runtime data that you get from a data source. See Using a data source.
 
@@ -353,7 +325,6 @@ See Showing the text parts in multiple nodes in any order.
 
 ## Formatting display of property values
 
-
 Use the `format` binding function to set how a Text Block node displays a property value. See Formatting display of property values and the format function reference.
 
 With `format`, you can:
@@ -367,10 +338,8 @@ With `format`, you can:
 
 ## Rendering text with transparent background
 
-
 When you want the background of the text block nodes to be transparent, you must render the nodes in the node tree of your Kanzi application in the correct order. See Rendering partially transparent nodes.
 ## Setting the appearance of a Text Block 2D node
-
 
 To set the appearance of 2D nodes:
 
@@ -382,7 +351,6 @@ To set the appearance of 2D nodes:
 
 ## Using the Text Block 3D node in the API
 
-
 To create a Text Block 3D node:
 
 ```
@@ -390,7 +358,6 @@ To create a Text Block 3D node:
 TextBlock3DSharedPtr textBlock = TextBlock3D::create(this->getDomain(), "Text Block");
 
 ```
-
 
 To set the font family for the text in the Text Block 3D node:
 
@@ -400,7 +367,6 @@ textBlock->setFontFamily(fontFamily);
 
 ```
 
-
 To add the text shown by the Text Block 3D node:
 
 ```
@@ -408,7 +374,6 @@ To add the text shown by the Text Block 3D node:
 textBlock->setText("Hello\nworld!");
 
 ```
-
 
 To adjust the appearance of the text in the Text Block 3D node:
 
@@ -432,7 +397,6 @@ textBlock->setHintingPreference(FontHintingPreference::NativeHinting);
 
 ```
 
-
 To adjust the scaling factor of the 2D to 3D projection:
 
 ```
@@ -442,9 +406,7 @@ textBlock->setProjection2DTo3DScale(0.04f);
 
 ```
 
-
 For details, see the `TextBlock3D` class.
 ## Using the Text Block 2D node in the API
-
 
 To create a Text Block 2D node:

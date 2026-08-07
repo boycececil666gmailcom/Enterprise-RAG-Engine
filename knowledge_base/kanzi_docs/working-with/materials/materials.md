@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/materials/materials.html
 
 # Material types and materials
 
-
 Material types define the property types of a material. By adjusting material property values defined by a material type, you set the appearance of a material. Each material type has a vertex shader and a fragment shader, which set the type of properties you can use in a material.
 
 Use materials to set the appearance of 3D nodes and Material Brush brushes.
@@ -23,7 +22,6 @@ Kanzi Studio provides template projects that contain a default set of material t
 - High quality fragment shaders template is intended for high-precision applications. It contains pixel-shader based materials. Most of the GPU specific computation, including applying lights using the Phong reflection model, is done in the fragment shader. This offers better image quality often at the cost of performance.
 - Physically based rendering template is intended for modern applications. It contains materials based on shaders that implement physically-based rendering (PBR) principles. The properties of these materials represent physical properties, such as metalness, and are therefore intuitive to control. Most of the GPU specific computation, including applying lights using a physically-based lighting model, is done in the fragment shader. This offers a more realistic rendering result in many lighting conditions.
 
-
 High performance vertex shaders, High quality fragment shaders, and Physically based rendering project templates define a set of material types that are available in the project materials library, each with fragment and vertex shaders. See Shaders.
 
 If you are not sure which set of materials to choose, select Import material types manually, and add the materials as you need them.
@@ -31,14 +29,12 @@ If you are not sure which set of materials to choose, select Import material typ
 The type of shading used is often the first bottleneck that causes bad performance. See Shaders best practices.
 ## Material type bindings
 
-
 Bindings in material types enable you to:
 
 - Modify the values of shader uniforms without editing shader code. See Uniform bindings.
 - Store the results of bindings into temporary variables to which you can refer in other bindings. See Temporary variable bindings.
 
 ### Uniform bindings
-
 
 In a material type, vertex and fragment shaders define the uniforms and property types that you can use in that material. When rendering 3D nodes with a specific material type, uniform bindings allow Kanzi to write values to the render state and use those values for uniforms and property types.
 
@@ -83,10 +79,8 @@ kzViewport = {##RenderPass/DrawObjectsRenderPass.Viewport}
 
 ```
 
-
 When you add a property to a material type, Kanzi Studio creates a default uniform binding for that property type. See Adding a property to a material type.
 ### Temporary variable bindings
-
 
 In a material type, a temporary variable binding enables you to store the result of a binding into a temporary variable. You can refer to this variable in other bindings in the same material type.
 
@@ -94,7 +88,6 @@ Kanzi uses property types to identify temporary variables. This enables you to:
 
 - Refer to a temporary variable without separately specifying its data type. A property type holds information about its data type.
 - Detect conflicts between temporary variables.
-
 
 See Creating property types.
 

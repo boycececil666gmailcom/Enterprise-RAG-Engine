@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/themes/theming-applications
 
 # Theming your applications
 
-
 Themes enable you to use a single Kanzi Studio project for multiple variants of your product.
 
 For example, in a single project you can define Kanzi applications for different car models and different visual themes for each car model.
@@ -31,10 +30,8 @@ View a Theme in the Preview. See Viewing a theme in the Preview.
 
 Export resources used by a Theme to kzb files. See Exporting Themes.
 
-
 Learn how to theme your Kanzi applications by completing a tutorial. See Tutorial: Theme your application.
 ## Adding resources used in a project to a Theme Group
-
 
 Start creating a theme for your Kanzi application by adding resources which you want to theme to a Theme Group. The easiest way to add resources to a Theme Group is to use the Add Resources to a Theme Group command on a node in the Node Tree.
 
@@ -72,9 +69,7 @@ Click Add.
 
 Kanzi Studio creates resource IDs from all resources and adds them to the Theme Group you selected. You can find Theme Group items in the Library > Themes. In the Theme Group you can now create Themes and set which resource you want to use for which Theme. See Setting resources for a Theme.
 
-
 ## Setting resources for a Theme
-
 
 After you add resources used in your project to a Theme Group you can create a Theme and define the resources used by each Theme.
 
@@ -106,9 +101,7 @@ Black cells mark entries which use the default value.
 Gray cells mark entries which use an empty string.
   - To use a resource from the file system, in the cell for which you want to set the resource select < URL >, and enter `file://` followed by the absolute or relative path to the resource in the file system.
 
-
 ## Using a kzb file URL for a resource in a Theme
-
 
 After you add resources used in your project to a Theme Group, you can use a kzb file URL to point to a resource in another Kanzi Studio project.
 
@@ -130,7 +123,6 @@ In the cell enter the kzb file URL of the resource you want to use.
 For example, to use a font from another Kanzi Studio project, enter the kzb file URL pointing to that font.
 
 ## Viewing a theme in the Preview
-
 
 When you are defining a Theme for your application, you can set the Preview to show that Theme without adding to the application a control for switching Themes.
 

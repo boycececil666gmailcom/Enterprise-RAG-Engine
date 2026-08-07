@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/theming/step-3.html
 
 # Step 3 - Export and use the API to set the application theme
 
-
 In this step of the tutorial you export the kzb files for both baked themes (defined in the Car variant theme group) and non-baked themes (defined in the Cluster theme theme group), and use the Kanzi Engine API to enable the user to change the non-baked themes in the application.
 ## Export kzb files
-
 
 In this section you first set in the Kanzi Studio project how you want to export the themes in the project, then you export the themes.
 
@@ -76,7 +74,6 @@ theming.kzb
 
 ```
 
-
 to
 
 ```
@@ -91,7 +88,6 @@ theming.kzb
 
 ```
 
-
 to
 
 ```
@@ -99,9 +95,7 @@ Car variant=Hybrid/theming.kzb
 
 ```
 
-
 ## Add code to change the cluster theme
-
 
 In this section you add the application code to start the application with the Classic theme and create a message handler which you add to the Theme selector Button 2D node to switch between the two themes you created in the Cluster theme theme group.
 
@@ -114,19 +108,13 @@ In Kanzi Studio, select File > Open Kanzi Command Prompt.
 The Kanzi Command Prompt opens the Windows Command Prompt with the Kanzi environment variables set for the version of Kanzi for which you open a Kanzi Command Prompt.
 
 Use the Kanzi Command Prompt to access Kanzi utilities and build tools, such as Gradle and CMake, without using absolute paths or setting environment variables.
-
-> **Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
->
-> When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
-> 2.
->
-> In the Kanzi Command Prompt in the `<KanziWorkspace>/Tutorials/Theming/Start/Application` directory run the script that generates a Visual Studio solution for the tutorial application.
->
-> ```
-> generate_cmake_vs2022_solution.bat
->
-> ```
-
+**Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
+When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
+2.
+In the Kanzi Command Prompt in the `<KanziWorkspace>/Tutorials/Theming/Start/Application` directory run the script that generates a Visual Studio solution for the tutorial application.
+```
+generate_cmake_vs2022_solution.bat
+```
 
 This script generates a Visual Studio solution for the application in the directory `<KanziWorkspace>/Tutorials/Theming/Start/Application/build_vs2022`.
 3.
@@ -142,7 +130,6 @@ In the `theming.cpp` file in the `Theming` class create:
   - A struct which defines the theme name and kzb file URL and a vector which you use to store the names and kzb file URL for application themes.
   - A variable you use to keep track of the currently active theme.
   - A const string you use to set which baked theme you want to load at application startup.
-
 
 ```
 class Theming : public ExampleApplication
@@ -297,12 +284,10 @@ Select the solution configuration that you want to use and run your application.
 
 During development, select the Debug configuration. When you are ready to create a version for production, select the Release configuration.
 
-
 In the application when you click the Theme selector button, you switch between the Classic and Modern cluster themes which you defined in the Cluster theme theme group.
 
 Previous step
 ## Whatâs next?
-
 
 In this tutorial you learned how to theme a Kanzi application to create different appearance of the same application and how to use a single Kanzi Studio project for more than one variant of your product. To take this tutorial further you can create assets for additional cluster themes and car variants. You can also:
 

@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/installing-kanzi/license-management/tran
 
 # Transferring your license
 
-
 You can transfer an activated Kanzi Studio license from one computer to another.
 
 Kanzi Enterprise license is locked to the computer on which the license was activated.
@@ -36,6 +35,5 @@ If required, set up proxy, and click Release.
 4.
 
 Activate the released license on another computer. See Using a product key to activate Kanzi Studio.
-
 
 For technical support use the Kanzi Support Portal at [http://support.rightware.com](http://support.rightware.com/). See Technical support.

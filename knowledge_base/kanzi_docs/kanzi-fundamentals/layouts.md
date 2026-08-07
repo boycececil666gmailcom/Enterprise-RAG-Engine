@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/kanzi-fundamentals/layouts.html
 
 # Layouts
 
-
 In Kanzi there are three types of layouts:
 |   |
 
@@ -22,12 +21,10 @@ You can use layout nodes to position nodes in relation to the application screen
 See Layout control nodes.
 ## Universal layout properties
 
-
 To position items in your Kanzi applications you can use these transformation types:
 
 - Layout transformation transforms the item before it applies the layout pass.
 - Render transformation transforms the item after it applies the layout pass, but before it renders the item.
-
 
 Kanzi applies the render transformation after applying the layout transformation, and does not affect the layout calculations. For example, this allows you to animate nodes within a layout without causing the layout recalculation.
 
@@ -36,7 +33,6 @@ Layout control nodes, such as Stack Layout and Grid Layout nodes, apply their ow
 - Alignment defines the gravity of the layout. For example, set the Horizontal Alignment property to Right to align the node to the right side of its parent layout. By setting alignment properties to Stretch, the node stretches to the dimensions of its parent layout. Use the Content Stretch property to specify how a layout handles its content.
 - Margin enforces the object spacing relative to the border of its parent layout. For example, set the Horizontal Margin property to set the spacing on the left and right sides of the node in relation to its parent layout.
 - Layout properties override the bounding box size of a node. The default layout size is defined by the size of the node based on its bounding box and margins.
-
 
 For example, a Stack Layout node set in direction on the x axis places its two child nodes next to each other based on their dimensions (bounding boxes). By using the Layout Width property you can override the width of the bounding box: a value smaller than the size of the node makes the node overlap, and a value larger than the size of the node extends the space between the two nodes.
 

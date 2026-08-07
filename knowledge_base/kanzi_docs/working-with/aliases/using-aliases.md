@@ -5,14 +5,12 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/aliases/using-aliases.html
 
 # Using aliases
 
-
 Use an Alias to get consistent access to a Kanzi node. You can use aliases to access nodes both in Kanzi Studio and using the Kanzi Engine API.
 
 Because you move nodes in the node tree of your project while creating your application in Kanzi Studio, the easiest way to keep track of them is to use aliases. You can retrieve alias target nodes with bindings or the Kanzi Engine API using the hash sign (`#`) followed by the name of the alias, regardless of the node location in the project.
 
 Note that you must always add aliases to the resource dictionary of the node from which you want to retrieve them.
 ## Creating an alias from a node
-
 
 When you create an alias from a node, Kanzi Studio adds that alias to the resource dictionary of the nearest ancestor of that node that contains a resource dictionary. For example, if a Scene has a resource dictionary and it contains a Camera, when you create an alias directly from the Camera node, Kanzi Studio automatically adds the alias pointing to the Camera node to the resource dictionary of the Scene node.
 
@@ -32,7 +30,6 @@ For example, in a Viewport 2D that contains a Camera, press Alt and right-click 
 Kanzi Studio creates an alias pointing to the node from which you created the alias and adds it to the resource dictionary of its nearest ancestor node that contains a resource dictionary.
 
 ## Creating an alias and manually setting its target
-
 
 To create an alias and manually set its target:
 
@@ -58,7 +55,6 @@ Use absolute path when the target node is reachable from the node that owns the 
 
 ## Using aliases in bindings
 
-
 Use bindings to set the value of a property or property field with the value from another property, property field, or a data source.
 
 To use aliases in bindings, in the Binding Editor in the Expression field enter in curly braces the `#` sign followed by the alias name, followed by a forward slash and the property name of the item to which the alias points.
@@ -70,10 +66,8 @@ For example, to bind a property to the Layout Width property of the node to whic
 
 ```
 
-
 See Using bindings and Bindings expressions reference.
 ## Using an alias to set a target for an action
-
 
 To use an alias to define a target item for an action:
 
@@ -93,7 +87,6 @@ For example, select the Set Property action.
 In the action that you created set the Target Item property to the alias that you created in the first step.
 
 ## Using Aliases in the API
-
 
 To use aliases to access nodes using the API
 

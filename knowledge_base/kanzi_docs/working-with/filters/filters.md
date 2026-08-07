@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/filters/filters.html
 
 # Filters
 
-
 Filters collect and reorganize 3D nodes in your Kanzi project. You can use filters to determine which 3D nodes to render in different render passes.
 
 After you set one or more filters or object sources, a filter collects and outputs a set of 3D nodes that match the requirements you define in that filter.
@@ -17,7 +16,6 @@ Use filters to adjust the rendering for the whole or parts of your Kanzi applica
 
 Use a Node List render pass when you want to filter anything but the 3D nodes that you want to render, such as Light nodes. Draw Objects render pass, Draw Objects With Material render pass, and Gather Lights render passes can use the result node list of the same Node List render pass.
 
-
 See Rendering.
 
 For example, you can use filters to:
@@ -26,7 +24,6 @@ For example, you can use filters to:
 - Apply a stencil to 3D content. See Tutorial: Apply a stencil to 3D content.
 - Distribute rendering across several frames. See Tutorial: Progressive rendering.
 - Render only transparent nodes. See Rendering partially transparent nodes.
-
 
 These filters are available in Kanzi Studio in the Library > Rendering > Object Sources:
 
@@ -45,6 +42,5 @@ See Using the Sorting Filter.
 See Using the Tag Filter.
 
 ## Using filters in the API
-
 
 For details, see the `FilterObjectSource` class.

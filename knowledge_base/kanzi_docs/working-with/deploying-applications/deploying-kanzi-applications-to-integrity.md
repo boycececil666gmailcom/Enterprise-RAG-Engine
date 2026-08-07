@@ -5,12 +5,10 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/deploying-applications/depl
 
 # Deploying Kanzi applications to RCar Gen3/INTEGRITY
 
-
 You can deploy your Kanzi application to Renesas R-Car Gen 3 platform, such as M3 or H3, that runs the INTEGRITY real-time operating system.
 
 These instructions are verified on Windows 10 and Ubuntu 18.04.5 LTS.
 ## Developing Kanzi applications for RCar-Gen3/INTEGRITY
-
 
 You receive the Kanzi development files as a compressed archive. Extract the archive to the `<KanziWorkspace>/Engine` directory.
 
@@ -23,14 +21,12 @@ When developing Kanzi applications for RCar-Gen3/INTEGRITY, keep in mind that yo
 
 ### Memory mapping files on INTEGRITY
 
-
 On INTEGRITY, Kanzi loads kzb files from the file system and tries to access them using memory mapping.
 
 On INTEGRITY, `mmap()`:
 
 - By default maps into a virtual address space only a shared memory object.
 - Does not support mapping regular files.
-
 
 See Integrity Libraries and Utilities Reference Guide in the `int<INTEGRITY_version>/manuals/libref.pdf` file.
 
@@ -91,19 +87,15 @@ virtual void onStartup() KZ_OVERRIDE
 
 ```
 
-
 ## Compiling Kanzi applications
-
 
 You can compile your Kanzi application using either CMake or GHS MULTI.
 
 Use the kzb_player application to load and run kzb files that you create in Kanzi Studio.
 ### Using CMake
 
-
 Not available at the moment.
 ### Using GHS MULTI
-
 
 To learn about the platform-specific defines, compiler flags, and library dependencies, see the build information XML files at `<KanziWorkspace>/Engine/lib/integrity_rcar_rwm_aarch64/<BuildVariant>.`
 
@@ -241,7 +233,6 @@ Prepare the image using `gmemfile`. This produces a file called `kzb_player.bin`
 
 ## Deploying your Kanzi application with U-boot
 
-
 To deploy your Kanzi application as a U-boot image and load it using TFTP:
 
 1.
@@ -264,12 +255,9 @@ tftp 48080000 kzb_player.uimage
 bootm 48080000
 
 ```
+**Tip:** To execute these commands when you power up your device, store them in the U-Boot environment. The deployment address in the above example is `48080000`. To find the deployment address, see the documentation of your target device.
 
-
-> **Tip:** To execute these commands when you power up your device, store them in the U-Boot environment. The deployment address in the above example is `48080000`. To find the deployment address, see the documentation of your target device.
->
 ## Debugging in GHS MULTI
-
 
 You can attach the debugger using the rtserv2 protocol.
 
@@ -285,7 +273,6 @@ The debugger window opens when the connection is established.
 Start the application by selecting the newly created initial process under kzb_player and clicking the green arrow button.
 
 ## Switching between debug and release in GHS MULTI
-
 
 The sample `kzb_player.gpj` by default creates a release build, but contains the macro to switch to debug build.
 

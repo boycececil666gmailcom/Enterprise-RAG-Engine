@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/viewports/viewport-3d.html
 
 # Using the Viewport 3D node
 
-
 Use the Viewport 3D node to add 2D nodes to a 3D scene.
 ## Creating a Viewport 3D node
-
 
 To create a Viewport 3D node:
 
@@ -42,14 +40,11 @@ Click + Add Binding and in Binding Editor, set:
 
 ```
 
-
 Click Save.
 
 This way you set the override material to render the texture to which Kanzi renders the content of the 2D prefab.
 
-
 ## Adding a 2D UI control to a 3D scene
-
 
 To add a 2D UI control to a 3D scene:
 
@@ -87,7 +82,6 @@ For example, add the Render Transformation property and set:
     - Rotation Y property field to 90
     - Translation Y property field to 0.1
 
-
 This way you position the 2D prefab just above the floor under the car.
 
 5.
@@ -112,20 +106,14 @@ To set the material that you want to use to render the content, in the Propertie
 Add the Override Material property and set it to any textured material.
 
 For example, set it to the VertexPhongTexturedMaterial material. This material uses lights.
-
-> **Tip:** If your project does not contain the VertexPhongTextured material type, in the Library > Materials and Textures press Alt and right-click Material Types, and select VertexPhongTextured.
-> 2.
->
-> Click + Add Binding and in Binding Editor, set:
->
-> - Property to a texture property of the material that you set in the Override Material property.
-> - Expression to
->
-> ```
-> {@./Viewport3D.PrefabTexture}
->
-> ```
-
+**Tip:** If your project does not contain the VertexPhongTextured material type, in the Library > Materials and Textures press Alt and right-click Material Types, and select VertexPhongTextured.
+2.
+Click + Add Binding and in Binding Editor, set:
+- Property to a texture property of the material that you set in the Override Material property.
+- Expression to
+```
+{@./Viewport3D.PrefabTexture}
+```
 
 Click Save.
 
@@ -138,7 +126,6 @@ For example, add and set:
 
     - Material > Diffuse Color property Lightness (L) property field to 255
     - Material > Blend Mode to Alpha: Premultiplied
-
 
 When you turn off the lights in the scene, Kanzi renders the color picker with darker colors.
 7.
@@ -163,7 +150,6 @@ For example, set it to
 
 ```
 
-
 Click Save.
   2.
 
@@ -176,11 +162,9 @@ For example, set the binding expression to
 
 ```
 
-
 In the Preview, when you use the color picker to select a color, the paint of the car changes to use that color.
 
 ## Using the Viewport 3D node in the API
-
 
 To use a Viewport 3D node, create a 2D prefab and set the Viewport 3D node to render that prefab in a 3D scene:
 
@@ -203,7 +187,6 @@ PrefabTemplateSharedPtr prefabTemplate = PrefabTemplate::create(domain, template
 viewport3d->setPrefab(prefabTemplate);
 
 ```
-
 
 To bind from a node that is outside a Viewport 3D node, to a node that is in the 2D prefab used by the Viewport 3D node:
 
@@ -236,7 +219,6 @@ sibling->setBinding(Binding::create("../Viewport 3D/Empty Node 2D", Node::Opacit
 
 ```
 
-
 To bind from a node that is in the 2D prefab used by a Viewport 3D node, to a node that is outside the Viewport 3D node:
 
 ```
@@ -267,9 +249,7 @@ viewport3D->setPrefab(viewport3DPrefab);
 
 ```
 
-
 For details, see the `Viewport3D` class.
 ## Viewport 3D property types and messages
-
 
 For a list of the available property types and messages for the Viewport 3D node, see Viewport 3D.

@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/shaders/editing-shaders.htm
 
 # Editing shaders
 
-
 In Kanzi Studio projects, shader programs are stored as files on the computer hard drive. When you add shaders to the `<KanziWorkspace>/Projects/<ProjectName>/Shaders` directory of your Kanzi Studio project, Kanzi Studio automatically shows them in the Library > Resource Files > Shaders.
 
 Access to the shader files is useful when you want to change all the stock material types from fragment-based to vertex-based shaders, or the other way around. If the filenames are the same, to do this, replace the shader files with the correct versions on the file system.
@@ -14,7 +13,6 @@ To start creating your own shaders, you can use as a starting point a suitable m
 
 To build shaders visually instead of writing code, see Shader graphs.
 ## Kanzi Studio Shader Source Editor
-
 
 You can use the Kanzi Studio Shader Source Editor to edit the shader source code. When working with the Kanzi Studio Shader Source Editor keep in mind that:
 
@@ -25,7 +23,6 @@ You can use the Kanzi Studio Shader Source Editor to edit the shader source code
 - When you save a shader file, Kanzi Studio compiles it automatically. If you encounter a compiling error, you can see the error in the Log. In the Preview the objects containing materials with invalid shaders are shown in red.
 
 ## Shader attributes
-
 
 The input for shader programs are vertex attributes and uniforms. The attributes can vary per vertex and are provided to vertex shaders. You can use the uniforms as input to either vertex or fragment shaders.
 
@@ -161,12 +158,10 @@ If there is a one-to-one relation between shader attributes and vertex attribute
 To view and edit the semantics of the shader attributes of a material type, in the Library > Materials and Textures > Material Types right-click a material type and select Open Shader Attributes Editor.
 ## Shader uniforms
 
-
 Shader uniforms can receive their data from these data sources:
 
 - Kanzi default uniforms
 - Property types defined in a material type.
-
 
 If the name of the uniform matches any of the Kanzi default uniforms, Kanzi Engine automatically sends its value to the shader program. These uniforms are available by default:
 |
@@ -241,7 +236,6 @@ velocity = ((pos.xy / pos.w) - (prevPos.xy / prevPos.w)) * 0.5;
    |
 
 To enable velocity buffer output for a material, set `KANZI_SHADER_OUTPUT_VELOCITY` to `1` in the preprocessor definitions for the PBR material. Then set the value of KANZI_SHADER_OUTPUT_VELOCITY_INDEX to the semantic index of the texture coordinate that you want to use. Alternatively, use the Smart PBR material type, which enables the preprocessor definition automatically when the Prism Graph requires it.
->
 
 - -
 
@@ -352,12 +346,10 @@ kzViewport
     - `x` and `y` define the bottom-left corner of the viewport rectangle in pixels.
     - `width` and `height` define the width and height of the viewport.
 
-
 By default, `kzViewport` maps to the Screen node of the application:
 
     - `x` and `y` equal 0.
     - `width` and `height` equal the width and height of the screen.
-
 
 When Kanzi renders to a composition target or to a 3D scene that accompanies a sub-rectangle of a larger area, `kzViewport` represents that target area.
 
@@ -367,9 +359,7 @@ kzWindowSize
   - vec2
   - The size `(width, height)` of the Screen node of the application.
 
-
 ### Material uniforms
-
 
 If the name of the uniform matches any of the property types defined in the material type of the shader, the value is supplied using the properties. At runtime the values for the properties are collected from the rendered material and the lights that match the light properties defined in the material type with possible property overriding.
 
@@ -379,7 +369,6 @@ The names and data types of the uniforms must match the names and data types of 
 uniform mediump vec4 Diffuse;
 
 ```
-
 
 The letters and the case must match in the names. These are the compatible data types from property data type to shader uniform data type:
 |
@@ -441,7 +430,6 @@ Texture |
   |
 ### Uniform arrays for light property types
 
-
 Light property types support uniform arrays. This enables you to use multiple lights of the same type. For example, if one shader program uses two directional lights, you must add an array property type into that shader of the material type:
 
 ```
@@ -449,7 +437,6 @@ uniform mediump vec4 DirectionalLightColor[2];
 uniform mediump vec3 DirectionalLightDirection[2];
 
 ```
-
 
 These property types support uniform arrays:
 
@@ -470,7 +457,6 @@ These property types support uniform arrays:
 
 ## Setting the OpenGL ES version
 
-
 In your shader source files, use the `#version` directive to declare the version of the OpenGL ES shading language that your shader code uses.
 
 Kanzi requires GLSL ES 3.1 or later for embedded targets, and desktop GLSL 1.40 or later for desktop targets. Earlier versions such as `#version 100` or `#version 300 es` are not accepted.
@@ -481,7 +467,6 @@ For example, to set your shader source file to use the minimum required version 
 #version 310 es
 
 ```
-
 
 For a material type, you can override the version that you declare in the shader source files of that material type.
 
@@ -495,7 +480,6 @@ In the Library > Materials and Textures > Material Types, select the material ty
 In the Properties, add the Input > Shader Version property and set it to the OpenGL ES version that you want the material type to use.
 
 ## Reusing shader code
-
 
 You can reuse shader code by placing into separate shaders the functionality that you want to use in more than one shader. For example, that way you can include in a shader helper functions that you use in several shaders.
 
@@ -537,9 +521,7 @@ For example, to include the shader `MyHelperShader.glsl`:
 
 ```
 
-
 To share shader code across projects without copying files, use the Kanzi shader include library. See Using the shader include library.
 ## Using shaders in the API
-
 
 For details, see the `ShaderProgram` class.

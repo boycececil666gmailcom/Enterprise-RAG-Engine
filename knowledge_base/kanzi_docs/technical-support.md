@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/technical-support.html
 
 # Technical support
 
-
 Use the Kanzi Support Portal at [support.rightware.com](http://support.rightware.com/) to submit requests to the Rightware support team. See Submitting a support request.
 
 To submit a bug report, see Submitting a bug report.
@@ -19,7 +18,6 @@ To sign in to the Kanzi Support Portal, in your browser you must allow these coo
 - rightware.zendesk.com
 
 ## Submitting a support request
-
 
 To submit a request to the Rightware support team:
 
@@ -47,7 +45,6 @@ If you are submitting a bug report, see Submitting a bug report.
 When our support team replies to your request, you get an email notification.
 
 ## Submitting a bug report
-
 
 To submit a bug report:
 

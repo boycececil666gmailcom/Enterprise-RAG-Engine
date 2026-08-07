@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/installing-kanzi/what-is-installed-with-
 
 # What is installed with Kanzi?
 
-
 Kanzi by default creates:
 
 - Kanzi Studio installation directory at `C:\Program Files\Rightware\Kanzi <KanziVersion>` which contains:
@@ -23,7 +22,6 @@ Use the Kanzi Command Prompt to access Kanzi utilities and build tools, such as 
 
 See Using the Kanzi Command Prompt.
       - `PluginInterface.dll` enables you to extend the functionality of Kanzi Studio. See Kanzi Studio plugins.
-
 
   - `kanzi-one-software-license-terms.txt` contains the Kanzi One license terms.
   - `third-party-lib-licenses-kanzi-documentation.txt` contains the license information for the third-party libraries used by the Kanzi documentation and tutorials.

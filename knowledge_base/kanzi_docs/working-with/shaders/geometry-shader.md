@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/shaders/geometry-shader.htm
 
 # Using geometry shaders
 
-
 Geometry Shader is an optional shader in a material type. A geometry shader takes as input from a Vertex Shader, or from an optional tessellation shader, a set of vertices that form a primitive, such as a line or a triangle. The geometry shader transforms these vertices and passes them to the Fragment Shader.
 
 To use geometry and tessellation shaders, the hardware where you want to run your Kanzi application must support OpenGL ES 3.2 or Vulkan 1.1. Note that geometry and tessellation shaders can decrease the performance on tiled rendering architectures. For this reason, it is recommended to avoid using geometry and tessellation shaders on mobile and embedded hardware.
@@ -60,7 +59,6 @@ void main() {
 
 ```
 
-
 Click Save.
 4.
 
@@ -82,7 +80,6 @@ void main()
 }
 
 ```
-
 
 Click Save.
 5.

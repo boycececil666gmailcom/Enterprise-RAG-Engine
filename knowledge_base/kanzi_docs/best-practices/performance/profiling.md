@@ -5,13 +5,11 @@ source: https://docs.kanzi.com/4.1.0/en/best-practices/performance/profiling.htm
 
 # Measuring application performance
 
-
 The Kanzi performance profiling system enables you to measure the performance of your Kanzi application. You can measure the performance of:
 
 - Different parts of Kanzi Engine during application startup and runtime. See Measuring the performance of Kanzi Engine.
 - Your Kanzi application code. See Measuring the performance of your application code.
 - Resource loading and deployment. See Measuring the loading and deployment time of resources.
-
 
 You can use:
 

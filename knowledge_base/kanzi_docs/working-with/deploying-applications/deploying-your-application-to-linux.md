@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/deploying-applications/depl
 
 # Deploying Kanzi applications to Linux
 
-
 Before you can build a Kanzi application for your target platforms, set up and configure the Kanzi build environment for your target platforms. The build environment includes tools that the Kanzi build system uses to build your application for your target platforms.
 
 The most convenient way to build Kanzi applications for Linux is to do the building on Linux. If you have the Linux toolchain for Windows, you can build Kanzi applications for Linux on Windows. In that case point the Kanzi build scripts to that toolchain.
@@ -15,13 +14,11 @@ You can configure the input event devices that Kanzi listens to on Linux ports w
 See Input event devices on Linux.
 ## Supported build systems and library linking
 
-
 Kanzi platform packages support these build systems:
 
 - CMake. Note that this platform package contains `-cmake` in its name.
 
 The platform package contains the `Engine/cmake/toolchains/<toolchain_file>.cmake` file that lists the CMake options used to create it.
-
 
 Kanzi platform packages support these library linking options:
 
@@ -35,7 +32,6 @@ To build an application with dynamically linked libraries, use the CMake define 
 ## Building Kanzi applications for Linux
 
 ### Building Kanzi applications using CMake
-
 
 For example, to build the kzb_player application for Linux using CMake:
 

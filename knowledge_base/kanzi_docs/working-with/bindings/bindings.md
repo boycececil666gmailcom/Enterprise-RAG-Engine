@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/bindings/bindings.html
 
 # Bindings
 
-
 Use bindings to set the value of a property or property field with the value from another property, property field, or a data source.
 
 Bindings allow nodes, render passes, 2D effects, states, state objects, and styles to automatically update the values of their properties in response to the changing property values, or the occurrence of some external event.
@@ -25,10 +24,8 @@ With bindings you can modularize your Kanzi project:
 
 For example, you can bind the presentation of a speed needle in the user interface to the data value which represents speed in your application. See Using a data source.
 
-
 The simplest of bindings bind a property of a node to one of its own properties. You can also bind properties and property fields of one node to those of several different nodes. See Using bindings.
 ## Components of a binding
-
 
 A binding has these components:
 
@@ -36,28 +33,22 @@ A binding has these components:
 - Target property and, optionally, property field.
 - Source returned by a binding expression.
 
-
 The source can be a property or property field of a node, render pass, 2D effect, state, state object, style, or data object.
 
 For example, to use a text block to show the current value of a slider, you can bind the Text (`TextConcept.Text`) property of a Text Block node to the Value property of a Slider node. The Text Block node is the target item, Text is the target property, and the Value (`RangeConcept.Value`) property of the Slider node is the source. See Tutorial: Creating a slider.
 ## Binding modes
-
 
 Binding mode sets the direction of data flow in the binding:
 
 - One way binding changes the value of a target property when the value of a source property changes.
 
 In a one-way binding, you can bind the target property to a binding expression. See Bindings expressions reference.
-
-> **Note:** When you use a state manager, action, or a style to set a local property value, that removes any one-way binding that targets the property. See Value source bindings.
-> - To Source binding sets:
->
-> - A property value in the project item that you set as the Push Target of the binding.
-> - A property value that is affected also by some other source, such as user input. See Creating a to-source binding.
-> - A property value in a resource used by the item to which you add the binding.
->
-> For example, you can set a property value in a render pass or 2D effect instance used by a node. See Customizing instances of a render pass prefab and Customizing instances of a 2D effect prefab.
-
+**Note:** When you use a state manager, action, or a style to set a local property value, that removes any one-way binding that targets the property. See Value source bindings.
+- To Source binding sets:
+- A property value in the project item that you set as the Push Target of the binding.
+- A property value that is affected also by some other source, such as user input. See Creating a to-source binding.
+- A property value in a resource used by the item to which you add the binding.
+For example, you can set a property value in a render pass or 2D effect instance used by a node. See Customizing instances of a render pass prefab and Customizing instances of a 2D effect prefab.
 
 In a to-source binding, you can bind the target property to a binding expression. See Bindings expressions reference.
 - Two way binding changes the value of a target property when the value of a source property changes, and the other way around.
@@ -65,7 +56,6 @@ In a to-source binding, you can bind the target property to a binding expression
 In a two-way binding, you can bind a target property only to a source property. See Creating a two-way binding.
 
 ## Binding types
-
 
 These types of bindings are available in Kanzi:
 
@@ -87,7 +77,6 @@ See To-source bindings.
 
 ### Value source bindings
 
-
 A value source binding sets the local value of an entire property and provides the value for that property during application runtime.
 
 For example, bind the Layout Height property of a 2D node to the Layout Width property of that node, or bind the Text property of a Text Block 2D node to the position of another node. See Creating simple bindings and Binding to the properties of other nodes.
@@ -99,14 +88,12 @@ Kanzi removes a value source binding when:
 - Setting the property value by other means replaces the previously set local value.
 - The local property value is removed.
 
-
 For example:
 
 - A one-way value source binding that sets the Text property of a Tex Box node stops working when the user edits the text. To update the text with a binding, use a to-source or two-way binding instead. See Using a binding to update the text in a Text Box node.
 - A one-way binding that sets the Toggle State property of a Toggle Button node stops working when the user toggles the button. To update the property value with a binding, use a to-source or two-way binding. See Using a binding to update the toggle state.
 
 ### Modifier bindings
-
 
 A modifier binding modifies a property value, much like an animation or a state manager.
 
@@ -119,10 +106,8 @@ For example, bind the Layout Transformation property Rotation property field of 
 
 For example, bind the Render Transformation property Translation Y property field of a node to the Render Transformation property Translation X property field of the same node to make that node move on the y axis the same distance as it moves on the x axis. See Modifying the value of the property that you bind and getCurrentValue.
 
-
 Kanzi executes modifier bindings after value Sources bindings. A modifier binding does not replace a local property value.
 ### To-source bindings
-
 
 A to-source binding pushes a property value to a node or another project item, or to a resource used by that item.
 
@@ -143,7 +128,6 @@ For example:
 - Set a property value in an effect instance used by a 2D node. See Customizing instances of a 2D effect prefab.
 
 ## Material type bindings
-
 
 Material types have their own special types of bindings for:
 

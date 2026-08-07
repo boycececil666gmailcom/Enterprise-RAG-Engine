@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/localization/localization.h
 
 # Localization
 
-
 When you localize your application you translate and customize it for a specific locale (language and location).
 
 Localization involves creation and use of different resources, such as text, textures, and styles, for locales that you want to support in your application.

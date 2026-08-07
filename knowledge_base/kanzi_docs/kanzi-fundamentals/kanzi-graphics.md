@@ -5,12 +5,10 @@ source: https://docs.kanzi.com/4.1.0/en/kanzi-fundamentals/kanzi-graphics.html
 
 # Kanzi graphics
 
-
 Kanzi graphics (kzgfx) is the render hardware interface (RHI) for Kanzi. It provides an abstraction layer that allows Kanzi to use different graphics APIs. Kanzi provides these implementations of the interface:
 
 - An OpenGL-based backend that supports OpenGL 3.3+, OpenGL ES 3.0+, and WebGL 2.0
 - A Vulkan 1.1+ backend
-
 
 Most Kanzi applications do not need to use the Kanzi graphics API directly and instead use high-level concepts from the Rendering system. Use Kanzi graphics directly only to accomplish advanced use cases like compute or manual rendering.
 
@@ -18,7 +16,6 @@ The Kanzi graphics API has these major components:
 
 - Graphics objects represent an entity within the interface, such as a buffer, image, or shader.
 - Commands operate on the graphics objects and are collected into command buffers for deferred execution. Operations like copy, draw, and present are typical commands.
-
 
 The shader programs used by Kanzi graphics are required to provide reflection information in addition to the raw shader source. For most use cases, Kanzi Studio does this automatically when exporting a project, but you can also do this with the Kanzi Shader Compiler library or through manual construction.
 
@@ -32,7 +29,6 @@ In addition to the backends, Kanzi graphics allows you to configure multiple lay
 - Statistics layer contains a set of statistics about Kanzi graphics.
 
 ## Graphics objects
-
 
 You can create graphics objects using the relevant create info object and the `gfx::create` function. Graphics objects are represented through a type-specific handle guard object. The guards are reference counted so that when all references are destroyed, the object itself is queued for destruction.
 
@@ -157,7 +153,6 @@ GPU Fence |
 
 Represents a syncronization object that can be used to allow a thread to wait until a specific portion of a command buffer has been completed. |
 ## Commands
-
 
 Commands are recorded in command buffers, and executed with the `gfx::processCommands` function. The loaded backend asynchronously handles the execution of commands.
 |

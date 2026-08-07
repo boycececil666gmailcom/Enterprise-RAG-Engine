@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/localization-rtl/localization-
 
 # Tutorial: Localize applications for right-to-left locales
 
-
 In this tutorial you learn how to localize your Kanzi application for right-to-left locales. A right-to-left locale is a language which is written and read from the right side of the page to the left. This tutorial uses Arabic and Hebrew as examples of right-to-left locales.
 
 This tutorial assumes you are familiar with the basics of localizing applications in Kanzi. To learn about localizing applications, see the Tutorial: Localize your application.
@@ -19,13 +18,11 @@ Before you start this tutorial, make sure that you have your Kanzi development e
 - CMake 3.25 or newer
 - Visual Studio 2022 with the latest updates
 
-
 This tutorial assumes that you understand the basics of working with Kanzi Studio. The best entry points for getting familiar with Kanzi Studio are:
 
 - Tutorial: Getting started with Kanzi Studio
 - Tutorial: Create a simple in-vehicle infotainment application
 - Tutorial: Localize your application
 - Tutorial: Hello world!
-
 
 Start with the tutorial

@@ -5,23 +5,18 @@ source: https://docs.kanzi.com/4.1.0/en/release-notes/kanzi-4.0/kanzi-4.0.0-migr
 
 # Kanzi 4.0.0 migration guide
 
-
 Use this migration guide to update Kanzi applications from Kanzi 3.9 to Kanzi 4.0.
-
-> **Note:** Depending on your projects reliance on changes mentioned herein, it may require less effort to assemble a new project on Kanzi 4.0.0 than migrating.
+**Note:** Depending on your projects reliance on changes mentioned herein, it may require less effort to assemble a new project on Kanzi 4.0.0 than migrating.
 ## Upgrade to Visual Studio 2022
-
 
 Kanzi no longer supports Kanzi Engine libraries for Visual Studio 2017 and 2019.
 
 For Kanzi Studio projects with a Kanzi Engine plugin, rebuild the plugin with Visual Studio 2022 and import the plugin DLL to the Kanzi Studio project.
 ## Changes to the build system
 
-
 - All platforms have been migrated to use CMake instead of SCons.
 
 ## Introduction of Kanzi Graphics
-
 
 Introduction of Kanzi `Graphics` changes how Kanzi applications interact with the Kanzi rendering subsystem.
 
@@ -33,14 +28,12 @@ Kanzi Graphics consists of these major parts:
 - Kanzi records `GraphicsCommands` into a command buffer, and Kanzi Graphics backend processes these commands for a specific graphics API.
 - For Kanzi Studio projects with a Kanzi Engine plugin, the plugin DLL needs to be re-imported to the Kanzi Studio project.
 
-
 1.
 
 Rebuild the plugin using Kanzi 4.0.0.
 2.
 
 In the Library > Kanzi Engine Plugins, delete the Kanzi Engine plugin and import the updated Kanzi Engine plugin.
-
 
 - Removed these classes, members, or functions:
 
@@ -325,7 +318,6 @@ else
 
 ```
 
-
 to
 
 ```
@@ -336,9 +328,7 @@ renderState.draw(renderer, geometry);
 
 ```
 
-
 ## Changes to the Renderer API
-
 
 - Removed the `Renderer3D` class. Kanzi used the `Renderer3D` class to store temporary properties during 3D rendering and provided debug functionality for the Preview.
 
@@ -346,7 +336,6 @@ This version of Kanzi moves:
 
   - The rendering to the `DebugRenderRegistry` and `DebugVisualization` classes
   - The 3D rendering specifics are now handled by render passes, such as `GatherLightsRenderPass`
-
 
 In your application code, change all uses of `Renderer3D` to use `Renderer`. This includes all virtual functions that have `Renderer3D` passed as a parameter.
 
@@ -366,7 +355,6 @@ Moved these functions from the `Renderer3D` class to the `Renderer` class:
   - `Renderer::setSubRectangleProjection`
   - `Renderer::setOverrideMaterial`
   - `Renderer::setOverrideMaterialCallback`
-
 
 Removed these functions because of refactoring related to the removal of the `Renderer3D` class. Most of the removed functions are related to debug rendering:
 
@@ -428,7 +416,6 @@ Removed these functions because of refactoring related to the removal of the `Re
   - `Surface::attach`
   - `Surface::attachOverride`
 
-
 Instead, use the `DebugVisualization` and `DebugVisualizationStorage` classes to draw and store debug visualizations for nodes.
 
 The standard `DebugRenderRegistry::DebugObjectRenderingFunction` automatically used by `DebugComposer` changed to:
@@ -438,14 +425,12 @@ void (*DebugObjectRenderingFunction)(Renderer& renderer, DebugRenderStorage& sto
 
 ```
 
-
 You can access `storage` to create a debug visualization structure for the `Node`. If you have done this on a previous frame, the `visualization` parameter is non-null and you can use it. Geometry stored in the `DebugVisualization` remains until you remove the `Node` from the scene graph.
 - Removed the `Surface::Usage` enumeration.
 - `RenderTargetMode` has been deprecated and removed from `Texture`. As a result:
 
   - `StatusInvalidRenderTargetMode` has been removed from `Texture::CreateInfo::Status` and `interop::TextureEnums::CreateInfo::Status`.
   - `StatusUnsupportedInternalRenderTargetSampleCount` has been renamed to `StatusUnsupportedRenderTargetSampleCount` in `Texture::CreateInfo::Status` and `interop::TextureEnums::CreateInfo::Status`.
-
 
 - As consequence of the removal of the `RenderTargetMode` enumeration, modified `Texture::CreateInfo` and `Texture` to remove `GraphicsFormatFeature` and `RenderTargetMode` settings. The texture create info now uses a mask of `gfx::ImageUsageFlag` to specify texture usage intent.
 
@@ -463,7 +448,6 @@ You can access `storage` to create a debug visualization structure for the `Node
 
   - `Renderer::getColorReadFormat`
   - `Renderer::getColorReadType`
-
 
 - Removed some feature detection methods from the `Renderer`.
 |
@@ -499,7 +483,6 @@ Different multisample types no longer differentiated. |
 
 ## Consolidation of index buffers in `kanzi::Mesh`
 
-
 Consolidated `kanzi::Mesh` index buffers into one in the Mesh object itself, instead of each `kanzi::Mesh::Cluster` having its own. This moves index buffer related API calls to the Mesh itself, or removes the Cluster parameter. Index buffer type and handle parameters were removed from `kanzi::Mesh::CreateInfo::Cluster` constructors, as these now form part of `kanzi::Mesh::CreateInfo` directly. Use `Mesh::getClusterIndexOffset` to get byte offset into the main index buffer, if needed.
 |
 
@@ -534,7 +517,6 @@ kanzi::Mesh::mapIndexData |
 `Mesh::setIndexSubData` |
 ## Changes to the Platform API
 
-
 - Several entities that refer to OpenGL context APIs have been renamed.
 
 |
@@ -555,15 +537,12 @@ Use instead |
 
 - Win32 string utilities found inside `kanzi/core/platform/cpp/win32/string_conversion.hpp` have been moved from the `kanzi` namespace to `win32`
 
-
 - All platform-dependent windowing and input code has been moved into a separate library (kzplatform).
 
 ## Changes to Data-Driven Exclusive Activity Host
 
-
 Data-Driven Exclusive Activity Host now supports only Activities created from a data source and no longer supports manually added Activities. Use an Exclusive Activity Host instead.
 ## Changes to List Box
-
 
 - In the `ListBoxConcept` class, renamed these messages and message arguments:
 |
@@ -657,12 +636,10 @@ Kanzi 4.0 |
 
 ## Changes to the List Box nodes
 
-
 In the Grid List Box nodes, the default directional navigation keys no longer move the item selection. In a List Box node, the default directional navigation keys now move the key focus between the focusable list items.
 
 For example, to scroll a Grid List Box with the â and â keys, make the list items focusable. See Handling the key focus in a List Box node.
 ## Changes to the `ActivityCodeBehind` class
-
 
 - In the Kanzi C++ API, in the `ActivityCodeBehind` class, replaced the `onActive`, `onInactive`, `onActivating`, and `onDeactivating` callbacks with `ActivityCodeBehind::onStatusChange`.
 
@@ -675,7 +652,6 @@ void onActive() override
 }
 
 ```
-
 
 to
 

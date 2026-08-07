@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/materials-and-textures/step-1.
 
 # Step 1 - Import content and create the background
 
-
 In this step you first create a new project in Kanzi Studio, import the content to your project, and define the background for the scene of your project. You start working with material types, materials, and textures in the next step.
 ## Get the tutorial
-
 
 To get the tutorial, in the Kanzi Studio Quick Start window, click Projects and select the Tutorials tab. Next to the Materials and textures tutorial, click .
 
@@ -27,7 +25,6 @@ Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` director
 
 ## Create a project and import content
 
-
 1.
 
 In the Kanzi Studio Quick Start window, click New:
@@ -35,7 +32,6 @@ In the Kanzi Studio Quick Start window, click New:
   - Name your project.
   - Select the Kanzi Studio project project template.
   - Set the Materials to Import material types manually.
-
 
 Leave all other settings as they are and click Create.
 2.
@@ -69,37 +65,26 @@ You can now see the imported content in the Preview.
 
 ## Create the background and the floor below the car
 
-
 1.
 
 In the Node Tree select the RootNode, in the Properties set the Background Brush property to + Color Brush.
 
 Kanzi Studio creates a color brush and sets the Background Brush property of the RootNode to use that color brush.
-
-> **Tip:** You can find the list of all brushes in a project in the Library > Materials and Textures > Brushes.
-> 2.
->
-> Click  next to the Background Brush property and set the color to black.
->
-> Tip
->
-> In the Properties, click  next to a property to access and edit the resource to which the property points without moving away from the currently selected node.
-> 3.
->
-> In the Library > Materials and Textures press Alt and right-click Material Types, and select VertexPhongTextured.
->
-> You can use the VertexPhongTextured material type for all materials in which you want to use textures.
-> 4.
->
-> In the Library > Materials and Textures > Materials select the Floor_1 material, and in the Properties set:
->
-> - Material Type to VertexPhongTextured
-> - Ambient Color property Lightness (L) property field to 150
-> - Diffuse Color property Lightness (L) property field to 20
-> - Texture to RenderMap
-
+**Tip:** You can find the list of all brushes in a project in the Library > Materials and Textures > Brushes.
+2.
+Click  next to the Background Brush property and set the color to black.
+Tip
+In the Properties, click  next to a property to access and edit the resource to which the property points without moving away from the currently selected node.
+3.
+In the Library > Materials and Textures press Alt and right-click Material Types, and select VertexPhongTextured.
+You can use the VertexPhongTextured material type for all materials in which you want to use textures.
+4.
+In the Library > Materials and Textures > Materials select the Floor_1 material, and in the Properties set:
+- Material Type to VertexPhongTextured
+- Ambient Color property Lightness (L) property field to 150
+- Diffuse Color property Lightness (L) property field to 20
+- Texture to RenderMap
 
 Floor_1 material defines the material that is used for the floor below the car. In this step you set the Floor_1 material to a material type that allows you to use textures, and applied a texture with the shadow of the car.
-
 
 Introduction Next step

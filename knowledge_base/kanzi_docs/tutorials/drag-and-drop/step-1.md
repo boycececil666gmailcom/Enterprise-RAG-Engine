@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/drag-and-drop/step-1.html
 
 # Step 1 - Prepare the content
 
-
 In this step of the tutorial you first create the prefab that visualizes the item that the user drags, then you set the texture for each item.
 ## Get the tutorial
-
 
 To get the tutorial, in the Kanzi Studio Quick Start window, click Projects and select the Tutorials tab. Next to the Drag and drop tutorial, click .
 
@@ -18,7 +16,6 @@ Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` director
 - The completed tutorial in the `<KanziWorkspace>/Tutorials/Drag and drop/Completed` directory.
 
 ## Content of the starting point project
-
 
 The starting point project contains the content that you need to complete this tutorial:
 
@@ -38,7 +35,6 @@ You use the animation to shake a node when the user is dragging that node.
 
 ## Create visualization for the button that the user drags
 
-
 In this section you create a prefab that you use to visualize the button that the user is dragging. Instead of dragging the button to a new position, you move an instance of this prefab that looks like the dragged button. When the user ends the drag-and-drop gesture, instead of setting the positions of the buttons in the Grid Layout 2D node, you set the order of the data objects that set the button icons.
 
 To create visualization for the button that the user drags:
@@ -57,7 +53,6 @@ This way you set the background color of the prefab to be lighter than the navig
 
 This way you make the prefab partially transparent.
 
-
 You implement the drag-and-drop so that when the user drags a button, they drag an instance of the Drag Item prefab.
 3.
 
@@ -74,7 +69,6 @@ When you run your Kanzi application from Visual Studio, your application loads t
 
 ## Set the icons for the buttons
 
-
 In this section you create the data objects that you use to set the icons for the buttons.
 
 To set the icons for the buttons:
@@ -86,19 +80,13 @@ In Kanzi Studio, select File > Open Kanzi Command Prompt.
 The Kanzi Command Prompt opens the Windows Command Prompt with the Kanzi environment variables set for the version of Kanzi for which you open a Kanzi Command Prompt.
 
 Use the Kanzi Command Prompt to access Kanzi utilities and build tools, such as Gradle and CMake, without using absolute paths or setting environment variables.
-
-> **Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
->
-> When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
-> 2.
->
-> In the Kanzi Command Prompt in the `<KanziWorkspace>/Tutorials/Drag and drop/Start/Application` directory run the script that generates a Visual Studio solution for the tutorial application.
->
-> ```
-> generate_cmake_vs2022_solution.bat
->
-> ```
-
+**Tip:** You can find the Kanzi Command Prompt in the Windows Start Menu in the Rightware directory.
+When you have more than one version of Kanzi installed, make sure that you launch a Kanzi Command Prompt for the version of Kanzi with which you want to work in that command prompt.
+2.
+In the Kanzi Command Prompt in the `<KanziWorkspace>/Tutorials/Drag and drop/Start/Application` directory run the script that generates a Visual Studio solution for the tutorial application.
+```
+generate_cmake_vs2022_solution.bat
+```
 
 This script generates a Visual Studio solution for the application in the directory `<KanziWorkspace>/Tutorials/Drag and drop/Start/Application/build_vs2022`.
 3.
@@ -214,6 +202,5 @@ Select the solution configuration that you want to use and run your application.
 During development, select the Debug configuration. When you are ready to create a version for production, select the Release configuration.
 
 Kanzi assigns the icons to the buttons using the data objects that you created.
-
 
 Introduction Next step

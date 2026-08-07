@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/localization/localizing-app
 
 # Localizing applications
 
-
 Localization involves creation and use of different resources, such as text, textures, and styles, for locales that you want to support in your application.
 
 Kanzi uses localized resources indirectly using resource IDs that hold a separate value for each locale. To keep track of localized resources and locales Kanzi uses localization tables. You can see all localized resources and locales used by your application in the localization tables in the Library > Localization.
@@ -22,12 +21,10 @@ Localize resources. See Localizing text resources and Localizing other resources
 
 Edit localized resources. See Editing localized resources.
 
-
 You can also localize themes. See Localizing themes.
 
 Learn how to localize your Kanzi applications by completing a tutorial. See Tutorial: Localize your application.
 ## Adding resources to a localization table
-
 
 If you have a complete Kanzi application you want to localize, or if you added content to a Kanzi application that you already localized, you have to create the resource IDs for the items you want to localize and add them to a localization table. After you create the resource IDs for the resources you want to localize and add them to a localization table you can start localizing your Kanzi application. See Localizing text resources and Localizing other resources.
 
@@ -67,7 +64,6 @@ You can start localizing your Kanzi application. See Localizing text resources, 
 
 ## Localizing text resources
 
-
 Kanzi uses the gettext PO file format to handle localized text resources and sets the text direction based on the first character in a string.
 
 In PO files, you can use Unicode characters. With Unicode characters, you can also control text direction, such as the direction of left-to-right text in right-to-left locales. To learn how to control text direction with Unicode characters, see [How to use Unicode controls for bidi text](https://www.w3.org/International/questions/qa-bidi-unicode-controls).
@@ -77,50 +73,30 @@ When you use Unicode characters, make sure you insert them correctly. On Windows
 To learn more about the gettext PO file format, see [The Format of PO Files](http://www.gnu.org/software/gettext/manual/gettext.html#PO-Files).
 
 If you want to define your own import and export format for the localized text resources, use the Kanzi Studio localization plugin API to create a Kanzi Studio plugin. You can find an example of such plugin, which uses CSV to export and import text into localization tables, in the `<KanziWorkspace>/Examples/CsvPlugin` directory.
-
-> **Note:** When localized text contains a combination of simple and complex scripts, or left-to-right and right-to-left locales, in some cases the Kanzi Studio Localization Editor renders the text differently from the Kanzi Studio Preview. To fine-tune the text, use the Unicode control characters in the Localization Editor or in the PO files.
->
-> See CSV plugin example.
->
-> To localize text resources:
->
-> 1.
->
-> Create text content in your Kanzi Studio project using Text Block nodes and add text resources to a localization table. See Adding resources to a localization table.
-> 2.
->
-> In the Library > Localization, right-click the localization table that contains the resources that you want to localize, and select Export Localization Table.
->
-> Kanzi Studio exports to `<ProjectName>/Localization/<LocalizationTableName>` the localization table template to a POT file, and as many PO files as you have locales in that localization table.
->
-> - (Optional) If you want to export all localization tables in your project, right-click Library > Localization and select Export All Localization Tables.
->
-> Kanzi Studio exports to `<ProjectName>/Localization/<LocalizationTableName>` one localization table POT template file for each localization table, and as many PO files as you have locales in all localization tables.
->
-> 3.
->
-> This step depends on whether you are translating your Kanzi application for the first time or whether you are doing an incremental translation:
->
-> - If you are translating your Kanzi application for the first time, send the POT file to your translators. The translators create one PO file for each locale.
-> - If you are doing an incremental translation, send the POT file and the PO file for each locale to the translators.
->
-> Each PO file contains only the resources that have already been translated for that locale. To add to a PO file the resources that have not yet been translated for that locale, the translator needs to update the PO file from the POT template file using a gettext translations editor.
->
-> 4.
->
-> After you receive the PO files from the translators, save them to `<ProjectName>/Localization/<LocalizationTableName>`.
-> 5.
->
-> In Kanzi Studio, in the Library > Localization, right-click the localization table whose content your translators localized, and select Import Localization Table.
->
-> Kanzi Studio imports all PO files in the `<ProjectName>/Localization/<LocalizationTableName>` directory to the selected localization table.
->
-> - (Optional) If you want to manually select the location from which you want to import the PO files for your project, select Import Localization Table Manually.
-> - (Optional) If you want to import PO files for all localization tables in your project, in the Library right-click Localization and select Import All Localization Tables. Kanzi Studio imports all PO files in all directories found in `<ProjectName>/Localization`.
-
+**Note:** When localized text contains a combination of simple and complex scripts, or left-to-right and right-to-left locales, in some cases the Kanzi Studio Localization Editor renders the text differently from the Kanzi Studio Preview. To fine-tune the text, use the Unicode control characters in the Localization Editor or in the PO files.
+See CSV plugin example.
+To localize text resources:
+1.
+Create text content in your Kanzi Studio project using Text Block nodes and add text resources to a localization table. See Adding resources to a localization table.
+2.
+In the Library > Localization, right-click the localization table that contains the resources that you want to localize, and select Export Localization Table.
+Kanzi Studio exports to `<ProjectName>/Localization/<LocalizationTableName>` the localization table template to a POT file, and as many PO files as you have locales in that localization table.
+- (Optional) If you want to export all localization tables in your project, right-click Library > Localization and select Export All Localization Tables.
+Kanzi Studio exports to `<ProjectName>/Localization/<LocalizationTableName>` one localization table POT template file for each localization table, and as many PO files as you have locales in all localization tables.
+3.
+This step depends on whether you are translating your Kanzi application for the first time or whether you are doing an incremental translation:
+- If you are translating your Kanzi application for the first time, send the POT file to your translators. The translators create one PO file for each locale.
+- If you are doing an incremental translation, send the POT file and the PO file for each locale to the translators.
+Each PO file contains only the resources that have already been translated for that locale. To add to a PO file the resources that have not yet been translated for that locale, the translator needs to update the PO file from the POT template file using a gettext translations editor.
+4.
+After you receive the PO files from the translators, save them to `<ProjectName>/Localization/<LocalizationTableName>`.
+5.
+In Kanzi Studio, in the Library > Localization, right-click the localization table whose content your translators localized, and select Import Localization Table.
+Kanzi Studio imports all PO files in the `<ProjectName>/Localization/<LocalizationTableName>` directory to the selected localization table.
+- (Optional) If you want to manually select the location from which you want to import the PO files for your project, select Import Localization Table Manually.
+- (Optional) If you want to import PO files for all localization tables in your project, in the Library right-click Localization and select Import All Localization Tables. Kanzi Studio imports all PO files in all directories found in `<ProjectName>/Localization`.
 
 ### Setting text order in a localized string
-
 
 The order of presenting information differs between languages. Kanzi allows you to set the order of information in a localization string.
 
@@ -146,7 +122,6 @@ For example, create these properties:
     - AlbumName whose data type is Text
     - PhotoCount whose data type is Integer
 
-
 See Creating property types.
   3.
 
@@ -167,7 +142,6 @@ Add a text resource and name it PhotoDeletionMessage.
     2.
 
 Create the locales en-US and fi-FI.
-
 
 See Creating localization tables, Adding resources to a localization table, and Using locales.
 
@@ -191,7 +165,6 @@ Albumista {1} poistettiin {0} valokuvaa
 
 ```
 
-
 In the fi-FI locale, you use the indexes inside the curly braces to change the order in which values from properties appear in the localized text. You set the default order in a binding that you create in the next step.
 
 Use the curly braces for localization strings in PO files. See Localizing text resources.
@@ -213,15 +186,12 @@ format(message, {@./PhotoCount}, {@./AlbumName})
 
 ```
 
-
 Click Save.
 
 In the en-US locale, the properties appear in the order in which you pass them to the `format` function. In the fi-FI locale, you use the indexes inside the curly braces to change the order of the parameters. See format.
 
-
 In the Node Tree, select the Screen node and in the Properties set the Locale property. When you change the locale, the AlbumName and PhotoCount properties appear in a different order depending on the locale.
 ## Localizing other resources
-
 
 Besides translating the text content into multiple languages, Kanzi enables you to use different resources for each locale, including animations, brushes, composers, fonts, materials, meshes, textures, and styles.
 
@@ -251,7 +221,6 @@ In the Localization Editor find the resource you want to localize, double-click 
 Repeat the previous step until you select resources for all resources and locales.
 
 ## Localizing themes
-
 
 Kanzi enables you to localize themed applications.
 
@@ -296,7 +265,6 @@ In the Add Resources to a Theme Group window:
 A theme group contains the information about which theme uses which resources.
     - Rename the Resource ID to something that is meaningful in the context of your project.
 
-
 Click Add.
 
 Kanzi Studio adds to the theme group the resource ID which points to the prefab shown in the Value column. In the Prefab View node from which you add the resources to a Theme Group, Kanzi Studio sets the value of the Prefab Template property to the resource ID.
@@ -312,7 +280,6 @@ In the Library > Themes double-click the theme group to which you added the reso
 In the Dictionaries window to view the resource dictionaries of localization tables and theme groups in the project, click Locales and Themes, and select different locales and themes to see the localized themes in the Preview.
 
 ## Loading localized resources using resource IDs
-
 
 You can load localized resources using their resource IDs, which you define using a string property. For example, you can set a node to show the content of a localized resource whose resource ID you get from a data source. Kanzi automatically shows the value of the resource for the current locale of the application.
 
@@ -340,7 +307,6 @@ In the Library, right-click Kanzi Engine Plugins, select Import Kanzi Engine Plu
 In the Data Sources, create a data source.
 
 You use that data source to provide data for the items in a List Box node. See Tutorial: Get application data from a data source.
-
 
 ```
 <menu type="list">
@@ -383,22 +349,15 @@ acquire({DataContext.item.name})
 
 ```
 
-
 You bind the Text property to the content of the text resource whose resource ID you define in the data source in the menu list item in the name string data object.
-
-> **Tip:** You can start creating a binding for a property by right-clicking a property and selecting Create Binding.
->
-> This way you automatically add the property to the Binding Editor.
-> 2.
->
-> Create the nodes that show the content to which resource IDs from a data source point.
->
-> For example, populate a List Box node with data from a data source, and as the item template use the prefab that contains the node to which you added the binding that loads a resource. See Using list data objects.
-
+**Tip:** You can start creating a binding for a property by right-clicking a property and selecting Create Binding.
+This way you automatically add the property to the Binding Editor.
+2.
+Create the nodes that show the content to which resource IDs from a data source point.
+For example, populate a List Box node with data from a data source, and as the item template use the prefab that contains the node to which you added the binding that loads a resource. See Using list data objects.
 
 When you switch the locale of your application, the `acquire` binding function gets the resources, to which the resource IDs point, and updates the texts.
 ## Editing localized resources
-
 
 In the Localization Editor you can set and edit the resources that locales use.
 
@@ -435,9 +394,7 @@ Gray cells mark entries which use an empty string.
 
 Note that you can convert the resource type only for resources that are not already in use.
 
-
 ## Using a kzb file URL for a resource in a locale
-
 
 After you add resources used in your project to a localization table, you can use a kzb URL to point to the resources in another Kanzi Studio project.
 
@@ -458,7 +415,6 @@ In the cell enter the kzb file URL of the resource you want to use.
 For example, to use a font from another Kanzi Studio project, enter the kzb file URL pointing to that font.
 
 ## Creating locale packs
-
 
 A locale pack is a kzb file that contains only the resources for a specific locale. Using Kanzi Engine API you can load the application resources used by a certain locale when you set that locale. That way you reduce the size of kzb files in your application.
 
@@ -488,7 +444,6 @@ Tutorial: Localize your application.
 
 ## Showing resource use
 
-
 In the Localization Editor you can see in the currently selected context in the Node Tree whether resources are used and where they are used.
 
 To show resource use:
@@ -505,9 +460,7 @@ Use the Localization Editor:
   - To show in the localization table only the resources in the currently selected context in the Node Tree, click .
   - To list the nodes that use a resource, right-click the resource ID and select Show Usage.
 
-
 ## Creating localization tables
-
 
 Kanzi uses localized resources indirectly using resource IDs that hold a separate value for each locale. To keep track of localized resources and locales Kanzi uses localization tables. You can see all localized resources and locales used by your application in the localization tables in the Library > Localization.
 
@@ -517,10 +470,8 @@ You can create several localization tables to:
 - Separate resources based on the parts of your application. When several application developers work on the same application, each can have a localization table for their own area of the application.
 - Enable you to send the content from different parts of the application to translators.
 
-
 To create a localization table, in the Library press Alt and right-click Localization, select Localization Table, and name the localization table.
 ## Using localization in multiple Kanzi Studio projects combined into a Kanzi application
-
 
 To use localization when you combine multiple Kanzi Studio projects into a Kanzi application, you must make the localization tables accessible to the Screen node of the main project of your application in one of these ways:
 

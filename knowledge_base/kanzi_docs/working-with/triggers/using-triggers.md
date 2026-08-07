@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/triggers/using-triggers.htm
 
 # Using triggers
 
-
 Use triggers and actions to create interactions based on user input.
 
 A trigger defines a condition and an action defines what the trigger does when that condition is met. For example, to print a message to the Log window when a node is attached to the node tree, add the On Attached trigger to that node and add the Write Log action to that trigger.
@@ -13,12 +12,10 @@ A trigger defines a condition and an action defines what the trigger does when t
 Kanzi Studio has a range of actions which you can add to a trigger. For example, you can add an action to print to the Log window (Write Log), set a property to a certain value (Set Property), activate an a Activity node (Activate Activity), or change application theme (Activate Theme).
 ## Trigger messages
 
-
 When a trigger intercepts a message that originates from an action you can set what the trigger does with the message. You can:
 
 - Intercept the message, act on it, and let it continue traveling up or down the project tree.
 - Intercept the message, act on it, and handle it. When a trigger handles a message it consumes it so that the message stops at the trigger that handles it and no other node can intercept it.
-
 
 With a trigger you can intercept a message either at the node where the message originates, or in a trigger in any of its ancestor or descendant nodes. You can intercept many different message types in the same node. When a message travels up the project tree, the message bubbles. When a message travels down the project tree, the message tunnels. You can set in the action that creates the message whether the message bubbles, tunnels, or both bubbles and tunnels.
 
@@ -27,12 +24,10 @@ For example, if the action creates a bubbling message, after an action generates
 By default all triggers handle their own messages. You can control the handling of trigger messages by setting the Set Message Handled property in the trigger.
 ## Data Triggers
 
-
 Use a Data Trigger to:
 
 - Apply a value to a property with an Apply Property Action
 - Activate an Activity with an Apply Activation Action. See Activating Activities with an Apply Activation Action and Tutorial: Control application UI.
-
 
 A Data Trigger keeps the change on a node applied for as long as the condition expression in that Data Trigger is met. When the condition in that Data Trigger is no longer met, Kanzi reverts the changes that it applied using that Data Trigger.
 
@@ -42,7 +37,6 @@ For example, you can use a Data Trigger to control the logic and activation stat
 
 Apply Activation Action and Apply Property Action actions have higher priority than any other actions. For example, if you use an Apply Activation Action that sets the Active Index property and a Set Property action that sets that same property to a different value, the effect of the Set Property action becomes visible only after Kanzi unapplies the Apply Activation Action.
 ## Getting started
-
 
 To get started with triggers, see:
 
@@ -55,12 +49,10 @@ To get started with triggers, see:
 
 - Removing a trigger
 
-
 For a list of all the triggers you can use in Kanzi Studio, see Triggers reference.
 
 For a list of all the actions you can add to a trigger in Kanzi Studio, see Actions and messages reference.
 ## Adding a trigger
-
 
 The most common place to add a triggers is in the node that uses the trigger, but you can add a trigger to any node.
 
@@ -97,7 +89,6 @@ To open the Log window, in the main menu select Window > Log.
 
 ## Setting the handling of trigger messages
 
-
 When a trigger handles a message it consumes it so that the message stops at the trigger that handles it and no other node can intercept it. See Creating custom messages in Kanzi Studio.
 
 To set the handling of trigger messages, in the Node Components > Triggers, in the trigger for which you want to set message handling, set:
@@ -107,13 +98,11 @@ Set Message Handled property:
 - When you enable the Set Message Handled property, this trigger intercepts and handles the message. The message stops here, and does not continue neither bubbling nor tunneling in the project tree.
 - When you disable the Set Message Handled property, this trigger intercepts the message, but the message continues bubbling or tunneling in the project tree.
 
-
 Routing Mode property:
 
 - Bubbling to intercept only bubbling messages.
 - Tunneling to intercept only tunneling messages.
 - Tunneling and bubbling to intercept tunneling and bubbling messages.
-
 
 Message Source property:
 
@@ -127,11 +116,9 @@ Message Source property:
     - Use `..` to access the parent item of the current item.
     - Use `#` to access a node using an alias in the resource dictionary of the current node. See Using aliases.
 
-
 - To intercept messages from all sources, select <Any>.
 
 ## Adding conditions to a trigger
-
 
 Trigger conditions enable you to set which conditions must be met for the trigger to set off. For example, you can define conditions to set off a trigger when the user navigates to a specific Page node or enable the user to scroll a scroll view only when a specific Page node is active.
 
@@ -143,7 +130,6 @@ You can create conditions to set off a trigger when:
 - A value that comes from a message argument matches a certain rule. See Creating a condition using a value from a message.
 
 ### Creating a condition using a value from a property
-
 
 You can define a trigger condition to set off a trigger when a property that you select gets a value you set in that condition. For example, you can create a condition that allows the user to scroll a Scroll View node only when a specific Page node is active.
 
@@ -183,16 +169,13 @@ For example, set it to = to create a condition where the trigger sets off only w
     - Message argument to use a value from a message argument from a trigger in the node that you set in the A section in the Item property
     - Fixed when you want to use the same property from the node that you set in the A section and set a value for that property
 
-
 For example, set the Type of B property to Fixed and then enable the Fixed Value property.
 
 The data type of the Fixed Value property depends on the property type that you set in the A section. In this example this is a Boolean property type Activation State of a Page node.
 
-
 Here you created a condition which sets off the Scroll View: Scrolled trigger when the user navigates to the Page node Media.
 
 ### Creating a condition using a value from a message
-
 
 You can define a trigger condition to set off a trigger when a message that you select gets a value you set in that condition. You can use values from messages of these triggers:
 
@@ -200,7 +183,6 @@ You can define a trigger condition to set off a trigger when a message that you 
 - List Box.
 - Scroll View.
 - State Manager. See Reacting when a node enters or leaves a state.
-
 
 For example, you can set off a trigger when the user selects a specific item in a List Box node.
 
@@ -235,16 +217,13 @@ For example, set it to = to create a condition where the trigger sets off only w
     - Message argument to use a value from a message argument from a trigger in the node that you set in the A section in the Item property
     - Fixed when you want to use the same message argument that you set in the A section and set a value for that message argument
 
-
 For example, set the Type of B property to Fixed and then set the Fixed Value property to 0.
 
 The data type of the Fixed Value property depends on the message type you set in the A section. In this example this is an integer.
 
-
 In this example you created a condition which sets off a List Box: Item Selected when the user selects the first item in the Grid List Box 2D node.
 
 ## Removing a trigger
-
 
 To remove a trigger, in the Node Components > Triggers either:
 
@@ -252,6 +231,5 @@ To remove a trigger, in the Node Components > Triggers either:
 - Right-click the trigger that you want to remove and select Delete.
 
 ## Using triggers in the API
-
 
 For details, see the `Trigger` class.

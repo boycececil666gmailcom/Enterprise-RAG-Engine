@@ -5,33 +5,24 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/bindings/reference-for-bind
 
 # Bindings expressions reference
 
-
 Here you can find the reference for the bindings expressions that you can add to the bindings of your nodes, render passes, material types, styles, and state managers. See Rendering, Material types and materials, Using styles and State manager.
 
 Blue type marks the properties that are controlled by a binding.
 
 When you create a binding for a property, the value that comes from that binding overrides the value that you set for that property in the Properties.
-
-> **Tip:** In the Kanzi Studio Properties window, properties with Bindings are marked in blue type, and has the Binding icon  next to it:
->
-> Orange type marks properties with several override sources:
->
-> If a property has multiple override sources, only the one with the highest precedence will take effect. See Property system.
->
-> When creating bindings, keep in mind that:
->
-> - Only bindings to similar data types are valid. For example, you can bind only color to color, vector2 to vector2, and so on. See Type casting.
-> - Binding takes the value of the last expression, whether it is an assignment, unary or binary operation, or just a constant value or variable itself.
-> - In bindings you can cast strings between the four fundamental types: integer, float, boolean, and string.
->
-> Casts between integer, float, and boolean are implicit and depend on the type of the property that uses the value. Casts to and from string are explicit.
-
+**Tip:** In the Kanzi Studio Properties window, properties with Bindings are marked in blue type, and has the Binding icon  next to it:
+Orange type marks properties with several override sources:
+If a property has multiple override sources, only the one with the highest precedence will take effect. See Property system.
+When creating bindings, keep in mind that:
+- Only bindings to similar data types are valid. For example, you can bind only color to color, vector2 to vector2, and so on. See Type casting.
+- Binding takes the value of the last expression, whether it is an assignment, unary or binary operation, or just a constant value or variable itself.
+- In bindings you can cast strings between the four fundamental types: integer, float, boolean, and string.
+Casts between integer, float, and boolean are implicit and depend on the type of the property that uses the value. Casts to and from string are explicit.
 
 See Using bindings and Troubleshooting bindings.
 ## Syntax
 
 ### # (comments)
-
 
 Use a hash at the beginning of every line that contains a comment. You can use any sequence of characters in comments.
 
@@ -44,7 +35,6 @@ A = (2 + 4) / 3
 
 ### () (parentheses)
 
-
 Use parentheses to group and contain expressions and parameters, and control the order of execution.
 
 ```
@@ -53,14 +43,12 @@ mod(23, 27)
 
 ```
 
-
 ```
 # Grouping expressions: first add 2 and 4, then divide the result by 3,
 # and return 2
 A = (2 + 4) / 3
 
 ```
-
 
 ```
 # First add the FOV property to the Render Transformation Scale X property field,
@@ -72,7 +60,6 @@ A = (2 + 4) / 3
 ## Operators
 
 ### = (assign)
-
 
 Assigns a value to a variable.
 |
@@ -103,7 +90,6 @@ A = 2.0
 
 ```
 
-
 ```
 # Assigns the value 4.0 to the variable B.
 B = 4.0
@@ -111,7 +97,6 @@ B = 4.0
 ```
    |
 ### ? (conditional)
-
 
 The conditional operator takes three input parameters. If the first parameter (`condition`) evaluates to true, the operator evaluates the second parameter (`expression1`) and returns its value. If the first parameter evaluates to false, the operator evaluates the third parameter (`expression2`) and returns its value.
 |
@@ -157,7 +142,6 @@ B = 4.0
 ### Arithmetic operators
 
 #### + (addition)
-
 
 Adds two or more values, or combines strings into one.
 |
@@ -213,7 +197,6 @@ A + B
 
 ```
 
-
 ```
 A = "Hello "
 B = "Kanzi!"
@@ -223,7 +206,6 @@ A + B
 
 ```
 
-
 ```
 A = 3
 B = true
@@ -232,7 +214,6 @@ B = true
 A + B
 
 ```
-
 
 ```
 A = Vector2(0.5, 0.5)
@@ -244,7 +225,6 @@ A + B
 ```
    |
 #### - (subtraction)
-
 
 Subtracts the value of the second parameter from the value of the first parameter. As a negation operator, it returns the result equivalent to multiplying the value by -1.
 |
@@ -300,7 +280,6 @@ A - B
 
 ```
 
-
 ```
 A = Vector2(0.5, 0.5)
 B = 0.1
@@ -311,7 +290,6 @@ A - B
 ```
    |
 #### * (multiplication)
-
 
 Multiplies the values of parameters.
 |
@@ -368,7 +346,6 @@ A * B
 
 ```
 
-
 ```
 A = 3
 B = true
@@ -377,7 +354,6 @@ B = true
 A * B
 
 ```
-
 
 ```
 A = Vector2(0.5, 0.5)
@@ -389,7 +365,6 @@ A * B
 ```
    |
 #### / (division)
-
 
 Divides the value of the first parameter by the value of the second parameter.
 |
@@ -445,7 +420,6 @@ A / B
 
 ```
 
-
 ```
 A = Vector2(0.5, 0.5)
 B = Vector2(0.2, 0.4)
@@ -458,7 +432,6 @@ A / B
 ### Relational operators
 
 #### == (equal)
-
 
 Checks whether two values are equal.
 |
@@ -499,7 +472,6 @@ A == B
    |
 #### != (not equal)
 
-
 Checks whether two values are not equal.
 |
 
@@ -538,7 +510,6 @@ A != B
 ```
    |
 #### > (greater than)
-
 
 Checks whether the value of the first parameter is larger than the value of the second parameter. For two strings checks whether the first string comes after the second string in alphabetical order.
 |
@@ -579,7 +550,6 @@ A > B
 
 ```
 
-
 ```
 # Returns true
 "Rob Krar" > "Anna Frost"
@@ -587,7 +557,6 @@ A > B
 ```
    |
 #### < (less than)
-
 
 Checks whether the value of the first parameter is smaller than the value of the second parameter. For two strings checks whether the first string comes before the second string in alphabetical order.
 |
@@ -628,7 +597,6 @@ A < B
 
 ```
 
-
 ```
 # Returns false
 "Rob Krar" < "Anna Frost"
@@ -636,7 +604,6 @@ A < B
 ```
    |
 #### >= (greater than or equal to)
-
 
 Checks whether the value of the first parameter is larger than or equal to the value of the second parameter.
 |
@@ -678,7 +645,6 @@ A >= B
 ```
    |
 #### <= (less than or equal to)
-
 
 Checks whether the value of the first parameter is smaller than or equal to the value of the second parameter.
 |
@@ -723,7 +689,6 @@ A <= B
 
 #### && (logical AND)
 
-
 Compares two expressions:
 
 - If both expressions evaluate to true, returns true.
@@ -766,7 +731,6 @@ A < B && B < 1
 ```
    |
 #### || (logical OR)
-
 
 Compares two expressions:
 
@@ -811,7 +775,6 @@ A < B || B < 1
    |
 #### ! (logical NOT)
 
-
 Inverts the boolean value of an expression:
 
 - If expression evaluates to false, returns true.
@@ -852,12 +815,10 @@ B = 4.0
 
 #### ~ (bitwise NOT)
 
-
 Inverts the bits of the binary representation of an integer:
 
 - Bits that are 0 become 1.
 - Bits that are 1 become 0.
-
 
 The bitwise NOT operation on integer \(x\) returns \(-(x + 1)\).
 
@@ -897,7 +858,6 @@ A = 10
 
 ```
 
-
 ```
 # Binary signed two's complement: 10110
 A = -10
@@ -908,7 +868,6 @@ A = -10
 ```
    |
 #### & (bitwise AND)
-
 
 Performs the logical AND operation on each pair of the corresponding bits of the binary representations of two integers:
 
@@ -994,7 +953,6 @@ A & B
 
 ```
 
-
 ```
 # Binary signed two's complement: 10110
 A = -10
@@ -1007,7 +965,6 @@ A & B
 ```
    |
 #### | (bitwise OR)
-
 
 Performs the logical OR operation on each pair of the corresponding bits of the binary representations of two integers:
 
@@ -1093,7 +1050,6 @@ A | B
 
 ```
 
-
 ```
 # Binary signed two's complement: 10110
 A = -10
@@ -1106,7 +1062,6 @@ A | B
 ```
    |
 #### ^ (bitwise XOR)
-
 
 Performs the logical exclusive or (XOR) operation on each pair of the corresponding bits of the binary representations of two integers:
 
@@ -1192,7 +1147,6 @@ A ^ B
 
 ```
 
-
 ```
 # Binary signed two's complement: 10110
 A = -10
@@ -1206,14 +1160,12 @@ A ^ B
    |
 #### << (bitwise left shift)
 
-
 Performs a sign-extending shift of the binary representation of an integer to the left by a given number of bits.
 
 Left shifting \(x\) by \(y\) bits:
 
 - Adds \(y\) rightmost 0 bits to the binary representation of \(x\).
 - Removes the leftmost \(y\) bits in the binary representation of \(x\).
-
 
 This means that left shifting \(x\) by \(y\) bits multiplies \(x\) by 2 raised to the power of \(y\):   \[x << y \rightarrow x * 2 ^y\]
 
@@ -1259,7 +1211,6 @@ value << shift
 
 ```
 
-
 ```
 # Binary signed two's complement: 11101
 value = -3
@@ -1272,14 +1223,12 @@ value << shift
    |
 #### >> (bitwise right shift)
 
-
 Performs a sign-extending shift of the binary representation of an integer to the right by a given number of bits.
 
 Right shifting \(x\) by \(y\) bits:
 
 - Removes the rightmost \(y\) bits in the binary representation of \(x\).
 - Adds to the left \(y\) copies of the leftmost bit in the binary representation of \(x\).
-
 
 This means that right shifting \(x\) by \(y\) bits divides \(x\) by 2 raised to the power of \(y\):   \[x >> y \rightarrow x / 2 ^y\]
 
@@ -1327,7 +1276,6 @@ value >> shift
 
 ```
 
-
 ```
 # Binary signed two's complement: 10100
 value = -12
@@ -1341,7 +1289,6 @@ value >> shift
 ## Constants
 
 ### Color4
-
 
 Use the `Color4()` constant to create a color value.
 
@@ -1395,7 +1342,6 @@ Color4(1, 1, 1, 1)
 
 ```
 
-
 ```
 # Sets the color to white and opaque. Alternative syntax.
 Color(1, 1, 1, 1)
@@ -1424,7 +1370,6 @@ Color4(0.1, 1, 0.4)
 ```
    |
 ### Matrix3
-
 
 Use the `Matrix3()` constant to create a 3x3 matrix.
 
@@ -1461,7 +1406,6 @@ Matrix3(1, 0, 0,  0, 1, 0,  0, 0, 1)
 
 ```
 
-
 ```
 # Returns a 2D transformation with the Translation X and
 # Translation Y property fields set to 100:
@@ -1471,7 +1415,6 @@ extractSRT2D(Matrix3(1, 0, 0,  0, 1, 0,  100, 100, 1))
 ```
    |
 ### Matrix4
-
 
 Use the `Matrix4()` constant to create a 4x4 matrix.
 
@@ -1508,7 +1451,6 @@ Matrix4(1, 0, 0, 0,  0, 1, 0, 0,  0, 0, 1, 0,  0, 0, 0, 1)
 
 ```
 
-
 ```
 # Returns a 3D transformation with the Rotation X
 # property field set to 90, and the Translation X and
@@ -1520,14 +1462,12 @@ extractSRT3D(Matrix4(1, 0, 0, 0,  0, 0, 1, 0,  0, -1, 0, 0,  2, 2, 0, 1))
    |
 ### Srt2D
 
-
 Use the `Srt2D()` constant to apply transformation to a 2D node with the Render Transformation or Layout Transformation properties. In the Binding Editor set the Property to Layout Transformation or Render Transformation.
 
 You can:
 
 - Convert a 3x3 matrix to a 2D transformation. See extractSRT2D.
 - Convert a 2D transformation to a 3x3 matrix. See matrix3x3.
-
 
 To learn how to access the property fields in a 2D transformation property, see Transformation property field bindings.
 |
@@ -1585,14 +1525,12 @@ Srt2D(1.5, 1.5, 90.0, 400.0, 60.5)
     |
 ### Srt3D
 
-
 Use the `Srt3D()` constant to apply transformation to a 3D node with the Render Transformation or Layout Transformation properties. In the Binding Editor set the Property to Layout Transformation or Render Transformation.
 
 You can:
 
 - Convert a 4x4 matrix to a 3D transformation. See extractSRT3D.
 - Convert a 3D transformation to a 4x4 matrix. See matrix4x4.
-
 
 To learn how to access the property fields in a 3D transformation property, see Transformation property field bindings.
 |
@@ -1671,7 +1609,6 @@ Srt3D(0.7, 0.7, 0.7,  -30.0, -60.0, -30.0,  2.5, 2.5, 2.5)
     |
 ### Vector2
 
-
 Use the `Vector2()` constant to bind a vector property that has two property fields.
 
 You can convert a float property to a Vector 2D property. See vector2.
@@ -1715,7 +1652,6 @@ Vector2(100, 50)
 ```
    |
 ### Vector3
-
 
 Use the `Vector3()` constant to bind a vector property that has three property fields.
 
@@ -1767,7 +1703,6 @@ Vector3(1.2, 0.01, 0.02)
 ```
    |
 ### Vector4
-
 
 Use the `Vector4()` constant to bind a vector property that has four property fields.
 
@@ -1830,7 +1765,6 @@ Vector4(0.2, 0.1, 0.6, 0.8)
 
 ### bool
 
-
 Converts a value to a boolean.
 
 Casts between integer, float, and boolean are implicit and depend on the type of the property that uses the value. Casts to and from string are explicit.
@@ -1864,7 +1798,6 @@ A = 41 + bool("True")
 ```
    |
 ### color4
-
 
 Converts a value to a color. When converting from a float, sets the float value to the red, green, blue, and alpha channels of the color property.
 
@@ -1908,14 +1841,12 @@ color4(0.5)
 
 ```
 
-
 ```
 # Converts the value of the Text property in the Text Box 2D node to a float and
 # returns a color where each channel is set to the value of that float.
 color4(float({@../Text Box 2D/TextConcept.Text}))
 
 ```
-
 
 ```
 # Converts the value of the MyVector4 property to a color.
@@ -1924,7 +1855,6 @@ color4({@../MyVector4})
 ```
    |
 ### float
-
 
 Converts a value to a float.
 
@@ -1958,7 +1888,6 @@ A = 5 + float("5")
 
 ```
 
-
 ```
 # Implicitly converts boolean value True to float, adds it to the float 5.1,
 # and assigns the result to the variable B. Returns float 6.1.
@@ -1967,7 +1896,6 @@ B = 5.1 + True
 ```
    |
 ### int
-
 
 Converts a value to an integer.
 
@@ -2001,14 +1929,12 @@ A = 5 + float("5")
 
 ```
 
-
 ```
 # Implicitly converts boolean value True to integer, adds it to the integer 5,
 # and assigns the result to the variable B. Returns integer 6.
 B = 5 + True
 
 ```
-
 
 ```
 # Explicitly converts float 5.5 to an integer, adds it to the integer and
@@ -2018,7 +1944,6 @@ C = 2 + float(5.5)
 ```
    |
 ### matrix3x3
-
 
 Converts a 2D transformation to a 3x3 matrix.
 |
@@ -2049,7 +1974,6 @@ matrix3x3({@./Node2D.RenderTransformation})
 
 ```
 
-
 ```
 # Returns Matrix3(0, 1, 0,  -1, 0, 0,  200, 50, 1).
 matrix3x3(Srt2D(1, 1, 90, 200, 50))
@@ -2057,7 +1981,6 @@ matrix3x3(Srt2D(1, 1, 90, 200, 50))
 ```
    |
 ### matrix4x4
-
 
 Converts a 3D transformation to a 4x4 matrix.
 |
@@ -2088,7 +2011,6 @@ matrix4x4({@./Node3D.RenderTransformation})
 
 ```
 
-
 ```
 # Returns Matrix4(1, 0, 0, 0,  0, 0, 1, 0,  0, -1, 0, 0,  1, 2, 0, 1).
 matrix4x4(Srt3D(1, 1, 1,  90, 0, 0,  1, 2, 0))
@@ -2096,7 +2018,6 @@ matrix4x4(Srt3D(1, 1, 1,  90, 0, 0,  1, 2, 0))
 ```
    |
 ### string
-
 
 Converts a value to a string.
 
@@ -2131,7 +2052,6 @@ A = "Five is written as " + string(5)
 
 ```
 
-
 ```
 # Converts the value of the variable A to a string, concatenates it
 # to the string "Number of fingers on two hands is ", and assigns the result
@@ -2142,7 +2062,6 @@ B = "Number of fingers on two hands is " + string(A)
 ```
    |
 ### vector2
-
 
 Converts a float to a vector property that has two property fields. Sets the float value to both property fields of the vector property.
 |
@@ -2173,7 +2092,6 @@ vector2(0.5)
 
 ```
 
-
 ```
 # In the Binding Editor set the Property to a property that uses the Vector 2D
 # data type.
@@ -2184,7 +2102,6 @@ vector2({@../MyFloat})
 ```
    |
 ### vector3
-
 
 Converts a float to a vector property that has three property fields. Sets the float value to all property fields of the vector property.
 |
@@ -2215,7 +2132,6 @@ vector3(0.5)
 
 ```
 
-
 ```
 # In the Binding Editor set the Property to a property that uses the Vector 3D
 # data type.
@@ -2227,7 +2143,6 @@ vector3({@../MyFloat})
 ```
    |
 ### vector4
-
 
 Converts a value to a vector property that has four property fields. When converting from a float, sets the float value to all property fields of the vector property.
 |
@@ -2258,7 +2173,6 @@ vector4(0.5)
 
 ```
 
-
 ```
 # In the Binding Editor set the Property to a property that uses the Vector 4D
 # data type. The binding sets all property fields of the bound property to the
@@ -2266,7 +2180,6 @@ vector4(0.5)
 vector4({@../MyFloat})
 
 ```
-
 
 ```
 # In the Binding Editor set the Property to a property that uses the Vector 4D
@@ -2280,14 +2193,12 @@ vector4({@./ColorBrush.Color})
 
 ### acquire
 
-
 Gets a resource by looking up the resource ID that you pass to the `acquire` function.
 
 The resource ID must be in a resource dictionary of the node where you use the `acquire` function, or one of its ancestor nodes:
 
 - If the resource is not yet loaded into application memory, the `acquire` function loads the resource.
 - If the resource ID is not defined, the `acquire` function returns an empty value.
-
 
 See Using resource dictionaries.
 
@@ -2326,7 +2237,6 @@ acquire({@./MyProject.MyCustomProperty})
 
 ```
 
-
 ```
 # Gets a text resource with a resource ID that you set in a data object name
 # whose data type is string.
@@ -2336,7 +2246,6 @@ acquire({@./MyProject.MyCustomProperty})
 acquire({DataContext.item.name})
 
 ```
-
 
 ```
 # If the node that has this binding has the key focus, returns a brush with the
@@ -2349,7 +2258,6 @@ acquire({DataContext.item.name})
 ```
    |
 ### animate
-
 
 Binds a property value to a piecewise function that you define in an Animation Data item. See Using piecewise functions in bindings.
 
@@ -2387,7 +2295,6 @@ animate({@./Speed}, "Speed curve")
 
 ```
 
-
 ```
 # Uses the Speed property to move along the animation curve
 # of the Animation Data item with the kzb URL Speed curve.
@@ -2397,12 +2304,10 @@ animate({@./Speed}, "kzb://cluster/Animation Data/Speed curve")
    |
 ### continueIf
 
-
 Determines whether to continue the execution of a binding:
 
 - If the expression that you pass to the function evaluates to `false`, stops executing the binding and does not modify the value of the target property.
 - If the expression that you pass to the function evaluates to `true`, continues to execute the binding.
-
 
 For example, use this function to avoid updating the properties of a node when a binding receives invalid input from a data source.
 |
@@ -2435,7 +2340,6 @@ textInput
 
 ```
 
-
 ```
 # If the value of the speed data object is a positive integer, this binding
 # writes that value to its target property.
@@ -2445,7 +2349,6 @@ continueIf({DataContext.gauges.speed} >= 0)
 {DataContext.gauges.speed}
 
 ```
-
 
 ```
 # If the magnitude of the Layout Transformation Scale of the 3D node to which
@@ -2468,7 +2371,6 @@ color
 ```
    |
 ### format
-
 
 Formats values to a string. For example, use this function to set how a Text Block node displays a property value. See Formatting display of property values.
 |
@@ -2507,13 +2409,11 @@ format("The size of this node is: {}x{}", {@./Node.Width}, {@./Node.Height})
 
 ```
 
-
 ```
 # Formats a floating point value to two decimal places.
 format("The width of this node is: {:.2}", {@./Node.Width})
 
 ```
-
 
 ```
 # Sets the order of arguments in the format string.
@@ -2526,7 +2426,6 @@ format("Speed: {1}. Battery: {0}", battery, speed)
 ### Accessor functions
 
 #### getCurrentValue
-
 
 Gets the current value of the property that you want to bind. Use this function to modify the value of the property that you bind.
 |
@@ -2549,7 +2448,6 @@ getCurrentValue() * 0.5
 
 ```
 
-
 ```
 # Binds a property field of the property, which you set as the target property
 # in the Binding Editor, to the Translation X property field of the same
@@ -2563,7 +2461,6 @@ getCurrentValue().translationX
 ```
    |
 #### getField
-
 
 Gets an element in a vector or matrix.
 |
@@ -2600,7 +2497,6 @@ getField(myMatrix, 2)
 
 ```
 
-
 ```
 # Gets the value of the second element in the matrix: 1.0.
 myVector = Vector4(0, 1, 2, 3)
@@ -2609,7 +2505,6 @@ getField(myVector, 1)
 ```
    |
 #### setField
-
 
 Sets the value of an element in a vector or matrix.
 |
@@ -2649,7 +2544,6 @@ setField(myMatrix, 5, 0)
    |
 #### getRow
 
-
 Gets a row vector in a matrix.
 |
 
@@ -2686,7 +2580,6 @@ getRow(myMatrix, 2)
 ```
    |
 #### setRow
-
 
 Sets a row vector in a matrix.
 |
@@ -2729,7 +2622,6 @@ setRow(myMatrix, 2, Vector3(9, 10, 11))
    |
 #### getColumn
 
-
 Gets a column vector in a matrix.
 |
 
@@ -2766,7 +2658,6 @@ getColumn(myMatrix, 2)
 ```
    |
 #### setColumn
-
 
 Sets a column vector in a matrix.
 |
@@ -2811,7 +2702,6 @@ setColumn(myMatrix, 2, Vector3(9, 10, 11))
 
 #### abs (absolute value)
 
-
 Calculates the absolute value of a number or a variable. The absolute value of a number is always positive.
 |
 
@@ -2843,7 +2733,6 @@ abs(-5.2)
    |
 #### ceil (ceiling)
 
-
 Calculates the closest integer value that is greater than or equal to the value of the parameter.
 |
 
@@ -2873,13 +2762,11 @@ ceil(2.06)
 
 ```
 
-
 ```
 # Returns 16.0
 ceil(15.92)
 
 ```
-
 
 ```
 # Returns -2
@@ -2888,7 +2775,6 @@ ceil(-2.06)
 ```
    |
 #### clamp
-
 
 Constrains a value to lie between two values. `clamp` returns the same value as `min(max(value, low), high)`.
 |
@@ -2929,7 +2815,6 @@ When you use the `clamp` function, keep in mind that:
 - If one parameter is int and the other parameters are boolean, returns int.
 - If any of the parameters are color, vector, or matrix, returns that type.
 
-
 Casts between integer, float, and boolean are implicit.  |
 |
 
@@ -2941,20 +2826,17 @@ clamp(1, 4, 0.5)
 
 ```
 
-
 ```
 # Returns 0.0
 clamp(false, 1, -0.5)
 
 ```
 
-
 ```
 # Returns Vector2(1.0, 4.0)
 clamp(Vector2(1, 2), Vector2(3, 5), Vector2(0, 4))
 
 ```
-
 
 ```
 # Returns Vector2(3.0, 2.0)
@@ -2963,7 +2845,6 @@ clamp(Vector2(1, 2), 3, Vector2(3, 2))
 ```
    |
 #### floor
-
 
 Calculates the closest integer value that is less than or equal to the value of the parameter.
 |
@@ -2994,20 +2875,17 @@ floor(0.8)
 
 ```
 
-
 ```
 # Returns 1.000000
 floor(1.5)
 
 ```
 
-
 ```
 # Returns 15.000000
 floor(15.92)
 
 ```
-
 
 ```
 # Returns -12.000000
@@ -3016,7 +2894,6 @@ floor(-11.9)
 ```
    |
 #### max (maximum)
-
 
 Determines the larger of the two values and returns the larger value.
 |
@@ -3063,13 +2940,11 @@ max(2, 5)
 
 ```
 
-
 ```
 # Returns -2.1
 max(-10, -2.1)
 
 ```
-
 
 ```
 # Returns Vector2(3.0, 2.0)
@@ -3078,7 +2953,6 @@ max(Vector2(3.0, 1.0), 2)
 ```
    |
 #### min (minimum)
-
 
 Determines the smaller of the two values and returns the smaller value.
 |
@@ -3125,13 +2999,11 @@ min(2, 5)
 
 ```
 
-
 ```
 # Returns -10.0
 min(-10, -2.1)
 
 ```
-
 
 ```
 # Returns Vector2(2.0, 1.0)
@@ -3140,7 +3012,6 @@ min(Vector2(3.0, 1.0), 2)
 ```
    |
 #### mod (modulo)
-
 
 Calculates the modulo that is the remainder when one number is divided by another using the mathematical modulo congruence function.
 
@@ -3189,13 +3060,11 @@ mod(13, 5)
 
 ```
 
-
 ```
 # Returns 2
 mod(-13, 5)
 
 ```
-
 
 ```
 # Returns Vector2(0.0, 1.0)
@@ -3204,7 +3073,6 @@ mod(Vector2(4.0, 1.0), 2)
 ```
    |
 #### pow (power)
-
 
 Calculates exponential expressions. It is an efficient way for multiplying numbers by themselves.
 |
@@ -3251,7 +3119,6 @@ pow(2, 5)
 
 ```
 
-
 ```
 # Returns Vector2(9.0, 4.0)
 pow(Vector2(3.0, 2.0), 2)
@@ -3259,7 +3126,6 @@ pow(Vector2(3.0, 2.0), 2)
 ```
    |
 #### rem (remainder)
-
 
 Calculates the remainder when one number is divided by another rounded towards zero.
 
@@ -3308,13 +3174,11 @@ rem(13, 5)
 
 ```
 
-
 ```
 # Returns -3
 rem(-13, 5)
 
 ```
-
 
 ```
 # Returns Vector2(2.0, 1.0)
@@ -3323,7 +3187,6 @@ rem(Vector2(5.0, 4.0), 3)
 ```
    |
 #### round
-
 
 Calculates the closest integer.
 |
@@ -3354,13 +3217,11 @@ round(0.8)
 
 ```
 
-
 ```
 # Returns 2.0
 round(1.5)
 
 ```
-
 
 ```
 # Returns 0.0
@@ -3369,7 +3230,6 @@ round(0.1)
 ```
    |
 #### sign
-
 
 Calculates the sign value of a number or a variable:
 
@@ -3405,20 +3265,17 @@ sign(-5.2)
 
 ```
 
-
 ```
 # Returns 0
 sign(0)
 
 ```
 
-
 ```
 # Returns 1
 sign(5.2)
 
 ```
-
 
 ```
 # Returns Vector2(1, -1)
@@ -3427,7 +3284,6 @@ sign(Vector2(10,-10))
 ```
    |
 #### sqrt (square root)
-
 
 Calculates the square root of a number. The square root value of a number is always positive.
 |
@@ -3462,7 +3318,6 @@ sqrt(25)
 
 #### acos (inverse cosine)
 
-
 Calculates the inverse cosine of a value.
 |
 
@@ -3493,7 +3348,6 @@ acos(0.5)
 ```
    |
 #### asin (inverse sine)
-
 
 Calculates the inverse sine of a value.
 |
@@ -3526,7 +3380,6 @@ asin(0.5)
    |
 #### atan (inverse tangent)
 
-
 Calculates the inverse tangent of a value.
 |
 
@@ -3557,7 +3410,6 @@ atan(1)
 ```
    |
 #### atan2 (two-argument inverse tangent)
-
 
 Calculates the inverse tangent of two numbers.
 |
@@ -3595,7 +3447,6 @@ atan2(1, 2)
    |
 #### cos (cosine)
 
-
 Calculates the cosine of an angle.
 |
 
@@ -3627,7 +3478,6 @@ cos(30)
    |
 #### sin (sine)
 
-
 Calculates the sine of an angle.
 |
 
@@ -3658,7 +3508,6 @@ sin(30)
 ```
    |
 #### sinc (sine cardinal)
-
 
 Calculates the unnormalized sine cardinal of an angle.
 |
@@ -3695,7 +3544,6 @@ sinc(90)
    |
 #### tan (tangent)
 
-
 Calculates the tangent of an angle.
 |
 
@@ -3728,7 +3576,6 @@ tan(30)
 ### Interpolation functions
 
 #### linearStep
-
 
 Performs a linear interpolation between two values. `linearStep` returns the same value as `clamp(0, 1, (value - low) / (high - low))`.
 |
@@ -3779,13 +3626,11 @@ linearStep(1, 4, 0.5)
 
 ```
 
-
 ```
 # Returns 0.64 (7/11)
 linearStep(-3, 8, 4.0)
 
 ```
-
 
 ```
 # Returns Vector2(0.625, 0.75)
@@ -3794,7 +3639,6 @@ linearStep(Vector2(0.0, 0.2), Vector2(0.8, 0.6), 0.5)
 ```
    |
 #### mix
-
 
 Performs a linear interpolation between two values using a value to weight between them. Kanzi computes the result using this function: `value1 * (1 - weight) + value2 * weight`.
 |
@@ -3845,13 +3689,11 @@ mix(1, 4, 0.5)
 
 ```
 
-
 ```
 # Returns Vector2(0.4, 0.4)
 mix(Vector2(0.0, 0.2), Vector2(0.8, 0.6), 0.5)
 
 ```
-
 
 ```
 # Returns a color property value that is the result of the linear
@@ -3864,7 +3706,6 @@ mix({#Sphere/Diffuse}, {#Box/Diffuse}, {#Slider/RangeConcept.Value})
    |
 #### smoothStep
 
-
 Performs a smooth Hermite interpolation between `low` and `high` values using the `value` to weight between them, when `low` < `value` < `high`.
 
 `smoothStep` returns the same value as:
@@ -3874,7 +3715,6 @@ t = clamp((value - low) / (high - low), 0.0, 1.0)
 t * t * (3.0 - 2.0 * t)
 
 ```
-
 
 Use smoothstep interpolation when you want a threshold function with a smooth transition.
 
@@ -3927,7 +3767,6 @@ smoothStep(0, 1, 0.2)
 
 ```
 
-
 ```
 # Returns Vector2(0.683594, 0.843750)
 smoothStep(Vector2(0.0, 0.2), Vector2(0.8, 0.6), 0.5)
@@ -3935,7 +3774,6 @@ smoothStep(Vector2(0.0, 0.2), Vector2(0.8, 0.6), 0.5)
 ```
    |
 #### smootherStep
-
 
 Performs a sigmoidal Hermite interpolation between `low` and `high` values using the `value` to weight between them, when `low` < `value` < `high`.
 
@@ -3946,7 +3784,6 @@ t = clamp((value - low) / (high - low), 0.0, 1.0)
 t * t * t * (t * (t * 6.0 - 15.0) + 10.0)
 
 ```
-
 
 Use smootherstep interpolation when you want a threshold function with a smooth transition.
 
@@ -3999,7 +3836,6 @@ smootherStep(0, 1, 0.2)
 
 ```
 
-
 ```
 # Returns Vector2(0.724792, 0.896484)
 smootherStep(Vector2(0.0, 0.2), Vector2(0.8, 0.6), 0.5)
@@ -4007,7 +3843,6 @@ smootherStep(Vector2(0.0, 0.2), Vector2(0.8, 0.6), 0.5)
 ```
    |
 #### step
-
 
 Compares a value to a threshold.
 |
@@ -4043,7 +3878,6 @@ When you use the `step` function, keep in mind that:
 - If one parameter is int and the other parameter is boolean, returns int.
 - If either parameter is color, vector, or matrix, returns that type.
 
-
 For example, for float:
 
 - 0.0 if the `value` is lower than the `threshold`
@@ -4059,13 +3893,11 @@ step(2, 5)
 
 ```
 
-
 ```
 # Returns 0.0
 step(0.0, -0.1)
 
 ```
-
 
 ```
 # Returns 1.0
@@ -4076,7 +3908,6 @@ step(1.0, 1.0)
 ### Vector functions
 
 #### length (magnitude)
-
 
 Calculates the length (or magnitude) of a vector.
 |
@@ -4107,7 +3938,6 @@ length(Vector3(1, 0, 0))
 
 ```
 
-
 ```
 # Returns 1.414214
 length(Vector2(1, 1))
@@ -4115,7 +3945,6 @@ length(Vector2(1, 1))
 ```
    |
 #### normalize
-
 
 Calculates the normalized, or unit vector, which has the same direction as the input vector, but has a length of 1.
 |
@@ -4147,7 +3976,6 @@ normalize(Vector3(5, 0, 0))
 ```
    |
 #### cross (vector product)
-
 
 Calculates the vector product of two Vector3 or Vector4 values.
 |
@@ -4187,7 +4015,6 @@ cross(Vector3(1, 0, 0), Vector3(3, 3, 3))
    |
 #### dot (scalar product)
 
-
 Calculates the scalar product of two vectors of the same length.
 |
 
@@ -4225,7 +4052,6 @@ dot(Vector3(2, 2, 2), Vector3(3, 3, 3))
 ### Matrix and transformation functions
 
 #### createRotation
-
 
 Creates rotation in either the Layout Transformation or the Render Transformation property using the quaternion data type. The quaternion data type is used for rotation property fields. See createRotationX, createRotationY, createRotationZ, rotate, rotateX, rotateY, rotateZ.
 |
@@ -4271,7 +4097,6 @@ createRotation(-45, -35, -30)
   [](../../_images/createrotation.svg)  |
 #### createRotationX
 
-
 Creates rotation in the Layout Transformation or the Render Transformation property on the X axis using quaternion data type. The quaternion data type is used for rotation property fields. See createRotation, createRotationY, createRotationZ, rotate, rotateX, rotateY, rotateZ.
 |
 
@@ -4302,7 +4127,6 @@ createRotationX(-55)
 ```
   [](../../_images/createrotationx.svg)  |
 #### createRotationY
-
 
 Creates rotation in the Layout Transformation or the Render Transformation property on the Y axis using quaternion data type. The quaternion data type is used only for rotation property fields. See createRotation, createRotationX, createRotationZ, rotate, rotateX, rotateY, rotateZ.
 |
@@ -4335,7 +4159,6 @@ createRotationY(-55)
   [](../../_images/createrotationy.svg)  |
 #### createRotationZ
 
-
 Creates rotation in the Layout Transformation or the Render Transformation property on the Z axis using quaternion data type. The quaternion data type is used only for rotation property fields. See createRotation, createRotationX, createRotationY, rotate, rotateX, rotateY, rotateZ.
 |
 
@@ -4367,7 +4190,6 @@ createRotationZ(55)
   [](../../_images/createrotationz.svg)  |
 #### extractEulerX
 
-
 Extracts the X Euler angle from the Layout Transformation or the Render Transformation properties. You can use `extractEulerX` for rotation property fields. `extractEulerX` takes a quaternion data type value as a parameter and returns float data. When you set an angle in an SRT3D property, the angle is stored in quaternion data type. Because the `extractEulerX` function extracts the angle from the quaternion, the returned Euler angle is not the same as the angle originally set in the SRT3D property. Both angles define the same rotation. See extractEulerY, extractEulerZ, createRotation, createRotationX, createRotationY, rotate, rotateX, rotateY, rotateZ.
 |
 
@@ -4398,7 +4220,6 @@ extractEulerX({@./Node3D.LayoutTransformation}.rotation)
 
 ```
 
-
 ```
 # Extracts the X Euler angle from the rotation property field
 # of the Layout Transformation property and binds the value
@@ -4409,7 +4230,6 @@ createRotation(0, a, 0)
 ```
    |
 #### extractEulerY
-
 
 Extracts the Y Euler angle from the Layout Transformation or the Render Transformation properties. You can use `extractEulerY` for rotation property fields. `extractEulerY` takes a quaternion data type value as a parameter and returns float data.
 
@@ -4447,7 +4267,6 @@ extractEulerY({@./Node3D.LayoutTransformation}.rotation)
    |
 #### extractEulerZ
 
-
 Extracts the Z Euler angle from the Layout Transformation or the Render Transformation properties. You can use `extractEulerZ` for rotation property fields. `extractEulerZ` takes a quaternion data type value as a parameter and returns float data.
 
 When you set an angle in an SRT3D property, the angle is stored in quaternion data type. Because the `extractEulerX` function extracts the angle from the quaternion, the returned Euler angle is not the same as the angle originally set in the SRT3D property. Both angles define the same rotation.
@@ -4484,7 +4303,6 @@ extractEulerZ({@./Node3D.LayoutTransformation}.rotation)
    |
 #### extractSRT2D
 
-
 Extracts a 2D transformation from a 3x3 matrix.
 |
 
@@ -4517,7 +4335,6 @@ extractSRT2D(Matrix3(1, 0, 0,  0, 1, 0,  100, 100, 1))
 ```
    |
 #### extractSRT3D
-
 
 Extracts a 3D transformation from a 4x4 matrix.
 |
@@ -4553,7 +4370,6 @@ extractSRT3D(Matrix4(1, 0, 0, 0,  0, 0, 1, 0,  0, -1, 0, 0,  2, 2, 0, 1))
    |
 #### inverse
 
-
 Calculates the inverse matrix of a matrix or SRT, or the inverse of a quaternion. Kanzi uses the quaternion data type for the rotation property fields of the Layout Transformation and Render Transformation properties.
 |
 
@@ -4586,7 +4402,6 @@ inverse(Srt2D(2, 2, 0, 0, 0))
 
 ```
 
-
 ```
 # Returns the inverse matrix of the Render Transformation rotation of
 # the Box node.
@@ -4595,7 +4410,6 @@ inverse({@../Box/Node3D.RenderTransformation}.rotation)
 ```
    |
 #### rotate
-
 
 Creates whole SRT3D rotation property fields. You can use the SRT3D data type with the Layout Transformation and the Render Transformation properties. See rotateX, rotateY, rotateZ, createRotation, createRotationX, createRotationY, createRotationZ, getCurrentValue.
 |
@@ -4636,7 +4450,6 @@ rotate(getCurrentValue().rotation, Vector3(45, -35, -30))
   [](../../_images/rotate.svg)  |
 #### rotateX
 
-
 Creates whole SRT3D rotation property fields on the X axis. You can use the SRT3D data type with the Layout Transformation and the Render Transformation properties. See rotate, createRotation, createRotationX, createRotationY, createRotationZ, getCurrentValue.
 |
 
@@ -4672,7 +4485,6 @@ rotateX(getCurrentValue().rotation, -45)
 ```
   [](../../_images/rotatex.svg)  |
 #### rotateY
-
 
 Creates whole SRT3D rotation property fields on the Y axis. You can use the SRT3D data type with the Layout Transformation and the Render Transformation properties. See rotate, createRotation, createRotationX, createRotationY, createRotationZ, getCurrentValue.
 |
@@ -4710,7 +4522,6 @@ rotateY(getCurrentValue().rotation, -45)
   [](../../_images/rotatey.svg)  |
 #### rotateZ
 
-
 Creates whole SRT3D rotation property fields on the Z axis. You can use the SRT3D data type with the Layout Transformation and the Render Transformation properties. See rotate, createRotation, createRotationX, createRotationY, createRotationZ, getCurrentValue.
 |
 
@@ -4746,7 +4557,6 @@ rotateZ(getCurrentValue().rotation, 45)
 ```
   [](../../_images/rotatez.svg)  |
 #### transform
-
 
 Uses matrix or SRT to transform a vector.
 |
@@ -4789,14 +4599,12 @@ transform(myMatrix, Vector3(2, 2, 2))
 
 ```
 
-
 ```
 # Returns the transformation of Vector2(2, 2) by the Render Transformation
 # property of the node.
 transform({@./Node2D.RenderTransformation}, Vector2(2, 2))
 
 ```
-
 
 ```
 # You can bind the 3D transformation of a node to this binding expression.
@@ -4809,12 +4617,10 @@ value
 
 ```
 
-
 For example, the transform of Vector2 by Srt2D follows this equation where \(S\) is scale, \(R\) is rotation, and \(T\) is translation:   \[ \begin{align}\begin{aligned}transform(Srt2D(SX, SY, R, TX, TY), Vector2(X, Y))\\\begin{split}= \begin{pmatrix} SX * (cos(R) * X - sin(R) * Y) + TX\\ SY * (sin(R) * X + cos(R) * Y) + TY \end{pmatrix}\end{split}\end{aligned}\end{align} \]
 
 This is the matrix representation of the equation:   \[\begin{split}\begin{bmatrix} SX * cos(R) & -SY * sin(R) & TX\\ SY * sin(R) & SY * cos(R) & TY \\ 0 & 0 & 1 \end{bmatrix} * \begin{bmatrix} X\\ Y\\ 1 \end{bmatrix}\end{split}\]   |
 #### transpose
-
 
 Calculates the transpose of a matrix.
 |
@@ -4849,7 +4655,6 @@ transpose(Matrix3(1, 2, 3,  4, 5, 6,  7, 8, 9)
 
 #### hslToSrgb
 
-
 Converts a value from HSL color space to sRGB color space. This function does not convert the alpha channel of a color value.
 
 For example, use this function to convert an HSL color value, which comes from a data source, to sRGB color space before you set the Brush Color property of a node to that color.
@@ -4883,7 +4688,6 @@ rgbVector
 
 ```
 
-
 ```
 # Interprets the values of three sliders as hue, saturation, and lightness
 # values and converts the resulting HSL color through sRGB color space to
@@ -4904,7 +4708,6 @@ srgbColor = Color4(hslToSrgb(hslVec))
 sRGBToLinear(srgbColor)
 
 ```
-
 
 ```
 # Interprets the translation of a 3D node as an HSL color and converts that
@@ -4937,7 +4740,6 @@ sRGBToLinear(output)
 ```
    |
 #### linearTosRGB
-
 
 Converts a value from linear color space to sRGB color space. This function does not convert the alpha channel of a color value.
 
@@ -4976,7 +4778,6 @@ linearTosRGB({./Diffuse})
    |
 #### premultiplyColor
 
-
 Multiplies the values of the RGB channels in a color by the value of the alpha channel:
 
 `Color4(color.r * color.a, color.g * color.a, color.b * color.a, color.a)`
@@ -5009,7 +4810,6 @@ premultiplyColor(getCurrentValue())
 ```
    |
 #### srgbToHsl
-
 
 Converts a value from sRGB color space to HSL color space. This function does not convert the alpha channel of a color value.
 
@@ -5053,7 +4853,6 @@ hslVector
 
 ```
 
-
 ```
 # Converts the value of the Brush Color property in the parent node from linear
 # color space to HSL color space and prints the saturation value of the color in
@@ -5066,7 +4865,6 @@ string(int(hslVector.y * 100)) + "%"
 ```
    |
 #### sRGBToLinear
-
 
 Converts a value from sRGB color space to linear color space. This function does not convert the alpha channel of a color value.
 
@@ -5103,7 +4901,6 @@ color
 
 ```
 
-
 ```
 # Assigns the value of custom property MyFloatPropertyType to the
 # red color channel of a color property.
@@ -5119,7 +4916,6 @@ color
 
 ```
 
-
 ```
 # Converts the value of the Ambient Color property from sRGB color space to
 # linear color space.
@@ -5132,7 +4928,6 @@ sRGBToLinear(getAmbient())
    |
 ### Range functions
 
-
 A range property type stores a collection of values. Use ranges in bindings to:
 
 - Read individual values from ranges.
@@ -5140,7 +4935,6 @@ A range property type stores a collection of values. Use ranges in bindings to:
 - Write multiple values to array outputs.
 
 #### createView
-
 
 Creates a view over a range. The view refers to the values of the input range but its length is limited.
 
@@ -5194,7 +4988,6 @@ pointLightsView = createView<OutputSize>({##RenderPass/DrawObjectsRenderPass.Poi
 
 ```
 
-
 ```
 # Modify the default PointLightColor uniform binding in a material type that uses
 # lights. Set the length of the view over the range of Point Light nodes to the
@@ -5208,7 +5001,6 @@ pointLightsView = createView({##RenderPass/DrawObjectsRenderPass.PointLights}, l
 
 ```
 
-
 ```
 # Modify the default PointLightColor uniform binding in a material type that uses
 # lights. Set the length of the view over the range of Point Light nodes to 2.
@@ -5220,7 +5012,6 @@ pointLightsView = createView<2>({##RenderPass/DrawObjectsRenderPass.PointLights}
 ```
    |
 #### evaluate
-
 
 Converts a range iterator to an evaluation of that range. Use this function to step through a collection of values stored in a range property.
 
@@ -5259,7 +5050,6 @@ string(evaluate(myRange))
 
 ```
 
-
 ```
 # Sets the 2D Render Transformation property Translation property fields
 # to the values that the user enters in the Text Box 2D node.
@@ -5275,7 +5065,6 @@ renderTransformation
 
 ```
 
-
 ```
 # This example is equivalent to the previous example.
 renderTransformation = getCurrentValue()
@@ -5289,7 +5078,6 @@ renderTransformation
 ```
    |
 #### splitString
-
 
 Splits a text string into a collection of substrings and returns that collection as a range iterator that you can use to step through the collection of substrings. Use the evaluate function to return the substrings one at a time.
 
@@ -5329,7 +5117,6 @@ string(evaluate(myRange))
 
 ```
 
-
 ```
 # Returns "three".
 myRange = splitString("one, two, three", ", ")
@@ -5341,12 +5128,10 @@ string(myRange)
    |
 ### Mesh functions
 
-
 Meshes are resources that store vertex and index data. Use the mesh functions to access the GPU buffers and dimensions of a mesh, for example, when you want to bind a vertex buffer of a mesh as a storage buffer to a Compute Render Pass or use the vertex or index count to drive draw arguments.
 
 The buffer accessors return the GPU buffer resource that backs a vertex attribute or the index buffer of the mesh. They return a null buffer resource if the input does not hold a mesh resource or if the requested attribute is not present.
 #### meshGetIndexBuffer
-
 
 Gets the index buffer of a mesh as a GPU buffer resource. For example, use this function to bind the index buffer of a mesh to a Compute Render Pass so that compute shaders can read or process the indices.
 |
@@ -5380,7 +5165,6 @@ meshGetIndexBuffer({./MyMeshPropertyType})
 
 ```
 
-
 ```
 # Gets the index buffer of the mesh used by a sibling Model3D node.
 meshGetIndexBuffer({@../Model/Model3D.Mesh})
@@ -5388,7 +5172,6 @@ meshGetIndexBuffer({@../Model/Model3D.Mesh})
 ```
    |
 #### meshGetIndexCount
-
 
 Gets the number of indices in the index buffer of a mesh. For example, use this function to drive the dispatch size of a Compute Render Pass that processes the indices of a mesh, or to set the draw count of an indirect draw.
 |
@@ -5424,7 +5207,6 @@ meshGetIndexCount({./MyMeshPropertyType})
    |
 #### meshGetNormalBuffer
 
-
 Gets the GPU buffer that holds the vertex normals of a mesh. For example, use this function to bind the normal buffer of a mesh as input to a Compute Render Pass that processes per-vertex lighting or surface analysis.
 |
 
@@ -5459,7 +5241,6 @@ meshGetNormalBuffer({./MyMeshPropertyType})
    |
 #### meshGetPositionBuffer
 
-
 Gets the GPU buffer that holds the vertex positions of a mesh. For example, use this function to bind the position buffer of a mesh as input to a Compute Render Pass that performs vertex transformations, culling, or geometry analysis.
 |
 
@@ -5492,7 +5273,6 @@ meshGetPositionBuffer({./MyMeshPropertyType})
 
 ```
 
-
 ```
 # Gets the position buffer of the mesh used by a sibling Model3D node.
 meshGetPositionBuffer({@../Model/Model3D.Mesh})
@@ -5500,7 +5280,6 @@ meshGetPositionBuffer({@../Model/Model3D.Mesh})
 ```
    |
 #### meshGetTangentBuffer
-
 
 Gets the GPU buffer that holds the vertex tangents of a mesh. For example, use this function to bind the tangent buffer of a mesh as input to a Compute Render Pass that performs normal mapping or other tangent-space operations.
 |
@@ -5535,7 +5314,6 @@ meshGetTangentBuffer({./MyMeshPropertyType})
 ```
    |
 #### meshGetUVBuffer
-
 
 Gets the GPU buffer that holds the vertex texture coordinates of a mesh for the specified UV channel. For example, use this function to bind a UV buffer of a mesh as input to a Compute Render Pass that processes texture-space data.
 |
@@ -5576,7 +5354,6 @@ meshGetUVBuffer({./MyMeshPropertyType}, 0)
 
 ```
 
-
 ```
 # Gets the second UV buffer of the mesh used by a sibling Model3D node.
 meshGetUVBuffer({@../Model/Model3D.Mesh}, 1)
@@ -5584,7 +5361,6 @@ meshGetUVBuffer({@../Model/Model3D.Mesh}, 1)
 ```
    |
 #### meshGetVertexCount
-
 
 Gets the number of vertices in a mesh. For example, use this function to drive the dispatch size of a Compute Render Pass that processes per-vertex data, or to set the draw count of a non-indexed draw.
 |
@@ -5620,16 +5396,13 @@ meshGetVertexCount({./MyMeshPropertyType})
    |
 ### Texture functions
 
-
 Textures are resources that you can use in rendering to represent an image. Use the texture functions to access the properties of textures.
 #### textureGetAddressingMode
-
 
 Gets the addressing mode of a texture that you can set using either:
 
 - Wrap Mode property in a texture resource.
 - Addressing Mode property in a Composition Target render pass.
-
 
 For example, use this function to get the addressing mode of a texture when you want to use that addressing mode as input for decision making in other bindings.
 |
@@ -5668,7 +5441,6 @@ textureGetAddressingMode({./MyTexturePropertyType})
 
 ```
 
-
 ```
 # Gets the addressing mode of the first Result Texture of sibling
 # Composition Target render pass named Compose.
@@ -5677,7 +5449,6 @@ textureGetAddressingMode({@../Compose/CompositionTargetRenderPass.ResultTexture0
 ```
    |
 #### textureGetAnisotropyLevel
-
 
 Gets the anisotropy level of a texture, which you set using the Anisotropy property in a texture resource. For example, use this function to get the anisotropy level of a texture resource when you want to use that anisotropy level as input for decision making in other bindings.
 |
@@ -5715,7 +5486,6 @@ textureGetAnisotropyLevel({./MyTexturePropertyType})
 ```
    |
 #### textureGetDepthCompareFunction
-
 
 Gets the depth compare function of a Render Target Texture resource to which you render a result texture of a Composition Target render pass. For example, use this function to get the depth compare function of a texture resource when you want to use that function as input for decision making in other bindings.
 |
@@ -5759,7 +5529,6 @@ textureGetDepthCompareFunction({./MyRenderTargetTexturePropertyType})
 
 ```
 
-
 ```
 # Gets the depth compare function of the Result Depth Texture of sibling
 # Composition Target render pass named Compose.
@@ -5769,12 +5538,10 @@ textureGetDepthCompareFunction({@../Compose/CompositionTargetRenderPass.ResultDe
    |
 #### textureGetFilterMode
 
-
 Gets the filter mode of a texture that you can set using either:
 
 - Minification Filter property in a texture resource.
 - Filter Mode property in a Composition Target render pass.
-
 
 For example, use this function to get the filter mode of a texture resource when you want to use that filter mode as input for decision making in other bindings.
 |
@@ -5811,7 +5578,6 @@ textureGetFilterMode({./MyTexturePropertyType})
 
 ```
 
-
 ```
 # Gets the filter mode of the first Result Texture of sibling
 # Composition Target render pass named Compose.
@@ -5820,7 +5586,6 @@ textureGetFilterMode({@../Compose/CompositionTargetRenderPass.ResultTexture0})
 ```
    |
 #### textureGetHeight
-
 
 Gets the height of a texture. For example, use this function when you want to use the height of a texture resource to set the height of a node.
 |
@@ -5854,7 +5619,6 @@ textureGetHeight({./MyTexturePropertyType})
 
 ```
 
-
 ```
 # Gets the height of the texture shown in the Image node which is a sibling of
 # the node to which you add the binding.
@@ -5863,7 +5627,6 @@ textureGetHeight({@../Image/Image2D.Image})
 ```
    |
 #### textureGetMipmapMode
-
 
 Gets the mipmap mode of a texture, which you set using the Mipmap Mode property in a texture resource or Composition Target render pass. For example, use this function to get the mipmap mode of a texture resource when you want to use that mipmap mode as input for decision making in other bindings.
 |
@@ -5901,7 +5664,6 @@ textureGetMipmapMode({./MyTexturePropertyType})
 
 ```
 
-
 ```
 # Gets the mipmap mode of the first Result Texture of sibling
 # Composition Target render pass named Compose.
@@ -5910,7 +5672,6 @@ textureGetMipmapMode({@../Compose/CompositionTargetRenderPass.ResultTexture0})
 ```
    |
 #### textureGetMultisampleLevel
-
 
 Gets the multisample level of a Render Target Texture resource. For example, use this function to get the multisample level of a render target texture when you want to use that multisample level as input for decision making in other bindings.
 
@@ -5951,7 +5712,6 @@ textureGetMultisampleLevel({./MyRenderTargetTexturePropertyType})
    |
 #### textureGetPixelFormat
 
-
 Gets the pixel format of a texture. For example, use this function to get the pixel format of a texture resource when you want to use that pixel format as input for decision making in other bindings.
 |
 
@@ -5986,7 +5746,6 @@ textureGetPixelFormat({./MyTexturePropertyType})
 
 ```
 
-
 ```
 # Gets the pixel format of the first Result Texture of sibling
 # Composition Target render pass named Compose.
@@ -5995,7 +5754,6 @@ textureGetPixelFormat({@../Compose/CompositionTargetRenderPass.ResultTexture0})
 ```
    |
 #### textureGetSize
-
 
 Gets the size of a texture. For example, use this function when you want to use the size of a texture resource to set the size of a node.
 |
@@ -6031,7 +5789,6 @@ textureGetSize({./MyTexturePropertyType})
    |
 #### textureGetWidth
 
-
 Gets the width of a texture. For example, use this function when you want to use the width of a texture resource to set the width of a node.
 |
 
@@ -6064,7 +5821,6 @@ textureGetWidth({./MyTexturePropertyType})
 
 ```
 
-
 ```
 # Gets the width of the texture shown in the Image node which is a sibling of
 # the node to which you add the binding.
@@ -6076,7 +5832,6 @@ textureGetWidth({@../Image/Image2D.Image})
 
 ### Variables
 
-
 In binding expressions you can use variables.
 
 ```
@@ -6086,7 +5841,6 @@ A = 1
 
 ```
 
-
 ```
 # Same as above, but using an alternative syntax.
 A = (1)
@@ -6094,7 +5848,6 @@ A = (1)
 ```
 
 ### Property bindings
-
 
 To bind a property to another property, enter in curly braces:
 
@@ -6107,13 +5860,9 @@ A forward slash.
 3.
 
 The name of the source property.
-
-
-> **Tip:** When you use the @ sign in a binding expression before the path to a node, Kanzi Studio:
->
-> - Checks whether the path is valid and shows an error message in the Binding Editor if the path is not valid.
-> - Updates the path in the binding expression whenever the location between the source and the target nodes in the node tree changes.
-
+**Tip:** When you use the @ sign in a binding expression before the path to a node, Kanzi Studio:
+- Checks whether the path is valid and shows an error message in the Binding Editor if the path is not valid.
+- Updates the path in the binding expression whenever the location between the source and the target nodes in the node tree changes.
 
 With the @ sign you can create bindings only within the same prefab, not between prefabs.
 
@@ -6148,13 +5897,11 @@ name of the property |      |
 
 ```
 
-
 ```
 # Binds to the FOV property of the Camera node.
 {@../Camera/Fov}
 
 ```
-
 
 ```
 # Same as above, but Kanzi Studio does not track the location of the target node.
@@ -6162,13 +5909,11 @@ name of the property |      |
 
 ```
 
-
 ```
 # Binds to the Vertical Margin property of the Box node.
 {@../Box/LayoutVerticalMargin}
 
 ```
-
 
 ```
 # Multiplies the FOV property with the Layout Transformation Scale x
@@ -6176,7 +5921,6 @@ name of the property |      |
 {@../Camera/Fov} * {../Box/LayoutTransformation}.scaleX
 
 ```
-
 
 ```
 # Binds each vector of a property to the Render Transformation property
@@ -6197,7 +5941,6 @@ myVector
    |
 ### Property field bindings
 
-
 To bind a property to a property field of a property, enter:
 
 1.
@@ -6209,7 +5952,6 @@ A period.
 3.
 
 The name of the property field.
-
 
 Color and transformation properties have special property field names. See Color property field bindings and Transformation property field bindings.
 
@@ -6295,13 +6037,11 @@ name of the property field |      |
 
 ```
 
-
 ```
 # Binds to the Horizontal Padding property Left property field of the Text node.
 {@../Text/TextConcept.HorizontalPadding}.x
 
 ```
-
 
 ```
 # Binds to the Vertical Margin property Bottom property field of the Image node.
@@ -6309,13 +6049,11 @@ name of the property field |      |
 
 ```
 
-
 ```
 # Binds to the Vertical Margin property Top property field of the Image node.
 {@../Image/Node.VerticalMargin}.vectorY
 
 ```
-
 
 ```
 # Binds to the MyProject.MyProperty property Y property field of the parent node.
@@ -6324,7 +6062,6 @@ name of the property field |      |
 ```
    |
 #### Color property field bindings
-
 
 To bind a property to a color property field, use these names:
 |
@@ -6396,14 +6133,12 @@ name of the property field |      |
 
 ```
 
-
 ```
 # Binds to the Brush Color property G property field
 # (value of the green color channel) of the parent node.
 {@../ColorBrush.Color}.colorG
 
 ```
-
 
 ```
 # Assigns the value of custom property MyFloatPropertyType to the
@@ -6421,7 +6156,6 @@ color
 ```
    |
 #### Transformation property field bindings
-
 
 To bind a property to a transformation property field, use these names:
 |
@@ -6521,14 +6255,12 @@ name of the property field |      |
 
 ```
 
-
 ```
 # Binds to the Layout Transformation property Scale Y property field
 # of the Box node.
 {../Box/LayoutTransformation}.scaleY
 
 ```
-
 
 ```
 # Multiplies the FOV property of the Camera node with the Render
@@ -6537,7 +6269,6 @@ name of the property field |      |
 {../Camera/Fov} * {../Box/RenderTransformation}.scaleX
 
 ```
-
 
 ```
 # Binds each vector of a property to the Render Transformation property
@@ -6556,7 +6287,6 @@ myVector
 
 ```
 
-
 ```
 # Gets the value of the Translation X property field of the
 # transformation property that you bind to this expression.
@@ -6566,25 +6296,18 @@ getCurrentValue().translationX
    |
 ### Prefab root bindings
 
-
 A node prefab or a render pass prefab can contain a tree of nodes or render passes, each with their own properties. When you edit the nodes or render passes in a prefab or any of its instances, you change those nodes or render passes in all instances of that prefab. However, you can customize individual instances of the prefab to have individual values by overriding the values in the default prefab. For example, when you create a prefab for a contact list entry, you want to show a different name, number, and photo for each contact list entry.
 
 To bind a property of any node or render pass in a prefab to a property in the root of an instance of that prefab, in the binding expression enter in curly braces `##Template`, followed by a forward slash and the name of the property in the root of the prefab instance to which you want to bind.
 
 For example, use the `##Template` binding syntax when you have a Text Block node in a Button prefab and you want to show different text in different instances of that prefab.
-
-> **Tip:** You can let Kanzi Studio create a prefab root binding for you. When you select any node in a prefab or any render pass in a render pass prefab, and in the Properties click  next to a property, Kanzi Studio:
->
-> 1.
->
-> Creates from that property a custom property.
-> 2.
->
-> Adds the custom property to the prefab and shows the custom property as a frequently used property in each instance of the prefab.
-> 3.
->
-> Creates in the node or render pass the `##Template` binding to the custom property in the prefab root.
-
+**Tip:** You can let Kanzi Studio create a prefab root binding for you. When you select any node in a prefab or any render pass in a render pass prefab, and in the Properties click  next to a property, Kanzi Studio:
+1.
+Creates from that property a custom property.
+2.
+Adds the custom property to the prefab and shows the custom property as a frequently used property in each instance of the prefab.
+3.
+Creates in the node or render pass the `##Template` binding to the custom property in the prefab root.
 
 See Customizing instances of prefabs.
 |
@@ -6612,7 +6335,6 @@ name of the property in the root of the prefab instance to which you want to bin
 ```
    |
 ### Alias bindings
-
 
 To bind a property to an alias, enter in curly braces the `#` sign followed by the alias name, followed by a forward slash and property name of the item to which the alias points. See Using aliases.
 |
@@ -6643,7 +6365,6 @@ name of the property |      |
 
 ```
 
-
 ```
 # Multiplies the FOV property of the target node of the alias named MainCamera
 # with the Render Transformation property Scale X property field.
@@ -6652,7 +6373,6 @@ name of the property |      |
 ```
    |
 ### Data source bindings
-
 
 To bind a data object to a property or a property field, enter in curly braces `DataContext` followed by a period, followed by the data object to which you want to bind the property or property field. Use a period to access child data objects.
 |
@@ -6680,7 +6400,6 @@ The data object to which you want to bind. |      |
 
 ```
 
-
 ```
 # Binds the data context itself. For example, use this if you want to
 # use the current data context as the property value.
@@ -6689,7 +6408,6 @@ The data object to which you want to bind. |      |
 ```
    |
 ### Grid Layout bindings
-
 
 To set the size of columns and rows in a Grid Layout node using bindings, enter in quotation marks each value followed by a semicolon:
 
@@ -6724,7 +6442,6 @@ float |      |
 
 ```
 
-
 ```
 # This binding to the Rows property sets the height of each of the three rows
 # to the fixed size 5.0.
@@ -6732,14 +6449,12 @@ float |      |
 
 ```
 
-
 ```
 # This binding to the Rows property sets the height of the two rows to the height
 # of their content.
 ";;"
 
 ```
-
 
 ```
 # This binding to the Columns property sets the width of the columns in relation
@@ -6753,7 +6468,6 @@ float |      |
    |
 ## Material type binding expressions
 
-
 Bindings in material types enable you to:
 
 - Modify the values of shader uniforms without editing shader code. See Uniform bindings.
@@ -6761,14 +6475,12 @@ Bindings in material types enable you to:
 
 ### Uniform binding functions
 
-
 In a material type, vertex and fragment shaders define the uniforms and property types that you can use in that material. When rendering 3D nodes with a specific material type, uniform bindings allow Kanzi to write values to the render state and use those values for uniforms and property types.
 
 See Shader uniforms and Uniform bindings.
 
 To reduce memory consumption and improve performance, Kanzi provides binding functions for the most common shader uniforms. Kanzi executes every frame all bindings that use these functions.
 #### getAmbient
-
 
 In a uniform binding expression, gets the value of the Ambient Color property.
 
@@ -6785,7 +6497,6 @@ In a uniform binding expression, gets the value of the Ambient Color property.
 Color: the value of the Ambient Color property. |
 #### getCameraPosition
 
-
 In a uniform binding expression, gets the camera location in world space.
 
 `getCameraPosition()` is the default binding of the `kzCameraPosition` shader uniform.
@@ -6800,7 +6511,6 @@ In a uniform binding expression, gets the camera location in world space.
 
 Vector 3D: the camera location in world space. |
 #### getCameraWorldMatrix
-
 
 In a uniform binding expression, gets the matrix to transform a point or matrix from local space to view (camera) space.
 
@@ -6823,7 +6533,6 @@ The `kzCameraWorldMatrix` uniform is the premultiplied matrix `kzCameraMatrix * 
 Matrix 4x4: the matrix that transforms a point or matrix from local space to view (camera) space. |
 #### getNormalMatrix
 
-
 In a uniform binding expression, gets the matrix to transform object normals from local space to world space.
 
 `getNormalMatrix()` is the default binding of the `kzNormalMatrix` shader uniform.
@@ -6838,7 +6547,6 @@ In a uniform binding expression, gets the matrix to transform object normals fro
 
 Matrix 4x4: the matrix that transforms object normals from local space to world space. |
 #### getCameraNormalMatrix
-
 
 In a uniform binding expression, gets the matrix to transform object normals from local space to view (camera) space.
 
@@ -6860,7 +6568,6 @@ The `kzCameraNormalMatrix` uniform is the premultiplied matrix `kzCameraMatrix *
 
 Matrix 4x4: the matrix that transforms object normals from local space to view (camera) space. |
 #### getProjectionCameraWorldMatrix
-
 
 In a uniform binding expression, gets the matrix to transform a point or matrix from local space to screen space.
 
@@ -6884,7 +6591,6 @@ The `kzProjectionCameraWorldMatrix` uniform is the premultiplied matrix `kzProje
 Matrix 4x4: the matrix that transforms a point or matrix from local space to screen space. |
 #### getViewPosition
 
-
 In a uniform binding expression, gets the vector that you can use to calculate the view direction.
 
 `getViewPosition()` is the default binding of the `kzViewPosition` shader uniform.
@@ -6906,7 +6612,6 @@ The `kzViewPosition` uniform is a homogeneous position vector that you can use t
 Vector 4D: the homogeneous position vector that you can use to calculate the view direction. |
 #### getWorldMatrix
 
-
 In a uniform binding expression, gets the matrix to transform a point or matrix from local space to world space.
 
 `getWorldMatrix()` is the default binding of the `kzWorldMatrix` shader uniform.
@@ -6922,7 +6627,6 @@ In a uniform binding expression, gets the matrix to transform a point or matrix 
 Matrix 4x4: the matrix that transforms a point or matrix from local space to world space. |
 ### Render pass properties in material type bindings
 
-
 In a material type binding expression, to refer to a property in a render pass that draws nodes using the material type, enter in curly braces:
 
 1.
@@ -6934,7 +6638,6 @@ A forward slash
 3.
 
 The name of the property in the render pass to which you want to bind
-
 
 See Material type bindings.
 |
@@ -6961,7 +6664,6 @@ name of the property in a render pass to which you want to bind |      |
 
 ```
 
-
 ```
 # This binding to a Matrix 4x4 property returns the inverse matrix of the product
 # of the Calculated Projection Matrix and Calculated Camera Matrix properties in
@@ -6972,7 +6674,6 @@ camera = {##RenderPass/DrawObjectsRenderPass.CameraMatrix}
 inverse(projection * camera)
 
 ```
-
 
 ```
 # This binding to a temporary variable property uses the evaluate binding function
@@ -6985,7 +6686,6 @@ evaluate({##RenderPass/MyColorRange})
 ```
    |
 ### Light uniform bindings
-
 
 In a material type, vertex and fragment shaders define the uniforms and property types that you can use in that material. When rendering 3D nodes with a specific material type, uniform bindings allow Kanzi to write values to the render state and use those values for uniforms and property types.
 
@@ -7030,7 +6730,6 @@ pointLightsView = createView<OutputSize>({##RenderPass/DrawObjectsRenderPass.Poi
 
 ```
 
-
 ```
 # This binding to a light color uniform halves the value of the Directional
 # Light Color property in each Directional Light node.
@@ -7038,7 +6737,6 @@ directionalLightsView = createView<OutputSize>({##RenderPass/DrawObjectsRenderPa
 {directionalLightsView ... DirectionalLightColor} * 0.5
 
 ```
-
 
 ```
 # This binding to a light color uniform multiplies in each Directional Light node
@@ -7049,7 +6747,6 @@ rangeB = {##RenderPass/DrawObjectsRenderPass.DirectionalLights ... Node.Opacity}
 rangeA * rangeB
 
 ```
-
 
 ```
 # Get the range that contains the value of the Point Light Color property in each
@@ -7068,7 +6765,6 @@ rangeA * totalOpacity
    |
 ### Temporary variables in material type bindings
 
-
 In a material type, a temporary variable binding enables you to store the result of a binding into a temporary variable. You can refer to this variable in other bindings in the same material type.
 
 See Temporary variable bindings.
@@ -7084,7 +6780,6 @@ A forward slash
 3.
 
 The name of the target property of the temporary variable binding
-
 
 The `##Self` syntax refers to the render value of the property used by the render passes that draw nodes using the material type.
 |
@@ -7110,7 +6805,6 @@ name of the temporary variable property to which you want to bind |      |
 {##Self/MyProject.MyProperty}
 
 ```
-
 
 ```
 # This binding to a color property returns the color value obtained from the

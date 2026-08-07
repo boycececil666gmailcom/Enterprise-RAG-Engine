@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/styles/using-styles.html
 
 # Using styles
 
-
 Use styles to set the property values of one or more nodes of a certain type.
 
 In a style you set the values of properties the style applies to a node. For example, use a style to define the font type, size, and color of the text for all Text Block 3D nodes in your project.
@@ -18,7 +17,6 @@ Using styles you can:
 - Create a named style that applies to selected instances of a certain node type, or overrides the target styles. See Applying a style to selected instances of a node type.
 
 ## Applying a style that applies to a node type in the selected scope
-
 
 Target styles define the look and feel for a selected node type in a specific part of the node tree in a Kanzi Studio project.
 
@@ -58,7 +56,6 @@ To enable the Snap to Pixel property for the Text Block 2D node you created, add
 
 ## Applying a style to selected instances of a node type
 
-
 Named styles define the look and feel only for the selected instances of a node type, or override the target styles. For example, if you create a target style for the Text Block 3D, you can override that style with a named style.
 
 To apply a style to only selected instances of a node type:
@@ -85,9 +82,7 @@ If the properties you defined in the style exist in the target nodes, remove the
 
 ## Using styles in the API
 
-
 For details, see the `Style` class.
 ## Style property types
-
 
 For a list of the available property types for styles, see Style.

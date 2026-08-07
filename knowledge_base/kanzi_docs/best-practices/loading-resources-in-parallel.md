@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/best-practices/loading-resources-in-para
 
 # Loading resources in parallel
 
-
 When users run your Kanzi application in an environment with a multi-core processor, Kanzi automatically uses multiple CPU cores to load the GPU resources in the kzb files to RAM.
 
 Because the largest amount of data during the loading is processed by the GPU resources, parallel loading of resources significantly improves the loading time of your application.
@@ -18,7 +17,6 @@ See Loading node prefab resources asynchronously.
 
 The optimal number of loading threads differs between platforms. When you use the optimal number of loading threads for your platform you can expect a decrease in both the launch and full loading times of your Kanzi application.
 ## Setting the number of cores used for loading
-
 
 In the application code, either using the application framework configuration or the resource manager API, you can set the number of cores you want your application to use to load the GPU resources.
 
@@ -33,10 +31,8 @@ configuration.loadingThreadCount = 3;
 
 ```
 
-
 You can set the loading preferences for your application in the application code in the `Application::onConfigure` function or in the `application.cfg`. See LoadingThreadCount.
 ## Disabling parallel loading
-
 
 To disable the parallel loading of resources, set `ApplicationProperties::loadingThreadCount` to 0. When you disable the parallel loading, Kanzi uses only the main thread to load the resources. When you disable the parallel loading, Kanzi does not allocate the memory manager.
 
@@ -44,6 +40,5 @@ To disable the parallel loading of resources, set `ApplicationProperties::loadin
 configuration.loadingThreadCount = 0;
 
 ```
-
 
 See LoadingThreadCount.

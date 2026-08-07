@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/best-practices/meshes/reducing-the-numbe
 
 # Reducing the number of rendered vertices
 
-
 Meshes contain vertices inside their vertex buffers and each vertex of a rendered mesh is evaluated by a vertex shader. Polygons are filled between the points marked by vertices. This means that the more meshes, and therefore vertices on the screen, the slower the application is.
 
 To improve the performance of meshes in your application:

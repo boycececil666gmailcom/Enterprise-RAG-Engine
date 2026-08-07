@@ -5,12 +5,10 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/materials/physically-based-
 
 # Physically-based material properties
 
-
 The Kanzi default physically-based material types come with preprocessor definitions that you can use to modify the material types and expose properties to the materials that use those material types. See Modifying the default material types, Physically-based shaders and Using smart materials.
 
 This topic lists the preprocessor definitions that you can set in the Kanzi default physically-based material types.
 ## Lights
-
 
 To set the number of different types of light nodes to use for the material, use these preprocessor definitions:
 
@@ -18,10 +16,8 @@ To set the number of different types of light nodes to use for the material, use
 - KANZI_SHADER_NUM_POINT_LIGHTS sets the number of Point Light nodes to use for the material. The default value is 2.
 - KANZI_SHADER_NUM_SPOT_LIGHTS sets the number of Spot Light nodes to use for the material. The default value is 1.
 
-
 See Setting the number of lights for a material type.
 ## Exposure compensation
-
 
 Exposure compensation emulates camera exposure by controlling the total amount of rendered light.
 
@@ -30,12 +26,10 @@ To enable setting exposure compensation, set the value of KANZI_SHADER_USE_EXPOS
 This way you expose to the material the Exposure property that sets the exposure compensation.
 ## Gamma correction
 
-
 Gamma correction is by default disabled for the physically-based material types.
 
 To enable gamma correction, set the value of KANZI_SHADER_USE_GAMMA_CORRECTION to 1.
 ## Tone mapping
-
 
 Tone mapping maps one set of colors to another set of colors to approximate the appearance of high-dynamic-range (HDR) images.
 
@@ -50,7 +44,6 @@ The Kanzi physically-based material types use this tone-mapping algorithm by def
 - KANZI_SHADER_TONEMAP_UNCHARTED enables Uncharted 2 filmic tone mapping by John Hable.
 
 ## Alpha mode
-
 
 To enable the use of the alpha channel in the base color of the material, set the value of KANZI_SHADER_USE_ALPHA to 1.
 
@@ -87,12 +80,10 @@ Mask |
   |
 ## Vertex color
 
-
 Each vertex in a mesh can optionally store a color value.
 
 To enable the use of vertex color, set the value of KANZI_SHADER_USE_VERTEX_COLOR to 1.
 ## Base color texture
-
 
 These preprocessor definitions control the use of base color textures:
 
@@ -117,7 +108,6 @@ For example, to use the texture coordinate whose semantic index is 1, set the va
 
 ## Normal map
 
-
 These preprocessor definitions control the use of normal maps:
 
 - To enable the use of a texture that contains the normal map for the material, set the value of KANZI_SHADER_USE_NORMALMAP_TEXTURE to 1.
@@ -138,7 +128,6 @@ This way you expose to the material these properties:
 - To enable the use of explicit binormals when normal mapping, set the value of KANZI_SHADER_USE_EXPLICIT_BINORMALS to 1. When you enable the use of explicit binormals, the shader does not reconstruct the vertex binormal from the vertex normal and vertex tangent.
 
 ## Emissive texture
-
 
 These preprocessor definitions control the use of emissive textures:
 
@@ -163,7 +152,6 @@ For example, to use the texture coordinate whose semantic index is 1, set the va
 
 ## Metallic-roughness materials
 
-
 To enable adjusting materials based on their metalness and roughness, set the value of KANZI_SHADER_USE_PBR_METALLIC_ROUGHNESS to 1. This is the default setting for the Kanzi physically-based material types and exposes to the material these properties:
 
 - Roughness Factor sets the roughness of the material on a scale from 0 to 1:
@@ -176,10 +164,8 @@ To enable adjusting materials based on their metalness and roughness, set the va
   - For a dielectric material set the value to 0.
   - For a material whose reflective behavior fully resembles that of a metal, set the value to 1.
 
-
 You can use metallic, roughness, and occlusion maps to adjust the appearance of a metallic-roughness material.
 ### Metallic map
-
 
 These preprocessor definitions control the use of metallic maps:
 
@@ -200,7 +186,6 @@ For example, to use the texture coordinate whose semantic index is 1, set the va
 
 ### Roughness map
 
-
 These preprocessor definitions control the use of roughness maps:
 
 - To enable the use of a texture that contains a roughness map for the material, set the value of KANZI_SHADER_USE_ROUGHNESS_TEXTURE to 1.
@@ -219,7 +204,6 @@ This way you expose to the material the Detail Roughness Texture property that s
 For example, to use the texture coordinate whose semantic index is 1, set the value to 1.
 
 ### Occlusion map
-
 
 These preprocessor definitions control the use of occlusion maps:
 
@@ -244,14 +228,12 @@ For example, to use the texture coordinate whose semantic index is 1, set the va
 
 ## Specular-glossiness materials
 
-
 Kanzi supports the `KHR_materials_pbrSpecularGlossiness` glTF extension which enables adjusting materials based on their specular color and glossiness.
 
 To enable adjusting materials based on their specular color and glossiness, set:
 
 - KANZI_SHADER_USE_PBR_SPECULAR_GLOSSINESS to 1
 - KANZI_SHADER_USE_PBR_METALLIC_ROUGHNESS to 0
-
 
 This way you expose to the material these properties:
 
@@ -263,10 +245,8 @@ This way you expose to the material these properties:
 
 - Specular Color Factor sets the specular color of the material.
 
-
 You can use diffuse color, glossiness, and specular color maps to adjust the appearance of a specular-glossiness material.
 ### Diffuse color
-
 
 These preprocessor definitions control the diffuse color:
 
@@ -289,7 +269,6 @@ For example, to use the texture coordinate whose semantic index is 1, set the va
 
 ### Glossiness map
 
-
 These preprocessor definitions control the glossiness:
 
 - To enable the use of a texture that contains a glossiness map for the material, set the value of KANZI_SHADER_USE_GLOSSINESS_TEXTURE to 1.
@@ -308,7 +287,6 @@ This way you expose to the material the Detail Glossiness Texture property that 
 For example, to use the texture coordinate whose semantic index is 1, set the value to 1.
 
 ### Specular color
-
 
 These preprocessor definitions control the specular color:
 
@@ -335,9 +313,7 @@ This way you expose to the material these properties:
   - Specular Anti-Aliasing Strength sets the strength of the specular anti-aliasing effect to apply to the material, ranging from 0 for no specular anti-aliasing to 1 for full specular anti-aliasing.
   - Specular Anti-Aliasing Threshold sets an upper limit for the amount of specular anti-aliasing effect to apply to the material.
 
-
 ## Clear coat materials
-
 
 Kanzi supports the `KHR_materials_clearcoat` glTF extension which enables simulating a layer of clear coat on top of a physically-based metallic-roughness material. This is commonly used for vehicle paint.
 
@@ -354,10 +330,8 @@ This way you expose to the material these properties:
 
 - Clear Coat Strength Factor sets the strength of the clear coat.
 
-
 You can use normal, roughness, and strength maps to adjust the appearance of a clear coat material.
 ### Clear coat normal map
-
 
 These preprocessor definitions control the use of clear coat normal maps:
 
@@ -384,7 +358,6 @@ For example, to use the texture coordinate whose semantic index is 1, set the va
 
 ### Clear coat roughness map
 
-
 These preprocessor definitions control the use of clear coat roughness maps:
 
 - To enable the use of a texture that contains a clear coat roughness map for the material, set the value of KANZI_SHADER_USE_CLEARCOAT_ROUGHNESS_TEXTURE to 1.
@@ -405,7 +378,6 @@ This way you expose to the material the Detail Clear Coat Roughness Texture prop
 For example, to use the texture coordinate whose semantic index is 1, set the value to 1.
 
 ### Clear coat strength map
-
 
 These preprocessor definitions control the use of clear coat strength maps:
 
@@ -428,7 +400,6 @@ For example, to use the texture coordinate whose semantic index is 1, set the va
 
 ## BRDF lookup table
 
-
 The Bidirectional Reflectance Distribution Function (BRDF) lookup table is a texture that contains precomputed information about how light reflects off a material.
 
 To enable the use of a BRDF lookup table, set the value of KANZI_SHADER_USE_BRDF_LOOKUP_TABLE to 1.
@@ -436,12 +407,10 @@ To enable the use of a BRDF lookup table, set the value of KANZI_SHADER_USE_BRDF
 This way you expose to the material the BRDF Lookup Table property that you can use to set the texture that contains the BRDF lookup table.
 ## Planar reflections
 
-
 To enable the material to receive planar reflections, set the value of KANZI_SHADER_RECEIVE_PLANAR_REFLECTION to 1.
 
 You can enable either planar reflections or Image-based lighting for a material type, not both.
 ## Image-based lighting
-
 
 Image-based lighting uses cubemap textures to simulate lighting coming from the environment. See Using image-based lighting cubemap textures.
 
@@ -454,14 +423,12 @@ This way you expose to the material these properties for controlling the environ
 - Environment Reflection Texture sets the cubemap texture to use for specular or reflective lighting.
 - Environment Reflection Factor sets the strength of the Environment Reflection Texture.
 
-
 To configure which mipmap level of the Environment Reflection Texture maps to full roughness, you can set the value of KANZI_SHADER_ROUGHNESS_ONE_LOD_OFFSET preprocessor define. The value of the preprocessor define is the number of mipmap levels from the last mipmap level. The default value is 3.
 
 Note that the Environment Reflection Texture must be generated with compatible roughness mapping. If you use an external tool to generate the cubemap, ensure that the full roughness is mapped to the correct mipmap level.
 
 You can enable either image-based lighting or Planar reflections for a material type, not both.
 ## Shadows
-
 
 To enable the material to receive shadows from different types of light nodes, set the value of these preprocessor definitions to 1:
 
@@ -471,17 +438,14 @@ To enable the material to receive shadows from different types of light nodes, s
 
 ## Skinning
 
-
 The PhysicallyBasedSkinned material type supports skinning of meshes with up to 64 bones by default.
 
 To set the number of bones in a mesh for skinning, use KANZI_SHADER_SKINNING_BONE_COUNT.
 ## Morphing
 
-
 The PhysicallyBasedMorph material type supports morphing with 3 targets by default.
 
 To set the number of morph targets for morphing, use KANZI_SHADER_MORPH_TARGET_COUNT.
 ## Debug output
-
 
 To enable debug output, set the value of KANZI_SHADER_DEBUG_OUTPUT to 1.

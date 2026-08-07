@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/preview/using-target-previe
 
 # Target Preview
 
-
 The Target Preview enables you to see on a target device the changes that you make in a Kanzi Studio project without exporting and redeploying the application.
 
 These are the impacts of Target Preview on development workflow:
@@ -13,7 +12,6 @@ These are the impacts of Target Preview on development workflow:
 - It shows your application as it is, including the rendering and latency, and any behavior that you define in platform-specific code. The content that the Target Preview shows is not a video stream.
 - The Target Preview enables you to revise your design even in late stages of the development. You can instantly test designs and see how your changes look in a real environment, such as on a display inside a vehicle.
 - When you develop an Android application using the Kanzi Android framework (droidfw), you can see full composited application that consists of both Kanzi and Android UI.
-
 
 The Target Preview plugin creates a TCP/IP communication channel so that Kanzi Studio can make changes to an application on a connected device. It does not replace the deployment process, but it improves the workflow by allowing you to see the changes on a target device without redeploying an application.
 
@@ -23,7 +21,6 @@ Keep in mind that:
 - The changes that you make in the Target Preview are not saved on the target device. To make the changes permanent, follow the regular application deployment process. See Deploying Kanzi applications.
 
 ## Using the Target Preview
-
 
 The Target Preview is a Kanzi Engine plugin that is delivered with the Kanzi platform packages.
 
@@ -54,7 +51,6 @@ void MyApplication::registerMetadataOverride(ObjectFactory& factory) override
 
 ```
 
-
 2.
 
 For statically linked plugin, and dynamically linked plugin on Android or QNX with the LLVM C++ compiler, link the plugin in the application `CMakeLists.txt`:
@@ -63,7 +59,6 @@ For statically linked plugin, and dynamically linked plugin on Android or QNX wi
 target_link_libraries(MyApplication Kanzi::kztargetpreview)
 
 ```
-
 
 See Kanzi Engine plugins.
 3.
@@ -102,7 +97,6 @@ Set up port forwarding to the default port or the port that you defined.
 adb forward tcp:<port> tcp:<port>
 
 ```
-
 
 5.
 

@@ -5,12 +5,10 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/themes/using-themes.html
 
 # Using Themes
 
-
 Kanzi uses a Theme as an ID to select the resources associated with that Theme. If you do not define a resource for a Theme, Kanzi uses the default value for that resource ID in that Theme Group.
 
 Learn how to theme your Kanzi applications by completing a tutorial. See Tutorial: Theme your application.
 ## Creating a Theme
-
 
 To create a Theme:
 
@@ -24,7 +22,6 @@ Kanzi Studio opens the Theme Group in the Theme Editor.
 In the Theme Editor click Create Theme, enter the name for the Theme, and click OK.
 
 ## Renaming a Theme
-
 
 To change the name of an existing Theme:
 
@@ -40,7 +37,6 @@ Enter the new name for the Theme and click OK.
 
 ## Setting the application Theme
 
-
 You can set the application Theme in these ways:
 
 - To set the Theme that your application uses when a user launches the application or that you want to see in the Kanzi Studio Preview:
@@ -51,7 +47,6 @@ You can set the application Theme in these ways:
 - To set a Theme using a trigger, in a trigger that you want to use to set the application theme, create a Theme: Activate Theme action and set the Theme that you want to use.
 
 ## Adding a resource to a Theme Group manually
-
 
 The fastest way to add a resource to a Theme Group is to use in the Node Tree the Add Resources to a Theme Group command. See Adding resources used in a project to a Theme Group.
 
@@ -81,7 +76,6 @@ In the Node Tree select the node where you want to use the resource ID you creat
 
 ## Deleting resource IDs from a Theme Group
 
-
 To delete resource IDs from a Theme Group:
 
 - To delete resource IDs that are not used in the project, click Clean, select the resource IDs you want to delete, and click OK.
@@ -89,7 +83,6 @@ To delete resource IDs from a Theme Group:
 - To delete multiple resource IDs press the Ctrl or Shift key and select resource IDs you want to delete, and press the Delete key.
 
 ## Localizing a Theme
-
 
 Kanzi enables you to localize themed applications.
 
@@ -134,7 +127,6 @@ In the Add Resources to a Theme Group window:
 A theme group contains the information about which theme uses which resources.
     - Rename the Resource ID to something that is meaningful in the context of your project.
 
-
 Click Add.
 
 Kanzi Studio adds to the theme group the resource ID which points to the prefab shown in the Value column. In the Prefab View node from which you add the resources to a Theme Group, Kanzi Studio sets the value of the Prefab Template property to the resource ID.
@@ -150,7 +142,6 @@ In the Library > Themes double-click the theme group to which you added the reso
 In the Dictionaries window to view the resource dictionaries of localization tables and theme groups in the project, click Locales and Themes, and select different locales and themes to see the localized themes in the Preview.
 
 ## Using themes in multiple Kanzi Studio projects combined into a Kanzi application
-
 
 To use themes when you combine multiple Kanzi Studio projects into a Kanzi application, you must make the theme groups accessible to the Screen node of the main project of your application in one of these ways:
 

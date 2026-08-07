@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/reflections/step-2.html
 
 # Step 2 - Render the reflection
 
-
 In the previous step you tagged the nodes in your project. In this step you first create two tag filters: one to pick the nodes for which you are creating the reflection, the other to pick the Instantiator node that you use for the reflections. You then use render passes to render the nodes and to set culling in the reflections.
 
 To render the reflection:
@@ -96,17 +95,14 @@ You set the Cull Reflection render pass to render only the polygons whose normal
 
 By default Kanzi renders only the polygons whose normal points towards a Camera node.
 
-
 3.
 
 (Optional) In the Node Tree select the Reflection Plane node, and in the Properties adjust the Ambient Color and Blend Intensity properties until you get the reflection plane you want.
 
 For example, to make the reflection plane blend with the background, adjust the Ambient Color property.
 
-
 Previous step
 ## Whatâs next?
-
 
 In this tutorial you learned how to create reflections in Kanzi Studio. Now you can:
 

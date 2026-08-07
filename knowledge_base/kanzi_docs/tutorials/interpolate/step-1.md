@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/interpolate/step-1.html
 
 # Step 1 - Interpolate the rotation of the compass dial
 
-
 In this step of the tutorial you use a Property Target Interpolator to interpolate the rotation of the compass dial from the current direction to a target direction over time.
 ## Get the tutorial
-
 
 To get the tutorial, in the Kanzi Studio Quick Start window, click Projects and select the Tutorials tab. Next to the Interpolate tutorial, click .
 
@@ -17,14 +15,12 @@ Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` director
 - The tutorial starting point project in the `<KanziWorkspace>/Tutorials/Interpolate/Start/Tool_project` directory.
 - The completed tutorial in the `<KanziWorkspace>/Tutorials/Interpolate/Completed` directory.
 
-
 This tutorial depends on a plugin from the Data source tutorial.
 
 To get the Data sources tutorial, in the Kanzi Studio Quick Start window, click Projects and select the Tutorials tab. Next to the Data sources tutorial, click .
 
 Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` directory.
 ## Content of the starting point project
-
 
 The starting point project contains the content that you need to complete this tutorial:
 
@@ -49,7 +45,6 @@ To view the Data Sources window, in the Kanzi Studio main menu select Window > D
     - The OffCourse state sets the background of the RootNode node to black when the value of the Interpolate.OnCourse property is set to false.
     - The OnCourse state sets the background of the RootNode node to green when the value of the Interpolate.OnCourse property is set to true.
 
-
 You use the state manager in step 2 of this tutorial to set the compass background color.
 
 - The Dial node groups the elements that make the compass dial.
@@ -57,7 +52,6 @@ You use the state manager in step 2 of this tutorial to set the compass backgrou
   - The Degrees node contains the nodes that show the degrees in 30 degree intervals.
   - The Cardinal Points node contains the nodes that show the cardinal points.
   - The Ticks node shows the tick marks.
-
 
 The Dial node has a binding to the Interpolate.Direction property in the RootNode node that rotates the node based on the value of the direction XML element in the `Compass.xml` file.
 - The Direction node contains the current direction of travel in degrees shown in the center of the compass.
@@ -72,9 +66,7 @@ The Text property of the Value node is bound to the value of the Interpolate.Dir
 
 The bindings in the Destination and Destination Offset nodes together make the Destination Arrow node rotate around the compass dial based on the values in the destination and direction XML elements in the `Compass.xml` file.
 
-
 ## Interpolate the rotation of the compass dial
-
 
 In this section you animate the rotation of the compass dial so that when the direction of travel changes, the Property Target Interpolator interpolates the current value to the target value over time.
 
@@ -92,7 +84,6 @@ In the Library press Alt and right-click Property Types, select Property Type, a
   - Name to Interpolate.Interpolator
   - Data Type to Float
 
-
 You create the Interpolate.Interpolator property type because you want to interpolate the Interpolate.Direction property whose data type is integer. To interpolate a property whose data type is not a float, you need to create a float property type and bind the property you want to interpolate to the float property you created.
 3.
 
@@ -106,7 +97,6 @@ In the Node Tree select the Dial node, in the Properties in the Bindings click t
 createRotationZ({@./Interpolate.Interpolator})
 
 ```
-
 
 Click Save.
 
@@ -122,7 +112,6 @@ In the Properties click + Add Binding and in the Binding Editor set:
 {#RootPage/Interpolate.Direction}
 
 ```
-
 
 Click Save.
 
@@ -147,12 +136,8 @@ To set the interpolation behavior, in the Property Target Interpolator that you 
     - Acceleration to 5
     - Drag to 2
 
-
 The Property Target Interpolator emulates the behavior of a spring-damper system which never overshoots. You use the Acceleration property to set the force with which the spring moves the object, and the Drag property to set the damping coefficient. The larger the value of the Acceleration property is, the faster the property reaches its new value. The larger the value of the Drag property is, the lower is the maximum interpolation speed.
 
-
 Now when you change the value of the direction XML element in the `<ProjectName>/Application/bin/Compass.xml` and save the file, the Property Target Interpolator interpolates the rotation of the compass dial to the target value over time.
-
-> **Tip:** By default the Preview updates content only when the Kanzi Studio window is focused. To see the changes in your Kanzi Studio project when the Kanzi Studio window is not focused, in Kanzi Studio select Edit > User Preferences and in the Advanced tab enable the Update Preview when Kanzi Studio is not focused setting.
->
-> Introduction Next step
+**Tip:** By default the Preview updates content only when the Kanzi Studio window is focused. To see the changes in your Kanzi Studio project when the Kanzi Studio window is not focused, in Kanzi Studio select Edit > User Preferences and in the Advanced tab enable the Update Preview when Kanzi Studio is not focused setting.
+Introduction Next step

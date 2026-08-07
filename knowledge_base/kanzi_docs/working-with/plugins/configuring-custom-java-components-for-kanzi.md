@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/plugins/configuring-custom-
 
 # Extending the functionality of Kanzi Engine with Java
 
-
 With a Kanzi Engine plugin you can extend the functionality of Kanzi Engine and set how Kanzi Studio shows the custom content you create:
 
 - Create your own nodes and property types. See Creating custom nodes and property types.
@@ -15,7 +14,6 @@ With a Kanzi Engine plugin you can extend the functionality of Kanzi Engine and 
 - Create your own Actions. See Creating custom actions.
 
 ## Creating custom nodes and property types
-
 
 In a Java Kanzi Engine plugin you can create custom nodes with custom property types. You can set how Kanzi Studio shows and lets users interact with these nodes.
 

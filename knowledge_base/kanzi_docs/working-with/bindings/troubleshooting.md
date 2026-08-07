@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/bindings/troubleshooting.ht
 
 # Troubleshooting bindings
 
-
 Here you can find the error messages that the Binding Editor displays when there is an error in a binding. See Bindings expressions reference.
 |
 
@@ -72,7 +71,6 @@ In the Binding Editor set:
 - Property to a target property with a property field that supports the data type which the function in the binding expression returns.
 - Property Field to a property field of the target property that supports the data type which the function in the binding expression returns.
 
-
 For example, set it to ROTATION to use the quaternion data type.  |
 |
 
@@ -101,12 +99,9 @@ The binding tries to refer to a node or property type in the project but cannot 
 For example, in the above binding expression, the relative path to the Slider 3D node is not correct.  |
 
 Make sure that the relative path to the node or property type points to the correct place.
-
-> **Tip:** When you use the @ sign in a binding expression before the path to a node, Kanzi Studio:
->
-> - Checks whether the path is valid and shows an error message in the Binding Editor if the path is not valid.
-> - Updates the path in the binding expression whenever the location between the source and the target nodes in the node tree changes.
-
+**Tip:** When you use the @ sign in a binding expression before the path to a node, Kanzi Studio:
+- Checks whether the path is valid and shows an error message in the Binding Editor if the path is not valid.
+- Updates the path in the binding expression whenever the location between the source and the target nodes in the node tree changes.
 
 With the @ sign you can create bindings only within the same prefab, not between prefabs.   |
 |

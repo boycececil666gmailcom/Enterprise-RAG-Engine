@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/3d-assets/3d-assets.html
 
 # 3D assets
 
-
 Kanzi Studio is a tool for composing 3D content and 3D user interfaces to be presented with Kanzi. While you can create in Kanzi Studio placeholder 3D meshes such as spheres, cubes, and planes, you have to import 3D assets for your Kanzi applications from third-party tools.
 
 Kanzi Studio is tested, but not limited to use imported data from:
@@ -16,14 +15,12 @@ Kanzi Studio is tested, but not limited to use imported data from:
 - Blender
 - Modo
 
-
 When you want to bring the 3D assets created with a third-party tool to Kanzi Studio you have to import or merge the assets. You can import or merge 3D assets in these formats:
 
 - glTF 2.0 (gltf, glb) for meshes, animations, skins, and morphs
 - COLLADA (dae) for meshes, animations, skins, and morphs
 - Filmbox (fbx) for meshes, animations, skins, morphs, and splines
 - Geometry definitions (obj) for meshes
-
 
 Different exporters in third-party tools handle content differently. For example, if you cannot get the expected result using the fbx format, try using the dae format.
 
@@ -41,7 +38,6 @@ Kanzi Studio names each Scene prefab after the imported file. When you import a 
 
 In each Scene prefab, Kanzi Studio creates the scene hierarchy from the imported file and places the assets from the imported file into that prefab.
   - In the Library, Kanzi Studio places all resources from the imported file, such as Meshes, Splines, Animations, and Materials.
-
 
 See Importing 3D assets.
 - Merge 3D Asset File.

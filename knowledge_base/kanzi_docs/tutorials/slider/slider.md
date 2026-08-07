@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/slider/slider.html
 
 # Tutorial: Creating a slider
 
-
 In this tutorial you learn how to create a slider in Kanzi Studio.
 
 Complete this tutorial if you want to understand the structure of Kanzi sliders and create your own slider. If you want to use and modify a ready-made slider, use the slider in the Kanzi Studio factory content. See Slider.
@@ -19,12 +18,10 @@ This tutorial assumes that you understand the basics of working with Kanzi Studi
 
 ## Get the tutorial
 
-
 To get the tutorial, in the Kanzi Studio Quick Start window, click Projects and select the Tutorials tab. Next to the Slider tutorial, click .
 
 Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` directory. You can find the completed tutorial in the `<KanziWorkspace>/Tutorials/Slider/Completed` directory.
 ## Create a slider
-
 
 In this section you learn how to create a slider.
 
@@ -61,7 +58,6 @@ In the Preview click  to enter the Analyze mode, right-click , and select:
   - Debug objects shows visualization nodes, such as light, camera, and layout nodes.
   - Borders of 2D nodes outlines the borders of 2D nodes with striped lines.
 
-
 This way you can see in the Preview how the properties and their values affect the nodes as you create the slider.
 6.
 
@@ -71,7 +67,6 @@ In the Prefabs select the Slider 2D node, and in the Properties add and set:
   - Layout Height to 60
   - Horizontal Alignment to Center
   - Vertical Alignment to Center
-
 
 This way you set the size and alignment of the slider, including the rail, the knob, and the position of the knob on both extremes of the slider.
 7.
@@ -91,7 +86,6 @@ In the Prefabs select the Rail node, and in the Properties add and set:
     - Layout Height to 25
     - Horizontal Alignment to Center
     - Vertical Alignment to Center
-
 
 This way you set the size and alignment of the slider rail. It is narrower and shorter than its parent Slider 2D node so that the center of the slider knob can move to the edge of the rail on both sides.
   3.
@@ -113,7 +107,6 @@ In the Prefabs in the Slider 2D prefab, create a Trajectory Layout 2D node, and 
     - Layout Height to 25
     - Horizontal Alignment to Center
     - Vertical Alignment to Center
-
 
 The values of these properties must match those of the visual representation of the slider rail.
   2.
@@ -143,7 +136,6 @@ Name the alias $layout and set it to point to the Trajectory Layout 2D node in t
 
 Kanzi uses this alias to tell the slider along which trajectory to move the slider knob.
 
-
 9.
 
 Create the slider knob:
@@ -154,7 +146,6 @@ In the Prefabs in the Trajectory Layout 2D create a Content Layout 2D node, name
 
     - Layout Width to 40
     - Layout Height to 60
-
 
 You use this node as the visual representation of the slider knob.
   2.
@@ -195,7 +186,6 @@ In the Prefabs select the Knob node, in the Properties click + Add Binding, and 
 
 ```
 
-
 Click Save.
 
 This binding makes the slider knob move on the trajectory that defines the slider rail.
@@ -207,10 +197,8 @@ In the Preview click:
   - to exit the Analyze mode
   - to enter the Interact mode
 
-
 In the Preview you can now drag the slider knob along the rail.
 ## Display the slider value
-
 
 In this section you learn how to set the minimum, maximum, step, and starting values for a slider, and display the value of a slider.
 
@@ -248,21 +236,15 @@ INT({@../RangeConcept.Value})
 
 ```
 
-
 Click Save.
 
 This way you set the Slider Value node to display the current value of a slider.
-
-> **Tip:** You can start creating a binding for a property by right-clicking a property and selecting Create Binding.
->
-> This way you automatically add the property to the Binding Editor.
-
+**Tip:** You can start creating a binding for a property by right-clicking a property and selecting Create Binding.
+This way you automatically add the property to the Binding Editor.
 
 In the Preview when you drag the slider knob, the Slider Value node shows the current value of the slider.
-
-> **Tip:** You can control the Value property of a slider with another property and a to-source or two-way binding. See Updating the slider value with a property.
+**Tip:** You can control the Value property of a slider with another property and a to-source or two-way binding. See Updating the slider value with a property.
 ## Whatâs next?
-
 
 In this tutorial you learned how to create a slider. Now you can:
 

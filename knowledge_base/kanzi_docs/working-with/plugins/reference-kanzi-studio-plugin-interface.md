@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/plugins/reference-kanzi-stu
 
 # Overview of Kanzi Studio plugin API
 
-
 Here you can find an overview of the Kanzi Studio plugin API.
 
 Kanzi Studio plugins extend the functionality of Kanzi Studio and run in Kanzi Studio.
@@ -16,7 +15,6 @@ See Kanzi Studio plugins and Creating Kanzi Studio command plugins.
 
 After you create the base for a plugin, use this overview and Kanzi Studio plugin API reference to add functionality to your plugin so that it does something useful. See Creating the base for a Kanzi Studio command plugin and Kanzi Studio plugin API reference.
 ## Kanzi Studio data model
-
 
 Kanzi Studio project is a hierarchical structure of project nodes. Each node has a set of properties and can have a set of child nodes or items. Different types of project items, such as nodes, models, textures, and animations have their own characteristics. For example, textures specify the image used in the texture and filtering. To change the data in the project Kanzi Studio uses commands. For example, set values to properties, or create new items.
 
@@ -31,14 +29,11 @@ throw new NotImplementedException();
 
 ```
 
-
 Make sure that your plugin handles all its internal exceptions and does not let them reach the Kanzi Studio interface.
 ## Kanzi Studio
 
-
 Use the `studio` object to access the Kanzi Studio interface. For example, use it when you want to write a message to the Log window, get input from the user, to undo and redo changes in a project, and so on.
 ### Getting user input
-
 
 Use `KanziStudio.GetUserInput` to display a dialog box which prompts the user to provide input. For example, you can use `KanziStudio.GetUserInput` to get the path of a node where you want your plugin to start executing its commands.
 
@@ -62,7 +57,6 @@ When you run the plugin, it prompts the user to provide input.
 
 ### Writing a message to the Kanzi Studio Log window
 
-
 To write a message to the Kanzi Studio Log window:
 
 1.
@@ -82,7 +76,6 @@ public void Execute(PluginCommandParameter parameter)
 When you run the plugin, it prints Success! to the Kanzi Studio Log window.
 
 ### Showing a dialog box with a message
-
 
 Use `KanziStudio.ShowMessageBox` when you want to display a dialog box with a message.
 
@@ -105,7 +98,6 @@ public void Execute(PluginCommandParameter parameter)
 When you run the plugin, it displays the dialog box in Kanzi Studio.
 
 ## Creating nodes
-
 
 For example, to create an Empty Node 2D node with a Kanzi Studio plugin:
 
@@ -160,7 +152,6 @@ Build and run the plugin. See Building and running a Kanzi Studio plugin.
 When you run the plugin, it creates in the Screen > RootNode node an Empty Node 2D node which is 300 pixels high and 400 pixels wide. The plugin names the Empty Node 2D node Empty Node 2D. You can extend this example by creating a Color Brush and use it to set the background color of the Empty Node 2D node by setting its Background Brush property to that Color Brush. See Creating resources.
 
 ## Creating resources
-
 
 For example, to create a Color Brush resource with a Kanzi Studio plugin:
 
@@ -244,7 +235,6 @@ When you run the plugin, it creates in the Library > Materials and Textures > Br
 
 ## Creating node components
 
-
 For example, to use the Click trigger and Click Manipulator input manipulator component to create a clickable node:
 
 1.
@@ -325,11 +315,9 @@ When you run the plugin, it creates and configures in the Screen > RootNode node
   - Click Manipulator input manipulator component
   - Click trigger with a Write Log action
 
-
 When you click the Image node in the Preview you set off the trigger, and the action that you created with the plugin writes the message to the Log window.
 
 ## Opening a file
-
 
 To open a file with a Kanzi Studio plugin:
 

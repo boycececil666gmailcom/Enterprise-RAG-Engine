@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/best-practices/animations/removing-redun
 
 # Removing redundant keyframes
 
-
 Sometimes animations contain more keyframes than necessary. Kanzi provides an easy way to optimize animation data, which results in a significantly smaller number of keyframes, often without losing the animation precision at all. For example, in the animation shown here there are too many keyframes than is needed for most purposes.
 
 To remove the redundant keyframes:

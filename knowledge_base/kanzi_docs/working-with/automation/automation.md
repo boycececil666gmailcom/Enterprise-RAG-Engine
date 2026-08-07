@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/automation/automation.html
 
 # Automating Kanzi Studio tasks
 
-
 You can execute Kanzi Studio commands by running a script from the command line interface. This enables you to automate repetitive tasks in Kanzi Studio or Kanzi Studio tasks that you must execute on a large number of Kanzi Studio projects. For example, consider making a script to update a Kanzi Engine plugin that you use in many Kanzi Studio projects, or to export kzb files from many Kanzi Studio projects.
 
 For the list of available commands, see Kanzi Studio command reference.
@@ -42,7 +41,6 @@ For example, you can automate:
     - Adding and removing of properties, and setting of property values. See Editing properties using a script.
     - Logging of invalid project items. See Logging invalid project items using a script.
 
-
 For the list of available commands, see Kanzi Studio command reference.
   3.
 
@@ -63,7 +61,6 @@ ExitApplication
 
 ```
 
-
 2.
 
 Open the command line interface, go to the `<KanziInstallation>/Studio/Bin` directory, and run the `KanziStudio.exe` file with the `/Script` flag pointing to the script that you created in the previous step.
@@ -75,9 +72,7 @@ KanziStudio.exe /Script="C:\Users\username\Documents\MyScript.txt"
 
 ```
 
-
 ## Exporting kzb files using a script
-
 
 A kzb file contains contents of a Kanzi Studio project. To run your Kanzi application, you must export the contents of the Kanzi Studio project of that application to a kzb file.
 
@@ -94,12 +89,10 @@ ExportBinary
 
 ```
 
-
 The `ExportBinary` command takes these optional parameters:
 
 - The first parameter sets whether Kanzi Studio exports the theme and locale resources to separate kzb files. The default is true.
 - The second parameter sets whether Kanzi Studio exports kza file, which is the XML version of the kzb file. The default is false.
-
 
 For example, to export both the theme and locale resources to separate kzb files, and the kza file:
 
@@ -110,7 +103,6 @@ ExportBinary true true
 ```
 
 ## Building Kanzi applications for Android using a script
-
 
 To build Kanzi applications for Android using a script, use the ExportApk command:
 
@@ -132,7 +124,6 @@ ExportApk "/Resource Files/Build Configurations/My Android Configuration" true
 
 ## Importing and updating Kanzi Engine plugins using a script
 
-
 Kanzi Engine plugins extend the functionality of Kanzi Engine. Kanzi Engine executes these plugins on target platforms.
 
 See Kanzi Engine plugins.
@@ -144,7 +135,6 @@ You can import and update Kanzi Engine plugins using a script:
 - Updating all Kanzi Engine plugins in a project or solution using a script
 
 ### Importing a Kanzi Engine plugin using a script
-
 
 When you want to use a Kanzi Engine plugin in a Kanzi Studio project, you must import that Kanzi Engine plugin to your Kanzi Studio project.
 
@@ -159,7 +149,6 @@ ImportEnginePlugin "C:\KanziWorkspace\Projects\MyPluginProject\Application\lib\W
 
 ### Updating a Kanzi Engine plugin using a script
 
-
 When you want to use in a Kanzi Studio project a different version of a Kanzi Engine plugin, you must update that Kanzi Engine plugin in your Kanzi Studio project.
 
 To update a Kanzi Engine plugin using a script, use the ImportEnginePlugin command:
@@ -172,7 +161,6 @@ ImportEnginePlugin "" "/Kanzi Engine Plugins/XML_data_source"
 ```
 
 ### Updating all Kanzi Engine plugins in a project or solution using a script
-
 
 When you want to use in a Kanzi Studio project a different version of a Kanzi Engine plugin, you must update that Kanzi Engine plugin in your Kanzi Studio project.
 
@@ -190,7 +178,6 @@ UpdateProjectEnginePlugins
 
 ## Creating and updating data sources using a script
 
-
 Use data sources to separate the user interface from the application data and to remove the dependencies between a Kanzi Studio project and the application code which define the Kanzi application.
 
 See Data sources.
@@ -202,7 +189,6 @@ You can create and update data sources using a script:
 - Updating all data sources in a project or solution using a script
 
 ### Creating a data source using a script
-
 
 When you want to use a Kanzi Engine data source plugin in a Kanzi Studio project, you must create a data source in your Kanzi Studio project.
 
@@ -223,7 +209,6 @@ UpdateDataSourceContents "/Data Sources/Cluster/"
 
 ### Updating a data source using a script
 
-
 If the Kanzi Engine plugin that defines your data source does not update your data source, you can update the data source using a script.
 
 To update a data source using a script, use the UpdateDataSourceContents command:
@@ -235,7 +220,6 @@ UpdateDataSourceContents "/Data Sources/Cluster/"
 ```
 
 ### Updating all data sources in a project or solution using a script
-
 
 If the Kanzi Engine plugin that defines your data source does not update your data sources, you can update the data source using a script. If your Kanzi Studio project contains project references, you can update all data sources in the solution which includes that project and all referenced projects. See Combining Kanzi Studio projects into a Kanzi application.
 
@@ -250,7 +234,6 @@ UpdateProjectDataSources
 ```
 
 ## Creating nodes using a script
-
 
 You can create nodes using a script. For example:
 
@@ -271,9 +254,7 @@ CreateComponentNode "/Screens/Screen/RootNode/Viewport 2D/Scene" "My Grid List B
 
 ```
 
-
 ## Editing properties using a script
-
 
 Properties provide the means to specify and examine the state, appearance, and behavior of nodes. For example, a property can define a color, indicate whether a button is pressed, or specify the alignment of an item.
 
@@ -287,7 +268,6 @@ You can edit properties using a script:
 
 ### Adding properties using a script
 
-
 To add properties using a script, use the AddProperty command.
 
 For example, to add the Description property to the RootNode node:
@@ -299,7 +279,6 @@ AddProperty "MyProject/Screens/Screen/RootNode" Description
 ```
 
 ### Removing properties using a script
-
 
 To remove properties using a script, use the RemovePropertyFromItem command.
 
@@ -314,7 +293,6 @@ RemovePropertyFromItem "MyProject/Screens/Screen/RootNode" Node2D.BackgroundBrus
 ```
 
 ### Setting property values using a script
-
 
 To set property values using a script, use the SetProperty command.
 
@@ -354,9 +332,7 @@ SOON```
 
 ```
 
-
 ## Logging invalid project items using a script
-
 
 Kanzi Studio marks invalid items in the Node Tree and Library with red type.
 
@@ -366,7 +342,6 @@ For example:
 - A resource uses a resource that does not exist or is missing a required property.
 - A material type has precision mismatches in its shaders.
 - A shader source file contains errors.
-
 
 See Finding invalid project items.
 

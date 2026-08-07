@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/reference/all-node-and-resource-properti
 
 # All node and resource properties and messages
 
-
 Here you can find all properties and messages for nodes and resources. See individual node an resource reference to find out whether a property or message is available for a specific node or resource type.
 ## Properties
 

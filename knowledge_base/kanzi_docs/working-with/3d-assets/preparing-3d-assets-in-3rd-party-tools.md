@@ -7,7 +7,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/3d-assets/preparing-3d-asse
 
 ## Supported formats
 
-
 When you want to bring the 3D assets created with a third-party tool to Kanzi Studio you have to import or merge the assets. You can import or merge 3D assets in these formats:
 
 - glTF 2.0 (gltf, glb) for meshes, animations, skins, and morphs
@@ -15,10 +14,8 @@ When you want to bring the 3D assets created with a third-party tool to Kanzi St
 - Filmbox (fbx) for meshes, animations, skins, morphs, and splines
 - Geometry definitions (obj) for meshes
 
-
 Different exporters in third-party tools handle content differently. For example, if you cannot get the expected result using the fbx format, try using the dae format.
 ## Preparing 3D assets
-
 
 As you prepare 3D assets for your Kanzi Studio project, keep in mind:
 
@@ -71,9 +68,7 @@ You can adjust the scale of 3D assets after importing it to Kanzi Studio. See Ad
 
 If the assets look incorrect in the third-party tool, change the exporter settings. For example, export as binary or ASCII fbx. However, if changing exporter settings does not fix the issue and the assets look correct in the third-party tool, contact Rightware support. See Technical support.
 
-
 ## Preparing 3D assets in 3ds Max
-
 
 As you prepare 3D assets for your Kanzi Studio project in 3ds Max, keep in mind:
 
@@ -90,7 +85,6 @@ As you prepare 3D assets for your Kanzi Studio project in 3ds Max, keep in mind:
   - To maximize the UV layout space, scale the polygons to fill the UV layout.
 
 Note that if you do not need the whole space for the object in the UV layout, you can use the free space for something else. This way you can use the same texture for multiple objects.
-
 
 See Using 3D models with UVs.
 - Topology and edge orientation. If default orientation used in 3ds Max is not correct, to achieve better shading for low polygon models, use Edit polygons > Turn.
@@ -112,9 +106,7 @@ Add the object back to the hierarchy.
   - Axis Conversion Up Axis to Y-up
   - Collada Single Matrix to enabled
 
-
 ## Preparing 3D assets in Maya
-
 
 As you prepare 3D assets for your Kanzi Studio project in Maya, keep in mind:
 

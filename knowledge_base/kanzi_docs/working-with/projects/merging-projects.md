@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/projects/merging-projects.h
 
 # Merging projects
 
-
 When merging projects you can reuse resources and nodes you created in another project. Merging projects allows you to import a complete project or only selected resources and nodes. During merging Kanzi provides conflict resolution.
 
 Kanzi provides these options for bringing content from other projects:
@@ -20,7 +19,6 @@ See Asset packages.
 - If you want to import the assets that you created with third-party tools, use Kanzi Studio importing tools. See Importing.
 
 ## Merging Kanzi Studio projects
-
 
 To merge projects:
 
@@ -45,7 +43,6 @@ For example, when you check the Select referenced items checkbox and select a me
 
     - Target Project: <ProjectName> to keep the materials you use for the objects in the target. Kanzi Studio remembers all material changes you made to the objects in Kanzi Studio.
     - Source Project: <ProjectName> to import the materials you use for the objects in the source.
-
 
 3.
 
@@ -82,14 +79,12 @@ When using three-way merge, this is how conflict resolution works in Kanzi Studi
     - You can select several properties and click Resolve to Target to keep the values used in the target or Resolve to Source to keep the values used in the source.
     - You can select a single value you want to keep from the Target or Source column.
 
-
 Once you have resolved all the conflicts, the font color of the item name in the source tree changes to green.
 7.
 
 Click Merge. Kanzi Studio merges the source with the target by placing the content of source into the corresponding places of the target.
 
 ## Merging projects with Kanzi Engine plugins
-
 
 When you merge projects with Kanzi Engine plugins that have the same name, but different component types, data sources, messages, or property types, you cannot resolve the conflict in the Project Merge tool.
 
@@ -107,10 +102,8 @@ Merge the Kanzi Studio projects. See Merging Kanzi Studio projects.
 
 ## Merging projects with data sources that use locally stored data
 
-
 Typically the data in a data source you merge to a Kanzi Studio project is provided by a server to which your application connects. If, however, the source files of the data source you want to merge are stored locally in the source project, you must manually copy them from `<SourceProjectName>/Application/bin` to `<TargetProjectName>/Application/bin`. If you do not copy the data files to the target project, the Preview fails to start.
 ## Responding to kzm file changes
-
 
 When Kanzi Studio detects that kzm files in the project directory changed outside of Kanzi Studio, for example, after a `git pull` or a file copy from another project, it shows a **Project modified** notification dialogue with these options:
 
@@ -118,10 +111,8 @@ When Kanzi Studio detects that kzm files in the project directory changed outsid
 - Merge â opens the Project Merge dialog so you can selectively merge the on-disk changes into your local version. This option is only available when you have unsaved local changes.
 - Ignore â keeps your current project state and discards the on-disk changes.
 
-
 Kanzi Studio monitors all files with `.kzm` extensions in the project directory and its subdirectories.
 ## Merging projects using version control tools
-
 
 After configuring your version control tool you can use the Kanzi merge tool for Kanzi project updating and merging. For the integration Kanzi requires a version control tool that provides the necessary parameters to the Kanzi merge tool.
 |
@@ -151,7 +142,6 @@ MERGED |
 The parameter for the merged project. |
 ## Integrating the Kanzi merge tool with a version control tool
 
-
 To integrate the Kanzi merge tool with a version control tool:
 
 1.
@@ -166,7 +156,6 @@ Set the version control tool parameters for the Kanzi merge tool. For example, t
 
 ## Integrating the Kanzi merge tool with SVN version control software
 
-
 To integrate the Kanzi merge tool with SVN version control software, add Kanzi merge tool as an external program for merging files with the .kzproj extension.
 
 For example, if you are using Tortoise SVN, in TortoiseSVN select SVN > Settings > External Programs > Merge Tool > Advanced and set:
@@ -178,7 +167,6 @@ For example, if you are using Tortoise SVN, in TortoiseSVN select SVN > Settings
 <KanziInstallation>/Studio/Bin/KanziMergeTool.bat "<KanziInstallation>/Studio/Bin/KanziStudio.exe"  %mine %theirs %base %merged
 
 ```
-
 
 For example, if your installation of Kanzi is in `C:\Program Files\Rightware\Kanzi`, use
 

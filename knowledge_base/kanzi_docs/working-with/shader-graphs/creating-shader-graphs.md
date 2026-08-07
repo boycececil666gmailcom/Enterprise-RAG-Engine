@@ -5,16 +5,13 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/shader-graphs/creating-shad
 
 # Creating shader graphs
 
-
 This tutorial walks you through creating a shader graph that produces a color gradient from UV coordinates. You learn how to create a shader graph, add and connect nodes, edit node properties, and generate a shader.
 ## Creating a shader graph
-
 
 In the Library, press Alt and right-click Materials and Textures > Shader Graphs, and select Shader Graph. Kanzi Studio creates the shader graph and opens the Shader Graph Editor.
 
 A new shader graph opens with the Material dropdown (top-left) set to Fullscreen and three nodes already on the canvas: UV, Time, and Material Output. This tutorial keeps the Fullscreen material type so that the gradient renders as a flat fullscreen color.
 ## Building a shader graph
-
 
 In this section you build a graph that maps UV coordinates to colors, producing a smooth gradient across the screen.
 
@@ -41,10 +38,8 @@ The completed graph maps the U coordinate to red, the V coordinate to green, and
 
 ## Editing node properties
 
-
 Constant nodes (Scalar, Int, Vec2, Vec3, Vec4) display editable value fields directly on the node. Click a value field and type a new value.
 ## Generating a shader
-
 
 To generate a shader:
 
@@ -59,6 +54,5 @@ If the shader compiles successfully, a green Shader compiled successfully notifi
 If there are errors, the Problems panel shows what went wrong.
 
 ## Whatâs next?
-
 
 To turn the constant values in this graph into properties that you can tune from Kanzi Studio without reopening the Shader Graph Editor, see Parameters.

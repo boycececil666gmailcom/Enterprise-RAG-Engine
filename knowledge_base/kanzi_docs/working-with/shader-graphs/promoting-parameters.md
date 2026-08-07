@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/shader-graphs/promoting-par
 
 # Promoting parameters
 
-
 This tutorial walks you through promoting a constant node in a shader graph to a parameter. A promoted constant becomes a uniform on the generated shader, exposed as a property on the Material Type that you can edit from the Kanzi Studio Properties panel and see take effect at runtime.
 ## Creating the base graph
-
 
 In this section you build the minimal Fullscreen graph that drives the Material Output Color input from a single Color4 constant.
 
@@ -26,7 +24,6 @@ Drag from the result output port of the Color4 node to the Color input port of t
 Click Generate Shader. When the shader compiles successfully, Kanzi Studio creates a Material Type in the Library.
 
 ## Promoting a constant to a parameter
-
 
 Any constant node (Scalar, Int, Vec2, Vec3, Vec4, Color3, Color4) can be promoted to a parameter.
 
@@ -46,7 +43,6 @@ If the Auto switch next to Generate Shader is enabled, the editor regenerates th
 
 ## Editing the parameter from the Properties panel
 
-
 To change the value of the promoted parameter and see the effect at runtime:
 
 1.
@@ -60,6 +56,5 @@ In the Properties panel, locate the property that corresponds to the promoted pa
 Observe the change wherever the Material is in use. Because the parameter is now a uniform, Kanzi Studio applies the new value without regenerating the shader.
 
 ## Unpromoting a parameter
-
 
 To revert a parameter back to a constant, right-click the promoted node and select Unpromote from Parameter. The value the node held while promoted becomes the new constant value, and the corresponding property disappears from the Material Type after you regenerate the shader.

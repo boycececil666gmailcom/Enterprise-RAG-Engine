@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/first/step-2.html
 
 # Step 2 - Create the application structure
 
-
 In this step, you create the application structure in the Activity Browser window using Activity nodes. You also learn how to use the Activity Browser to transition between Activities.
 ## Create Activity nodes
-
 
 In this section, you use the Activity Browser window to create Activity nodes, each representing a different screen of your application user interface.
 
@@ -48,7 +46,6 @@ This way you set an Activity to be active when its Activity Host is active. To i
 
 ## Add content Activities
 
-
 In this section, you add content to the Navigation and Car Settings Activities.
 
 To add content to Activities:
@@ -58,31 +55,20 @@ To add content to Activities:
 From the Assets window drag the NavigationMockup.png image to the Prefabs window, and drop it on the Navigation Activity node.
 
 Kanzi Studio automatically creates an Image node that uses the image you dragged from the Assets and adds the Image node to the Activity node where you dropped the image.
+**Tip:** In the Assets window you can search and browse the content in your project:
+- In the search box enter the word contained in the name of the item you are looking for.
+- Click the buttons to show only the content of a certain type.
+2.
+In the Prefabs window, press Alt and right-click the Car Settings node and select Viewport 2D.
+Viewport 2D node can render both a Scene, which is a 3D node, and 2D nodes, such as Image or Button 2D.
+When you create a Kanzi Studio project, that project contains a Viewport 2D node with a Scene that contains a Camera and a Directional Light. For Kanzi Engine, the Scene node is always the first child of a Viewport 2D node.
+Tip
+When you press Alt and right-click a node in the Node Tree window or a resource in the Library window, you get a direct access to the node and resource creation menu. If you only right-click a node or a resource, in the context menu select Create to access the creation menu.
+3.
+In the Prefabs window, drag the Car prefab and drop it on the Viewport 2D node that you created in the Activity node Car Settings.
+When you drag a prefab from the Prefabs window, Kanzi Studio creates an instance of that prefab in the node tree in the node where you drop the prefab.
 
-> **Tip:** In the Assets window you can search and browse the content in your project:
->
-> - In the search box enter the word contained in the name of the item you are looking for.
-> - Click the buttons to show only the content of a certain type.
->
-> 2.
->
-> In the Prefabs window, press Alt and right-click the Car Settings node and select Viewport 2D.
->
-> Viewport 2D node can render both a Scene, which is a 3D node, and 2D nodes, such as Image or Button 2D.
->
-> When you create a Kanzi Studio project, that project contains a Viewport 2D node with a Scene that contains a Camera and a Directional Light. For Kanzi Engine, the Scene node is always the first child of a Viewport 2D node.
->
-> Tip
->
-> When you press Alt and right-click a node in the Node Tree window or a resource in the Library window, you get a direct access to the node and resource creation menu. If you only right-click a node or a resource, in the context menu select Create to access the creation menu.
-> 3.
->
-> In the Prefabs window, drag the Car prefab and drop it on the Viewport 2D node that you created in the Activity node Car Settings.
->
-> When you drag a prefab from the Prefabs window, Kanzi Studio creates an instance of that prefab in the node tree in the node where you drop the prefab.
->
 ## Transitioning between Activities
-
 
 The Activity Browser simulates the activation of Activities in your application. To see the content of an Activity in the Preview, you can activate an Activity in the Activity Browser. In the Activity that you want to activate, click .
 

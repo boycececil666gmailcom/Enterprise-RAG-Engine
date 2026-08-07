@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/filters/using-sorting-filte
 
 # Using the Sorting Filter
 
-
 Sorting Filter either orders 3D nodes by their position on the z axis or groups them by their material type.
 
 For example, use sorting filters to optimize the performance of your Kanzi application:
@@ -19,7 +18,6 @@ Because visualization of transparent nodes relies on having proper data behind t
 - **Reducing shader switches.**
 
 If nodes are presented in an order that requires excessive switching between shader programs, the rendering can slow down. See Reducing shader switches.
-
 
 To use the Sorting Filter:
 
@@ -47,7 +45,6 @@ By grouping nodes by their material type you can optimize your Kanzi application
     - When enabled it reverses the current order of nodes.
     - When disabled it keeps the current order of nodes.
 
-
 3.
 
 To take the Sorting Filter into use, either:
@@ -56,7 +53,6 @@ To take the Sorting Filter into use, either:
   - In the Node List render pass that you use to hold the nodes that you want to render using other render passes, set the Filter property to the filter or to an object source that collects the filter.
 
 Use a Node List render pass when you want to filter anything but the 3D nodes that you want to render, such as Light nodes. Draw Objects render pass, Draw Objects With Material render pass, and Gather Lights render passes can use the result node list of the same Node List render pass.
-
 
 For example:
 
@@ -78,8 +74,6 @@ In the Node Tree select the Viewport 2D node to which you want to apply the filt
 
 Kanzi Studio renders the nodes collected by the filter.
 
-
 ## Using Sorting Filter filters in the API
-
 
 For details, see the `SortObjectSource` class.

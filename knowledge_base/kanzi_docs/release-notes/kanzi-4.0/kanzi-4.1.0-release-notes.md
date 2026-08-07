@@ -7,7 +7,6 @@ source: https://docs.kanzi.com/4.1.0/en/release-notes/kanzi-4.0/kanzi-4.1.0-rele
 
 ## Changes
 
-
 - Raised minimum CMake version requirement to 3.25.
 
 In Android projects, Gradle is set to use CMake version 3.30.5, as this is the lowest compatible version provided by the Android SDK.
@@ -35,7 +34,6 @@ See Setting the shader families to export.
   - `FrontToBack` - Clusters nearer to the camera are drawn first. Use for opaque content.
   - `Material` - Clusters are grouped by material. Use to reduce shader switches.
 
-
 The term âClusterâ is used because when using `SortingOrder`, Kanzi sorts render entries, not complete objects. This means that a `Model3D` with a mesh that contains multiple clusters with different materials can still be sorted reliably by shader used. The sorting is unstable, meaning the exact rendering order of two clusters with identical sort values is not guaranteed to be consistent across frames.
 
 These changes also reduce the cost of adding and removing nodes from the `DrawObjectsRenderPass` render entry list.
@@ -51,12 +49,9 @@ These changes also reduce the cost of adding and removing nodes from the `DrawOb
 
   - `FlatBuffers` 25.12.19-2026-02-06-03fffb2. This is an enabler for defining Kanzi resources using a public schema anyone can write.
 
-
   - `yaml-cpp` 0.9.0. Kanzi YAML parser and writer that is used in file format transformations. It shall replace `Tiny-XML`.
 
-
   - `Protobuf` 3.8.0. Used for proof of concept work in Emscripten platform package for a more flexible KZA representation.
-
 
   - `Qualcomm Shadow Denoiser` 1.0. Used for reducing noise in ray-traced shadows.
 
@@ -64,7 +59,6 @@ These changes also reduce the cost of adding and removing nodes from the `DrawOb
 - Added the `KANZI_LINK_KZMONITOR` CMake option to Android Kanzi templates. Enable it in `build.gradle` to link the Monitor plugin. For step-by-step integration instructions, see [Integrating to Android projects with Gradle, CMake, and Android Studio](https://docs.kanzi.com/monitor/latest-4-0-monitor/integration-source-code.html#integrating-to-android-projects-with-gradle-cmake-and-android-studio) in the Kanzi Monitor documentation.
 
 ## Kanzi Engine Lua API
-
 
 - You can now use an optional argument of `DataObject::create` to define a child tree of data objects.
 - Iterating over node children can now be done with iterators `Node2D:iterateChildren` and `Node3D:iterateChildren`.
@@ -76,7 +70,6 @@ These changes also reduce the cost of adding and removing nodes from the `DrawOb
 - Lua runtime is now creating objects by directly dispatching to C++ function counterparts instead of going though `Metaclass::createInstance` method.
 
 ## Rendering
-
 
 - Removed `MappedBuffer` class. Mapping a buffer can now be done through `kzgfx::mapBuffer` and `kzgfx::unmapBuffer` directly. Updating a buffer without mapping can be done with either `CommandRecorder` or `kzgfx` commands directly.
 - Added the `AlphaToCoverageEnabled` property to `PipelineStateRenderPass`, which enables **Alpha to Coverage** GPU support. Consider enabling this when rendering objects or particles with semi-transparent textures like foliage, grass or smoke to get sharp, anti-aliased edges with less processing overhead. This property is also available in the Draw and MultiDraw prism nodes.
@@ -112,7 +105,6 @@ This feature introduces: - New preprocessor defines `KANZI_SHADER_OUTPUT_VELOCIT
   - `adjustForDeviceCapabilities` now returns `vector<Mesh::CreateInfo::Adjustment>` describing what was adjusted (was `void`).
   - Pipeline validation now treats `UNorm`/`SNorm`/`UFloat` channel types as compatible with shader `float` inputs, `ColorRGBA` clear values, and `ColorRGBA` sampler border colors. Previously these combinations were rejected.
 
-
 See Changes to Mesh::CreateInfo and the vertex helper API.
 - `gfx::DepthAttachmentDescription` gained `isDepthReadOnly` and `isStencilReadOnly` fields. Set either to `true` to declare that a render pass does not modify the corresponding aspect of its depth/stencil attachment, which allows the same depth (or stencil) texture to be sampled as input while still bound as the framebufferâs depth/stencil attachment. Asymmetric combinations on packed depth/stencil formats require the new `gfx::FeatureId::SeparateDepthStencilLayouts` (Vulkan 1.2 / `VK_KHR_separate_depth_stencil_layouts`; always available on OpenGL). Render pass validation reports `create-renderpass-separate-depth-stencil-layouts` if the feature is unavailable. At command-stream time, `BeginRenderPipelineCommand` inside a read-only pass reports `commands-begin-render-pipeline-depth-write-in-read-only-pass` or `commands-begin-render-pipeline-stencil-write-in-read-only-pass` when the bound depth/stencil state would modify a read-only aspect. Both fields default to `false`; existing pipelines are unaffected. `CompositionTargetRenderPass` also no longer invalidates the framebuffer when it reuses an externally-supplied depth target.
 - Refactored Mesh vertex buffers to be de-interleaved, so that each attribute can be accessed individually in a single buffer. As a consequence, the following Mesh class methods now require a parameter for accessing a specific attribute: `Mesh::getVertexBufferHandle`, `Mesh::getVertexBuffer`, `Mesh::setVertexData`, `Mesh::setVertexSubData`.
@@ -141,26 +133,18 @@ Kanzi 4.1.0 includes graphics information logging as a one-time startup report o
 
 See Bindless Raytracing Advanced example.
 - Added experimental ray tracing support. Requires Vulkan 1.2 or later as the target graphics API.
-
-> **Note:** Ray tracing is **experimental**. The API may change in future releases.
->
-> The following render passes are available:
->
-> - `BuildAccelerationStructureRenderPass` â builds a top-level acceleration structure from scene geometry each frame.
-> - `RaytracedShadowRenderPass` â traces rays to produce a screen-space shadow mask for a selected light.
-> - `RaytracedReflectionRenderPass` â traces rays to compute per-pixel reflections for surfaces with roughness below a configurable threshold.
-> - `DenoiserRenderPass` â applies temporal denoising to the shadow mask before compositing.
-
+**Note:** Ray tracing is **experimental**. The API may change in future releases.
+The following render passes are available:
+- `BuildAccelerationStructureRenderPass` â builds a top-level acceleration structure from scene geometry each frame.
+- `RaytracedShadowRenderPass` â traces rays to produce a screen-space shadow mask for a selected light.
+- `RaytracedReflectionRenderPass` â traces rays to compute per-pixel reflections for surfaces with roughness below a configurable threshold.
+- `DenoiserRenderPass` â applies temporal denoising to the shadow mask before compositing.
 
 For a complete working example, see the Bindless Raytracing Advanced example example project.
 - Added experimental bindless support. Requires Vulkan 1.2 or later as the target graphics API.
-
-> **Note:** Bindless texture support is **experimental**. The API may change in future releases.
->
-> The following class was introduced:
->
-> - `BindlessTextureRegistry` manages the bindless descriptor arrays of 2D textures. Textures are reference-counted â multiple registrations of the same texture are safe. Shaders access textures by integer index instead of individual descriptor bindings.
-
+**Note:** Bindless texture support is **experimental**. The API may change in future releases.
+The following class was introduced:
+- `BindlessTextureRegistry` manages the bindless descriptor arrays of 2D textures. Textures are reference-counted â multiple registrations of the same texture are safe. Shaders access textures by integer index instead of individual descriptor bindings.
 
 Shaders that opt into bindless also gain access to the following GPU-resident scene data, exposed through the `kzGPUScene` uniform block:
 
@@ -169,13 +153,11 @@ Shaders that opt into bindless also gain access to the following GPU-resident sc
   - `kzGPUSceneMaterialInfo` â per-material property values. This struct is **user-defined**: you declare it in a shared GLSL header and include it in every shader that participates in the bindless scene. The engine discovers the layout using reflection and packs the material data accordingly. All shaders in the scene must declare the same `kzGPUSceneMaterialInfo` struct.
   - `kzGPUSceneMaterialIndex` â per-draw uniform set by the engine, used to index into the material buffer and retrieve the `kzGPUSceneMaterialInfo` for the currently rendered cluster.
 
-
 Together these structures make full scene geometry and material data available in any shader stage, enabling effects such as GBuffer rendering with alpha-tested materials and ray-traced reflections where hit-surface properties must be resolved for an arbitrary mesh and material at ray hit.
 
 For a complete working example, see the Bindless Raytracing Advanced example example project.
 
 ## Application framework
-
 
 - Added the `setTracingOutputDirectory` function to the Kanzi application framework (appfw) for setting the output directory for tracing files on Android.
 - Added the `DomainController` base class and the `Domain::getController` accessor. `Application` derives from `DomainController`, so plugins holding a `Domain` pointer can reach genuinely host-specific state â customer-defined methods and fields on a host subclass â with `domain->getController<MyApplication>()`, without `Domain` depending on `Application`. Use this for state that lives on the host; plugin access to scene-graph and other Domain-owned capabilities goes through the corresponding Domain accessors. Hosts that do not derive from `Application` can derive from `DomainController` directly to expose their host instance to plugins through the same mechanism.
@@ -191,11 +173,9 @@ Adding `DomainController` as a base of `Application` shifts the latterâs vt
   - `Domain::getStartupProfilerRegistry` â the startup profiler registry.
   - `Domain::getState` and `Domain::getFramesPerSecond` â the main-loop state and frame rate.
 
-
 Each accessor returns an empty value or a default value when the host does not provide the capability. Check the result before use.
 
 ## Templates
-
 
 - Application templates that use C++ code now include iOS platform configuration. When you create a project using the Application, Application with data source plugin, or Application with Kanzi Engine plugin template, Kanzi Studio generates a ready-made iOS CMake configuration and a helper script for generating the Xcode project.
 
@@ -203,7 +183,6 @@ See Developing Kanzi applications for iOS.
 - Removed the Conan-flavored Studio application templates.
 
 ## Platforms
-
 
 - Kanzi now calls `setAppId()` when creating Wayland graphics output.
 - `KZ_LOG_CATEGORY_EGL` now includes diagnostic warnings about platform-level feature support and is enabled by default.
@@ -228,7 +207,6 @@ See Changes to Platforms
 
 ## iOS
 
-
 - Kanzi for iOS now integrates at the view level, so you can embed Kanzi content alongside native views in any iOS application. Use `KanziView` in UIKit applications or `KanziViewRepresentable` in SwiftUI applications.
 
 See Developing Kanzi applications for iOS.
@@ -238,7 +216,6 @@ See Developing Kanzi applications for iOS.
 
 ## Android
 
-
 - Updated the Android NDK version to 28.2.13676358. Kanzi now supports 16 KB page sizes by default, as required for [Google Play compatibility](https://developer.android.com/guide/practices/page-sizes) on Android 15+ devices. See Changes to Android NDK version
 - Updated Android examples and tutorials to match latest templates, thereby enabling JDK 21.
 - The Kanzi installer now warns when the selected workspace path contains spaces. Android Gradle Plugin cannot package native shared libraries from a workspace path with spaces.
@@ -246,18 +223,15 @@ See Developing Kanzi applications for iOS.
 
 ## Package Manager
 
-
 - Introduced the Kanzi Package Manager for sharing and managing reusable software components and assets, and for supporting cross-platform application and plugin development. It allows you to install, update, and remove project dependencies.
 
 See Package Manager.
 
 ## Kanzi installer
 
-
 - The Kanzi installer now installs Package Manager as an optional post-install step. See Installing Kanzi Package Manager.
 
 ## Kanzi Android Service
-
 
 - Introduced the Kanzi Android Service framework, enabling you to use the same Kanzi instance and resources across multiple Android applications. Additionally, this enables seamless transitions between applications that have shared Kanzi content.
 
@@ -265,21 +239,17 @@ See Developing with the Kanzi Android Service.
 
 ## Kanzi Studio plugins
 
-
 - Kanzi Studio now supports manifest-based plugin discovery for plugins that have dependency DLLs. Place all plugin files in a subdirectory under the `plugins` directory and add a `<PluginName>.manifest.json` file that declares the entry point DLL. Kanzi Studio loads only the declared entry point DLL and resolves other dependencies from the same directory.
 - Kanzi Studio now supports hot reloading of plugins. When you add, update, or remove plugin files in the `plugins` directory while Kanzi Studio is running, Kanzi Studio automatically detects the changes and reloads plugins without requiring a restart. When you remove a plugin, Kanzi Studio closes any open plugin windows and cleans up the associated menu items.
 
-
 See Installing Kanzi Studio plugins.
 ## Kanzi Studio plugin API
-
 
 - The Kanzi Studio Plugin API now exposes `KanziStudio.GetPreviewScreenshot`, which captures the current Preview frame and returns it as a PNG-encoded byte array.
 - Added `Project.CreateLightNode`, which creates a Light node of a specified type (Directional Light, Point Light, or Spot Light).
 - Added a non-interactive overload of `Commands.ImportImages` that accepts explicit HDR import settings (2D texture, environment cubemap, IBL cubemaps, resolutions, and sample count).
 
 ## Kanzi Studio usability
-
 
 - Kanzi Studio now only writes the kzm format version to the root kzm file. Only copy kzm files between projects that are from the same Kanzi Studio version. See Copying kzm files
 - Kanzi Studio can now export project items as a shareable archive, and import it into a project. See Exporting and importing project items
@@ -296,7 +266,6 @@ Profiling is off by default. To enable it, go to Edit > User Preferences > Advan
 - Kanzi Studio Preview framerate is no longer degraded when thumbnail rendering is enabled.
 
 ## Prism graph editor
-
 
 - The Prism graph editor now validates connections as you edit. The editor highlights invalid connections and shows the issue in a tooltip.
 - In the Prism Editor, changing the selected Blit Material property on a Blit node will now remove all properties associated with the previously selected Material.
@@ -355,20 +324,17 @@ See Binding Render Pass node properties for a worked example.
 
 ## Shader Graph Editor (Experimental)
 
-
 - Introduced the Shader Graph Editor, an experimental visual node-based editor for building GLSL fragment shaders. You can create shader graphs, connect nodes, and generate shader code without writing GLSL by hand. To enable the editor, go to Edit > User Preferences > Experimental tab > Web-based editors and enable Shader Graph Editor.
 
 See Shader graphs (Experimental).
 
 ## Flags Property
 
-
 - Introduced a new Flags property type for defining bitmask properties with named bit fields. In the New Property Type window, select Flags as the data type. The property stores an integer bitmask whose bits are individually named.
 
 See valueProvider.
 
 ## Kanzi Engine C++ API
-
 
 - Added a const version of `Node::lookupNodeRaw`.
 - Changed the Task Dispatcher API. `TaskDispatcherBase` is now merged into `TaskDispatcher`, and the header location has changed.
@@ -384,11 +350,9 @@ See Changes to the Runtime API
   - `LoadedPlugin` â a move-only RAII handle that owns both the `Module` produced by a pluginâs `createModule` entry point and the shared-library handle that produced it. The destructor destroys the module before closing the library, so the moduleâs vtable, which lives in the library, remains valid for the entire module lifetime.
   - `loadPluginForMetadata` â opens a plugin shared library, invokes its `createModule` entry point, and returns a populated `LoadedPlugin`. The function does not register the module into the `Domain` and does not invoke `Module::registerMetadataOverride`, so plugins that perform setup in that hook do not pay its cost during metadata extraction.
 
-
 Use this helper when extracting plugin metadata from tooling, instead of registering the plugin into the `Domain` and diffing the `ObjectFactory`. The companion `plugin_metadata_reader` consumer uses it for the native-plugin (`.dll` / `.so`) path.
 
 ## Animations
-
 
 - The Animation Player now crossfades smoothly when the State Manager switches between states that each configure an Animation Player with the same name. The outgoing and incoming animations blend over the configured transition duration instead of switching abruptly.
 
@@ -396,13 +360,11 @@ See Crossfading animations between states.
 
 ## Shaders
 
-
 - Added the shader include library, a set of reusable `.glsl` files that Kanzi Studio installs alongside itself. You can include system shader files in any project shader using the `#include` directive without copying them into your project directory. To customize a system shader for your project, clone it from Library > Resource Files > System Shaders.
 
 See Using the shader include library.
 
 ## Documentation
-
 
 - Added the Migrating projects from Kanzi 3.9 to Kanzi 4 page that explains how to move a Kanzi 3.9 project onto the Kanzi 4 template structure, covering CMake changes, the Kanzi resolver, project file conversion, shader migration, and Android Gradle changes.
 - Added the Using Kanzi AI tools section with documentation for the Kanzi API MCP server and the Kanzi Documentation MCP server. Use these servers to connect your AI assistant to Kanzi API references and user documentation.
@@ -414,7 +376,6 @@ See Using the shader include library.
 
 ### Kanzi Engine
 
-
 - Fixed an issue that caused Lua message handlers added in scripts to remain persistent in Kanzi Preview until it is restarted, even after updating or removing the handler. (ANDROID-1469)
 - Fixed the issue where asynchronous load tasks in the Resource Manager could fail to complete, causing Kanzi to hang indefinitely during shutdown, if an exception was thrown during resource loading. (FMW-890)
 - Fixed the issue where text nodes with fixed-width rendering incorrectly applied the fixed character width to diacritics and other combining marks, causing misaligned text rendering. (FMW-239)
@@ -423,9 +384,7 @@ See Using the shader include library.
 
 ### Kanzi Studio
 
-
 - Fixed the issue that made it difficult to rotate the selected 3D node in the preview using the outer side node handles . (EDITORS-355)
-
 
 - Fixed the incorrect behavior of the context menu in Kanzi Studio Library panel. (EDITORS-552)
 - Fixed the issue that prevented duplication of property values when duplicating a Blit node in the Prism graph editor. (EDITORS-551)
@@ -450,13 +409,11 @@ Because regeneration relies on the source image, you must keep in your project t
 
 ### Kanzi Java API
 
-
 - Fixed the issue that caused Kanzi Java API memory footprint to grow indefinitely when dynamically creating Kanzi objects in code. (ANDROID-1674)
 - Fixed a memory leak caused by registration of message handlers through `Node::addTunnelingMessageHandler` method.
 - Fixed a memory leak that occurred when objects of Kanzi native classes were created.
 
 ### Rendering
-
 
 - Fixed the issue that caused incorrect debug visualization rendering, when using a Composition Target render pass for viewport rendering. The current implementation still has limitations related to missing depth texture, when rendering a scene using a Blit render pass. (RENDERING-2368)
 - Fixed the issue where using advanced blend modes without the required extension in the fragment shader caused rendering problems and crashes on some GPUs. (RENDERING-2271)

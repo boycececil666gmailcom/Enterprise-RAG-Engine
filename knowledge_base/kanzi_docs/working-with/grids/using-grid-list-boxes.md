@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/grids/using-grid-list-boxes
 
 # Using the Grid List Box nodes
 
-
 Use the Grid List Box nodes to create scrollable lists of items arranged in a grid.
 
 Learn how to use the Grid List Box nodes by completing a tutorial. See Tutorial: Create a contacts list with a Grid List Box.
@@ -14,7 +13,6 @@ As you add items to a Grid List Box node, the Grid List Box node places them eit
 
 - When the items in the Grid List Box node reach the set width or height of the Grid List Box node, the Grid List Box node places the items in the next row or column.
 - When there are more items than fit in the width and height you set for a grid list box, the items become visible as you scroll the Grid List Box node.
-
 
 To select an item in a Grid List Box node click that item.
 
@@ -31,14 +29,11 @@ When adding items, the Grid List Box node places each new item below the item pr
 
 Users can scroll the Grid List Box node on the x axis.
 
-
 You can use the Grid List Box > Reversed Scrolling property to reverse the direction of scrolling.
 
 The Grid List Box nodes that you create in Kanzi Studio are focus scopes and handle the key focus and key input by default. See Handling the key focus in a List Box node.
-
-> **Note:** Items in all list box nodes (Grid List Box nodes and Trajectory List Box 3D node) are not its child nodes, even though in Kanzi Studio it seems so when you add items to a list box. Because list box items are not child nodes of a list box, you cannot refer to these items from outside of a list box using paths or aliases. If you need to refer from a list box item to an object outside of a list box, use bindings and aliases. See Binding to properties outside of a Grid List Box node and Navigating to Page nodes from a Trajectory List Box 3D node.
+**Note:** Items in all list box nodes (Grid List Box nodes and Trajectory List Box 3D node) are not its child nodes, even though in Kanzi Studio it seems so when you add items to a list box. Because list box items are not child nodes of a list box, you cannot refer to these items from outside of a list box using paths or aliases. If you need to refer from a list box item to an object outside of a list box, use bindings and aliases. See Binding to properties outside of a Grid List Box node and Navigating to Page nodes from a Trajectory List Box 3D node.
 ## Creating a Grid List Box node
-
 
 To create a Grid List Box node:
 
@@ -76,7 +71,6 @@ This way you visualize the borders of the Grid List Box node and the items in th
 
 ## Setting how a Grid List Box node arranges its items
 
-
 You can set the Grid List Box node so that it arranges its items either along the x or y axis.
 
 To set how a Grid List Box arranges its items:
@@ -101,9 +95,7 @@ When adding items, the Grid List Box node places each new item below the item pr
 
 Users can scroll the Grid List Box node on the x axis.
 
-
 ## Bringing the selected item to the center of a Grid List Box
-
 
 You can set a Grid List Box node to bring the item to the center of the list box area when a user clicks that item.
 
@@ -128,27 +120,22 @@ For example, set it to 0.4.
 
 For example, set it to 0.6.
 
-
 Use the Item Area Begin and Item Area End properties to:
 
   - Grid List Box 2D. Set the items at the beginning and end of the list to also align to the center of the list when the user selects one of those items. For example, if the Grid List Box node has five items visible at a time, each of those items takes up 0.2 of the total area of the Grid List Box node. The centermost item takes up 0.1 of the space above it and 0.1 of the space below it.
   - Grid List Box 3D. Set the value of the Visible Amount In Parent property. Use the Visible Amount In Parent property to set shaders to change the appearance of an item based on the location of that object in the list box. For example, if you use the Visible Amount In Parent property to gradually change the visibility of an item, set the Item Area Begin property to a larger value and the Item Area End property to a smaller value. This way you limit the area where that item is visible.
 
-
 ## Nesting Grid List Box nodes
-
 
 You can nest Grid List Box nodes to create a Grid List Box node within a Grid List Box node, each of which you can scroll independently. For example, you can create:
 
 - A list of albums with a vertically scrollable Grid List Box node of album categories which contains a nested Grid List Box node which you can scroll horizontally to browse each category.
 - A list of contacts with a vertically scrollable Grid List Box node of contacts which contains a nested Grid List Box node which you can scroll horizontally to edit or delete a contact.
 
-
 In a Grid List Box node use the Layout Direction property to set how Grid List Box node arranges its items and to set the axis on which users can scroll. Set the Layout Direction to:
 
 - Right to scroll the list items on the y axis.
 - Down to scroll the list items on the x axis.
-
 
 To nest Grid List Box nodes:
 
@@ -178,7 +165,6 @@ For example, to create a vertically scrollable Grid List Box which contains hori
 You can add items to a Grid List Box using a data source. See Using a data source.
 
 ## Binding to properties outside of a Grid List Box node
-
 
 Use an alias when you want to bind a property of a list box item to a property of a node outside of the list box.
 
@@ -214,50 +200,32 @@ For example, use this binding expression:
 
 ```
 
-
 The Text property in the Text Block 3D node gets the value of the Text property from the Empty Node 3D node.
   3.
 
 Click Save.
 
-
 ## Navigating to Page nodes from a Grid List Box node
-
-
-> **Note:** The Page and Page Host nodes are deprecated. Use the Activity and Activity Host nodes to build navigable UIs for your application. See Activities.
->
-> Use an alias when you want to navigate to a Page node from a node that is inside a list box node. For example, if you use a Grid List Box or a Trajectory List Box 3D node to create an address book and want to show the content of an address book entry in a Page node.
->
-> To navigate to Page nodes from a list box node:
->
-> 1.
->
-> In the Node Tree press Alt and right-click each Page node to which you want to navigate to and select Alias. Kanzi Studio creates an alias that points to the node from which you created it, and places the alias to the nearest resource dictionary.
-> 2.
->
-> In the Dictionaries make sure that the aliases you created are in the resource dictionary that the list box node can access.
->
-> For example, place all aliases to the resource dictionary of the Screen node, or create a resource dictionary in the list box node and place the aliases to that resource dictionary. See Using resource dictionaries.
-> 3.
->
-> Add and set the Navigate to Page action:
->
-> 1.
->
-> In the Node Tree in the list box node select the node that contains the trigger that you want to use to navigate to one of the Page nodes for which you created the alias in the first step.
-> 2.
->
-> In the Node Components > Triggers press Alt and right-click the trigger that you want to use to navigate to the Page node, and create a Navigate to Page action.
-> 3.
->
-> In the Navigate to Page action set the Target Item property to the alias of the Page node to which you want to navigate.
->
-> All aliases start with a # sign.
-
+**Note:** The Page and Page Host nodes are deprecated. Use the Activity and Activity Host nodes to build navigable UIs for your application. See Activities.
+Use an alias when you want to navigate to a Page node from a node that is inside a list box node. For example, if you use a Grid List Box or a Trajectory List Box 3D node to create an address book and want to show the content of an address book entry in a Page node.
+To navigate to Page nodes from a list box node:
+1.
+In the Node Tree press Alt and right-click each Page node to which you want to navigate to and select Alias. Kanzi Studio creates an alias that points to the node from which you created it, and places the alias to the nearest resource dictionary.
+2.
+In the Dictionaries make sure that the aliases you created are in the resource dictionary that the list box node can access.
+For example, place all aliases to the resource dictionary of the Screen node, or create a resource dictionary in the list box node and place the aliases to that resource dictionary. See Using resource dictionaries.
+3.
+Add and set the Navigate to Page action:
+1.
+In the Node Tree in the list box node select the node that contains the trigger that you want to use to navigate to one of the Page nodes for which you created the alias in the first step.
+2.
+In the Node Components > Triggers press Alt and right-click the trigger that you want to use to navigate to the Page node, and create a Navigate to Page action.
+3.
+In the Navigate to Page action set the Target Item property to the alias of the Page node to which you want to navigate.
+All aliases start with a # sign.
 
 In the Preview when you click the node that contains the Navigate to Page action, you activate the Page node selected in the action.
 ## Reacting when the user interacts with a Grid List Box node
-
 
 Use the List Box triggers to react when the user interacts with a Grid List Box node. For example, you can set the appearance of a Grid List Box node when the user scrolls that node.
 
@@ -352,10 +320,8 @@ Repeat the previous step to add and configure more List Box triggers.
 
 For example, add the List Box: Scroll Finished trigger. In the State Manager: Go to State action of the trigger set State to the state which sets the appearance of the node when that trigger is set off.
 
-
 In the Preview when you scroll the Grid List Box node you created, the triggers you added are set off.
 ## Enabling the double-click gesture for Grid List Box items
-
 
 When you add to a List Box node items that support the double-click gesture, you must enable the double-click gesture for those items in the List Box Item Container prefab.
 
@@ -373,7 +339,6 @@ In the Prefabs, select the List Box Item Container prefab. In the Properties, ad
 When you enable the Double-Click Enabled property, Kanzi installs in the List Box Item Container prefab a multi-click manipulator that generates double-click messages.
 
 ## Scrolling a Grid List Box node with a slider
-
 
 You can use a Slider node to scroll a Grid List Box node. In this example you use a slider to scroll a vertical contacts list.
 
@@ -413,25 +378,17 @@ In the Node Tree select the Slider node, in the Properties click + Add Binding, 
 
 ```
 
-
 This way you make the length of the slider rail match the height of the Contact List node.
-
-> **Tip:** You can start creating a binding for a property by right-clicking a property and selecting Create Binding.
->
-> This way you automatically add the property to the Binding Editor.
-> 3.
->
-> In the Properties add the Transform 2D > Layout Transformation property and set the Rotation property field to 90.
->
-> This way you make the slider vertical.
-> 4.
->
-> In the Properties click + Add Binding and in the Binding Editor set:
->
-> - Property to Maximum Value
-> - Expression to
->
-> ```
+**Tip:** You can start creating a binding for a property by right-clicking a property and selecting Create Binding.
+This way you automatically add the property to the Binding Editor.
+3.
+In the Properties add the Transform 2D > Layout Transformation property and set the Rotation property field to 90.
+This way you make the slider vertical.
+4.
+In the Properties click + Add Binding and in the Binding Editor set:
+- Property to Maximum Value
+- Expression to
+```
 # Get the number of items in the Contact List node.
 itemCount = {@../Contact List/ListBoxConcept.ItemCount}
 
@@ -445,7 +402,6 @@ listBoxHeight = {@../Contact List/Node.Height}
 itemCount * itemHeight - listBoxHeight
 
 ```
-
 
 You bind the highest value of the Slider node to the height of the invisible area of the Contact List node. The lowest value of the Slider node is by default 0. This way you set the range of values in the slider to match the length of the contacts list.
 
@@ -464,13 +420,10 @@ For example, set it to:
 
 ```
 
-
 You bind the Value property of the Slider node to the Scroll Position property Y property field of the Contact List node. This way you create a two-way connection between the position of the slider knob and the vertical scroll position of the list box.
-
 
 In the Preview when you move the slider knob, the contacts list scrolls, and when you scroll the contacts list, the slider knob moves.
 ## Controlling whether a Grid List Box node is in use
-
 
 To control whether a Grid List Box node is in use, use the Input > Enabled property. A disabled Grid List Box node does not react to user input. When you disable a Grid List Box node, Kanzi stops ongoing gestures and preserves the selected item and scroll position of that Grid List Box node.
 
@@ -480,7 +433,6 @@ To observe whether a node is effectively enabled, use the Input > Effectively En
 
 See Controlling how a node reacts to input.
 ## Setting the appearance of a Grid List Box 2D node
-
 
 To set the appearance of 2D nodes:
 
@@ -492,7 +444,6 @@ To set the appearance of 2D nodes:
 
 ## Using the Grid List Box 3D node in the API
 
-
 To create a Grid List Box 3D node:
 
 ```
@@ -500,7 +451,6 @@ To create a Grid List Box 3D node:
 GridListBox3DSharedPtr gridListBox = GridListBox3D::create(domain, "MyListBox");
 
 ```
-
 
 To configure the grid area:
 
@@ -520,7 +470,6 @@ gridListBox->setItemAreaEnd(0.8f);
 
 ```
 
-
 To add items to the list box:
 
 ```
@@ -539,10 +488,8 @@ gridListBox->addItem(item5);
 
 ```
 
-
 For details, see the `GridListBox3D` class.
 ## Using the Grid List Box 2D node in the API
-
 
 To create a Grid List Box 2D node:
 
@@ -551,7 +498,6 @@ To create a Grid List Box 2D node:
 GridListBox2DSharedPtr gridListBox = GridListBox2D::create(domain, "MyListBox");
 
 ```
-
 
 To configure the grid area:
 
@@ -570,7 +516,6 @@ gridListBox->setItemAreaEnd(0.8f);
 
 ```
 
-
 To add items to the list box:
 
 ```
@@ -588,9 +533,7 @@ for (int i = 0; i < 5; ++i)
 
 ```
 
-
 For details, see the `GridListBox2D` class.
 ## Grid List Box property types and messages
-
 
 For lists of the available property types and messages for the Grid List Box nodes, see Grid List Box 2D and Grid List Box 3D.

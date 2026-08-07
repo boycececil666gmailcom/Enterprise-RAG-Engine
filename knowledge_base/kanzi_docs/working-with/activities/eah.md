@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/activities/eah.html
 
 # Exclusive Activity Host
 
-
 An Exclusive Activity Host can have only one of its child Activities active at a time. When one child Activity of an Exclusive Activity Host is active, all other Activities of that Activity Host are inactive. For example, you can use an Exclusive Activity Host to toggle between views in your application.
 ## Using an Exclusive Activity Host
-
 
 To use an Exclusive Activity Host:
 
@@ -41,7 +39,6 @@ An Exclusive Activity Host uses the Controller Property property to set and cont
     - Any Trigger with the Activate Activity Message
     - A Data Trigger with the Apply Activation Action
 
-
 For example, select Create Controller Property > Enum to create a property type with the enumeration data type.
   2.
 
@@ -61,7 +58,6 @@ When you create a property type with the enumeration data type, Kanzi Studio cre
 In the Exclusive Activity Host, adds the created property type and sets the Controller Property property to the created property type.
 
 To set which Activity is active in this Exclusive Activity Host, in the Exclusive Activity Host you can set the value of the created property type.
-
 
 4.
 
@@ -89,9 +85,7 @@ Makes the Activity visible.
 
 Sets the key focus to the Activity, if the Activity Host has key focus and is not configured differently. Controlling whether to set focus to an activating Activity.
 
-
 ## Controlling virtualization in an Exclusive Activity Host
-
 
 By default, when you deactivate an Activity, Kanzi serializes the values of Activity properties for that Activity and its child Activities. Besides the values of Activity properties that you add, this includes information about the focus and activation state of Activities. Keep in mind that Kanzi does not serialize the runtime state of other, non-Activity properties.
 
@@ -103,7 +97,6 @@ You can control virtualization of Activities:
 - With an Action. See Controlling virtualization with an Action.
 
 ### Controlling virtualization in an Activity
-
 
 With the Preserve History property you can control the serialization of Activity properties in an Activity when Kanzi deactivates that Activity.
 
@@ -117,7 +110,6 @@ When you enable serialization and deactivate an Activity, Kanzi preserves the va
 When you disable serialization and deactivate an Activity, Kanzi does not preserve the values of the Activity properties for this Activity and its child Activities. When you activate that Activity, Kanzi resets the values of Activity properties in these nodes.
 
 ### Controlling virtualization with an Action
-
 
 With an Action you can control the serialization of Activity properties in an Activity, before activating or after deactivating that Activity. By default, Kanzi restores the serialized state when you activate an Activity.
 
@@ -138,9 +130,7 @@ To control virtualization when activating and Activity, in the trigger that you 
   - Disabled to restore the serialized values of Activity properties when the user activates that Activity. This is the default value.
   - Enabled to reset the serialized values of Activity properties when the user activates that Activity.
 
-
 ## Controlling Activity persistence in an Exclusive Activity Host
-
 
 By default, when you deactivate an Activity, Kanzi detaches the Activity from the node tree and deletes the Activity instance.
 
@@ -154,7 +144,6 @@ To control Activity persistence, in the Activity Browser or Prefabs, select the 
 This way you can skip Activity instantiation when you activate the Activity again.
 
 ## Activating Activities
-
 
 When you activate an Activity, Kanzi:
 
@@ -171,7 +160,6 @@ Makes the Activity visible.
 
 Sets the key focus to the Activity, if the Activity Host has key focus and is not configured differently. Controlling whether to set focus to an activating Activity.
 
-
 By default, when you deactivate an Activity, Kanzi serializes the values of Activity properties for that Activity and its child Activities. Besides the values of Activity properties that you add, this includes information about the focus and activation state of Activities. Keep in mind that Kanzi does not serialize the runtime state of other, non-Activity properties.
 
 See Controlling virtualization in an Exclusive Activity Host.
@@ -185,7 +173,6 @@ You can activate an Activity using:
 
 ### Finding out whether an Activity is active
 
-
 To find out whether an Activity is active:
 
 - Check the value of the Activity Status property for that Activity.
@@ -193,24 +180,20 @@ To find out whether an Activity is active:
 
 ### Setting the initially active Activity
 
-
 To set which Activity in an Exclusive Activity Host is initially active:
 
 - In the Activity Browser, select the Activity you want to be active when the Exclusive Activity Host becomes active.
 - In the side panel, enable the InitiallyActive property.
-
 
 When you enable the InitiallyActive property for an Activity, the Exclusive Activity Host activates it when the Host itself becomes active, without explicitly activating it. Explicit activation overrides this setting.
 
 In an Exclusive Activity Host, only one Activity can have the InitiallyActive property enabled at a time. If you enable the InitiallyActive property for a different Activity, the property becomes unset on the previous one.
 ### Activating Activities with an Activate Activity Message
 
-
 Use the Activate Activity Message when:
 
 - The condition for activating an Activity is too complex to be expressed with the value of a property
 - You do not know in advance the number of Activities in an Exclusive Activity Host
-
 
 To activate an Activity with the Activate Activity Message:
 
@@ -230,15 +213,11 @@ In the Node Tree, select the node that you created in the previous step. In the 
   - Activation Path to the path from the Exclusive Activity Host to the Activity that you want to activate.
 
 If you nest Activity nodes in other types of nodes, include in the path only the ancestor Activity nodes.
-
-> **Tip:** To get the full activation path to an Activity, in the Activity Browser right-click an Activity and select Copy Activation Path. This command copies the entire path from the top-level Activity Host to that Activity.
->
-> The Activity Activation Path contains only Activities and Activity Hosts.
-
+**Tip:** To get the full activation path to an Activity, in the Activity Browser right-click an Activity and select Copy Activation Path. This command copies the entire path from the top-level Activity Host to that Activity.
+The Activity Activation Path contains only Activities and Activity Hosts.
 
 To activate the Activities, in the Preview click the buttons that you created.
 ### Activating Activities with a Set Property Action
-
 
 Use the Set Property Action to activate Activities when the logic of your application relies on the value of the Controller Property property to activate an Activity.
 
@@ -260,10 +239,8 @@ In the Node Tree, select the node that you created in the previous step. In the 
   - Target Property to the property type that you set in the Exclusive Activity Host in the Controller Property property.
   - Fixed Value to the value of the Controller Property property that you use in the Activity that you want to activate.
 
-
 To activate the Activities, in the Preview click the buttons that you created.
 ### Activating the next or previous Activity
-
 
 To activate the next or previous Activity:
 
@@ -282,10 +259,8 @@ In the Node Tree, select the node that you created in the previous step. In the 
   - Target Item to the Exclusive Activity Host that contains the Activities that you want to activate.
   - (Optional) To activate the first or last Activity when you set off the Trigger after you reach the last or first Activity in that Exclusive Activity Host, set the Loop Activity property to enabled.
 
-
 To activate the Activities, in the Preview click the buttons that you created.
 ### Activating Activities with an Apply Activation Action
-
 
 An Apply Activation Action keeps an Activity activated for as long as the condition is met in a Data Trigger that contains this action. When the trigger condition is no longer met, Kanzi rolls back the state of the Activity to the state before the action was applied. Use the Apply Activation Action only with a Data Trigger.
 
@@ -342,7 +317,6 @@ In the Data Trigger in the Expression, click . In the Node Tree, select the Chec
 
 ```
 
-
 This condition expression must evaluate to either `True` or `False`. As a source you can use either a property or a data object from a data source.
 
 Click Save.
@@ -358,16 +332,11 @@ In the Apply Activation Action, set:
     - Activity Host Path to .
     - Activity Activation Path to High
 
-
 The path to the Activity that you set in the Activity Activation Path property is relative to the Exclusive Activity Host node that you set in the Activity Host Path property.
 
 The Activity Browser indicates that an Exclusive Activity Host has a Data Trigger with the  icon.
-
-
-> **Tip:** To get the full activation path to an Activity, in the Activity Browser right-click an Activity and select Copy Activation Path. This command copies the entire path from the top-level Activity Host to that Activity.
->
-> The Activity Activation Path contains only Activities and Activity Hosts.
-
+**Tip:** To get the full activation path to an Activity, in the Activity Browser right-click an Activity and select Copy Activation Path. This command copies the entire path from the top-level Activity Host to that Activity.
+The Activity Activation Path contains only Activities and Activity Hosts.
 
 In the Preview, toggle the checkbox:
 
@@ -377,27 +346,18 @@ An Apply Activation Action keeps an Activity activated for as long as the condit
 - When the checkbox is not checked, the value of the Toggle State property in the Checkbox is 0 and the Data Trigger deactivates the Activity that you set in the Apply Activation Action.
 
 When the Trigger condition is no longer met, Kanzi rolls back the state of the Activity to the state before the Action was applied.
-
-
-> **Tip:** During the application development, use these Data Trigger tools in the Activity Browser side panel:
-> |
->
-> Tool |
->
-> Description |
-> |   |
->
-> Shows where a Data Trigger is and where the source and target Activitites of that Data Trigger are. |
-> |   |
->
-> Simulates the state when you apply a Data Trigger.
->
-> This enables you to see the state of your application when the conditions for a Data Trigger are met without having to change the property values in your application.  |
-> |   |
->
-> Shows the selected Data Trigger in the Node Components window. |
+**Tip:** During the application development, use these Data Trigger tools in the Activity Browser side panel:
+|
+Tool |
+Description |
+|   |
+Shows where a Data Trigger is and where the source and target Activitites of that Data Trigger are. |
+|   |
+Simulates the state when you apply a Data Trigger.
+This enables you to see the state of your application when the conditions for a Data Trigger are met without having to change the property values in your application.  |
+|   |
+Shows the selected Data Trigger in the Node Components window. |
 ### Activating Activities with a Toggle Button Group
-
 
 You can use the Toggle Button nodes in a Toggle Button Group to activate Activities in an Activity Host. For example, you can create an application navigation bar to allow the user to switch between application screens.
 
@@ -423,15 +383,12 @@ Select the Toggle Button Group, in the Properties click + Add Binding, and in th
 You use the Current Button Index property to access the index of the Toggle Button that is toggled on in the Toggle Button Group.
   - Source to the controller property in the Activity Host that controls which Activity is active in that Activity Host.
 
-
 Click Save.
 
 With this binding you create a two-way connection between the toggle button that is toggled on in the toggle button group and the Activity that is active in the Activity Host.
 
-
 Now when you activate an Activity, Kanzi toggles on the corresponding Toggle Button, and when you toggle on a Toggle Button, Kanzi activates the corresponding Activity.
 ## Using a Fallback State
-
 
 An Exclusive Activity Host works like a UI state machine, where each Activity represents a UI state. To explicitly deactivate an Activity in an Exclusive Activity Host, use a Fallback State. A Fallback State cannot contain any content.
 
@@ -446,7 +403,6 @@ You can activate a Fallback State with:
 See Activating Activities.
 
 ### Activating Fallback State with Go To Fallback State message
-
 
 To activate a Fallback State with the Go To Fallback State message:
 
@@ -466,10 +422,8 @@ Create a Button node.
 
 In Node Components > Triggers, press Alt and right-click the Trigger that you want to use to activate the Fallback State, select Dispatch Message Action > Exclusive Activity Host > Go To Fallback State message, and set the Target Item to the target Exclusive Activity Host.
 
-
 In the Preview, when you click the button, the Exclusive Activity Host activates the Fallback State.
 ### Activating Fallback State with auto-closing modal
-
 
 To activate a Fallback State with the auto-closing modal in a focus scope:
 
@@ -480,9 +434,7 @@ In the Activity Browser, below an Exclusive Activity Host with one or more Activ
 
 To all Activities, except the Fallback State, add the Focus Scope > Focus Scope Type property and set it to Auto-Closing Modal.
 
-
 In the Preview, when an Activity to which you added the Focus Scope Type property is active and you click outside of that Activity, the Exclusive Activity Host activates the Fallback State.
 ## Using Activities in the API
-
 
 For details, see the `Activity2D`, `Activity3D`, `ExclusiveActivityHost2D`, and `ExclusiveActivityHost3D` classes.

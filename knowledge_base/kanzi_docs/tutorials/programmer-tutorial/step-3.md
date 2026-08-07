@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/programmer-tutorial/step-3.htm
 
 # Step 3 - Create prefab instances and load images from the file system
 
-
 In this step of the tutorial you create a reference to the Widget Item Prefab prefab node. You use this prefab to create the prefab instances that represent the widgets in the Widget Grid List Box node, set the name, icon, and description for each widget, and populate the Widget Grid List Box with the Widget Item Prefab prefab instances.
 
 To create prefab instances and load images from the file system:
@@ -21,14 +20,12 @@ To access the resources and nodes in the kzb file you can use either resource ID
 
 When you use the full path of a resource, start the path with `kzb://` followed by the project name and the location of the resource.
 
-
 For example, to access the Widget Item Prefab created in the Prefabs, use path
 
 ```
 kzb://programmer_tutorial/Prefabs/Widget Item Prefab
 
 ```
-
 
 You can find the full paths of all nodes in a kzb file in the kzb.txt file Kanzi Studio generates every time you export a kzb file from a Kanzi Studio project. For this tutorial you can find the file in the `<KanziWorkspace>/Tutorials/Programmer tutorial/Start/Application/bin` directory.
 
@@ -43,7 +40,6 @@ void onProjectLoaded() override
 }
 
 ```
-
 
 In Kanzi resources are shared so that you can reuse them. Multiple calls to the `ResourceManager::acquireResource` that map to the same resource URL return the same resource. The resources in Kanzi are reference counted with shared pointers. You store the shared pointers as member variables because you continually use these resources. When the application is destroyed the shared pointers are also destroyed and Kanzi automatically releases the resources.
 2.
@@ -155,8 +151,6 @@ void onProjectLoaded() override
 
 ```
 
-
 When you run your application you can see instantiated and arranged Widget Item Prefab prefabs in the Widget Grid List Box node. Each widget in the Widget Grid List Box node has a name and an icon and you can scroll the list box horizontally. In the next step of this tutorial you implement the events that take place when the user selects a widget from the Widget Grid List Box.
-
 
 Previous step Next step

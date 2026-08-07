@@ -5,16 +5,13 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/prism-graphs/using-prism-pr
 
 # Binding Render Pass node properties
 
-
 These steps show how to bind properties on Render Pass nodes so the value of one property drives another.
 
 For an introduction to Prism graphs, see Prism graphs.
 ## Resource property bindings
 
-
 A resource property binding is a line drawn directly between two resource properties of the same type. To create the binding, drag from the source property on one node onto the target property on another.
 ### Example: connect Build Acceleration Structure to Draw Objects for raytraced shadows
-
 
 This example rebuilds an existing raytraced-shadow scene as a Prism graph. The original scene uses a manual render-pass setup to produce a top-level acceleration structure and pass it to the draw pass that consumes it. The Prism graph expresses the same dependency as a binding line between two resource properties.
 
@@ -47,7 +44,6 @@ Add the main rendering nodes. Right-click in the graph and add:
   - **Gather Lights** render pass node.
   - **Draw Objects** render pass node.
 
-
 Connect **Gather Lights** to **Draw Objects**, and **Draw Objects** to the **Output** node.
 
 The **Preview** now renders the scene objects under the scene lighting, but raytraced shadows are not yet visible. The next steps add and bind the acceleration structure that **Draw Objects** needs to render those shadows.
@@ -71,7 +67,6 @@ This creates a resource property binding between the two properties. The binding
 Confirm the **Preview** again renders the raytraced shadows. The binding gives **Draw Objects** the acceleration structure that **Build Acceleration Structure** produced.
 
 ### Example: use Decode to bind an offscreen framebuffer to a Blit Render Pass
-
 
 This example uses the **Decode** adapter node to create a resource property binding.
 
@@ -99,7 +94,6 @@ Add the framebuffer-rendering nodes. Right-click in the graph and add:
   - **Clear** node.
   - **Draw** node.
 
-
 Connect **Offscreen Framebuffer** to **Clear**, and **Clear** to **Draw**.
 6.
 
@@ -107,7 +101,6 @@ Continue with Render Pass nodes. Add:
 
   - **Decode** adapter node, which exposes the upstream framebufferâs contents as a named texture property.
   - **Blit** Render Pass node.
-
 
 Connect **Draw** to **Decode**. Then connect **Blit** to the **Output** node. **Decode** has no output socket, so it cannot connect to **Blit** via a node socket. The connection from **Decode** to **Blit** is made through a binding line in the next step.
 7.
@@ -121,15 +114,11 @@ This creates a resource property binding: the value of **ResultTexture0** is cop
 9.
 
 Confirm the **Preview** renders the box composited through the **Blit** Render Pass. The upstream nodes render the box into the offscreen framebuffer; **Decode** exposes that framebuffer as **ResultTexture0**; the binding hands the texture to **Blit**, which composites it to the **Output**.
-
-
-> **Tip:** In this example, dragging directly from the **Draw** nodeâs output connector onto the **Texture 0** property on **Blit** inserts the **Decode** node and creates the binding in one step.
+**Tip:** In this example, dragging directly from the **Draw** nodeâs output connector onto the **Texture 0** property on **Blit** inserts the **Decode** node and creates the binding in one step.
 ## Text property bindings
-
 
 A text property binding drives a non-resource property from a binding expression. Non-resource properties are values such as numbers, booleans, colors, or vectors. Use a text binding when you want the property value to come from a Kanzi binding expression instead of a direct value set in the editor. Unlike a direct value set, a binding expression can include arithmetic, function calls, and references to other properties. See Bindings expressions reference for the expression syntax.
 ### Example: set the background color of a Prism graph from a binding expression
-
 
 This example reuses the **Raytracing** example project from the previous examples. It builds a small Prism graph that clears the screen to a color computed from a binding expression, then draws the scene on top. Use the same pattern to drive any non-resource property on a Render Pass node from a binding expression.
 
@@ -169,7 +158,6 @@ Color4(0.1, 0.1, 0.3, 1.0)
 
 ```
 
-
 Click Save. The editor closes. The **Preview** shows the scene against a deep blue background. The **Clear Color 0** row shows a binding indicator on the label and a read-only preview of the expression in place of the value editor.
 9.
 
@@ -180,12 +168,9 @@ Color4(0.1, 0.1, 0.3, 1.0) * 2
 
 ```
 
-
 Save. The background becomes brighter. The row preview updates to show the new expression.
-
 
 To remove the binding and restore a direct editable value, right-click the row and select Clear binding.
 
 If the expression cannot be parsed, the inline preview turns red. Reopen Edit bindingâ¦ to correct the expression.
-
-> **Tip:** You can also start a text binding by dragging from the display name of one Prism property row onto another non-resource property row. The binding editor opens prefilled with an expression that references the source rowâs property.
+**Tip:** You can also start a text binding by dragging from the display name of one Prism property row onto another non-resource property row. The binding editor opens prefilled with an expression that references the source rowâs property.

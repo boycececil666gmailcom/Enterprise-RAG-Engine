@@ -5,12 +5,10 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/effects/blur-effect-2d.html
 
 # Using the Blur Effect 2D effect
 
-
 Use the Blur Effect 2D effect to apply a Gaussian blur to a 2D node.
 
 Learn how to use the Blur Effect 2D effect by completing a tutorial. See Tutorial: Create a Gaussian blur effect.
 ## Creating a blur effect for a 2D node
-
 
 To create a blur effect for a 2D node:
 
@@ -30,16 +28,13 @@ This way you set in that 2D node the Effect Prefab property to the Blur Effect 2
 In the Library select the Blur Effect 2D effect and in the Properties add and set the Blur Effect 2D properties.
 |
 
-
 Blur Radius sets the amount of blur by defining the radius of the circular area of pixels that blend into each other. The default radius is 8 pixels.
 
 This property also determines the distance in pixels that the blur expands the render area at the node borders unless you enable the Masked Blur property.  |    |
 |
 
-
 Blur Quality sets the visual quality of the blur. Lower quality uses less computing and memory resources.  |    |
 |
-
 
 Masked Blur sets whether to blur only the pixels whose alpha channel value is not zero.
 
@@ -47,14 +42,12 @@ When you enable this property, the blur does not spread to fully transparent pix
 
 ## Customizing an instance of a blur effect
 
-
 When you edit the properties of an effect in the Library > Effects, you change the appearance of that effect for all nodes that use it. You can customize each effect instance by overriding the effect property values. For example:
 
 - When you create a Shadow Effect 2D effect, you can vary the softness of the shadow in different instances of that effect.
 - When you create a Mask Effect 2D effect, you can vary the size of the mask in different instances of that effect.
 - When you create a Blur Effect 2D effect, you can vary the amount of blur in different instances of that effect.
 - When you create an Outline Effect 2D effect, you can vary the color of the outline in different instances of that effect.
-
 
 To customize an instance of an effect:
 
@@ -87,11 +80,9 @@ For example, in the Properties, add the Shadow Effect 2D Properties > ShadowEffe
 3.
 
 (Optional) Repeat the previous step for each effect property that you want to customize.
+**Tip:** When you want to remove from a node a property and its To Source binding, right-click that property and select Remove Property And Binding.
 
-> **Tip:** When you want to remove from a node a property and its To Source binding, right-click that property and select Remove Property And Binding.
->
 ## Using the Blur Effect 2D effect in the API
-
 
 To create a blur effect:
 
@@ -119,6 +110,5 @@ BlurEffect2DSharedPtr blurEffect = dynamic_pointer_cast<BlurEffect2D>(node2d->ge
 blurEffect->setMasked(true);
 
 ```
-
 
 For details, see the `BlurEffect2D` class.

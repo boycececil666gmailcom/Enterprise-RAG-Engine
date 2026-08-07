@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/animations/animating-proper
 
 # Creating keyframe animations
 
-
 In Kanzi you can create keyframe animations that:
 
 - Animate the look and feel of a node by changing the values of properties that define the look and feel of that node. You can animate different property types:
@@ -17,16 +16,13 @@ In Kanzi you can create keyframe animations that:
 
 You learn how to create this type of animation here.
 
-
 You can create the animation data for keyframe animations in these ways:
 
 - Modify property values of a node in your project and drag them to an animation clip to create the animation data. This way you can visually inspect the animation in the Preview as you are creating it. See Creating keyframe animations for node properties
 - Create an animation, set a specific target property field that you want to animate, and add keyframes. This way is more suitable for data-driven animations. See Creating keyframe animations for target property fields.
 
-
 To create keyframe animations using the Kanzi Engine API, see Creating animations and timelines using the Kanzi Engine API.
 ## Creating keyframe animations for node properties
-
 
 To create a keyframe animation for node properties:
 
@@ -60,47 +56,31 @@ Repeat the previous three steps as many times as you want to add keyframes to yo
 6.
 
 To play and control the playback of a keyframe animation, see Using keyframe animations.
-
-
-> **Tip:** In the Kanzi Studio Properties window, properties with animations are marked in blue type, and has the Animation icon  next to it:
->
-> Orange type marks properties with several override sources:
->
-> If a property has multiple override sources, only the one with the highest precedence will take effect. See Property system.
+**Tip:** In the Kanzi Studio Properties window, properties with animations are marked in blue type, and has the Animation icon  next to it:
+Orange type marks properties with several override sources:
+If a property has multiple override sources, only the one with the highest precedence will take effect. See Property system.
 ## Creating keyframe animations for target property fields
-
 
 To create a keyframe animation for a target property field:
 
 1.
 
 In the Animation Clip Editor, click Create Animation.
-
-> **Tip:** Kanzi Studio creates an Animation containing two keyframes automatically, as any animation would require at least two. You can remove, replace, adjust or add to these as needed.
-> 2.
->
-> In the Properties, set the Target of the animation.
->
-> For example, set:
->
-> - Target Property to Node3D.RenderTransformation
-> - Property Field to Rotation Z
->
-> 3.
->
-> In the Animation Clip Editor, use the Move tool  to select the animation in the canvas area.
-> 4.
->
-> Select the Keyframe tool  and click the animation to create keyframes.
->
-> For example, click the animation to create a third keyframe.
-> 5.
->
-> Select the Move tool , select the first keyframe and set:
->
-> - Time to the number of seconds from the start of the animation when you want to place this keyframe.
-> - Value to the value to which you want to set the Target Property Field you set in step 2.
-
+**Tip:** Kanzi Studio creates an Animation containing two keyframes automatically, as any animation would require at least two. You can remove, replace, adjust or add to these as needed.
+2.
+In the Properties, set the Target of the animation.
+For example, set:
+- Target Property to Node3D.RenderTransformation
+- Property Field to Rotation Z
+3.
+In the Animation Clip Editor, use the Move tool  to select the animation in the canvas area.
+4.
+Select the Keyframe tool  and click the animation to create keyframes.
+For example, click the animation to create a third keyframe.
+5.
+Select the Move tool , select the first keyframe and set:
+- Time to the number of seconds from the start of the animation when you want to place this keyframe.
+- Value to the value to which you want to set the Target Property Field you set in step 2.
 
 For example, to set the value of Node3D.RenderTransformationRotation Z to 0 degrees when the animation starts, set:
 
@@ -118,13 +98,11 @@ For example, set:
     - Time to 0.5
     - Value to 15
 
-
 This sets the value of the Node3D.RenderTransformation Rotation Z to 15 degrees 0,5 seconds after the animation starts.
   - Third keyframe:
 
     - Time to 1
     - Value to 45
-
 
 This sets the value of the Node3D.RenderTransformation Rotation Z to 45 degrees 1 second after the animation starts.
 
@@ -133,7 +111,6 @@ This sets the value of the Node3D.RenderTransformation Rotation Z to 45 degrees 
 To play and control the playback of a keyframe animation, see Using keyframe animations.
 
 ## Setting the easing function between keyframes
-
 
 To set the easing function between keyframes:
 
@@ -157,9 +134,7 @@ Fine-tune the interpolation values for keyframes in these ways:
     - The In X and Out X property values are relative to the Time of the keyframe.
     - The In Y and Out Y property values are relative to the Value of the keyframe.
 
-
 ## Using keyframe animations in the API
-
 
 To create a keyframe animation:
 
@@ -174,7 +149,6 @@ keyframeAnimation->addLinearKeyframe(chrono::seconds(1), 100.0f);
 
 ```
 
-
 To animate a property value in a node using a keyframe animation:
 
 ```
@@ -183,7 +157,6 @@ To animate a property value in a node using a keyframe animation:
 PropertyAnimationTimelineSharedPtr propertyTimeline = PropertyAnimationTimeline::create(domain, ".", Node2D::WidthProperty, keyframeAnimation);
 
 ```
-
 
 To animate a property field value in a node using a keyframe animation:
 
@@ -195,7 +168,6 @@ PropertyFieldAnimationTimelineSharedPtr propertyFieldTimeline = PropertyFieldAni
 propertyFieldTimeline->addEntry(PropertyFieldRotationZ, keyframeAnimation);
 
 ```
-
 
 To create a keyframe animation that uses Bezier keyframes to move an object on a sideways figure eight shaped path:
 
@@ -241,7 +213,6 @@ timeline->addEntry(PropertyFieldTranslationY, keyframeAnimationY);
 
 ```
 
-
 To play an animation regardless of the timeline type:
 
 ```
@@ -253,7 +224,6 @@ TimelinePlaybackSharedPtr playback = propertyFieldTimeline->createPlayback(conte
 domain->getRootTimelineClock()->addTimelinePlayback(playback);
 
 ```
-
 
 For details, see the `KeyframeAnimation` class.
 

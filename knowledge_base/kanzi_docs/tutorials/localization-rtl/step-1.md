@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/localization-rtl/step-1.html
 
 # Step 1 - Prepare an application for right-to-left locales
 
-
 In this step of the tutorial you learn how to prepare an already localized application for right-to-left locales. In the next steps you set the layout and use the Kanzi Engine API to instantiate the correct prefabs based on the selected locale.
 ## Get the tutorial
-
 
 To get the tutorial, in the Kanzi Studio Quick Start window, click Projects and select the Tutorials tab. Next to the Localization RTL tutorial, click .
 
@@ -24,7 +22,6 @@ Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` director
 
 ## Content of the starting point project
 
-
 The starting point of this tutorial is the `<KanziWorkspace>/Tutorials/Localization/Completed/Tool_project/Localization.proj.kzm` Kanzi Studio project.
 
 The starting point project contains the content that you need to complete this tutorial:
@@ -37,11 +34,9 @@ The starting point project contains the content that you need to complete this t
 
     - Stack Layout 2D node named LocaleSelector contains the buttons for the locales created in Kanzi Studio.
 
-
 - Toggle Button 2D prefab named LocaleButton represents each locale button instance created in Kanzi Studio and the additional locales loaded using the Kanzi Engine API.
 
 ## Create prefabs for the left-to-right and right-to-left layouts
-
 
 In this section you create prefabs from the LocaleSelector and IVI Grid nodes. You use the LocaleSelector prefab to position the locale buttons and the IVI Grid prefabs to set the correct layout for the selected locale. In the next step you change these prefabs so that they correctly position the application user interface elements for left-to-right or right-to-left locales.
 
@@ -107,10 +102,8 @@ You use the LocaleSelector prefab placeholder to instantiate the LocaleSelector 
 
 Repeat the previous step for the IVI Grid RightToLeft node to create a prefab placeholder for the LocaleSelector node.
 
-
 In the Preview when you click the locale buttons, you cannot yet see the switch between locales. You can see the locale switch when you run the application in the last step of this tutorial.
 ## Import the po files for the right-to-left locales
-
 
 In this section you import the po files that contain the translated text for the Arabic and Hebrew locales.
 
@@ -128,11 +121,9 @@ In the Library > Localization double-click the Localization Table (Main) and in 
   - For Arabic enter Ø§ÙØ¹Ø±Ø¨ÙØ©.
   - For Hebrew enter ×¢××¨××ª.
 
-
 LocaleDisplayName is a text resource which sets the locale name displayed in the application user interface.
 
 ## Set images used by the right-to-left locales
-
 
 In this section you create a texture brush for the application background image used by the right-to-left locales and set the images you use with those locales.
 
@@ -162,7 +153,6 @@ You set the images displayed in the application user interface for the Arabic an
 
 ## Create styles for the right-to-left locales
 
-
 In this section you import fonts that contain the Arabic and Hebrew glyphs and create styles that set the font and text alignment for those locales.
 
 To create styles for the right-to-left locales:
@@ -173,7 +163,6 @@ Select File > Import > Import Fonts, click Browse, go to `<KanziWorkspace>/Tutor
 
   - For Arabic use notonaskharabic-regular.ttf.
   - For Hebrew use notosanshebrew-regular.ttf.
-
 
 Make sure that the font you use includes all the glyphs for the text that you want to include in your Kanzi application.
 2.
@@ -192,7 +181,6 @@ Select the LocaleStyle-ar and in the Properties add and set:
   - Font Family to Noto Naskh Arabic
   - Text Concept > Text Horizontal Alignment to Right
 
-
 You use this style for the Arabic locale to set the correct font and text alignment.
 4.
 
@@ -203,6 +191,5 @@ In the Localization Table in the column for each locale where you want to apply 
 
   - Arabic set LocaleStyle-ar
   - Hebrew set LocaleStyle-he
-
 
 Introduction Next step

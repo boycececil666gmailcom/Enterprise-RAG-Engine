@@ -5,14 +5,11 @@ source: https://docs.kanzi.com/4.1.0/en/release-notes/kanzi-4.0/kanzi-4.1.0-migr
 
 # Kanzi 4.1.0 migration guide
 
-
 Use this migration guide to update Kanzi applications from Kanzi 4.0.0 to Kanzi 4.1.0.
 ## Project and plugin template structure changes
 
-
 If you are migrating from Kanzi 3.9 to Kanzi 4.1.0, the project and plugin template structure changed substantially between Kanzi 3.9 and Kanzi 4. The surrounding build structure (CMake files, build scripts, platform configurations, and plugin build setup) does not migrate automatically when you apply the API changes in this guide. For a step-by-step guide to migrating the build structure, see Migrating projects from Kanzi 3.9 to Kanzi 4.
 ## Changes to property types
-
 
 Creating dynamic property types with identical names but conflicting settings no longer immediately throws an error. Kanzi Engine will first try to recover by keeping the settings from the initial dynamic property type. The newly created property type is discarded.
 
@@ -30,7 +27,6 @@ If the user declares a new type for use with `TypedValueRange<T>`, they must imp
 - Elementary Kanzi data types now each have an associated `to_string()` function in `kanzi::` namespace.
 
 ## Changes to the build system
-
 
 - Minimum CMake version requirement was raised to 3.25.
 
@@ -74,7 +70,6 @@ Kanzi 4.1 |
 
 ## Changes to the Renderer API
 
-
 - `GPUBuffer` is now derived from `GPUResource` and can be used as a property value in Resource property types.
 
 Many functions were removed from GPUResource, notably `setData()` and `setSubData()`. To update a GPUResourceâs gpu-side content, use `gfx` commands to either map the buffer by its handle or allocate a staging buffer and copy it. `kanzi::CommandRecorder::updateBuffer()` can be used as well.
@@ -99,7 +94,6 @@ Kanzi 4.1 |
 `BindingGraphicsEntryLookupContext` |
 
 ## Changes to Mesh::CreateInfo and the vertex helper API
-
 
 `Mesh::CreateInfo` was reshaped so that vertex data is owned per attribute rather than as a single interleaved blob. Several free helpers and one Mesh accessor were removed.
 
@@ -233,14 +227,12 @@ Kanzi 4.1 |
 
 ## Changes to the Runtime API
 
-
 `TaskDispatcherBase` is now merged into `TaskDispatcher`, which is now moved from `kanzi/core.ui/platform/task_dispatcher/common/task_dispatcher.hpp` to `kanzi/core.ui/task_dispatcher/task_dispatcher.hpp`.
 
 To migrate:
 
 - Update any include directives of `task_dispatcher.hpp` to the new location.
 - If your code references `TaskDispatcherBase`, replace it with `TaskDispatcher`.
-
 
 `Platform` class and its derived platform-specific classes are renamed to use the `PlatformContext` suffix.
 
@@ -325,7 +317,6 @@ Kanzi 4.1 |
 
 `platform::X11PlatformContext` |
 
-
 `GlContextApi` class and its derived platform-specific classes are renamed to use the `GlGraphicsContext` suffix. The `createDefaultGlContextApi` factory function is renamed to `platform::makeDefaultGlGraphicsContext`.
 
 To migrate:
@@ -370,7 +361,6 @@ Kanzi 4.1 |
 
 `platform::WglGraphicsContext` |
 
-
 The `platform::GlGraphicsContext` member function `getOGLProcAddress` is renamed to `getGLProcAddress`.
 
 To migrate, rename the calls. If you implement a custom OpenGL context, rename the override accordingly:
@@ -406,7 +396,6 @@ To migrate, update any include directives that reference the old paths:
 
 ## Changes to the application framework
 
-
 - `kanzi/core.ui/application/application_properties.hpp` no longer includes `kanzi/core.ui/graphics/renderer.hpp`.
 
 If your code includes `application_properties.hpp` (directly, or transitively through `application.hpp`) and uses `Renderer` or other types declared in `renderer.hpp` without including it directly, add an explicit include:
@@ -420,7 +409,6 @@ If your code includes `application_properties.hpp` (directly, or transitively th
 
 ## Changes to List Boxes
 
-
 - New `TrajectoryListBoxConcept` and `TrajectoryListBoxConceptImpl` classes introduced for Trajectory List Box along with the new `GridListBoxConceptImpl` class for Grid List Box.
 
 Allows easier implementation of custom list boxes based on existing behavior.
@@ -431,13 +419,11 @@ Allows easier implementation of custom presenters based on existing behavior.
 
 ## Changes to Android NDK version
 
-
 - The Android NDK version is updated to 28.2.13676358, and Kanzi now supports 16 KB page sizes by default as required for [Google Play compatibility](https://developer.android.com/guide/practices/page-sizes) on Android 15+ devices.
 
 To migrate, set the `ndkVersion` to 28.2.13676358 in the `build.gradle` file of your application.
 
 ## Changes to Material
-
 
 - In the `Material` class, renamed these public member functions:
 |
@@ -457,7 +443,6 @@ Kanzi 4.1 |
 `Material::acquireMaterialTextured` |
 
 ## Changes to application input events
-
 
 - Application input events `sleep` and `wakeup` are renamed to `paused` and `resumed`, to be consistent with the application states. Change the event types and function calls in your code to use the new names:
 |
@@ -490,12 +475,10 @@ The previously unused `InputEvent::Type::ApplicationPaused` event now reports th
 
 ## Changes to material type commands
 
-
 - The `SaveMaterialType` command is removed. To share material types between projects, use ExportProjectItems instead.
 - The `LoadMaterialType` command is deprecated. To import material types from `.kzexport` archives, use ImportProjectItems instead.
 
 ## Changes to the TextBoxConcept API
-
 
 - Renamed metaclasses of message arguments in `TextBoxConcept` to match the containing class name.
 
@@ -503,13 +486,11 @@ To migrate your Kanzi Engine Lua API and Kanzi Java API applications, rename `Te
 
 ## Changes to the TextInputManipulator API
 
-
 - Renamed metaclasses of message arguments in `TextInputManipulator` to match the containing class name.
 
 To migrate your Kanzi Engine Lua API and Kanzi Java API applications, rename `TextInputConceptMetadata` to `TextInputManipulatorMetadata`.
 
 ## Changes to Kanzi Engine Lua API
-
 
 - Deprecated `PropertyType:new` and `MessageType:new` methods in favor of `PropertyType:find` and `MessageType:find`.
 
@@ -543,7 +524,6 @@ Kanzi 4.1 |
 
 ## Changes to Platforms
 
-
 - Removed `listEGLAttributes` in favor of more flexible `formatEGLAttributes`, which creates a formatted, human-readable string.
 
 To migrate, use `formatEGLAttributes` to format the attributes, then pass the formatted string into `kzLogInfo`.
@@ -570,9 +550,7 @@ To migrate, update the include:
 
 ```
 
-
 ## Changes to PropertyFieldAnimationTimelinePlayback
-
 
 The protected constructor of `PropertyFieldAnimationTimelinePlayback` has a new parameter:
 
@@ -588,12 +566,10 @@ explicit PropertyFieldAnimationTimelinePlayback(
 
 ```
 
-
 If you subclass `PropertyFieldAnimationTimelinePlayback` and call the protected constructor directly, pass `nullopt` for `runtimeEnv` to preserve the previous behavior.
 
 Additionally, copy and move constructors and assignment operators are now explicitly deleted on this class.
 ## Changes to the PipelineStateRenderPass Color Write Mode
-
 
 - The `GraphicsColorWriteMode` enumeration is removed and replaced by `gfx::ColorWriteMask`, a bitmask flags type that allows combining individual channel flags.
 
@@ -610,7 +586,6 @@ renderPass->setColorWriteMode(gfx::ColorWriteMask::RGBA);
 renderPass->setColorWriteMode(gfx::ColorWriteMask::R | gfx::ColorWriteMask::G);
 
 ```
-
 
 The following table maps old enumeration values to new flag equivalents:
 |
@@ -658,60 +633,40 @@ Kanzi 4.1 (`gfx::ColorWriteMask`) |
 `GraphicsColorWriteModeA` |
 
 `gfx::ColorWriteMask::A` |
+**Note:** The integer values of the enumeration changed. The new type uses power-of-two bitmask values (`R=1`, `G=2`, `B=4`, `A=8`) instead of the previous sequential indices. Update any application code that stores or compares the raw integer value of `GraphicsColorWriteMode`. `.kzm` project files are migrated automatically when you open them in Kanzi Studio 4.1.
+- In the Kanzi Studio plugin interface, `PipelineStateRenderPassColorWriteMode` changes from `TypedProperty<ColorWriteModeEnum>` to `TypedProperty<int>`, and the `ColorWriteModeEnum` type is removed. Update plugin code that reads or writes this property to use raw integer flag values (`Red=1`, `Green=2`, `Blue=4`, `Alpha=8`).
+- In Kanzi Engine Lua API, replace the removed `GraphicsColorWriteMode` table with `gfx.ColorWriteMask`:
+|
+Kanzi 4.0 (`GraphicsColorWriteMode`) |
+Kanzi 4.1 (`gfx.ColorWriteMask`) |
+|
+`GraphicsColorWriteMode.GraphicsColorWriteModeNone` |
+`gfx.ColorWriteMask.None` |
+|
+`GraphicsColorWriteMode.GraphicsColorWriteModeRGBA` |
+`gfx.ColorWriteMask.RGBA` |
+|
+`GraphicsColorWriteMode.GraphicsColorWriteModeRGB` |
+`gfx.ColorWriteMask.RGB` |
+|
+`GraphicsColorWriteMode.GraphicsColorWriteModeR` |
+`gfx.ColorWriteMask.R | gfx.ColorWriteMask.A` |
+|
+`GraphicsColorWriteMode.GraphicsColorWriteModeG` |
+`gfx.ColorWriteMask.G | gfx.ColorWriteMask.A` |
+|
+`GraphicsColorWriteMode.GraphicsColorWriteModeB` |
+`gfx.ColorWriteMask.B | gfx.ColorWriteMask.A` |
+|
+`GraphicsColorWriteMode.GraphicsColorWriteModeGB` |
+`gfx.ColorWriteMask.G | gfx.ColorWriteMask.B | gfx.ColorWriteMask.A` |
+|
+`GraphicsColorWriteMode.GraphicsColorWriteModeA` |
+`gfx.ColorWriteMask.A` |
+- In Kanzi Java API, replace `GraphicsColorWriteMode` with `ColorWriteMask`, and update `PipelineStateRenderPassMetadata.ColorWriteModeProperty` references accordingly.
+- `.kzm` project files that contain `PipelineStateRenderPass.ColorWriteMode` values are automatically migrated to the new flags representation when you open them in Kanzi Studio 4.1.
 
-> **Note:** The integer values of the enumeration changed. The new type uses power-of-two bitmask values (`R=1`, `G=2`, `B=4`, `A=8`) instead of the previous sequential indices. Update any application code that stores or compares the raw integer value of `GraphicsColorWriteMode`. `.kzm` project files are migrated automatically when you open them in Kanzi Studio 4.1.
-> - In the Kanzi Studio plugin interface, `PipelineStateRenderPassColorWriteMode` changes from `TypedProperty<ColorWriteModeEnum>` to `TypedProperty<int>`, and the `ColorWriteModeEnum` type is removed. Update plugin code that reads or writes this property to use raw integer flag values (`Red=1`, `Green=2`, `Blue=4`, `Alpha=8`).
-> - In Kanzi Engine Lua API, replace the removed `GraphicsColorWriteMode` table with `gfx.ColorWriteMask`:
-> |
->
-> Kanzi 4.0 (`GraphicsColorWriteMode`) |
->
-> Kanzi 4.1 (`gfx.ColorWriteMask`) |
-> |
->
-> `GraphicsColorWriteMode.GraphicsColorWriteModeNone` |
->
-> `gfx.ColorWriteMask.None` |
-> |
->
-> `GraphicsColorWriteMode.GraphicsColorWriteModeRGBA` |
->
-> `gfx.ColorWriteMask.RGBA` |
-> |
->
-> `GraphicsColorWriteMode.GraphicsColorWriteModeRGB` |
->
-> `gfx.ColorWriteMask.RGB` |
-> |
->
-> `GraphicsColorWriteMode.GraphicsColorWriteModeR` |
->
-> `gfx.ColorWriteMask.R | gfx.ColorWriteMask.A` |
-> |
->
-> `GraphicsColorWriteMode.GraphicsColorWriteModeG` |
->
-> `gfx.ColorWriteMask.G | gfx.ColorWriteMask.A` |
-> |
->
-> `GraphicsColorWriteMode.GraphicsColorWriteModeB` |
->
-> `gfx.ColorWriteMask.B | gfx.ColorWriteMask.A` |
-> |
->
-> `GraphicsColorWriteMode.GraphicsColorWriteModeGB` |
->
-> `gfx.ColorWriteMask.G | gfx.ColorWriteMask.B | gfx.ColorWriteMask.A` |
-> |
->
-> `GraphicsColorWriteMode.GraphicsColorWriteModeA` |
->
-> `gfx.ColorWriteMask.A` |
-> - In Kanzi Java API, replace `GraphicsColorWriteMode` with `ColorWriteMask`, and update `PipelineStateRenderPassMetadata.ColorWriteModeProperty` references accordingly.
-> - `.kzm` project files that contain `PipelineStateRenderPass.ColorWriteMode` values are automatically migrated to the new flags representation when you open them in Kanzi Studio 4.1.
->
 ## Changes to the Kanzi Documentation MCP server
-
 
 A new unified Kanzi Documentation MCP server is available at `https://docs.mcp.kanzi.com/mcp` with a new mcpb bundle for Claude Desktop at https://docs.kanzi.com/mcp/kanzi-docs-mcp.zip. The new endpoint supports all loaded Kanzi versions.
 
@@ -719,7 +674,6 @@ The existing version-specific URLs (`kanzi-docs-mcp-v3-9.*` and `kanzi-docs-mcp-
 
 If you previously added version-specific entries (such as `kanzi-docs-v3-9` or `kanzi-docs-v4-0`) to your MCP client configuration, remove them after adding the unified `kanzi-docs` entry. Keeping duplicate entries can hang client startup.
 ## Changes to shader compilation
-
 
 Starting with Kanzi 4.1.0, shader **source code** in your materials must use GLSL ES 310+ or desktop GLSL 140+ syntax. Legacy GLSL constructs (`attribute`, `varying`, `gl_FragColor`, `gl_FragData[N]`) are no longer accepted. You must update shaders in your Kanzi Studio projects that still use legacy syntax.
 
@@ -787,6 +741,5 @@ Additional considerations:
 - Named uniform blocks must use explicit layout qualifiers. Replace `uniform BlockName { ... };` with `layout(std140, binding = N, set = M) uniform BlockName { ... };`.
 - Kanzi reserves descriptor set 0, binding 0 for the automatically-generated uniform block that holds loose uniforms (`uniform float Opacity;` and so on). If you have a material type that uses a custom uniform block at set 0, binding 0, move it to a different binding.
 - Your choice of Target Graphics API in Project Properties constrains which ES 310 / GL 140 features you can use. Compute shaders, image load/store, and shader storage buffer objects require Target Graphics API of OpenGL ES 3.1 or later (or the desktop equivalent). A shader that uses only ES 310 *syntax* â `in` / `out`, `texture()`, named output variables â still cross-compiles cleanly to an OpenGL ES 3.0 target.
-
 
 See Setting the OpenGL ES version for the updated shader authoring reference.

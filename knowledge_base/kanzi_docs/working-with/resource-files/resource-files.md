@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/resource-files/resource-fil
 
 # Using resource files
 
-
 Kanzi Studio lists in the Library > Resource Files references to files in the resource directories of a Kanzi project. Kanzi Studio synchronizes the content of Resource Files with the files in the resource directories.
 
 In projects that you create using the Kanzi Studio project template, the resource directories are located in the `<KanziWorkspace>/Projects/<ProjectName>` directory. In projects that you create using other templates, they are located in the `<KanziWorkspace>/Projects/<ProjectName>/Tool_project` directory.
@@ -28,7 +27,6 @@ For example, if your project uses plugins that extend Kanzi to handle new file f
 
 ## Adding resource files to a Kanzi Studio project
 
-
 To add resource files to a Kanzi Studio project:
 
 - Drag files from File Explorer to the Library > Resource Files.
@@ -40,10 +38,8 @@ For example, Kanzi Studio copies PNG image files to `<ProjectName>/Tool_project/
 
 Kanzi Studio shows the files in the Library > Resource Files.
 
-
 When you add 3D assets, images, and fonts to the Resource Files, they are not available as project assets in Kanzi Studio. To make them available as project assets, import the assets to the project. See Importing.
 ## Removing resource files from a Kanzi Studio project
-
 
 When you remove files from a project resource directory, Kanzi Studio keeps in the Resource Files the reference to the removed files. This way you can replace the removed files in the project without losing references to those files.
 

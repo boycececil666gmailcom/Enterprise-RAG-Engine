@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/projects/projects.html
 
 # Projects
 
-
 Kanzi applications use kzb Kanzi files as the source of application content and event logic.
 
 You can use one or more Kanzi Studio projects to create your Kanzi application.
@@ -17,12 +16,10 @@ You can configure your project in Kanzi Studio by selecting Project > Properties
 In Kanzi Studio you can have only one project open at a time.
 ## Kanzi Studio project structure
 
-
 Your Kanzi Studio project consists of project objects and resources. Each object in the project has a parent, a name, and a set of properties that define it. Additionally, most objects have either child or item objects.
 
 In addition to the parent link and the child links in the children collection, items can also refer to other branches in the project tree. For example, animation objects have animation library as their parent but have a list of references to animation that act as their child nodes. This allows animation instancing where several animation nodes can share a single child node in their child node lists.
 ## Project directory
-
 
 By default, Kanzi Studio projects are stored in the `<KanziWorkspace>/Projects` directory. For every project Kanzi Studio creates a directory that contains:
 

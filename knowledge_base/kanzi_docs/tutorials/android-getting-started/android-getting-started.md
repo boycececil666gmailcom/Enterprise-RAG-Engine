@@ -5,13 +5,11 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/android-getting-started/androi
 
 # Tutorial: Getting started with Kanzi Android framework (droidfw)
 
-
 In this tutorial you learn how to start developing Android applications using Kanzi Android framework (droidfw). You learn how to:
 
 - Show a Kanzi prefab in an Android view
 - Access and modify application using Kanzi Java API
 - Create an Android activity and show Kanzi content in that activity
-
 
 This video shows the result of the tutorial.
 
@@ -22,12 +20,10 @@ Before you start this tutorial, make sure that you have your Kanzi development e
 The assets in this tutorial require OpenGL ES 3.0. To learn how to enable OpenGL ES 3.0 in the Android Emulator, see Enabling OpenGL ES 3.0 in the Android Emulator.
 ## Get the tutorial
 
-
 To get the tutorial, in the Kanzi Studio Quick Start window, click Projects and select the Tutorials tab. Next to the Android Getting Started tutorial, click .
 
 Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` directory. You can find the completed tutorial in the `<KanziWorkspace>/Tutorials/Android Getting Started/Completed` directory.
 ## Show a Kanzi prefab in an Android view
-
 
 In this section you create an application in Kanzi Studio, create content in Kanzi Studio, and show that content in an Android view.
 
@@ -60,33 +56,27 @@ In Kanzi Studio, select File > Export > Export KZB.
 
 In Android Studio open the `AndroidGettingStarted/Application/configs/platforms/android_gradle` project, start a virtual Android device or connect your Android device to your computer, and run the application.
 
-
 In the app > res > layout > activity_main.xml the `StartupPrefab` in the `startupPrefabUrl` attribute refers to the nodes in the Node Tree.
+**Tip:** To copy the URL of the startup prefab to your clipboard, in the Kanzi Studio main menu, select Project > Copy Startup Prefab URL.
+```
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity">
+<com.rightware.kanzi.KanziSurfaceView
+android:id="@+id/androidgettingstartedview"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+app:name="AndroidGettingStarted"
+app:kzbPathList="androidgettingstarted.kzb"
+app:startupPrefabUrl="kzb://androidgettingstarted/StartupPrefab" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+```
 
-> **Tip:** To copy the URL of the startup prefab to your clipboard, in the Kanzi Studio main menu, select Project > Copy Startup Prefab URL.
->
-> ```
-> <?xml version="1.0" encoding="utf-8"?>
-> <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-> xmlns:app="http://schemas.android.com/apk/res-auto"
-> xmlns:tools="http://schemas.android.com/tools"
-> android:layout_width="match_parent"
-> android:layout_height="match_parent"
-> tools:context=".MainActivity">
->
-> <com.rightware.kanzi.KanziSurfaceView
-> android:id="@+id/androidgettingstartedview"
-> android:layout_width="match_parent"
-> android:layout_height="match_parent"
-> app:name="AndroidGettingStarted"
-> app:kzbPathList="androidgettingstarted.kzb"
-> app:startupPrefabUrl="kzb://androidgettingstarted/StartupPrefab" />
-> </androidx.constraintlayout.widget.ConstraintLayout>
->
-> ```
->
 ## Modify content using the Kanzi Java API
-
 
 In this section you use the Kanzi Java API to modify Kanzi content in the Android application.
 
@@ -109,7 +99,6 @@ For example, set `android:id` to `@+id/textblock`.
   3.
 
 Set the views so that they take equal amount of screen space.
-
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -172,7 +161,6 @@ KanziView view = findViewById(R.id.androidgettingstartedview);
 
 ```
 
-
 with
 
 ```
@@ -202,13 +190,10 @@ public void onAttachedToWindow(View view, Domain domain) {
 
 ```
 
-
 By default, Kanzi initializes the `KanziRuntime` and `Domain` only when a Kanzi view is attached. This enables you to use the Kanzi Java API in the `KanziViewListener.onAttachedToWindow` or later. Alternatively, to get access to the Kanzi Java API immediately, set an application to acquire its own reference to `KanziRuntime`.
-
 
 When you run the application from Android Studio, you can see both Kanzi views, each taking half of the device screen.
 ## Create another Android activity
-
 
 In this section you create another Android activity and a control to go to that activity.
 
@@ -249,7 +234,6 @@ In app > res > layout > activity_second.xml add a Kanzi view to the constraint l
     app:startupPrefabUrl="kzb://androidgettingstarted/Prefabs/Car" />
 
 ```
-
 
 Make sure that the kzb URL in `startupPrefabUrl` points to the prefab that you want to show in this activity.
 4.
@@ -307,20 +291,16 @@ view2.addListener(new KanziViewListener() {
 
 ```
 
-
 Kanzi loads the startup prefab of views asynchronously, and invokes the callback `KanziViewListener.onStartupPrefabLoaded` when it is done loading and instantiating the prefab. If you intend to modify the start prefab, do so in this callback.
-
 
 When you run the application from Android Studio, to transition to the second activity, click the button.
 ## Whatâs next?
-
 
 In this tutorial you learned how use the Kanzi Android framework (droidfw) to:
 
 - Access and modify nodes using Kanzi Java API
 - Create a Kanzi view in Android and show Kanzi content in that view
 - Create an Android activity and show Kanzi content in that activity
-
 
 To learn more about how to use Kanzi Android framework (droidfw) and Java API see:
 

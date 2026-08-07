@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/android/android.html
 
 # Developing Kanzi applications for Android
 
-
 You can use these frameworks to develop Kanzi applications for the Android platform:
 |
 

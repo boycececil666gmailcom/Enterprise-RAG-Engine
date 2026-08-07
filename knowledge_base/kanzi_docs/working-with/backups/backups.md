@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/backups/backups.html
 
 # Creating backups of your projects
 
-
 In Kanzi Studio you can create:
 
 - **Automatic backups**. Every time Kanzi Studio automatically saves your project it makes a copy of the project and stores it in a file with .autosave extension. Kanzi Studio stores only one copy of the .autosave file. See Setting automatic backups and Restoring your project from an automatic backup.
@@ -13,7 +12,6 @@ In Kanzi Studio you can create:
 - Restore Points. Use restore points to return to an earlier version of your project. When you create a restore point for a project, Kanzi Studio makes the complete copy of your project into a timestamped directory in the `<ProjectName>/Restore Points` directory. See Creating restore points and Restoring a project from a restore point.
 
 ## Setting automatic backups
-
 
 Every time Kanzi Studio automatically saves your project it makes a copy of the project and stores it in a file with .autosave extension. Kanzi Studio stores only one copy of the .autosave file.
 
@@ -26,16 +24,13 @@ To set the automatic backups, select Edit > User Preferences and in the Autosave
 
 ## Restoring your project from an automatic backup
 
-
 To restore your project from an automatic backup, select File > Open Backup Save and select Autosave to open the automatic backup.
 ## Restoring your project from a manual backup
-
 
 Every time you save your project, Kanzi Studio makes a copy of the project and stores it in a file with extension _N, where N is the consecutive number of the backup. Kanzi Studio stores the ten latest project file backups. For example, if the name of your project is Orchard, project file is Orchard.proj.kzm, latest backup is Orchard.proj.kzm_1, second to latest backup is Orchard.proj.kzm_2, and so on.
 
 To restore your project from a manual backup, select File > Open Backup Save and select Backup and the version you want to open.
 ## Creating restore points
-
 
 Use restore points to return to an earlier version of your project. When you create a restore point for a project, Kanzi Studio makes the complete copy of your project into a timestamped directory in the `<ProjectName>/Restore Points` directory.
 
@@ -45,7 +40,6 @@ To create a restore point, while you have your project open in Kanzi Studio and 
 
 Kanzi Studio makes the complete copy of your project into a timestamped directory in the `<ProjectName>/Tool_project/Restore Points` directory.
 ## Restoring a project from a restore point
-
 
 To restore a project from a restore point:
 

@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/layouts/using-dock-layouts.
 
 # Using the Dock Layout nodes
 
-
 Use the Dock Layout nodes to place nodes relative to each other along the sides of a Dock Layout node.
 
 A Dock Layout node arranges its items in a subtractive way: after positioning the first node, the Dock Layout node uses the remaining space to position the next node, and so on. When arranging its child nodes, a Dock Layout node uses its entire size.
@@ -21,7 +20,6 @@ Dock Layout nodes determine the position of their child nodes by:
 - The number of the child nodes in a Dock Layout node.
 
 ## Creating a Dock Layout node
-
 
 To create a Dock Layout node:
 
@@ -46,7 +44,6 @@ In the Node Tree, select all child nodes of the Dock Layout node. In the Propert
   - Top to set the child node to occupy the top part of the Dock Layout node.
   - Bottom to set the child node to occupy the bottom part of the Dock Layout node.
 
-
 For example, set the Side property for:
 
   - Image to Top
@@ -66,9 +63,7 @@ For example, set the Side property for:
   - Horizontal Margin to clear the area on the left and the right sides of a child node.
   - Vertical Margin to clear the area on the bottom and the top of a child node.
 
-
 ## Setting the appearance of a Dock Layout 2D node
-
 
 To set the appearance of 2D nodes:
 
@@ -80,13 +75,10 @@ To set the appearance of 2D nodes:
 
 ## Using the Dock Layout 3D node in the API
 
-
 For details, see the `DockLayout3D` class.
 ## Using the Dock Layout 2D node in the API
 
-
 For details, see the `DockLayout2D` class.
 ## Dock Layout property types and messages
-
 
 For lists of the available property types and messages for the Dock Layout nodes, see Dock Layout 2D and Dock Layout 3D.

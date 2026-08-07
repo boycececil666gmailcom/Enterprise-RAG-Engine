@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/fifteen-puzzle/step-1.html
 
 # Step 1 - Run a Lua script
 
-
 In this step, you learn how to run a Lua script and use Lua variables.
 ## Get the tutorial
-
 
 To get the tutorial, in the Kanzi Studio Quick Start window, click Projects and select the Tutorials tab. Next to the Fifteen puzzle tutorial, click .
 
@@ -18,7 +16,6 @@ Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` director
 - The completed tutorial in the `<KanziWorkspace>/Tutorials/Fifteen puzzle/Completed` directory.
 
 ## Content of the starting point project
-
 
 The starting point project contains the content that you need to complete this tutorial:
 
@@ -31,7 +28,6 @@ The starting point project contains the content that you need to complete this t
 - The **Screen** node resource dictionary contains aliases to key nodes.
 
 ## Run a Lua script
-
 
 To run a Lua script:
 
@@ -55,12 +51,9 @@ print("Hello world!")
 
 In the **Script Editor**, click **Save**.
 
-
 In the **Preview**, when you click , Kanzi sets off the trigger in the **Restart** node that executes the Lua script, and the script writes **Hello world!** to the **Log** window.
-
-> **Tip:** To open the Log window, in the main menu select Window > Log.
+**Tip:** To open the Log window, in the main menu select Window > Log.
 ## Use Lua variables
-
 
 In Lua, you can declare:
 
@@ -68,7 +61,6 @@ In Lua, you can declare:
 
 Kanzi destroys local variables at the end of the scope.
 - Global variables, which are accessible in all scripts and are persistent across multiple script executions
-
 
 To use Lua variables:
 
@@ -111,7 +103,6 @@ print("Exiting new_game.lua")
 2.
 
 Save the script.
-
 
 In the **Preview**, when you click , the script writes the output to the **Log** window. When you click  the second time, notice that the value of the local variable `x` is reset, while the value of the global variable `y` persists between executions.
 

@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/localization/step-1.html
 
 # Step 1 - Localize text and texture content
 
-
 In this step of the tutorial, you learn how to add resources to a localization table, how to prepare the text content in your Kanzi application for the translators, and how to add the translated text content to your Kanzi application. You also learn how to create a trigger to change locales and how to localize the textures in your application.
 ## Get the tutorial
-
 
 To get the tutorial, in the Kanzi Studio Quick Start window, click Projects and select the Tutorials tab. Next to the Localization tutorial, click .
 
@@ -25,7 +23,6 @@ Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` director
 
 ## Content of the starting point project
 
-
 The starting point project contains the content that you need to complete this tutorial:
 
 - The layout for a mockup application that you localize in this tutorial.
@@ -35,7 +32,6 @@ The starting point project contains the content that you need to complete this t
 - The state manager that you use to show the currently selected locale.
 
 ## Add resources to a localization table and import the translations
-
 
 To add resources to a localization table and import the translations:
 
@@ -69,34 +65,22 @@ Use the checkbox next to each resource to select that resource. To select or des
 
 Click Add.
 
-
 Kanzi Studio creates resources and resource IDs from all resource types that you selected and adds them to the localization table that you selected. You can find the localization tables in the Library > Localization. You can now localize resources and in the localization table assign resources to locales.
+**Tip:** In the top right part of the window, you can select which types of resources you want to show in the window.
+By default Kanzi shows the text resources  in the project.
+4.
+In the Library > Localization, right-click the localization table Localization Table (Main) and select Export Localization Table.
+Kanzi Studio exports the localization table template in the POT file format to the `<ProjectName>/Tool_project/Localization/<LocalizationTableName>` directory.
+When you localize your Kanzi application for the first time, send that POT file to the translators. This is the template file that contains the strings and their context for each text resource in a localization table.
+Translators use the POT template file to translate the text content for each locale. The result of their translation is one PO file for each locale. For this tutorial, you can find PO files with the Finnish (fi-FI locale) and Spanish (es-ES locale) translations in the `<KanziWorkspace>/Tutorials/Localization/Assets/Text` directory. There you can also find the PO files for the Japanese, Chinese and Korean locales, which you add as locale packs in the last step of this tutorial.
+5.
+In the Library > Localization, right-click the localization table that you exported and select Import Localization Table Manually. Go to the `<KanziWorkspace>/Tutorials/Localization/Assets/Text` directory and import the PO files for the fi-FI and es-ES locales.
+Kanzi Studio creates the locales specified in each PO file and adds the translations from the PO files to the localization table. Kanzi uses localization tables to store the localized text resources and information about which locale uses which project resources.
+In the Library > Localization, double-click the localization table to open it and see the resources in the localization table.
+6.
+(Optional) To preview the locales in Kanzi Studio, in the Node Tree select the Screen node, and in the Properties set the Locale property to the locale that you want to see in the Preview.
 
-> **Tip:** In the top right part of the window, you can select which types of resources you want to show in the window.
->
-> By default Kanzi shows the text resources  in the project.
-> 4.
->
-> In the Library > Localization, right-click the localization table Localization Table (Main) and select Export Localization Table.
->
-> Kanzi Studio exports the localization table template in the POT file format to the `<ProjectName>/Tool_project/Localization/<LocalizationTableName>` directory.
->
-> When you localize your Kanzi application for the first time, send that POT file to the translators. This is the template file that contains the strings and their context for each text resource in a localization table.
->
-> Translators use the POT template file to translate the text content for each locale. The result of their translation is one PO file for each locale. For this tutorial, you can find PO files with the Finnish (fi-FI locale) and Spanish (es-ES locale) translations in the `<KanziWorkspace>/Tutorials/Localization/Assets/Text` directory. There you can also find the PO files for the Japanese, Chinese and Korean locales, which you add as locale packs in the last step of this tutorial.
-> 5.
->
-> In the Library > Localization, right-click the localization table that you exported and select Import Localization Table Manually. Go to the `<KanziWorkspace>/Tutorials/Localization/Assets/Text` directory and import the PO files for the fi-FI and es-ES locales.
->
-> Kanzi Studio creates the locales specified in each PO file and adds the translations from the PO files to the localization table. Kanzi uses localization tables to store the localized text resources and information about which locale uses which project resources.
->
-> In the Library > Localization, double-click the localization table to open it and see the resources in the localization table.
-> 6.
->
-> (Optional) To preview the locales in Kanzi Studio, in the Node Tree select the Screen node, and in the Properties set the Locale property to the locale that you want to see in the Preview.
->
 ## Create triggers to change locales
-
 
 You can change the locale in your Kanzi application by setting the value of the Locale property in the Screen node. In this section, you create controls and use triggers to change the application locale. You also create a selection bar that highlights the selected locale.
 
@@ -122,7 +106,6 @@ In the Prefabs, select the LocaleButton > Text Block 2D node and in the Properti
     - Horizontal Margin property Right property field to 30
     - Vertical Margin property Top property field to 10
     - Vertical Margin property Bottom property field to 10
-
 
 You set the margins of the Text Block 2D node to position the locale buttons in the application interface.
   4.
@@ -166,7 +149,6 @@ In the Node Components > Triggers, press Alt and right-click the Toggle Button: 
     - Value From to Fixed value
     - Fixed Value to the locale that you want to set with this button. For example, to set to default locale, in this case English, select the Invariant Language (Invariant Country) () value.
 
-
 When the user clicks the button, the Set Property action sets the Locale property in the Screen node to the locale that you selected here.
 
 5.
@@ -182,47 +164,28 @@ Repeat the previous step for the other two instances of the LocaleButton prefab:
 
     - Set the Localization.LocaleName property to espaÃ±ol.
     - In the Toggle Button: Toggled On trigger in the Set Property action, set the Fixed Value to Spanish (Spain) (es-ES).
-
-
-> **Tip:** When you need to create the same trigger in several nodes, you can copy that trigger.
->
-> To copy a trigger to a node:
->
-> 1.
->
-> In the Node Tree, select the node that has the trigger that you want to copy. In the Node Components, right-click the trigger and select Copy.
-> 2.
->
-> In the Node Tree, select the node to which you want to copy the trigger. In the Node Components, right-click Triggers and select Paste.
->
-> 6.
->
-> Create the selection bar that shows the selected locale:
->
-> 1.
->
-> In the Prefabs in the LocaleButton prefab, create an Empty Node 2D node, name it SelectionBar, and in the Properties add and set:
->
-> - Background Brush to Color Brush
-> - Layout Width to 5
-> - Layout Height to 70
->
-> 2.
->
-> In the Prefabs, select the LocaleButton prefab. In the Properties, add the State Manager property and set it to LanguageSelected.
->
-> You use the state manager to control the visibility of selection bar when you toggle between the locales.
->
-> 7.
->
-> In the Node Tree, select the instance of the LocaleButton prefab that sets the English locale. In the Properties, add the Toggle State property and set it to 1.
->
-> This way you set the English locale button selected by default when you start your application.
-
+**Tip:** When you need to create the same trigger in several nodes, you can copy that trigger.
+To copy a trigger to a node:
+1.
+In the Node Tree, select the node that has the trigger that you want to copy. In the Node Components, right-click the trigger and select Copy.
+2.
+In the Node Tree, select the node to which you want to copy the trigger. In the Node Components, right-click Triggers and select Paste.
+6.
+Create the selection bar that shows the selected locale:
+1.
+In the Prefabs in the LocaleButton prefab, create an Empty Node 2D node, name it SelectionBar, and in the Properties add and set:
+- Background Brush to Color Brush
+- Layout Width to 5
+- Layout Height to 70
+2.
+In the Prefabs, select the LocaleButton prefab. In the Properties, add the State Manager property and set it to LanguageSelected.
+You use the state manager to control the visibility of selection bar when you toggle between the locales.
+7.
+In the Node Tree, select the instance of the LocaleButton prefab that sets the English locale. In the Properties, add the Toggle State property and set it to 1.
+This way you set the English locale button selected by default when you start your application.
 
 In the Preview when you click a locale name, Kanzi Studio changes the text in the application to that locale and displays the selection bar on the left side of the selected button.
 ## Use a different texture for each locale
-
 
 The application contains a texture that you localize to use a different image for each locale.
 
@@ -262,7 +225,6 @@ In the Library > Localization, double-click the Localization Table (Main) locali
 For example, for the Spanish locale use Image02 and for the Finnish locale use Image03.
 
 If you do not select a resource or value for a locale, Kanzi uses the default resource or value for that locale. The default value is listed in the Default Value column.
-
 
 In the Preview when you click a locale name, Kanzi Studio changes the image in the application to the image that you set for that locale.
 

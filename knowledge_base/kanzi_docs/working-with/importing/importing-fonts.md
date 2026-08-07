@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/importing/importing-fonts.h
 
 # Importing fonts
 
-
 The default font family in Kanzi is [Fira Sans Regular](https://mozilla.github.io/Fira/). The font file is stored in `<KanziInstallation>/Studio/Asset Library/Fonts`. When you want to use your own font, import it to your Kanzi Studio project.
 
 You can use these font types in your Kanzi applications:
@@ -14,10 +13,8 @@ You can use these font types in your Kanzi applications:
 - iType linked fonts (ltt files). See iType linked fonts.
 - Bitmap fonts (fnt files). See Using bitmap fonts.
 
-
 Make sure that the font you use includes all the glyphs for the text that you want to include in your Kanzi application.
 ## Importing fonts to a Kanzi Studio project
-
 
 To import fonts to your project:
 
@@ -40,16 +37,13 @@ You can see all imported fonts in the Library > Font Families.
 
 ## iType linked fonts
 
-
 Use the iType linked fonts to link several TrueType or OpenType fonts and use glyphs from all the linked fonts by referring to a single font file. For example, you can link a font with Latin glyphs and a font with Chinese glyphs to render in your Kanzi application the glyphs used in both languages.
 ### Requirements
-
 
 To create iType linked font files, you need the Monotype iType FontLinking Kit 6.1.0.1. The linked font files that you create with this version of the FontLinking Kit are compatible with iType 5.3.3.
 
 To use the iType linked font files, you need the Kanzi Engine plugin that adds the iType font engine to Kanzi. Submit the request for the Kanzi iType font engine through [support.rightware.com](http://support.rightware.com/).
 ### Installing the iType font engine for Kanzi Studio
-
 
 To install the iType font engine for Kanzi Studio:
 
@@ -64,7 +58,6 @@ For example, copy the `GL_vs<Version>_Release/kzitypeplugin.dll` to the `<KanziI
 
 ### Installing the iType font engine for Android
 
-
 To install the iType font engine for Android:
 
 1.
@@ -75,7 +68,6 @@ Download the `Kanzi-<Version>-android-freetype-itype.zip` file provided by Right
 Extract the zip file to the `<KanziWorkspace>/Engine` directory. When extracting the archive, you can skip files that already exist.
 
 ### Using the iType linked fonts
-
 
 To use the iType linked fonts:
 
@@ -119,9 +111,7 @@ In the Node Tree select a Text Block or Text Box node where you want to use a li
 
 In that Text Block or Text Box node you can now use the glyphs from all font files that you linked in an ltt linked font file.
 
-
 ### Using the iType linked fonts on Android
-
 
 To use the iType linked fonts on Android:
 
@@ -140,7 +130,6 @@ FontEngine = IType
 
 ```
 
-
 See FontEngine.
 4.
 
@@ -156,7 +145,6 @@ externalNativeBuild {
 
 ```
 
-
 with
 
 ```
@@ -169,9 +157,7 @@ externalNativeBuild {
 
 ```
 
-
 ## Using bitmap fonts
-
 
 Use bitmap fonts when you want to use fixed-pixel size text and want to use less resources to render the text. The advantage of bitmap fonts is that rendering bitmap fonts requires less resources than TrueType or linked iType fonts require. The disadvantage of bitmap fonts is that when you scale a bitmap font, the rendered result can be of lower quality.
 

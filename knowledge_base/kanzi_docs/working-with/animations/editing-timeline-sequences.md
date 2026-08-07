@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/animations/editing-timeline
 
 # Editing timeline sequences
 
-
 Use a Timeline Sequence to combine a set of Timeline Entry resources.
 
 To edit a timeline sequence, in the Library > Animations > Timeline Sequences double-click the timeline sequence you want to edit. Timeline Sequence Editor opens. [](../../_images/timeline-sequence-editor.svg)
@@ -53,7 +52,6 @@ Add a new track to the bottom of the track view. |   |
 Remove the last track from the track view and the timeline sequence. Also removes the timeline entry of that track. |   |
 ## Editing relations between animations in a timeline sequence
 
-
 In timeline sequence with more than one timeline entry or animation clip, you can edit the relation between the animations using the Timeline Sequence Editor.
 
 To edit relations between animations in a timeline sequence:
@@ -67,11 +65,9 @@ To edit the animations in a timeline sequence, click and drag timeline entries o
 
 ## Adding new timeline entries
 
-
 To add a new timeline entry or an animation clip to a timeline sequence, drag it from the Library to the Timeline Sequence Editor
 
 The Timeline Sequence Editor adds a new timeline entry at the point where you drop the item.
 ## Blending animations
-
 
 To make animations in a timeline entry blend with each other, in the Library select each timeline entry, and in the Properties set the Entry Weight property for each timeline entry.

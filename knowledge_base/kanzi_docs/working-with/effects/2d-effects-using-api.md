@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/effects/2d-effects-using-ap
 
 # Using effects in the Kanzi Engine API
 
-
 You can use the Kanzi Engine API to create effects for 2D nodes.
 ## Assigning effects to nodes
-
 
 To create an effect:
 
@@ -25,7 +23,6 @@ NodeEffectPrefab2DSharedPtr shadowEffectPrefab =
 
 ```
 
-
 To set a 2D node to use an effect:
 
 ```
@@ -34,13 +31,11 @@ node2d->setProperty(Node2D::EffectPrefabProperty, shadowEffectPrefab);
 
 ```
 
-
 ```
 // To assign an effect prefab to a 2D node, call the Node2D::setEffectPrefab method.
 node2d->setEffectPrefab(shadowEffectPrefab);
 
 ```
-
 
 To disable an effect:
 
@@ -51,7 +46,6 @@ node2d->setEffectPrefab(shadowEffectPrefab);
 node2d->setEffectPrefab(nullptr);
 
 ```
-
 
 To set multiple 2D nodes to use the same effect:
 
@@ -72,7 +66,6 @@ node2->setEffectPrefab(shadowEffectPrefab);
 ```
 
 ## Creating a blur effect
-
 
 Use the Blur Effect 2D effect to apply a Gaussian blur to a 2D node.
 
@@ -103,10 +96,8 @@ blurEffect->setMasked(true);
 
 ```
 
-
 For details, see the `BlurEffect2D` class.
 ## Creating a mask effect
-
 
 Use the Mask Effect 2D effect to apply a mask to a 2D node.
 
@@ -137,10 +128,8 @@ maskEffect->setStretch(MaskEffect2D::Stretch::Uniform);
 
 ```
 
-
 For details, see the `MaskEffect2D` class.
 ## Creating an outline effect
-
 
 Use the Outline Effect 2D effect to apply an outline to the content of a 2D node.
 
@@ -171,10 +160,8 @@ outlineEffect->setSoftness(0.7f);
 
 ```
 
-
 For details, see the `OutlineEffect2D` class.
 ## Creating a shadow effect
-
 
 Use the Shadow Effect 2D effect to apply a shadow to the content of a 2D node.
 
@@ -209,10 +196,8 @@ shadowEffect->setAngle(55.f);
 
 ```
 
-
 For details, see the `ShadowEffect2D` class.
 ## Assigning multiple effects to a 2D node
-
 
 To assign multiple effects to a 2D node using the Kanzi Engine API:
 
@@ -244,10 +229,8 @@ node->setEffectPrefab(effectStackPrefab);
 
 ```
 
-
 For details, see the `EffectStack2D` class.
 ## Using bindings with effects
-
 
 To use bindings with effects:
 
@@ -293,7 +276,6 @@ node->setProperty(ShadowEffect2D::DistanceProperty, 20.f);
 ```
 
 ## Creating a custom effect
-
 
 You can use the Kanzi Engine API to create your own effects for 2D nodes.
 
@@ -390,6 +372,5 @@ NodeEffectRenderer2DUniquePtr EmptyEffect2D::createRendererOverride()
 }
 
 ```
-
 
 For details, see the `NodeEffect2D` class.

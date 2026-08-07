@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/rendering/rendering-decals.
 
 # Rendering decals
 
-
 Use a Pipeline State render pass to render decals on the surfaces of 3D objects without z-fighting. You can set the polygon depth offset that you want to apply to the elements rendered by the Pipeline State render pass.
 
 To render decals:
@@ -61,6 +60,5 @@ Select the Pipeline State render pass and in the Properties add and set the Poly
 
     - Derivate Multiplier sets the multiplier for the depth change derivative of each pixel.
     - Constant Multiplier multiplies the smallest measurable unit of depth, dependent on the target platform.
-
 
 Kanzi typically shows closer to the camera those polygons that have a negative depth offset.

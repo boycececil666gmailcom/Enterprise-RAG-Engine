@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/best-practices/images-and-textures/compr
 
 # Compressing textures
 
-
 In Kanzi, you can use the ASTC and ETC algorithms for compressing textures, as well as precompressed DXT textures. Kanzi also supports Basis Universal, a supercompressed LDR/HDR GPU texture interchange system.
 
 If your application tries to read more data from the memory than the memory can handle, reading the memory becomes a performance bottleneck for your application. If your target hardware supports any of these compression methods, use texture compression to reduce the memory bandwidth and improve the performance of your application. You can achieve the relatively smallest file size and the best image quality with the modern ASTC algorithm.
@@ -19,7 +18,6 @@ For example, an unpacked 256 by 256 pixel RGB texture uses 196 kb (256 * 256 * 3
 - With ASTC that texture uses 16 kb (((256/8)^2)*16)/1024 with a block size of 8 by 8. With a block size of 12 by 12, the texture uses 8 kb.
 - With ETC that texture uses 32 kb (256 * 256 / 2).
 
-
 If your target hardware does not support any of these compression algorithms, in some cases raw image format can be faster than any compression algorithm. This is particularly true when processing single small images.
 
 If your target hardware does not support the selected texture compression algorithm, when you run your Kanzi application on your target device, Kanzi prints a warning message to the log. Kanzi paints black the surfaces where you use compressed texture formats that your target hardware does not support.
@@ -27,12 +25,9 @@ If your target hardware does not support the selected texture compression algori
 Because OpenGL expects DXT texture data to have the bottom row first, compress DXT files vertically flipped. Note that you can use the DXT files in your Kanzi application, but the DXT files are not supported in the windows emulation because of GPU limitations. See Importing images.
 
 Kanzi Studio compresses the images when you create the kzb file, but you can also compress them manually. See Preprocessing images manually.
-
-> **Tip:** When Kanzi Studio compresses images it by default uses all available CPU resources of your computer. To free up CPU resources for other applications while Kanzi Studio compresses multiple images, select Edit > User Preferences and in the Properties tab adjust the value of the Images to compress in parallel setting.
->
-> The Images to compress in parallel setting limits the number of logical cores Kanzi Studio uses when preprocessing multiple images. The number of logical cores in your computer determines the Maximum value.
+**Tip:** When Kanzi Studio compresses images it by default uses all available CPU resources of your computer. To free up CPU resources for other applications while Kanzi Studio compresses multiple images, select Edit > User Preferences and in the Properties tab adjust the value of the Images to compress in parallel setting.
+The Images to compress in parallel setting limits the number of logical cores Kanzi Studio uses when preprocessing multiple images. The number of logical cores in your computer determines the Maximum value.
 ## Using the ASTC algorithm
-
 
 If your target hardware supports ASTC algorithm, use the ASTC algorithm for the best results. The ASTC algorithm creates smaller files and results in better image quality than the ETC algorithm.
 
@@ -67,14 +62,11 @@ Very fast, Fast, Medium, Thorough, and Exhaustive refer to the amount of time it
     - Very fast takes the least amount of time to compress an image.
     - Exhaustive takes the most amount of time to compress an image and results in the best quality.
 
-
 Use fast compressions for fast and good results and slower compressions for better quality.
 
 For example, for the best final result use Exhaustive. During development Very fast is the most useful.
 
-
 ## Using the ETC algorithm
-
 
 To use the ETC algorithm:
 
@@ -98,9 +90,7 @@ To set the quality of ETC2 compression use the Effort property.
 The value of Effort corresponds to the compression time and image quality, not to the resulting size or decompression time. For the best image quality result set Effort to 100. During development 0 is the most useful because it gives the shortest compression time.
   - ETC2 with alpha to use the ETC2 compression scheme for images with alpha channel.
 
-
 ## Using the Basis Universal algorithm
-
 
 To use the Basis Universal algorithm:
 
@@ -125,15 +115,10 @@ UASTC LDR, UASTC HDR 4x4, UASTC HDR 6x6, and ETC1S refer to the texture mode:
 
   - UASTC Encoding Level to select UASTC 4x4 compression level.
 
-
   - ETC1S Encoding Level to select ETC1S compression level.
-
 
 ## Preprocessing images manually
 
-
 Kanzi Studio compresses the images when you create the kzb file, but you can also compress them manually. To manually preprocess images, in the Library > Resource Files > Images right-click one or more images you want to preprocess, and select Preprocess images.
-
-> **Tip:** When Kanzi Studio compresses images it by default uses all available CPU resources of your computer. To free up CPU resources for other applications while Kanzi Studio compresses multiple images, select Edit > User Preferences and in the Properties tab adjust the value of the Images to compress in parallel setting.
->
-> The Images to compress in parallel setting limits the number of logical cores Kanzi Studio uses when preprocessing multiple images. The number of logical cores in your computer determines the Maximum value.
+**Tip:** When Kanzi Studio compresses images it by default uses all available CPU resources of your computer. To free up CPU resources for other applications while Kanzi Studio compresses multiple images, select Edit > User Preferences and in the Properties tab adjust the value of the Images to compress in parallel setting.
+The Images to compress in parallel setting limits the number of logical cores Kanzi Studio uses when preprocessing multiple images. The number of logical cores in your computer determines the Maximum value.

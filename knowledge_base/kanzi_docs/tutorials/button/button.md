@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/button/button.html
 
 # Tutorial: Creating a button
 
-
 In this tutorial you learn how to create a button. Kanzi allows you to create buttons using only triggers and actions. However, to create a robust button use the Kanzi state manager and control the state of the button using the Is Down property.
 
 The difference between the two approaches is that when you use the state manager you always know in which state the button is. For example, when a user clicks a button created with triggers and actions, the action sends the message, but your application is not aware of the state of the button. When you use the state manager, you can always check which state the button is in and even revert the state when needed.
@@ -19,7 +18,6 @@ This tutorial assumes that you understand the basics of working with Kanzi Studi
 
 ## Get the tutorial
 
-
 To get the tutorial, in the Kanzi Studio Quick Start window, click Projects and select the Tutorials tab. Next to the Button tutorial, click .
 
 Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` directory. You can find:
@@ -28,7 +26,6 @@ Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` director
 - The completed tutorial in the `<KanziWorkspace>/Tutorials/Button/Completed` directory.
 
 ## Create a button
-
 
 To create a button:
 
@@ -50,9 +47,7 @@ In the Node Tree select the Button 2D node and in the Properties add and set:
   - Horizontal Alignment to Center
   - Vertical Alignment to Center
 
-
 ## Create the button states
-
 
 In this section you use the state manager to define what the button looks like when the user presses and releases it.
 
@@ -121,7 +116,6 @@ When you want to try out in the Preview how the state manager works in your appl
 In the Preview when you click the button and hold down the mouse button you enter the Pressed state. When you release the mouse button you enter the Released state.
 
 ## Whatâs next?
-
 
 In this tutorial you learned how to create a button that changes its appearance based on user actions. Now you can:
 

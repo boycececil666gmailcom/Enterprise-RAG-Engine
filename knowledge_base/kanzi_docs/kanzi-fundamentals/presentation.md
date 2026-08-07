@@ -7,7 +7,6 @@ source: https://docs.kanzi.com/4.1.0/en/kanzi-fundamentals/presentation.html
 
 ## Node tree
 
-
 Node tree defines the content structure and its layout on the screen.
 
 The node tree is constructed from nodes that display content (for example, Image node) and implement logic (for example, Button 2D node). The same node tree supports 2D and 3D nodes and provides the means to connect them.
@@ -200,7 +199,6 @@ Kanzi has these light node types:
 - Point Light emits light from a specific location uniformly to all directions (360 degrees).
 - Spot Light emits light from a specific location towards a specified direction in the shape of a cone.
 
-
 See Using the light nodes.  |
 |   |
 
@@ -211,13 +209,11 @@ Use the Scene node to show 3D content in your Kanzi application.
 See Using the Scene node.  |
 ## Class hierarchy organization
 
-
 The base class is `Node`. The base class for 2D nodes is `Node2D` and allows adding 2D nodes as child nodes. `Node3D` works in the same way for 3D nodes. `Node` class does not have the means to connect child nodes, so that the `Node2D`, `Node3D`, and derived classes can define what types of nodes they accept as child nodes. For example, Viewport 2D derives from the `Node2D` class and therefore accepts 2D child nodes, but also accepts one child node of the type Scene. This way Kanzi can arrange 2D and 3D nodes in a heterogeneous tree.
 
 To iterate the tree in a homogeneous way use the Visitor or Abstract Child APIs:
 
 - For Visitor API, see `Node::visit` or `Node::visitDescendants`.
 - For Abstract Child APIs, see `Node::getAbstractChildCountOverride`, `Node::findAbstractChild`, `Node::addAbstractChildOverride`, and `Node::removeAbstractChildOverride`.
-
 
 Each node has the access to its parent. The type of parent pointer is `Node` because the type of the parent can be either 2D or 3D.

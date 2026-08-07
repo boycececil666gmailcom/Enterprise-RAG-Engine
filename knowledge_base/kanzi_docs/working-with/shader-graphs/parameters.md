@@ -5,12 +5,9 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/shader-graphs/parameters.ht
 
 # Parameters
 
-
 Parameters expose a constant value in a shader graph as a named GLSL uniform that you can tune from Kanzi Studio. Without a parameter, the value of a constant node is baked into the generated shader as a literal. To change the value, you must edit the graph and regenerate the shader. After you promote a constant to a parameter, the generated shader declares it as a `uniform` and Kanzi Studio shows it in the Properties panel of the material that uses the shader graph, so designers and integrators can tune the value at runtime without reopening the Shader Graph Editor.
-
-> **Note:** Parameters are part of the experimental Shader Graph Editor. To enable the editor, see Enabling the Shader Graph Editor.
+**Note:** Parameters are part of the experimental Shader Graph Editor. To enable the editor, see Enabling the Shader Graph Editor.
 ## Promoting a constant to a parameter
-
 
 To promote a constant node:
 
@@ -20,7 +17,6 @@ In the Shader Graph Editor, right-click the constant node that you want to expos
 2.
 
 Select Promote to Parameter.
-
 
 Kanzi Studio creates a parameter from the node, adds it to the Parameters panel, and binds the node to the new parameter. The next time you generate the shader, Kanzi Studio emits a uniform declaration instead of an inlined literal for that value.
 
@@ -74,7 +70,6 @@ texture |
 Math, built-in, and output nodes cannot be promoted.
 ## Working with the Parameters panel
 
-
 The Parameters panel lists every parameter in the graph. Each row shows the parameter name and a type-aware editor for the default value.
 
 The editor adapts to the parameter type:
@@ -86,22 +81,17 @@ The editor adapts to the parameter type:
 
 ### Editing a default value
 
-
 Edit the value field in the Parameters panel. Kanzi Studio applies the new default to every node bound to the parameter. The next time you generate the shader, the new default ships as the initial value of the uniform.
 ### Renaming a parameter
-
 
 Edit the name field of the parameter row. The new name appears in the Parameters panel and, after the next shader generation, in the Properties panel of the material that uses the shader graph.
 ### Selecting bound nodes
 
-
 To find the nodes that a parameter drives, click Select instances on the parameter row. Kanzi Studio selects every node bound to the parameter on the canvas.
 ### Adding more bound nodes
 
-
 Drag a parameter row onto the canvas. Kanzi Studio creates a new constant node bound to the parameter. All bound nodes share the parameter default value. When you edit the default, every bound node updates.
 ### Unpromoting (deleting a parameter)
-
 
 There are two ways to unpromote, with different scope:
 
@@ -111,10 +101,8 @@ There are two ways to unpromote, with different scope:
   - Delete only the parameter. The bound constant nodes remain on the canvas with their last value as inlined literals.
   - Delete the parameter and every node bound to it.
 
-
 After the last binding to a parameter is removed (whether by unbinding nodes one by one or by deleting the parameter), the next generated shader inlines the constant values again instead of declaring a uniform.
 ## Tuning parameters in Kanzi Studio
-
 
 Every parameter in the graph becomes a property on the material that uses the shader graph. Generate the shader, then in Kanzi Studio:
 
@@ -128,12 +116,10 @@ In the Properties, find the property whose name matches the parameter.
 
 Edit the property the same way you edit any built-in material property.
 
-
 Changes you make in the Properties panel flow back to the Shader Graph Editor: the new value becomes the parameter default, and every node bound to the parameter updates to match.
 
 This round-trip lets a graph author publish a curated set of tunable values that designers and integrators can adjust without touching the graph itself.
 ## Generated GLSL: uniform versus literal
-
 
 Promoting a constant changes the generated GLSL from an inlined literal to a `uniform` declaration.
 
@@ -148,7 +134,6 @@ void main() {
 
 ```
 
-
 **After promotion:** the same value becomes a uniform that Kanzi Studio declares at the top of the shader, and the rest of the code reads the uniform:
 
 ```
@@ -160,7 +145,6 @@ void main() {
 }
 
 ```
-
 
 Kanzi Studio only declares uniforms for parameters that the Output node reaches through the graph. Parameters whose bound nodes are disconnected do not appear in the generated shader.
 

@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/buttons/buttons.html
 
 # Buttons
 
-
 Use buttons to create interactions through clicking the objects contained within buttons.
 
 Kanzi has these buttons:

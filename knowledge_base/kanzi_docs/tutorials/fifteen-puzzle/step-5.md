@@ -5,12 +5,10 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/fifteen-puzzle/step-5.html
 
 # Step 5 - React to input messages
 
-
 In this step, you learn how to use message handlers in a Lua script.
 
 You first declare a message handler and then add the functionality to the message handler to move the pieces.
 ## Declare a message handler
-
 
 To declare a message handler:
 
@@ -69,10 +67,8 @@ end
 
 ```
 
-
 When you save the script and in the **Preview** click , and then click any piece, the script prints to the **Log** the index of the clicked piece and its coordinates in the **Grid** node.
 ## Move puzzle pieces on click
-
 
 Note that the message handlers persist after the script exits, even if you edit the script further. This script always removes all the created nodes with the `grid:removeAllChildren()`, which also removes the message handlers.
 
@@ -125,7 +121,6 @@ end
 
 ```
 
-
 When you save the script and in the **Preview** click , and then click any piece next to the empty slot, the script:
 
 1.
@@ -134,6 +129,5 @@ Moves the piece.
 2.
 
 Prints to the **Log** the index of the clicked piece, and coordinates of its previous and current location in the grid.
-
 
 Previous step Next step

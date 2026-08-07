@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/focus/focus.html
 
 # Focus
 
-
 Key focus forwards hardware key messages to the correct user interface element in your application. For example, the user can press the arrow keys on the keyboard to move a slider or press the Enter key to click a button.
 
 Kanzi organizes nodes in focus scopes. Focus scopes are nodes which assist in focus chain navigation handling. They group the child nodes and drive the focus navigation within that group. They also act like a focus proxy, forwarding the focus to one of their focusable child nodes. When you move the focus away from a focus scope, that scope remembers the last-focused child node.
@@ -30,7 +29,6 @@ You can move focus within the boundaries of a focus group and outside of a focus
     - **Auto-closing modal overlay** is similar to modal overlay, except that when the overlay is an Activity in a Parallel Activity Host, the Parallel Activity Host deactivates that Activity when user input originates from outside the boundaries of that Activity.
     - **Modeless overlay** propagates the key and touch input that originates from outside its boundaries, but keeps the focus navigation within the focus scope boundaries, just like a modal overlay.
     - **Auto-closing modeless overlay** is similar to modeless overlay, except that when the overlay is an Activity in a Parallel Activity Host, the Parallel Activity Host deactivates that Activity when user input originates from outside the boundaries of that Activity.
-
 
 - **Focus state** reports the focus state of a node or nodes in a focus scope. These are the available values for the Focus State property:
 |
@@ -69,6 +67,5 @@ Key Focus |
 The node is the key focus node of the application. |
 
 A node in the focus scope is the key focus node of the application. |
-
 
 To learn more about creating focus navigation for your application, see Using focus.

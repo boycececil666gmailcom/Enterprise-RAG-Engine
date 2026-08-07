@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/examples/examples.html
 
 # Examples
 
-
 Here you can find examples that show how some features in Kanzi work and show you how to use those features in your own projects.  [](csv-plugin/csv-plugin-example.html)
 
 Kanzi Studio custom importer for localization   [](layout/layout.html)

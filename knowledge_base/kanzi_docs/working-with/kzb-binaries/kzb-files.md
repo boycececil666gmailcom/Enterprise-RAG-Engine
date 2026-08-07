@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/kzb-binaries/kzb-files.html
 
 # Kzb files
 
-
 A kzb file contains contents of a Kanzi Studio project. To run your Kanzi application, you must export the contents of the Kanzi Studio project of that application to a kzb file.
 
 See Using kzb files.
@@ -14,7 +13,6 @@ When the user starts a Kanzi application, Kanzi loads the kzb files of the appli
 
 If your application uses more than one kzb file, you can set in the application configuration which kzb files the Kanzi application loads on startup. See Application configuration > Loading.
 ## Contents of a kzb file
-
 
 The contents and size of a kzb file depend on your Kanzi Studio project and how you configure the kzb export in Kanzi Studio. The size of the kzb file impacts the time it takes to load your application and the amount of resources that the application uses.
 

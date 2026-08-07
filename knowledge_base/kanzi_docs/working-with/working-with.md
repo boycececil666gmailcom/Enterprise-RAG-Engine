@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/working-with.html
 
 # Working with â¦
 
-
 Here you can find information about Kanzi features.  [](2d-content/adjusting-the-appearance.html)
 
 2D content   [](effects/2d-effects.html)

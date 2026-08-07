@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/progressive-rendering/step-3.h
 
 # Step 3 - Fine-tune content rendered by the Progressive Rendering Viewport 2D node
 
-
 In this step, you first apply anti-aliasing to the car rendered by the Progressive Rendering Viewport 2D node, and then animate the rotation of that car.
 ## Apply anti-aliasing to the content rendered by the Progressive Rendering Viewport 2D node
-
 
 In this section, you use multisampling to reduce aliasing in the content rendered by the Progressive Rendering Viewport 2D node.
 
@@ -18,7 +16,6 @@ For example, set Multisample Level to 8.
 
 See the documentation of the device on which you want to run your Kanzi application for supported values, because the number of anti-aliasing samples depends on the device. If you set the Multisample Level property to a value that your device does not support, Kanzi Engine clamps the value to the largest value supported by the device driver.
 ## Animate the content rendered by the Progressive Rendering Viewport 2D node
-
 
 In this section, you animate the rotation of the car that you render using the Progressive Rendering Viewport 2D node.
 
@@ -45,7 +42,6 @@ You animate nodes in a Progressive Rendering Viewport 2D by setting the Timeline
 
 In the State Tools, click  in the Slow state.
 
-
 When the Toggle Car Animation enters the Slow state, Kanzi plays in the Progressive Rendering Viewport 2D node the Slow Rotation timeline sequence.
 3.
 
@@ -56,12 +52,10 @@ When the Toggle Car Animation enters the Fast state, Kanzi plays in the Progress
 
 In the State Tools, click Edit State Manager to deactivate the State Tools.
 
-
 In the Preview when you click the area between the gauges, you toggle between the Stop, Slow, and Fast states.
 
 Previous step
 ## Whatâs next?
-
 
 In this tutorial, you learned how to distribute the rendering workload across several frames to reduce the amount of work and time required to render the content in a single frame. Now you can:
 

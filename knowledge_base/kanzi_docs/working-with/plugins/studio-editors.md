@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/plugins/studio-editors.html
 
 # Kanzi Studio property editors for property types declared in Kanzi Engine plugins
 
-
 Kanzi Studio property type editors enable users to set the values for the property types you declare in a Kanzi Engine plugin. This table lists the available Kanzi Studio editors you can declare for a property type in a Kanzi Engine plugin. If you do not set an editor, Kanzi assigns a default editor.
 |
 

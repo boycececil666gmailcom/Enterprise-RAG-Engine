@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/animations/creating-animati
 
 # Creating animations and timelines using the Kanzi Engine API
 
-
 The Kanzi animation system consists of animations and timelines. Animations define how values of specific type change in time, and timelines map animations to the properties of objects you want to animate.
 
 You can use the Kanzi Engine API to create animations and timelines:
@@ -29,7 +28,6 @@ To create parallel timelines using the Kanzi Engine API, see Creating parallel t
 
 ## Creating from-to animations using the Kanzi Engine API
 
-
 From-to animation defines from which to which value to change the value of a property. You can omit either of these values to animate either from the current value or to the current value of the property. From-to animations use an easing curve that defines the rate of change for the animation. You can use one of the easing curves that comes with Kanzi, or define your own.
 
 To create a from-to animation:
@@ -43,7 +41,6 @@ FloatLinearFromToAnimationSharedPtr linearAnimation = FloatLinearFromToAnimation
 
 ```
 
-
 To animate a property value in a node using a from-to animation:
 
 ```
@@ -52,7 +49,6 @@ To animate a property value in a node using a from-to animation:
 PropertyAnimationTimelineSharedPtr propertyTimeline = PropertyAnimationTimeline::create(domain, ".", Node::WidthProperty, linearAnimation);
 
 ```
-
 
 To animate a property field value in a node using a from-to animation:
 
@@ -64,7 +60,6 @@ PropertyFieldAnimationTimelineSharedPtr propertyFieldTimeline = PropertyFieldAni
 propertyFieldTimeline->addEntry(PropertyFieldScaleX, linearAnimation);
 
 ```
-
 
 To create a float from-to animation that uses the back easing curve and the ease out easing mode:
 
@@ -81,7 +76,6 @@ backAnimation->setEasingMode(AnimationEaseOut);
 
 ```
 
-
 To play an animation regardless of the timeline type:
 
 ```
@@ -94,10 +88,8 @@ domain->getRootTimelineClock()->addTimelinePlayback(playback);
 
 ```
 
-
 For details, see the `FromToAnimation` class.
 ## Creating keyframe animations using the Kanzi Engine API
-
 
 Keyframe animation uses keyframes that define the property value and time at which the animation reaches that value. In Kanzi you can create linear, step, and BÃ©zier spline keyframes.
 
@@ -114,7 +106,6 @@ keyframeAnimation->addLinearKeyframe(chrono::seconds(1), 100.0f);
 
 ```
 
-
 To animate a property value in a node using a keyframe animation:
 
 ```
@@ -123,7 +114,6 @@ To animate a property value in a node using a keyframe animation:
 PropertyAnimationTimelineSharedPtr propertyTimeline = PropertyAnimationTimeline::create(domain, ".", Node2D::WidthProperty, keyframeAnimation);
 
 ```
-
 
 To animate a property field value in a node using a keyframe animation:
 
@@ -135,7 +125,6 @@ PropertyFieldAnimationTimelineSharedPtr propertyFieldTimeline = PropertyFieldAni
 propertyFieldTimeline->addEntry(PropertyFieldRotationZ, keyframeAnimation);
 
 ```
-
 
 To create a keyframe animation that uses Bezier keyframes to move an object on a sideways figure eight shaped path:
 
@@ -181,7 +170,6 @@ timeline->addEntry(PropertyFieldTranslationY, keyframeAnimationY);
 
 ```
 
-
 To play an animation regardless of the timeline type:
 
 ```
@@ -194,10 +182,8 @@ domain->getRootTimelineClock()->addTimelinePlayback(playback);
 
 ```
 
-
 For details, see the `KeyframeAnimation` class.
 ## Creating property timelines using the Kanzi Engine API
-
 
 Property timeline applies an animation to a property of an object. For example, to change the layout size of an Image node, use the property timeline to animate the Layout Width and Layout Height properties of the node.
 
@@ -210,7 +196,6 @@ PropertyAnimationTimelineSharedPtr propertyTimeline = PropertyAnimationTimeline:
 
 ```
 
-
 To play an animation regardless of the timeline type:
 
 ```
@@ -223,10 +208,8 @@ domain->getRootTimelineClock()->addTimelinePlayback(playback);
 
 ```
 
-
 For details, see the `PropertyAnimationTimeline` class.
 ## Creating property field timelines using the Kanzi Engine API
-
 
 Property field timeline applies an animation to one or more fields of a property of an object. For example, you can use a separate animation for each color channel to change the color of the text in a Text Block node.
 
@@ -241,7 +224,6 @@ propertyFieldTimeline->addEntry(PropertyFieldScaleX, linearAnimation);
 
 ```
 
-
 To play an animation regardless of the timeline type:
 
 ```
@@ -254,10 +236,8 @@ domain->getRootTimelineClock()->addTimelinePlayback(playback);
 
 ```
 
-
 For details, see the `PropertyFieldAnimationTimeline` class.
 ## Creating parallel timelines using the Kanzi Engine API
-
 
 Parallel timeline allows you to group timelines which Kanzi plays at the same time. A parallel timeline ends when the animations in the last child timeline end. Use this timeline to organize collections of timelines and create a composition of timelines.
 
@@ -275,7 +255,6 @@ parallelTimeline->addChild(propertyFieldTimeline);
 
 ```
 
-
 To play an animation regardless of the timeline type:
 
 ```
@@ -288,10 +267,8 @@ domain->getRootTimelineClock()->addTimelinePlayback(playback);
 
 ```
 
-
 For details, see the `ParallelTimeline` class.
 ## Configuring timelines using the Kanzi Engine API
-
 
 A timeline consists of a series of iterations played successively, starting at a specified start time. Each iteration is a continuous portion of timeline content which Kanzi plays in a specific manner. Timeline content can consist of one or more animations, or child timelines.
 
@@ -330,7 +307,6 @@ Start time sets when the first iteration of the timeline starts to play. Set sta
   - Positive value to make the first iteration start to play after the length of time set by start time.
   - Negative value to make Kanzi clip the beginning of the timeline by the length of time set by start time. This makes the timeline act as if it started at some time in the past.
 
-
 A timeline applies its content only after its global time exceeds the start time property of the timeline. After Kanzi has played the timeline until the end, the timeline applies its content from the end indefinitely until it is removed. If you have a parallel timeline with repeat count set to multiple repeats, and you add to it a timeline with a non-zero positive start time, the child timeline starts playing in the beginning of each iteration of the parallel timeline only after its global time exceeds its start time.
 
 Note that not all combinations of timeline playback properties are valid. For example, if you set the repeat count of a timeline to infinite and add the timeline to a parallel timeline as a child timeline, the content duration of the parallel timeline becomes infinite. In this case it is not allowed to set the direction behavior of the parallel timeline to reverse, because it does not make sense to revert infinite content. If you do set the direction behavior to reverse, Kanzi Engine internally reverts it to normal and prints a warning message to the log.
@@ -349,7 +325,6 @@ timelineClock->addTimelinePlayback(timelinePlayback);
 
 ```
 
-
 To stop the playback of a timeline:
 
 ```
@@ -357,7 +332,6 @@ To stop the playback of a timeline:
 timelineClock->removeTimelinePlayback(*timelinePlayback);
 
 ```
-
 
 To get the start time of a timeline:
 
@@ -367,7 +341,6 @@ chrono::milliseconds startTime = timeline->getStartTime();
 
 ```
 
-
 To set the start time of a timeline:
 
 ```
@@ -376,7 +349,6 @@ To set the start time of a timeline:
 timeline->setStartTime(chrono::milliseconds(100));
 
 ```
-
 
 To get the clipping of a timeline:
 
@@ -388,7 +360,6 @@ chrono::milliseconds clipStartTime = timeline->getClipStartTime();
 optional<chrono::milliseconds> clipDuration = timeline->getClipDuration();
 
 ```
-
 
 To set the clipping of a timeline:
 
@@ -403,7 +374,6 @@ timeline->setClipDuration(chrono::milliseconds(200));
 
 ```
 
-
 To get the amount of repeat times of a timeline:
 
 ```
@@ -411,7 +381,6 @@ To get the amount of repeat times of a timeline:
 unsigned int repeatCount = timeline->getRepeatCount();
 
 ```
-
 
 To set the amount of repeat times of a timeline:
 
@@ -426,7 +395,6 @@ timeline->setRepeatCount(0);
 
 ```
 
-
 To get the duration scale of a timeline:
 
 ```
@@ -434,7 +402,6 @@ To get the duration scale of a timeline:
 float durationScale = timeline->getDurationScale();
 
 ```
-
 
 To set the duration scale of a timeline:
 
@@ -446,7 +413,6 @@ timeline->setDurationScale(4.0f);
 
 ```
 
-
 To get the direction of a timeline playback:
 
 ```
@@ -454,7 +420,6 @@ To get the direction of a timeline playback:
 enum Timeline::DirectionBehavior directionBehavior = timeline->getDirectionBehavior();
 
 ```
-
 
 To set the direction of a timeline playback:
 
@@ -465,6 +430,5 @@ To set the direction of a timeline playback:
 timeline->setDirectionBehavior(Timeline::DirectionBehaviorPingPong);
 
 ```
-
 
 For details, see the `Timeline` class.

@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/images/using-images.html
 
 # Using the Image node
 
-
 Use the Image node to show a bitmap image.
 
 Use image files to bring bitmap assets to Kanzi Studio. You can import images to Kanzi in these file formats:
@@ -16,10 +15,8 @@ Use image files to bring bitmap assets to Kanzi Studio. You can import images to
 - .dds, can contain cubemaps, mipmaps, or both
 - .bmp, .exr, .gif, .hdr, .ico, .iff, .jng, .jpg, .jpeg, .jif, .mng, .pcx, .pmb, .pgm, .ppm, .pfm, .pict, .ras, .sgi, .tiff, .tif, .wbmp, .xmb, and .xpm
 
-
 For optimal application performance, make sure that you correctly set up the images in your Kanzi Studio project. See Images and textures best practices.
 ## Creating an Image node
-
 
 To create an Image node:
 
@@ -30,14 +27,12 @@ In the Assets window click Import Assets.
 
 Select the files that you want to import and click Open.
 
-
 1.
 
 Drag an image from the Assets and drop it either in the Preview or any 2D node in the Node Tree.
 2.
 
 (Optional) For the image you use you can set the target format that is the most suitable for your application. See Setting the target format for an image.
-
 
 or
 
@@ -64,7 +59,6 @@ The Image node inherits the width and height from the image set in the Image pro
 
 ## Setting the target format for an image
 
-
 When you export your project to a kzb file, Kanzi Studio reads the images in the project using the format of the original image and writes the images to a kzb file in the format you set with the Target Format property for each image.
 
 If the file format of the original image is the same as the format you select in the Target Format property, Kanzi Studio does not modify the image when it writes the image to a kzb file under these conditions:
@@ -80,7 +74,6 @@ You can set the value of the Generate Mipmaps property in each image file.
 You can set the value of the Round up Image Dimensions to Nearest Power of Two property in the Project > Properties.
 
 When you enable the Round up Image Dimensions to Nearest Power of Two property, Kanzi Studio rounds up the width and height of the images in your project to the nearest power of two during kzb file export. For example, Kanzi Studio exports an image of the size 40 by 30 pixels to the kzb file in the size 64 by 32 pixels.
-
 
 If your image is in JPEG or PNG format and you do not want Kanzi Studio to modify the image that it exports to a kzb file, in the image Properties enable the Use Original Image property.
 
@@ -119,11 +112,9 @@ This is the default value and results in the fewest artifacts in sRGB images.
 
 This can give better results for images created for the standard color workflow.
 
-
 See Preparing images in third-party tools.
 
 ## Using the PNG compression
-
 
 When you use PNG compression keep in mind that because the compressed PNG images do not go to the GPU in compressed format, PNG compression affects the loading of a PNG image data from a kzb file to the device memory.
 
@@ -146,12 +137,9 @@ In the Properties set the PNG Compression Level property to the compression you 
   - Best compression speed (zlib level 1) creates a larger file, but compresses quickly
   - Default (zlib level 6) creates a smaller file, but takes longer to compress. This is the default option of the FreeImage library which Kanzi Studio uses for PNG images.
   - Best compression (zlib level 9) creates the smallest file, but takes the most time to compress
+**Tip:** You can set the value of the PNG Compression Level property in the Project > Properties and in the properties for each image file.
 
-
-> **Tip:** You can set the value of the PNG Compression Level property in the Project > Properties and in the properties for each image file.
->
 ## Applying custom rendering to an Image node
-
 
 Apply custom rendering to Image nodes to create post-processing effects. For example, you can convert color images in a 2D node to grayscale.
 
@@ -199,7 +187,6 @@ In the shader, use these Kanzi default uniforms:
     - `ContentTexture` to define the texture that the rendered node provides when rendering
     - `RenderOpacity` to define the opacity of the rendered node
 
-
 See Shader uniforms.
 
 ```
@@ -226,7 +213,6 @@ void main()
 
 ```
 
-
 2.
 
 In the Library, press Alt and right-click Materials and Textures and select Material Brush. In the Properties, set the Material property to the material that you created in the previous step.
@@ -252,7 +238,6 @@ In the Properties add and set the Blend Mode property in either of these places:
     - The Material Brush that uses the material to which you added the Blend Mode property
     - The Image node that uses the Material Brush
 
-
 For example, in the Node Tree select the Image node, in the Properties add the Blend Mode property, and set it to Alpha: Premultiplied.
 
 6.
@@ -260,7 +245,6 @@ For example, in the Node Tree select the Image node, in the Properties add the B
 (Optional) To adjust the translucency of the image, in the Node Tree select the Image node, and in the Properties add and set the Opacity property.
 
 ## Setting the appearance of an Image node
-
 
 To set the appearance of 2D nodes:
 
@@ -272,9 +256,7 @@ To set the appearance of 2D nodes:
 
 ## Using the Image node in the API
 
-
 For details, see the `Image2D` class.
 ## Image property types and messages
-
 
 For a list of the available property types and messages for the Image node, see Image.

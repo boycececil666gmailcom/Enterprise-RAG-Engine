@@ -5,12 +5,10 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/2d-content/blending-2d-node
 
 # Blending and compositing 2D nodes
 
-
 Blending controls how to combine the color and alpha values of pixels in one layer or image (source) with those in the underlying layer or image (destination). Kanzi by default blends 2D nodes using the Alpha: Premultiplied blend mode which uses the alpha channel of the source pixels to blend the source pixels on top of the destination pixels. See Color blending modes and Advanced color blending modes.
 
 Alpha compositing controls how to use the alpha channels of the source and destination pixels to merge those pixels. Kanzi supports the Porter-Duff blend modes for alpha compositing. See Alpha compositing modes.
 ## How blend mode affects the rendering of 2D nodes
-
 
 In a 2D node the Material > Blend Mode property sets how Kanzi:
 
@@ -28,10 +26,8 @@ See Effects for 2D nodes.
 
 ## Blend modes in Kanzi
 
-
 Blend mode controls how Kanzi combines the color and alpha values of pixels in one layer or image (source) with the color and alpha values of the pixels in the underlying layer or image (destination).
 ### Color blending modes
-
 
 This section describes the color blending modes in Kanzi.
 
@@ -85,16 +81,13 @@ This mode is the opposite of the Multiply mode.
 For example, you can use this mode to create a partially transparent overlay that is lighter than its backdrop. See Using color blending to create an overlay.   \[\begin{split}&C_{out} = C_{src} + (1 - C_{src}) * C_{dst} \\ &Î±_{out} = Î±_{src} + (1 - Î±_{src}) * Î±_{dst}\end{split}\]   |    |    |
 #### Alpha: Automatic
 
-
 Sets the blend mode to either:
 
 - Alpha: Premultiplied when the Premultiply Alpha property for the project or an image is enabled. This is the default value.
 - Alpha: Mixed when the Premultiply Alpha property for the project or an image is disabled.
 
-
 See Alpha premultiplication.
 #### Alpha: Non-premultiplied
-
 
 Legacy mode. For non-premultiplied input use the Alpha: Mixed mode instead.
 
@@ -108,7 +101,6 @@ Expects non-premultiplied alpha RGBA in the source pixels, and blends the source
 For example, use this mode when you dynamically load without preprocessing a texture that uses a fragment shader which does not perform alpha-premultiplication of the RGB color.   \[\begin{split}&C_{out} = Î±_{src} * C_{src} + (1 - Î±_{src}) * C_{dst} \\ &Î±_{out} = Î±_{src} + (1 - Î±_{src}) * Î±_{dst}\end{split}\]   |    |    |
 ### Alpha compositing modes
 
-
 This section describes the Porter-Duff blend modes in Kanzi. The Porter-Duff blend modes were defined by Thomas Porter and Tom Duff in their 1984 paper [Compositing Digital Images](https://graphics.pixar.com/library/Compositing/paper.pdf).
 
 Use the Porter-Duff blend modes for alpha compositing. The Porter-Duff blend modes combine two layers based on the alpha channels of those layers. If the target framebuffer does not have alpha channel, or the alpha value is constant 1, many of the alpha compositing modes can produce unintuitive but correct results. For example, the Source Out mode produces the same result as the Clear blend mode.
@@ -117,7 +109,6 @@ When you use alpha compositing, make sure that the alpha channel of the render t
 
 - Use a parent node which you composite by enabling the Node 2D > Force Composition property. This way you render the nodes to a cleared render target.
 - If the window surface is translucent, use the Clear blend mode to clear the target framebuffer.
-
 
 By default Kanzi composites nodes using the Alpha: Premultiplied mode, which corresponds to the Porter-Duff **Source Over** mode.
 
@@ -197,7 +188,6 @@ You can use this blend mode to implement an inverse mask effect.   \[\begin{spli
 Draws the destination pixels over the source pixels.   \[\begin{split}&C_{out} = (1 - Î±_{dst}) * C_{src} + C_{dst} \\ &Î±_{out} = (1 - Î±_{dst}) * Î±_{src} + Î±_{dst}\end{split}\]   |    |    |
 ### Advanced color blending modes
 
-
 This section describes the advanced color blending modes in Kanzi. When using OpenGL or OpenGL ES, these modes require the `GL_KHR_blend_equation_advanced` and `GL_KHR_blend_equation_advanced_coherent` extensions. When using Vulkan these modes require the `VK_EXT_blend_operation_advanced` extension.
 
 Each description includes:
@@ -256,7 +246,6 @@ Multiplies or screens the colors:
 - A source color lighter than 50% gray lightens the destination as if screening it.
 - A source color darker than 50% gray darkens the destination as if multiplying it.
 
-
 Black source color produces black and white source color produces white.  |    |    |       \[\begin{split}&C_{out} = \begin{cases} 2 * C_{src} * C_{dst} & \text{if } C_{src} <= 0.5\\ 1 - 2 * (1 - C_{src}) * (1 - C_{dst}) & \text{otherwise} \end{cases}\end{split}\]
 #### Soft Light
 
@@ -266,7 +255,6 @@ Darkens or lightens the colors:
 
 - A source color lighter than 50% gray lightens the destination as if dodging it.
 - A source color darker than 50% gray darkens the destination as if burning it.
-
 
 The result is softer than with the Overlay mode. Black or white source color produces a distinctly darker or lighter result, but not pure black or white.  |    |    |       \[\begin{split}&C_{out} = \begin{cases} C_{dst} - ( 1 - 2 * C_{src}) * C_{dst} * (1 - C_{dst}) & \text{if } C_{src} <= 0.5\\ C_{dst} + (2 * C_{src} - 1) * C_{dst} * ((16 * C_{dst} - 12) * C_{dst} + 3) & \text{if } C_{src} > 0.5 \text{ and } C_{dst} <= 0.25\\ C_{dst} + (2 * C_{src} - 1) * (\sqrt{C_{dst}} - C_{dst}) & \text{if } C_{src} > 0.5 \text{ and } C_{dst} > 0.25 \end{cases}\end{split}\]
 #### Difference
@@ -317,7 +305,6 @@ Uses:
   |    |    |
 ## Using color blending to create an overlay
 
-
 You can use color blending to create a partially transparent overlay that is darker or lighter than its backdrop. [](../../_images/multiply-overlay-with-content.png) [](../../_images/screen-overlay-with-content.png)
 
 To create an overlay to which you can apply post-processing effects, use effects. For example, you can use multiple effects to create the frosted glass effect. See Effects for 2D nodes and Using multiple effects.
@@ -346,7 +333,6 @@ The Multiply blend mode multiplies the source (overlay) and destination (backdro
 
 The Screen blend mode adds the source (overlay) and destination (backdrop) pixels and subtracts from the result the product of the source and destination.
 
-
 4.
 
 Add to the root of the overlay prefab the content that you want to show on top of the overlay.
@@ -365,11 +351,9 @@ When you screen a color with transparent black, that color does not change.
 
   - In the node that contains the content that you want to show on top of the overlay, set the Node > Opacity property to 0.
 
-
 You cannot adjust the opacity of the overlay prefab or the overlay background with the Node > Opacity property, because adjusting that property in a node causes Kanzi to composite that node. For the same reason you cannot assign a 2D effect to the overlay. For example, if your overlay background uses the Multiply blend mode and Kanzi composites the overlay prefab, Kanzi applies the Multiply blend mode against an empty composition render target, resulting in a fully transparent overlay.
 
 ## Using alpha compositing to create a mask effect
-
 
 You can use alpha compositing to implement a simple mask effect. [](../../_images/mask-completed.png)
 
@@ -398,17 +382,12 @@ For example, create an Image node and in the Properties add and set:
     - Image to the texture that you want to use as the mask
     - Horizontal Alignment and Vertical Alignment to Stretch
 
-
 3.
 
 Select the node that you use as the mask, in the Properties add the Material > Blend Mode property, and set it to Destination In.
 
 The Destination In mode draws those pixels of the content that intersect with the mask, using the alpha channel of the mask.
-
-> **Tip:** To create an inverse mask effect, use the Destination Out mode.
-> 4.
->
-> Select the node that hosts both the content and the mask, in the Properties add the Node 2D > Force Composition property, and enable it.
->
-> This way you set Kanzi to composite the node and render its content to a cleared render target.
->
+**Tip:** To create an inverse mask effect, use the Destination Out mode.
+4.
+Select the node that hosts both the content and the mask, in the Properties add the Node 2D > Force Composition property, and enable it.
+This way you set Kanzi to composite the node and render its content to a cleared render target.

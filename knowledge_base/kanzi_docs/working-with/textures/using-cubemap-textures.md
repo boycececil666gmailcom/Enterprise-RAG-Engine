@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/textures/using-cubemap-text
 
 # Using cubemap textures
 
-
 Cubemap textures combine six square-shaped images into one texture to represent reflections of the environment. Each image represents the scenery in one of the six directions along the x, y, and z axes from the viewpoint of the cubemapped object.
 
 Before you can use a cubemap texture in Kanzi Studio you first have to create the texture images of the six cube faces for the cubemap. You can create the six texture images in the tool where you created the mesh object on which you want to use the cubemap texture, and import the images to Kanzi Studio. See Importing images.
@@ -17,22 +16,18 @@ For example, for all faces of a cubemap texture use images that are 256 by 256 p
 When the size and format of the images in a cubemap texture do not match, Kanzi Studio uses red type to mark such textures.
 ## Creating cubemap textures from dds images
 
-
 To create a cubemap texture from a dds image, in the Assets click Import Assets and import a dds image that contains the images for all faces of the cubemap texture.
 
 Kanzi Studio imports the dds image, creates a Cubemap Texture, and sets the faces of the texture to the corresponding images in the dds image.
 ## Creating cubemap textures from HDR images
-
 
 To create cubemap textures from an hdr or exr image, either:
 
 - In the Assets click Import Assets, select the image, and in the Create textures for HDR images dialog select the textures that you want to create.
 - If you have already imported the image to your project, in the Library > Resource Files > Images press Alt and right-click the image and select the type of texture that you want to create.
 
-
 See Using environment textures and Using image-based lighting cubemap textures.
 ## Creating cubemap textures
-
 
 To create a cubemap texture:
 
@@ -55,7 +50,6 @@ In the Properties, set the Cubemap Images properties to the images that you want
   - NegY Image to the negative Y-face of the cubemap (the bottom face)
   - PosY Image to the positive Y-face of the cubemap (the top face)
 
-
 Avoid creating mipmaps from JPEG textures, because the JPEG image format causes the quality of the mipmaps to degrade.
 4.
 
@@ -70,7 +64,6 @@ Usually the best starting point for setting texture filtering is to set:
   - Minification Filter to Linear
   - Magnification Filter to Linear
   - Mipmap Mode to Nearest. If you are sure that the texture is not minified select Base, otherwise start with Nearest. For example, the default value for a Render Target Texture is Base. With this setting, the texture does not have mipmap levels and the base level is always sampled. See Using mipmaps.
-
 
 Note that some texture formats are available with OpenGL ES versions higher than 2.0. To set the OpenGL ES version, in the main menu select Project > Properties and in the Properties set the Target Graphics API property.
 
@@ -138,7 +131,6 @@ This combination has the largest negative impact on performance.  |
 
 ## Using a cubemap texture
 
-
 To use a cubemap texture:
 
 1.
@@ -149,7 +141,6 @@ In the Library > Materials and Textures > Materials, select a material that supp
 In the Node Tree, select the Model, Box, or Sphere node on which you want to use the cubemap texture. In the Properties, set the Material or Mesh Material property to the material that uses your cubemap texture.
 
 ## Using a cubemap texture as a skybox
-
 
 To use a cubemap texture as a skybox:
 
@@ -179,9 +170,7 @@ When this property is enabled, Kanzi renders the cubemap texture inside the mesh
 
 Position a Camera node inside the node that you created.
 
-
 When you rotate the camera, in the Preview you can see the cubemap texture rendered as a skybox.
 ## Cubemap Texture property types
-
 
 For a list of the available property types for cubemap textures, see Cubemap Texture and Texture.

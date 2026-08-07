@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/animations/editing-animatio
 
 # Editing animation clips
 
-
 Use an Animation Clip to combine Animation Data resources into more complex animations. You can reuse the same Animation Data resources in different Animation Clip items. Use an Animation Child Clip to create hierarchical animations.
 
 To edit an animation clip or animation data items, in the Library > Animations > Animation Clips double-click the animation clip or animation data item you want to edit. Animation Clip Editor opens. [](../../_images/animation-clip-editor.svg)
@@ -70,22 +69,15 @@ To set the snap mode, in the User Preferences set Snap mode to:
 - Custom allows you to set x and y axis snap distances for keyframes and handles
 - Snap to grid snaps to the Animation Editor grid based on the zoom level
 
-
 To set whether you want to snap keyframe Bezier handles to a keyframe or the Animation Editor grid, in the Animation Editing tab, use the Snap relative to keyframe setting and set the relative horizontal and vertical snap distances.
-
-> **Tip:** To enable snapping temporarily while you drag a keyframe or a keyframe Bezier handle, hold down the Shift and Alt keys.   |   |
-> |
->
-> |
->
-> Scale the animation canvas so that all keyframes are visible. |   |
-> |
->
-> |
->
-> Set the animation clip start and end times to the first and last keyframes in the animation clip editor. |   |
+**Tip:** To enable snapping temporarily while you drag a keyframe or a keyframe Bezier handle, hold down the Shift and Alt keys.   |   |
+|
+|
+Scale the animation canvas so that all keyframes are visible. |   |
+|
+|
+Set the animation clip start and end times to the first and last keyframes in the animation clip editor. |   |
 ## Copying and pasting animation items
-
 
 When copying an item, the default paste performs a deep copy: all the items under the copied item are duplicated.
 
@@ -99,7 +91,6 @@ To paste an item as instance, right-click the item and select Paste as Instance.
 To paste an item and create instances for its children, right-click the item and select Paste Item and Instance Children.
 
 ## Removing animation items from their parents
-
 
 When you want to remove an item from one parent (for example, Animation Data from an Animation Clip), but want to keep it under the other parents, right-click the item you want to remove and select Remove from Parent.
 

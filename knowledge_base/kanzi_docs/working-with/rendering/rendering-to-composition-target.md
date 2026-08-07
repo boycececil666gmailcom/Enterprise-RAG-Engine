@@ -5,16 +5,13 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/rendering/rendering-to-comp
 
 # Rendering content to composition targets
 
-
 Use a Composition Target render pass to:
 
 - Render content to one composition target. See Rendering content to one composition target.
 - Render content to multiple composition targets. See Rendering content to multiple composition targets.
 
-
 Composition Target render pass automatically creates textures from the content that it renders. A Composition Target render pass can render to up to four composition targets. You can use a Blit render pass to draw these textures to the screen or to other composition targets using a specific material. To render content to a Render Target Texture, you can use the Render to Texture Pass. See Rendering to texture.
 ## Rendering content to one composition target
-
 
 To render content to one composition target:
 
@@ -37,7 +34,6 @@ For example, to clear the first color buffer with a different color, set the Cle
 
       - Draw Objects render pass named Draw Objects allows you to set a Camera node to render a specific list of nodes, to filter those nodes, and to control frustum culling. Draw Objects render pass by default renders nodes using the lights provided by its nearest ancestor Gather Lights render pass. By default the Draw Objects render pass uses the default Camera node to render all nodes in a Viewport 2D node.
 
-
   - Blit render pass blits one or more single textures or cubemap textures on the screen using a specific material.
 
 By default, this Blit render pass draws on the screen the first color texture to which the Composition Target render pass renders its content.
@@ -56,46 +52,31 @@ Kanzi renders the scene in that Viewport 2D to a composition target and uses the
 Kanzi Studio multiplies the resolution of the composition target by the value of the Resolution Multiplier property and divides it by the value of the Resolution Divisor property.
 
 For example, to multiply the resolution of the composition target by four set Resolution Multiplier to 4. To reduce the resolution of the composition target to a quarter of the original, set Resolution Divisor to 4.
-
-> **Tip:** You can use the Composition Target render pass > Width and Height properties to set the exact size of a composition target. The values of the Width and Height properties override the dimensions of the composition target calculated based on the values of the Resolution Multiplier and Resolution Divisor properties.
->
-> To bind the Width or Height property to a portion of the current viewport width or height, use the Render Pass > Input Viewport Area property, which reports the viewport area relative to the composition space of the parent render pass.
->
-> In bindings use these expressions to access the dimensions of the viewport:
->
-> - Width: `{@./RenderPass.InputViewportArea}.Z`
-> - Height: `{@./RenderPass.InputViewportArea}.W`
->
-> - Pixel Format 0 to set the pixel format of the composition target.
-> - Depth Texture Format to set the format of the depth composition target.
->
-> Set this property when you want to create depth textures.
->
-> The value of this property overrides the value of the Depth Renderbuffer Format property.
-> - Depth Renderbuffer Format to set the format of the depth renderbuffers.
->
-> When you do not set this property, Kanzi sets the depth renderbuffer format automatically to the best available format. In most cases this is the 32-bit float format, which also consumes the most memory.
->
-> The value of the Depth Texture Format property overrides the value of this property.
-> - Depth Compare Function to set the depth compare mode for the depth composition target.
-> - Addressing Mode to set how Kanzi handles the texture coordinates of the composition target textures outside the [0, 0] - [1, 1] rectangle:
->
-> - Repeat to make the texture repeat outside of these coordinates. This is the default value.
-> - Mirror to make the texture repeat, but mirror every other repetition.
-> - Clamp to confine the texture to these coordinates and to repeat the edge texels of the texture outside of the coordinates.
-> - Mirror once to make the texture repeat once in the negative direction, and after that clamp the texture.
->
-> - Filter Mode to set how Kanzi accesses the texture samples of the composition target:
->
-> - Nearest to take the color from the nearest sample.
-> - Linear to interpolate the color from the neighboring samples. This is the default value.
->
-> - Mipmap Mode to create mipmaps for the composition target. See Creating mipmaps for composition targets.
-> - Multisample Level to set the number of anti-aliasing samples you want to use. See Using multisampling.
-
+**Tip:** You can use the Composition Target render pass > Width and Height properties to set the exact size of a composition target. The values of the Width and Height properties override the dimensions of the composition target calculated based on the values of the Resolution Multiplier and Resolution Divisor properties.
+To bind the Width or Height property to a portion of the current viewport width or height, use the Render Pass > Input Viewport Area property, which reports the viewport area relative to the composition space of the parent render pass.
+In bindings use these expressions to access the dimensions of the viewport:
+- Width: `{@./RenderPass.InputViewportArea}.Z`
+- Height: `{@./RenderPass.InputViewportArea}.W`
+- Pixel Format 0 to set the pixel format of the composition target.
+- Depth Texture Format to set the format of the depth composition target.
+Set this property when you want to create depth textures.
+The value of this property overrides the value of the Depth Renderbuffer Format property.
+- Depth Renderbuffer Format to set the format of the depth renderbuffers.
+When you do not set this property, Kanzi sets the depth renderbuffer format automatically to the best available format. In most cases this is the 32-bit float format, which also consumes the most memory.
+The value of the Depth Texture Format property overrides the value of this property.
+- Depth Compare Function to set the depth compare mode for the depth composition target.
+- Addressing Mode to set how Kanzi handles the texture coordinates of the composition target textures outside the [0, 0] - [1, 1] rectangle:
+- Repeat to make the texture repeat outside of these coordinates. This is the default value.
+- Mirror to make the texture repeat, but mirror every other repetition.
+- Clamp to confine the texture to these coordinates and to repeat the edge texels of the texture outside of the coordinates.
+- Mirror once to make the texture repeat once in the negative direction, and after that clamp the texture.
+- Filter Mode to set how Kanzi accesses the texture samples of the composition target:
+- Nearest to take the color from the nearest sample.
+- Linear to interpolate the color from the neighboring samples. This is the default value.
+- Mipmap Mode to create mipmaps for the composition target. See Creating mipmaps for composition targets.
+- Multisample Level to set the number of anti-aliasing samples you want to use. See Using multisampling.
 
 ## Rendering content to multiple composition targets
-
 
 You can set a Composition Target render pass to render to up to four composition targets. For example, use multiple render target rendering to implement screen space ambient occlusion or deferred shading.
 
@@ -119,7 +100,6 @@ For example, to clear the first color buffer with a different color, set the Cle
     - Gather Lights render pass collects the Light nodes in the Viewport 2D node that you set to use the Compose and Blit Pass, and passes them to its child Draw Objects render pass.
 
       - Draw Objects render pass named Draw Objects allows you to set a Camera node to render a specific list of nodes, to filter those nodes, and to control frustum culling. Draw Objects render pass by default renders nodes using the lights provided by its nearest ancestor Gather Lights render pass. By default the Draw Objects render pass uses the default Camera node to render all nodes in a Viewport 2D node.
-
 
   - Blit render pass blits one or more single textures or cubemap textures on the screen using a specific material.
 
@@ -171,7 +151,6 @@ void main()
 
 ```
 
-
 use
 
 ```
@@ -213,7 +192,6 @@ Click each binding that you created and in the Binding Editor set:
     - Property to the texture that you want to bind
     - Expression to the corresponding Result Texture property in the Composition Target render pass
 
-
 For example, set:
 
     - Property to Blit render pass > Texture 1
@@ -223,7 +201,6 @@ For example, set:
 {@../Composition Target/CompositionTargetRenderPass.ResultTexture1}
 
 ```
-
 
 7.
 
@@ -247,34 +224,23 @@ In the Blit render pass that you want to blit the depth texture, bind a Texture 
 Kanzi multiplies the resolution of each composition target by the value of the Resolution Multiplier property and divides it by the value of the Resolution Divisor property.
 
 For example, to multiply the resolution of each composition target by four set Resolution Multiplier to 4. To reduce the resolution of each composition target to a quarter of the original, set Resolution Divisor to 4.
-
-> **Tip:** You can use the Composition Target render pass > Width and Height properties to set the exact size of a composition target. The values of the Width and Height properties override the dimensions of the composition target calculated based on the values of the Resolution Multiplier and Resolution Divisor properties.
->
-> To bind the Width or Height property to a portion of the current viewport width or height, use the Render Pass > Input Viewport Area property, which reports the viewport area relative to the composition space of the parent render pass.
->
-> In bindings use these expressions to access the dimensions of the viewport:
->
-> - Width: `{@./RenderPass.InputViewportArea}.Z`
-> - Height: `{@./RenderPass.InputViewportArea}.W`
->
-> - Addressing Mode to set how Kanzi handles the texture coordinates of the composition target textures outside the [0, 0] - [1, 1] rectangle:
->
-> - Repeat to make the texture repeat outside of these coordinates. This is the default value.
-> - Mirror to make the texture repeat, but mirror every other repetition.
-> - Clamp to confine the texture to these coordinates and to repeat the edge texels of the texture outside of the coordinates.
-> - Mirror once to make the texture repeat once in the negative direction, and after that clamp the texture.
->
-> - Filter Mode to set how Kanzi accesses the texture samples of the composition targets:
->
-> - Nearest to take the color from the nearest sample.
-> - Linear to interpolate the color from the neighboring samples. This is the default value.
->
-> - Mipmap Mode to create mipmaps for the composition targets. See Creating mipmaps for composition targets.
-> - Multisample Level to set the number of anti-aliasing samples you want to use. See Using multisampling.
-
+**Tip:** You can use the Composition Target render pass > Width and Height properties to set the exact size of a composition target. The values of the Width and Height properties override the dimensions of the composition target calculated based on the values of the Resolution Multiplier and Resolution Divisor properties.
+To bind the Width or Height property to a portion of the current viewport width or height, use the Render Pass > Input Viewport Area property, which reports the viewport area relative to the composition space of the parent render pass.
+In bindings use these expressions to access the dimensions of the viewport:
+- Width: `{@./RenderPass.InputViewportArea}.Z`
+- Height: `{@./RenderPass.InputViewportArea}.W`
+- Addressing Mode to set how Kanzi handles the texture coordinates of the composition target textures outside the [0, 0] - [1, 1] rectangle:
+- Repeat to make the texture repeat outside of these coordinates. This is the default value.
+- Mirror to make the texture repeat, but mirror every other repetition.
+- Clamp to confine the texture to these coordinates and to repeat the edge texels of the texture outside of the coordinates.
+- Mirror once to make the texture repeat once in the negative direction, and after that clamp the texture.
+- Filter Mode to set how Kanzi accesses the texture samples of the composition targets:
+- Nearest to take the color from the nearest sample.
+- Linear to interpolate the color from the neighboring samples. This is the default value.
+- Mipmap Mode to create mipmaps for the composition targets. See Creating mipmaps for composition targets.
+- Multisample Level to set the number of anti-aliasing samples you want to use. See Using multisampling.
 
 ## Distributing the rendering of composition targets across several frames
-
 
 To reduce the amount of per-frame rendering workload, you can set the rate at which Kanzi updates the composition targets of a Composition Target render pass.
 
@@ -298,7 +264,4 @@ In the Properties, add and set:
 This way, you can distribute the rendering of multiple render passes to different frames.
 
 For example, when you have two Composition Target render passes whose content you update every other frame, in one of those render passes, set the Update Rate Offset to 1. This way, Kanzi updates the content rendered by those render passes at alternating frames.
-
-
-> **Tip:** To set the Update Rate and Update Rate Offset properties to different values in multiple Viewport 2D nodes that use the same render pass prefab, you can customize the instances of that render pass prefab. See Customizing instances of render passes.
->
+**Tip:** To set the Update Rate and Update Rate Offset properties to different values in multiple Viewport 2D nodes that use the same render pass prefab, you can customize the instances of that render pass prefab. See Customizing instances of render passes.

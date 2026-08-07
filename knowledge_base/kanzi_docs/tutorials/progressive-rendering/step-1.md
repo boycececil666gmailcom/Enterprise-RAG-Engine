@@ -5,10 +5,8 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/progressive-rendering/step-1.h
 
 # Step 1 - Prepare the nodes in your project
 
-
 In this step of the tutorial, you create tags and filters to prepare the nodes in your project for progressive rendering across several frames.
 ## Get the tutorial
-
 
 To get the tutorial, in the Kanzi Studio Quick Start window, click Projects and select the Tutorials tab. Next to the Progressive rendering tutorial, click .
 
@@ -18,7 +16,6 @@ Kanzi Studio downloads the tutorial to the `<KanziWorkspace>/Tutorials` director
 - The completed tutorial in the `<KanziWorkspace>/Tutorials/Progressive rendering/Completed` directory.
 
 ## Content of the starting point project
-
 
 The starting point project contains the content that you need to complete this tutorial:
 
@@ -39,7 +36,6 @@ In the starting point project, the Slow and Fast states are identical. In the la
 
 ## Prepare the nodes for progressive rendering
 
-
 In this section, you create Tag Filter resources to collect the nodes that you want to render in different render passes. In the next step of the tutorial, you use these filters in render passes to distribute the rendering of the nodes across several frames.
 
 In the starting project of this tutorial, the content of the Car Model node is already split into parts: Pass 1 Models, Pass 2 Models, and Car Shadow. When you prepare your own content for progressive rendering, distribute the rendering into even parts among the render passes used by a Progressive Rendering Viewport 2D node. Distributing the rendering evenly ensures stable framerate.
@@ -50,7 +46,6 @@ To distribute the rendering into even parts, make sure that each render pass ren
 - Shaders that are of similar complexity
 - Textures that are similar in size
 - Similar number of textures
-
 
 To prepare the nodes for progressive rendering:
 
@@ -100,6 +95,5 @@ You use this filter in the next step of this tutorial to collect for rendering t
   - Create a Tag Filter named Filter Pass 3, and set it to collect nodes that have the Pass 3 tag.
 
 You use this filter in the next step of this tutorial to collect for rendering the node that shows the car shadow.
-
 
 Introduction Next step

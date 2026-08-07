@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/meshes/meshes-api.html
 
 # Creating meshes using the Kanzi Engine API
 
-
 `Mesh` stores the geometry data for rendering a `Model3D` node. A mesh has one or more clusters. Each cluster has a material and primitives. Primitives are typically triangles stored as vertex data and index data.
 
 You can load a mesh resource from a kzb file or use the `Mesh::create` function to create a mesh. After you create a `Mesh` with the constructor, Kanzi uploads all primitive data to GPU memory instead of storing the data in CPU memory in the `Mesh`.
@@ -22,10 +21,8 @@ Each vertex contains components that the format definition describes.
 
 Indices describe polygons by referring to each vertex by index. When triangles describe a polygon, three indices describe a triangle. You can use several index listings, each of which uses a material.
 
-
 To enable the Kanzi Studio Preview to visualize the bounding volume of a mesh, set the bounding box for that mesh. See Analyzing your application in the Preview.
 ## Creating a mesh
-
 
 To create a cube mesh using the Kanzi Engine API:
 
@@ -156,7 +153,6 @@ createInfo.indexData.resize(createInfo.indexCount * sizeof(uint16_t));
         indexData[faceBaseIndex + 4] = vertexIndex + 3;
         indexData[faceBaseIndex + 5] = vertexIndex + 0;
 
-
         // Write vertices for the face.
         for (unsigned int faceCorner = 0; faceCorner < 4; ++faceCorner, ++vertexIndex)
         {
@@ -189,7 +185,6 @@ MeshSharedPtr mesh = Mesh::create(domain, createInfo, "box");
 ```
 
 ## Creating a mesh from native handles
-
 
 You can use the Kanzi Engine API to create a mesh from existing OpenGL buffer handles and query those handles from an existing mesh.
 
@@ -361,10 +356,8 @@ MeshSharedPtr mesh = Mesh::create(domain, createInfo, "box");
 
 ```
 
-
 For details, see the `Mesh` class.
 ## Creating meshes with instancing
-
 
 When you render a large number of copies of the same mesh, performing a draw call for each copy consumes GPU time and decreases application performance. Instancing makes it possible to draw multiple copies of a mesh with different attributes, such as position, size, and color, with a single render call.
 
@@ -428,7 +421,6 @@ ShaderProgram::CreateInfo shaderCreateInfo;
         shaderCreateInfo.reflectionInfo = kanzi::move(shaderResult.info.value());
     }
 }
-
 
 static const ShaderVertexAttribute kzPosition = ShaderVertexAttribute("kzPosition", VertexAttribute::SemanticPosition,
                                                                       0, GraphicsElementTypeFLOAT, 0, 3, 0, 0);

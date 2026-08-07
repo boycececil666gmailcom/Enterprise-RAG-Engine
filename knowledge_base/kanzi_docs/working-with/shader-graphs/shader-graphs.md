@@ -4,13 +4,9 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/shader-graphs/shader-graphs
 ---
 
 # Shader graphs (Experimental)
-
-
-> **Note:** The Shader Graph Editor is an experimental feature that may change or be removed in future versions of Kanzi Studio. To enable it, see Enabling the Shader Graph Editor.
->
-> The Shader Graph Editor is a visual node-based tool for building GLSL fragment shaders in Kanzi Studio. Instead of writing shader code by hand, you create a graph of connected nodes that define the shader logic. When you generate the shader, Kanzi Studio compiles the graph into a GLSL fragment shader and creates a Material Type from it. For physically-based graphs, Kanzi Studio also creates a Material that uses that Material Type.
+**Note:** The Shader Graph Editor is an experimental feature that may change or be removed in future versions of Kanzi Studio. To enable it, see Enabling the Shader Graph Editor.
+The Shader Graph Editor is a visual node-based tool for building GLSL fragment shaders in Kanzi Studio. Instead of writing shader code by hand, you create a graph of connected nodes that define the shader logic. When you generate the shader, Kanzi Studio compiles the graph into a GLSL fragment shader and creates a Material Type from it. For physically-based graphs, Kanzi Studio also creates a Material that uses that Material Type.
 ## Enabling the Shader Graph Editor
-
 
 To enable the Shader Graph Editor:
 
@@ -25,7 +21,6 @@ Select the Experimental tab.
 In the Web-based editors section, enable Shader graph editor.
 
 ## Material types
-
 
 Each shader graph targets one material type. The material type sets which input ports the Material Output node exposes and what kind of GLSL fragment shader Kanzi Studio generates.
 
@@ -131,12 +126,10 @@ Add a node |
 Right-click the canvas and select a node from the Add Node menu. The search field at the top of the menu is focused when the menu opens, so you can start typing to filter immediately |
 ## Node types
 
-
 The Shader Graph Editor provides 45 nodes across 7 catalog categories. The Add Node menu groups them by category and includes a search field that filters every category at once. Math nodes are polymorphic. They adapt their input and output types to match the connected ports.
 
 In addition to the catalog categories, you can add Note nodes from the Utilities submenu and create Group nodes from a selection.
 ### Constants
-
 
 Constant nodes hold literal values that you edit directly on the node.
 |
@@ -198,7 +191,6 @@ result (vec4) |
 
 You can promote any constant node to a parameter so that its value becomes a uniform that you can edit in the Kanzi Studio Properties panel. See Parameters.
 ### Built-in
-
 
 Built-in nodes provide values that the engine produces during rendering.
 |
@@ -369,7 +361,6 @@ Clamp |
 Clamp value between a minimum and a maximum. |
 ### Material
 
-
 Material nodes provide per-fragment surface and view data that the engine populates from the rendered geometry. They have no inputs.
 |
 
@@ -422,7 +413,6 @@ Normalized view direction from the fragment to the camera, in world space. |
 viewDir (vec3) |
 ### Texture
 
-
 Texture nodes sample texture resources from the Kanzi Studio Library. The Texture resource picker lists every texture in the project.
 |
 
@@ -445,7 +435,6 @@ UnpackNormal |
 
 Convert an already-sampled normal-map color into a world-space normal vector. Inputs: normalSample (vec4), strength (float), worldNormal (vec3). Outputs: result (vec3). |
 ### Custom
-
 
 The Custom category lets you embed hand-written GLSL alongside the graph.
 |
@@ -478,7 +467,6 @@ float Checker(vec2 uv, float tile, float softness, out float bright) {
 
 ### Output
 
-
 Every graph must have exactly one Material Output or Output node, connected to all other contributing nodes.
 |
 
@@ -501,7 +489,6 @@ Output |
 Generic color sink for graphs that do not target a material type. |
 ### Utility nodes
 
-
 Utility nodes do not produce shader code. Use them to organize the graph.
 |
 
@@ -522,28 +509,22 @@ A free-floating annotation. Add a Note from the Add Node menu under Utilities. D
 
 ### Adding a node
 
-
 Right-click the canvas to open the Add Node menu. Either browse the category submenus or start typing to search across every category.
 
 To add a node at a specific location, right-click that location on the canvas before selecting from the menu.
 ### Connecting nodes
 
-
 Drag from an output port on one node to an input port on another node. Each input port accepts one connection. Creating a new connection to an already connected input replaces the existing connection.
 ### Disconnecting nodes
-
 
 Select a connection and press Delete or Backspace. To disconnect every connection on a node at once, right-click the node and select Break Links.
 ### Editing properties
 
-
 Constant nodes display editable value fields directly on the node. The Color3 and Color4 nodes show a swatch that opens a color picker. The Texture node shows a resource picker and a thumbnail of the selected texture. The GLSL Code node opens an embedded GLSL editor.
 ### Selecting upstream and downstream nodes
 
-
 To extend the current selection along the connection graph, right-click a node, edge, or selection and select Select Upstream or Select Downstream. Select Upstream adds every node that feeds into the current selection; Select Downstream adds every node that the current selection feeds into.
 ### Copying, pasting, and duplicating nodes
-
 
 To copy the selected nodes and connections to the clipboard, press Ctrl C, or right-click the selection and select Copy.
 
@@ -556,14 +537,11 @@ To duplicate the selection in place, press Ctrl D, or right-click the selection 
 Built-in nodes such as UV and Material Output exist at most once per graph and cannot be copied or duplicated.
 ### Undoing and redoing
 
-
 The editor records every graph mutation: adding and removing nodes, editing properties, connecting and disconnecting ports, grouping, parameter promotion, and so on. Press Ctrl Z to undo and Ctrl Y to redo. Inside the GLSL Code editor, Ctrl Z and Ctrl Y first walk back through local code edits before stepping into graph history.
 ### Auto-layout
 
-
 To rearrange the graph automatically, press Ctrl Shift A. The editor lays out nodes left-to-right by data flow.
 ### Grouping nodes
-
 
 Select two or more nodes and press Ctrl G, click Group in the selection toolbar, or right-click and select Create Group. The editor wraps the selection in a resizable Group container.
 
@@ -571,7 +549,6 @@ To rename the group, double-click its header. To collapse or expand the group, c
 
 To break a group apart and keep its child nodes, select the group and press Ctrl Shift G, or right-click the group and select Ungroup.
 ### Context menu reference
-
 
 What you see in the right-click context menu depends on what you right-click:
 |
@@ -603,7 +580,6 @@ Copy, Duplicate, Select Upstream, Select Downstream, Create Group (when at least
 For details on Promote to Parameter, see Parameters.
 ## Generating shaders
 
-
 Click Generate Shader in the top-right corner of the editor to validate the graph and compile the GLSL fragment shader. To regenerate automatically after every change, enable the Auto switch next to the Generate Shader button. The editor debounces the regeneration so that a burst of edits triggers one compile.
 
 When the shader compiles successfully, a green Shader compiled successfully notification appears, and Kanzi Studio stores the result:
@@ -611,17 +587,12 @@ When the shader compiles successfully, a green Shader compiled successfully noti
 - For graphs with material type PBR or Fullscreen, Kanzi Studio creates or updates a Material Type that uses the generated fragment shader. For PBR graphs, Kanzi Studio also creates a Material that uses that Material Type.
 - Promoted parameters appear as properties on the Material Type and the Material. See Parameters.
 
-
 If validation or compilation fails, the Problems panel shows what went wrong. Common errors include a missing Material Output connection, an unsupported port type combination, and orphan uniforms in the generated shader.
 
 See Creating shader graphs for a step-by-step walkthrough.
 ## Limitations
-
-
-> **Note:** This experimental feature does not yet support:
->
-> - Sub-graphs (reusable graph fragments)
-> - Custom material types
-> - The Unlit material type
-> - An in-editor 3D preview of the generated material
->
+**Note:** This experimental feature does not yet support:
+- Sub-graphs (reusable graph fragments)
+- Custom material types
+- The Unlit material type
+- An in-editor 3D preview of the generated material

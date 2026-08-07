@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/instantiator-nodes/instanti
 
 # Using the Instantiator node
 
-
 Use the Instantiator node to replicate the appearance of a 3D node or a tree of 3D nodes that the Instantiator node targets.
 
 Instantiator node contains a reference to a target node or a tree of nodes. When Kanzi renders the Instantiator node, it copies the appearance of the node that the Instantiator node targets. This means that all changes to the target node are always reflected in the Instantiator node. For example, you can use the Instantiator node to create a reflection.
@@ -18,7 +17,6 @@ Note that the Instantiator node affects only rendering. Because the layout size 
 
 Learn how to use the Instantiator node by completing a tutorial. See Tutorial: Create reflections.
 ## Creating an Instantiator node
-
 
 To create an Instantiator node:
 
@@ -43,7 +41,6 @@ For example, add and set the Render Transformation property to scale, rotate, an
 
 ## Creating an Instantiator node from a node
 
-
 To create an Instantiator node from a node:
 
 1.
@@ -59,7 +56,6 @@ For example, add and set the Render Transformation property to scale, rotate, an
 
 ## Using the Instantiator node in the API
 
-
 To create a reflection using an Instantiator node:
 
 ```
@@ -74,9 +70,7 @@ instantiator->setRenderTransformation(SRTValue3D::createScale(Vector3(1.0f, -1.0
 
 ```
 
-
 For details, see the `Instantiator3D` class.
 ## Instantiator node property types and messages
-
 
 For a list of the available property types and messages for the Instantiator node, see Instantiator.

@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/plugins/creating-plugin-pro
 
 # Defining a property editor
 
-
 In Kanzi Studio when you need a property editor that Kanzi Studio does not provide, you can define your own property editor. You define a property editor as a Kanzi Studio plugin.
 
 For a list of available Kanzi Studio property editors, see Kanzi Studio property editors for property types declared in Kanzi Engine plugins.
@@ -16,7 +15,6 @@ To find detailed information about the Kanzi Studio plugin API see:
 
 - Overview of Kanzi Studio plugin API
 - Kanzi Studio plugin API reference
-
 
 This procedure shows how to define a property editor that enables the user to select a file.
 
@@ -32,7 +30,6 @@ In Visual Studio select File > New > Project and select:
 
     - Visual C# > Class Library (.NET Framework)
     - Framework to .NET Framework 4.8
-
 
 Click OK.
   2.
@@ -52,7 +49,6 @@ In the Solution Explorer right-click the project name, select Properties, and:
 
     - In the Application tab set the Target framework to .NET Framework 4.8.
     - In the Build tab set the Platform target to x64.
-
 
 2.
 
@@ -124,7 +120,6 @@ Replace the content of `FileSelector.xaml` with:
 
 ```
 
-
 For this property editor you use the `Grid` WPF control to lay out the editor, and create:
 
     - A text box where you can enter a file name.
@@ -171,7 +166,6 @@ namespace ClassLibrary1
 }
 
 ```
-
 
 4.
 
@@ -246,21 +240,16 @@ In Visual Studio select Build > Build Solution
 Copy the Kanzi Studio plugin DLL file to the `%ProgramData%\Rightware\<KanziVersion>\plugins` directory.
 
 If the `plugins` directory does not exist in `%ProgramData%\Rightware\<KanziVersion>`, create it.
-
-> **Tip:** In File Explorer, create a shortcut from your Kanzi Studio plugin DLL file and move the shortcut to the `%ProgramData%\Rightware\<KanziVersion>\plugins` directory.
->
-> When you build the plugin, you can see in the Output window the location where Visual Studio stored the plugin DLL file.
-
+**Tip:** In File Explorer, create a shortcut from your Kanzi Studio plugin DLL file and move the shortcut to the `%ProgramData%\Rightware\<KanziVersion>\plugins` directory.
+When you build the plugin, you can see in the Output window the location where Visual Studio stored the plugin DLL file.
 
 When you open or restart Kanzi Studio, in a Kanzi Studio project in the Library > Property Types create or select a property type, and set:
 
 - Data Type to Text
 - Editor to File selector editor
 
-
 When you add this property type to a node, in the Properties use the editor that you defined to set the value of the property type.
 ## Using a custom property editor with Kanzi Engine custom property types
-
 
 To use a custom property editor for a custom property type that you define in a Kanzi Engine plugin, in the Kanzi Engine plugin in the property editor metadata declarations for that property type set `metadata.editor` to the name of the editor that you want to use.
 

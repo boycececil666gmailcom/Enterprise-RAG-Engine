@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/plugins/reference-for-showi
 
 # Reference for showing Kanzi Engine plugin custom types in Kanzi Studio
 
-
 You can use Kanzi Engine plugins to create custom property types and messages using the Kanzi Engine API, and use them in Kanzi Studio.
 
 To pass to Kanzi Studio information about the custom property types and messages you create in a Kanzi Engine plugin, you declare metadata that describe these property types and messages.
@@ -142,7 +141,6 @@ x |
 
 x |
 ## displayName
-
 
 Sets the name of the property or message the way it is shown in Kanzi Studio.
 |

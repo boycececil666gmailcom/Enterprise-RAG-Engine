@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/list-box/step-2.html
 
 # Step 2 - Set the appearance of the list items
 
-
 In this step you use a List Box Item Container prefab to set the appearance of the contact items in the ContactsList.
 
 To set the appearance of the list items:
@@ -42,7 +41,6 @@ In the Prefabs in the Dock Layout 2D node create an Empty Node 2D node, name it 
 
 This way you place the Separator node to the bottom of the Dock Layout 2D node.
 
-
 This way you create a horizontal divider between the contact items in the ContactsList node.
 6.
 
@@ -59,7 +57,6 @@ In the Prefabs in the Dock Layout 2D node create an Image node, name it Arrow, a
   - Dock Layout > Side to Right
 
 This way you place the Arrow node to the right side of the Dock Layout 2D node. The Dock Layout 2D node positions the Arrow node in the space that remains after positioning the Separator node.
-
 
 This way you create an image of a selection arrow in each item of the ContactsList node. You use the Arrow node later in this tutorial to show the selected contact.
 
@@ -85,7 +82,6 @@ This way you create a $layout alias in the resource dictionary of the List Box I
 Set the $layout alias to point to the List Box Item Container > Dock Layout 2D > Content Layout 2D node.
 
 This way you set Kanzi to place the ContactItem prefab in the Content Layout 2D node.
-
 
 Each item in the ContactsList now contains the ContactItem prefab, a light gray arrow at the right, and a separator line at the bottom.
 

@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/cameras/making-objects-turn
 
 # Making nodes turn to a Camera node
 
-
 You can set 3D nodes to automatically turn towards a Camera node.
 
 For example, the Plane nodes in the top image automatically turn towards the default camera of the Scene node, while the bottom image shows the same scene, but the nodes do not turn towards a Camera node.

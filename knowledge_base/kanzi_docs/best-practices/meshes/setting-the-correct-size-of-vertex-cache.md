@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/best-practices/meshes/setting-the-correc
 
 # Setting the correct size of vertex cache
 
-
 GPUs have a vertex cache of a certain size. Accessing mesh vertices from the cache is an order of magnitude faster than accessing vertices from elsewhere in the memory. You can optimize the mesh data for a certain cache size by reordering vertices and indices in the vertex buffer so that the amount of cache hits is optimal.
 
 For example, a 16-byte vertex cache can store Position + Normal + Texcoord (XYZ * 2 + XYZ * 2 + UV * 2), but is too small to store Position + Normal + Texcoord + Color.

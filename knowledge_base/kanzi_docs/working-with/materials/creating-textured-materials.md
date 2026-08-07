@@ -5,16 +5,13 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/materials/creating-textured
 
 # Creating textured materials
 
-
 Use textured materials to render a texture on a mesh. In Kanzi you can use textured materials with:
 
 - Single textures use a single image for the texture.
 - Cubemap textures combine six square-shaped images into one texture to represent reflections of the environment. Each image represents the scenery in one of the six directions along the x, y, and z axes from the viewpoint of the cubemapped object.
 
-
 Physically-based textured materials use multiple textures to define the appearance of the material. See Creating a physically-based textured material.
 ## Creating a textured material
-
 
 To create a textured material:
 
@@ -30,7 +27,6 @@ In the Library > Materials and Textures > Materials, select a material that uses
   - SmartVertexPhong is a high-performance material type that uses vertex-based Phong shaders.
   - SmartFragmentPhong is a high-quality, slower-performing material type that uses pixel-based Phong shaders.
   - SmartPhysicallyBased implements physically based rendering (PBR) principles. See Creating a physically-based textured material.
-
 
 See Using material types and Using smart materials.
 
@@ -57,13 +53,11 @@ In the Library > Materials and Textures > Textures, select the texture. In the P
     - Repeat to repeat the texture
     - Mirror to repeat the texture, but mirror every other repetition
 
-
 6.
 
 (Optional) In the Library > Materials and Textures > Materials, select the textured material. In the Properties, set the Texture Offset property X and Y property fields to the amount by which you want to offset the texture on the surface of the node that uses the textured material.
 
 ## Creating a cubemap textured material
-
 
 To create a cubemap textured material:
 
@@ -77,7 +71,6 @@ In the Library > Materials and Textures > Materials, select a material that uses
   - SmartVertexPhong is a high-performance material type that uses vertex-based Phong shaders.
   - SmartFragmentPhong is a high-quality, slower-performing material type that uses pixel-based Phong shaders.
   - SmartPhysicallyBased implements physically based rendering (PBR) principles.
-
 
 See Using material types and Using smart materials.
 
@@ -93,7 +86,6 @@ In the Node Tree or Prefabs, select the node on which you want to use the cubema
 (Optional) In the Library > Materials and Textures > Materials, select the cubemap textured material. In the Properties, add the Material > CubemapColor property and set it to the color with which you want to modulate the cubemap texture.
 
 ## Creating a physically-based textured material
-
 
 To create a physically-based textured material:
 
@@ -123,7 +115,6 @@ Kanzi reads the roughness map from the green color channel of the texture. You c
     - For a rough, diffuse surface set the property value to 1.
     - For a smooth, glossy surface set the property value to 0.
 
-
 4.
 
 To set the metalness of the material, in the Properties, add and set:
@@ -135,7 +126,6 @@ Kanzi reads the metallic map from the blue color channel of the texture. You can
 
     - For a material whose reflective behavior fully resembles that of a metal, set the property value to 1.
     - For a dielectric material set the property value to 0.
-
 
 5.
 
@@ -165,26 +155,16 @@ To set the areas where the material emits light, in the Properties, add and set:
 To set the tiling and offset of the textures, in the Properties, add and set:
 
   - Material > Texture Tiling property X and Y property fields to the number of times that you want to repeat the textures along the x and y axes
-
-> **Tip:** If you set the Texture Tiling property fields to values greater than 1, for each texture that your material uses, set the Wrap Mode property to Repeat.
-> - Material > Texture Offset property X and Y property fields to the amount by which you want to offset the textures on the surface of the node that uses the material
->
-> 9.
->
-> To use detail textures, in the Properties, add and set the detail texture properties.
->
-> For example, add and set:
->
-> - Material > Detail Base Color Texture to the detail texture that contains the base color for the material
-> - Detail Base Color Factor to the color that you want to use to filter values from the Detail Base Color Texture
->
-> Kanzi alpha-blends this color with the base color that you set with the Base Color Factor property.
-> - (Optional) Material > Detail Texture Tiling property X and Y property fields to the number of times that you want to repeat the detail textures along the x and y axes
-> - (Optional) Material > Detail Texture Offset property X and Y property fields to the amount by which you want to offset the detail textures
->
-> 10.
->
-> To select between texture coordinates `kzTextureCoordinate0` and `kzTextureCoordinate1` for the textures, in the the Properties, add and set the texture UV properties.
->
-> For example, for the Base Color Texture, to use the texture coordinate whose semantic index is 1, add and set the Material > Base Color Texture UV property to 1.
->
+**Tip:** If you set the Texture Tiling property fields to values greater than 1, for each texture that your material uses, set the Wrap Mode property to Repeat.
+- Material > Texture Offset property X and Y property fields to the amount by which you want to offset the textures on the surface of the node that uses the material
+9.
+To use detail textures, in the Properties, add and set the detail texture properties.
+For example, add and set:
+- Material > Detail Base Color Texture to the detail texture that contains the base color for the material
+- Detail Base Color Factor to the color that you want to use to filter values from the Detail Base Color Texture
+Kanzi alpha-blends this color with the base color that you set with the Base Color Factor property.
+- (Optional) Material > Detail Texture Tiling property X and Y property fields to the number of times that you want to repeat the detail textures along the x and y axes
+- (Optional) Material > Detail Texture Offset property X and Y property fields to the amount by which you want to offset the detail textures
+10.
+To select between texture coordinates `kzTextureCoordinate0` and `kzTextureCoordinate1` for the textures, in the the Properties, add and set the texture UV properties.
+For example, for the Base Color Texture, to use the texture coordinate whose semantic index is 1, add and set the Material > Base Color Texture UV property to 1.

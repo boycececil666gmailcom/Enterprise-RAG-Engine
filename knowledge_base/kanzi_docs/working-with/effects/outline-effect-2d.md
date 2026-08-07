@@ -5,12 +5,10 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/effects/outline-effect-2d.h
 
 # Using the Outline Effect 2D effect
 
-
 Use the Outline Effect 2D effect to apply an outline to the content of a 2D node.
 
 For example, use the Outline Effect 2D effect to apply an outline to text that comes from a data source.
 ## Creating an outline color effect
-
 
 To create an outline color effect:
 
@@ -36,9 +34,7 @@ In the Library, select the Outline Effect 2D effect. In the Properties, use thes
   - Outline Color sets the color of the outline.
   - Outline Softness sets the length of a gradient, relative to the width of the outline, that softens the outline.
 
-
 ## Creating a textured outline
-
 
 You can apply a one-dimensional texture to an outline that you create with the Outline Effect 2D effect. For example, you can use a texture to add multiple strokes to text.
 
@@ -71,12 +67,9 @@ For example, to start the outline with the middle gray shade in the example text
   - Outline Texture Tiling sets the value by which Kanzi scales the outline texture.
 
 For example, to create an outline that shows the texture twice, set Outline Texture Tiling to 2.
+**Tip:** When you want a texture to repeat to cover the outline, in the Library > Materials and Textures > Textures, select that texture, and in the Properties, set Wrap Mode to Repeat.
 
-
-> **Tip:** When you want a texture to repeat to cover the outline, in the Library > Materials and Textures > Textures, select that texture, and in the Properties, set Wrap Mode to Repeat.
->
 ## Customizing an instance of an outline effect
-
 
 When you edit the properties of an effect in the Library > Effects, you change the appearance of that effect for all nodes that use it. You can customize each effect instance by overriding the effect property values. For example:
 
@@ -84,7 +77,6 @@ When you edit the properties of an effect in the Library > Effects, you change t
 - When you create a Mask Effect 2D effect, you can vary the size of the mask in different instances of that effect.
 - When you create a Blur Effect 2D effect, you can vary the amount of blur in different instances of that effect.
 - When you create an Outline Effect 2D effect, you can vary the color of the outline in different instances of that effect.
-
 
 To customize an instance of an effect:
 
@@ -117,11 +109,9 @@ For example, in the Properties, add the Shadow Effect 2D Properties > ShadowEffe
 3.
 
 (Optional) Repeat the previous step for each effect property that you want to customize.
+**Tip:** When you want to remove from a node a property and its To Source binding, right-click that property and select Remove Property And Binding.
 
-> **Tip:** When you want to remove from a node a property and its To Source binding, right-click that property and select Remove Property And Binding.
->
 ## Using the Outline Effect 2D effect in the API
-
 
 To create an outline effect:
 
@@ -149,6 +139,5 @@ OutlineEffect2DSharedPtr outlineEffect = dynamic_pointer_cast<OutlineEffect2D>(n
 outlineEffect->setSoftness(0.7f);
 
 ```
-
 
 For details, see the `OutlineEffect2D` class.

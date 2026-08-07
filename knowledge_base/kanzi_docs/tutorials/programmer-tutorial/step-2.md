@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/tutorials/programmer-tutorial/step-2.htm
 
 # Step 2 - Access the content created in the Kanzi Studio project
 
-
 In this tutorial you create a widget store where you can browse and select widgets in one view and select widgets to see their descriptions in another view. When running the project at the end of the previous step you saw only the application background. The kzb file you created from the Kanzi Studio project and loaded using the API in the previous step of this tutorial, includes all the nodes and resources you need to create the application logic using the API:
 
 - A Grid List Box 3D node named Widget Grid List Box is the node into which you dynamically load the widget representations using the API. The Grid List Box node defines the layout and interaction behavior for the items it shows.
@@ -21,7 +20,6 @@ You can find it in the Node Tree window in Widget Store Screen > Widget Store Ro
 - Aliases to access the content from the kzb file using the Kanzi Engine API, and the resource IDs for the animation clips.
 
 You can see the aliases in the resource dictionary for the node you select in the Node Tree in the Dictionaries window.
-
 
 To access content from the Kanzi Studio project using the Kanzi Engine API:
 
@@ -147,7 +145,6 @@ void onProjectLoaded() override
     ResourceManager* resourceManager = getDomain()->getResourceManager();
     PrefabTemplateSharedPtr widgetItemPrefabTemplate = resourceManager->acquireResource<PrefabTemplate>("kzb://programmer_tutorial/Prefabs/Widget Item Prefab");
 
-
     // Get the reference to the back button in the description layer.
     m_backButton = screen->lookupNode<Node>("#Back button");
 
@@ -195,6 +192,5 @@ protected:
 };
 
 ```
-
 
 Previous step Next step

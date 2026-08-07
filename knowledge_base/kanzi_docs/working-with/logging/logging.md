@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/logging/logging.html
 
 # Logging
 
-
 Use the Kanzi logging system to print messages to the Log window, the Kanzi debug console, standard output, and the system log on your target device. For example, use logging to find problems in your Kanzi application, and to inform the user about the status of your application.
 
 You can:
@@ -17,62 +16,38 @@ You can:
 
 ## Printing log messages
 
-
 Use the Kanzi logging macros to print messages to the log. Most of the logging macros use a fixed log level to indicate the severity of the information in the message. See Setting the log level.
-
-> **Tip:** Do not use application critical code in the logging macro calls. If you place application critical code as an argument to the logging macro call, and during compilation you disable the log level or the log category assigned to the message in the call, the preprocessor removes the logging macro call together with the application critical code.
->
-> Kanzi has these logging macros:
-> |
->
-> Logging macro |
->
-> Description |
-> |
->
-> `log.hpp::kzLogError` |
->
-> Log error messages using the Default Logger (`DefaultLogger`), the `error` (`log_level.hpp::KZ_LOG_LEVEL_ERROR`) log level, and the log category that you provide as an input parameter. |
-> |
->
-> `log.hpp::kzLogWarning` |
->
-> Log warning messages using the Default Logger (`DefaultLogger`), the `warning` (`log_level.hpp::KZ_LOG_LEVEL_WARNING`) log level, and the log category that you provide as an input parameter. |
-> |
->
-> `log.hpp::kzLogInfo` |
->
-> Log info messages using the Default Logger (`DefaultLogger`), the `info` (`log_level.hpp::KZ_LOG_LEVEL_INFO`) log level, and the log category that you provide as an input parameter. |
-> |
->
-> `log.hpp::kzLogTrace` |
->
-> Log trace messages using the Default Logger (`DefaultLogger`), the `trace` (`log_level.hpp::KZ_LOG_LEVEL_TRACE`) log level, and the log category that you provide as an input parameter. |
-> |
->
-> `log.hpp::kzLogDebug` |
->
-> Log debug messages using the Default Logger (`DefaultLogger`), the `info` (`log_level.hpp::KZ_LOG_LEVEL_INFO`) log level, and the log category `LogCategories::KZ_LOG_CATEGORY_DEBUG`. |
-> |
->
-> `log.hpp::kzLog` |
->
-> Log messages using a custom logger, and the log level and category that you provide as input parameters. See Creating a custom logger. |
->
-> To print log messages:
->
-> 1.
->
-> In your application code, use a logging macro where you want to print a log message. For example:
->
-> - Debug macro:
->
-> ```
-> // Print "This is a debug message.".
-> kzLogDebug(("This is a debug message."));
->
-> ```
-
+**Tip:** Do not use application critical code in the logging macro calls. If you place application critical code as an argument to the logging macro call, and during compilation you disable the log level or the log category assigned to the message in the call, the preprocessor removes the logging macro call together with the application critical code.
+Kanzi has these logging macros:
+|
+Logging macro |
+Description |
+|
+`log.hpp::kzLogError` |
+Log error messages using the Default Logger (`DefaultLogger`), the `error` (`log_level.hpp::KZ_LOG_LEVEL_ERROR`) log level, and the log category that you provide as an input parameter. |
+|
+`log.hpp::kzLogWarning` |
+Log warning messages using the Default Logger (`DefaultLogger`), the `warning` (`log_level.hpp::KZ_LOG_LEVEL_WARNING`) log level, and the log category that you provide as an input parameter. |
+|
+`log.hpp::kzLogInfo` |
+Log info messages using the Default Logger (`DefaultLogger`), the `info` (`log_level.hpp::KZ_LOG_LEVEL_INFO`) log level, and the log category that you provide as an input parameter. |
+|
+`log.hpp::kzLogTrace` |
+Log trace messages using the Default Logger (`DefaultLogger`), the `trace` (`log_level.hpp::KZ_LOG_LEVEL_TRACE`) log level, and the log category that you provide as an input parameter. |
+|
+`log.hpp::kzLogDebug` |
+Log debug messages using the Default Logger (`DefaultLogger`), the `info` (`log_level.hpp::KZ_LOG_LEVEL_INFO`) log level, and the log category `LogCategories::KZ_LOG_CATEGORY_DEBUG`. |
+|
+`log.hpp::kzLog` |
+Log messages using a custom logger, and the log level and category that you provide as input parameters. See Creating a custom logger. |
+To print log messages:
+1.
+In your application code, use a logging macro where you want to print a log message. For example:
+- Debug macro:
+```
+// Print "This is a debug message.".
+kzLogDebug(("This is a debug message."));
+```
 
 Prints to the log:
 
@@ -89,7 +64,6 @@ info:debug> This is a debug message.
 kzLogError(MY_LOG_CATEGORY, ("This is an error message."));
 
 ```
-
 
 See Using log categories.
 
@@ -111,7 +85,6 @@ kzLogInfo(MY_LOG_CATEGORY, ("The length is {}.", length));
 
 ```
 
-
 See Using log categories.
 
 Prints to the log:
@@ -122,7 +95,6 @@ info:My category> The length is 100.
 
 ```
 
-
 2.
 
 Build and run your application. See Deploying Kanzi applications.
@@ -130,7 +102,6 @@ Build and run your application. See Deploying Kanzi applications.
 For example, on Windows build your application in Visual Studio using the Debug build configuration. When you run the application and reach in the code the point where you call the logging macro, Kanzi prints the message to the debug console.
 
 ## Formatting log messages in code
-
 
 A log message is either a scalar value or a format specification string followed by the format arguments.
 
@@ -161,7 +132,6 @@ For example:
 
 ```
 
-
 The format specification string is a literal text that can contain the format argument references in curly braces:
 
 `"Text {...} text {...} ... {...} ..."`
@@ -171,26 +141,18 @@ When the logger writes the message, it replaces the argument references with a s
 `{[argument index][:format specification]}`
 
 The format argument index and format specification are optional.
-
-> **Note:** Place a colon ahead of the format specification part.
->
-> To prevent interpreting an opening brace â{â as the format argument reference, prefix it with two backslashes: `\\{`
->
-> Note that if it is followed by a closing brace â}â, it is not removed and remains in the log message output. The sole string literal is not considered a format string and is not parsed for format argument references.
->
-> For example:
->
-> ```
-> // Log message consists of format string and one argument.
-> // Output: {} { some text }
-> kzLogInfo(MY_LOG_CATEGORY, ("\\{} \\{ {} } { this text is removed ", "some text"));
->
-> // Single string literals are not parsed as log message format string.
-> // Output: This text is string literal. Braces are kept {}, and { this text remains.
-> kzLogInfo(MY_LOG_CATEGORY, ("This text is string literal. Braces are kept {}, and { this text remains."));
->
-> ```
-
+**Note:** Place a colon ahead of the format specification part.
+To prevent interpreting an opening brace â{â as the format argument reference, prefix it with two backslashes: `\\{`
+Note that if it is followed by a closing brace â}â, it is not removed and remains in the log message output. The sole string literal is not considered a format string and is not parsed for format argument references.
+For example:
+```
+// Log message consists of format string and one argument.
+// Output: {} { some text }
+kzLogInfo(MY_LOG_CATEGORY, ("\\{} \\{ {} } { this text is removed ", "some text"));
+// Single string literals are not parsed as log message format string.
+// Output: This text is string literal. Braces are kept {}, and { this text remains.
+kzLogInfo(MY_LOG_CATEGORY, ("This text is string literal. Braces are kept {}, and { this text remains."));
+```
 
 The format argument index is a position of the format argument in the argument list. The first format argument has the index 0, followed by the argument with index 1, and so on. The last format argument has the index N-1, where N is the total number of the format arguments.
 
@@ -210,7 +172,6 @@ kzLogInfo(MY_LOG_CATEGORY, ("{} plus {} equals {}.", 1, 2, 1 + 2));
 
 ```
 
-
 You can also reference the format arguments using the argument index explicitly:
 
 ```
@@ -225,10 +186,8 @@ kzLogInfo(MY_LOG_CATEGORY, ("argument #4 = {4}, argument #0 = {0}, argument #2 =
 
 ```
 
-
 In the last example you can see that the indexed argument reference **â{2}â** is followed by argument reference without index **â{}â**. In such a case the argument referenced without index is the one (#3 in this case) following the argument referenced with index (#2 in this case).
 ### Log message argument format specification
-
 
 The log message format argument reference consists of argument index and format specification. The format specification describes how the log message format argument value is converted to a string and how it is positioned when the message is written to the log. The logging system takes the format argument value type into account when converting the value to the textual representation, making logging typesafe.
 
@@ -411,16 +370,11 @@ Pointer |   |
 `p` |
 
 The pointer address. This is the default for pointers. |
-
-> **Note:** If the argument type does not match the specifier field, the default specifier for the argument type is used to convert the argument value to a string.
->
-> If the type of the format argument is a pointer, the Logging subsystem writes to the log the address stored in the pointer. If the type of the format argument is array `(T[])`, the Logging subsystem writes to the log the address of the first element of that array. Only string literals of type `const char[]` or `char[]` are written to the log as text.
->
-> To write to the log the string pointed to by the `const char*` or `char*` pointer, you can use the `string_view` object. You can initialize the `string_view` object with the pointer to the string that you want to log and then use that object as a log format argument. If you pass a pointer to the string as a format argument, only the address of that string is written to the log.
->
-> You can use objects of user-defined type as log format arguments. The Logging subsystem uses the `logArgumentToString` template function to convert objects of user-defined type to string. Only the **align** format argument is applicable for user-defined types. The Logging subsystem specializes `logArgumentToString` for several user-defined types.
+**Note:** If the argument type does not match the specifier field, the default specifier for the argument type is used to convert the argument value to a string.
+If the type of the format argument is a pointer, the Logging subsystem writes to the log the address stored in the pointer. If the type of the format argument is array `(T[])`, the Logging subsystem writes to the log the address of the first element of that array. Only string literals of type `const char[]` or `char[]` are written to the log as text.
+To write to the log the string pointed to by the `const char*` or `char*` pointer, you can use the `string_view` object. You can initialize the `string_view` object with the pointer to the string that you want to log and then use that object as a log format argument. If you pass a pointer to the string as a format argument, only the address of that string is written to the log.
+You can use objects of user-defined type as log format arguments. The Logging subsystem uses the `logArgumentToString` template function to convert objects of user-defined type to string. Only the **align** format argument is applicable for user-defined types. The Logging subsystem specializes `logArgumentToString` for several user-defined types.
 #### Examples
-
 
 To log a message using various argument specifiers:
 
@@ -452,7 +406,6 @@ kzLogInfo(MY_LOG_CATEGORY, ("decimal:{:<+4}.", 10));
 
 ```
 
-
 To use string format arguments:
 
 ```
@@ -469,7 +422,6 @@ kzLogInfo(MY_LOG_CATEGORY, ("Message: {}", "String literal message."));
 ```
 
 ## Setting the log level
-
 
 Use log levels to show log messages based on their severity. For example, to log critical issues during application execution, use the `error` log level (`log_level.hpp::KZ_LOG_LEVEL_ERROR`).
 
@@ -526,7 +478,6 @@ These log levels are enabled by default:
 - `log_level.hpp::KZ_LOG_LEVEL_WARNING`
 - `log_level.hpp::KZ_LOG_LEVEL_INFO`
 
-
 To set the log level, use the `log_level.hpp::KZ_LOG_LEVEL_ENABLED_THRESHOLD` macro.
 
 For example, to set a log level that enables all log levels:
@@ -536,10 +487,8 @@ For example, to set a log level that enables all log levels:
 
 ```
 
-
 You can create you own log levels. See `LogLevelMacros::KZ_LOG_CREATE_LEVEL`.
 ## Using log categories
-
 
 Use log categories to group log messages that contain information related to specific functionality.
 
@@ -603,9 +552,7 @@ info:My category> This is an info message.
 
 ```
 
-
 ## Creating a custom logger
-
 
 To redirect log messages, you can implement a custom logger class, which inherits from `AbstractLogger`, and push the custom logger to the Kanzi logging system. Make your logger class override the `AbstractLogger::writeOverride` function.
 
@@ -702,7 +649,6 @@ private:
 
 ```
 
-
 To use a logger explicitly:
 
 ```
@@ -713,7 +659,6 @@ SimpleLogger simpleLogger;
 kzLog(simpleLogger, KZ_LOG_LEVEL_INFO, KZ_LOG_CATEGORY_GENERIC, ("Lets log 1 + 2 = {}.", 1 + 2));
 
 ```
-
 
 To use a logger in logger chain:
 
@@ -732,7 +677,6 @@ DefaultLogger::pushLogger(kanzi::move(simpleLogger));
 kzLogInfo(KZ_LOG_CATEGORY_GENERIC, ("Lets log 1 + 2 = {}.", 1 + 2));
 
 ```
-
 
 To exclusively redirect log messages to a logger:
 
@@ -757,7 +701,6 @@ kzLogInfo(KZ_LOG_CATEGORY_GENERIC, ("Lets log 1 + 2 = {}.", 1 + 2));
 
 ## QNX system logger (slogger2)
 
-
 On QNX you can use the QNX system logger (slogger2) to write log messages. When you redirect log messages to slogger2, your Kanzi application continues writing the log messages to the default logger.
 
 By default QNX writes the slogger2 logs to `/tmp/slogger2/<Kanzi-application-name>.<process-id>`.
@@ -767,7 +710,6 @@ Keep in mind that slogger2 initializes after Kanzi reads the configuration for y
 To learn how to configure slogger2 in a Kanzi application, see QNX system logger (slogger2).
 ### Viewing a slogger2 log file
 
-
 To view a slogger2 log file on a QNX device, run:
 
 ```
@@ -776,7 +718,6 @@ slog2info -l <log-filename>
 ```
 
 ### Registering a custom slogger2 buffer
-
 
 Kanzi enables you to register a custom slogger2 buffer and pass it to a Kanzi application. Your Kanzi application then uses the buffer to write logs. For example, you can register a custom slogger2 buffer when you want to give the buffer a custom name or if you want to set any of the properties from the `slog2_buffer_set_config_t` structure passed to `slog2_register`.
 
@@ -790,7 +731,6 @@ To register a custom slogger2 buffer, in `Application::onConfigure` set:
 configuration.slog2Config.customSlog2Buffer = value
 
 ```
-
 
 where `value` is a `slog2_buffer_t` type buffer. The default value is nullptr (disabled).
 
@@ -814,7 +754,6 @@ configuration.slog2Config.customSlog2Buffer = buffers[0];
 ```
 
 ### Cleaning up after slogger2
-
 
 When your Kanzi application quits, slogger2 by default calls `slog2_reset`. This frees all the slogger2 buffers registered by a Kanzi process, not just the one registered by Kanzi. You can change this behavior by overriding `Application::uninitializePlatform`. For example, change this behavior when you want to call `slog2_reset` after a Kanzi application quits.
 

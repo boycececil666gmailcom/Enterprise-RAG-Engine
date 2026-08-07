@@ -5,7 +5,6 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/viewports/using-viewports.h
 
 # Viewport nodes
 
-
 Use the Viewport nodes to set the size of a render target surface onto which Kanzi projects content.
 
 Kanzi has these Viewport nodes:
