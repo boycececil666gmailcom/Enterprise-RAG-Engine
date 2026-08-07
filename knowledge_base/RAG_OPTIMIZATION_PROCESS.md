@@ -32,7 +32,8 @@
 | **[E]** | **コードブロック分離とタグ付け** | テキスト解説（`prose`）とコードサンプル（`code`: C++, Lua, Java等）を自動判定し、`chunk_type: "code"` メタデータと `code_lang` 情報を付与。 | **完全実装** ✅ |
 | **[F]** | **重複コンテンツの排除 (Dedup)** | 各チャンクのコンテンツから SHA-256 ハッシュ値を算出し、ハブページ等での重複テキストを100%検出・一元化排除。 | **完全実装** ✅ |
 | **[G]** | **チャンクサイズ & Overlap 設定** | 1チャンクあたり目標文字数を **500〜800文字**（段落境界を優先）に設定し、オーバーラップを設けて文章のつながりを維持。 | **完全実装** ✅ |
-| **[H]** | **VDB Ready データセットの構築** | Qdrant / ChromaDB / Pinecone 等に即座にバッチ投入可能な一括JSONデータセット `kanzi_rag_chunks.json` (9.65MB) を自動生成。 | **完全実装** ✅ |
+| **[H]** | **VDB Ready データセットの構築** | Qdrant / ChromaDB / Pinecone 等に即座にバッチ投入可能な一括JSONデータセット `kanzi_rag_chunks.json` (21.17MB) を自動生成。 | **完全実装** ✅ |
+| **[I]** | **Contextual Retrieval (文脈付与)** | Anthropic推奨のチャンキング戦略。各チャンク本文の先頭に `[Document Context: Title > Section]` を自動合成し、ベクトル類似度検索の失敗率を激減させる。 | **完全実装** ✅ |
 
 ---
 
@@ -63,19 +64,23 @@ sequenceDiagram
     Cleaner->>Storage: Delete Noise (licenses/, old release notes, <200 char stubs)
     Cleaner->>Storage: Fix encodings, absolute links, anchor symbols (Â¶)
 
-    Note over User, VectorDB: Phase 3: Semantic Chunking & Dataset Building
+    Note over User, VectorDB: Phase 3: Semantic Chunking & Context Enrichment
     User->>Builder: Execute Dataset Builder
     Builder->>Storage: Load cleaned Markdown files
     Builder->>Builder: Parse Frontmatter (YAML)
     Builder->>Builder: Split sections by H2/H3 headings
     Builder->>Builder: Separate Code blocks vs Prose chunks
+    Builder->>Builder: Prepend Contextual Header Prefix ([Document Context: ...])
     Builder->>Builder: Deduplicate content using SHA-256 Hashes
     Builder->>Builder: Attach rich Metadata (source_url, section_path, etc.)
     Builder->>Storage: Output JSON Dataset (kanzi_rag_chunks.json)
 
     Note over User, VectorDB: Phase 4: Vector Database Indexing
-    User->>VectorDB: Ingest kanzi_rag_chunks.json
+    User->>VectorDB: Ingest kanzi_rag_chunks.json (Context Enriched)
     VectorDB->>VectorDB: Compute Embeddings & Create Index
-    VectorDB-->>User: RAG Dataset Ready for Vector Search
+    VectorDB-->>User: RAG Dataset Ready for High-Precision Search
 ```
+
+---
+
 
