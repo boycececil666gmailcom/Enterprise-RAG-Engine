@@ -32,8 +32,9 @@
 | **[E]** | **コードブロック分離とタグ付け** | テキスト解説（`prose`）とコードサンプル（`code`: C++, Lua, Java等）を自動判定し、`chunk_type: "code"` メタデータと `code_lang` 情報を付与。 | **完全実装** ✅ |
 | **[F]** | **重複コンテンツの排除 (Dedup)** | 各チャンクのコンテンツから SHA-256 ハッシュ値を算出し、ハブページ等での重複テキストを100%検出・一元化排除。 | **完全実装** ✅ |
 | **[G]** | **チャンクサイズ & Overlap 設定** | 1チャンクあたり目標文字数を **500〜800文字**（段落境界を優先）に設定し、オーバーラップを設けて文章のつながりを維持。 | **完全実装** ✅ |
-| **[H]** | **VDB Ready データセットの構築** | Qdrant / ChromaDB / Pinecone 等に即座にバッチ投入可能な一括JSONデータセット `kanzi_rag_chunks.json` (21.17MB) を自動生成。 | **完全実装** ✅ |
+| **[H]** | **VDB Ready データセットの構築** | Qdrant / ChromaDB / Pinecone 等に即座にバッチ投入可能な一括JSONデータセット `kanzi_rag_chunks.json.gz` (5.29MB 圧縮版 / 106.54MB 解凍版) を自動生成。 | **完全実装** ✅ |
 | **[I]** | **Contextual Retrieval (文脈付与)** | Anthropic推奨のチャンキング戦略。各チャンク本文の先頭に `[Document Context: Title > Section]` を自動合成し、ベクトル類似度検索の失敗率を激減させる。 | **完全実装** ✅ |
+| **[J]** | **Parent-Document Retrieval (親検索)** | 小さな子チャンク (200-250文字) で高精度ベクトル検索を行い、ヒット時に `metadata.parent_content` (1,500文字の親文脈) をLLMへ渡す二重コンテキスト設計。 | **完全実装** ✅ |
 
 ---
 
@@ -47,8 +48,7 @@ sequenceDiagram
     actor User as User / Admin
     participant Scraper as scrape_kanzi.py
     participant Web as docs.kanzi.com
-    participant Cleaner as clean_kanzi_docs.py
-    participant Builder as build_vdb_dataset.py
+    participant Notebook as build_vdb_dataset.ipynb
     participant Storage as Local Storage (kanzi_docs)
     participant VectorDB as Vector Database (Chroma/Qdrant)
 
@@ -58,28 +58,21 @@ sequenceDiagram
     Web-->>Scraper: Return HTML Content
     Scraper->>Storage: Save converted Markdown (*.md)
 
-    Note over User, VectorDB: Phase 2: Markdown Cleaning & Noise Elimination
-    User->>Cleaner: Execute Text Cleaning
-    Cleaner->>Storage: Scan & Read Markdown Files
-    Cleaner->>Storage: Delete Noise (licenses/, old release notes, <200 char stubs)
-    Cleaner->>Storage: Fix encodings, absolute links, anchor symbols (Â¶)
+    Note over User, VectorDB: Phase 2: Integrated Cleaning & Semantic Chunking (Jupyter Notebook)
+    User->>Notebook: Run All-in-One Notebook
+    Notebook->>Storage: Delete Noise (licenses/, release-notes/kanzi-3.0/, <200 char stubs)
+    Notebook->>Storage: Apply 11-Rule Markdown Text Cleaning
+    Notebook->>Notebook: Parse Frontmatter & Split H2/H3 Sections
+    Notebook->>Notebook: Separate Code vs Prose & Prepend Context Headers
+    Notebook->>Notebook: Link Parent Content (Small-to-Big Strategy) & Deduplicate SHA-256
+    Notebook->>Storage: Export kanzi_rag_chunks.json.gz (5.29 MB)
 
-    Note over User, VectorDB: Phase 3: Semantic Chunking & Context Enrichment
-    User->>Builder: Execute Dataset Builder
-    Builder->>Storage: Load cleaned Markdown files
-    Builder->>Builder: Parse Frontmatter (YAML)
-    Builder->>Builder: Split sections by H2/H3 headings
-    Builder->>Builder: Separate Code blocks vs Prose chunks
-    Builder->>Builder: Prepend Contextual Header Prefix ([Document Context: ...])
-    Builder->>Builder: Deduplicate content using SHA-256 Hashes
-    Builder->>Builder: Attach rich Metadata (source_url, section_path, etc.)
-    Builder->>Storage: Output JSON Dataset (kanzi_rag_chunks.json)
-
-    Note over User, VectorDB: Phase 4: Vector Database Indexing
-    User->>VectorDB: Ingest kanzi_rag_chunks.json (Context Enriched)
+    Note over User, VectorDB: Phase 3: Vector Database Indexing
+    User->>VectorDB: Ingest kanzi_rag_chunks.json.gz
     VectorDB->>VectorDB: Compute Embeddings & Create Index
-    VectorDB-->>User: RAG Dataset Ready for High-Precision Search
+    VectorDB-->>User: RAG Pipeline Complete & Ready for QA Search
 ```
+
 
 ---
 

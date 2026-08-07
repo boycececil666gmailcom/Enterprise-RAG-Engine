@@ -41,3 +41,7 @@ k8s/secrets.yaml
 *.tfvars
 
 RAGExplainerVideo.mp4
+
+# Large dataset files (>100MB rejected by GitHub)
+knowledge_base/kanzi_rag_chunks.json
+
