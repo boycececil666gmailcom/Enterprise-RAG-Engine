@@ -116,29 +116,24 @@ void doSomethingRepeatedly()
 ### Reacting to application state changes
 
 Use these functions to react to application state changes:
-|
 
 Function |
 
 Description |
-|
 
 `Application::onSuspend` |
 
 Kanzi calls this function in a frame where no rendering was performed, to determine whether to suspend the application and for what duration. The default implementation calculates appropriate timeout based on active animations, timers, and resources waiting for deployment.
 
 Use this function to customize application suspension.  |
-|
 
 `Application::onPause` |
 
 Kanzi calls this function when the application main loop enters the `MainLoopState::Paused` state. |
-|
 
 `Application::onResume` |
 
 Kanzi calls this function when the application main loop returns from the `MainLoopState::Paused` to the `MainLoopState::Running` state. |
-|
 
 `Application::onShutdown` |
 

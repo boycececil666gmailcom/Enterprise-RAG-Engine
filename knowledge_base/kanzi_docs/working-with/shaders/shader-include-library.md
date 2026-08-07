@@ -20,17 +20,14 @@ The system shader directory is read-only from within Kanzi Studio. To customize 
 ## Including system shaders
 
 The `#include` directive supports two forms that follow C/C++ include conventions:
-|
 
 Syntax |
 
 Resolution |
-|
 
 `#include "file.glsl"` |
 
 Searches the project directory first, then falls back to the system shader directory. |
-|
 
 `#include <file.glsl>` |
 

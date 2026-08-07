@@ -48,27 +48,22 @@ To develop Android applications with Kanzi, you need Android Studio, which you c
 Kanzi provides two Android frameworks with different features and requirements. See Developing Kanzi applications for Android.
 
 The libraries of these frameworks are compatible with:
-|
 
 Kanzi Android framework (droidfw) |
 
 Kanzi application framework (appfw) |
-|
 
 Android API 26 or higher |
 
 Android API 21 or higher |
-|
 
 Android 8 or higher |
 
 Android 5 or higher |
-|
 
 Java language level 11 or higher |
 
 Java language level 11 or higher |
-|
 
 NDK 28.2.13676358 |
 

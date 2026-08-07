@@ -115,16 +115,12 @@ In the Library > Property Types > Activity > ActivityProperty press Alt and righ
 - Category to Controller Properties
 - Data Type to Enumeration
 - Enumeration Options to:
-|
 Key |
 Value |
-|
 Battery |
 0 |
-|
 Music |
 1 |
-|
 Navigation |
 2 |
 

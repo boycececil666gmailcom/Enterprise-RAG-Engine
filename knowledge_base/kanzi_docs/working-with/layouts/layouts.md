@@ -6,32 +6,26 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/layouts/layouts.html
 # Layout control nodes
 
 Use layout control nodes to arrange content. Layout control nodes are especially useful for content that is dynamically added or removed during the use of a Kanzi application, or that is loaded from external sources, for example, from files in a directory.
-|
 
 Arrange items in a table with Grid Layout nodes.
 
 Learn about the Grid Layout nodes >   |
-|
 
 Place items next to each other with Stack Layout nodes.
 
 Learn about the Stack Layout nodes >   |
-|
 
 Arrange items in rows with Flow Layout nodes.
 
 Learn about the Flow Layout nodes >   |
-|
 
 Arrange items along a trajectory with the Trajectory Layout nodes.
 
 Learn about the Trajectory Layout nodes >   |
-|
 
 Arrange items relative to each other along the sides of a layout with the Dock Layout nodes.
 
 Learn about the Dock Layout nodes >   |
-|
 
 Present content in a UI control as a single item with the Content Layout nodes.
 

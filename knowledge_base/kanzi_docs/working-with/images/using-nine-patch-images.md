@@ -62,35 +62,29 @@ In the Library > Materials and Textures > Textures select each texture that the 
 
 In the Node Tree select the Nine Patch Image node and in the Properties set the texture type for the textures you want to control (Stretch Type Top, Stretch Type Bottom, Stretch Type Left, Stretch Type Right, Stretch Type Center).
 
-|
-
 Wrap Mode property value |
 
 Texture Stretch property value |
 
 Description |
-|
 
 Clamp |
 
 Stretch |
 
 Default value. Scale the texture to fill the space between the corner textures of the Nine Patch Image. |
-|
 
 Clamp |
 
 Wrap |
 
 Extend the last column or row of pixels of the selected texture, when the width or height of the space between the corner textures of the Nine Patch Image exceed the width or height of the selected texture. |
-|
 
 Repeat |
 
 Stretch |
 
 Scale the texture to fill the space between the corner textures of the Nine Patch Image. |
-|
 
 Repeat |
 

@@ -6,44 +6,36 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/preview/controlling-your-ap
 # Controlling the Preview
 
 When Kanzi Studio loads a project, it shows in the Preview your project as if it was run as an application on a target device. You can control the Preview from the Project menu or use the shortcut keys.
-|
 
 Shortcut key |
 
 Description |
-|
 
 F5 |
 
 Start the Preview in paused mode. |
-|
 
 F6 |
 
 Start playing the Preview. |
-|
 
 F7 |
 
 Pause the Preview. |
-|
 
 F8 |
 
 Exit the Preview. |
-|
 
 F9 |
 
 Stop the Preview. |
-|
 
 Ctrl F5 |
 
 Start the Preview in play mode.
 
 This is the default Preview setting when you open a Kanzi Studio project. To change this setting, go to Edit > User Preferences > Advanced > Preview.  |
-|
 
 Ctrl F8 |
 
@@ -137,23 +129,13 @@ The Preview shows prefabs in your application either in play or paused mode:
 When the Preview is in paused mode, you can set the application time in the timeline bar.
 
 You can use these playback modes in the Preview.
-|
 
 Playback mode |
 
 Description |
-|
-
- |
 
 In the continuous play mode the Preview starts playing at start time you set in the timeline bar, but does not have a set end time. |
-|
-
- |
 
 In the play range mode the Preview plays in a loop the range between the start and end times you set in the timeline bar. |
-|
-
- |
 
 In the play range and stop mode the Preview plays once the range between the start and end times you set in the timeline bar. |

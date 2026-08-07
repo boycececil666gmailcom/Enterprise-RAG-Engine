@@ -10,16 +10,11 @@ Use an Animation Clip to combine Animation Data resources into more complex anim
 To edit an animation clip or animation data items, in the Library > Animations > Animation Clips double-click the animation clip or animation data item you want to edit. Animation Clip Editor opens. [](../../_images/animation-clip-editor.svg)
 ## Animation clip editor toolbar
 
-|
-
 Tool |
 
 Description |
 
 Shortcut key |
-|
-
- |
 
 Pan the animation canvas by clicking and dragging the canvas.
 
@@ -28,37 +23,24 @@ You can zoom using the mouse wheel or by pressing the middle mouse button. To zo
 S
 
 Right mouse button  |
-|
-
- |
 
 Select and move the animation channels and keyframes.
 
 You can select multiple timeline entries. Selected items are grey shown in the Properties.  |
 
 V |
-|
-
- |
 
 Scale more than one selected keyframe:
 
 - Left mouse button scales the selected keyframes along x and y axes.
 - Right mouse button scales the selected keyframes along the x axis.
 - Middle mouse button scales the selected keyframes along the y axis.
-  |
 
 X |
-|
-
- |
 
 Add keyframes after selecting at least one animation channel. |
 
 I |
-|
-
- |
 
 Toggle snap for animation canvas.
 
@@ -71,11 +53,7 @@ To set the snap mode, in the User Preferences set Snap mode to:
 
 To set whether you want to snap keyframe Bezier handles to a keyframe or the Animation Editor grid, in the Animation Editing tab, use the Snap relative to keyframe setting and set the relative horizontal and vertical snap distances.
 **Tip:** To enable snapping temporarily while you drag a keyframe or a keyframe Bezier handle, hold down the Shift and Alt keys.   |   |
-|
-|
 Scale the animation canvas so that all keyframes are visible. |   |
-|
-|
 Set the animation clip start and end times to the first and last keyframes in the animation clip editor. |   |
 ## Copying and pasting animation items
 

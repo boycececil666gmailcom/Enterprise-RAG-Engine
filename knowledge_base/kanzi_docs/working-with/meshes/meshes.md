@@ -43,14 +43,12 @@ Use the Subdivisions property to set the tessellation level of a primitive mesh.
 These images show the results of rendering a Sphere node of type UV Sphere with different values of the Subdivisions property. The default value is 6.
 
 These images show a Plane node, which uses the VertexPhongMaterial material and is lit by red and blue spot lights, with different values of the Subdivisions property. Each subdivision increases the number of tiles in the plane quadratically: \(tiles = (subdivisions + 1)^2\).
-|
 
 0 subdivisions, 1 tile: |
 
 10 subdivisions, 121 tiles: |
 
 100 subdivisions, 10201 tiles: |
-|   |    |    |
 ### Rendering a normal map texture on a primitive mesh
 
 To use a material with a normal map texture on a primitive mesh, select the primitive mesh node and in the Properties enable the Generate Tangents property.

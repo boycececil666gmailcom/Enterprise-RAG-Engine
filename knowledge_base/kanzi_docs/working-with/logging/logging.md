@@ -19,25 +19,18 @@ You can:
 Use the Kanzi logging macros to print messages to the log. Most of the logging macros use a fixed log level to indicate the severity of the information in the message. See Setting the log level.
 **Tip:** Do not use application critical code in the logging macro calls. If you place application critical code as an argument to the logging macro call, and during compilation you disable the log level or the log category assigned to the message in the call, the preprocessor removes the logging macro call together with the application critical code.
 Kanzi has these logging macros:
-|
 Logging macro |
 Description |
-|
 `log.hpp::kzLogError` |
 Log error messages using the Default Logger (`DefaultLogger`), the `error` (`log_level.hpp::KZ_LOG_LEVEL_ERROR`) log level, and the log category that you provide as an input parameter. |
-|
 `log.hpp::kzLogWarning` |
 Log warning messages using the Default Logger (`DefaultLogger`), the `warning` (`log_level.hpp::KZ_LOG_LEVEL_WARNING`) log level, and the log category that you provide as an input parameter. |
-|
 `log.hpp::kzLogInfo` |
 Log info messages using the Default Logger (`DefaultLogger`), the `info` (`log_level.hpp::KZ_LOG_LEVEL_INFO`) log level, and the log category that you provide as an input parameter. |
-|
 `log.hpp::kzLogTrace` |
 Log trace messages using the Default Logger (`DefaultLogger`), the `trace` (`log_level.hpp::KZ_LOG_LEVEL_TRACE`) log level, and the log category that you provide as an input parameter. |
-|
 `log.hpp::kzLogDebug` |
 Log debug messages using the Default Logger (`DefaultLogger`), the `info` (`log_level.hpp::KZ_LOG_LEVEL_INFO`) log level, and the log category `LogCategories::KZ_LOG_CATEGORY_DEBUG`. |
-|
 `log.hpp::kzLog` |
 Log messages using a custom logger, and the log level and category that you provide as input parameters. See Creating a custom logger. |
 To print log messages:
@@ -196,39 +189,32 @@ The format specification has this structure:
 `[align][sign][#][0][width][.precision][specifier]`
 
 The align format argument sets the positioning of the resulting text. The available values for align:
-|
 
 Align value |
 
 Output |
-|
 
 `<` |
 
 Text aligned to the left within the available space. |
-|
 
 `>` |
 
 Text aligned to the right within the available space. This is the default setting. |
 
 The sign is valid for numeric types only. The available values for sign:
-|
 
 Sign value |
 
 Output |
-|
 
 `+` |
 
 The sign of the number for both positive and negative numbers. |
-|
 
 `-` |
 
 The sign of the number for negative numbers. This is the default setting. |
-|
 
 space |
 
@@ -243,129 +229,102 @@ The **width** format argument is an integer number describing the minimum width 
 The **precision** format argument is only valid for floating point types and describes how many digits to display after decimal point.
 
 The **precision** format argument denotes the notation to use when converting the format argument value to a string. The available **specifier** values depend on the format argument type. This table lists the available values for **specifier**.
-|
 
 Specifier |
 
 Output |
-|
 
 Character |   |
-|
 
 `c` |
 
 Single character. This is the default for signed characters. |
-|
 
 `d` |
 
 The number in base 10. |
-|
 
 `u` |
 
 Unsigned number in base 10. This is the default for unsigned characters. |
-|
 
 `o` |
 
 The number in base 8. |
-|
 
 `x` |
 
 The number in base 16 using lowercase letters a - f. |
-|
 
 `X` |
 
 The number in base 16 using uppercase letters A - F. |
-|
 
 Integer |   |
-|
 
 `d` |
 
 The number in base 10. This is the default for signed integers. |
-|
 
 `u` |
 
 Unsigned number in base 10. This is the default for unsigned integers. |
-|
 
 `o` |
 
 The number in base 8. |
-|
 
 `x` |
 
 The number in base 16 using lower case letters a - f. |
-|
 
 `X` |
 
 The number in base 16 using upper case letters A - F. |
-|
 
 Floating point |   |
-|
 
 `e` |
 
 The number in scientific notation. The letter âeâ denotes the exponent part. |
-|
 
 `E` |
 
 The number in scientific notation. The letter âEâ denotes the exponent part. |
-|
 
 `f` |
 
 The number in decimal floating point notation, lowercase. This is the default for floating point numbers. |
-|
 
 `F` |
 
 The number in decimal floating point notation, upper case. |
-|
 
 `g` |
 
 The number in the shortest possible representation : âeâ or âfâ. |
-|
 
 `G` |
 
 The number in the shortest possible representation : âEâ or âFâ. |
-|
 
 `a` |
 
 The number in hexadecimal floating point notation, lower case. |
-|
 
 `A` |
 
 The number in hexadecimal floating point notation, upper case. |
-|
 
 `x` |
 
 The same as âaâ. |
-|
 
 `X` |
 
 The same as âAâ. |
-|
 
 Pointer |   |
-|
 
 `p` |
 
@@ -426,7 +385,6 @@ kzLogInfo(MY_LOG_CATEGORY, ("Message: {}", "String literal message."));
 Use log levels to show log messages based on their severity. For example, to log critical issues during application execution, use the `error` log level (`log_level.hpp::KZ_LOG_LEVEL_ERROR`).
 
 The Kanzi logging system has these log levels:
-|
 
 Log level |
 
@@ -435,7 +393,6 @@ Name |
 Severity |
 
 Description |
-|
 
 `log_level.hpp::KZ_LOG_LEVEL_ERROR` |
 
@@ -444,7 +401,6 @@ Description |
 1 |
 
 Logs critical malfunction messages. Create detailed error messages so that you can receive enough information about an issue. |
-|
 
 `log_level.hpp::KZ_LOG_LEVEL_WARNING` |
 
@@ -453,7 +409,6 @@ Logs critical malfunction messages. Create detailed error messages so that you c
 2 |
 
 Logs facts that require attention, which are not necessarily malfunctions. For example, use a warning message to notify the user about an outcome from which the application can recover, such as a missing parameter that has a default value, or an event that can lead to performance degradation, but is not a failure. |
-|
 
 `log_level.hpp::KZ_LOG_LEVEL_INFO` |
 
@@ -462,7 +417,6 @@ Logs facts that require attention, which are not necessarily malfunctions. For e
 3 |
 
 Logs information that gives a brief overview of what is happening in the system, log states passed, static information about configuration, and so on. |
-|
 
 `log_level.hpp::KZ_LOG_LEVEL_TRACE` |
 
@@ -493,27 +447,22 @@ You can create you own log levels. See `LogLevelMacros::KZ_LOG_CREATE_LEVEL`.
 Use log categories to group log messages that contain information related to specific functionality.
 
 The Kanzi logging system has these default log categories:
-|
 
 Log category |
 
 Description |
-|
 
 `LogCategories::KZ_LOG_CATEGORY_DEBUG` |
 
 Collects debug messages. |
-|
 
 `LogCategories::KZ_LOG_CATEGORY_GRAPHICS_MESH_EXTRA` |
 
 Collects graphics mesh log messages. |
-|
 
 `LogCategories::KZ_LOG_CATEGORY_EGL_EXTRA` |
 
 Collects EGL log messages. |
-|
 
 `LogCategories::KZ_LOG_CATEGORY_GENERIC` |
 
@@ -559,22 +508,18 @@ To redirect log messages, you can implement a custom logger class, which inherit
 To write log messages using your custom logger, use the `log.hpp::kzLog` macro.
 
 If you want to use your custom logger to write all the application log messages, register the logger in the Default Logger (`DefaultLogger`). The Default Logger inherits from `AbstractLogger` and contains a chain of loggers through which every log message passes. These loggers are by default registered in the Default Logger:
-|
 
 Default logger |
 
 Destination of log messages |
-|
 
 `CoutLogger` |
 
 Standard output |
-|
 
 `AndroidLogger` |
 
 Android system log |
-|
 
 `Win32DebugLogger` |
 

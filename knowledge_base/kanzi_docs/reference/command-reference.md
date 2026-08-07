@@ -16,17 +16,13 @@ Add to resources dictionary
 `AddToResourceDictionary resourceId resource resourceDictionaryHost`
 #### Parameters
 
-|
-
 `resourceId` |
 
 The resource ID. |
-|
 
 `resource` |
 
 The resource that you add to a resource dictionary. |
-|
 
 `resourceDictionaryHost` |
 
@@ -48,32 +44,25 @@ Create a binding.
 `CreateBindingItem parent bindingMode pushTarget targetPropertyTypeName attribute code`
 #### Parameters
 
-|
-
 `parent` |
 
 The node or render pass to which you add the binding. |
-|
 
 `bindingMode` |
 
 The binding mode. For a one-way binding use ONE_WAY. For a to-source binding use TO_SOURCE. |
-|
 
 `pushTarget` |
 
 The target in a to-source binding. For a one-way binding use NULL. |
-|
 
 `targetPropertyTypeName` |
 
 The property that you bind. |
-|
 
 `attribute` |
 
 The property field that you bind. To bind the entire property, use WHOLE_PROPERTY. |
-|
 
 `code` |
 
@@ -112,12 +101,9 @@ Creates in this item the ##Template binding to the custom property in the prefab
 `ExposePrefabProperty source propertyType`
 #### Parameters
 
-|
-
 `source` |
 
 The prefab item whose property you expose. |
-|
 
 `propertyType` |
 
@@ -140,17 +126,13 @@ ExposePrefabProperty "/Prefabs/My Button/My Button/Image" Image2D.Image
 `ExposePrefabProperty source propertyType propertyName`
 #### Parameters
 
-|
-
 `source` |
 
 The prefab item whose property you expose. |
-|
 
 `propertyType` |
 
 The property that you expose. |
-|
 
 `propertyName` |
 
@@ -178,17 +160,13 @@ Add a property to an item.
 `AddProperty propertyCollection propertyName valueAsString`
 #### Parameters
 
-|
-
 `propertyCollection` |
 
 The node or resource to which you add the property. |
-|
 
 `propertyName` |
 
 The property that you add. |
-|
 
 `valueAsString` |
 
@@ -229,8 +207,6 @@ Transform vertices in the vertex buffer of the model according to the current tr
 `BakeTransformation node`
 #### Parameters
 
-|
-
 `node` |
 
 The node whose transformation you want to bake to vertex data. |
@@ -251,8 +227,6 @@ Centers the vertices of the mesh so that the center of the bounding box moves to
 `CenterMesh meshes`
 #### Parameters
 
-|
-
 `meshes` |
 
 The mesh data resource whose vertices you want to center. |
@@ -272,27 +246,21 @@ Invert the direction of polygons and normals in the mesh data.
 `FlipMesh meshes flipPolygons flipNormals flipTextureCoordinateU flipTextureCoordinateV`
 #### Parameters
 
-|
-
 `meshes` |
 
 The meshes in the mesh data of which you invert the direction of polygons, normals, and texture coordinates. Separate a list of meshes with semicolons. |
-|
 
 `flipPolygons` |
 
 Whether to invert the direction of polygons in the mesh data without modifying normals. |
-|
 
 `flipNormals` |
 
 Whether to invert the direction of normals in the mesh data. |
-|
 
 `flipTextureCoordinateU` |
 
 Whether to invert the direction of the U coordinates of textures. |
-|
 
 `flipTextureCoordinateV` |
 
@@ -319,12 +287,9 @@ Generate normals to the vertex buffer of the mesh.
 `GenerateNormals meshes smoothingAngle`
 #### Parameters
 
-|
-
 `meshes` |
 
 The meshes to the vertex buffers of which you generate normals. Separate a list of meshes with semicolons. |
-|
 
 `smoothingAngle` |
 
@@ -345,12 +310,9 @@ Generate tangents to the vertex buffer of the mesh.
 `GenerateTangents meshes mode`
 #### Parameters
 
-|
-
 `meshes` |
 
 The meshes to the vertex buffers of which you generate tangents. Separate a list of meshes with semicolons. |
-|
 
 `mode` |
 
@@ -367,8 +329,6 @@ GenerateTangents "/Mesh Data/My Mesh" MIKKTSPACE
 
 `GenerateTangents meshes`
 #### Parameters
-
-|
 
 `meshes` |
 
@@ -389,12 +349,9 @@ Remove all Animations Data resource without data and optimizes existing Animatio
 `OptimizeAnimations animations threshold`
 #### Parameters
 
-|
-
 `animations` |
 
 The Animation Data resources from which you remove redundant keyframes. Separate a list of animations with semicolons. |
-|
 
 `threshold` |
 
@@ -431,12 +388,9 @@ Remove a property and the associated local bindings from an item.
 `RemovePropertyAndBindingFromItem host propertyName`
 #### Parameters
 
-|
-
 `host` |
 
 The item from which you remove the property and the local bindings that use that property. |
-|
 
 `propertyName` |
 
@@ -459,12 +413,9 @@ Remove a property from an item.
 `RemovePropertyFromItem host propertyName`
 #### Parameters
 
-|
-
 `host` |
 
 The item from which you remove the property. |
-|
 
 `propertyName` |
 
@@ -491,8 +442,6 @@ Renames all the shader files to corresponding material type name.
 `RenameShaderFiles materialTypes`
 #### Parameters
 
-|
-
 `materialTypes` |
 
 The material types whose shader files you rename. Separate a list of material types with semicolons. |
@@ -512,17 +461,13 @@ Set a property value.
 `SetProperty parent propertyName propertyValueAsString`
 #### Parameters
 
-|
-
 `parent` |
 
 The node or resource whose property you want to set. |
-|
 
 `propertyName` |
 
 The name of the property. |
-|
 
 `propertyValueAsString` |
 
@@ -588,8 +533,6 @@ Delete all Animation Data items with one or no effective keyframes. Repeated key
 `DeleteAnimationsWithLessThanTwoEffectiveKeyframes animations`
 #### Parameters
 
-|
-
 `animations` |
 
 The animations you want to delete if they have one or no effective keyframes. Separate a list of animations with semicolons. |
@@ -608,8 +551,6 @@ Delete the selected project item(s)
 
 `DeleteProjectItem items`
 #### Parameters
-
-|
 
 `items` |
 
@@ -650,8 +591,6 @@ Convert to template bindings those bindings whose source is the template root.
 `ConvertBindingsToTemplateBindings targets`
 #### Parameters
 
-|
-
 `targets` |
 
 The node the bindings of which you convert to template bindings. |
@@ -674,8 +613,6 @@ When you instantiate a prefab with a Prefab View node, Kanzi monitors the value 
 `ConvertNode2DPrefabPlaceholderToPrefabView2D prefabPlaceholder`
 #### Parameters
 
-|
-
 `prefabPlaceholder` |
 
 The Prefab Placeholder 2D node that you convert to a Prefab View 2D node. |
@@ -697,8 +634,6 @@ When you instantiate a prefab with a Prefab View node, Kanzi monitors the value 
 `ConvertNode3DPrefabPlaceholderToPrefabView3D prefabPlaceholder`
 #### Parameters
 
-|
-
 `prefabPlaceholder` |
 
 The Prefab Placeholder 3D node that you convert to a Prefab View 3D node. |
@@ -717,8 +652,6 @@ Create prefab templates for the selected nodes and replace the nodes with placeh
 
 `ConvertNodesToPrefabs nodes`
 #### Parameters
-
-|
 
 `nodes` |
 
@@ -743,8 +676,6 @@ Use the Page nodes to create the structure of the user interface in your applica
 `ConvertPageHostToPage pageHost`
 #### Parameters
 
-|
-
 `pageHost` |
 
 The Page Host node that you convert to a Page node. |
@@ -768,8 +699,6 @@ Use the Page Host nodes to manage navigation requests and transitions between Pa
 `ConvertPageToPageHost page`
 #### Parameters
 
-|
-
 `page` |
 
 The Page node that you convert to a Page Host node. |
@@ -788,8 +717,6 @@ Convert this Project Reference to a Kzb Reference.
 
 `ConvertProjectReferenceItemToKzbReferenceItem projectReferenceItem`
 #### Parameters
-
-|
 
 `projectReferenceItem` |
 
@@ -812,12 +739,9 @@ Create a brush
 `CreateBrush itemName brushTypeName`
 #### Parameters
 
-|
-
 `itemName` |
 
 The name of the brush. |
-|
 
 `brushTypeName` |
 
@@ -858,17 +782,13 @@ Create a 2D node.
 `CreateComponentNode2D parent itemName componentTypeName`
 #### Parameters
 
-|
-
 `parent` |
 
 The node in which you create the 2D node. |
-|
 
 `itemName` |
 
 The name of the 2D node. |
-|
 
 `componentTypeName` |
 
@@ -901,17 +821,13 @@ Create a 3D node.
 `CreateComponentNode parent itemName componentTypeName`
 #### Parameters
 
-|
-
 `parent` |
 
 The node in which you create the 3D node. |
-|
 
 `itemName` |
 
 The name of the 3D node. |
-|
 
 `componentTypeName` |
 
@@ -1030,17 +946,13 @@ Use an Empty Node 2D to group 2D objects and to apply property changes to these 
 `CreateEmptyNode2D parent name selectNewItems`
 #### Parameters
 
-|
-
 `parent` |
 
 The node or prefab in which you create the Empty Node 2D node or prefab. |
-|
 
 `name` |
 
 The name of the Empty Node 2D node or prefab. |
-|
 
 `selectNewItems` |
 
@@ -1069,12 +981,9 @@ Use an Empty Node 3D to group 3D objects and to apply property changes to these 
 `CreateEmptyNode3D parent itemName`
 #### Parameters
 
-|
-
 `parent` |
 
 The node or prefab in which you create the Empty Node 3D node or prefab. |
-|
 
 `itemName` |
 
@@ -1103,17 +1012,13 @@ Use a Dock Layout 2D to divide objects relative to each other in 2D space.
 `CreateDockLayout2D parent name selectNewItems`
 #### Parameters
 
-|
-
 `parent` |
 
 The node or prefab in which you create the Dock Layout 2D node or prefab. |
-|
 
 `name` |
 
 The name of the Dock Layout 2D node or prefab. |
-|
 
 `selectNewItems` |
 
@@ -1142,17 +1047,13 @@ Use a Flow Layout 2D to place 2D objects in rows in 2D space. When a row is full
 `CreateFlowLayout2D parent name selectNewItems`
 #### Parameters
 
-|
-
 `parent` |
 
 The node or prefab in which you create the Flow Layout 2D node or prefab. |
-|
 
 `name` |
 
 The name of the Flow Layout 2D node or prefab. |
-|
 
 `selectNewItems` |
 
@@ -1181,17 +1082,13 @@ Use a Grid Layout 2D to arrange 2D content in a grid in 2D space.
 `CreateGridLayout2D parent name selectNewItems`
 #### Parameters
 
-|
-
 `parent` |
 
 The node or prefab in which you create the Grid Layout 2D node or prefab. |
-|
 
 `name` |
 
 The name of the Grid Layout 2D node or prefab. |
-|
 
 `selectNewItems` |
 
@@ -1220,17 +1117,13 @@ Use a Stack Layout 2D to arrange content in a stack on the selected axis in 2D s
 `CreateStackLayout2D parent name selectNewItems`
 #### Parameters
 
-|
-
 `parent` |
 
 The node or prefab in which you create the Stack Layout 2D node or prefab. |
-|
 
 `name` |
 
 The name of the Stack Layout 2D node or prefab. |
-|
 
 `selectNewItems` |
 
@@ -1259,17 +1152,13 @@ Use a Trajectory Layout 2D to arrange content along a trajectory path in 2D spac
 `CreateTrajectoryLayout2D parent name selectNewItems`
 #### Parameters
 
-|
-
 `parent` |
 
 The node or prefab in which you create the Trajectory Layout 2D node or prefab. |
-|
 
 `name` |
 
 The name of the Trajectory Layout 2D node or prefab. |
-|
 
 `selectNewItems` |
 
@@ -1300,17 +1189,13 @@ Use a Grid List Box 2D to arrange 2D content in a grid in 2D space.
 `CreateGridListBox2D parent name selectNewItems`
 #### Parameters
 
-|
-
 `parent` |
 
 The node or prefab in which you create the Grid List Box 2D node or prefab. |
-|
 
 `name` |
 
 The name of the Grid List Box 2D node or prefab. |
-|
 
 `selectNewItems` |
 
@@ -1341,17 +1226,13 @@ Use an Image to display a single or a render target texture.
 `CreateImage2D parent name selectNewItems`
 #### Parameters
 
-|
-
 `parent` |
 
 The node or prefab in which you create the Image node or prefab. |
-|
 
 `name` |
 
 The name of the Image node or prefab. |
-|
 
 `selectNewItems` |
 
@@ -1382,17 +1263,13 @@ Use a Page to add structure to your Kanzi application.
 `CreatePage parent name selectNewItems`
 #### Parameters
 
-|
-
 `parent` |
 
 The node or prefab in which you create the Page node or prefab. |
-|
 
 `name` |
 
 The name of the Page node or prefab. |
-|
 
 `selectNewItems` |
 
@@ -1422,17 +1299,13 @@ Use Page Host to manage the navigation between Page nodes within its subtree.
 `CreatePageHost parent name selectNewItems`
 #### Parameters
 
-|
-
 `parent` |
 
 The node or prefab in which you create the Page Host node or prefab. |
-|
 
 `name` |
 
 The name of the Page Host node or prefab. |
-|
 
 `selectNewItems` |
 
@@ -1460,17 +1333,13 @@ Use a Progressive Rendering Viewport 2D to display a view into a 3D scene throug
 `CreateProgressiveRenderingNode2D parent name selectNewItems`
 #### Parameters
 
-|
-
 `parent` |
 
 The node or prefab in which you create the Progressive Rendering Viewport 2D node or prefab. |
-|
 
 `name` |
 
 The name of the Progressive Rendering Viewport 2D node or prefab. |
-|
 
 `selectNewItems` |
 
@@ -1499,17 +1368,13 @@ Use a Text Block 2D to display text in 2D space. It uses fonts to render text an
 `CreateTextBlock2D parent name selectNewItems`
 #### Parameters
 
-|
-
 `parent` |
 
 The node or prefab in which you create the Text Block 2D node or prefab. |
-|
 
 `name` |
 
 The name of the Text Block 2D node or prefab. |
-|
 
 `selectNewItems` |
 
@@ -1538,17 +1403,13 @@ Use a Viewport 2D to display a view into a 3D scene through a camera.
 `CreateViewport2D parent name selectNewItems`
 #### Parameters
 
-|
-
 `parent` |
 
 The node or prefab in which you create the Viewport 2D node or prefab. |
-|
 
 `name` |
 
 The name of the Viewport 2D node or prefab. |
-|
 
 `selectNewItems` |
 
@@ -1579,17 +1440,13 @@ Use a Button 2D to create buttons in 2D space.
 `CreateButton2D parent name selectNewItems`
 #### Parameters
 
-|
-
 `parent` |
 
 The node or prefab in which you create the Button 2D node or prefab. |
-|
 
 `name` |
 
 The name of the Button 2D node or prefab. |
-|
 
 `selectNewItems` |
 
@@ -1621,17 +1478,13 @@ Use a Scroll View 2D to get user input from scroll gestures in 2D space.
 `CreateScrollView2D parent name selectNewItems`
 #### Parameters
 
-|
-
 `parent` |
 
 The node or prefab in which you create the Scroll View 2D node or prefab. |
-|
 
 `name` |
 
 The name of the Scroll View 2D node or prefab. |
-|
 
 `selectNewItems` |
 
@@ -1660,17 +1513,13 @@ Use a Slider 2D to allow users to set a value between a set of minimum and maxim
 `CreateSlider2D parent name selectNewItems`
 #### Parameters
 
-|
-
 `parent` |
 
 The node or prefab in which you create the Slider 2D node or prefab. |
-|
 
 `name` |
 
 The name of the Slider 2D node or prefab. |
-|
 
 `selectNewItems` |
 
@@ -1699,17 +1548,13 @@ Use a Toggle Button 2D to create buttons with multiple toggle states in 2D space
 `CreateToggleButton2D parent name selectNewItems`
 #### Parameters
 
-|
-
 `parent` |
 
 The node or prefab in which you create the Toggle Button 2D node or prefab. |
-|
 
 `name` |
 
 The name of the Toggle Button 2D node or prefab. |
-|
 
 `selectNewItems` |
 
@@ -1741,17 +1586,13 @@ Use a Toggle Button Group 2D to group toggle buttons in 2D space where only one 
 `CreateToggleButtonGroup2D parent name selectNewItems`
 #### Parameters
 
-|
-
 `parent` |
 
 The node or prefab in which you create the Toggle Button Group 2D node or prefab. |
-|
 
 `name` |
 
 The name of the Toggle Button Group 2D node or prefab. |
-|
 
 `selectNewItems` |
 
@@ -1782,12 +1623,9 @@ Compute material types contain a single compute shader stage and are used by Com
 `CreateComputeMaterialType materialTypeName createMaterial`
 #### Parameters
 
-|
-
 `materialTypeName` |
 
 The name of the compute material type. |
-|
 
 `createMaterial` |
 
@@ -1809,17 +1647,13 @@ Use materials to set the appearance of 3D nodes and Material Brush brushes.
 `CreateMaterial materialName selectNewItem materialType`
 #### Parameters
 
-|
-
 `materialName` |
 
 The name of the material. |
-|
 
 `selectNewItem` |
 
 Whether Kanzi Studio selects the material. |
-|
 
 `materialType` |
 
@@ -1841,12 +1675,9 @@ Material types define the property types of materials. By adjusting material pro
 `CreateMaterialType materialTypeName createMaterial`
 #### Parameters
 
-|
-
 `materialTypeName` |
 
 The name of the material type. |
-|
 
 `createMaterial` |
 
@@ -1868,8 +1699,6 @@ Synchronize material type shader variable and binding information with the curre
 `MaterialTypeSyncWithUniforms materialType`
 #### Parameters
 
-|
-
 `materialType` |
 
 Project-item path to the material type, for example â/Material Types/MyMaterialTypeâ. |
@@ -1890,12 +1719,9 @@ Create a cube mesh centered in its origin.
 `CreateBoxNode parent itemName`
 #### Parameters
 
-|
-
 `parent` |
 
 The node or prefab in which you create the Box node or prefab. |
-|
 
 `itemName` |
 
@@ -1922,17 +1748,13 @@ Use a Model to add imported 3D models created in third-party tools to your Kanzi
 `CreateMeshNode parent itemName mesh`
 #### Parameters
 
-|
-
 `parent` |
 
 The node or prefab in which you create the Model node or prefab. |
-|
 
 `itemName` |
 
 The name of the Model node or prefab. |
-|
 
 `mesh` |
 
@@ -1960,12 +1782,9 @@ Create a filled planar mesh with four vertices.
 `CreatePlaneNode parent itemName`
 #### Parameters
 
-|
-
 `parent` |
 
 The node or prefab in which you create the Plane node or prefab. |
-|
 
 `itemName` |
 
@@ -1992,12 +1811,9 @@ Create a sphere mesh centered in its origin.
 `CreateSphereNode parent itemName`
 #### Parameters
 
-|
-
 `parent` |
 
 The node or prefab in which you create the Sphere node or prefab. |
-|
 
 `itemName` |
 
@@ -2026,17 +1842,13 @@ Use a Scene node to show 3D content in your Kanzi application. A Scene node can 
 `CreateScene parent itemName createCameraAndLight`
 #### Parameters
 
-|
-
 `parent` |
 
 The node or prefab in which you create the Scene node or prefab. |
-|
 
 `itemName` |
 
 The name of the Viewport 2D node or prefab. |
-|
 
 `createCameraAndLight` |
 
@@ -2067,12 +1879,9 @@ Use a Camera node to show the content of a Scene in your Kanzi Studio project an
 `CreateCameraNode parent itemName`
 #### Parameters
 
-|
-
 `parent` |
 
 The node in which you create the Camera node. |
-|
 
 `itemName` |
 
@@ -2090,27 +1899,21 @@ CreateCameraNode "/Screens/Screen/RootNode/Viewport 2D/Scene" Camera
 `CreateCameraNode parent itemName activateAsPreviewCamera setAsDefaultCamera3D setDefaultOrientation`
 #### Parameters
 
-|
-
 `parent` |
 
 The node in which you create the Camera node. |
-|
 
 `itemName` |
 
 The name of the Camera node. |
-|
 
 `activateAsPreviewCamera` |
 
 Whether to activate the camera as the Preview camera. |
-|
 
 `setAsDefaultCamera3D` |
 
 Whether to set the camera as the default camera. |
-|
 
 `setDefaultOrientation` |
 
@@ -2133,12 +1936,9 @@ Directional Light emits light only in one direction. You can use Directional Lig
 `CreateDirectionalLightNode itemName parent`
 #### Parameters
 
-|
-
 `itemName` |
 
 The name of the light node. |
-|
 
 `parent` |
 
@@ -2159,17 +1959,13 @@ Use an Instantiator node to create a copy of the object it targets. Instantiated
 `CreateInstantiatorNode parent itemName target`
 #### Parameters
 
-|
-
 `parent` |
 
 The node in which you create the Instantiator node. |
-|
 
 `itemName` |
 
 The name of the Instantiator node. |
-|
 
 `target` |
 
@@ -2197,12 +1993,9 @@ Point Light emits light from a specific location uniformly to all directions (36
 `CreatePointLightNode itemName parent`
 #### Parameters
 
-|
-
 `itemName` |
 
 The name of the light node. |
-|
 
 `parent` |
 
@@ -2223,12 +2016,9 @@ Spot Light emits light from a specific location towards a specified direction in
 `CreateSpotLightNode itemName parent`
 #### Parameters
 
-|
-
 `itemName` |
 
 The name of the light node. |
-|
 
 `parent` |
 
@@ -2251,17 +2041,13 @@ Create a render pass.
 `CreateRenderPass parent itemName renderPassTypeName`
 #### Parameters
 
-|
-
 `parent` |
 
 (Optional) The render pass or render pass prefab root in which you create the render pass. To create a render pass prefab, omit this parameter. |
-|
 
 `itemName` |
 
 The name of the render pass. |
-|
 
 `renderPassTypeName` |
 
@@ -2323,12 +2109,9 @@ Use the Compose and Blit Pass render pass preset to create the render passes tha
 `CreateComposeAndBlitRenderPassTree parent itemName`
 #### Parameters
 
-|
-
 `parent` |
 
 (Optional) The render pass prefab or render pass in which you create the Compose to Blit Pass. To create a Compose to Blit Pass prefab, omit this parameter. |
-|
 
 `itemName` |
 
@@ -2358,12 +2141,9 @@ Use the Default Render Pass render pass preset to create a basic set of render p
 `CreateDefaultRenderPassTree parent itemName`
 #### Parameters
 
-|
-
 `parent` |
 
 (Optional) The render pass prefab or render pass in which you create the Default Render Pass. To create a Default Render Pass prefab, omit this parameter. |
-|
 
 `itemName` |
 
@@ -2392,12 +2172,9 @@ Use the Image-Based Lighting Filter Pass preset to create render passes that pre
 `CreateImageBasedLightingFilterPassTree parent itemName`
 #### Parameters
 
-|
-
 `parent` |
 
 (Optional) The render pass in which you create the Image-Based Lighting Filter Pass. To create a Image-Based Lighting Filter Pass prefab, omit this parameter. |
-|
 
 `itemName` |
 
@@ -2427,12 +2204,9 @@ Use the Render to Texture Pass render pass preset to create the render passes th
 `CreateRenderToTexturePassTree parent itemName`
 #### Parameters
 
-|
-
 `parent` |
 
 (Optional) The render pass in which you create the Render to Texture Pass. To create a Render to Texture Pass prefab, omit this parameter. |
-|
 
 `itemName` |
 
@@ -2464,12 +2238,9 @@ Use effects to apply post-processing effects to 2D nodes.
 `CreateNodeEffect2D itemName effectTypeName`
 #### Parameters
 
-|
-
 `itemName` |
 
 The name of the effect. |
-|
 
 `effectTypeName` |
 
@@ -2492,8 +2263,6 @@ Use the Default Effect Stack 2D preset to quickly create and apply common effect
 `CreateDefaultEffectStack itemName`
 #### Parameters
 
-|
-
 `itemName` |
 
 The name of the Default Effect Stack 2D. |
@@ -2515,12 +2284,9 @@ Create a set of build parameters for your project.
 `CreateApplicationConfiguration itemName configurationType`
 #### Parameters
 
-|
-
 `itemName` |
 
 The name of the build configuration. |
-|
 
 `configurationType` |
 
@@ -2557,12 +2323,9 @@ Create a data source.
 `CreateDataSource itemName dataSourceTypeName`
 #### Parameters
 
-|
-
 `itemName` |
 
 The name of the data source. |
-|
 
 `dataSourceTypeName` |
 
@@ -2585,12 +2348,9 @@ Create an empty font family.
 `CreateFontFamily fontFamilyName fontFile`
 #### Parameters
 
-|
-
 `fontFamilyName` |
 
 The name of the font family. |
-|
 
 `fontFile` |
 
@@ -2611,12 +2371,9 @@ Create a locale.
 `CreateLocale parent name`
 #### Parameters
 
-|
-
 `parent` |
 
 The Localization Table in which you create the locale. |
-|
 
 `name` |
 
@@ -2637,12 +2394,9 @@ Create a localization table.
 `CreateLocalizationTable name selectNewItems`
 #### Parameters
 
-|
-
 `name` |
 
 The name of the Localization Table. |
-|
 
 `selectNewItems` |
 
@@ -2665,17 +2419,13 @@ Kanzi replaces the Prefab Placeholder node with the root node of the prefab it i
 `CreateNode3DPrefabPlaceholder parent itemName prefabTemplate`
 #### Parameters
 
-|
-
 `parent` |
 
 The node in which you create the Prefab Placeholder 3D node. |
-|
 
 `itemName` |
 
 The name of the Prefab Placeholder 3D node. |
-|
 
 `prefabTemplate` |
 
@@ -2703,8 +2453,6 @@ Create a resource dictionary in the selected node. A resource dictionary is a co
 `CreateResourceDictionary parent`
 #### Parameters
 
-|
-
 `parent` |
 
 The node to which you add the resource dictionary. |
@@ -2724,17 +2472,13 @@ Use a state to collect properties that define the appearance and behavior of the
 `CreateState parent name selectNewItems`
 #### Parameters
 
-|
-
 `parent` |
 
 The state group in which you create the state. |
-|
 
 `name` |
 
 The name of the state. |
-|
 
 `selectNewItems` |
 
@@ -2757,17 +2501,13 @@ A state group contains states and defines a controller property and transitions 
 `CreateStateGroup parent name selectNewItems`
 #### Parameters
 
-|
-
 `parent` |
 
 The state manager in which you create the state group. |
-|
 
 `name` |
 
 The name of the state group. |
-|
 
 `selectNewItems` |
 
@@ -2789,12 +2529,9 @@ Use a State Manager to define the look and behavior of your Kanzi application in
 `CreateStateManager itemName selectNewItems`
 #### Parameters
 
-|
-
 `itemName` |
 
 The name of the state manager. |
-|
 
 `selectNewItems` |
 
@@ -2818,17 +2555,13 @@ CreateStateManager "My State Manager" false
 `CreateStateManager itemName selectNewItems createContent`
 #### Parameters
 
-|
-
 `itemName` |
 
 The name of the state manager. |
-|
 
 `selectNewItems` |
 
 Whether Kanzi Studio selects the state manager. |
-|
 
 `createContent` |
 
@@ -2850,22 +2583,17 @@ Use a state object to define the properties of a node for a state.
 `CreateStateWithTarget parent name stateObjectPath selectNewItems`
 #### Parameters
 
-|
-
 `parent` |
 
 The state in which you create the state object. |
-|
 
 `name` |
 
 The name of the state object. |
-|
 
 `stateObjectPath` |
 
 The value of the Target Object Path property of the state object. |
-|
 
 `selectNewItems` |
 
@@ -2884,17 +2612,13 @@ CreateStateWithTarget "/State Managers/My State Manager/State Group/State 1" "Ca
 `CreateStateWithTarget name parent selectNewItems`
 #### Parameters
 
-|
-
 `name` |
 
 The name of the state object. |
-|
 
 `parent` |
 
 The state in which you create the state object. |
-|
 
 `selectNewItems` |
 
@@ -2916,12 +2640,9 @@ Use tags to group, find, and filter nodes in your project. You can assign multip
 `CreateTag itemName selectNewItems`
 #### Parameters
 
-|
-
 `itemName` |
 
 The name of the tag. |
-|
 
 `selectNewItems` |
 
@@ -2942,12 +2663,9 @@ Use Themes to define the look and feel of your application.
 `CreateTheme parent name`
 #### Parameters
 
-|
-
 `parent` |
 
 The Theme Group in which you create the Theme. |
-|
 
 `name` |
 
@@ -2968,12 +2686,9 @@ Use a Theme Group to define a collection of Themes that define the look and feel
 `CreateThemeGroup name selectNewItems`
 #### Parameters
 
-|
-
 `name` |
 
 The name of the Theme Group. |
-|
 
 `selectNewItems` |
 
@@ -2994,12 +2709,9 @@ Export the localization table template to a .pot file, and as many .po files as 
 `ExportLocalizationTable localizationTable localizationDirectoryPath`
 #### Parameters
 
-|
-
 `localizationTable` |
 
 The localization table that you export. |
-|
 
 `localizationDirectoryPath` |
 
@@ -3023,8 +2735,6 @@ Import all PO files from all localization table folders in the Localization dire
 `ImportAllLocalizationTables localizationDirectoryPath`
 #### Parameters
 
-|
-
 `localizationDirectoryPath` |
 
 Path to the directory that contains the localization table folders. Kanzi Studio looks in this directory for folders that contain PO files, and creates for each such folder a localization table named after the folder. If a localization table already exists, Kanzi Studio updates it. |
@@ -3046,12 +2756,9 @@ Import Kanzi Engine plugin. During import the components, property types, messag
 `ImportEnginePlugin loadPath existingPlugin`
 #### Parameters
 
-|
-
 `loadPath` |
 
 To update an existing Kanzi Engine plugin leave this parameter empty. |
-|
 
 `existingPlugin` |
 
@@ -3069,8 +2776,6 @@ ImportEnginePlugin "" "/Kanzi Engine Plugins/XML_data_source"
 
 `ImportEnginePlugin existingPluginFile`
 #### Parameters
-
-|
 
 `existingPluginFile` |
 
@@ -3092,12 +2797,9 @@ Adds a tag to a set of items.
 `TagItems tags itemsToTag`
 #### Parameters
 
-|
-
 `tags` |
 
 The tags that you assign. Separate a list of tags with semicolons. |
-|
 
 `itemsToTag` |
 
@@ -3121,8 +2823,6 @@ Read and cache data from data source for creating data bindings in UI.
 
 `UpdateDataSourceContents dataSource`
 #### Parameters
-
-|
 
 `dataSource` |
 
@@ -3201,8 +2901,6 @@ Use a Combine Object Source to collect and combine nodes from one or more input 
 `CreateCombineObjectSource itemName`
 #### Parameters
 
-|
-
 `itemName` |
 
 The name of the Combine Object Source. |
@@ -3223,8 +2921,6 @@ Use a Contains Property Filter to collect nodes that contain, or do not contain 
 
 `CreateContainsPropertyFilterObjectSource itemName`
 #### Parameters
-
-|
 
 `itemName` |
 
@@ -3250,8 +2946,6 @@ Use a Sorting Filter to either order nodes by their position on the z axis or to
 `CreateFixedSortFilterObjectSource itemName`
 #### Parameters
 
-|
-
 `itemName` |
 
 The name of the filter. |
@@ -3274,8 +2968,6 @@ Use an Object Type Filter to collect nodes based on their type.
 
 `CreateObjectTypeFilterObjectSource itemName`
 #### Parameters
-
-|
 
 `itemName` |
 
@@ -3300,8 +2992,6 @@ Use a Property is Equal Filter to collect nodes that contain, or do not contain 
 `CreatePropertyIsEqualObjectSource itemName`
 #### Parameters
 
-|
-
 `itemName` |
 
 The name of the filter. |
@@ -3320,8 +3010,6 @@ Use a Tag Filter to collect the nodes that have a specific tag assigned.
 
 `CreateTagFilter itemName`
 #### Parameters
-
-|
 
 `itemName` |
 
@@ -3352,17 +3040,13 @@ Use an environment cubemap texture to represent the environment, such as an outd
 `CreateEnvironmentCubeMapTexture imageFile size name`
 #### Parameters
 
-|
-
 `imageFile` |
 
 The HDR image from which you want to generate the environment cubemap texture. |
-|
 
 `size` |
 
 The width and height of the square-shaped cubemap side images. |
-|
 
 `name` |
 
@@ -3391,8 +3075,6 @@ CreateEnvironmentCubeMapTexture "/Resource Files/Images/my_skybox_image.exr" 102
 `CreateEnvironmentCubeMapTexture imageFile`
 #### Parameters
 
-|
-
 `imageFile` |
 
 The HDR image from which you want to generate the environment cubemap texture. |
@@ -3415,22 +3097,17 @@ Use an irradiance cubemap texture for image-based lighting. An irradiance cubema
 `CreateIrradianceCubeMapTexture sourceImage samples size name`
 #### Parameters
 
-|
-
 `sourceImage` |
 
 The HDR image from which you want to generate the irradiance cubemap texture. |
-|
 
 `samples` |
 
 The number of samples to use to generate the cubemap. A larger number of samples results in a cubemap that approximates the environment lighting more accurately. |
-|
 
 `size` |
 
 The width and height of the square-shaped cubemap side images. |
-|
 
 `name` |
 
@@ -3460,8 +3137,6 @@ CreateIrradianceCubeMapTexture "/Resource Files/Images/my_skybox_image.exr" 1024
 `CreateIrradianceCubeMapTexture sourceImage`
 #### Parameters
 
-|
-
 `sourceImage` |
 
 The HDR image from which you want to generate the irradiance cubemap texture. |
@@ -3485,8 +3160,6 @@ Use a Render Target Texture to dynamically render content from 2D layouts into a
 `CreateRenderTargetTexture textureName`
 #### Parameters
 
-|
-
 `textureName` |
 
 The name of the texture. |
@@ -3509,12 +3182,9 @@ Use a Single Texture when you want to use a single image as a texture.
 `CreateSingleTexture textureName image`
 #### Parameters
 
-|
-
 `textureName` |
 
 The name of the texture. |
-|
 
 `image` |
 
@@ -3542,22 +3212,17 @@ Use a specular cubemap texture for image-based lighting. A specular cubemap text
 `CreateSpecularCubeMapTexture sourceImage samples size name`
 #### Parameters
 
-|
-
 `sourceImage` |
 
 The HDR image from which you want to generate the specular cubemap texture. |
-|
 
 `samples` |
 
 The number of samples to use to generate the cubemap. A larger number of samples results in a cubemap that approximates the environment lighting more accurately. |
-|
 
 `size` |
 
 The width and height of the square-shaped cubemap side images. |
-|
 
 `name` |
 
@@ -3586,8 +3251,6 @@ CreateSpecularCubeMapTexture "/Resource Files/Images/my_skybox_image.exr" 1024 2
 `CreateSpecularCubeMapTexture sourceImage`
 #### Parameters
 
-|
-
 `sourceImage` |
 
 The HDR image from which you want to generate the specular cubemap texture. |
@@ -3611,12 +3274,9 @@ Use a Volume Texture when you want to use a single image as a volume texture.
 `CreateVolumeTexture textureName image`
 #### Parameters
 
-|
-
 `textureName` |
 
 The name of the texture. |
-|
 
 `image` |
 
@@ -3630,8 +3290,6 @@ Use an Angle Trajectory to create a path where two straight lines form an angle 
 
 `CreateAngleTrajectory itemName`
 #### Parameters
-
-|
 
 `itemName` |
 
@@ -3649,17 +3307,13 @@ CreateAngleTrajectory "My Angle Trajectory"
 `CreateAngleTrajectory itemName selectNewItems resourceDictionary`
 #### Parameters
 
-|
-
 `itemName` |
 
 The name of the trajectory. |
-|
 
 `selectNewItems` |
 
 Whether Kanzi Studio selects the trajectory that you created. |
-|
 
 `resourceDictionary` |
 
@@ -3680,8 +3334,6 @@ Use an Arc Trajectory to create a path in the shape of an arc in 3D space.
 `CreateArcTrajectory itemName`
 #### Parameters
 
-|
-
 `itemName` |
 
 The name of the trajectory. |
@@ -3698,22 +3350,17 @@ CreateArcTrajectory "My Arc Trajectory"
 `CreateArcTrajectory library itemName selectNewItems resourceDictionary`
 #### Parameters
 
-|
-
 `library` |
 
 (Optional) The Trajectory Library in which you create the trajectory. |
-|
 
 `itemName` |
 
 The name of the trajectory. |
-|
 
 `selectNewItems` |
 
 Whether Kanzi Studio selects the trajectory that you created. |
-|
 
 `resourceDictionary` |
 
@@ -3734,8 +3381,6 @@ Use a Circle Trajectory to create a path in the shape of a circle in 3D space.
 `CreateCircleTrajectory itemName`
 #### Parameters
 
-|
-
 `itemName` |
 
 The name of the trajectory. |
@@ -3752,17 +3397,13 @@ CreateCircleTrajectory "My Circle Trajectory"
 `CreateCircleTrajectory library itemName resourceDictionary`
 #### Parameters
 
-|
-
 `library` |
 
 (Optional) The Trajectory Library in which you create the trajectory. |
-|
 
 `itemName` |
 
 The name of the trajectory. |
-|
 
 `resourceDictionary` |
 
@@ -3783,8 +3424,6 @@ Use an Ellipse Trajectory to create a path in the shape of an ellipse in 3D spac
 `CreateEllipseTrajectory itemName`
 #### Parameters
 
-|
-
 `itemName` |
 
 The name of the trajectory. |
@@ -3801,22 +3440,17 @@ CreateEllipseTrajectory "My Ellipse Trajectory"
 `CreateEllipseTrajectory library itemName selectNewItems resourceDictionary`
 #### Parameters
 
-|
-
 `library` |
 
 (Optional) The Trajectory Library in which you create the trajectory. |
-|
 
 `itemName` |
 
 The name of the trajectory. |
-|
 
 `selectNewItems` |
 
 Whether Kanzi Studio selects the trajectory that you created. |
-|
 
 `resourceDictionary` |
 
@@ -3837,8 +3471,6 @@ Use a Line Trajectory to create a path with a single straight line in 3D space.
 `CreateLineTrajectory itemName`
 #### Parameters
 
-|
-
 `itemName` |
 
 The name of the trajectory. |
@@ -3855,22 +3487,17 @@ CreateLineTrajectory "My Line Trajectory"
 `CreateLineTrajectory library itemName selectNewItems resourceDictionary`
 #### Parameters
 
-|
-
 `library` |
 
 (Optional) The Trajectory Library in which you create the trajectory. |
-|
 
 `itemName` |
 
 The name of the trajectory. |
-|
 
 `selectNewItems` |
 
 Whether Kanzi Studio selects the trajectory that you created. |
-|
 
 `resourceDictionary` |
 
@@ -3891,8 +3518,6 @@ Use a Rectangle Trajectory to create a path in the shape of a rectangle in 3D sp
 `CreateRectangleTrajectory itemName`
 #### Parameters
 
-|
-
 `itemName` |
 
 The name of the trajectory. |
@@ -3909,22 +3534,17 @@ CreateRectangleTrajectory "My Rectangle Trajectory"
 `CreateRectangleTrajectory library itemName selectNewItems resourceDictionary`
 #### Parameters
 
-|
-
 `library` |
 
 (Optional) The Trajectory Library in which you create the trajectory. |
-|
 
 `itemName` |
 
 The name of the trajectory. |
-|
 
 `selectNewItems` |
 
 Whether Kanzi Studio selects the trajectory that you created. |
-|
 
 `resourceDictionary` |
 
@@ -3945,8 +3565,6 @@ Use a Spiral Trajectory to create a path in the shape of a spiral in 3D space.
 `CreateSpiralTrajectory itemName`
 #### Parameters
 
-|
-
 `itemName` |
 
 The name of the trajectory. |
@@ -3963,22 +3581,17 @@ CreateSpiralTrajectory "My Spiral Trajectory"
 `CreateSpiralTrajectory library itemName selectNewItems resourceDictionary`
 #### Parameters
 
-|
-
 `library` |
 
 (Optional) The Trajectory Library in which you create the trajectory. |
-|
 
 `itemName` |
 
 The name of the trajectory. |
-|
 
 `selectNewItems` |
 
 Whether Kanzi Studio selects the trajectory that you created. |
-|
 
 `resourceDictionary` |
 
@@ -3999,8 +3612,6 @@ Use a Trapezoid Trajectory to create a path in the shape of a trapezoid in 3D sp
 `CreateTrapezoidTrajectory itemName`
 #### Parameters
 
-|
-
 `itemName` |
 
 The name of the trajectory. |
@@ -4017,22 +3628,17 @@ CreateTrapezoidTrajectory "My Trapezoid Trajectory"
 `CreateTrapezoidTrajectory library itemName selectNewItems resourceDictionary`
 #### Parameters
 
-|
-
 `library` |
 
 (Optional) The Trajectory Library in which you create the trajectory. |
-|
 
 `itemName` |
 
 The name of the trajectory. |
-|
 
 `selectNewItems` |
 
 Whether Kanzi Studio selects the trajectory that you created. |
-|
 
 `resourceDictionary` |
 
@@ -4055,8 +3661,6 @@ Import 3D asset file into project
 `ImportAsset3DSourceFile filePath`
 #### Parameters
 
-|
-
 `filePath` |
 
 The path to the 3D asset file that you import. |
@@ -4076,12 +3680,9 @@ Import images into project
 `ImportImages filePath createTextures`
 #### Parameters
 
-|
-
 `filePath` |
 
 The path to the image you import. |
-|
 
 `createTextures` |
 
@@ -4132,8 +3733,6 @@ Preprocess the selected images. Preprocessing can include image compression and 
 `CompressImage imageFiles`
 #### Parameters
 
-|
-
 `imageFiles` |
 
 The image files that you want to preprocess. |
@@ -4152,8 +3751,6 @@ Create a Kanzi Engine application for the selected build configuration.
 
 `CreateKanziApplication buildConfiguration`
 #### Parameters
-
-|
 
 `buildConfiguration` |
 
@@ -4199,8 +3796,6 @@ DeleteExportedBinaries
 `DeleteExportedBinaries exportDirectory`
 #### Parameters
 
-|
-
 `exportDirectory` |
 
 The directory from which you want to delete kzb files. |
@@ -4220,12 +3815,9 @@ Close Kanzi Studio.
 `ExitApplication allowCancel silentExit`
 #### Parameters
 
-|
-
 `allowCancel` |
 
 Whether the user can cancel the action. |
-|
 
 `silentExit` |
 
@@ -4269,17 +3861,13 @@ ExportAllProjectBinaries
 `ExportAllProjectBinaries targetDirectory compressImages exportKzbPlayer`
 #### Parameters
 
-|
-
 `targetDirectory` |
 
 The directory to which you want to export the kzb files. |
-|
 
 `compressImages` |
 
 Whether to preprocess the images in the project. |
-|
 
 `exportKzbPlayer` |
 
@@ -4315,12 +3903,9 @@ Export kzb files for use with the Kanzi Engine API and kzb resource packs for lo
 `ExportBinary exportThemesAndLocaleResourcesSeparately exportXml`
 #### Parameters
 
-|
-
 `exportThemesAndLocaleResourcesSeparately` |
 
 Whether Kanzi Studio exports the theme and locale resources to separate kzb files. |
-|
 
 `exportXml` |
 
@@ -4337,8 +3922,6 @@ ExportBinary true true
 
 `ExportBinary fileName`
 #### Parameters
-
-|
 
 `fileName` |
 
@@ -4365,12 +3948,9 @@ Export the content of all Description properties in the project to a plain text 
 `ExportDescriptions root outputFile`
 #### Parameters
 
-|
-
 `root` |
 
 (Optional) The root node of the node tree the descriptions of which you export. If you do not set this parameter, Kanzi Studio exports the descriptions of all items in the project. |
-|
 
 `outputFile` |
 
@@ -4399,8 +3979,6 @@ Export selected project item(s) and their dependencies as a project archive (.kz
 `ExportProjectItems itemToExport`
 #### Parameters
 
-|
-
 `itemToExport` |
 
 The project item to export. |
@@ -4418,8 +3996,6 @@ Import another Kanzi Studio project to the active project.
 
 `ImportProject importProjectPath`
 #### Parameters
-
-|
 
 `importProjectPath` |
 
@@ -4440,8 +4016,6 @@ Import project item(s) and their dependencies from an exported project archive(.
 `ImportProjectItems archiveToImport`
 #### Parameters
 
-|
-
 `archiveToImport` |
 
 The path to the archive to import. |
@@ -4459,8 +4033,6 @@ runTest: false
 
 `LoadMaterialType loadPath`
 #### Parameters
-
-|
 
 `loadPath` |
 
@@ -4483,8 +4055,6 @@ Open a project from disk.
 `LoadProject path`
 #### Parameters
 
-|
-
 `path` |
 
 The project that you open. |
@@ -4504,12 +4074,9 @@ Create a Kanzi Studio project.
 `NewProject projectDirectory projectName`
 #### Parameters
 
-|
-
 `projectDirectory` |
 
 The directory where to create the project. |
-|
 
 `projectName` |
 
@@ -4530,12 +4097,9 @@ Save the project to disk.
 `SaveProject saveDirectory continueWorkingInOldPath`
 #### Parameters
 
-|
-
 `saveDirectory` |
 
 The directory in which to save the project. |
-|
 
 `continueWorkingInOldPath` |
 
@@ -4569,12 +4133,9 @@ Build and deploy an Android Package (APK) using the build configuration set in P
 `ExportApk buildConfiguration compressImages`
 #### Parameters
 
-|
-
 `buildConfiguration` |
 
 The build configuration to use when building the Android Package (APK). |
-|
 
 `compressImages` |
 
@@ -4614,12 +4175,9 @@ Execute commands defined in Kanzi Studio plugins.
 `Plugin pluginCommandName projectItem`
 #### Parameters
 
-|
-
 `pluginCommandName` |
 
 The internal name of the plugin command. |
-|
 
 `projectItem` |
 

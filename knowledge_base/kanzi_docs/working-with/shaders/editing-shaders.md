@@ -31,119 +31,102 @@ The vertex buffer of a mesh contains also a set of attributes. These vertex buff
 Kanzi can automatically pass attributes to shader programs, but you can configure these settings manually too.
 
 Vertex attributes always have one of these semantics and Kanzi automatically recognizes these names:
-|
 
 Attribute |
 
 Data type |
 
 Description |
-|
 
 kzPosition |
 
 vec3 |
 
 Position |
-|
 
 kzNormal |
 
 vec3 |
 
 Normal |
-|
 
 kzTangent |
 
 vec3 |
 
 Tangent |
-|
 
 kzWeight |
 
 vec4 |
 
 Weight |
-|
 
 kzMatrixIndices |
 
 vec4 |
 
 Matrix palette |
-|
 
 kzTextureCoordinate0 |
 
 vec2 |
 
 Texture coordinate 0 |
-|
 
 kzTextureCoordinate1 |
 
 vec2 |
 
 Texture coordinate 1 |
-|
 
 kzTextureCoordinate2 |
 
 vec2 |
 
 Texture coordinate 2 |
-|
 
 kzTextureCoordinate3 |
 
 vec2 |
 
 Texture coordinate 3 |
-|
 
 kzColor0 |
 
 vec4 |
 
 Color 0 |
-|
 
 kzColor1 |
 
 vec4 |
 
 Color 1 |
-|
 
 kzColor2 |
 
 vec4 |
 
 Color 2 |
-|
 
 kzColor3 |
 
 vec4 |
 
 Color 3 |
-|
 
 kzMorphTargetXPosition |
 
 vec3 |
 
 Morph target position X, where X is 0â¦8 |
-|
 
 kzMorphTargetXNormal |
 
 vec3 |
 
 Morph target normal X, where X is 0â¦8 |
-|
 
 kzMorphTargetXTangent |
 
@@ -164,42 +147,36 @@ Shader uniforms can receive their data from these data sources:
 - Property types defined in a material type.
 
 If the name of the uniform matches any of the Kanzi default uniforms, Kanzi Engine automatically sends its value to the shader program. These uniforms are available by default:
-|
 
 Uniform |
 
 Data type |
 
 Description |
-|
 
 ContentTexture |
 
 sampler2D |
 
 A texture provided by the rendered node when rendering, for example the image displayed in an Image node. See Applying custom rendering to 2D nodes and Applying custom rendering to an Image node. |
-|
 
 RenderOpacity |
 
 float |
 
 Opacity of the rendered 2D node. See Applying custom rendering to 2D nodes and Applying custom rendering to an Image node. |
-|
 
 kzWorldMatrix |
 
 mat4 |
 
 A matrix that transforms a point or matrix from local space to world space. |
-|
 
 kzCameraMatrix |
 
 mat4 |
 
 A matrix that transforms a point or matrix from world space to view (camera) space. |
-|
 
 kzCameraWorldMatrix |
 
@@ -208,7 +185,6 @@ mat4 |
 A matrix that transforms a point or matrix from local space to view (camera) space.
 
 This is the premultiplied matrix `kzCameraMatrix * kzWorldMatrix`.  |
-|
 
 kzProjectionCameraWorldMatrix |
 
@@ -217,7 +193,6 @@ mat4 |
 A matrix that transforms a point or matrix from local space to screen space.
 
 This is the premultiplied matrix `kzProjectionMatrix * kzCameraMatrix * kzWorldMatrix`.  |
-|
 
 kzPreviousProjectionCameraWorldMatrix |
 
@@ -233,7 +208,6 @@ vec4 prevPos = kzPreviousProjectionCameraWorldMatrix * vec4(position, 1.0);
 velocity = ((pos.xy / pos.w) - (prevPos.xy / prevPos.w)) * 0.5;
 
 ```
-   |
 
 To enable velocity buffer output for a material, set `KANZI_SHADER_OUTPUT_VELOCITY` to `1` in the preprocessor definitions for the PBR material. Then set the value of KANZI_SHADER_OUTPUT_VELOCITY_INDEX to the semantic index of the texture coordinate that you want to use. Alternatively, use the Smart PBR material type, which enables the preprocessor definition automatically when the Prism Graph requires it.
 
@@ -371,52 +345,42 @@ uniform mediump vec4 Diffuse;
 ```
 
 The letters and the case must match in the names. These are the compatible data types from property data type to shader uniform data type:
-|
 
 Property data type |
 
 Shader uniform data type |
-|
 
 Float |
 
 float |
-|
 
 Vector 2D |
 
 vec2 |
-|
 
 Vector 3D |
 
 vec3 |
-|
 
 Color |
 
 vec4 |
-|
 
 Vector 4D |
 
 vec4 |
-|
 
 Matrix 2D |
 
 mat2 |
-|
 
 Matrix 3D |
 
 mat3 |
-|
 
 Matrix 4D |
 
 mat4 |
-|
 
 Texture |
 
@@ -427,7 +391,6 @@ Texture |
 - sampler2DShadow
 - samplerCube
 - samplerCubeShadow
-  |
 ### Uniform arrays for light property types
 
 Light property types support uniform arrays. This enables you to use multiple lights of the same type. For example, if one shader program uses two directional lights, you must add an array property type into that shader of the material type:

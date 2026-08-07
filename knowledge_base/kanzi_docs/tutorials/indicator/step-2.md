@@ -110,10 +110,8 @@ Previous step
 ## Whatâs next?
 
 In this tutorial you learned how to create cluster indicators. You learned how to use a tile atlas and how to control the indicators using bindings and state managers. You can use the same approach that you learned in this tutorial to add other indicators from the TileAtlas texture to the cluster. Here are the property values that set the size and position for each indicator in the TileAtlas texture.
-|
 
 Property |    |    |    |
-|
 
 OffsetInTileAtlas X |
 
@@ -122,7 +120,6 @@ OffsetInTileAtlas X |
 40 |
 
 77 |
-|
 
 OffsetInTileAtlas Y |
 
@@ -131,7 +128,6 @@ OffsetInTileAtlas Y |
 33 |
 
 33 |
-|
 
 Layout Width |
 
@@ -140,7 +136,6 @@ Layout Width |
 30 |
 
 30 |
-|
 
 Layout Height |
 

@@ -188,47 +188,38 @@ The Result Texture contains the cubemap texture to which the Cubemap render pass
 By default, Kanzi updates all six cubemap faces at the rate that you set with the Update Rate property.
 
 For example, when you set the Face Update Rate to 3 and the Update Rate to 2, Kanzi updates the cubemap faces at this rate:
-|
 
 Frame |
 
 Cubemap faces |
-|
 
 n |
 
 +x, -x, +y |
-|
 
 n + 1 |
 
 - |
-|
 
 n + 2 |
 
 -y, +z, -z |
-|
 
 n + 3 |
 
 - |
-|
 
 n + 4 |
 
 +x, -x, +y |
-|
 
 n + 5 |
 
 - |
-|
 
 n + 6 |
 
 -y, +z, -z |
-|
 
 n + 7 |
 

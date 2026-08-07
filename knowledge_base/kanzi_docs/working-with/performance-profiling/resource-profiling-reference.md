@@ -23,55 +23,46 @@ A resource profiling context represents a scope that executes code path which tr
 In scopes where resources are loaded and deployed Kanzi creates samplers for the profiling contexts of resource loading and deployment `ResourceProfilingLoadContext` and `ResourceProfilingDeployContext`.
 
 This table lists the common attributes of resource profiling contexts. All contexts have these attributes.
-|
 
 Common attribute |
 
 Description |
-|
 
 `ContextID` |
 
 Unique identifier of the resource profiling context.
 
 Use the identifier to find out in which thread the context was created, the parent context, and the thread which triggered the execution of the context.  |
-|
 
 `ContextName` |
 
 Name of the resource profiling context. |
-|
 
 `DependenciesDuration` |
 
 Time in nanoseconds it took the Kanzi main thread to load and deploy resources on which a resource depends. |
-|
 
 `Duration` |
 
 Time in nanoseconds it took the Kanzi main thread to load and deploy a resource and the resources on which this resource depends. |
-|
 
 `TimeStamp` |
 
 Time point of entering the scope of the resource profiling context.
 
 Use the timestamp to find out when different resource profiling contexts were created relative to each other.  |
-|
 
 `DependencyContexts` |
 
 List of dependency contexts. |
 
 This table lists the profiling context types and the attributes that they have in addition to the common attributes.
-|
 
 Resource profiling contexts and context names |
 
 Description |
 
 Additional attributes |
-|
 
 Main loop
 
@@ -80,7 +71,6 @@ Main loop
 The profiler creates this context when the application loads or deploys a resource during the Kanzi main loop iteration. |
 
 `MainLoopCounter` - The iteration during which the context is created. |
-|
 
 Resource acquirement `ResourceAcquire` |
 
@@ -92,8 +82,6 @@ The profiler creates this context when resource acquisition triggers the loading
   - If resource loading is synchronous, `"false"`
 
 - `ResourceUrl` - The kzb URL of the resource which the application is acquiring.
-  |
-|
 
 Resource loading
 
@@ -107,8 +95,6 @@ The profiler creates this context when the application loads the resource. |
 For example, `Kanzi.Material`, `Kanzi.PrefabTemplate`, `Kanzi.ResourceDictionary`, or `Kanzi.ShaderProgram`.
 - `LoadedResourceUrl` - The URL of the loaded resource.
 - `ResourceLoadingDuration` - The time in nanoseconds it took a loading thread to load the resource.
-  |
-|
 
 Resource deployment
 
@@ -120,8 +106,6 @@ The profiler creates this context when the application deploys the resource. |
 - `DeployedResourceType` - The type of the deployed resource.
 - `DeployedResourceUrl` - The URL of the deployed resource.
 - `ResourceLoadingDuration` - The time in nanoseconds it took the Kanzi main thread to deploy the resource.
-  |
-|
 
 Acquirement of an anonymous resource
 
@@ -130,7 +114,6 @@ Acquirement of an anonymous resource
 The profiler creates this context when the application acquires a resource that does not have a resource ID. This usually happens when acquiring a resource dictionary. |
 
 N/A |
-|
 
 Asynchronous acquirement of resources
 
@@ -141,7 +124,6 @@ The profiler creates this context when the application acquires multiple resourc
 See Loading node prefab resources asynchronously.  |
 
 N/A |
-|
 
 FinishingQueue: process task
 
@@ -152,7 +134,6 @@ The profiler creates this context when Kanzi processes a task which loads or dep
 `Description` - Information about the index of the resource loading task and task queue size.
 
 For example, `"Task index 1, queue size 2"`.  |
-|
 
 Prefab template instantiation
 
@@ -163,7 +144,6 @@ The profiler creates this context when the instantiation of a prefab template tr
 `Description` - The root node of the prefab instance.
 
 For example, `"Node root: Screen"`.  |
-|
 
 Prefab template node instantiation
 
@@ -174,7 +154,6 @@ The profiler creates this context when the instantiation of a node in a prefab t
 `Description` - The name of the node in the prefab instance.
 
 For example, `"Node name: Viewport 2D"`.  |
-|
 
 Node attachment
 
@@ -185,7 +164,6 @@ The profiler creates this context when the attaching of a node to the node tree 
 `Description` - The name of the node that is attached.
 
 For example, `"Node name: Plane"`.  |
-|
 
 Message trigger
 
@@ -196,21 +174,18 @@ The profiling system creates this context when the handling of a message trigger
 `Description` - The source of the trigger message.
 
 For example, `"Message source: Button 2D"`.  |
-|
 
 Application process deployment queue  `Application::progress` `DeploymentQueue`   |
 
 The profiler creates this context when the execution of the `Application::` `progressDeploymentQueue` function triggers resource loading or deployment. This context is always a child of the Main loop context. |
 
 N/A |
-|
 
 Application process deployment queue override (default)  `Application::progressDeployment` `QueueOverride(default)`   |
 
 The profiler creates this context when the execution of the Kanzi implementation of the `Application::progress` `DeploymentQueueOverride` function triggers resource loading or deployment. |
 
 N/A |
-|
 
 Waiting loading queue task completion  `WaitingLoadingQueue` `TaskCompletion`   |
 
@@ -226,52 +201,42 @@ You can find a list of all the resource profiling data samples in the `"Resource
 Use the `ContextID` attribute of a resource profiling context to find out in which thread the resource profiler creates a resource profiling context, what is the parent context, and the thread which triggered the execution of the context. See Resource profiling contexts.
 
 This table lists the attributes of a resource profiling data sample.
-|
 
 Attribute |
 
 Description |
-|
 
 `DeploymentDuration` |
 
 Time in nanoseconds it took to deploy the resource |
-|
 
 `LoadingDuration` |
 
 Time in nanoseconds it took to load the resource |
-|
 
 `ResourceID` |
 
 Unique identifier of the resource profiling data sample |
-|
 
 `ResourceType` |
 
 Type of the profiled resource |
-|
 
 `ResourceUrl` |
 
 URL of the profiled resource |
-|
 
 `Success` |
 
 Whether Kanzi successfully loaded the resource |
-|
 
 `AcquireContext` |
 
 Resource profiling context in which the application or Kanzi acquired the resource |
-|
 
 `LoadingContext` |
 
 Resource profiling context in which Kanzi loaded the resource |
-|
 
 `DeploymentContext` |
 

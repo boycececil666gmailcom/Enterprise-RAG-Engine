@@ -26,15 +26,12 @@ This way you set in that 2D node the Effect Prefab property to the Blur Effect 2
 4.
 
 In the Library select the Blur Effect 2D effect and in the Properties add and set the Blur Effect 2D properties.
-|
 
 Blur Radius sets the amount of blur by defining the radius of the circular area of pixels that blend into each other. The default radius is 8 pixels.
 
 This property also determines the distance in pixels that the blur expands the render area at the node borders unless you enable the Masked Blur property.  |    |
-|
 
 Blur Quality sets the visual quality of the blur. Lower quality uses less computing and memory resources.  |    |
-|
 
 Masked Blur sets whether to blur only the pixels whose alpha channel value is not zero.
 

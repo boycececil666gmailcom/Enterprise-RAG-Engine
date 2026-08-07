@@ -68,14 +68,12 @@ Usually the best starting point for setting texture filtering is to set:
 Note that some texture formats are available with OpenGL ES versions higher than 2.0. To set the OpenGL ES version, in the main menu select Project > Properties and in the Properties set the Target Graphics API property.
 
 For example, set the Target Graphics API property to OpenGL ES 3.0, import HDR and floating point images in .dds format, and set the color format of textures. See Using OpenGL ES 3.0+ in Kanzi.
-|
 
 Mipmap Mode |
 
 Nearest sample |
 
 Linear sample |
-|
 
 Base |
 
@@ -90,7 +88,6 @@ Number of samples: 4
 Interpolates between four nearest pixels in the texture.
 
 Use this combination to magnify gradients. However, do not use it for minification.  |
-|
 
 Nearest |
 
@@ -111,7 +108,6 @@ Use this combination as the starting point.
 This combination is usually the best compromise between quality and performance.
 
 If you know there is no minification, you can set Mipmap Mode to Base.  |
-|
 
 Linear |
 

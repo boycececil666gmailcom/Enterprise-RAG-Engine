@@ -48,32 +48,26 @@ Kanzi provides two public MCP servers. They require no authentication and serve 
 - Kanzi API MCP server at `https://api.mcp.kanzi.com` connects your AI assistant to the Kanzi API reference. Use it to look up API signatures, check deprecation status, find include directives, and compare APIs between Kanzi versions.
 
 The quickest way to add both servers is the one-step Quick setup above. To add a server yourself, use your toolâs MCP configuration:
-|
 
 AI tool |
 
 How to add a server |
-|
 
 Claude Code |
 
 Run `claude mcp add --scope user --transport http <name> <url>`. |
-|
 
 VS Code |
 
 Add the server to `mcp.json` (open it with **MCP: Open User Configuration**). |
-|
 
 Cursor |
 
 Add the server to `~/.cursor/mcp.json`. |
-|
 
 Windsurf |
 
 Add the server to `~/.codeium/windsurf/mcp_config.json`. |
-|
 
 Codex, or any other MCP tool without direct HTTP support |
 

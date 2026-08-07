@@ -18,27 +18,22 @@ To run the Kanzi Command Prompt:
 ## Setting the Kanzi Command Prompt environment variables
 
 When you run the Kanzi Command Prompt, it sets these environment variables:
-|
 
 Environment variable |
 
 Definition |
-|
 
 `KANZI_HOME` |
 
 Sets the path to the Kanzi workspace. |
-|
 
 `ANDROID_HOME` |
 
 Sets the path to the Android SDK. |
-|
 
 `JAVA_HOME` |
 
 Sets the path to the 64-bit JDK. |
-|
 
 `ANDROID_STUDIO` |
 

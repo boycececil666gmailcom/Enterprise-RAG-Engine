@@ -10,25 +10,20 @@ Use the Activity Browser to create and inspect Activities and Activity Hosts, an
 To access commands available for an Activity or Activity Host, right-click that item.
 
 To pan and zoom in the Activity Browser window:
-|
 
 Action |
 
 Shortcut |
-|
 
 Pan |
 
 - Click and drag the middle mouse button.
 - Press the Space key, and click and drag the left mouse button.
-  |
-|
 
 Zoom |
 
 - Scroll the mouse wheel.
 - Press the Shift and Alt keys, and click and drag the left mouse button.
-  |
 ## Simulating the activation of Activities
 
 In the Activity Browser, you can simulate the activation of Activities:
@@ -56,20 +51,16 @@ When you use Data Triggers, you can simulate the application of Data Triggers an
 The Activity Browser indicates that an Activity or Activity Host has a Data Trigger, with the  icon.
 
 To work with Data Triggers, select an Activity or Activity Host that has a Data Trigger, and in the side panel use these tools:
-|
 
 Tool |
 
 Description |
-|   |
 
 Shows where a Data Trigger is and where the source and target Activitites of that Data Trigger are. |
-|   |
 
 Simulates the state when you apply a Data Trigger.
 
 This enables you to see the state of your application when the conditions for a Data Trigger are met without having to change the property values in your application.  |
-|   |
 
 Shows the selected Data Trigger in the Node Components window. |
 
@@ -87,20 +78,13 @@ Keep in mind that an Activity cannot be a parent of another Activity.
 ## Viewing Activities and Activity Hosts
 
 The Activity Browser has these tools to organize and show the content:
-|
 
 Tool |
 
 Description |
-|
-
- |
 
 Lays out items automatically on the Activity Browser canvas and enables changing the parent and order of nodes.
 
 When you toggle off the automatic layout, you can organize Activities and Activity Hosts by dragging them on the Activity Browser canvas.   |
-|
-
- |
 
 Fits the Activity tree to the size of the Activity Browser window.   |

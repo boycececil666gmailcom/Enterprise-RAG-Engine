@@ -47,22 +47,18 @@ android {
 - The `KANZI_ROOT` CMake variable is renamed to `Kanzi_ROOT` to comply with [CMake policy CMP0144](https://cmake.org/cmake/help/latest/policy/CMP0144.html), which requires that the `<PackageName>_ROOT` hint variable match the casing used in the `find_package()` call.
 
 If you pass `-DKANZI_ROOT=<path>` on the CMake command line, set `KANZI_ROOT` in your environment, or reference `KANZI_ROOT` in your `CMakeLists.txt`, rename it to `Kanzi_ROOT`:
-|
 
 Kanzi 4.0 |
 
 Kanzi 4.1 |
-|
 
 `-DKANZI_ROOT=<path>` |
 
 `-DKanzi_ROOT=<path>` |
-|
 
 `set(KANZI_ROOT <path>)` |
 
 `set(Kanzi_ROOT <path>)` |
-|
 
 `$ENV{KANZI_ROOT}` |
 
@@ -82,12 +78,10 @@ Many functions were removed from GPUResource, notably `setData()` and `setSubDat
 
 Removed `Renderer` reference and added `RenderPass` reference to support automated directional shadow projection fitting.
 - `kanzi::BindingRenderValueLookupContext` is renamed to `BindingGraphicsEntryLookupContext`.
-|
 
 Kanzi 4.0 |
 
 Kanzi 4.1 |
-|
 
 `BindingRenderValueLookupContext` |
 
@@ -156,27 +150,22 @@ for (const auto& [key, buffer] : mesh.getVertexBuffers()) { use(buffer); }
 - `adjustForDeviceCapabilities` now returns `vector<Mesh::CreateInfo::Adjustment>` describing what was adjusted (was `void`). Existing call sites that ignore the return value compile unchanged.
 - Pipeline validation now treats `UNorm`/`SNorm`/`UFloat` channel types as compatible with shader `float` inputs, `ColorRGBA` clear values, and `ColorRGBA` sampler border colors. This is a loosening: code that was forced to misclassify clear values or border colors to satisfy validation no longer needs the workaround.
 - `gfx::reflection::ReflectionInfo::inputAttributes` and `outputAttributes` now map attribute names to `gfx::reflection::Attribute` (`{ location, component, typeInfo }`) instead of directly to `gfx::reflection::TypeInfo`. Code that reads the reflected type must now go through `.typeInfo`:
-|
 
 Kanzi 4.0 |
 
 Kanzi 4.1 |
-|
 
 `attribute.second.type` |
 
 `attribute.second.typeInfo.type` |
-|
 
 `attribute.second.rows` |
 
 `attribute.second.typeInfo.rows` |
-|
 
 `attribute.second.columns` |
 
 `attribute.second.typeInfo.columns` |
-|
 
 `attribute.second.arraysize` |
 
@@ -184,12 +173,10 @@ Kanzi 4.1 |
 
 Rendering now validates each bound color attachmentâs blend state write mask against the reflected fragment outputs and the bound attachmentâs channel set at `BeginRenderPipelineCommand` processing. If the blend state enables writes on channels the fragment shader does not produce *and* the bound attachment has those channels, the validator reports `commands-color-write-mask-mismatch`. Write mask bits that target channels the bound attachment lacks are no-ops on hardware per spec ([Vulkan, Shader Interfaces â Fragment Output Interface](https://docs.vulkan.org/spec/latest/chapters/interfaces.html#interfaces-fragmentoutput); [OpenGL 4.6 Core, Â§17.4.2 Fine Control of Buffer Updates](https://registry.khronos.org/OpenGL/specs/gl/glspec46.core.pdf)) and are not reported. Existing pipelines that over-bind attachments must clear `colorWriteMask` for the channels the shader does not write only when those channels are present in the bound attachment.
 - `DrawObjectsRenderPass::ViewportProperty` has moved to the `RenderPass` base class and is renamed to `RenderPass::OutputViewportProperty`. The property is now available on every render pass, not only Draw Objects render passes. The underlying property identifier has changed from `"DrawObjectsRenderPass.Viewport"` to `"DrawObjectsRenderPass.OutputViewport"`. Existing serialized assets continue to load because the previous identifier is registered as the legacy name of the new property. Projects using the Java or Lua API must now access the property through `RenderPassMetadata` instead of `DrawObjectsRenderPassMetadata`.
-|
 
 Kanzi 4.0 |
 
 Kanzi 4.1 |
-|
 
 `DrawObjectsRenderPass::ViewportProperty` |
 
@@ -197,27 +184,22 @@ Kanzi 4.1 |
 - The following `Mesh` methods now take a `VertexAttribute::SemanticKey` parameter to identify which vertex attribute to access: `Mesh::getVertexBufferHandle`, `Mesh::getVertexBuffer`, `Mesh::setVertexData`, and `Mesh::setVertexSubData`.
 
 You can also call `Mesh::getVertexBuffer` with a `VertexAttribute::Semantic` parameter to retrieve the vertex buffer for the first attribute that matches the specified semantic.
-|
 
 Kanzi 4.0 |
 
 Kanzi 4.1 |
-|
 
 `mesh.getVertexBufferHandle()` |
 
 `mesh.getVertexBufferHandle({ VertexAttribute::SemanticPosition, 0u })` |
-|
 
 `mesh.getVertexBuffer()` |
 
 `mesh.getVertexBuffer({ VertexAttribute::SemanticPosition, 0u })` |
-|
 
 `mesh.setVertexData(data)` |
 
 `mesh.setVertexData(data, { VertexAttribute::SemanticPosition, 0u })` |
-|
 
 `mesh.setVertexSubData(data, offset)` |
 
@@ -239,79 +221,64 @@ To migrate:
 To migrate:
 
 - Replace `Platform` with `platform::PlatformContext` and update the include directive:
-|
 
 Kanzi 4.0 |
 
 Kanzi 4.1 |
-|
 
 `kanzi/platform/kz_platform/kz_platform.hpp` |
 
 `kanzi/platform/platform_context/platform_context.hpp` |
 - Replace the platform management functions:
-|
 
 Kanzi 4.0 |
 
 Kanzi 4.1 |
-|
 
 `createDefaultPlatform` |
 
 `platform::createDefaultPlatformContext` |
-|
 
 `destroyDefaultPlatform` |
 
 `platform::destroyDefaultPlatformContext` |
-|
 
 `getDefaultPlatform` |
 
 `platform::getDefaultPlatformContext` |
 - If you implement a custom platform, rename your subclass. The header follows the same pattern: replace `kz_platform/<custom_name>/<custom_name>_platform.hpp` with `platform_context/<custom_name>/<custom_name>_platform_context.hpp`.
-|
 
 Kanzi 4.0 |
 
 Kanzi 4.1 |
-|
 
 `AndroidPlatform` |
 
 `platform::AndroidPlatformContext` |
-|
 
 `EmscriptenPlatform` |
 
 `platform::EmscriptenPlatformContext` |
-|
 
 `MacosPlatform` |
 
 `platform::MacosPlatformContext` |
-|
 
 `QnxPlatform` |
 
 `platform::QnxPlatformContext` |
-|
 
 `StubPlatform` |
 
 `platform::StubPlatformContext` |
-|
 
 `WaylandPlatform` |
 
 `platform::WaylandPlatformContext` |
-|
 
 `Win32Platform` |
 
 `platform::Win32PlatformContext` |
-|
 
 `X11Platform` |
 
@@ -325,37 +292,30 @@ To migrate:
 - Replace the factory function call `createDefaultGlContextApi` with `platform::makeDefaultGlGraphicsContext`.
 - Replace `getGlContextApi()` with `getGlGraphicsContext()` on your `platform::PlatformContext` instance.
 - If you implement a custom OpenGL context by subclassing `GlContextApi`, rename your class. The header follows the same pattern: replace `context/<name>/<name>_context_api.hpp` with `platform/gl/graphics_context/<name>/<name>_graphics_context.hpp`.
-|
 
 Kanzi 4.0 |
 
 Kanzi 4.1 |
-|
 
 `EglContextApi` |
 
 `platform::EglGraphicsContext` |
-|
 
 `EglEmscriptenContextApi` |
 
 `platform::EglEmscriptenGraphicsContext` |
-|
 
 `EglOhosContextApi` |
 
 `platform::EglOhosGraphicsContext` |
-|
 
 `EglQnxStreamsContextApi` |
 
 `platform::EglQnxStreamsGraphicsContext` |
-|
 
 `GlxContextApi` |
 
 `platform::GlxGraphicsContext` |
-|
 
 `WglContextApi` |
 
@@ -364,12 +324,10 @@ Kanzi 4.1 |
 The `platform::GlGraphicsContext` member function `getOGLProcAddress` is renamed to `getGLProcAddress`.
 
 To migrate, rename the calls. If you implement a custom OpenGL context, rename the override accordingly:
-|
 
 Kanzi 4.0 |
 
 Kanzi 4.1 |
-|
 
 `getOGLProcAddress` |
 
@@ -426,17 +384,14 @@ To migrate, set the `ndkVersion` to 28.2.13676358 in the `build.gradle` file of 
 ## Changes to Material
 
 - In the `Material` class, renamed these public member functions:
-|
 
 Kanzi 4.0 |
 
 Kanzi 4.1 |
-|
 
 `Material::acquireDebugMaterialSolid` |
 
 `Material::acquireMaterialSolid` |
-|
 
 `Material::acquireDebugMaterialTextured` |
 
@@ -445,27 +400,22 @@ Kanzi 4.1 |
 ## Changes to application input events
 
 - Application input events `sleep` and `wakeup` are renamed to `paused` and `resumed`, to be consistent with the application states. Change the event types and function calls in your code to use the new names:
-|
 
 Kanzi 4.0 |
 
 Kanzi 4.1 |
-|
 
 `InputEvent::Type::ApplicationSleep` |
 
 `InputEvent::Type::ApplicationPaused` |
-|
 
 `InputEvent::Type::ApplicationWakeup` |
 
 `InputEvent::Type::ApplicationResumed` |
-|
 
 `addApplicationSleepEvent()` |
 
 `addApplicationPausedEvent` |
-|
 
 `addApplicationWakeupEvent()` |
 
@@ -496,27 +446,22 @@ To migrate your Kanzi Engine Lua API and Kanzi Java API applications, rename `Te
 
 To migrate your Kanzi Engine Lua API scripts, rename `PropertyType:new` to `PropertyType:find` and `MessageType:new` to `MessageType:find`.
 - Multiple constructors in Lua were renamed from `create` to `create1`.
-|
 
 Kanzi 4.0 |
 
 Kanzi 4.1 |
-|
 
 `CallbackBindingProcessor:create` |
 
 `CallbackBindingProcessor:create1` |
-|
 
 `NodeEffectPrefab2D:create` |
 
 `NodeEffectPrefab2D:create1` |
-|
 
 `RangeBindingProcessor:create` |
 
 `RangeBindingProcessor:create1` |
-|
 
 `RenderPassPrefab:create` |
 
@@ -588,47 +533,38 @@ renderPass->setColorWriteMode(gfx::ColorWriteMask::R | gfx::ColorWriteMask::G);
 ```
 
 The following table maps old enumeration values to new flag equivalents:
-|
 
 Kanzi 4.0 (`GraphicsColorWriteMode`) |
 
 Kanzi 4.1 (`gfx::ColorWriteMask`) |
-|
 
 `GraphicsColorWriteModeNone` |
 
 `gfx::ColorWriteMask::None` |
-|
 
 `GraphicsColorWriteModeRGB` |
 
 `gfx::ColorWriteMask::RGB` |
-|
 
 `GraphicsColorWriteModeRGBA` |
 
 `gfx::ColorWriteMask::RGBA` |
-|
 
 `GraphicsColorWriteModeR` |
 
 `gfx::ColorWriteMask::R` | `gfx::ColorWriteMask::A` |
-|
 
 `GraphicsColorWriteModeG` |
 
 `gfx::ColorWriteMask::G` | `gfx::ColorWriteMask::A` |
-|
 
 `GraphicsColorWriteModeB` |
 
 `gfx::ColorWriteMask::B` | `gfx::ColorWriteMask::A` |
-|
 
 `GraphicsColorWriteModeGB` |
 
 `gfx::ColorWriteMask::G` | `gfx::ColorWriteMask::B` | `gfx::ColorWriteMask::A` |
-|
 
 `GraphicsColorWriteModeA` |
 
@@ -636,31 +572,22 @@ Kanzi 4.1 (`gfx::ColorWriteMask`) |
 **Note:** The integer values of the enumeration changed. The new type uses power-of-two bitmask values (`R=1`, `G=2`, `B=4`, `A=8`) instead of the previous sequential indices. Update any application code that stores or compares the raw integer value of `GraphicsColorWriteMode`. `.kzm` project files are migrated automatically when you open them in Kanzi Studio 4.1.
 - In the Kanzi Studio plugin interface, `PipelineStateRenderPassColorWriteMode` changes from `TypedProperty<ColorWriteModeEnum>` to `TypedProperty<int>`, and the `ColorWriteModeEnum` type is removed. Update plugin code that reads or writes this property to use raw integer flag values (`Red=1`, `Green=2`, `Blue=4`, `Alpha=8`).
 - In Kanzi Engine Lua API, replace the removed `GraphicsColorWriteMode` table with `gfx.ColorWriteMask`:
-|
 Kanzi 4.0 (`GraphicsColorWriteMode`) |
 Kanzi 4.1 (`gfx.ColorWriteMask`) |
-|
 `GraphicsColorWriteMode.GraphicsColorWriteModeNone` |
 `gfx.ColorWriteMask.None` |
-|
 `GraphicsColorWriteMode.GraphicsColorWriteModeRGBA` |
 `gfx.ColorWriteMask.RGBA` |
-|
 `GraphicsColorWriteMode.GraphicsColorWriteModeRGB` |
 `gfx.ColorWriteMask.RGB` |
-|
 `GraphicsColorWriteMode.GraphicsColorWriteModeR` |
 `gfx.ColorWriteMask.R | gfx.ColorWriteMask.A` |
-|
 `GraphicsColorWriteMode.GraphicsColorWriteModeG` |
 `gfx.ColorWriteMask.G | gfx.ColorWriteMask.A` |
-|
 `GraphicsColorWriteMode.GraphicsColorWriteModeB` |
 `gfx.ColorWriteMask.B | gfx.ColorWriteMask.A` |
-|
 `GraphicsColorWriteMode.GraphicsColorWriteModeGB` |
 `gfx.ColorWriteMask.G | gfx.ColorWriteMask.B | gfx.ColorWriteMask.A` |
-|
 `GraphicsColorWriteMode.GraphicsColorWriteModeA` |
 `gfx.ColorWriteMask.A` |
 - In Kanzi Java API, replace `GraphicsColorWriteMode` with `ColorWriteMask`, and update `PipelineStateRenderPassMetadata.ColorWriteModeProperty` references accordingly.
@@ -680,57 +607,46 @@ Starting with Kanzi 4.1.0, shader **source code** in your materials must use GLS
 This is a change to shader *authoring* requirements, not deployment. Kanzi cross-compiles your shader sources to the GLSL dialect required by the projectâs Target Graphics API setting, so you can still deploy to OpenGL ES 3.0. The exception is if your shader uses features introduced in GLSL ES 3.1 or later â compute shaders, image load/store, shader storage buffer objects, and so on. Features your source uses must be available on the selected Target Graphics API.
 
 To migrate your shaders, apply these transformations:
-|
 
 Legacy syntax |
 
 Replacement |
-|
 
 `attribute` |
 
 `in` (vertex shader inputs) |
-|
 
 `varying` (vertex shader) |
 
 `out` (vertex shader outputs) |
-|
 
 `varying` (fragment shader) |
 
 `in` (fragment shader inputs) |
-|
 
 `gl_FragColor` |
 
 User-defined output variable declared with `layout(location = 0) out vec4 fragColor;` |
-|
 
 `gl_FragData[N]` |
 
 User-defined output variables declared with `layout(location = N) out vec4 fragDataN;` |
-|
 
 Missing `#version` |
 
 Add `#version 310 es` (embedded systems) or `#version 460` (desktop) |
-|
 
 `#version 100` or `#version 300 es` |
 
 `#version 310 es` |
-|
 
 `precision` inside `main()` |
 
 Move `precision` to global scope before `main()`. ES 310 requires global precision for floats in fragment shaders. |
-|
 
 `texture2D(sampler, uv)` |
 
 `texture(sampler, uv)` |
-|
 
 `textureCube(sampler, uv)` |
 

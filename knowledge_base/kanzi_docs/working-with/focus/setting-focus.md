@@ -363,7 +363,6 @@ You can use these Focus properties to observe whether a user interface element h
 
 - The Focused Boolean property reports whether a node is the key focus node and receives key input.
 - The Focus State enumeration property reports the focus state of a node or nodes in a focus scope and can have these values:
-|
 
 Enumeration value |
 
@@ -372,7 +371,6 @@ Enumeration key |
 Meaning for a focusable node |
 
 Meaning for a focus scope |
-|
 
 No Focus |
 
@@ -381,7 +379,6 @@ No Focus |
 The node does not have focus. |
 
 None of the nodes in the focus scope have focus. |
-|
 
 Logical Focus |
 
@@ -390,7 +387,6 @@ Logical Focus |
 The node is the logical focus node of an overlay-type focus scope. The logical focus node was the key focus node before the overlay lost the focus. When the overlay regains the focus, the logical focus node becomes the key focus node. |
 
 A node in the focus scope is the logical focus node of the overlay to which the scope belongs. |
-|
 
 Key Focus |
 
@@ -471,7 +467,6 @@ You can use:
     - The Focus State (`Node::FocusStateProperty`) enumeration property to find out the focus state of a node or the nodes in a focus scope.
 
 The Focus State property can have these values:
-|
 
 Enumeration value |
 
@@ -480,7 +475,6 @@ Enumeration key |
 Meaning for a focusable node |
 
 Meaning for a focus scope |
-|
 
 No Focus |
 
@@ -489,7 +483,6 @@ No Focus |
 The node does not have focus. |
 
 None of the nodes in the focus scope have focus. |
-|
 
 Logical Focus |
 
@@ -498,7 +491,6 @@ Logical Focus |
 The node is the logical focus node of an overlay-type focus scope. The logical focus node was the key focus node before the overlay lost the focus. When the overlay regains the focus, the logical focus node becomes the key focus node. |
 
 A node in the focus scope is the logical focus node of the overlay to which the scope belongs. |
-|
 
 Key Focus |
 

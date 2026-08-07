@@ -193,16 +193,12 @@ In a Text Box node you can set the color of the selected text, its background, a
 To select a word in a Text Box node, double-click that word. To modify the selection, drag the handles in the top-left and bottom-right corners of the selected text.
 
 To set the appearance of text selection, in the Node Tree select a Text Box 2D node and in the Properties add and set:
-|
 
 Selection Background Brush to the brush that you want to use to fill the background of the selected text. |    |
-|
 
 Selection Foreground Brush to the brush that you want to use to fill the selected text. |    |
-|
 
 Selection Start Prefab to the prefab that you want to use for the selection handle at the beginning of the selection. |    |
-|
 
 Selection End Prefab to the prefab that you want to use for the selection handle at the end of the selection. |    |
 **Tip:** If a prefab that you use as a selection handle does not fit in a Text Box 2D node, in the Text Box 2D node set the Horizontal Padding and Vertical Padding properties to at least half of the width and height of the selection handle prefab.
@@ -213,16 +209,12 @@ In a Text Box node you can set the color of the selected text, its background, a
 To select a word in a Text Box node, double-click that word. To modify the selection, drag the handles in the top-left and bottom-right corners of the selected text.
 
 To set the appearance of text selection, in the Node Tree select a Text Box 3D node and in the Properties add and set:
-|
 
 Selection Start Prefab to the prefab that you want to use for the selection handle at the beginning of the selection. |    |
-|
 
 Selection End Prefab to the prefab that you want to use for the selection handle at the end of the selection. |    |
-|
 
 Selection Background Color to the color that you want to use to fill the background of the selected text. |    |
-|
 
 Selection Font Color to the color that you want to use to fill the selected text. |    |
 ## Setting the appearance of the composition text in a Text Box 2D node

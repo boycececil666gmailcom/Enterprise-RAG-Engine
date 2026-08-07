@@ -38,42 +38,34 @@ Kanzi provides input manipulators to enable gesture recognition for nodes in you
 - Through the Kanzi Engine API
 
 Kanzi provides these input manipulators:
-|   |
 
 Use the Click Manipulator to enable users to click nodes in your Kanzi application.
 
 See Using the Click Manipulator.  |
-|   |
 
 Use the Long-Press Manipulator to enable users to long-press nodes in your Kanzi application.
 
 See Using the Long-Press Manipulator.  |
-|   |
 
 Use the Multi-Click Manipulator to enable users to multi-click nodes in your Kanzi application.
 
 See Using the Multi-Click Manipulator.  |
-|   |
 
 Use the Key Manipulator to set the keys that the user can use to navigate your application. For example, you can override the default focus navigation keys and use a specific key to set focus to a node, set a key to open or close a popup-type window, or move focus in the focus chain.
 
 See Using the Key Manipulator.  |
-|   |
 
 Use the Navigation Manipulator to set the keys that the user can use to navigate to different directions in your application.
 
 See Using the Navigation Manipulator.  |
-|   |
 
 Use the Drag-And-Drop Manipulator to enable users to drag and drop nodes in your Kanzi application.
 
 See Using the Drag-And-Drop Manipulator.  |
-|   |
 
 Use the Pan Manipulator to enable users to move nodes in your Kanzi application.
 
 See Using the Pan Manipulator.  |
-|   |
 
 Use the Pinch Manipulator to enable users to zoom and rotate nodes in your Kanzi application.
 

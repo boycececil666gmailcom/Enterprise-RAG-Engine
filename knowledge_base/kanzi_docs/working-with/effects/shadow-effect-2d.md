@@ -26,7 +26,6 @@ Kanzi applies to the visual shape of the content in the 2D node a partially tran
 4.
 
 To adjust the appearance of the shadow, in the Library select the Shadow Effect 2D effect and in the Properties add and set the Shadow Effect 2D properties.
-|
 
 Shadow Blend Mode sets the blend mode that Kanzi uses to render the shadow.
 
@@ -35,35 +34,25 @@ The default is Alpha: Premultiplied.
 For example, use the Multiply (advanced khr) blend mode to create a more realistic shadow.
 
 See Blending and compositing 2D nodes.  |
-   |
-|
 
 Shadow Blur Radius sets the softness of the shadow by defining the distance in pixels that the shadow blur extends outward from each edge of the shadow. The higher the value, the blurrier the shadow is. The default radius is 8 pixels.  |    |
-|
 
 Shadow Type sets the type of the shadow:
 
   - Drop Shadow appears behind or below an object. This is the default.
   - Inner Shadow appears inside an object.
-  |    |
-|
 
 Shadow Distance sets how far from an object the shadow falls. The default distance is 10 pixels.  |    |
-|
 
 Shadow Angle sets the direction of the shadow as an angle relative to the positive x axis in the clockwise direction. The default angle is 45 degrees.  |    |
-|
 
 Override Shadow Offset sets the offset of the shadow from the object along the x and y axes. The default offset is 7 pixels along both axes.
 
 When you set this property, the Shadow Distance and Shadow Angle properties have no effect.  |    |
-|
 
 Shadow Color sets the color of the shadow.  |    |
-|
 
 Shadow Only sets whether to render only the shadow without the visual content of the node.  |    |
-|
 
 Shadow Quality sets the visual quality of the shadow. Lower quality uses less computing and memory resources.  |    |
 

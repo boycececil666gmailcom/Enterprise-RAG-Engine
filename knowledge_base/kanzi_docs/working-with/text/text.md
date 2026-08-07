@@ -100,49 +100,42 @@ To configure the Fallback Font Chain, you can choose from existing font families
 To render emoji and other colored glyphs, import a font file that contains color glyphs. The color font file can be either the primary font of a Font Family or a fallback font.
 
 These color font formats are supported for each Kanzi font engine:
-|
 
 Font file type |
 
 FreeType |
 
 iType |
-|
 
 glyf table (normal non-colored scalable text and icons) |
 
 â  |
 
 â  |
-|
 
 CBDT table (non-scalable PNG images) |
 
 â  |
 
 â  |
-|
 
 SBIX table (non-scalable PNG images) |
 
 â  |
 
 â |
-|
 
 COLRv0 table (scalable shapes with solid colors) |
 
 â  |
 
 â  |
-|
 
 SVG table (SVG images with color gradients) |
 
 â |
 
 â |
-|
 
 COLRv1 table (scalable shapes with color gradients) |
 

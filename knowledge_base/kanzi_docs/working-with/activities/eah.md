@@ -347,15 +347,11 @@ An Apply Activation Action keeps an Activity activated for as long as the condit
 
 When the Trigger condition is no longer met, Kanzi rolls back the state of the Activity to the state before the Action was applied.
 **Tip:** During the application development, use these Data Trigger tools in the Activity Browser side panel:
-|
 Tool |
 Description |
-|   |
 Shows where a Data Trigger is and where the source and target Activitites of that Data Trigger are. |
-|   |
 Simulates the state when you apply a Data Trigger.
 This enables you to see the state of your application when the conditions for a Data Trigger are met without having to change the property values in your application.  |
-|   |
 Shows the selected Data Trigger in the Node Components window. |
 ### Activating Activities with a Toggle Button Group
 

@@ -61,19 +61,14 @@ An Activity Host defines the rules for when its child Activities are active. A P
 
 The Activity Browser shows all the possible UI states of an application, including Kanzi Studio solutions that include multiple projects. Use the Activity Browser to create, inspect, and interact with the UI states in your application.
 **Tip:** To pan and zoom in the Activity Browser window, use these shortcuts:
-|
 Action |
 Shortcut |
-|
 Pan |
 - Click and drag the middle mouse button.
 - Press the Space key, and click and drag the left mouse button.
-|
-|
 Zoom |
 - Scroll the mouse wheel.
 - Press the Shift and Alt keys, and click and drag the left mouse button.
-|
 2.
 In the Properties, add and set:
 - Background Brush to Background

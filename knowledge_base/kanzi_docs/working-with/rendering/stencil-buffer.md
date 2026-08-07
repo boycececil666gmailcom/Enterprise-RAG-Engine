@@ -140,47 +140,38 @@ This way you limit the area of rendering of the ContactsList node to those pixel
 Use the Stencil Test Function property to compare the Stencil Function Reference Value to the value in the stencil buffer.
 
 You can use these operations:
-|
 
 Stencil Test Function |
 
 Description |
-|
 
 Always |
 
 Pass always |
-|
 
 Equal |
 
 Pass if the values are equal |
-|
 
 Greater |
 
 Pass if Stencil Function Reference Value is greater than the value in the stencil buffer |
-|
 
 Greater or Equal |
 
 Pass if Stencil Function Reference Value is greater than or equal to the value in the stencil buffer |
-|
 
 Less |
 
 Pass if Stencil Function Reference Value is less than the value in the stencil buffer |
-|
 
 Less or Equal |
 
 Pass if Stencil Function Reference Value is less than or equal to the value in the stencil buffer |
-|
 
 Never |
 
 Fail always |
-|
 
 Not equal |
 
@@ -194,47 +185,38 @@ For example, if you set Stencil Function Mask to 2, Kanzi Studio preserves only 
 Use the Stencil Fail Operation, Stencil Pass Depth Fail Operation and Stencil Pass Depth Pass Operation properties to set the values in the stencil buffer depending on the results of stencil and depth test. By default Kanzi Studio keeps the current value.
 
 You can use these operations:
-|
 
 Operation |
 
 Description |
-|
 
 Decrease |
 
 If the stencil value if larger than 0, decrease it by 1. |
-|
 
 Decrease wrap |
 
 Otherwise the same as Decrease, but if the current value is 0, set the value to the maximum possible value for the stencil buffer, usually 255. |
-|
 
 Increase |
 
 If the stencil value is lower than the maximum value, increase it by 1. |
-|
 
 Increase wrap |
 
 Otherwise the same as Increase, but if the maximum value is exceeded, set the value to 0. |
-|
 
 Invert |
 
 Apply a bitwise invert to the value. |
-|
 
 Keep |
 
 Keep the current value. |
-|
 
 Replace |
 
 Replace the stencil value with the value of the Stencil Function Reference Value property. |
-|
 
 Zero |
 

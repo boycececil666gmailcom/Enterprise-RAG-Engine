@@ -26,27 +26,22 @@ See Compressing textures.
 ## Texture types
 
 These textures are available in Kanzi:
-|
 
 Single textures use a single image for the texture.
 
 See Using single textures.  |    |
-|
 
 Cubemap textures combine six square-shaped images into one texture to represent reflections of the environment. Each image represents the scenery in one of the six directions along the x, y, and z axes from the viewpoint of the cubemapped object.
 
 See Using cubemap textures.  |    |
-|
 
 Volume textures use a single 2D image, made up of many cross-section slices of a 3D shape, to define a 3D volume texture. This technique is often used for effects like smoke, fire, or clouds, where 3D data would be too resource intensive or difficult to generate procedurally.
 
 See Using volume textures.  |    |
-|
 
 Use a Render Target Texture to render content to a texture or to apply anti-aliasing to only a part of your application. You can use render target textures like any other texture. For example, you can use it in a Texture Brush or as an image in an Image node.
 
 See Using render target textures and Using OpenGL ES 3.0+ in Kanzi.  |    |
-|
 
 Use a Cubemap Render Target Texture to render a Cubemap render pass to a cubemap texture.
 

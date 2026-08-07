@@ -56,37 +56,30 @@ This way you clearly see the effect of the changes you make in the next step.
 Now adjust the Ambient Color Hue (H) property field.
 
 For example:
-|
 
 Color |
 
 Ambient Color Hue (H) |
-|
 
 Red |
 
 0 |
-|
 
 Yellow |
 
 42 |
-|
 
 Green |
 
 85 |
-|
 
 Cyan |
 
 127 |
-|
 
 Blue |
 
 170 |
-|
 
 Magenta |
 
@@ -132,12 +125,10 @@ For example, set the Blend Intensity property for the MainBody_1, Chrome, and Ri
 Adjust the color of the second paint by setting the Specular Color Hue (H) property field for the MainBody_1 material.
 
 For example:
-|
 
 First paint |   |
 
 Second paint |   |
-|
 
 Color |
 
@@ -146,7 +137,6 @@ Ambient Color Hue (H) |
 Color |
 
 Specular Color Hue (H) |
-|
 
 Red |
 
@@ -155,7 +145,6 @@ Red |
 Yellow |
 
 42 |
-|
 
 Yellow |
 
@@ -164,7 +153,6 @@ Yellow |
 Green |
 
 85 |
-|
 
 Green |
 
@@ -173,7 +161,6 @@ Green |
 Cyan |
 
 127 |
-|
 
 Cyan |
 
@@ -182,7 +169,6 @@ Cyan |
 Blue |
 
 170 |
-|
 
 Blue |
 
@@ -191,7 +177,6 @@ Blue |
 Magenta |
 
 212 |
-|
 
 Magenta |
 

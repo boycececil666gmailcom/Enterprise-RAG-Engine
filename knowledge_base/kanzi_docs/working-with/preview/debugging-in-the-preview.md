@@ -13,65 +13,45 @@ In addition to the Preview Analyze mode, Kanzi provides other ways to help you a
 **Tip:** To customize how Kanzi Studio shows different types of items in the Analyze mode, select Edit > User Preferences, and in the Preview tab set the color and line thickness for the items.
 ## Selection and layout
 
-|   |
-
 Selection highlights the selected nodes. See Editing your application in the Preview. |
-|   |
 
 Debug objects shows:
 
 - Visualization nodes, such as light, camera, and layout nodes.
 - Debug visualizations that you create for your custom 3D nodes. For an example of such visualization, see the Node3D plugin example.
-  |
-|   |
 
 Allocated layout shows bounding boxes of the spaces allocated to items under layouts. See Layout control nodes. |
-|   |
 
 Actual layout shows bounding boxes of spaces used by items under layouts. See Layout control nodes. |
-|   |
 
 Grid cells shows the cells of Grid Layout 2D nodes. See Using the Grid Layout nodes. |
 ## Rulers, guides, and borders
 
-|   |
-
 Rulers and guides shows rulers and guides which help you position the elements in your application. See Using rulers and guides. |
-|   |
 
 Borders of 2D nodes outlines the borders of 2D nodes with striped lines. |
 ## 3D content
 
-|   |
-
 3D Grid shows the ground plane grid in Scene nodes. |
-|   |
 
 Bounding volumes shows meshes in closed volumes. |
 ## Rendering
 
-|   |
-
 Framebuffer objects marks with translucent yellow moving stripes node which are rendered into textures and cause a framebuffer object switch.
 
 See Rendering best practices.  |
-|   |
 
 Undrawn area shows the updating of the areas beyond the application screen and the areas with content not rendered. |
-|   |
 
 Transparency marks transparent nodes with translucent blue moving stripes. See Configuring nodes for efficient rendering. |
-|   |
 
 Overdraw visualization indicates areas where Kanzi renders multiple times to the same pixel. Lighter green color indicates higher amount of overdraw.
 
 See Preventing overdraw with the Sorting Filter.  |
-|   |
 
 Wireframe draws all content in wireframe mode, which shows the geometry of meshes.
 
 Keep in mind that Kanzi applies the wireframe mode to the content globally. For example, the mode renders as wireframes also post-processing effects and the content that you blit on the screen using render passes.  |
-|   |
 
 Vertex normals visualizes the normals of mesh vertices as RGB colors.
 

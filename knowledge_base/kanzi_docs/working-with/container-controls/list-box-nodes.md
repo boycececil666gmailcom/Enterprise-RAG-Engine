@@ -6,17 +6,14 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/container-controls/list-box
 # List Box nodes
 
 Use the List Box nodes to arrange items in scrollable lists. For example, use List Box nodes to create contact lists, album lists in a media player, or car settings lists. While the layout control nodes arrange their items in a static layout, the List Box nodes arrange their items in a list where the user can see only a set number of items at a time. To access more items, the user scrolls the list box. See Layout control nodes.
-|
 
 Use the Grid List Box nodes to create scrollable lists of items arranged in a grid.
 
 Learn about the Grid List Box nodes >   |
-|
 
 Use the Trajectory List Box 3D node to create scrollable lists of items arranged along a trajectory in 3D space.
 
 Learn about the Trajectory List Box 3D nodes >   |
-|
 
 Use the List Box Item Container prefabs to change the appearance of the currently selected item in a list box.
 

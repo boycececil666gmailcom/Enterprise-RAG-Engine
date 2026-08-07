@@ -230,58 +230,48 @@ In the Preview when you click the node that contains the Navigate to Page action
 Use the List Box triggers to react when the user interacts with a Grid List Box node. For example, you can set the appearance of a Grid List Box node when the user scrolls that node.
 
 You can use these List Box triggers with the Grid List Box nodes:
-|
 
 Name |
 
 Description |
-|
 
 List Box: Item Loaded |
 
 List Box: Item Loaded trigger is set off when an item in a list box is created and loaded to the working memory.
 
 To set how many items around the visible items you want to keep loaded in the working memory at a time, use the Keep Alive Item Count property.  |
-|
 
 List Box: Item Selected |
 
 List Box: Item Selected trigger is set off when the user selects an item in a list box. |
-|
 
 List Box: Item Unloaded |
 
 List Box: Item Unloaded trigger is set off when an item in a list box is unloaded from the working memory.
 
 To set how many items around the visible items you want to keep loaded in the working memory at a time, use the Keep Alive Item Count property.  |
-|
 
 List Box: Scroll Finished |
 
 List Box: Scroll Finished trigger is set off when the scrolling of a list box ends. |
-|
 
 List Box: Scroll Started |
 
 List Box: Scroll Started trigger is set off when the scrolling of a list box starts. |
-|
 
 List Box: Scrolled |
 
 List Box: Scrolled trigger is set of whenever a list box scrolls. |
-|
 
 List Box: Target Changed |
 
 List Box: Target Changed trigger is set off when the scroll target of a list box changes.
 
 For example, the scroll target changes when the user selects a list box item and the list box scrolls to bring that item to the center of the list box area.  |
-|
 
 List Box: User Scroll Finished |
 
 List Box: User Scroll Finished trigger is set off when the user stops scrolling a list box. |
-|
 
 List Box: User Scroll Started |
 

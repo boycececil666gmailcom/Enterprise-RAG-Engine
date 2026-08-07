@@ -383,33 +383,28 @@ In the Library > State Managers create a state manager named SettingControlType,
   2.
 
 In the Library > State Managers > SettingControlType > Control create for each control type a state that sets these properties:
-|
 
 State |   Data-DrivenActivities. SettingControlType   |
 
 Prefab View > Prefab Template |
-|
 
 Button |
 
 button |
 
 ControlButton |
-|
 
 Checkbox |
 
 checkbox |
 
 ControlCheckbox |
-|
 
 Slider |
 
 slider |
 
 ControlSlider |
-|
 
 Toggle Button |
 

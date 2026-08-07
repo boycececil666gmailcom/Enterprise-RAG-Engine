@@ -5,24 +5,19 @@ source: https://docs.kanzi.com/4.1.0/en/reference/reference.html
 
 # References
 
-|
-
 Description |
 
 Reference |
-|
 
 **Glossary** |
 
 Glossary |
-|
 
 **Application configuration**
 
 Use application configurations to configure your Kanzi application. See Application development.  |
 
 Application configuration reference |
-|
 
 **Binding expressions**
 
@@ -31,7 +26,6 @@ Use bindings to set the value of a property or property field with the value fro
 See Using bindings.  |
 
 Bindings expressions reference |
-|
 
 **Triggers and actions**
 
@@ -42,7 +36,6 @@ See Using triggers.  |
 Triggers reference
 
 Actions and messages reference  |
-|
 
 **Resource profiling**
 
@@ -51,40 +44,34 @@ Use resource profiling to measure during runtime how long it takes to load and d
 See Measuring the loading and deployment time of resources.  |
 
 Resource profiling reference |
-|
 
 **Kanzi Engine plugin custom types in Kanzi Studio**
 
 See Extending the functionality of Kanzi Engine and Extending the functionality of Kanzi Engine with Java.  |
 
 Reference for showing Kanzi Engine plugin custom types in Kanzi Studio |
-|
 
 **Kanzi Studio property editors**
 
 Editors available in Kanzi Studio for property types that you declare in Kanzi Engine plugins.  |
 
 Kanzi Studio property editors for property types declared in Kanzi Engine plugins |
-|
 
 **Keyboard input codes**
 
 Use the keyboard input codes in your Kanzi Studio plugin to create interaction with the keyboard in your application.  |
 
 Key input codes reference |
-|
 
 **Kanzi Studio commands**
 
 You can automate Kanzi Studio tasks by running Kanzi Studio commands from a script. See Automating Kanzi Studio tasks.  |
 
 Kanzi Studio command reference |
-|
 
 **Kanzi Studio default shortcut keys** |
 
 Default shortcut keys |
-|
 
 **OpenGL extensions**
 
@@ -93,43 +80,34 @@ List of OpenGL extensions that Kanzi uses.  |
 OpenGL extensions used in Kanzi |
 ## Kanzi property types references
 
-|
-
 Description |
 
 Reference |
-|
 
 **Default and available property types for nodes and resources** |
 
 Node and resource reference |
-|
 
 **Default property types** |
 
 Property types reference |
 ## Kanzi API references
 
-|
-
 Description |
 
 Reference |
-|
 
 **Kanzi Engine C++ API**
 
 Use the Kanzi Engine C++ API to program Kanzi applications, develop Kanzi Engine plugins, and interface with devices and application execution environment.  |
 
 Kanzi Engine C++ API reference |
-|
 
 **Kanzi Engine Java API**
 
 Use this Kanzi Engine Java API to interact with Kanzi through a platform-agnostic API available in Java or Kotlin. See Using Java and Kotlin.  |
 
 Kanzi Engine Java API reference |
-|
 
 **Kanzi Android framework API**
 
@@ -138,7 +116,6 @@ Use the Kanzi Android framework for full Android UI integration, including suppo
 When you use Kanzi Android framework, you do not need to write native code, but you can still use native Kanzi plugins.  |
 
 Kanzi Android framework API reference |
-|
 
 **Kanzi Android application framework API**
 
@@ -147,7 +124,6 @@ Use the Kanzi application framework when you want to write one Kanzi application
 When you use the application framework, your application and plugin code are native.  |
 
 Kanzi Android application framework API reference |
-|
 
 **Kanzi Studio plugin API**
 
@@ -156,7 +132,6 @@ Kanzi Studio plugins extend the functionality of Kanzi Studio and run in Kanzi S
 See Overview of Kanzi Studio plugin API.  |
 
 Kanzi Studio plugin API reference |
-|
 
 **Kanzi Studio localization plugin API**
 

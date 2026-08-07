@@ -134,22 +134,18 @@ In the Preview when you click the visual representation of the toggle button, yo
 You can use the Toggle Button triggers to react when the user toggles a toggle button. To learn more about using triggers, see Using triggers.
 
 When you create a Toggle Button node, Kanzi by default adds these triggers to that node:
-|
 
 Name |
 
 Description |
-|
 
 State Toggled |
 
 State Toggled trigger is set off when the toggle state of a Toggle Button node changes. |
-|
 
 Toggled Off |
 
 Toggled Off trigger is set off when a Toggle Button node with two states is toggled off. |
-|
 
 Toggled On |
 

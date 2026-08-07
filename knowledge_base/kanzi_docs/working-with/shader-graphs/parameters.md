@@ -21,47 +21,38 @@ Select Promote to Parameter.
 Kanzi Studio creates a parameter from the node, adds it to the Parameters panel, and binds the node to the new parameter. The next time you generate the shader, Kanzi Studio emits a uniform declaration instead of an inlined literal for that value.
 
 You can promote these constant node types:
-|
 
 Constant node |
 
 Parameter type |
-|
 
 Scalar |
 
 float |
-|
 
 Int |
 
 int |
-|
 
 Vec2 |
 
 vec2 |
-|
 
 Vec3 |
 
 vec3 |
-|
 
 Vec4 |
 
 vec4 |
-|
 
 Color (RGB) |
 
 color (alpha is fixed at 1) |
-|
 
 Color (RGBA) |
 
 color |
-|
 
 Texture |
 

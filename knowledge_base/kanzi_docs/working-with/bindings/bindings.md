@@ -10,10 +10,8 @@ Use bindings to set the value of a property or property field with the value fro
 Bindings allow nodes, render passes, 2D effects, states, state objects, and styles to automatically update the values of their properties in response to the changing property values, or the occurrence of some external event.
 
 For example, you can:
-|
 
 Bind the rotation property field of a node to a property to create a gauge needle that you can control with that property. See Tutorial: Create gauges. |    |
-|
 
 Bind the position or size of one node to the position or size of another node. See Tutorial: Making applications with dynamic layout. |    |
 

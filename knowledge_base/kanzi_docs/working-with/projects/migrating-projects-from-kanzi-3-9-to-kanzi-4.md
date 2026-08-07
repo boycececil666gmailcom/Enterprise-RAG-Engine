@@ -14,22 +14,18 @@ This guide covers the **project and build structure**. For the source-code and A
 ## Read this first: removed functionality
 
 Kanzi 4 removes some functionality that Kanzi 3.9 projects can depend on. If your project depends on any of the following, plan a different upgrade strategy before you start, because this guide does not restore them:
-|
 
 Removed in Kanzi 4 |
 
 Notes |
-|
 
 Visual Studio 2017 and 2019 solution generators |
 
 The `generate_cmake_vs2017_solution.bat` and `generate_cmake_vs2019_solution.bat` scripts are gone. Kanzi 4 supports Visual Studio 2022 only, through `generate_cmake_vs2022_solution.bat`. |
-|
 
 The Linux `linux_x11_glx_cpp98` platform |
 
 The pre-C++11 Linux platform and its `SConstruct` file are removed. Kanzi 4 requires a C++17 toolchain. |
-|
 
 SCons build helpers |
 
@@ -49,22 +45,18 @@ Whichever path you take, these change between Kanzi 3.9 and Kanzi 4:
 
 - **Project file format.** The 3.9 root project file is `<ProjectName>.kzproj`; the Kanzi 4 file is `<ProjectName>.proj.kzm`. Kanzi 4 Kanzi Studio converts the older project when you open it (it asks you to confirm), then writes the new format when you save. The conversion is irreversible (see Before you start).
 - **Build system.** Kanzi 4 adds command-line build wrappers (`build.bat` / `build.sh`) and a resolver concept: the `cmake/kanzi-bootstrap.cmake` dispatcher selects between the classic `cmake` resolver (a local Kanzi SDK, the default, closest to Kanzi 3.9) and the `kpm` resolver (Kanzi Package Manager) through the `KANZI_RESOLVER` CMake cache variable.
-|
 
 Command |
 
 What it does |
-|
 
 `build.bat` |
 
 Builds with the `cmake` resolver in the Release configuration. |
-|
 
 `build.bat <config>` |
 
 Builds with the `cmake` resolver in a specific configuration (`Debug`, `Release`, `Profiling`). |
-|
 
 `build.bat kpm` |
 

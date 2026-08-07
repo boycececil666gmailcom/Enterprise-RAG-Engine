@@ -34,19 +34,14 @@ In the Pages window move your mouse pointer over the RootPage and click  twice t
 
 When you create Page nodes in the Pages, you can see the same Page nodes in the Node Tree too.
 **Tip:** To pan and zoom in the Pages window, use these shortcuts:
-|
 Action |
 Shortcut |
-|
 Pan |
 - Click and drag the middle mouse button.
 - Press the Space key, and click and drag the left mouse button.
-|
-|
 Zoom |
 - Scroll the mouse wheel.
 - Press the Shift and Alt keys, and click and drag the left mouse button.
-|
 2.
 In the Pages double-click the names of the Page nodes you created in the previous step and rename them to Applications and Settings.
 3.

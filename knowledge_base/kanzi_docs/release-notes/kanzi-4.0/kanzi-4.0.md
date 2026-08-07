@@ -12,17 +12,13 @@ Here you can find Kanzi 4 release notes and migration guides:
 
 ## Kanzi 4.0
 
-|
-
 Release notes |
 
 Migration guide |
-|
 
 Kanzi 4.1.0 release notes |
 
 Kanzi 4.1.0 migration guide |
-|
 
 Kanzi 4.0.0 release notes |
 

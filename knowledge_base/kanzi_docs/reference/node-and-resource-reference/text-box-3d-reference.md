@@ -7,8 +7,6 @@ source: https://docs.kanzi.com/4.1.0/en/reference/node-and-resource-reference/te
 
 ## Text Box 3D properties
 
-|
-
 Name |
 
 Description |
@@ -16,7 +14,6 @@ Description |
 Inherited |
 
 Exported to Kanzi Engine |
-|
 
 Tags |
 
@@ -25,7 +22,6 @@ List of tags attached to the item |
 No |
 
 No |
-|
 
 Imported from |
 
@@ -34,14 +30,12 @@ The source, the project reference or the 3D asset source file from where the ite
 No |
 
 No |
-|
 
 Import Source ID |   |
 
 No |
 
 No |
-|
 
 Original Name |
 
@@ -50,7 +44,6 @@ The name of the item in the import source |
 No |
 
 No |
-|
 
 Effective Data Context |
 
@@ -59,7 +52,6 @@ The data context in the current node that is resolved from data context properti
 No |
 
 No |
-|
 
 Effective Activity Source |
 
@@ -68,7 +60,6 @@ The data source for this Activity node. |
 No |
 
 No |
-|
 
 Name |
 
@@ -77,7 +68,6 @@ Name of the project item |
 No |
 
 No |
-|
 
 Component Type |
 
@@ -86,7 +76,6 @@ The component type of this component node |
 No |
 
 No |
-|
 
 Font Size |
 
@@ -95,7 +84,6 @@ Sets the size of the font in pixels. |
 No |
 
 Yes |
-|
 
 Layout Width |
 
@@ -106,8 +94,6 @@ No |
 Yes |
 ## Text Box 3D available properties
 
-|
-
 Name |
 
 Description |
@@ -115,7 +101,6 @@ Description |
 Inherited |
 
 Exported to Kanzi Engine |
-|
 
 Disable KZB Export |
 
@@ -124,7 +109,6 @@ Disables the exporting of the item into KZB. Can be used for, e.g. letting items
 No |
 
 No |
-|
 
 Brush Color |
 
@@ -133,7 +117,6 @@ Color for brush. Set alpha to 0 to disable brush. |
 No |
 
 Yes |
-|
 
 Brush Texture |
 
@@ -142,7 +125,6 @@ Texture for brush. |
 No |
 
 Yes |
-|
 
 Layout Transformation |
 
@@ -151,7 +133,6 @@ The location, orientation and scale of the node relative to its parent node. Lay
 No |
 
 Yes |
-|
 
 Composition Background Color |
 
@@ -160,7 +141,6 @@ Sets the color that highlights the text that the user composes using an input me
 No |
 
 Yes |
-|
 
 Composition Font Color |
 
@@ -169,7 +149,6 @@ Sets the color of the text that the user composes using an input method editor (
 No |
 
 Yes |
-|
 
 Selection Background Color |
 
@@ -178,7 +157,6 @@ Sets the color that highlights the selected text. |
 No |
 
 Yes |
-|
 
 Selection Font Color |
 
@@ -187,7 +165,6 @@ Sets the color of the selected text. |
 No |
 
 Yes |
-|
 
 Align To Tangent |
 
@@ -196,7 +173,6 @@ Whether to align the Trajectory List Box 3D items to match the tangent of the tr
 No |
 
 Yes |
-|
 
 Allowed Scroll Axis |
 
@@ -205,7 +181,6 @@ Sets the axis on which you want to allow this Trajectory List Box 3D node to scr
 No |
 
 Yes |
-|
 
 Cursor Offset |
 
@@ -214,7 +189,6 @@ Sets the offset of the position to use to select the active item, in proportiona
 No |
 
 Yes |
-|
 
 Dragging Acceleration |
 
@@ -223,7 +197,6 @@ Sets the acceleration of the Trajectory List Box 3D when the user scrolls the Tr
 No |
 
 Yes |
-|
 
 Dragging Drag |
 
@@ -232,7 +205,6 @@ Sets the amount that drag affects the movement of the Trajectory List Box 3D whe
 No |
 
 Yes |
-|
 
 Dragging Impulse |
 
@@ -241,7 +213,6 @@ Sets the amount of impulse to generate from the pointer movement when the user s
 No |
 
 Yes |
-|
 
 Item Area Begin |
 
@@ -250,7 +221,6 @@ Sets the proportional offset where the part of the trajectory meant for the full
 No |
 
 Yes |
-|
 
 Item Area End |
 
@@ -259,7 +229,6 @@ Sets the proportional offset where the part of the trajectory meant for the full
 No |
 
 Yes |
-|
 
 Looping |
 
@@ -268,7 +237,6 @@ Whether to show items in the Trajectory List Box 3D from the beginning after rea
 No |
 
 Yes |
-|
 
 Maximum Number of Touches |
 
@@ -277,7 +245,6 @@ Sets the maximum number of touch points allowed on the Trajectory List Box 3D ar
 No |
 
 Yes |
-|
 
 Minimum Number of Touches |
 
@@ -286,7 +253,6 @@ Sets the minimum number of touch points required on the Trajectory List Box 3D a
 No |
 
 Yes |
-|
 
 Recognition Threshold |
 
@@ -295,7 +261,6 @@ Sets the distance in pixels that the pointer has to move for the scrolling to st
 No |
 
 Yes |
-|
 
 Reversed Scrolling |
 
@@ -304,7 +269,6 @@ Whether the scroll position in the Trajectory List Box node increases in relatio
 No |
 
 Yes |
-|
 
 Scroll Position |
 
@@ -313,7 +277,6 @@ Sets the scroll position of the Trajectory List Box 3D along the x and y axes as
 No |
 
 Yes |
-|
 
 Scroll Sensitivity |
 
@@ -322,7 +285,6 @@ Sets the amount that the scroll value changes relative to the movement of the po
 No |
 
 Yes |
-|
 
 Sliding Acceleration |
 
@@ -331,7 +293,6 @@ Sets the acceleration of the Trajectory List Box 3D after the user releases the 
 No |
 
 Yes |
-|
 
 Sliding Drag |
 
@@ -340,7 +301,6 @@ Sets how much drag affects the movement of the Trajectory List Box 3D after the 
 No |
 
 Yes |
-|
 
 Spacing |
 
@@ -349,7 +309,6 @@ Sets the distance between the items in the Trajectory List Box 3D. |
 No |
 
 Yes |
-|
 
 Swipe Distance |
 
@@ -358,7 +317,6 @@ Sets the distance that a swipe sends the scroll value in the Trajectory List Box
 No |
 
 Yes |
-|
 
 Trajectory |
 
@@ -367,7 +325,6 @@ Sets the trajectory along which the Trajectory List Box 3D arranges its items. |
 No |
 
 Yes |
-|
 
 Composition Text |
 
@@ -376,7 +333,6 @@ Reports the text that the user composes in the Text Box using an input method ed
 No |
 
 Yes |
-|
 
 Cursor Position |
 
@@ -385,7 +341,6 @@ Sets the position of the cursor in the text shown in the Text Box node. |
 No |
 
 Yes |
-|
 
 Cursor Prefab |
 
@@ -394,7 +349,6 @@ Sets the prefab template that defines the appearance of the cursor instead of th
 No |
 
 Yes |
-|
 
 Display Text |
 
@@ -403,7 +357,6 @@ Reports the text that the Text Box displays. |
 No |
 
 Yes |
-|
 
 Echo Mode |
 
@@ -412,7 +365,6 @@ Sets how the Text Box node shows text: * **Normal** makes the inserted character
 No |
 
 Yes |
-|
 
 Edit Mode |
 
@@ -421,7 +373,6 @@ Sets how the Text Box node enters the editing state: * **Automatic** makes the T
 No |
 
 Yes |
-|
 
 Has Selection |
 
@@ -430,7 +381,6 @@ Indicates whether any of the text in the Text Box node is selected. |
 No |
 
 Yes |
-|
 
 Hide Text Hint When Editing |
 
@@ -439,7 +389,6 @@ Sets whether to hide the placeholder content, which you set using the **Text Hin
 No |
 
 Yes |
-|
 
 Input Method Action |
 
@@ -448,7 +397,6 @@ Sets the label of the user action button on the on-screen keyboard for this Text
 No |
 
 Yes |
-|
 
 Input Type |
 
@@ -457,7 +405,6 @@ Sets the input type of the input methods that provide the input layout to let th
 No |
 
 Yes |
-|
 
 Is Composing Text |
 
@@ -466,7 +413,6 @@ Reports the text composition state of the Text Box node. |
 No |
 
 Yes |
-|
 
 Is Editing |
 
@@ -475,7 +421,6 @@ Reports the editing state of the Text Box node. |
 No |
 
 Yes |
-|
 
 Maximum Text Length |
 
@@ -484,7 +429,6 @@ Sets the maximum length of text that the user can insert in the Text Box node. T
 No |
 
 Yes |
-|
 
 Password Echo Timeout |
 
@@ -493,7 +437,6 @@ When the **Echo Mode** property is set to **Password**, this property sets the t
 No |
 
 Yes |
-|
 
 Password Masking Character |
 
@@ -502,7 +445,6 @@ When the **Echo Mode** property is set to **Password**, this property sets the c
 No |
 
 Yes |
-|
 
 Read Only |
 
@@ -511,7 +453,6 @@ Sets whether the Text Box node is editable. When you enable this property, you c
 No |
 
 Yes |
-|
 
 Selection End Cursor Position |
 
@@ -520,7 +461,6 @@ The position of the cursor that marks the end of text selection in the Text Box 
 No |
 
 Yes |
-|
 
 Selection End Prefab |
 
@@ -529,7 +469,6 @@ Sets the prefab template that defines the appearance of the selection handle at 
 No |
 
 Yes |
-|
 
 Selection Start Cursor Position |
 
@@ -538,7 +477,6 @@ The position of the cursor that marks the beginning of text selection in the Tex
 No |
 
 Yes |
-|
 
 Selection Start Prefab |
 
@@ -547,7 +485,6 @@ Sets the prefab template that defines the appearance of the selection handle at 
 No |
 
 Yes |
-|
 
 Text Hint Prefab |
 
@@ -556,7 +493,6 @@ Sets the prefab template for showing placeholder content when the Text Box node 
 No |
 
 Yes |
-|
 
 Text Key Navigation Direction |
 
@@ -565,7 +501,6 @@ Sets the text key navigation direction. |
 No |
 
 Yes |
-|
 
 Layout Depth |
 
@@ -574,7 +509,6 @@ The size of the node in depth direction when used in a layout. Overrides the def
 No |
 
 Yes |
-|
 
 Code Behind Source |
 
@@ -583,7 +517,6 @@ Sets the metaclass name of the code behind class for this node. |
 No |
 
 Yes |
-|
 
 Data Context |
 
@@ -592,7 +525,6 @@ Source of data for this node and its descendants |
 No |
 
 Yes |
-|
 
 Primary Direction |
 
@@ -601,7 +533,6 @@ The direction along which the layout arranges items until the layout limit in th
 No |
 
 Yes |
-|
 
 Secondary Direction |
 
@@ -610,7 +541,6 @@ The direction along which the flow layout arranges lines of the primary directio
 No |
 
 Yes |
-|
 
 Columns |
 
@@ -619,7 +549,6 @@ Defines the number of columns in a grid layout and how the grid layout distribut
 No |
 
 Yes |
-|
 
 Layout Direction |
 
@@ -628,7 +557,6 @@ The direction in which the items are arranged when you add them to a grid layout
 No |
 
 Yes |
-|
 
 Rows |
 
@@ -637,7 +565,6 @@ Defines the number of rows in a grid layout and how the grid layout distributes 
 No |
 
 Yes |
-|
 
 Items Source |
 
@@ -646,7 +573,6 @@ Data object which provides data sources for list items. |
 No |
 
 Yes |
-|
 
 Cell Height |
 
@@ -655,7 +581,6 @@ Sets the height of each cell in the Grid List Box. |
 No |
 
 Yes |
-|
 
 Cell Width |
 
@@ -664,7 +589,6 @@ Sets the width of each cell in the Grid List Box. |
 No |
 
 Yes |
-|
 
 Dragging Acceleration |
 
@@ -673,7 +597,6 @@ Sets the acceleration of the Grid List Box when the user scrolls the Grid List B
 No |
 
 Yes |
-|
 
 Dragging Drag |
 
@@ -682,7 +605,6 @@ Sets the amount that drag affects the movement of the Grid List Box when the use
 No |
 
 Yes |
-|
 
 Dragging Impulse |
 
@@ -691,7 +613,6 @@ Sets the amount of impulse to generate from the pointer movement when the user s
 No |
 
 Yes |
-|
 
 Item Area Begin |
 
@@ -700,7 +621,6 @@ Sets the proportional offset where the area meant for the fully visible items in
 No |
 
 Yes |
-|
 
 Item Area End |
 
@@ -709,7 +629,6 @@ Sets the proportional offset where the area meant for the fully visible items in
 No |
 
 Yes |
-|
 
 Layout Direction |
 
@@ -718,7 +637,6 @@ Sets the direction in which the Grid List Box arranges its items. When you chang
 No |
 
 Yes |
-|
 
 Maximum Number of Touches |
 
@@ -727,7 +645,6 @@ Sets the maximum number of touch points allowed on the Grid List Box area for sc
 No |
 
 Yes |
-|
 
 Minimum Number of Touches |
 
@@ -736,7 +653,6 @@ Sets the minimum number of touch points required on the Grid List Box area for s
 No |
 
 Yes |
-|
 
 Recognition Threshold |
 
@@ -745,7 +661,6 @@ Sets the distance in pixels that the pointer has to move for the scrolling to st
 No |
 
 Yes |
-|
 
 Reversed Scrolling |
 
@@ -754,7 +669,6 @@ Whether the scroll position in the Grid List Box node increases in relation to t
 No |
 
 Yes |
-|
 
 Scroll Position |
 
@@ -763,7 +677,6 @@ Sets the scroll position of the Grid List Box along the x and y axes as a relati
 No |
 
 Yes |
-|
 
 Scroll Sensitivity |
 
@@ -772,7 +685,6 @@ Sets the amount that the scroll position changes relative to the movement of the
 No |
 
 Yes |
-|
 
 Scroll Speed |
 
@@ -781,7 +693,6 @@ Reports the current scroll speed of the Grid List Box. |
 No |
 
 Yes |
-|
 
 Scroll Target Position |
 
@@ -790,7 +701,6 @@ Reports the current target scroll value of the Grid List Box. |
 No |
 
 Yes |
-|
 
 Scrolling |
 
@@ -799,7 +709,6 @@ Reports whether the Grid List Box is currently scrolling. |
 No |
 
 Yes |
-|
 
 Sliding Acceleration |
 
@@ -808,7 +717,6 @@ Sets the acceleration of the Grid List Box after the user releases the pointer w
 No |
 
 Yes |
-|
 
 Sliding Drag |
 
@@ -817,7 +725,6 @@ Sets how much drag affects the movement of the Grid List Box after the user rele
 No |
 
 Yes |
-|
 
 Swipe Distance |
 
@@ -826,7 +733,6 @@ Sets the distance that a swipe sends the scroll value in the Grid List Box, rela
 No |
 
 Yes |
-|
 
 Item Container Generator |
 
@@ -835,7 +741,6 @@ Sets the name of the item container generator type to use to provide item contai
 No |
 
 Yes |
-|
 
 Item Container Template |
 
@@ -844,7 +749,6 @@ Sets the List Box Item Container prefab that sets the appearance and behavior of
 No |
 
 Yes |
-|
 
 Item Generator |
 
@@ -853,7 +757,6 @@ Sets the name of the item generator type to use to provide items dynamically to 
 No |
 
 Yes |
-|
 
 Item Template |
 
@@ -862,7 +765,6 @@ Sets the prefab to use for the List Box items. |
 No |
 
 Yes |
-|
 
 Keep Alive Item Count |
 
@@ -871,7 +773,6 @@ Sets the size of the buffer for invisible List Box items. Kanzi returns to the I
 No |
 
 Yes |
-|
 
 Selection Behavior |
 
@@ -880,7 +781,6 @@ Sets how the List Box behaves when the user selects an item. âBring to Cent
 No |
 
 Yes |
-|
 
 Allowed Scroll Axis |
 
@@ -889,7 +789,6 @@ Sets the axis on which you want to allow this Scroll View node to scroll. |
 No |
 
 Yes |
-|
 
 Dragging Acceleration |
 
@@ -898,7 +797,6 @@ Sets the acceleration of the node controlled by a Scroll View node while you dra
 No |
 
 Yes |
-|
 
 Dragging Drag |
 
@@ -907,7 +805,6 @@ Sets the amount that drag affects the movement of the node controlled by a Scrol
 No |
 
 Yes |
-|
 
 Dragging Impulse |
 
@@ -916,7 +813,6 @@ Sets the amount of impulse generated from the pointing device movement when drag
 No |
 
 Yes |
-|
 
 Looping X Enabled |
 
@@ -925,7 +821,6 @@ Sets the node controlled by a Scroll View node to start scrolling from the begin
 No |
 
 Yes |
-|
 
 Looping Y Enabled |
 
@@ -934,7 +829,6 @@ Sets the node controlled by a Scroll View node to start scrolling from the begin
 No |
 
 Yes |
-|
 
 Maximum Number of Touches |
 
@@ -943,7 +837,6 @@ Sets the maximum number of touch points allowed for a Scroll View pan. |
 No |
 
 Yes |
-|
 
 Maximum Zoom |
 
@@ -952,7 +845,6 @@ Sets the maximum zoom level. |
 No |
 
 Yes |
-|
 
 Minimum Number of Touches |
 
@@ -961,7 +853,6 @@ Sets the required number of touch points pressed for a Scroll View node pan to s
 No |
 
 Yes |
-|
 
 Minimum Zoom |
 
@@ -970,7 +861,6 @@ Sets the minimum zoom level. |
 No |
 
 Yes |
-|
 
 Recognition Threshold |
 
@@ -979,7 +869,6 @@ Sets the amount a pointing device must move for the scrolling to start on a Scro
 No |
 
 Yes |
-|
 
 Reversed X Axis Scroll |
 
@@ -988,7 +877,6 @@ Whether the scroll position of the x axis increases in relation to the direction
 No |
 
 Yes |
-|
 
 Reversed Y Axis Scroll |
 
@@ -997,7 +885,6 @@ Whether the scroll position of the y axis increases in relation to the direction
 No |
 
 Yes |
-|
 
 Scroll Bounds Maximum |
 
@@ -1006,7 +893,6 @@ Sets the coordinates of the bottom-right corner of the scroll bounds rectangle. 
 No |
 
 Yes |
-|
 
 Scroll Bounds Minimum |
 
@@ -1015,7 +901,6 @@ Sets the coordinates of the top-left corner of the scroll bounds rectangle. Scro
 No |
 
 Yes |
-|
 
 Scroll Position |
 
@@ -1024,7 +909,6 @@ Sets the scroll position of the Scroll View along the x and y axes as a relative
 No |
 
 Yes |
-|
 
 Scroll Sensitivity |
 
@@ -1033,7 +917,6 @@ Sets the amount the position changes relative to the movement of the pointer tha
 No |
 
 Yes |
-|
 
 Scroll Speed |
 
@@ -1042,7 +925,6 @@ The current scroll speed (read-only). |
 No |
 
 Yes |
-|
 
 Scroll Target Position |
 
@@ -1051,7 +933,6 @@ The current target scroll value (read-only). |
 No |
 
 Yes |
-|
 
 Scrolling |
 
@@ -1060,7 +941,6 @@ Whether a Scroll View node is currently scrolling (read-only). |
 No |
 
 Yes |
-|
 
 Sliding Acceleration |
 
@@ -1069,7 +949,6 @@ Sets the acceleration of the node controlled by a Scroll View node after you rel
 No |
 
 Yes |
-|
 
 Sliding Drag |
 
@@ -1078,7 +957,6 @@ Sets the amount that drag affects the movement of the node controlled by a Scrol
 No |
 
 Yes |
-|
 
 Step Multiplier |
 
@@ -1087,7 +965,6 @@ Sets the smallest distance that a Scroll View scrolls. |
 No |
 
 Yes |
-|
 
 Swipe Distance |
 
@@ -1096,7 +973,6 @@ Sets the distance that a swipe sends the scroll value, relative to the pointing 
 No |
 
 Yes |
-|
 
 Zoom |
 
@@ -1105,7 +981,6 @@ Sets the current zoom level. |
 No |
 
 Yes |
-|
 
 Zoom Affects Scrolling |
 
@@ -1114,7 +989,6 @@ Controls whether the scroll position is scaled, according to the zoom level. |
 No |
 
 Yes |
-|
 
 Zoom Enabled |
 
@@ -1123,7 +997,6 @@ Sets whether to install a pinch manipulator that generates zoom messages. |
 No |
 
 Yes |
-|
 
 Align To Tangent |
 
@@ -1132,7 +1005,6 @@ Whether to align the items in this Trajectory Layout to match the tangent of the
 No |
 
 Yes |
-|
 
 Item Area Begin |
 
@@ -1141,7 +1013,6 @@ Sets the starting point of the trajectory segment in which the items in this Tra
 No |
 
 Yes |
-|
 
 Item Area End |
 
@@ -1150,7 +1021,6 @@ Sets the ending point of the trajectory segment in which the items in this Traje
 No |
 
 Yes |
-|
 
 Override Distance |
 
@@ -1159,7 +1029,6 @@ Sets the distance between the items in this Trajectory Layout. When you do not s
 No |
 
 Yes |
-|
 
 Start Offset |
 
@@ -1168,7 +1037,6 @@ Sets the offset of the starting position of the items on the trajectory in the r
 No |
 
 Yes |
-|
 
 Trajectory |
 
@@ -1177,7 +1045,6 @@ Sets the Trajectory along which this Trajectory Layout node arranges its items. 
 No |
 
 Yes |
-|
 
 Layout Height |
 
@@ -1186,7 +1053,6 @@ The height of the node when used in a layout. Overrides the default bounds of th
 No |
 
 Yes |
-|
 
 Global Ambient Color |
 
@@ -1195,7 +1061,6 @@ Sets the color that is multiplied automatically with the Ambient property of the
 No |
 
 Yes |
-|
 
 Font Color |
 
@@ -1204,7 +1069,6 @@ Sets the color of the text in a 3D text node. |
 No |
 
 Yes |
-|
 
 Cubemap Texture |
 
@@ -1213,7 +1077,6 @@ Sets the cubemap texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Texture 0 |
 
@@ -1222,7 +1085,6 @@ Sets the first texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Texture 1 |
 
@@ -1231,7 +1093,6 @@ Sets the second texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Texture 2 |
 
@@ -1240,7 +1101,6 @@ Sets the third texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Texture 3 |
 
@@ -1249,7 +1109,6 @@ Sets the fourth texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Texture 4 |
 
@@ -1258,7 +1117,6 @@ Sets the fifth texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Texture 5 |
 
@@ -1267,7 +1125,6 @@ Sets the sixth texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Texture 6 |
 
@@ -1276,7 +1133,6 @@ Sets the seventh texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Texture 7 |
 
@@ -1285,7 +1141,6 @@ Sets the eighth texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Texture 8 |
 
@@ -1294,7 +1149,6 @@ Sets the ninth texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Texture 9 |
 
@@ -1303,7 +1157,6 @@ Sets the tenth texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Blend Intensity |
 
@@ -1312,7 +1165,6 @@ Controls the intensity of materials that are blended on top of an existing color
 No |
 
 Yes |
-|
 
 Bloom Intensity |
 
@@ -1321,7 +1173,6 @@ Bloom intensity for the material. |
 No |
 
 Yes |
-|
 
 Bloom Intensity Texture |
 
@@ -1330,7 +1181,6 @@ Sets the bloom intensity texture. |
 No |
 
 Yes |
-|
 
 Bloom Radius |
 
@@ -1339,7 +1189,6 @@ Bloom radius for the material. |
 No |
 
 Yes |
-|
 
 Use Intensity Texture |
 
@@ -1348,7 +1197,6 @@ Enable or disable the use of the Bloom Intensity texture property. |
 No |
 
 Yes |
-|
 
 Blur Direction |
 
@@ -1357,7 +1205,6 @@ Sets the direction for the blur. |
 No |
 
 Yes |
-|
 
 Blur Radius |
 
@@ -1366,7 +1213,6 @@ Blur radius for the material. |
 No |
 
 Yes |
-|
 
 Amount |
 
@@ -1375,7 +1221,6 @@ Sets the chromatic aberration amount. |
 No |
 
 Yes |
-|
 
 Dithering Amount |
 
@@ -1384,7 +1229,6 @@ Sets the chromatic aberration dithering amount. |
 No |
 
 Yes |
-|
 
 Grading Color Highlight |
 
@@ -1393,7 +1237,6 @@ Sets the color grading highlight color. |
 No |
 
 Yes |
-|
 
 Grading Color Midtone |
 
@@ -1402,7 +1245,6 @@ Sets the color grading midtone color. |
 No |
 
 Yes |
-|
 
 Grading Color Shadow |
 
@@ -1411,7 +1253,6 @@ Sets the color grading shadow color. |
 No |
 
 Yes |
-|
 
 Grading Highlight Range |
 
@@ -1420,7 +1261,6 @@ Sets the luminance range where the highlight color is applied. |
 No |
 
 Yes |
-|
 
 Grading Hue Saturation Value |
 
@@ -1429,7 +1269,6 @@ Sets the HSV adjustment for the input color. |
 No |
 
 Yes |
-|
 
 Grading Shadow Range |
 
@@ -1438,7 +1277,6 @@ Sets the luminance range where the shadow color is applied. |
 No |
 
 Yes |
-|
 
 Alpha Cutoff |
 
@@ -1447,7 +1285,6 @@ Sets the cutoff threshold for alpha cutting. If the alpha value is less than the
 No |
 
 Yes |
-|
 
 Ambient Color |
 
@@ -1456,7 +1293,6 @@ Sets the color of the material when lights are not present. Use the Intensity (I
 No |
 
 Yes |
-|
 
 Ambient Occlusion Blur Direction |
 
@@ -1465,7 +1301,6 @@ Blur direction of the ambient occlusion bilateral blur. |
 No |
 
 Yes |
-|
 
 Ambient Occlusion Focal Length |
 
@@ -1474,7 +1309,6 @@ HBAO input property for focal length. |
 No |
 
 Yes |
-|
 
 Ambient Occlusion LinMAD |
 
@@ -1483,7 +1317,6 @@ HBAO input property for LinMAD uniform. |
 No |
 
 Yes |
-|
 
 Ambient Occlusion Radius |
 
@@ -1492,7 +1325,6 @@ Screen-space ambient occlusion (SSAO) effect radius. Used to calculate the SSAO 
 No |
 
 Yes |
-|
 
 Ambient Occlusion Strength |
 
@@ -1501,7 +1333,6 @@ Screen-space ambient occlusion (SSAO) strength. Used to calculate the SSAO textu
 No |
 
 Yes |
-|
 
 Ambient Occlusion UV to View A |
 
@@ -1510,7 +1341,6 @@ HBAO input property for UVToViewA uniform. |
 No |
 
 Yes |
-|
 
 Ambient Occlusion UV to View B |
 
@@ -1519,7 +1349,6 @@ HBAO input property for UVToViewB uniform. |
 No |
 
 Yes |
-|
 
 Base Color Factor |
 
@@ -1528,7 +1357,6 @@ Sets the base color for the material. |
 No |
 
 Yes |
-|
 
 Base Color Texture |
 
@@ -1537,7 +1365,6 @@ Sets the texture that contains the base color for the material. Use the Base Col
 No |
 
 Yes |
-|
 
 BRDF Lookup Table |
 
@@ -1546,7 +1373,6 @@ Gets the Bidirectional Reflectance Distribution Function (BRDF) lookup table for
 No |
 
 Yes |
-|
 
 Clear Coat Normal Scale |
 
@@ -1555,7 +1381,6 @@ Sets the clear coat normal scale for the material. Use the scale to set the inte
 No |
 
 Yes |
-|
 
 Clear Coat Normal Texture |
 
@@ -1564,7 +1389,6 @@ Sets the texture that contains a clear coat normal map for the material. Use the
 No |
 
 Yes |
-|
 
 Clear Coat Roughness Factor |
 
@@ -1573,7 +1397,6 @@ Sets the roughness of the outer clear coat layer for the material: 0 represents 
 No |
 
 Yes |
-|
 
 Clear Coat Roughness Texture |
 
@@ -1582,7 +1405,6 @@ Sets the texture that contains a clear coat roughness map for the material. Kanz
 No |
 
 Yes |
-|
 
 Clear Coat Strength Factor |
 
@@ -1591,7 +1413,6 @@ Sets the clear coat strength for the material: 0 represents a material with no c
 No |
 
 Yes |
-|
 
 Clear Coat Strength Texture |
 
@@ -1600,7 +1421,6 @@ Sets the texture that contains a clear coat strength map for the material. Kanzi
 No |
 
 Yes |
-|
 
 Detail Base Color Factor |
 
@@ -1609,7 +1429,6 @@ Sets the detail base color for the material. The detail base color is alpha blen
 No |
 
 Yes |
-|
 
 Detail Base Color Texture |
 
@@ -1618,7 +1437,6 @@ Sets the detail texture that contains the base color for the material. Use the D
 No |
 
 Yes |
-|
 
 Detail Clear Coat Normal Scale |
 
@@ -1627,7 +1445,6 @@ Sets the detail clear coat normal scale for the material. Use the scale to set t
 No |
 
 Yes |
-|
 
 Detail Clear Coat Normal Texture |
 
@@ -1636,7 +1453,6 @@ Sets the detail texture that contains a clear coat normal map for the material. 
 No |
 
 Yes |
-|
 
 Detail Clear Coat Roughness Texture |
 
@@ -1645,7 +1461,6 @@ Sets the detail texture that contains a clear coat roughness map for the materia
 No |
 
 Yes |
-|
 
 Detail Clear Coat Strength Texture |
 
@@ -1654,7 +1469,6 @@ Sets the detail texture that contains a clear coat strength map for the material
 No |
 
 Yes |
-|
 
 Detail Diffuse Color Factor |
 
@@ -1663,7 +1477,6 @@ Sets the detail diffuse color for the material. Kanzi alpha blends the detail di
 No |
 
 Yes |
-|
 
 Detail Diffuse Color Texture |
 
@@ -1672,7 +1485,6 @@ Sets the detail texture that contains the diffuse color for the material. Use th
 No |
 
 Yes |
-|
 
 Detail Emissive Factor |
 
@@ -1681,7 +1493,6 @@ Sets the color of the light that is emitted from a detail texture for the materi
 No |
 
 Yes |
-|
 
 Detail Emissive Texture |
 
@@ -1690,7 +1501,6 @@ Sets the detail texture that contains the light emitted from the material. Use t
 No |
 
 Yes |
-|
 
 Detail Glossiness Texture |
 
@@ -1699,7 +1509,6 @@ Sets the detail texture that contains a glossiness map for the material. Kanzi r
 No |
 
 Yes |
-|
 
 Detail Metallic Texture |
 
@@ -1708,7 +1517,6 @@ Sets the detail texture that contains a metallic map for the material. Kanzi rea
 No |
 
 Yes |
-|
 
 Detail Normal Scale |
 
@@ -1717,7 +1525,6 @@ Sets the detail normal scale for the material. Use the scale to set the intensit
 No |
 
 Yes |
-|
 
 Detail Normal Texture |
 
@@ -1726,7 +1533,6 @@ Sets the detail texture that contains a normal map for the material. Use the Det
 No |
 
 Yes |
-|
 
 Detail Occlusion Strength |
 
@@ -1735,7 +1541,6 @@ Sets the detail occlusion strength for the material. Use the strength to set the
 No |
 
 Yes |
-|
 
 Detail Occlusion Texture |
 
@@ -1744,7 +1549,6 @@ Sets the detail texture that contains an occlusion map for the material. Kanzi r
 No |
 
 Yes |
-|
 
 Detail Roughness Texture |
 
@@ -1753,7 +1557,6 @@ Sets the detail texture that contains a roughness map for the material. Kanzi re
 No |
 
 Yes |
-|
 
 Detail Specular Color Factor |
 
@@ -1762,7 +1565,6 @@ Sets the detail specular color for the material. Kanzi alpha blends the detail s
 No |
 
 Yes |
-|
 
 Detail Specular Color Texture |
 
@@ -1771,7 +1573,6 @@ Sets the detail texture that contains the specular color for the material. Use t
 No |
 
 Yes |
-|
 
 Detail Texture Offset |
 
@@ -1780,7 +1581,6 @@ Sets the detail texture offset for the material. Kanzi adds this value to the UV
 No |
 
 Yes |
-|
 
 Detail Texture Tiling |
 
@@ -1789,7 +1589,6 @@ Sets the detail texture tiling factor for the material. Kanzi multiplies this va
 No |
 
 Yes |
-|
 
 Diffuse Color |
 
@@ -1798,7 +1597,6 @@ Sets the color of the material when it is lit by a light. |
 No |
 
 Yes |
-|
 
 Diffuse Color Factor |
 
@@ -1807,7 +1605,6 @@ Sets the diffuse color for the material. |
 No |
 
 Yes |
-|
 
 Diffuse Color Texture |
 
@@ -1816,7 +1613,6 @@ Sets the texture that contains the diffuse color for the material. Use the Diffu
 No |
 
 Yes |
-|
 
 Directional Light View Projection |
 
@@ -1825,7 +1621,6 @@ The premultiplied projection view matrix of a directional light. |
 No |
 
 Yes |
-|
 
 Directional Shadow Map |
 
@@ -1834,7 +1629,6 @@ Depth map used to calculate directional shadows. |
 No |
 
 Yes |
-|
 
 Emissive Color |
 
@@ -1843,7 +1637,6 @@ Sets the color of the light that is emitted from the material surface. |
 No |
 
 Yes |
-|
 
 Emissive Factor |
 
@@ -1852,7 +1645,6 @@ Sets the color of the light that is emitted from the material. Use the Intensity
 No |
 
 Yes |
-|
 
 Emissive Texture |
 
@@ -1861,7 +1653,6 @@ Sets the texture that contains the light emitted from the material. Use the Emis
 No |
 
 Yes |
-|
 
 Environment Ambient Factor |
 
@@ -1870,7 +1661,6 @@ Sets the strength of the cubemap texture to use for ambient environment light. U
 No |
 
 Yes |
-|
 
 Environment Ambient Texture |
 
@@ -1879,7 +1669,6 @@ Sets the cubemap to use for the ambient environment light for the material. This
 No |
 
 Yes |
-|
 
 Environment Reflection Factor |
 
@@ -1888,7 +1677,6 @@ Sets the strength of the cubemap texture to use for specular environment light. 
 No |
 
 Yes |
-|
 
 Environment Reflection Texture |
 
@@ -1897,7 +1685,6 @@ Sets the cubemap to use for the specular environment light for the material. Thi
 No |
 
 Yes |
-|
 
 Exposure |
 
@@ -1906,7 +1693,6 @@ Sets the exposure compensation for the material. The exposure compensation emula
 No |
 
 Yes |
-|
 
 Glossiness Factor |
 
@@ -1915,7 +1701,6 @@ Sets the glossiness of the material: 0 represents a rough, diffuse surface, and 
 No |
 
 Yes |
-|
 
 Glossiness Texture |
 
@@ -1924,7 +1709,6 @@ Sets the texture that contains a glossiness map for the material. Kanzi reads th
 No |
 
 Yes |
-|
 
 Mask Texture |
 
@@ -1933,7 +1717,6 @@ Sets the texture that masks another texture or color. |
 No |
 
 Yes |
-|
 
 Mask Texture Offset |
 
@@ -1942,7 +1725,6 @@ Sets an offset for mask in materials. |
 No |
 
 Yes |
-|
 
 Mask Texture Tiling |
 
@@ -1951,7 +1733,6 @@ Determines the number of times a mask is presented in a material |
 No |
 
 Yes |
-|
 
 Metallic Factor |
 
@@ -1960,7 +1741,6 @@ Sets the metalness of the material: 0 represents a non-metallic or dielectric ob
 No |
 
 Yes |
-|
 
 Metallic Texture |
 
@@ -1969,7 +1749,6 @@ Sets the texture that contains a metallic map for the material. Kanzi reads the 
 No |
 
 Yes |
-|
 
 Normal Scale |
 
@@ -1978,7 +1757,6 @@ Sets the normal scale for the material. Use the scale to set the intensity of th
 No |
 
 Yes |
-|
 
 Normal Texture |
 
@@ -1987,7 +1765,6 @@ Sets the texture that contains a normal map for the material. Use the Normal Sca
 No |
 
 Yes |
-|
 
 Occlusion Render Strength |
 
@@ -1996,7 +1773,6 @@ Sets the SSAO strength for the material. Use the strength to set the intensity o
 No |
 
 Yes |
-|
 
 Occlusion Render Texture |
 
@@ -2005,7 +1781,6 @@ Sets the texture that contains a SSAO computed for the scene. Use the Occlusion 
 No |
 
 Yes |
-|
 
 Occlusion Strength |
 
@@ -2014,7 +1789,6 @@ Sets the occlusion strength for the material. Use the strength to set the intens
 No |
 
 Yes |
-|
 
 Occlusion Texture |
 
@@ -2023,7 +1797,6 @@ Sets the texture that contains an occlusion map for the material. Use the Occlus
 No |
 
 Yes |
-|
 
 Planar Reflection Map |
 
@@ -2032,7 +1805,6 @@ Rendered texture for planar reflections. |
 No |
 
 Yes |
-|
 
 Planar Reflection View Projection |
 
@@ -2041,7 +1813,6 @@ The premultiplied projection view matrix for planar reflections. |
 No |
 
 Yes |
-|
 
 Point Shadow Map |
 
@@ -2050,7 +1821,6 @@ Depth cubemap used to calculate point light shadows. |
 No |
 
 Yes |
-|
 
 Point Shadow Near Far |
 
@@ -2059,7 +1829,6 @@ Sets the near & far values used for point shadow calculations. |
 No |
 
 Yes |
-|
 
 Roughness Factor |
 
@@ -2068,7 +1837,6 @@ Sets the roughness of the material: 0 represents a smooth, glossy surface, and 1
 No |
 
 Yes |
-|
 
 Roughness Texture |
 
@@ -2077,7 +1845,6 @@ Sets the texture that contains a roughness map for the material. Kanzi reads the
 No |
 
 Yes |
-|
 
 Specular Anti-Aliasing Strength |
 
@@ -2086,7 +1853,6 @@ Sets the strength of the specular anti-aliasing effect. Higher value results in 
 No |
 
 Yes |
-|
 
 Specular Anti-Aliasing Threshold |
 
@@ -2095,7 +1861,6 @@ Sets the upper limit for the amount of specular anti-aliasing effect to apply. T
 No |
 
 Yes |
-|
 
 Specular Color |
 
@@ -2104,7 +1869,6 @@ Sets the color of the specular reflection. |
 No |
 
 Yes |
-|
 
 Specular Color Factor |
 
@@ -2113,7 +1877,6 @@ Sets the specular color for the material. |
 No |
 
 Yes |
-|
 
 Specular Color Texture |
 
@@ -2122,7 +1885,6 @@ Sets the texture that contains the specular color for the material. Use the Spec
 No |
 
 Yes |
-|
 
 Specular Exponent |
 
@@ -2131,7 +1893,6 @@ Sets the size of the specular highlight. |
 No |
 
 Yes |
-|
 
 Spot Light View Projection |
 
@@ -2140,7 +1901,6 @@ The premultiplied projection view matrix of a spot light. |
 No |
 
 Yes |
-|
 
 Spot Shadow Map |
 
@@ -2149,7 +1909,6 @@ Depth map used to calculate spot shadows. |
 No |
 
 Yes |
-|
 
 Texture |
 
@@ -2158,7 +1917,6 @@ Sets the texture of the material. |
 No |
 
 Yes |
-|
 
 Texture Offset |
 
@@ -2167,7 +1925,6 @@ Sets an offset for texture in materials. |
 No |
 
 Yes |
-|
 
 Texture Tiling |
 
@@ -2176,7 +1933,6 @@ Determines the number of times a texture is presented in a material. |
 No |
 
 Yes |
-|
 
 Tone Map Linear Scale |
 
@@ -2185,7 +1941,6 @@ Sets the scale for the linear tonemap option for the material. When linear tonem
 No |
 
 Yes |
-|
 
 Morph Data Texture |
 
@@ -2194,7 +1949,6 @@ Data texture to use for storing morph data when the are are too many targets to 
 No |
 
 Yes |
-|
 
 Morphing |
 
@@ -2203,7 +1957,6 @@ Add morph weights to Model3D to enable Morphing. |
 No |
 
 Yes |
-|
 
 A |
 
@@ -2212,7 +1965,6 @@ Tonemapping parameter A. |
 No |
 
 Yes |
-|
 
 B |
 
@@ -2221,7 +1973,6 @@ Tonemapping parameter B. |
 No |
 
 Yes |
-|
 
 C |
 
@@ -2230,7 +1981,6 @@ Tonemapping parameter C. |
 No |
 
 Yes |
-|
 
 D |
 
@@ -2239,7 +1989,6 @@ Tonemapping parameter D. |
 No |
 
 Yes |
-|
 
 E |
 
@@ -2248,7 +1997,6 @@ Tonemapping parameter E. |
 No |
 
 Yes |
-|
 
 F |
 
@@ -2257,7 +2005,6 @@ Tonemapping parameter F. |
 No |
 
 Yes |
-|
 
 White Scale |
 
@@ -2266,7 +2013,6 @@ Sets the value that will be tonemapped to pure white. |
 No |
 
 Yes |
-|
 
 Inner Distance |
 
@@ -2275,7 +2021,6 @@ Sets the distnace range where the vignette color transition starts. |
 No |
 
 Yes |
-|
 
 Outer Color |
 
@@ -2284,7 +2029,6 @@ Sets the vignette color. |
 No |
 
 Yes |
-|
 
 Outer Distance |
 
@@ -2293,7 +2037,6 @@ Sets the distnace range where the vignette color transition ends. |
 No |
 
 Yes |
-|
 
 Focused |
 
@@ -2302,7 +2045,6 @@ Indicates whether the node has the key focus. |
 No |
 
 Yes |
-|
 
 Actual Layout Height |
 
@@ -2311,7 +2053,6 @@ The calculated height of the node when used in a layout. |
 No |
 
 Yes |
-|
 
 Actual Layout Width |
 
@@ -2320,7 +2061,6 @@ The calculated width of the node when used in a layout. |
 No |
 
 Yes |
-|
 
 Horizontal Margin |
 
@@ -2331,7 +2071,6 @@ To access the Horizontal Margin property fields in a binding, use: * X for the *
 No |
 
 Yes |
-|
 
 Vertical Margin |
 
@@ -2342,7 +2081,6 @@ To access the Vertical Margin property fields in a binding, use: * X for the **B
 No |
 
 Yes |
-|
 
 Bottom Image |
 
@@ -2351,7 +2089,6 @@ The image to use in middle of the bottom row. |
 No |
 
 Yes |
-|
 
 Bottom-Left Image |
 
@@ -2360,7 +2097,6 @@ Image to use in the bottom-left corner. |
 No |
 
 Yes |
-|
 
 Bottom-Right Image |
 
@@ -2369,7 +2105,6 @@ The image to use in the bottom-right corner. |
 No |
 
 Yes |
-|
 
 Center Image |
 
@@ -2378,7 +2113,6 @@ The image to use in the center. |
 No |
 
 Yes |
-|
 
 Left Image |
 
@@ -2387,7 +2121,6 @@ The image to use in the center-left. |
 No |
 
 Yes |
-|
 
 Right Image |
 
@@ -2396,7 +2129,6 @@ The image to use in the center-right. |
 No |
 
 Yes |
-|
 
 Top Image |
 
@@ -2405,7 +2137,6 @@ The image to use in the middle of the top row. |
 No |
 
 Yes |
-|
 
 Top-Left Image |
 
@@ -2414,7 +2145,6 @@ The image to use in the top-left corner. |
 No |
 
 Yes |
-|
 
 Top-Right Image |
 
@@ -2423,7 +2153,6 @@ The image to use in the top-right corner. |
 No |
 
 Yes |
-|
 
 Node.Path |
 
@@ -2432,7 +2161,6 @@ Full path to the node. |
 No |
 
 Yes |
-|
 
 State Manager |
 
@@ -2441,7 +2169,6 @@ Sets the State Manager to the node. |
 No |
 
 Yes |
-|
 
 Style |
 
@@ -2450,7 +2177,6 @@ Sets a style to the node. |
 No |
 
 Yes |
-|
 
 Maximum Distance From Curve |
 
@@ -2459,7 +2185,6 @@ The distance from the curve where hit testing succeeds. |
 No |
 
 Yes |
-|
 
 Baseline |
 
@@ -2468,7 +2193,6 @@ Font baseline in 3D space units. |
 No |
 
 Yes |
-|
 
 Two Pass Rendering |
 
@@ -2477,7 +2201,6 @@ Defines whether the Text Block 3D is rendered in two passes. Disabling the two p
 No |
 
 Yes |
-|
 
 Snap Character To Pixel |
 
@@ -2486,7 +2209,6 @@ Sets whether Kanzi positions characters in 2D rendering to the nearest pixel: * 
 No |
 
 Yes |
-|
 
 Is Value Changing |
 
@@ -2495,7 +2217,6 @@ Whether the value is currently changing. |
 No |
 
 Yes |
-|
 
 Maximum Value |
 
@@ -2504,7 +2225,6 @@ The maximum value that the range allows. |
 No |
 
 Yes |
-|
 
 Minimum Value |
 
@@ -2513,7 +2233,6 @@ The minimum value that the range allows. |
 No |
 
 Yes |
-|
 
 Normalized Value |
 
@@ -2522,7 +2241,6 @@ The current value normalized to range [0, 1]. |
 No |
 
 Yes |
-|
 
 Step Value |
 
@@ -2531,7 +2249,6 @@ The minimum amount that the value of the range can change at a time. |
 No |
 
 Yes |
-|
 
 Value |
 
@@ -2540,7 +2257,6 @@ The current value. To update this property with a binding, use a to-source or tw
 No |
 
 Yes |
-|
 
 Horizontal Fit |
 
@@ -2549,7 +2265,6 @@ Whether to horizontally scale the glyphs to make them fit into the **Layout Widt
 No |
 
 Yes |
-|
 
 Horizontal Fit Scale Limits |
 
@@ -2558,7 +2273,6 @@ When the **Horizontal Fit** property is enabled, sets the minimum and maximum sc
 No |
 
 Yes |
-|
 
 Horizontal Padding |
 
@@ -2567,7 +2281,6 @@ Sets the padding spaces between the content and the left and right boundaries of
 No |
 
 Yes |
-|
 
 Truncation |
 
@@ -2578,7 +2291,6 @@ Kanzi truncates text to fit within the vertical and horizontal limits of the con
 No |
 
 Yes |
-|
 
 Truncation Direction |
 
@@ -2587,7 +2299,6 @@ Sets which part Kanzi truncates when either the **Truncation** or **Overflow** p
 No |
 
 Yes |
-|
 
 Vertical Padding |
 
@@ -2596,7 +2307,6 @@ Sets the padding spaces between the content and the top and bottom boundaries of
 No |
 
 Yes |
-|
 
 Activity Status |
 
@@ -2605,7 +2315,6 @@ Sets the possible states of the Activity when its Activity Host activates or dea
 No |
 
 Yes |
-|
 
 Active Activity Index |
 
@@ -2614,7 +2323,6 @@ The index of the active Activity in the Data-Driven Exclusive Activity Host. Aft
 No |
 
 Yes |
-|
 
 Activity Source |
 
@@ -2623,7 +2331,6 @@ The data object that provides the data for this Activity node. |
 No |
 
 Yes |
-|
 
 Activity Template |
 
@@ -2632,7 +2339,6 @@ If set, the Data-Driven Exclusive Activity Host uses this prefab for Activity no
 No |
 
 Yes |
-|
 
 Color Font Material |
 
@@ -2641,7 +2347,6 @@ Sets the material whose shader is used to render the text containing colored gly
 No |
 
 Yes |
-|
 
 Font Material |
 
@@ -2650,7 +2355,6 @@ Sets the material whose shader is used to render the text. The shader must use t
 No |
 
 Yes |
-|
 
 Selected Item Index |
 
@@ -2659,7 +2363,6 @@ Sets the index of the item that is currently selected in the List Box node. A Li
 No |
 
 Yes |
-|
 
 Bring Activated Activity To Front |
 
@@ -2668,7 +2371,6 @@ Sets whether to show the activated Activity in front within its Parallel Activit
 No |
 
 Yes |
-|
 
 Word Wrap |
 
@@ -2677,7 +2379,6 @@ Sets whether to break long lines into multiple lines to make the text fit within
 No |
 
 Yes |
-|
 
 Controller Property |
 
@@ -2686,7 +2387,6 @@ Sets the property type that the Exclusive Activity Host node uses to switch betw
 No |
 
 Yes |
-|
 
 Data Source Controller Property Path |
 
@@ -2695,7 +2395,6 @@ Sets the path in the Data Source object of an Exclusive Activity Host node to a 
 No |
 
 Yes |
-|
 
 Character Spacing |
 
@@ -2704,7 +2403,6 @@ Sets the character spacing in pixels. |
 No |
 
 Yes |
-|
 
 Fixed Character Width |
 
@@ -2713,7 +2411,6 @@ When set, overrides the font advance widths to make each character take a fixed 
 No |
 
 Yes |
-|
 
 Font Family |
 
@@ -2722,7 +2419,6 @@ The font family used to render the text. |
 No |
 
 Yes |
-|
 
 Font Hinting Preference |
 
@@ -2731,7 +2427,6 @@ Sets the hinting preference of the font. * **No hinting**: Render text without h
 No |
 
 Yes |
-|
 
 Font Style |
 
@@ -2740,7 +2435,6 @@ Sets the style of the font. |
 No |
 
 Yes |
-|
 
 Font Weight |
 
@@ -2749,7 +2443,6 @@ Sets the weight of the font. |
 No |
 
 Yes |
-|
 
 Fractional Character Width |
 
@@ -2758,7 +2451,6 @@ Sets whether Kanzi uses fractional or rounded character widths to lay out text. 
 No |
 
 Yes |
-|
 
 Line Spacing |
 
@@ -2767,7 +2459,6 @@ Sets the line spacing in multiples of the normal line height of the selected fon
 No |
 
 Yes |
-|
 
 Overflow |
 
@@ -2778,7 +2469,6 @@ Kanzi truncates text to fit within the vertical and horizontal limits of the con
 No |
 
 Yes |
-|
 
 Remove Side Bearings |
 
@@ -2787,7 +2477,6 @@ Whether to position the leftmost characters of left-aligned text and rightmost c
 No |
 
 Yes |
-|
 
 Text |
 
@@ -2796,7 +2485,6 @@ Sets the text content that the text node renders. To create a line break press S
 No |
 
 Yes |
-|
 
 Text Horizontal Alignment |
 
@@ -2805,7 +2493,6 @@ Sets the horizontal alignment of the text. |
 No |
 
 Yes |
-|
 
 Text Vertical Alignment |
 
@@ -2814,7 +2501,6 @@ Sets the vertical alignment of the text. |
 No |
 
 Yes |
-|
 
 Show Material Debug Objects |
 
@@ -2823,7 +2509,6 @@ When enabled, Kanzi Studio does not hide material debug objects. |
 No |
 
 No |
-|
 
 Opacity |
 
@@ -2832,7 +2517,6 @@ Opacity of the node. |
 No |
 
 Yes |
-|
 
 Brush Modulate Color |
 
@@ -2841,7 +2525,6 @@ Modulation color for brush. Effects brush rendering that needs color modulation.
 No |
 
 Yes |
-|
 
 Brush Horizontal Tiling |
 
@@ -2850,7 +2533,6 @@ Horizontal Tiling for the brush. Affects the scale of texture coordinates. |
 No |
 
 Yes |
-|
 
 Brush Vertical Tiling |
 
@@ -2859,7 +2541,6 @@ Vertical Tiling for the brush. Affects the scale of texture coordinates. |
 No |
 
 Yes |
-|
 
 Custom Asset Thumbnail |
 
@@ -2868,7 +2549,6 @@ When enabled, the asset will have selected image as thumbnail instead of the gen
 No |
 
 No |
-|
 
 Export in Asset Package |
 
@@ -2877,7 +2557,6 @@ When enabled, this item is exported into asset package if this project is saved 
 No |
 
 No |
-|
 
 Horizontal Alignment |
 
@@ -2886,7 +2565,6 @@ The alignment in horizontal direction the node should use when it resides under 
 No |
 
 Yes |
-|
 
 Vertical Alignment |
 
@@ -2895,7 +2573,6 @@ The alignment in vertical direction the node should use when it resides under a 
 No |
 
 Yes |
-|
 
 Command |
 
@@ -2904,7 +2581,6 @@ The command executed by a UI control |
 No |
 
 Yes |
-|
 
 Item Index |
 
@@ -2913,7 +2589,6 @@ Reports the index of the item in the List Box Item Container. |
 No |
 
 Yes |
-|
 
 Selected |
 
@@ -2922,7 +2597,6 @@ Indicates whether the List Box item held by this List Box Item Container is sele
 No |
 
 Yes |
-|
 
 Hover |
 
@@ -2931,7 +2605,6 @@ Indicates whether a node is the foremost hit testable node under the cursor. |
 No |
 
 Yes |
-|
 
 Constraint In World Coordinates |
 
@@ -2940,7 +2613,6 @@ Specifies if the object constraining is done in world coordinates (when false, d
 No |
 
 Yes |
-|
 
 Constraint Orientation |
 
@@ -2949,7 +2621,6 @@ Makes an object node where the property is attached to obtain orientation from t
 No |
 
 Yes |
-|
 
 Constraint Position |
 
@@ -2958,7 +2629,6 @@ Makes an object node where the property is attached to obtain position from targ
 No |
 
 Yes |
-|
 
 Face to Camera Mode |
 
@@ -2969,7 +2639,6 @@ By default, the node turns to the Scene default camera. To use a different camer
 No |
 
 Yes |
-|
 
 Face to Camera Target Camera |
 
@@ -2978,7 +2647,6 @@ Sets the camera towards which the 3D node turns when you set the **Face to Camer
 No |
 
 Yes |
-|
 
 Look At |
 
@@ -2987,7 +2655,6 @@ Makes a node to always face the node set in this property. |
 No |
 
 Yes |
-|
 
 Hit Testable Container |
 
@@ -2996,7 +2663,6 @@ When enabled, Kanzi uses the layout bounds as geometry for hit testing. |
 No |
 
 Yes |
-|
 
 Actual Layout Depth |
 
@@ -3005,7 +2671,6 @@ The calculated size of the node in depth direction when used in a layout. |
 No |
 
 Yes |
-|
 
 Depth Margin |
 
@@ -3016,7 +2681,6 @@ To access the Depth Margin property fields in a binding, use: * X for the **Back
 No |
 
 Yes |
-|
 
 Drawn as Bounding Box |
 
@@ -3025,7 +2689,6 @@ When enabled the object is drawn its solid bounding box. |
 No |
 
 Yes |
-|
 
 Frustum Cull Margin |
 
@@ -3034,7 +2697,6 @@ The margin of the frustum cull radius of the node. For example, set the margin w
 No |
 
 Yes |
-|
 
 Final Transformation |
 
@@ -3043,7 +2705,6 @@ The combined location, orientation and scale of the node and its ancestor nodes.
 No |
 
 Yes |
-|
 
 Previous Final Transformation |
 
@@ -3052,7 +2713,6 @@ Final transformation (world matrix) from the previous frame, used for velocity b
 No |
 
 Yes |
-|
 
 Render Transformation |
 
@@ -3061,7 +2721,6 @@ The location, orientation, and scale of the node relative to its parent node. Re
 No |
 
 Yes |
-|
 
 Override Material |
 
@@ -3070,7 +2729,6 @@ Sets the override material to use to render the content of the 2D prefab in the 
 No |
 
 Yes |
-|
 
 Prefab Template |
 
@@ -3079,7 +2737,6 @@ Sets the 2D prefab whose content the Viewport 3D node renders in 3D space. |
 No |
 
 Yes |
-|
 
 2D to 3D Projection Scale |
 
@@ -3088,7 +2745,6 @@ Sets the scale factor to project pixels to 3D size. When scale is 1, then the si
 No |
 
 Yes |
-|
 
 Depth Alignment |
 
@@ -3097,7 +2753,6 @@ The alignment in depth direction the node should use when it resides under a lay
 No |
 
 Yes |
-|
 
 Calculated Offset |
 
@@ -3106,7 +2761,6 @@ Reports the current relative offset of an item in the Grid List Box in proportio
 No |
 
 Yes |
-|
 
 Visible Amount in Parent |
 
@@ -3115,7 +2769,6 @@ Sets the amount the node is inside its parent. Use the value of this property in
 No |
 
 Yes |
-|
 
 Calculated Offset |
 
@@ -3124,7 +2777,6 @@ Reports the current offset of an item in a Trajectory Layout in the proportional
 No |
 
 Yes |
-|
 
 Side |
 
@@ -3133,7 +2785,6 @@ The docking side of an item in the dock layout. |
 No |
 
 Yes |
-|
 
 Focus Order |
 
@@ -3142,7 +2793,6 @@ Sets the focus chain order of the node within the focus scope. |
 No |
 
 Yes |
-|
 
 Cyclic Focus Navigation |
 
@@ -3151,7 +2801,6 @@ Sets whether the focus chain navigation within the focus scope is cyclic. When y
 No |
 
 Yes |
-|
 
 Column |
 
@@ -3160,7 +2809,6 @@ The column into which grid layout places the item. |
 No |
 
 Yes |
-|
 
 Column Span |
 
@@ -3169,7 +2817,6 @@ Defines the number of columns an item in a grid layout occupies. |
 No |
 
 Yes |
-|
 
 Row |
 
@@ -3178,7 +2825,6 @@ The row into which grid layout places the item. |
 No |
 
 Yes |
-|
 
 Row Span |
 
@@ -3187,7 +2833,6 @@ Defines the number of rows an item in a grid layout occupies. |
 No |
 
 Yes |
-|
 
 Stretch |
 
@@ -3196,7 +2841,6 @@ Whether to scale this Trajectory Layout to match the layout size. |
 No |
 
 Yes |
-|
 
 Trajectory Override Offset |
 
@@ -3205,7 +2849,6 @@ Sets the offset of an item in a Trajectory Layout. When you do not set this prop
 No |
 
 Yes |
-|
 
 Toggle State |
 
@@ -3214,7 +2857,6 @@ Sets the toggle state of a Toggle Button. To update this property with a binding
 No |
 
 Yes |
-|
 
 Toggle State Count |
 
@@ -3223,7 +2865,6 @@ Sets the number of toggle states of a Toggle Button. |
 No |
 
 Yes |
-|
 
 Auto Press Interval |
 
@@ -3232,7 +2873,6 @@ Sets the time in milliseconds after which a button that the user keeps pressed d
 No |
 
 Yes |
-|
 
 Down On Hover |
 
@@ -3241,7 +2881,6 @@ Whether holding a finger on the device screen and moving it over the button tran
 No |
 
 Yes |
-|
 
 Hold Interval |
 
@@ -3250,7 +2889,6 @@ Sets the amount of time in milliseconds that the user must hold the button press
 No |
 
 Yes |
-|
 
 Is Down |
 
@@ -3259,7 +2897,6 @@ Indicates whether the button is pressed and in the down state. |
 No |
 
 Yes |
-|
 
 Index In Group |
 
@@ -3268,7 +2905,6 @@ Sets the index of the Toggle Button in the Toggle Button Group to which that Tog
 No |
 
 Yes |
-|
 
 Focus Scope Type |
 
@@ -3277,7 +2913,6 @@ Sets the type of the focus scope node: * **Group** groups focusable nodes. * **F
 No |
 
 Yes |
-|
 
 Blend Mode |
 
@@ -3286,7 +2921,6 @@ Sets how to combine the color and alpha values of pixels in one layer or image w
 No |
 
 Yes |
-|
 
 Focus State |
 
@@ -3299,7 +2933,6 @@ To observe whether a node is the key focus node, you can use the boolean **Focus
 No |
 
 Yes |
-|
 
 Hit Testable |
 
@@ -3308,7 +2941,6 @@ When enabled, the node can be hit tested. Enabling Hit Testable for a 2D node en
 No |
 
 Yes |
-|
 
 Effectively Enabled |
 
@@ -3317,7 +2949,6 @@ Indicates whether this node and its ancestor nodes are enabled. Use this propert
 No |
 
 Yes |
-|
 
 Enabled |
 
@@ -3326,7 +2957,6 @@ Whether this node is enabled. When you disable this property in a node, that nod
 No |
 
 Yes |
-|
 
 Clip Children |
 
@@ -3335,7 +2965,6 @@ Sets whether to clip the child nodes of this node. Kanzi clips the child nodes w
 No |
 
 Yes |
-|
 
 Visible |
 
@@ -3344,7 +2973,6 @@ When disabled, Kanzi does not render the node. |
 No |
 
 Yes |
-|
 
 Focusable |
 
@@ -3353,7 +2981,6 @@ Indicates whether the node can receive focus. |
 No |
 
 Yes |
-|
 
 Focus On Press |
 
@@ -3364,7 +2991,6 @@ The descendants of the node where you set this property inherit value of the pro
 No |
 
 Yes |
-|
 
 Transition Phase |
 
@@ -3373,7 +2999,6 @@ The phase of the transition. For example, use for pixel-based effects. |
 No |
 
 Yes |
-|
 
 Description |
 

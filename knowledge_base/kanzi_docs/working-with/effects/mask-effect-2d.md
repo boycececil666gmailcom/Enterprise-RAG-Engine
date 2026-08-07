@@ -24,22 +24,18 @@ This way you set in that 2D node the Effect Prefab property to the Mask Effect 2
 4.
 
 In the Library select the Mask Effect 2D effect and in the Properties add and set the Mask Effect 2D properties.
-|
 
 Mask Texture sets the texture that you want to use as the mask.
 
 To use the mask effect, you must set this property.  |    |
-|
 
 Mask Width sets the width of the mask.
 
 By default the width of the mask is the width of the texture that you set as the Mask Texture.  |    |
-|
 
 Mask Height sets the height of the mask.
 
 By default the height of the mask is the height of the texture that you set as the Mask Texture.  |    |
-|
 
 Mask Horizontal Alignment sets the horizontal alignment of the mask:
 
@@ -47,8 +43,6 @@ Mask Horizontal Alignment sets the horizontal alignment of the mask:
   - Right aligns the right edge of the mask with the right edge of the node.
   - Center aligns the mask horizontally to the center of the node.
   - Stretch stretches the mask horizontally to fit the node from the left edge to the right edge.
-  |    |
-|
 
 Mask Vertical Alignment sets the vertical alignment of the mask:
 
@@ -56,23 +50,18 @@ Mask Vertical Alignment sets the vertical alignment of the mask:
   - Bottom aligns the bottom edge of the mask with the bottom edge of the node.
   - Center aligns the mask vertically to the center of the node.
   - Stretch stretches the mask vertically to fit the node from the top edge to the bottom edge.
-  |    |
-|
 
 Mask Offset sets the mask offset along the x and y axes.
 
 Kanzi applies this property after the Mask Stretch, Mask Horizontal Alignment, Mask Vertical Alignment, and Mask Scale properties.  |    |
-|
 
 Mask Scale sets the factor by which to scale the mask.
 
 Kanzi applies this property after the Mask Stretch, Mask Horizontal Alignment, and Mask Vertical Alignment properties.  |    |
-|
 
 Use Screen Space sets whether to layout the mask relative to the screen.
 
 By default Kanzi layouts a mask relative to the node that uses the mask effect.  |    |
-|
 
 Mask Stretch sets the stretch mode of the mask:
 
@@ -81,8 +70,6 @@ Mask Stretch sets the stretch mode of the mask:
   - Uniform stretches the mask using uniform scaling to fill the node in either vertical or horizontal direction, whichever requires smaller scale.
   - Uniform To Fill stretches the mask using uniform scaling to fill the node in either vertical or horizontal direction, whichever requires larger scale.
   - Repeat does not stretch the mask, but allows the mask to repeat outside of its area based on the value of the Wrap Mode property in the texture that you set as the Mask Texture.
-  |    |
-|
 
 Mask Channel sets the channel in the Mask Texture that you want to use as input for the mask:
 
@@ -91,18 +78,14 @@ Mask Channel sets the channel in the Mask Texture that you want to use as input 
   - Green uses the green color channel from the texture.
   - Blue uses the blue color channel from the texture.
   - Luminance uses the luminance value calculated from the red, green, and blue color channels.
-  |    |
-|
 
 Invert Mask sets whether to invert the mask so that transparent areas in the mask become opaque and the other way around.  |    |
-|
 
 Mask Strength sets the strength of the mask in the range from 0 to 1:
 
   - To apply the mask effect at full strength, use the value 1. This is the default value.
   - To apply the mask partially as if blending the non-masked result with the fully masked version, use a value between 0 and 1.
   - To disable the mask effect, use the value 0.
-  |    |
 
 ## Customizing an instance of a mask effect
 

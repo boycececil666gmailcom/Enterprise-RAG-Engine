@@ -200,9 +200,7 @@ Textures that contain non-color information are stored in linear format. By disa
 To get the desired color blending result, adjust the partially transparent colors in your project where needed.
 
 For example, nodes filled with these color brushes look different in the standard and linear color workflow modes:
-|
 
 Standard color workflow |
 
 Linear color workflow |
-|   |    |

@@ -96,41 +96,34 @@ For example, in most cases when the data range for all components of the attribu
   - The list of available data types depends on what your target graphics API supports. See Data types for mesh attributes.
   - The normalized 32-bit data types (32_UNORM and 32_SNORM) provide the highest accuracy. Normalized data types provide uniform accuracy across the data range, while the Float and Half-float data types provide higher accuracy for values close to zero, and lower accuracy for large values.
   - This table lists recommendations for choosing the export data type for different mesh attributes.
-|
 
 Semantic |
 
 Recommended data type |
 
 Kanzi Engine normalizes before export |
-|
 
 Position |
 
 Based on data range |   |
-|
 
 Normal, Tangent, Bitangent |
 
 2_10_10_10_SNORM_PACK32 |
 
 x |
-|
 
 Texture coordinate |
 
 Based on data range, 16_UNORM / 16_SNORM / Float |   |
-|
 
 Color |
 
 Based on data range, 8_UNORM / Half-float / Float |   |
-|
 
 Weight |
 
 Based on data range |   |
-|
 
 Matrix palette  |
 
@@ -139,108 +132,92 @@ Based on data range |   |
 ## Data types for mesh attributes
 
 This table lists the mesh attribute data types that Kanzi supports.
-|
 
 Data type |
 
 Description |
 
 Range |
-|
 
 Float |
 
 Single-precision floating-point (32 bits) |   |
-|
 
 Half-float |
 
 Half-precision floating-point (16 bits) |   |
-|
 
 8_SNORM |
 
 8-bit signed normalized |
 
 -1.0f â¦ 1.0f |
-|
 
 8_UNORM |
 
 8-bit unsigned normalized |
 
 0.0f â¦ 1.0f |
-|
 
 16_SNORM |
 
 16-bit signed normalized |
 
 -1.0f â¦ 1.0f |
-|
 
 16_UNORM |
 
 16-bit unsigned normalized |
 
 0.0f â¦ 1.0f |
-|
 
 8_SINT |
 
 8-bit signed integer |
 
 -128 â¦ 127 |
-|
 
 8_UINT |
 
 8-bit unsigned integer |
 
 0 â¦ 255 |
-|
 
 16_SINT |
 
 16-bit signed integer |
 
 -32 768 â¦ 32 767 |
-|
 
 16_UINT |
 
 16-bit unsigned integer |
 
 0 â¦ 65,535 |
-|
 
 32_SINT |
 
 32-bit signed integer |
 
 -2 147 483 648 â¦ 2 147 483 647 |
-|
 
 32_UINT |
 
 32-bit unsigned integer |
 
 0 â¦ 4 294 967 295 |
-|
 
 32_SNORM |
 
 32-bit signed normalized |
 
 -1.0f â¦ 1.0f |
-|
 
 32_UNORM |
 
 32-bit unsigned normalized |
 
 0.0f â¦ 1.0f |
-|
 
 2_10_10_10_SNORM_PACK32 |
 
@@ -250,10 +227,8 @@ Four-component 32-bit packed signed normalized with:
 - 10-bit Y component in bits 10..19
 - 10-bit Z component in bits 20..29
 - 2-bit W component in bits 30..31
-  |
 
 (-1, -1, -1, -1) â¦ (1, 1, 1, 1) |
-|
 
 2_10_10_10_UNORM_PACK32 |
 
@@ -263,6 +238,5 @@ Four-component 32-bit packed unsigned normalized with:
 - 10-bit Y component in bits 10..19
 - 10-bit Z component in bits 20..29
 - 2-bit W component in bits 30..31
-  |
 
 (0, 0, 0, 0) â¦ (1, 1, 1, 1) |

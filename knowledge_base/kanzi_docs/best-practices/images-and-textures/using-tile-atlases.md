@@ -76,39 +76,31 @@ For example, to draw , set:
     - Layout Width to 26
     - Layout Height to 30
 
-|
-
 Image |
 
 Layout Width |
 
 Layout Height |
-|   |
 
 41 |
 
 31 |
-|   |
 
 32 |
 
 33 |
-|   |
 
 38 |
 
 33 |
-|   |
 
 41 |
 
 31 |
-|   |
 
 26 |
 
 30 |
-|   |
 
 30 |
 
@@ -123,39 +115,31 @@ For example, to draw , set:
     - X to 43
     - Y to 33
 
-|
-
 Image |
 
 X |
 
 Y |
-|   |
 
 0 |
 
 0 |
-|   |
 
 42 |
 
 0 |
-|   |
 
 74 |
 
 0 |
-|   |
 
 0 |
 
 31 |
-|   |
 
 43 |
 
 33 |
-|   |
 
 77 |
 

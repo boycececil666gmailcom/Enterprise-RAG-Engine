@@ -10,161 +10,116 @@ Use the Property Target Easing Interpolator when you want to dynamically set the
 Easing functions available in Kanzi:
 
 Hover over the image of an easing function to see the type of animation that it creates.
-|
 
 **Back** |   |   |
-|
 
 Ease in |
 
 Ease out |
 
 Ease in out |
-|  ![image](../../_static/multimedia/working-with/animations/back-in.png) ![image](../../_static/multimedia/working-with/animations/back-in.gif)  |   ![image](../../_static/multimedia/working-with/animations/back-out.png) ![image](../../_static/multimedia/working-with/animations/back-out.gif)  |   ![image](../../_static/multimedia/working-with/animations/back-in-out.png) ![image](../../_static/multimedia/working-with/animations/back-in-out.gif)  |
-|
 
 **Bounce** |   |   |
-|
 
 Ease in |
 
 Ease out |
 
 Ease in out |
-|  ![image](../../_static/multimedia/working-with/animations/bounce-in.png) ![image](../../_static/multimedia/working-with/animations/bounce-in.gif)  |   ![image](../../_static/multimedia/working-with/animations/bounce-out.png) ![image](../../_static/multimedia/working-with/animations/bounce-out.gif)  |   ![image](../../_static/multimedia/working-with/animations/bounce-in-out.png) ![image](../../_static/multimedia/working-with/animations/bounce-in-out.gif)  |
-|
 
 **Circle** |   |   |
-|
 
 Ease in |
 
 Ease out |
 
 Ease in out |
-|  ![image](../../_static/multimedia/working-with/animations/circle-in.png) ![image](../../_static/multimedia/working-with/animations/circle-in.gif)  |   ![image](../../_static/multimedia/working-with/animations/circle-out.png) ![image](../../_static/multimedia/working-with/animations/circle-out.gif)  |   ![image](../../_static/multimedia/working-with/animations/circle-in-out.png) ![image](../../_static/multimedia/working-with/animations/circle-in-out.gif)  |
-|
 
 **Cubic** |   |   |
-|
 
 Ease in |
 
 Ease out |
 
 Ease in out |
-|  ![image](../../_static/multimedia/working-with/animations/cubic-in.png) ![image](../../_static/multimedia/working-with/animations/cubic-in.gif)  |   ![image](../../_static/multimedia/working-with/animations/cubic-out.png) ![image](../../_static/multimedia/working-with/animations/cubic-out.gif)  |   ![image](../../_static/multimedia/working-with/animations/cubic-in-out.png) ![image](../../_static/multimedia/working-with/animations/cubic-in-out.gif)  |
-|
 
 **Elastic** |   |   |
-|
 
 Ease in |
 
 Ease out |
 
 Ease in out |
-|  ![image](../../_static/multimedia/working-with/animations/elastic-in.png) ![image](../../_static/multimedia/working-with/animations/elastic-in.gif)  |   ![image](../../_static/multimedia/working-with/animations/elastic-out.png) ![image](../../_static/multimedia/working-with/animations/elastic-out.gif)  |   ![image](../../_static/multimedia/working-with/animations/elastic-in-out.png) ![image](../../_static/multimedia/working-with/animations/elastic-in-out.gif)  |
-|
 
 **Exponential** |   |   |
-|
 
 Ease in |
 
 Ease out |
 
 Ease in out |
-|  ![image](../../_static/multimedia/working-with/animations/exponential-in.png) ![image](../../_static/multimedia/working-with/animations/exponential-in.gif)  |   ![image](../../_static/multimedia/working-with/animations/exponential-out.png) ![image](../../_static/multimedia/working-with/animations/exponential-out.gif)  |   ![image](../../_static/multimedia/working-with/animations/exponential-in-out.png) ![image](../../_static/multimedia/working-with/animations/exponential-in-out.gif)  |
-|
 
 **Linear** |   |   |
-|
 
 Ease in, Ease out, Ease in out |   |   |
-|  ![image](../../_static/multimedia/working-with/animations/linear.png) ![image](../../_static/multimedia/working-with/animations/linear.gif)  |   |   |
-|
 
 **Power** |   |   |
-|
 
 Ease in |
 
 Ease out |
 
 Ease in out |
-|  ![image](../../_static/multimedia/working-with/animations/power-in.png) ![image](../../_static/multimedia/working-with/animations/power-in.gif)  |   ![image](../../_static/multimedia/working-with/animations/power-out.png) ![image](../../_static/multimedia/working-with/animations/power-out.gif)  |   ![image](../../_static/multimedia/working-with/animations/power-in-out.png) ![image](../../_static/multimedia/working-with/animations/power-in-out.gif)  |
-|
 
 **Quadratic** |   |   |
-|
 
 Ease in |
 
 Ease out |
 
 Ease in out |
-|  ![image](../../_static/multimedia/working-with/animations/quadratic-in.png) ![image](../../_static/multimedia/working-with/animations/quadratic-in.gif)  |   ![image](../../_static/multimedia/working-with/animations/quadratic-out.png) ![image](../../_static/multimedia/working-with/animations/quadratic-out.gif)  |   ![image](../../_static/multimedia/working-with/animations/quadratic-in-out.png) ![image](../../_static/multimedia/working-with/animations/quadratic-in-out.gif)  |
-|
 
 **Quartic** |   |   |
-|
 
 Ease in |
 
 Ease out |
 
 Ease in out |
-|  ![image](../../_static/multimedia/working-with/animations/quartic-in.png) ![image](../../_static/multimedia/working-with/animations/quartic-in.gif)  |   ![image](../../_static/multimedia/working-with/animations/quartic-out.png) ![image](../../_static/multimedia/working-with/animations/quartic-out.gif)  |   ![image](../../_static/multimedia/working-with/animations/quartic-in-out.png) ![image](../../_static/multimedia/working-with/animations/quartic-in-out.gif)  |
-|
 
 **Quintic** |   |   |
-|
 
 Ease in |
 
 Ease out |
 
 Ease in out |
-|  ![image](../../_static/multimedia/working-with/animations/quintic-in.png) ![image](../../_static/multimedia/working-with/animations/quintic-in.gif)  |   ![image](../../_static/multimedia/working-with/animations/quintic-out.png) ![image](../../_static/multimedia/working-with/animations/quintic-out.gif)  |   ![image](../../_static/multimedia/working-with/animations/quintic-in-out.png) ![image](../../_static/multimedia/working-with/animations/quintic-in-out.gif)  |
-|
 
 **Sine** |   |   |
-|
 
 Ease in |
 
 Ease out |
 
 Ease in out |
-|  ![image](../../_static/multimedia/working-with/animations/sine-in.png) ![image](../../_static/multimedia/working-with/animations/sine-in.gif)  |   ![image](../../_static/multimedia/working-with/animations/sine-out.png) ![image](../../_static/multimedia/working-with/animations/sine-out.gif)  |   ![image](../../_static/multimedia/working-with/animations/sine-in-out.png) ![image](../../_static/multimedia/working-with/animations/sine-in-out.gif)  |
-|
 
 **Smoother step** |   |   |
-|
 
 Ease in, Ease out |
 
 Ease in out |   |
-|  ![image](../../_static/multimedia/working-with/animations/smoother-step-in.png) ![image](../../_static/multimedia/working-with/animations/smoother-step-in.gif)  |   ![image](../../_static/multimedia/working-with/animations/smoother-step-in-out.png) ![image](../../_static/multimedia/working-with/animations/smoother-step-in-out.gif)  |   |
-|
 
 **Smooth step** |   |   |
-|
 
 Ease in, Ease out |
 
 Ease in out |   |
-|  ![image](../../_static/multimedia/working-with/animations/smooth-step-in.png) ![image](../../_static/multimedia/working-with/animations/smooth-step-in.gif)  |   ![image](../../_static/multimedia/working-with/animations/smooth-step-in-out.png) ![image](../../_static/multimedia/working-with/animations/smooth-step-in-out.gif)  |   |
-|
 
 **Step** |   |   |
-|
 
 Ease in, Ease out |
 
 Ease in out |   |
-|  ![image](../../_static/multimedia/working-with/animations/step-in.png) ![image](../../_static/multimedia/working-with/animations/step-in.gif)  |   ![image](../../_static/multimedia/working-with/animations/step-out.png) ![image](../../_static/multimedia/working-with/animations/step-out.gif)  |   ![image](../../_static/multimedia/working-with/animations/step-in-out.png) ![image](../../_static/multimedia/working-with/animations/step-in-out.gif)  |
 
 For example, use the Property Target Easing Interpolator to create a welcome animation which moves the fuel and battery needles first to their maximum position and then to the current position.
 ## Interpolating property values using an easing function
@@ -217,161 +172,116 @@ Use an easing function to make UI elements more lifelike. Because objects in rea
 Select the most suitable easing function.
 
 Hover over the image of an easing function to see the type of animation that it creates.
-|
 
 **Back** |   |   |
-|
 
 Ease in |
 
 Ease out |
 
 Ease in out |
-|  ![image](../../_static/multimedia/working-with/animations/back-in.png) ![image](../../_static/multimedia/working-with/animations/back-in.gif)  |   ![image](../../_static/multimedia/working-with/animations/back-out.png) ![image](../../_static/multimedia/working-with/animations/back-out.gif)  |   ![image](../../_static/multimedia/working-with/animations/back-in-out.png) ![image](../../_static/multimedia/working-with/animations/back-in-out.gif)  |
-|
 
 **Bounce** |   |   |
-|
 
 Ease in |
 
 Ease out |
 
 Ease in out |
-|  ![image](../../_static/multimedia/working-with/animations/bounce-in.png) ![image](../../_static/multimedia/working-with/animations/bounce-in.gif)  |   ![image](../../_static/multimedia/working-with/animations/bounce-out.png) ![image](../../_static/multimedia/working-with/animations/bounce-out.gif)  |   ![image](../../_static/multimedia/working-with/animations/bounce-in-out.png) ![image](../../_static/multimedia/working-with/animations/bounce-in-out.gif)  |
-|
 
 **Circle** |   |   |
-|
 
 Ease in |
 
 Ease out |
 
 Ease in out |
-|  ![image](../../_static/multimedia/working-with/animations/circle-in.png) ![image](../../_static/multimedia/working-with/animations/circle-in.gif)  |   ![image](../../_static/multimedia/working-with/animations/circle-out.png) ![image](../../_static/multimedia/working-with/animations/circle-out.gif)  |   ![image](../../_static/multimedia/working-with/animations/circle-in-out.png) ![image](../../_static/multimedia/working-with/animations/circle-in-out.gif)  |
-|
 
 **Cubic** |   |   |
-|
 
 Ease in |
 
 Ease out |
 
 Ease in out |
-|  ![image](../../_static/multimedia/working-with/animations/cubic-in.png) ![image](../../_static/multimedia/working-with/animations/cubic-in.gif)  |   ![image](../../_static/multimedia/working-with/animations/cubic-out.png) ![image](../../_static/multimedia/working-with/animations/cubic-out.gif)  |   ![image](../../_static/multimedia/working-with/animations/cubic-in-out.png) ![image](../../_static/multimedia/working-with/animations/cubic-in-out.gif)  |
-|
 
 **Elastic** |   |   |
-|
 
 Ease in |
 
 Ease out |
 
 Ease in out |
-|  ![image](../../_static/multimedia/working-with/animations/elastic-in.png) ![image](../../_static/multimedia/working-with/animations/elastic-in.gif)  |   ![image](../../_static/multimedia/working-with/animations/elastic-out.png) ![image](../../_static/multimedia/working-with/animations/elastic-out.gif)  |   ![image](../../_static/multimedia/working-with/animations/elastic-in-out.png) ![image](../../_static/multimedia/working-with/animations/elastic-in-out.gif)  |
-|
 
 **Exponential** |   |   |
-|
 
 Ease in |
 
 Ease out |
 
 Ease in out |
-|  ![image](../../_static/multimedia/working-with/animations/exponential-in.png) ![image](../../_static/multimedia/working-with/animations/exponential-in.gif)  |   ![image](../../_static/multimedia/working-with/animations/exponential-out.png) ![image](../../_static/multimedia/working-with/animations/exponential-out.gif)  |   ![image](../../_static/multimedia/working-with/animations/exponential-in-out.png) ![image](../../_static/multimedia/working-with/animations/exponential-in-out.gif)  |
-|
 
 **Linear** |   |   |
-|
 
 Ease in, Ease out, Ease in out |   |   |
-|  ![image](../../_static/multimedia/working-with/animations/linear.png) ![image](../../_static/multimedia/working-with/animations/linear.gif)  |   |   |
-|
 
 **Power** |   |   |
-|
 
 Ease in |
 
 Ease out |
 
 Ease in out |
-|  ![image](../../_static/multimedia/working-with/animations/power-in.png) ![image](../../_static/multimedia/working-with/animations/power-in.gif)  |   ![image](../../_static/multimedia/working-with/animations/power-out.png) ![image](../../_static/multimedia/working-with/animations/power-out.gif)  |   ![image](../../_static/multimedia/working-with/animations/power-in-out.png) ![image](../../_static/multimedia/working-with/animations/power-in-out.gif)  |
-|
 
 **Quadratic** |   |   |
-|
 
 Ease in |
 
 Ease out |
 
 Ease in out |
-|  ![image](../../_static/multimedia/working-with/animations/quadratic-in.png) ![image](../../_static/multimedia/working-with/animations/quadratic-in.gif)  |   ![image](../../_static/multimedia/working-with/animations/quadratic-out.png) ![image](../../_static/multimedia/working-with/animations/quadratic-out.gif)  |   ![image](../../_static/multimedia/working-with/animations/quadratic-in-out.png) ![image](../../_static/multimedia/working-with/animations/quadratic-in-out.gif)  |
-|
 
 **Quartic** |   |   |
-|
 
 Ease in |
 
 Ease out |
 
 Ease in out |
-|  ![image](../../_static/multimedia/working-with/animations/quartic-in.png) ![image](../../_static/multimedia/working-with/animations/quartic-in.gif)  |   ![image](../../_static/multimedia/working-with/animations/quartic-out.png) ![image](../../_static/multimedia/working-with/animations/quartic-out.gif)  |   ![image](../../_static/multimedia/working-with/animations/quartic-in-out.png) ![image](../../_static/multimedia/working-with/animations/quartic-in-out.gif)  |
-|
 
 **Quintic** |   |   |
-|
 
 Ease in |
 
 Ease out |
 
 Ease in out |
-|  ![image](../../_static/multimedia/working-with/animations/quintic-in.png) ![image](../../_static/multimedia/working-with/animations/quintic-in.gif)  |   ![image](../../_static/multimedia/working-with/animations/quintic-out.png) ![image](../../_static/multimedia/working-with/animations/quintic-out.gif)  |   ![image](../../_static/multimedia/working-with/animations/quintic-in-out.png) ![image](../../_static/multimedia/working-with/animations/quintic-in-out.gif)  |
-|
 
 **Sine** |   |   |
-|
 
 Ease in |
 
 Ease out |
 
 Ease in out |
-|  ![image](../../_static/multimedia/working-with/animations/sine-in.png) ![image](../../_static/multimedia/working-with/animations/sine-in.gif)  |   ![image](../../_static/multimedia/working-with/animations/sine-out.png) ![image](../../_static/multimedia/working-with/animations/sine-out.gif)  |   ![image](../../_static/multimedia/working-with/animations/sine-in-out.png) ![image](../../_static/multimedia/working-with/animations/sine-in-out.gif)  |
-|
 
 **Smoother step** |   |   |
-|
 
 Ease in, Ease out |
 
 Ease in out |   |
-|  ![image](../../_static/multimedia/working-with/animations/smoother-step-in.png) ![image](../../_static/multimedia/working-with/animations/smoother-step-in.gif)  |   ![image](../../_static/multimedia/working-with/animations/smoother-step-in-out.png) ![image](../../_static/multimedia/working-with/animations/smoother-step-in-out.gif)  |   |
-|
 
 **Smooth step** |   |   |
-|
 
 Ease in, Ease out |
 
 Ease in out |   |
-|  ![image](../../_static/multimedia/working-with/animations/smooth-step-in.png) ![image](../../_static/multimedia/working-with/animations/smooth-step-in.gif)  |   ![image](../../_static/multimedia/working-with/animations/smooth-step-in-out.png) ![image](../../_static/multimedia/working-with/animations/smooth-step-in-out.gif)  |   |
-|
 
 **Step** |   |   |
-|
 
 Ease in, Ease out |
 
 Ease in out |   |
-|  ![image](../../_static/multimedia/working-with/animations/step-in.png) ![image](../../_static/multimedia/working-with/animations/step-in.gif)  |   ![image](../../_static/multimedia/working-with/animations/step-out.png) ![image](../../_static/multimedia/working-with/animations/step-out.gif)  |   ![image](../../_static/multimedia/working-with/animations/step-in-out.png) ![image](../../_static/multimedia/working-with/animations/step-in-out.gif)  |
   - Easing Mode to define how to apply the easing function to the interpolation:
 
     - Ease in applies the easing function as it is.

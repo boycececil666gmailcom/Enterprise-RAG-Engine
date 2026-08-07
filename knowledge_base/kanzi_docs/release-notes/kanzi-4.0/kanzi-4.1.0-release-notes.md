@@ -279,37 +279,30 @@ Profiling is off by default. To enable it, go to Edit > User Preferences > Advan
 - Generate Shadowmap node has new properties for configuring directional projection.
 - Material properties on Prism nodes now provide an Override value from Viewport button that allows each Viewport that uses the Prism graph to override the property value independently.
 - Renamed the display names of the Color Grading Prism node properties to avoid clashing with Shadow Effect 2D node properties:
-|
 
 Previous name |
 
 New name |
-|
 
 Highlight Color |
 
 Grading Color Highlight |
-|
 
 Highlight Range |
 
 Grading Highlight Range |
-|
 
 Midtone Color |
 
 Grading Color Midtone |
-|
 
 Shadow Color |
 
 Grading Color Shadow |
-|
 
 Shadow Range |
 
 Grading Shadow Range |
-|
 
 Hue Saturation Value |
 

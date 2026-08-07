@@ -44,34 +44,24 @@ Each description includes:
 - The equations that Kanzi uses to compute the result color (\(C_{out}\)) and alpha (\(Î±_{out}\)) of the composition of the source (\(src\)) and destination (\(dst\)).
 - Visualization of how the blend mode operates on overlapping source and destination images with opaque (left) or partially transparent (right) content:
 
-|  |   |
-
 Opaque |
 
 Partially transparent |
-|  |
 
 Destination (\(dst\)) |    |    |
-|  |
 
 Source (\(src\)) |    |    |
 #### Alpha: Premultiplied
-
-|
 
 Expects premultiplied alpha RGBA in the source pixels, and uses the alpha of the source pixels to blend the source pixels on top of the destination pixels.
 
 This mode is the default and recommended mode for alpha blending, and equivalent to the Porter-Duff **Source Over** mode.   \[\begin{split}&C_{out} = C_{src} + (1 - Î±_{src}) * C_{dst} \\ &Î±_{out} = Î±_{src} + (1 - Î±_{src}) * Î±_{dst}\end{split}\]   |    |    |
 #### Additive
 
-|
-
 Adds the source pixels to the destination pixels.
 
 Use this mode for effects where you want a layer to add color, but not reduce the color of the underlying layer.   \[\begin{split}&C_{out} = C_{src} + C_{dst} \\ &Î±_{out} = Î±_{src} + Î±_{dst}\end{split}\]   |    |    |
 #### Multiply
-
-|
 
 Multiplies the source and destination pixels.
 
@@ -79,8 +69,6 @@ This mode is the opposite of the Screen mode.
 
 For example, you can use this mode to create a partially transparent overlay that is darker than its backdrop. See Using color blending to create an overlay.   \[\begin{split}&C_{out} = C_{dst} * C_{src} \\ &Î±_{out} = Î±_{dst} * Î±_{src}\end{split}\]   |    |    |
 #### Screen
-
-|
 
 Adds the source and destination pixels and subtracts from the result the product of the source and destination.
 
@@ -101,8 +89,6 @@ Legacy mode. For non-premultiplied input use the Alpha: Mixed mode instead.
 
 The Alpha: Non-premultiplied mode expects non-premultiplied alpha RGBA in the source pixels, and blends the source pixels with the destination pixels. Note that this results in an incorrect alpha channel in the destination framebuffer. You cannot use this mode when rendering to a texture which is later blended as a foreground.
 #### Alpha: Mixed
-
-|
 
 Expects non-premultiplied alpha RGBA in the source pixels, and blends the source pixels with the destination pixels.
 
@@ -127,71 +113,47 @@ Each description includes:
 - The equations that Kanzi uses to compute the result color (\(C_{out}\)) and alpha (\(Î±_{out}\)) of the composition of the source (\(src\)) and destination (\(dst\)).
 - Visualization of how the blend mode operates on overlapping source and destination images with opaque (left) or partially transparent (right) content:
 
-|  |   |
-
 Opaque |
 
 Partially transparent |
-|  |
 
 Destination (\(dst\)) |    |    |
-|  |
 
 Source (\(src\)) |    |    |
 #### Opaque
-
-|
 
 Replaces the destination pixels with the source pixels.
 
 This mode is equivalent to the Porter-Duff **Source** mode.   \[\begin{split}&C_{out} = C_{src} \\ &Î±_{out} = Î±_{src}\end{split}\]   |    |    |
 #### Clear
 
-|
-
 Sets the destination pixels to transparent black.   \[\begin{split}&C_{out} = 0 \\ &Î±_{out} = 0\end{split}\]   |    |    |
 #### Exclusive Or
-
-|
 
 Draws the non-overlapping source and destination pixels. In the overlapping source and destination pixels reduces the source alpha by the inverse of the destination alpha, and the destination alpha by the inverse of the source alpha, then merges the pixels.   \[\begin{split}&C_{out} = (1 - Î±_{dst}) * C_{src} + (1 - Î±_{src}) * C_{dst} \\ &Î±_{out} = (1 - Î±_{dst}) * Î±_{src} + (1 - Î±_{src}) * Î±_{dst}\end{split}\]   |    |    |
 #### Source Atop
 
-|
-
 Discards those source pixels that do not cover destination pixels, and draws the rest of the source pixels over destination pixels.   \[\begin{split}&C_{out} = Î±_{dst} * C_{src} + (1 - Î±_{src}) * C_{dst} \\ &Î±_{out} = Î±_{dst}\end{split}\]   |    |    |
 #### Source In
-
-|
 
 Draws those source pixels that cover destination pixels, and discards all destination pixels.   \[\begin{split}&C_{out} = Î±_{dst} * C_{src} \\ &Î±_{out} = Î±_{dst} * Î±_{src}\end{split}\]   |    |    |
 #### Source Out
 
-|
-
 Draws the source pixels with alpha reduced by the inverse of the destination alpha, and discards all destination pixels.   \[\begin{split}&C_{out} = (1 - Î±_{dst}) * C_{src} \\ &Î±_{out} = (1 - Î±_{dst}) * Î±_{src}\end{split}\]   |    |    |
 #### Destination Atop
 
-|
-
 Discards those destination pixels that are not covered by source pixels, and draws the rest of the destination pixels over source pixels.   \[\begin{split}&C_{out} = Î±_{src} * C_{dst} + (1 - Î±_{dst}) * C_{src} \\ &Î±_{out} = Î±_{src}\end{split}\]   |    |    |
 #### Destination In
-
-|
 
 Draws only those destination pixels that intersect with the source pixels, and discards all source pixels.
 
 You can use this blend mode to implement a mask effect. See Using alpha compositing to create a mask effect.   \[\begin{split}&C_{out} = Î±_{src} * C_{dst} \\ &Î±_{out} = Î±_{src} * Î±_{dst}\end{split}\]   |    |    |
 #### Destination Out
 
-|
-
 Draws the destination pixels with alpha reduced by the inverse of the source alpha, and discards all source pixels.
 
 You can use this blend mode to implement an inverse mask effect.   \[\begin{split}&C_{out} = (1 - Î±_{src}) * C_{dst} \\ &Î±_{out} = (1 - Î±_{src}) * Î±_{dst}\end{split}\]   |    |    |
 #### Destination Over
-
-|
 
 Draws the destination pixels over the source pixels.   \[\begin{split}&C_{out} = (1 - Î±_{dst}) * C_{src} + C_{dst} \\ &Î±_{out} = (1 - Î±_{dst}) * Î±_{src} + Î±_{dst}\end{split}\]   |    |    |
 ### Advanced color blending modes
@@ -205,49 +167,32 @@ Each description includes:
 All advanced color blending modes use this equation to compute the result alpha:   \[Î±_{out} = Î±_{src} + (1 - Î±_{src}) * Î±_{dst}\]
 - Visualization of how the blend mode operates on these overlapping source and destination images:
 
-|  |
-
 Destination (\(dst\)) |    |    |
-|  |
 
 Source (\(src\)) |    |    |
 #### Multiply (advanced khr)
 
-|
-
 Multiplies the source and destination, resulting in a darker color. This mode is otherwise similar to the Multiply mode, but it handles alpha in the same way as the Screen mode.   \[C_{out} = C_{dst} * C_{src}\]   |    |    |
 #### Overlay
-
-|
 
 Combines the Multiply and Screen modes. Where the destination is light, the source becomes lighter, and where the destination is dark, the source becomes darker. This mode preserves the highlights and shadows in the destination. |    |    |       \[\begin{split}&C_{out} = \begin{cases} 2 * C_{src} * C_{dst} & \text{if } C_{dst} <= 0.5\\ 1 - 2 * (1 - C_{src}) * (1 - C_{dst}) & \text{otherwise} \end{cases}\end{split}\]
 #### Darken
 
-|
-
 Compares the colors of the destination and source and selects the darker one.   \[C_{out} = min(C_{dst}, C_{src})\]   |    |    |
 #### Lighten
 
-|
-
 Compares the colors of the destination and source and selects the lighter one.   \[C_{out} = max(C_{dst}, C_{src})\]   |    |    |
 #### Color Burn
-
-|
 
 Darkens the destination to reflect the color of the source, producing a result with higher contrast, saturated mid-tones, and reduced highlights. White source color produces no change.
 
 This mode is the opposite of the Color Dodge mode.  |    |    |       \[\begin{split}&C_{out} = \begin{cases} 1 & \text{if } C_{dst} >= 1\\ 1 - min(1, \frac{1 - C_{dst}}{C_{src}}) & \text{if } C_{dst} < 1 \text{ and } C_{src} > 0\\ 0 & \text{if } C_{dst} < 1 \text{ and } C_{src} <= 0 \end{cases}\end{split}\]
 #### Color Dodge
 
-|
-
 Lightens the destination to reflect the color of the source, producing a result with lower contrast, saturated mid-tones, and blown highlights. Black source color produces no change.
 
 This mode is the opposite of the Color Burn mode.  |    |    |       \[\begin{split}&C_{out} = \begin{cases} 0 & \text{if } C_{dst} <= 0\\ min(1, \frac{C_{dst}}{1 - C_{src}}) & \text{if } C_{dst} > 0 \text{ and } C_{src} < 1\\ 1 & \text{if } C_{dst} < 0 \text{ and } C_{src} >= 1 \end{cases}\end{split}\]
 #### Hard Light
-
-|
 
 Multiplies or screens the colors:
 
@@ -257,8 +202,6 @@ Multiplies or screens the colors:
 Black source color produces black and white source color produces white.  |    |    |       \[\begin{split}&C_{out} = \begin{cases} 2 * C_{src} * C_{dst} & \text{if } C_{src} <= 0.5\\ 1 - 2 * (1 - C_{src}) * (1 - C_{dst}) & \text{otherwise} \end{cases}\end{split}\]
 #### Soft Light
 
-|
-
 Darkens or lightens the colors:
 
 - A source color lighter than 50% gray lightens the destination as if dodging it.
@@ -267,47 +210,31 @@ Darkens or lightens the colors:
 The result is softer than with the Overlay mode. Black or white source color produces a distinctly darker or lighter result, but not pure black or white.  |    |    |       \[\begin{split}&C_{out} = \begin{cases} C_{dst} - ( 1 - 2 * C_{src}) * C_{dst} * (1 - C_{dst}) & \text{if } C_{src} <= 0.5\\ C_{dst} + (2 * C_{src} - 1) * C_{dst} * ((16 * C_{dst} - 12) * C_{dst} + 3) & \text{if } C_{src} > 0.5 \text{ and } C_{dst} <= 0.25\\ C_{dst} + (2 * C_{src} - 1) * (\sqrt{C_{dst}} - C_{dst}) & \text{if } C_{src} > 0.5 \text{ and } C_{dst} > 0.25 \end{cases}\end{split}\]
 #### Difference
 
-|
-
 Subtracts either the source color from the destination color or the other way around, depending on which one is brighter. White source color inverts the destination color. Black source color produces no change.   \[C_{out} = abs(C_{dst} - C_{src})\]   |    |    |
 #### Exclusion
 
-|
-
 Creates an effect that is similar to Difference but lower in contrast. White source color inverts the destination color. Black source color produces no change.   \[C_{out} = C_{src} + C_{dst} - 2 * C_{src} * C_{dst}\]   |    |    |
 #### HSL Hue
-
-|
 
 Uses:
 
 - Hue of the source
 - Luminosity and saturation of the destination
-  |    |    |
 #### HSL Saturation
-
-|
 
 Uses:
 
 - Saturation of the source
 - Hue and luminosity of the destination
-  |    |    |
 #### HSL Color
-
-|
 
 Uses:
 
 - Hue and saturation of the source
 - Luminosity of the destination
-  |    |    |
 #### HSL Luminosity
-
-|
 
 Uses:
 
 - Luminosity of the source
 - Hue and saturation of the destination
-  |    |    |

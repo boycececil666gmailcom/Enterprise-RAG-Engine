@@ -39,19 +39,14 @@ The Activity Browser shows the relationship between Activity Host and Activity n
 
 Repeat the previous step to create Settings and Media Activities.
 **Tip:** To pan and zoom in the Activity Browser window:
-|
 Action |
 Shortcut |
-|
 Pan |
 - Click and drag the middle mouse button.
 - Press the Space key, and click and drag the left mouse button.
-|
-|
 Zoom |
 - Scroll the mouse wheel.
 - Press the Shift and Alt keys, and click and drag the left mouse button.
-|
 
 ## Add content to Activities
 

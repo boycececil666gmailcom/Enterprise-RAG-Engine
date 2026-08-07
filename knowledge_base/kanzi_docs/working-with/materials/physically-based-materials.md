@@ -52,32 +52,25 @@ To enable alpha masking, set the value of KANZI_SHADER_USE_ALPHA_CUTOFF to 1.
 This way you expose to the material the Alpha Cutoff property that sets the threshold for alpha cutting. Kanzi discards fragments whose alpha value is less than the threshold.
 
 This table lists the settings for different alpha modes.
-|
 
 Alpha mode |
 
 Settings |
-|
 
 Opaque |
 
 - KANZI_SHADER_USE_ALPHA to 0
 - KANZI_SHADER_USE_ALPHA_CUTOFF to 0
-  |
-|
 
 Blend |
 
 - KANZI_SHADER_USE_ALPHA to 1
 - KANZI_SHADER_USE_ALPHA_CUTOFF to 0
-  |
-|
 
 Mask |
 
 - KANZI_SHADER_USE_ALPHA to 0
 - KANZI_SHADER_USE_ALPHA_CUTOFF to 1
-  |
 ## Vertex color
 
 Each vertex in a mesh can optionally store a color value.

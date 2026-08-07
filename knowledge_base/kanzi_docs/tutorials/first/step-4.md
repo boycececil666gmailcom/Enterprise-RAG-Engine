@@ -84,31 +84,24 @@ Orbit Camera lets you move around:
   - The node that you set with the Constraints > Look At property of the camera.
 
 To move with the orbit camera, use these controls:
-|
 
 Control |
 
 Description |
-|
 
 Click and drag the left mouse button. |
 
 Rotate |
-|
 
   - Click and drag the middle mouse button.
   - Press the Space key, and click and drag the left mouse button.
-  |
 
 Pan |
-|
 
   - Scroll the mouse wheel.
   - Press the Shift and Alt keys, and click and drag the left mouse button.
-  |
 
 Zoom |
-|
 
 Hold down Alt and click the left mouse button. |
 

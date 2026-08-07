@@ -10,63 +10,54 @@ The Kanzi API MCP server connects your AI assistant to the Kanzi API reference d
 The Kanzi API MCP server prevents the AI assistant from hallucinating API signatures. Instead of guessing, the assistant retrieves verified API information directly from the server.
 
 The Kanzi API MCP server supports these API sets:
-|
 
 API set |
 
 Language |
 
 Description |
-|
 
 `kanzi-runtime-api` |
 
 C++ |
 
 Kanzi Engine core API |
-|
 
 `kanzi-java-api` |
 
 Java |
 
 Kanzi Engine Java bindings |
-|
 
 `kanzi-droidfw-api` |
 
 Java |
 
 Kanzi Android Framework API |
-|
 
 `kanzi-appfw-android-api` |
 
 Java |
 
 Kanzi Android App Framework API |
-|
 
 `kanzi-studio-plugin-api` |
 
 C# |
 
 Kanzi Studio Plugin API |
-|
 
 `kanzi-localization-api` |
 
 C# |
 
 Kanzi Localization Plugin API |
-|
 
 `kanzi-lua-api` |
 
 Lua |
 
 Kanzi Engine Lua API |
-|
 
 `kanzi-rust-api` |
 
@@ -261,12 +252,10 @@ When you connect the Kanzi API MCP server to your AI assistant, the assistant ga
 ### list_apis
 
 Lists available Kanzi versions, API sets, and the number of records in each. Shows which version is currently active and what other versions are available.
-|
 
 **Parameters** |
 
 None. |
-|
 
 **Examples** |
 
@@ -275,19 +264,15 @@ None. |
 list_apis()
 
 ```
-   |
 ### set_kanzi_version
 
 Switches to a different Kanzi version for all subsequent queries.
-|
 
 **Parameters** |
-|
 
 `version` (required) |
 
 Kanzi version string. For example, `3.9.15` or `4.0.0`. |      |
-|
 
 **Examples** |
 
@@ -302,39 +287,31 @@ set_kanzi_version(version="3.9.15")
 set_kanzi_version(version="4.0.0")
 
 ```
-   |
 ### search_kanzi_api
 
 Searches Kanzi API documentation by keyword. Use this tool to find Kanzi classes, methods, properties, and types.
-|
 
 **Parameters** |
-|
 
 `query` (required) |
 
 Search terms. For example, `Node setProperty`, `Button2D click`, or `Matrix4x4 multiply`. |
-|
 
 `n_results` |
 
 Maximum number of results to return. Default: `5`. Maximum: `20`. |
-|
 
 `language` |
 
 Language filter: `cpp`, `java`, `csharp`, `lua`, or `rust`. |
-|
 
 `member_type` |
 
 Member type filter: `class`, `struct`, `interface`, `function`, `variable`, `enum`, or `typedef`. |
-|
 
 `api` |
 
 API set filter. Use `list_apis` to see available sets. |      |
-|
 
 **Examples** |
 
@@ -355,29 +332,23 @@ search_kanzi_api(query="touch input", language="java", n_results=10)
 search_kanzi_api(query="enum", language="cpp", member_type="enum", n_results=20)
 
 ```
-   |
 ### get_method_signature
 
 Returns the exact signature of a Kanzi API member by name. Use this tool when you know the specific API and need its exact parameters, return type, and deprecation status. Also finds overloads through prefix matching.
-|
 
 **Parameters** |
-|
 
 `name` (required) |
 
 API member name, either short (`setProperty`, `Node`) or fully-qualified (`kanzi::Node::setProperty`, `com.rightware.kanzi.Node`). C++ uses `::` separators, Java and C# use `.` separators. |
-|
 
 `language` |
 
 Language filter: `cpp`, `java`, `csharp`, `lua`, or `rust`. |
-|
 
 `api` |
 
 API set filter. Use `list_apis` to see available sets. |      |
-|
 
 **Examples** |
 
@@ -398,29 +369,23 @@ get_method_signature(name="kanzi::Node::addChild", language="cpp")
 get_method_signature(name="setName", language="java")
 
 ```
-   |
 ### get_include
 
 Returns the correct include directive for a Kanzi type: `#include` for C++, `import` for Java, `using` for C#, or `use` for Rust.
-|
 
 **Parameters** |
-|
 
 `name` (required) |
 
 Class or type name. For example, `Node`, `Button2D`, `Matrix4x4`, or `PropertyType`. |
-|
 
 `language` |
 
 Language filter: `cpp`, `java`, `csharp`, `lua`, or `rust`. |
-|
 
 `api` |
 
 API set filter. Use `list_apis` to see available sets. |      |
-|
 
 **Examples** |
 
@@ -435,29 +400,23 @@ get_include(name="Button2D", language="cpp")
 get_include(name="Node", language="java")
 
 ```
-   |
 ### get_class_reference
 
 Returns a complete reference for a Kanzi class with all public methods, properties, and enums. Includes inherited members from parent classes and interfaces.
-|
 
 **Parameters** |
-|
 
 `name` (required) |
 
 Class name with or without namespace. For example, `Node`, `Button2D`, `kanzi::Node`, or `Matrix4x4`. |
-|
 
 `language` |
 
 Language filter: `cpp`, `java`, `csharp`, `lua`, or `rust`. |
-|
 
 `api` |
 
 API set filter. Use `list_apis` to see available sets. |      |
-|
 
 **Examples** |
 
@@ -478,29 +437,23 @@ get_class_reference(name="Button2D", language="java")
 get_class_reference(name="Node", language="lua")
 
 ```
-   |
 ### get_deprecation_warnings
 
 Checks whether a Kanzi API member is deprecated and returns the replacement. Use this tool before using any API that you suspect might be outdated.
-|
 
 **Parameters** |
-|
 
 `name` (required) |
 
 Class or member name to check. For example, `Node`, `setProperty`, or `kanzi::Node::setFocusable`. |
-|
 
 `language` |
 
 Language filter: `cpp`, `java`, `csharp`, `lua`, or `rust`. |
-|
 
 `api` |
 
 API set filter. Use `list_apis` to see available sets. |      |
-|
 
 **Examples** |
 
@@ -515,59 +468,47 @@ get_deprecation_warnings(name="kanzi::Page", language="cpp")
 get_deprecation_warnings(name="kanzi::Node::setFocusable")
 
 ```
-   |
 ### compare_versions
 
 Compares Kanzi APIs between two versions to find what changed. Use this tool for migration guidance. Shows APIs that were added, removed, changed, or deprecated between two versions.
-|
 
 **Parameters** |
-|
 
 `from_version` (required) |
 
 Source version. For example, `3.9.12`. |
-|
 
 `to_version` (required) |
 
 Target version. For example, `4.0.0`. |
-|
 
 `language` |
 
 Language filter: `cpp`, `java`, `csharp`, `lua`, or `rust`. |
-|
 
 `api` |
 
 API set filter. Use `list_apis` to see available sets. |
-|
 
 `member_type` |
 
 Member type filter: `class`, `function`, `variable`, `enum`, `struct`, `interface`, or `typedef`. |
-|
 
 `class_name` |
 
 Scope the comparison to a single class. For example, `Node`. |
-|
 
 `change_type` |
 
 Filter by type of change: `added`, `removed`, `changed`, or `deprecated`. |
-|
 
 `limit` |
 
 Maximum number of results per category. Default: `50`. Maximum: `200`. |
-|
 
 `offset` |
 
 Pagination offset for results. Default: `0`. |      |
-|
 
 **Examples** |
 
@@ -588,29 +529,23 @@ compare_versions(from_version="3.9.13", to_version="4.0.0", class_name="Node", c
 compare_versions(from_version="3.9.9", to_version="3.9.12", language="java", change_type="deprecated")
 
 ```
-   |
 ### get_api_history
 
 Shows how a specific Kanzi API member evolved across all loaded versions. Use this tool to track when an API was introduced, its signature changed, or it was deprecated or removed.
-|
 
 **Parameters** |
-|
 
 `fqn` (required) |
 
 Fully-qualified name. For example, `kanzi::Node::setProperty`. |
-|
 
 `language` |
 
 Language filter: `cpp`, `java`, `csharp`, `lua`, or `rust`. |
-|
 
 `api` |
 
 API set filter. Use `list_apis` to see available sets. |      |
-|
 
 **Examples** |
 
@@ -625,4 +560,3 @@ get_api_history(fqn="kanzi::Node::trySetFocus", language="cpp")
 get_api_history(fqn="kanzi::ResourceManager::acquireResource")
 
 ```
-   |

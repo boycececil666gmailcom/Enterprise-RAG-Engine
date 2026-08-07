@@ -249,57 +249,46 @@ In the Library > Kanzi Engine Plugins, delete the Kanzi Engine plugin and import
 
 The header file has also been moved from `kanzi/core.ui/graphics3d/render_state.hpp` to `kanzi/core.ui/graphics/render_state.hpp`.
 - Removed these functions that have direct replacements:
-|
 
 Removed |
 
 Use instead |
-|
 
 `kanzi::captureCurrentFramebufferToImage` |
 
 `captureFramebuffer` |
-|
 
 `kanzi::captureScreenToImage` |
 
 `captureFramebuffer` |
-|
 
 `kanzi::GPUBuffer::getNativeHandle` |
 
 `GPUBuffer::getHandle` |
-|
 
 `kanzi::Mesh::getNativeVertexBufferHandle` |
 
 `Mesh::getVertexBufferHandle` |
-|
 
 `kanzi::Mesh::getNativeIndexBufferHandle` |
 
 `Mesh::getIndexBufferHandle` |
-|
 
 `kanzi::Mesh::getNativeInstanceBufferHandle` |
 
 `Mesh::getInstanceBufferHandle` |
-|
 
 `kanzi::Renderbuffer::getNativeHandle` |
 
 `Renderbuffer::getHandle` |
-|
 
 `kanzi::Renderer::applyFixedUniforms` |
 
 `RenderState::updateFixedFunctionUniforms` |
-|
 
 `kanzi::Renderer::getMaximumVertexAttributeCount` |
 
 `gfx::getDeviceProperty` (`gfx::DevicePropertyId::MaxVertexAttributes`) |
-|
 
 `kanzi::Renderer::setActiveGLGraphicsOutput` |
 
@@ -450,32 +439,26 @@ You can access `storage` to create a debug visualization structure for the `Node
   - `Renderer::getColorReadType`
 
 - Removed some feature detection methods from the `Renderer`.
-|
 
 Removed |
 
 Use instead |
-|
 
 `kanzi::Renderer::checkGLSupport` |
 
 `gfx::getBackendInformation` or `gfx::isFeatureEnabled` |
-|
 
 `kanzi::Renderer::checkGLESSupport` |
 
 `gfx::getBackendInformation` or `gfx::isFeatureEnabled` |
-|
 
 `kanzi::Renderer::getGlesVersion` |
 
 `gfx::getBackendInformation` |
-|
 
 `kanzi::Renderer::getMultisampleSupport` |
 
 Multisampling is always supported. |
-|
 
 `kanzi::Multisample` |
 
@@ -484,52 +467,41 @@ Different multisample types no longer differentiated. |
 ## Consolidation of index buffers in `kanzi::Mesh`
 
 Consolidated `kanzi::Mesh` index buffers into one in the Mesh object itself, instead of each `kanzi::Mesh::Cluster` having its own. This moves index buffer related API calls to the Mesh itself, or removes the Cluster parameter. Index buffer type and handle parameters were removed from `kanzi::Mesh::CreateInfo::Cluster` constructors, as these now form part of `kanzi::Mesh::CreateInfo` directly. Use `Mesh::getClusterIndexOffset` to get byte offset into the main index buffer, if needed.
-|
 
 Removed |
 
 Use instead |
-|
 
 `kanzi::Mesh::getClusterIndexType` |
 
 `Mesh::getIndexType` |
-|
 
 `kanzi::Mesh::getClusterIndexData` |
 
 `Mesh::getIndexData` |
-|
 
 `kanzi::Mesh::CreateInfo::Cluster::setIndexCount` |
 
 Set `kanzi::Mesh::CreateInfo::Cluster::indexCount` and `kanzi::Mesh::CreateInfo::Cluster::indexOffset` members directly. |
 
 Cluster index parameter removed from following functions:
-|
 
 kanzi::Mesh::mapIndexData |
-|
 
 `Mesh::setIndexData` |
-|
 
 `Mesh::setIndexSubData` |
 ## Changes to the Platform API
 
 - Several entities that refer to OpenGL context APIs have been renamed.
 
-|
-
 Removed |
 
 Use instead |
-|
 
 `kanzi::platform::OpenGLPlatform` |
 
 `kanzi::platform::GlContextApi` |
-|
 
 `kanzi::platform::createDefaultOpenGLPlatform` |
 
@@ -545,90 +517,73 @@ Data-Driven Exclusive Activity Host now supports only Activities created from a 
 ## Changes to List Box
 
 - In the `ListBoxConcept` class, renamed these messages and message arguments:
-|
 
 Kanzi 3.9 |
 
 Kanzi 4.0 |
-|
 
 `ListBoxConcept::ItemHiddenMessage` |
 
 `ListBoxConcept::ItemUnloadedMessage` |
-|
 
 `ListBoxConcept::ItemHiddenMessageArguments` |
 
 `ListBoxConcept::ItemUnloadedMessageArguments` |
-|
 
 `ListBoxConcept::ItemVisibleMessage` |
 
 `ListBoxConcept::ItemLoadedMessage` |
-|
 
 `ListBoxConcept::ItemVisibleMessageArguments` |
 
 `ListBoxConcept::ItemLoadedMessageArguments` |
 - In the `ListBoxConceptImpl` class, renamed these public member functions:
-|
 
 Kanzi 3.9 |
 
 Kanzi 4.0 |
-|
 
 `ListBoxConceptImpl::getAliveRange` |
 
 `ListBoxConceptImpl::getAliveItemsRange` |
-|
 
 `ListBoxConceptImpl::updateVisibleRangeQuiet` |
 
 `ListBoxConceptImpl::updateAliveItemsRangeQuiet` |
-|
 
 `ListBoxConceptImpl::updateVisibleRange` |
 
 `ListBoxConceptImpl::updateAliveItemsRange` |
 - In the `ListBoxTrajectoryPresenter` class, renamed these protected member functions:
-|
 
 Kanzi 3.9 |
 
 Kanzi 4.0 |
-|
 
 `ListBoxTrajectoryPresenter::calculateVisibleRange` |
 
 `ListBoxTrajectoryPresenter::calculateAliveItemsRange` |
-|
 
 `ListBoxTrajectoryPresenter::updateVisibleRange` |
 
 `ListBoxTrajectoryPresenter::updateAliveItemsRange` |
-|
 
 `ListBoxTrajectoryPresenter::extendVisibleItemRangeToItem` |
 
 `ListBoxTrajectoryPresenter::extendAliveItemsRangeToItem` |
 - Renamed these classes and their metaclass names:
-|
 
 Kanzi 3.9 |
 
 Kanzi 4.0 |
-|
 
 `DataSourceListItemGenerator` |
 
 `DataSourceListBoxItemGenerator` |
-|
 
 `DataSourceListItemGenerator2D` |
 
 `DataSourceListBoxItemGenerator2D` |
-|
 
 `DataSourceListItemGenerator3D` |
 

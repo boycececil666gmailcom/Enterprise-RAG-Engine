@@ -11,92 +11,66 @@ Activities use a State Manager to define the transitions for status changes. If 
 To see the animation of a transition, hover over the image of that transition.
 ### Basic
 
-|
-
 Instant |
 
 Plain |
 
 Crossfade |
-|  ![image](../../_static/multimedia/working-with/activity-transitions/instant.png) ![image](../../_static/multimedia/working-with/activity-transitions/instant.gif)  |   ![image](../../_static/multimedia/working-with/activity-transitions/plain.png) ![image](../../_static/multimedia/working-with/activity-transitions/plain.gif)  |   ![image](../../_static/multimedia/working-with/activity-transitions/crossfade.png) ![image](../../_static/multimedia/working-with/activity-transitions/crossfade.gif)  |
-|
 
 Fade Out Fade In |
 
 Flip Horizontal |
 
 Flip Vertical |
-|  ![image](../../_static/multimedia/working-with/activity-transitions/fade-in-out.png) ![image](../../_static/multimedia/working-with/activity-transitions/fade-in-out.gif)  |   ![image](../../_static/multimedia/working-with/activity-transitions/flip-horizontal.png) ![image](../../_static/multimedia/working-with/activity-transitions/flip-horizontal.gif)  |   ![image](../../_static/multimedia/working-with/activity-transitions/flip-vertical.png) ![image](../../_static/multimedia/working-with/activity-transitions/flip-vertical.gif)  |
 ### Hinge
-
-|
 
 Hinge Bottom From Front |
 
 Hinge Bottom From Back |
 
 Hinge Left From Front |
-|  ![image](../../_static/multimedia/working-with/activity-transitions/hinge-bottom-from-front.png) ![image](../../_static/multimedia/working-with/activity-transitions/hinge-bottom-from-front.gif)  |   ![image](../../_static/multimedia/working-with/activity-transitions/hinge-bottom-from-back.png) ![image](../../_static/multimedia/working-with/activity-transitions/hinge-bottom-from-back.gif)  |   ![image](../../_static/multimedia/working-with/activity-transitions/hinge-left-from-front.png) ![image](../../_static/multimedia/working-with/activity-transitions/hinge-left-from-front.gif)  |
-|
 
 Hinge Left From Back |
 
 Hinge Right From Front |
 
 Hinge Right From Back |
-|  ![image](../../_static/multimedia/working-with/activity-transitions/hinge-left-from-back.png) ![image](../../_static/multimedia/working-with/activity-transitions/hinge-left-from-back.gif)  |   ![image](../../_static/multimedia/working-with/activity-transitions/hinge-right-from-front.png) ![image](../../_static/multimedia/working-with/activity-transitions/hinge-right-from-front.gif)  |   ![image](../../_static/multimedia/working-with/activity-transitions/hinge-right-from-back.png) ![image](../../_static/multimedia/working-with/activity-transitions/hinge-right-from-back.gif)  |
-|
 
 Hinge Top From Front |
 
 Hinge Top From Back |   |
-|  ![image](../../_static/multimedia/working-with/activity-transitions/hinge-top-from-front.png) ![image](../../_static/multimedia/working-with/activity-transitions/hinge-top-from-front.gif)  |   ![image](../../_static/multimedia/working-with/activity-transitions/hinge-top-from-back.png) ![image](../../_static/multimedia/working-with/activity-transitions/hinge-top-from-back.gif)  |   |
 ### Rotate center cross fade
-
-|
 
 Rotate Center Cross Fade |
 
 Rotate Center Top Cross Fade |
 
 Rotate Center Bottom Cross Fade |
-|  ![image](../../_static/multimedia/working-with/activity-transitions/rotate-center.png) ![image](../../_static/multimedia/working-with/activity-transitions/rotate-center.gif)  |   ![image](../../_static/multimedia/working-with/activity-transitions/rotate-center-top.png) ![image](../../_static/multimedia/working-with/activity-transitions/rotate-center-top.gif)  |   ![image](../../_static/multimedia/working-with/activity-transitions/rotate-center-bottom-cross-fade.png) ![image](../../_static/multimedia/working-with/activity-transitions/rotate-center-bottom-cross-fade.gif)  |
-|
 
 Rotate Center Left From Bottom Cross Fade |
 
 Rotate Center Left From Top Cross Fade |
 
 Rotate Center Right From Bottom Cross Fade |
-|  ![image](../../_static/multimedia/working-with/activity-transitions/rotate-center-left-bottom.png) ![image](../../_static/multimedia/working-with/activity-transitions/rotate-center-left-bottom.gif)  |   ![image](../../_static/multimedia/working-with/activity-transitions/rotate-center-left-top.png) ![image](../../_static/multimedia/working-with/activity-transitions/rotate-center-left-top.gif)  |   ![image](../../_static/multimedia/working-with/activity-transitions/rotate-center-right-bottom.png) ![image](../../_static/multimedia/working-with/activity-transitions/rotate-center-right-bottom.gif)  |
-|
 
 Rotate Center Right From Top Cross Fade |   |   |
-|  ![image](../../_static/multimedia/working-with/activity-transitions/rotate-center-right-top.png) ![image](../../_static/multimedia/working-with/activity-transitions/rotate-center-right-top.gif)  |   |   |
 ### Rotate corner cross fade
-
-|
 
 Rotate Corner Top Left From Bottom Cross Fade |
 
 Rotate Corner Top Left From Top Cross Fade |
 
 Rotate Corner Bottom Left From Bottom Cross Fade |
-|  ![image](../../_static/multimedia/working-with/activity-transitions/rotate-corner-top-left-bottom.png) ![image](../../_static/multimedia/working-with/activity-transitions/rotate-corner-top-left-bottom.gif)  |   ![image](../../_static/multimedia/working-with/activity-transitions/rotate-corner-top-left-top.png) ![image](../../_static/multimedia/working-with/activity-transitions/rotate-corner-top-left-top.gif)  |   ![image](../../_static/multimedia/working-with/activity-transitions/rotate-corner-bottom-left-bottom.png) ![image](../../_static/multimedia/working-with/activity-transitions/rotate-corner-bottom-left-bottom.gif)  |
-|
 
 Rotate Corner Bottom Left From Top Cross Fade |
 
 Rotate Corner Top Right From Bottom Cross Fade |
 
 Rotate Corner Top Right From Top Cross Fade |
-|  ![image](../../_static/multimedia/working-with/activity-transitions/rotate-corner-bottom-left-top.png) ![image](../../_static/multimedia/working-with/activity-transitions/rotate-corner-bottom-left-top.gif)  |   ![image](../../_static/multimedia/working-with/activity-transitions/rotate-corner-top-right-bottom.png) ![image](../../_static/multimedia/working-with/activity-transitions/rotate-corner-top-right-bottom.gif)  |   ![image](../../_static/multimedia/working-with/activity-transitions/rotate-corner-top-right-top.png) ![image](../../_static/multimedia/working-with/activity-transitions/rotate-corner-top-right-top.gif)  |
-|
 
 Rotate Corner Bottom Right From Bottom Cross Fade |
 
 Rotate Corner Bottom Right From Top Cross Fade |   |
-|  ![image](../../_static/multimedia/working-with/activity-transitions/rotate-corner-bottom-right-bottom.png) ![image](../../_static/multimedia/working-with/activity-transitions/rotate-corner-bottom-right-bottom.gif)  |   ![image](../../_static/multimedia/working-with/activity-transitions/rotate-corner-bottom-right-top.png) ![image](../../_static/multimedia/working-with/activity-transitions/rotate-corner-bottom-right-top.gif)  |   |
 ## Adding a transition between Activities
 
 To add a transition between Activities:

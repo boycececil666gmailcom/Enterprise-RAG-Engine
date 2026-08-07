@@ -29,7 +29,6 @@ You can receive these platform packages on request:
 Contact Rightware sales at [sales@rightware.com](mailto:sales%40rightware.com) to find out more.
 
 This table provides a summary of platforms that Kanzi supports.
-|
 
 Platform |
 
@@ -40,7 +39,6 @@ Graphics backend |
 CPU architecture |
 
 Environment |
-|
 
 Windows |
 
@@ -49,14 +47,11 @@ Windows |
 - WGL and OpenGL ES
 - WGL and OpenGL
 - Vulkan
-  |
 
 - x86
 - x86_64
-  |
 
 Windows |
-|
 
 Linux |
 
@@ -65,21 +60,17 @@ Linux |
 - X11
 - Wayland
 - DRM GBM
-  |
 
 - EGL and OpenGL ES
 - GLX and OpenGL
 - Vulkan
-  |
 
 - armhf
 - x86
 - aarch64
 - x86_64
-  |
 
 POSIX |
-|
 
 Android |
 
@@ -87,16 +78,13 @@ Android |
 
 - EGL and OpenGL ES
 - Vulkan
-  |
 
 - armv7
 - x86
 - aarch64
 - x86_64
-  |
 
 POSIX |
-|
 
 iOS |
 
@@ -107,7 +95,6 @@ Vulkan (MoltenVK) |
 aarch64 |
 
 POSIX |
-|
 
 QNX |
 
@@ -115,16 +102,13 @@ QNX Screen |
 
 - EGL and OpenGL ES
 - Vulkan
-  |
 
 - armv7
 - x86
 - aarch64
 - x86_64
-  |
 
 POSIX |
-|
 
 Integrity |
 
@@ -133,7 +117,6 @@ Integrity |
 - Renesas WM
 - GHS FB
 - GHS GBM
-  |
 
 EGL and OpenGL ES |
 
@@ -141,16 +124,13 @@ EGL and OpenGL ES |
 - x86
 - aarch64
 - x86_64
-  |
 
 POSIX |
-|
 
 Nucleus |
 
 - Vivante fbdev
 - AXSB
-  |
 
 EGL and OpenGL ES |
 

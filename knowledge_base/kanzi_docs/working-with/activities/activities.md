@@ -40,29 +40,24 @@ The Activity and Activity Host nodes inherit from the `ContentLayout2D` and `Con
 Each Activity has the Activity Status property that indicates the state of that Activity. When an Activity becomes active or inactive, the Activity Status property changes and in your application you can react to these changes. When you activate an Activity, its Activity Host instantiates the Activity prefab. When you deactivate an Activity, its Activity Host removes the Activity prefab from the node tree.
 
 The Activity Status property defines these states:
-|
 
 Activity Status |
 
 Description |
-|
 
 Active |
 
 The Activity is active and shows its content. |
-|
 
 Deactivating |
 
 The Activity is transitioning to the Inactive state.
 
 This state is used to synchronize transition animations in a Data-Driven Exclusive Activity Host and Exclusive Activity Host.  |
-|
 
 Inactive |
 
 The Activity is inactive and does not show its content. |
-|
 
 Activating |
 

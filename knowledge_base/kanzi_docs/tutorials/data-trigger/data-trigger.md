@@ -220,15 +220,11 @@ Click Save.
 
 This binding enables the IncomingCall Toggle Button to get and set the value of the Datatrigger.ActivityProperty.IncomingCall property in the Cluster Activity Host. This way the Toggle Button controls the state of the IncomingCall Activity.
 **Tip:** During the application development, use these Data Trigger tools in the Activity Browser side panel:
-|
 Tool |
 Description |
-|   |
 Shows where a Data Trigger is and where the source and target Activitites of that Data Trigger are. |
-|   |
 Simulates the state when you apply a Data Trigger.
 This enables you to see the state of your application when the conditions for a Data Trigger are met without having to change the property values in your application.  |
-|   |
 Shows the selected Data Trigger in the Node Components window. |
 You can now control the activation state of the IncomingCall popup in these ways:
 - In the Preview, click the  Toggle Button.

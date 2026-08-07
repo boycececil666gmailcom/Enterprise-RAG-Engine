@@ -7,8 +7,6 @@ source: https://docs.kanzi.com/4.1.0/en/reference/node-and-resource-reference/re
 
 ## Render Pass available properties
 
-|
-
 Name |
 
 Description |
@@ -16,21 +14,18 @@ Description |
 Inherited |
 
 Exported to Kanzi Engine |
-|
 
 Acceleration Structure |   |
 
 No |
 
 Yes |
-|
 
 Acceleration Structure |   |
 
 No |
 
 Yes |
-|
 
 Addressing Mode |
 
@@ -39,7 +34,6 @@ Sets how Kanzi handles the texture coordinates of the automatically generated co
 No |
 
 Yes |
-|
 
 Alpha To Coverage Enabled |
 
@@ -48,7 +42,6 @@ Sets whether Alpha To Coverage is enabled or not. |
 No |
 
 Yes |
-|
 
 Blend Intensity |
 
@@ -57,7 +50,6 @@ Controls the intensity of materials that are blended on top of an existing color
 No |
 
 Yes |
-|
 
 Blend Mode |
 
@@ -66,7 +58,6 @@ Sets how to combine the color and alpha values of pixels in one layer or image w
 No |
 
 Yes |
-|
 
 Blend Mode |
 
@@ -75,14 +66,12 @@ Overrides the blend mode set in each node that this render pass renders. |
 No |
 
 Yes |
-|
 
 Blue Noise |   |
 
 No |
 
 Yes |
-|
 
 Calculated Camera Matrix |
 
@@ -91,7 +80,6 @@ The camera matrix that the render pass calculates during rendering from the sett
 No |
 
 Yes |
-|
 
 Calculated Camera Position |
 
@@ -100,7 +88,6 @@ The camera position that the render pass calculates during rendering from the se
 No |
 
 Yes |
-|
 
 Calculated Homogeneous View Position |
 
@@ -109,7 +96,6 @@ The homogeneous view position that the render pass calculates during rendering f
 No |
 
 Yes |
-|
 
 Calculated Projection Matrix |
 
@@ -118,7 +104,6 @@ The projection matrix that the render pass calculates during rendering from the 
 No |
 
 Yes |
-|
 
 Calculated Projection Near And Far Planes |
 
@@ -127,7 +112,6 @@ The distances to the camera near and far planes that the render pass calculates 
 No |
 
 Yes |
-|
 
 Camera |
 
@@ -136,7 +120,6 @@ Sets the Camera node that you want to use to render the nodes. To use the defaul
 No |
 
 Yes |
-|
 
 Clear Color 0 |
 
@@ -145,7 +128,6 @@ Sets the color that you want the Clear render pass to use to clear the first (de
 No |
 
 Yes |
-|
 
 Clear Color 1 |
 
@@ -154,7 +136,6 @@ Sets the color that you want the Clear render pass to use to clear the second co
 No |
 
 Yes |
-|
 
 Clear Color 2 |
 
@@ -163,7 +144,6 @@ Sets the color that you want the Clear render pass to use to clear the third col
 No |
 
 Yes |
-|
 
 Clear Color 3 |
 
@@ -172,7 +152,6 @@ Sets the color that you want the Clear render pass to use to clear the fourth co
 No |
 
 Yes |
-|
 
 Clear Depth |
 
@@ -181,7 +160,6 @@ Sets the depth that you want the Clear render pass to use to clear the depth buf
 No |
 
 Yes |
-|
 
 Clear Stencil |
 
@@ -190,7 +168,6 @@ Sets the clear stencil that you want the Clear render pass to use to clear the s
 No |
 
 Yes |
-|
 
 Color Mipmap Material 0 |
 
@@ -199,7 +176,6 @@ Sets the material to use to generate the mipmaps for the first color result text
 No |
 
 Yes |
-|
 
 Color Mipmap Material 1 |
 
@@ -208,7 +184,6 @@ Sets the material to use to generate the mipmaps for the second color result tex
 No |
 
 Yes |
-|
 
 Color Mipmap Material 2 |
 
@@ -217,7 +192,6 @@ Sets the material to use to generate the mipmaps for the third color result text
 No |
 
 Yes |
-|
 
 Color Mipmap Material 3 |
 
@@ -226,7 +200,6 @@ Sets the material to use to generate the mipmaps for the fourth color result tex
 No |
 
 Yes |
-|
 
 Color Write Mode |
 
@@ -235,7 +208,6 @@ Sets which channels the render pass writes to the color buffer. To disable the c
 No |
 
 Yes |
-|
 
 Composition Target |
 
@@ -244,7 +216,6 @@ Sets the target to which you want to render the result of this Cubemap render pa
 No |
 
 Yes |
-|
 
 Composition Target 0 |
 
@@ -253,7 +224,6 @@ Sets the first color target to which you want to render the result of the child 
 No |
 
 Yes |
-|
 
 Composition Target 1 |
 
@@ -262,7 +232,6 @@ Sets the second color target to which you want to render the result of the child
 No |
 
 Yes |
-|
 
 Composition Target 2 |
 
@@ -271,7 +240,6 @@ Sets the third color target to which you want to render the result of the child 
 No |
 
 Yes |
-|
 
 Composition Target 3 |
 
@@ -280,7 +248,6 @@ Sets the fourth color target to which you want to render the result of the child
 No |
 
 Yes |
-|
 
 Cubemap Mipmap Material |
 
@@ -289,7 +256,6 @@ Sets the material to use to generate the mipmaps for the color Result Texture of
 No |
 
 Yes |
-|
 
 Cubemap Texture |
 
@@ -298,7 +264,6 @@ Sets the cubemap texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Cull Mode |
 
@@ -307,7 +272,6 @@ Sets the culling of the triangle faces in the rendered meshes: * **Back** render
 No |
 
 Yes |
-|
 
 Current Mipmap Level |
 
@@ -316,7 +280,6 @@ Reports the mipmap level that Kanzi is generating. Use this property in a materi
 No |
 
 Yes |
-|
 
 Denoiser Mode |
 
@@ -325,7 +288,6 @@ Temporal clamping/rejection mode: 0 - none, 1 - reject using depth min max, 2 - 
 No |
 
 Yes |
-|
 
 Depth Compare Function |
 
@@ -334,7 +296,6 @@ Sets the comparison function to be used with comparison samplers of the Composit
 No |
 
 Yes |
-|
 
 Depth Compare Function |
 
@@ -343,7 +304,6 @@ Sets the comparison function to be used with comparison samplers of the Cubemap 
 No |
 
 Yes |
-|
 
 Depth Format |
 
@@ -352,7 +312,6 @@ Sets the format of the automatically created depth render buffer used for the cu
 No |
 
 Yes |
-|
 
 Depth Mipmap Material |
 
@@ -361,7 +320,6 @@ Sets the material to use to generate the mipmaps for the Result Depth Texture of
 No |
 
 Yes |
-|
 
 Depth Renderbuffer Format |
 
@@ -370,7 +328,6 @@ Sets the format of the automatically created depth renderbuffers. When you do no
 No |
 
 Yes |
-|
 
 Depth Renderbuffer Format |
 
@@ -379,7 +336,6 @@ Sets the format of the automatically created depth renderbuffers. When you do no
 No |
 
 Yes |
-|
 
 Depth Target |
 
@@ -388,7 +344,6 @@ Sets the depth target to which you want to render the result of the child render
 No |
 
 Yes |
-|
 
 Depth Target |
 
@@ -397,7 +352,6 @@ Sets the target for depth rendering for this Cubemap render pass. |
 No |
 
 Yes |
-|
 
 Depth Test Function |
 
@@ -406,14 +360,12 @@ Controls whether the depth test discards a fragment. |
 No |
 
 Yes |
-|
 
 Depth Texture |   |
 
 No |
 
 Yes |
-|
 
 Depth Texture Format |
 
@@ -422,7 +374,6 @@ Sets the format of the automatically created **Result Depth Texture**. |
 No |
 
 Yes |
-|
 
 Depth Write Enabled |
 
@@ -431,7 +382,6 @@ Sets whether the render pass writes to the depth buffer. |
 No |
 
 Yes |
-|
 
 Description |
 
@@ -440,7 +390,6 @@ Add a description of the purpose of this item. To export descriptions to a plain
 No |
 
 No |
-|
 
 Directional Lights |
 
@@ -449,7 +398,6 @@ Use this property to bind the directional light set for rendering. |
 No |
 
 Yes |
-|
 
 Disable KZB Export |
 
@@ -458,7 +406,6 @@ Disables the exporting of the item into KZB. Can be used for, e.g. letting items
 No |
 
 No |
-|
 
 Enabled |
 
@@ -467,7 +414,6 @@ Whether Kanzi executes this render pass and its child render pass tree. |
 No |
 
 Yes |
-|
 
 Engine Factory Name |
 
@@ -476,14 +422,12 @@ The factory name for this composer. Can be used to instantiate composer or rende
 No |
 
 No |
-|
 
 Environment Ambient Texture |   |
 
 No |
 
 Yes |
-|
 
 Face Update Rate |
 
@@ -492,7 +436,6 @@ Sets the number of cubemap faces to update each frame or at the rate that you se
 No |
 
 Yes |
-|
 
 Filter |
 
@@ -501,7 +444,6 @@ Sets the filter that the Node List render pass uses to filter or sort a list of 
 No |
 
 Yes |
-|
 
 Filter Mode |
 
@@ -510,7 +452,6 @@ Sets how Kanzi handles accessing the texture samples of the automatically genera
 No |
 
 Yes |
-|
 
 Filter Mode |
 
@@ -519,7 +460,6 @@ Sets how Kanzi handles accessing the texture samples of the automatically genera
 No |
 
 Yes |
-|
 
 Frustum Culling |
 
@@ -528,42 +468,36 @@ Enable to disable rendering objects that are not inside the view frustum. Trades
 No |
 
 Yes |
-|
 
 GBuffer Depth |   |
 
 No |
 
 Yes |
-|
 
 GBuffer Depth |   |
 
 No |
 
 Yes |
-|
 
 GBuffer Normal |   |
 
 No |
 
 Yes |
-|
 
 GBuffer Normal |   |
 
 No |
 
 Yes |
-|
 
 GBuffer Roughness |   |
 
 No |
 
 Yes |
-|
 
 Height |
 
@@ -572,21 +506,18 @@ Sets the absolute height for the automatically created composition target textur
 No |
 
 Yes |
-|
 
 History Certainty Threshold |   |
 
 No |
 
 Yes |
-|
 
 History Depth Texture |   |
 
 No |
 
 Yes |
-|
 
 Input Viewport Area |
 
@@ -597,14 +528,12 @@ To access the Input Viewport Area property fields in a binding, use: * X for the
 No |
 
 Yes |
-|
 
 Light |   |
 
 No |
 
 Yes |
-|
 
 Material |
 
@@ -613,7 +542,6 @@ Sets to the Material that you want a Blit render pass to use to blit one or more
 No |
 
 Yes |
-|
 
 Material |
 
@@ -622,7 +550,6 @@ Sets the material that will be used to render all nodes rendered by this DrawObj
 No |
 
 Yes |
-|
 
 Material |
 
@@ -631,7 +558,6 @@ Sets the material that will have all other Material Setup render pass properties
 No |
 
 Yes |
-|
 
 Material |
 
@@ -640,7 +566,6 @@ Sets the material that will be used to render all nodes rendered by this Raytrac
 No |
 
 Yes |
-|
 
 Material |
 
@@ -649,7 +574,6 @@ Sets the material that will be used to render all nodes rendered by this Raytrac
 No |
 
 Yes |
-|
 
 Material Requirements |
 
@@ -658,14 +582,12 @@ Sets the material requirements required from materials selected for rendering. |
 No |
 
 Yes |
-|
 
 Minimum Unreprojected Shadow |   |
 
 No |
 
 Yes |
-|
 
 Mipmap Mode |
 
@@ -674,7 +596,6 @@ Sets the mipmap mode of the automatically created composition target. To enable 
 No |
 
 Yes |
-|
 
 Mipmap Mode |
 
@@ -683,7 +604,6 @@ Sets the mipmap mode of the automatically created composition cubemap target. To
 No |
 
 Yes |
-|
 
 Mipmap Source Texture |
 
@@ -692,7 +612,6 @@ Reports the texture that contains the render target texture for which Kanzi crea
 No |
 
 Yes |
-|
 
 Multisample Level |
 
@@ -701,7 +620,6 @@ Sets the amount of multisample anti-aliasing to apply to the automatically gener
 No |
 
 Yes |
-|
 
 Node List |
 
@@ -710,7 +628,6 @@ Input node list range. Set by a binding from nearest parent node list. |
 No |
 
 Yes |
-|
 
 Object Source |
 
@@ -719,7 +636,6 @@ Sets the object source which collects the nodes that you want to use for ray tra
 No |
 
 Yes |
-|
 
 Object Source |
 
@@ -728,7 +644,6 @@ Sets the object source which collects the nodes that you want to render with thi
 No |
 
 Yes |
-|
 
 Output Acceleration Structure |
 
@@ -737,14 +652,12 @@ Built acceleration structure resource. |
 No |
 
 Yes |
-|
 
 Output Denoised Shadow Mask |   |
 
 No |
 
 Yes |
-|
 
 Output Directional Lights |
 
@@ -753,7 +666,6 @@ Kanzi uses this property to allow binding to directional light set. |
 No |
 
 Yes |
-|
 
 Output Node List |
 
@@ -762,7 +674,6 @@ Output node list range. Set by Node List render pass as result of filtering the 
 No |
 
 Yes |
-|
 
 Output Point Lights |
 
@@ -771,21 +682,18 @@ Kanzi uses this property to allow binding to point light set. |
 No |
 
 Yes |
-|
 
 Output Reflection Texture |   |
 
 No |
 
 Yes |
-|
 
 Output Shadow Mask Texture |   |
 
 No |
 
 Yes |
-|
 
 Output Spot Lights |
 
@@ -794,7 +702,6 @@ Kanzi uses this property to allow binding to spot light set. |
 No |
 
 Yes |
-|
 
 Output Viewport |
 
@@ -803,7 +710,6 @@ Viewport applied by the rendering of the render pass. |
 No |
 
 Yes |
-|
 
 Override Camera |
 
@@ -812,7 +718,6 @@ Sets the Camera node that you want to use to render the nodes to the composition
 No |
 
 Yes |
-|
 
 Pixel Format |
 
@@ -821,7 +726,6 @@ Sets on the GPU the target pixel format of the automatically created composition
 No |
 
 Yes |
-|
 
 Pixel Format 0 |
 
@@ -830,7 +734,6 @@ Sets on the GPU the target pixel format of the first automatically created compo
 No |
 
 Yes |
-|
 
 Pixel Format 1 |
 
@@ -839,7 +742,6 @@ Sets on the GPU the target pixel format of the second automatically created comp
 No |
 
 Yes |
-|
 
 Pixel Format 2 |
 
@@ -848,7 +750,6 @@ Sets on the GPU the target pixel format of the third automatically created compo
 No |
 
 Yes |
-|
 
 Pixel Format 3 |
 
@@ -857,7 +758,6 @@ Sets on the GPU the target pixel format of the fourth automatically created comp
 No |
 
 Yes |
-|
 
 Point Lights |
 
@@ -866,7 +766,6 @@ Use this property to bind the point light set for rendering. |
 No |
 
 Yes |
-|
 
 Polygon Depth Offset |
 
@@ -877,7 +776,6 @@ You can use the offset to render decals on the surfaces of filled polygons. Kanz
 No |
 
 Yes |
-|
 
 Previous Camera Matrix |
 
@@ -886,7 +784,6 @@ Camera matrix from the previous frame, used for velocity buffer calculation. |
 No |
 
 Yes |
-|
 
 Previous Projection Matrix |
 
@@ -895,35 +792,30 @@ Projection matrix from the previous frame, used for velocity buffer calculation.
 No |
 
 Yes |
-|
 
 Ray Maximum Trace Distance |   |
 
 No |
 
 Yes |
-|
 
 Ray Maximum Trace Distance |   |
 
 No |
 
 Yes |
-|
 
 Raytraced Reflection Maximum Roughness |   |
 
 No |
 
 Yes |
-|
 
 Reflection Resolution Scale |   |
 
 No |
 
 Yes |
-|
 
 Render Pass Prefab |
 
@@ -932,14 +824,12 @@ Sets the Render Pass Prefab that this Render Pass View instantiates. |
 No |
 
 Yes |
-|
 
 Reproject Depth Sensitivity |   |
 
 No |
 
 Yes |
-|
 
 Resolution |
 
@@ -948,7 +838,6 @@ Sets the dimensions of the automatically created composition cubemap target text
 No |
 
 Yes |
-|
 
 Resolution Divisor |
 
@@ -957,7 +846,6 @@ Sets the resolution divisor for the automatically created composition target tex
 No |
 
 Yes |
-|
 
 Resolution Multiplier |
 
@@ -966,7 +854,6 @@ Sets the resolution multiplier for the automatically created composition target 
 No |
 
 Yes |
-|
 
 Resolve Immediately |
 
@@ -975,7 +862,6 @@ Whether to resolve multisamples and generate mipmaps for the composition target 
 No |
 
 Yes |
-|
 
 Resolve Immediately |
 
@@ -984,7 +870,6 @@ Whether to generate mipmaps for the composition target texture immediately after
 No |
 
 Yes |
-|
 
 Result Depth Texture |
 
@@ -993,7 +878,6 @@ The depth texture to which the Composition Target render pass renders its conten
 No |
 
 Yes |
-|
 
 Result Depth Texture |
 
@@ -1002,7 +886,6 @@ The cubemap depth texture to which the Cubemap render pass renders its content. 
 No |
 
 Yes |
-|
 
 Result Texture |
 
@@ -1011,7 +894,6 @@ The result cubemap texture that was rendered to by the Cubemap render pass. |
 No |
 
 Yes |
-|
 
 Result Texture 0 |
 
@@ -1020,7 +902,6 @@ The first color texture to which the Composition Target render pass renders its 
 No |
 
 Yes |
-|
 
 Result Texture 1 |
 
@@ -1029,7 +910,6 @@ The second color texture to which the Composition Target render pass renders its
 No |
 
 Yes |
-|
 
 Result Texture 2 |
 
@@ -1038,7 +918,6 @@ The third color texture to which the Composition Target render pass renders its 
 No |
 
 Yes |
-|
 
 Result Texture 3 |
 
@@ -1047,7 +926,6 @@ The fourth color texture to which the Composition Target render pass renders its
 No |
 
 Yes |
-|
 
 Scissor Area |
 
@@ -1056,7 +934,6 @@ Sets the scissor test in the current rendering **Viewport 2D** node. You can def
 No |
 
 Yes |
-|
 
 Scissor Mode |
 
@@ -1065,21 +942,18 @@ Sets the scissor test coordinate mode. |
 No |
 
 Yes |
-|
 
 Shadow Map Resolution Scale |   |
 
 No |
 
 Yes |
-|
 
 Shadow Mask |   |
 
 No |
 
 Yes |
-|
 
 Shadow Projection Fitting Enabled |
 
@@ -1088,7 +962,6 @@ Controls how the directional light shadow projection is calculated Enabling this
 No |
 
 Yes |
-|
 
 Shadow Projection Margin |
 
@@ -1097,7 +970,6 @@ Use to add extra margin by scaling the area of the projection |
 No |
 
 Yes |
-|
 
 Shadow Projection Range |
 
@@ -1106,7 +978,6 @@ Use to limit the projection to a smaller proportional slice (X: near, Y: far) of
 No |
 
 Yes |
-|
 
 Sorting Order |
 
@@ -1115,7 +986,6 @@ Sets the sorting order for render entries. |
 No |
 
 Yes |
-|
 
 Spot Lights |
 
@@ -1124,7 +994,6 @@ Use this property to bind the spot light set for rendering. |
 No |
 
 Yes |
-|
 
 Stencil Fail Operation |
 
@@ -1133,7 +1002,6 @@ Sets the operation that the render pass performs when the stencil test fails. |
 No |
 
 Yes |
-|
 
 Stencil Function Mask |
 
@@ -1142,7 +1010,6 @@ Sets a mask on which the AND operation is executed with both the reference value
 No |
 
 Yes |
-|
 
 Stencil Function Reference Value |
 
@@ -1151,7 +1018,6 @@ Sets the reference value for the stencil test. |
 No |
 
 Yes |
-|
 
 Stencil Pass Depth Fail Operation |
 
@@ -1160,7 +1026,6 @@ Sets the operation that the render pass performs when the stencil test passes, b
 No |
 
 Yes |
-|
 
 Stencil Pass Depth Pass Operation |
 
@@ -1169,7 +1034,6 @@ Sets the operation that the render pass performs when both, the stencil and the 
 No |
 
 Yes |
-|
 
 Stencil Test Function |
 
@@ -1178,7 +1042,6 @@ Controls whether the stencil test discards a fragment. |
 No |
 
 Yes |
-|
 
 Stencil Write Enabled |
 
@@ -1187,7 +1050,6 @@ Sets whether to enable writing to the stencil buffer. |
 No |
 
 Yes |
-|
 
 Texture 0 |
 
@@ -1196,7 +1058,6 @@ Sets the first texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Texture 1 |
 
@@ -1205,7 +1066,6 @@ Sets the second texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Texture 2 |
 
@@ -1214,7 +1074,6 @@ Sets the third texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Texture 3 |
 
@@ -1223,7 +1082,6 @@ Sets the fourth texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Texture 4 |
 
@@ -1232,7 +1090,6 @@ Sets the fifth texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Texture 5 |
 
@@ -1241,7 +1098,6 @@ Sets the sixth texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Texture 6 |
 
@@ -1250,7 +1106,6 @@ Sets the seventh texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Texture 7 |
 
@@ -1259,7 +1114,6 @@ Sets the eighth texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Texture 8 |
 
@@ -1268,7 +1122,6 @@ Sets the ninth texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Texture 9 |
 
@@ -1277,7 +1130,6 @@ Sets the tenth texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Update Rate |
 
@@ -1286,7 +1138,6 @@ Sets the rate at which to render the render pass. To render every frame, set to 
 No |
 
 Yes |
-|
 
 Update Rate Offset |
 
@@ -1295,14 +1146,12 @@ Sets a frame offset to the rendering rate that you set with the Update Rate prop
 No |
 
 Yes |
-|
 
 Velocity Texture |   |
 
 No |
 
 Yes |
-|
 
 Viewport Area |
 
@@ -1311,7 +1160,6 @@ Modifies the current rendering Viewport node. You can define the Viewport in eit
 No |
 
 Yes |
-|
 
 Viewport Mode |
 
@@ -1320,7 +1168,6 @@ Sets the coordinate type for the Viewport node. |
 No |
 
 Yes |
-|
 
 Width |
 
@@ -1331,8 +1178,6 @@ No |
 Yes |
 ## Render Pass messages
 
-|
-
 Name |
 
 Description |
@@ -1340,7 +1185,6 @@ Description |
 Inherited |
 
 Exported to Kanzi Engine |
-|
 
 Activity Host: Activity Prefab Attached |
 
@@ -1349,7 +1193,6 @@ An Activity Host sends this message when it attaches the prefab of the Activity 
 No |
 
 Yes |
-|
 
 Activity Host: Activity Prefab Detached |
 
@@ -1358,7 +1201,6 @@ An Activity Host sends this message when it detaches the prefab of the Activity 
 No |
 
 Yes |
-|
 
 Activity: Activated |
 
@@ -1367,7 +1209,6 @@ An Activity sends this message when it is activated. |
 No |
 
 Yes |
-|
 
 Activity: Activating |
 
@@ -1376,7 +1217,6 @@ An Activity sends this message when it is in the activating state. |
 No |
 
 Yes |
-|
 
 Activity: Deactivated |
 
@@ -1385,7 +1225,6 @@ An Activity sends this message when it is deactivated. |
 No |
 
 Yes |
-|
 
 Activity: Deactivating |
 
@@ -1394,7 +1233,6 @@ An Activity sends this message when it is in the deactivating state. |
 No |
 
 Yes |
-|
 
 Activity: Status Changed |
 
@@ -1403,7 +1241,6 @@ An Activity sends this message when the value of its Activity Status property ch
 No |
 
 Yes |
-|
 
 Animation Player: Completed |
 
@@ -1412,7 +1249,6 @@ Occurs when an Animation Player completes animation playback. |
 No |
 
 Yes |
-|
 
 Animation Player: Started |
 
@@ -1421,7 +1257,6 @@ Occurs when an Animation Player starts animation playback. |
 No |
 
 Yes |
-|
 
 Animation Player: Stopped |
 
@@ -1430,7 +1265,6 @@ Occurs when an Animation Player stops animation playback. |
 No |
 
 Yes |
-|
 
 Button: Cancel |
 
@@ -1439,7 +1273,6 @@ Occurs when a user lifts their finger outside of a Button that they previously p
 No |
 
 Yes |
-|
 
 Button: Click |
 
@@ -1448,7 +1281,6 @@ Occurs when a user lifts their finger on top of a Button that they previously pr
 No |
 
 Yes |
-|
 
 Button: Down |
 
@@ -1457,7 +1289,6 @@ Occurs when the user presses down the Button. |
 No |
 
 Yes |
-|
 
 Button: Enter |
 
@@ -1466,7 +1297,6 @@ Button: Enter trigger is set off: * When the user presses down the button. * Whe
 No |
 
 Yes |
-|
 
 Button: Leave |
 
@@ -1475,7 +1305,6 @@ Button: Leave trigger is set off: * When the user presses down the button and th
 No |
 
 Yes |
-|
 
 Button: Long Press |
 
@@ -1484,7 +1313,6 @@ Occurs when the user presses down a Button and holds the Button pressed for the 
 No |
 
 Yes |
-|
 
 Click: Begin |
 
@@ -1495,7 +1323,6 @@ You cannot use this trigger with nodes that handle input by default, such as But
 No |
 
 Yes |
-|
 
 Click: Cancel |
 
@@ -1506,7 +1333,6 @@ You cannot use this trigger with nodes that handle input by default, such as But
 No |
 
 Yes |
-|
 
 Click: Click |
 
@@ -1517,7 +1343,6 @@ You cannot use this trigger with nodes that handle input by default, such as But
 No |
 
 Yes |
-|
 
 Click: Enter |
 
@@ -1528,7 +1353,6 @@ You cannot use this trigger with nodes that handle input by default, such as But
 No |
 
 Yes |
-|
 
 Click: Leave |
 
@@ -1539,7 +1363,6 @@ You cannot use this trigger with nodes that handle input by default, such as But
 No |
 
 Yes |
-|
 
 Command: Command |
 
@@ -1548,7 +1371,6 @@ Command message arguments |
 No |
 
 Yes |
-|
 
 Data Trigger |
 
@@ -1557,7 +1379,6 @@ Monitors changes in properties and data source values. Use a Data Trigger to app
 No |
 
 Yes |
-|
 
 Drag and Drop: Drag and Drop Canceled |
 
@@ -1566,7 +1387,6 @@ Occurs when focus moves away from the node during the drag-and-drop gesture. |
 No |
 
 Yes |
-|
 
 Drag and Drop: Drag and Drop Finished |
 
@@ -1575,7 +1395,6 @@ Occurs when the user lifts their finger after starting the drag-and-drop gesture
 No |
 
 Yes |
-|
 
 Drag and Drop: Drag and Drop Moved |
 
@@ -1584,7 +1403,6 @@ Occurs when the user moves their finger after starting the drag-and-drop gesture
 No |
 
 Yes |
-|
 
 Drag and Drop: Drag and Drop Started |
 
@@ -1593,7 +1411,6 @@ Occurs when the user holds their finger for 500ms on the node. |
 No |
 
 Yes |
-|
 
 Focus: About To Gain Focus |
 
@@ -1602,7 +1419,6 @@ Kanzi sends this message before a focusable node receives focus. |
 No |
 
 Yes |
-|
 
 Focus: About To Lose Focus |
 
@@ -1611,7 +1427,6 @@ Kanzi sends this message before the focused node loses focus. |
 No |
 
 Yes |
-|
 
 Focus: Focus Entered Focus Scope |
 
@@ -1620,7 +1435,6 @@ When focus enters a focus scope, Kanzi sends this message to the focus scope nod
 No |
 
 Yes |
-|
 
 Focus: Focus Gained |
 
@@ -1629,7 +1443,6 @@ Kanzi sends this message to the node that received focus. |
 No |
 
 Yes |
-|
 
 Focus: Focus Left Focus Scope |
 
@@ -1638,7 +1451,6 @@ When focus leaves a focus scope, Kanzi sends this message to the focus scope nod
 No |
 
 Yes |
-|
 
 Focus: Focus Lost |
 
@@ -1647,7 +1459,6 @@ Kanzi sends this message to the node that lost focus. |
 No |
 
 Yes |
-|
 
 Focus: Input Outside Overlay |
 
@@ -1656,7 +1467,6 @@ Kanzi sends this message to an overlay focus scope when the application area out
 No |
 
 Yes |
-|
 
 Focus: Overlay Brought To Front |
 
@@ -1665,7 +1475,6 @@ Occurs when an overlay focus scope becomes the foremost overlay scope in the ove
 No |
 
 Yes |
-|
 
 Focus: Overlay Gained Focus |
 
@@ -1674,7 +1483,6 @@ When an overlay scope gains focus, Kanzi sends this message to the overlay scope
 No |
 
 Yes |
-|
 
 Focus: Overlay Lost Focus |
 
@@ -1683,7 +1491,6 @@ When an overlay scope loses focus, Kanzi sends this message to the overlay scope
 No |
 
 Yes |
-|
 
 Focus: Overlay Sent To Back |
 
@@ -1692,7 +1499,6 @@ Occurs when an overlay focus scope is no longer the foremost overlay scope in th
 No |
 
 Yes |
-|
 
 Key Input: Key Canceled |
 
@@ -1701,7 +1507,6 @@ Occurs when Kanzi recognizes a key-canceled gesture. A key-canceled gesture occu
 No |
 
 Yes |
-|
 
 Key Input: Key Pressed |
 
@@ -1710,7 +1515,6 @@ Occurs when Kanzi recognizes a key-pressed gesture. A key-pressed gesture occurs
 No |
 
 Yes |
-|
 
 Key Input: Key Released |
 
@@ -1719,7 +1523,6 @@ Occurs when Kanzi recognizes a key-released gesture. A key-released gesture occu
 No |
 
 Yes |
-|
 
 Key Navigation: Key Navigation Canceled |
 
@@ -1728,7 +1531,6 @@ Occurs when the key-pressed gesture is canceled for the navigation direction. |
 No |
 
 Yes |
-|
 
 Key Navigation: Key Navigation Finished |
 
@@ -1737,7 +1539,6 @@ Occurs when Kanzi recognizes the key-released gesture for the navigation directi
 No |
 
 Yes |
-|
 
 Key Navigation: Key Navigation Started |
 
@@ -1746,7 +1547,6 @@ Occurs when Kanzi recognizes the key-pressed and key repeat gestures for the nav
 No |
 
 Yes |
-|
 
 List Box: Item Loaded |
 
@@ -1755,7 +1555,6 @@ Occurs when an item is loaded to the working memory. To set how many items you w
 No |
 
 Yes |
-|
 
 List Box: Item Selected |
 
@@ -1764,7 +1563,6 @@ Occurs when an item is selected. |
 No |
 
 Yes |
-|
 
 List Box: Item Unloaded |
 
@@ -1773,7 +1571,6 @@ Occurs when an item is unloaded from the working memory. To set how many items y
 No |
 
 Yes |
-|
 
 List Box: Scroll Finished |
 
@@ -1782,7 +1579,6 @@ Occurs when the List Box stops scrolling. |
 No |
 
 Yes |
-|
 
 List Box: Scroll Started |
 
@@ -1791,7 +1587,6 @@ Occurs when the List Box starts to scroll. |
 No |
 
 Yes |
-|
 
 List Box: Scrolled |
 
@@ -1800,7 +1595,6 @@ Occurs when the List Box scrolls. |
 No |
 
 Yes |
-|
 
 List Box: Target Changed |
 
@@ -1809,7 +1603,6 @@ Occurs when List Box gets a new target item. |
 No |
 
 Yes |
-|
 
 List Box: User Scroll Finished |
 
@@ -1818,7 +1611,6 @@ Occurs when the application user stops scrolling the List Box. |
 No |
 
 Yes |
-|
 
 List Box: User Scroll Started |
 
@@ -1827,7 +1619,6 @@ Occurs when the application user starts to scroll the List Box. |
 No |
 
 Yes |
-|
 
 Long Press: Long Press |
 
@@ -1838,7 +1629,6 @@ You cannot use this trigger with nodes that handle input by default, such as But
 No |
 
 Yes |
-|
 
 Long Press: Long Press Cancel |
 
@@ -1849,14 +1639,12 @@ You cannot use this trigger with nodes that handle input by default, such as But
 No |
 
 Yes |
-|
 
 Message Trigger |   |
 
 No |
 
 Yes |
-|
 
 Multi-Click: Intermediate Click |
 
@@ -1869,7 +1657,6 @@ You cannot use this trigger with nodes that handle input by default, such as But
 No |
 
 Yes |
-|
 
 Multi-Click: Multi-Click |
 
@@ -1880,7 +1667,6 @@ You cannot use this trigger with nodes that handle input by default, such as But
 No |
 
 Yes |
-|
 
 Multi-Click: Multi-Click Canceled |
 
@@ -1891,7 +1677,6 @@ You cannot use this trigger with nodes that handle input by default, such as But
 No |
 
 Yes |
-|
 
 On Attached |
 
@@ -1900,7 +1685,6 @@ This trigger is set off when the item is initialized. For example, when you add 
 No |
 
 Yes |
-|
 
 On Property Change |
 
@@ -1909,7 +1693,6 @@ Occurs when a property is changed |
 No |
 
 Yes |
-|
 
 On Timer |
 
@@ -1918,7 +1701,6 @@ Occurs when timer interval is elapsed |
 No |
 
 Yes |
-|
 
 Page (deprecated): Activated (deprecated) |
 
@@ -1927,7 +1709,6 @@ Page has been activated. |
 No |
 
 Yes |
-|
 
 Page (deprecated): Deactivated (deprecated) |
 
@@ -1936,7 +1717,6 @@ Page has been deactivated. |
 No |
 
 Yes |
-|
 
 Page Host (deprecated): Page Navigation Finished (deprecated) |
 
@@ -1945,7 +1725,6 @@ Page host has finished navigation process. |
 No |
 
 Yes |
-|
 
 Page Host (deprecated): Page Navigation Started (deprecated) |
 
@@ -1954,7 +1733,6 @@ Page host has started navigation process. |
 No |
 
 Yes |
-|
 
 Pan: Pan Canceled |
 
@@ -1963,7 +1741,6 @@ Occurs when focus moves away from the node during the pan gesture. |
 No |
 
 Yes |
-|
 
 Pan: Pan Entered |
 
@@ -1972,7 +1749,6 @@ Occurs when the pan gesture enters the node to which the Pan Manipulator is atta
 No |
 
 Yes |
-|
 
 Pan: Pan Finished |
 
@@ -1981,7 +1757,6 @@ Occurs when the user lifts their finger after Kanzi recognizes a pan gesture. |
 No |
 
 Yes |
-|
 
 Pan: Pan Left |
 
@@ -1990,7 +1765,6 @@ Occurs when the pan gesture leaves the node to which the Pan Manipulator is atta
 No |
 
 Yes |
-|
 
 Pan: Pan Moved |
 
@@ -1999,7 +1773,6 @@ Occurs when the user changes the position of their finger and that change exceed
 No |
 
 Yes |
-|
 
 Pan: Pan Started |
 
@@ -2008,7 +1781,6 @@ Occurs when the user presses down their finger on the node. If the user lifts th
 No |
 
 Yes |
-|
 
 Pinch: Pinch Canceled |
 
@@ -2017,7 +1789,6 @@ Occurs when focus moves away from the node during the pinch gesture. |
 No |
 
 Yes |
-|
 
 Pinch: Pinch Finished |
 
@@ -2026,7 +1797,6 @@ Occurs when the user lifts their finger after Kanzi recognizes a pinch gesture. 
 No |
 
 Yes |
-|
 
 Pinch: Pinch Moved |
 
@@ -2035,7 +1805,6 @@ Occurs when the user changes the position of their finger and that change exceed
 No |
 
 Yes |
-|
 
 Pinch: Pinch Started |
 
@@ -2044,7 +1813,6 @@ Occurs when the user presses down their finger. If the user lifts their finger b
 No |
 
 Yes |
-|
 
 Prefab View: Asynchronous Load Completed |
 
@@ -2053,7 +1821,6 @@ Occurs when asynchronous loading of resources from a prefab has been finished. |
 No |
 
 Yes |
-|
 
 Property Target Easing Interpolator: Easing Interpolation Completed |
 
@@ -2062,7 +1829,6 @@ Occurs when Property Target Easing Interpolator completes its interpolation. |
 No |
 
 Yes |
-|
 
 Property Target Interpolator: Interpolation Completed |
 
@@ -2071,7 +1837,6 @@ Occurs when property target interpolator completes interpolation. |
 No |
 
 Yes |
-|
 
 Range: Value Change Finished |
 
@@ -2080,7 +1845,6 @@ Occurs when the range value stops changing. |
 No |
 
 Yes |
-|
 
 Range: Value Change Started |
 
@@ -2089,7 +1853,6 @@ Occurs when the range value starts changing. |
 No |
 
 Yes |
-|
 
 Range: Value Changed |
 
@@ -2098,7 +1861,6 @@ Occurs when the range value has changed. |
 No |
 
 Yes |
-|
 
 Scroll View: Scroll Ended |
 
@@ -2107,7 +1869,6 @@ Occurs when the scroll position of a Scroll View node stops changing. |
 No |
 
 Yes |
-|
 
 Scroll View: Scroll Started |
 
@@ -2116,7 +1877,6 @@ Occurs when the scroll position of a Scroll View node starts changing. |
 No |
 
 Yes |
-|
 
 Scroll View: Scroll Zoomed |
 
@@ -2125,7 +1885,6 @@ Occurs when the zoom level of a Scroll View node changes. |
 No |
 
 Yes |
-|
 
 Scroll View: Scrolled |
 
@@ -2134,7 +1893,6 @@ Occurs when the scroll position of a Scroll View node changes. |
 No |
 
 Yes |
-|
 
 Scroll View: Snap Request |
 
@@ -2143,7 +1901,6 @@ Occurs when a Scroll View node requests snapping target from the hosting compone
 No |
 
 Yes |
-|
 
 Scroll View: User Scroll Ended |
 
@@ -2152,7 +1909,6 @@ Occurs when the user stops scrolling a Scroll View node. |
 No |
 
 Yes |
-|
 
 Scroll View: User Scroll Started |
 
@@ -2161,7 +1917,6 @@ Occurs when the user starts scrolling a Scroll View node. |
 No |
 
 Yes |
-|
 
 State Manager: Entered State |
 
@@ -2170,7 +1925,6 @@ Occurs when a state manager has entered a state. |
 No |
 
 Yes |
-|
 
 State Manager: Left State |
 
@@ -2179,7 +1933,6 @@ Occurs when a state manager has left a state. |
 No |
 
 Yes |
-|
 
 State Manager: Transition Finished |
 
@@ -2188,7 +1941,6 @@ Occurs when a state manager finishes a transition to a state. |
 No |
 
 Yes |
-|
 
 State Manager: Transition Started |
 
@@ -2197,7 +1949,6 @@ Occurs when a state manager begins a transition to a state. |
 No |
 
 Yes |
-|
 
 Text Box: Composition Text Changed |
 
@@ -2206,7 +1957,6 @@ Occurs when the text produced in an Input Method Editor is updated in a Text Box
 No |
 
 Yes |
-|
 
 Text Box: Composition Text Committed |
 
@@ -2215,7 +1965,6 @@ Occurs: * When the text produced in an Input Method Editor is committed to the c
 No |
 
 Yes |
-|
 
 Text Box: Cursor Moved |
 
@@ -2224,7 +1973,6 @@ Occurs when the user moves the cursor in a Text Box node. |
 No |
 
 Yes |
-|
 
 Text Box: Editing Finished |
 
@@ -2233,7 +1981,6 @@ Occurs when a Text Box node leaves the editing state after the user modified the
 No |
 
 Yes |
-|
 
 Text Box: Editing Started |
 
@@ -2242,7 +1989,6 @@ Occurs when the user makes the first modification to the text in a Text Box node
 No |
 
 Yes |
-|
 
 Text Box: Entered Editing State |
 
@@ -2251,7 +1997,6 @@ Occurs when a Text Box node enters the editing state. |
 No |
 
 Yes |
-|
 
 Text Box: Input Method Action |
 
@@ -2260,7 +2005,6 @@ Occurs when the user taps the action button on their on-screen keyboard while ed
 No |
 
 Yes |
-|
 
 Text Box: Input Method Available |
 
@@ -2269,7 +2013,6 @@ Occurs when an input method becomes available to a Text Box node. For example, a
 No |
 
 Yes |
-|
 
 Text Box: Input Method Unavailable |
 
@@ -2278,7 +2021,6 @@ Occurs when the input method that is composing text in a Text Box node becomes u
 No |
 
 Yes |
-|
 
 Text Box: Left Editing State |
 
@@ -2287,7 +2029,6 @@ Occurs when a Text Box node leaves the editing state |
 No |
 
 Yes |
-|
 
 Text Box: Selection Changed |
 
@@ -2296,7 +2037,6 @@ Occurs when the user changes the text selection in a Text Box node. |
 No |
 
 Yes |
-|
 
 Text Box: Selection Cleared |
 
@@ -2305,7 +2045,6 @@ Occurs when the user clears or resets the text selection in a Text Box node. |
 No |
 
 Yes |
-|
 
 Text Box: Selection Started |
 
@@ -2314,7 +2053,6 @@ Occurs when the user starts selecting text in a Text Box node. |
 No |
 
 Yes |
-|
 
 Text Box: Text Changed |
 
@@ -2323,7 +2061,6 @@ Occurs when the user changes the text in a Text Box node. |
 No |
 
 Yes |
-|
 
 Text Box: Text Composition Canceled |
 
@@ -2332,7 +2069,6 @@ Occurs: * When the text composition in a Text Box node is canceled by Input Meth
 No |
 
 Yes |
-|
 
 Toggle Button Group: Toggled |
 
@@ -2341,7 +2077,6 @@ Occurs when the toggle state of a **Toggle Button** node in a **Toggle Button Gr
 No |
 
 Yes |
-|
 
 Toggle Button: State Toggled |
 
@@ -2350,7 +2085,6 @@ Occurs when the toggle state of a Toggle Button changes. |
 No |
 
 Yes |
-|
 
 Toggle Button: Toggled Off |
 
@@ -2359,7 +2093,6 @@ Occurs when a Toggle Button is toggled off. |
 No |
 
 Yes |
-|
 
 Toggle Button: Toggled On |
 

@@ -8,13 +8,10 @@ source: https://docs.kanzi.com/4.1.0/en/working-with/lights/using-lights.html
 Use the light nodes to create sources of light for a Scene in your Kanzi application.
 
 Kanzi has these light node types:
-|
 
 Directional Light emits light only in one direction and is suitable for modeling the sunlight. |    |
-|
 
 Point Light emits light from a specific location uniformly to all directions (360 degrees). |    |
-|
 
 Spot Light emits light from a specific location towards a specified direction in the shape of a cone. |    |
 

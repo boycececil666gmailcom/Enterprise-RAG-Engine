@@ -7,8 +7,6 @@ source: https://docs.kanzi.com/4.1.0/en/reference/node-and-resource-reference/sp
 
 ## Sphere properties
 
-|
-
 Name |
 
 Description |
@@ -16,7 +14,6 @@ Description |
 Inherited |
 
 Exported to Kanzi Engine |
-|
 
 Tags |
 
@@ -25,7 +22,6 @@ List of tags attached to the item |
 No |
 
 No |
-|
 
 Effective Data Context |
 
@@ -34,7 +30,6 @@ The data context in the current node that is resolved from data context properti
 No |
 
 No |
-|
 
 Mesh Material |
 
@@ -43,7 +38,6 @@ The material to be used for rendering the mesh |
 No |
 
 No |
-|
 
 GPU Memory Type |
 
@@ -52,7 +46,6 @@ Determines which kind of GPU memory will be used. |
 No |
 
 No |
-|
 
 Radius |
 
@@ -61,7 +54,6 @@ The radius of the sphere |
 No |
 
 No |
-|
 
 Sphere Type |
 
@@ -70,7 +62,6 @@ Sets the tessellation type of the sphere: * UV Sphere consists of fans of triang
 No |
 
 No |
-|
 
 Subdivisions |
 
@@ -79,7 +70,6 @@ Sets the number of subdivisions to apply on top of the most basic sphere. Each s
 No |
 
 No |
-|
 
 Generate Tangents |
 
@@ -88,7 +78,6 @@ Generate tangents for this primitive |
 No |
 
 No |
-|
 
 Generate Normals |
 
@@ -97,7 +86,6 @@ Generate normals for this primitive |
 No |
 
 No |
-|
 
 Generate Mesh Inside Out |
 
@@ -108,8 +96,6 @@ No |
 No |
 ## Sphere available properties
 
-|
-
 Name |
 
 Description |
@@ -117,7 +103,6 @@ Description |
 Inherited |
 
 Exported to Kanzi Engine |
-|
 
 2D to 3D Projection Scale |
 
@@ -126,7 +111,6 @@ Sets the scale factor to project pixels to 3D size. When scale is 1, then the si
 No |
 
 Yes |
-|
 
 A |
 
@@ -135,7 +119,6 @@ Tonemapping parameter A. |
 No |
 
 Yes |
-|
 
 Active Activity Index |
 
@@ -144,7 +127,6 @@ The index of the active Activity in the Data-Driven Exclusive Activity Host. Aft
 No |
 
 Yes |
-|
 
 Activity Source |
 
@@ -153,7 +135,6 @@ The data object that provides the data for this Activity node. |
 No |
 
 Yes |
-|
 
 Activity Status |
 
@@ -162,7 +143,6 @@ Sets the possible states of the Activity when its Activity Host activates or dea
 No |
 
 Yes |
-|
 
 Activity Template |
 
@@ -171,7 +151,6 @@ If set, the Data-Driven Exclusive Activity Host uses this prefab for Activity no
 No |
 
 Yes |
-|
 
 Actual Layout Depth |
 
@@ -180,7 +159,6 @@ The calculated size of the node in depth direction when used in a layout. |
 No |
 
 Yes |
-|
 
 Actual Layout Height |
 
@@ -189,7 +167,6 @@ The calculated height of the node when used in a layout. |
 No |
 
 Yes |
-|
 
 Actual Layout Width |
 
@@ -198,7 +175,6 @@ The calculated width of the node when used in a layout. |
 No |
 
 Yes |
-|
 
 Alpha Cutoff |
 
@@ -207,7 +183,6 @@ Sets the cutoff threshold for alpha cutting. If the alpha value is less than the
 No |
 
 Yes |
-|
 
 Ambient Color |
 
@@ -216,7 +191,6 @@ Sets the color of the material when lights are not present. Use the Intensity (I
 No |
 
 Yes |
-|
 
 Ambient Occlusion Blur Direction |
 
@@ -225,7 +199,6 @@ Blur direction of the ambient occlusion bilateral blur. |
 No |
 
 Yes |
-|
 
 Ambient Occlusion Focal Length |
 
@@ -234,7 +207,6 @@ HBAO input property for focal length. |
 No |
 
 Yes |
-|
 
 Ambient Occlusion LinMAD |
 
@@ -243,7 +215,6 @@ HBAO input property for LinMAD uniform. |
 No |
 
 Yes |
-|
 
 Ambient Occlusion Radius |
 
@@ -252,7 +223,6 @@ Screen-space ambient occlusion (SSAO) effect radius. Used to calculate the SSAO 
 No |
 
 Yes |
-|
 
 Ambient Occlusion Strength |
 
@@ -261,7 +231,6 @@ Screen-space ambient occlusion (SSAO) strength. Used to calculate the SSAO textu
 No |
 
 Yes |
-|
 
 Ambient Occlusion UV to View A |
 
@@ -270,7 +239,6 @@ HBAO input property for UVToViewA uniform. |
 No |
 
 Yes |
-|
 
 Ambient Occlusion UV to View B |
 
@@ -279,7 +247,6 @@ HBAO input property for UVToViewB uniform. |
 No |
 
 Yes |
-|
 
 Amount |
 
@@ -288,7 +255,6 @@ Sets the chromatic aberration amount. |
 No |
 
 Yes |
-|
 
 Auto Press Interval |
 
@@ -297,7 +263,6 @@ Sets the time in milliseconds after which a button that the user keeps pressed d
 No |
 
 Yes |
-|
 
 B |
 
@@ -306,7 +271,6 @@ Tonemapping parameter B. |
 No |
 
 Yes |
-|
 
 Base Color Factor |
 
@@ -315,7 +279,6 @@ Sets the base color for the material. |
 No |
 
 Yes |
-|
 
 Base Color Texture |
 
@@ -324,7 +287,6 @@ Sets the texture that contains the base color for the material. Use the Base Col
 No |
 
 Yes |
-|
 
 Baseline |
 
@@ -333,7 +295,6 @@ Font baseline in 3D space units. |
 No |
 
 Yes |
-|
 
 Blend Intensity |
 
@@ -342,7 +303,6 @@ Controls the intensity of materials that are blended on top of an existing color
 No |
 
 Yes |
-|
 
 Blend Mode |
 
@@ -351,7 +311,6 @@ Sets how to combine the color and alpha values of pixels in one layer or image w
 No |
 
 Yes |
-|
 
 Bloom Intensity |
 
@@ -360,7 +319,6 @@ Bloom intensity for the material. |
 No |
 
 Yes |
-|
 
 Bloom Intensity Texture |
 
@@ -369,7 +327,6 @@ Sets the bloom intensity texture. |
 No |
 
 Yes |
-|
 
 Bloom Radius |
 
@@ -378,7 +335,6 @@ Bloom radius for the material. |
 No |
 
 Yes |
-|
 
 Blur Direction |
 
@@ -387,7 +343,6 @@ Sets the direction for the blur. |
 No |
 
 Yes |
-|
 
 Blur Radius |
 
@@ -396,7 +351,6 @@ Blur radius for the material. |
 No |
 
 Yes |
-|
 
 Bottom Image |
 
@@ -405,7 +359,6 @@ The image to use in middle of the bottom row. |
 No |
 
 Yes |
-|
 
 Bottom-Left Image |
 
@@ -414,7 +367,6 @@ Image to use in the bottom-left corner. |
 No |
 
 Yes |
-|
 
 Bottom-Right Image |
 
@@ -423,7 +375,6 @@ The image to use in the bottom-right corner. |
 No |
 
 Yes |
-|
 
 BRDF Lookup Table |
 
@@ -432,7 +383,6 @@ Gets the Bidirectional Reflectance Distribution Function (BRDF) lookup table for
 No |
 
 Yes |
-|
 
 Bring Activated Activity To Front |
 
@@ -441,7 +391,6 @@ Sets whether to show the activated Activity in front within its Parallel Activit
 No |
 
 Yes |
-|
 
 Brush Color |
 
@@ -450,7 +399,6 @@ Color for brush. Set alpha to 0 to disable brush. |
 No |
 
 Yes |
-|
 
 Brush Horizontal Tiling |
 
@@ -459,7 +407,6 @@ Horizontal Tiling for the brush. Affects the scale of texture coordinates. |
 No |
 
 Yes |
-|
 
 Brush Modulate Color |
 
@@ -468,7 +415,6 @@ Modulation color for brush. Effects brush rendering that needs color modulation.
 No |
 
 Yes |
-|
 
 Brush Texture |
 
@@ -477,7 +423,6 @@ Texture for brush. |
 No |
 
 Yes |
-|
 
 Brush Vertical Tiling |
 
@@ -486,7 +431,6 @@ Vertical Tiling for the brush. Affects the scale of texture coordinates. |
 No |
 
 Yes |
-|
 
 C |
 
@@ -495,7 +439,6 @@ Tonemapping parameter C. |
 No |
 
 Yes |
-|
 
 Calculated Offset |
 
@@ -504,7 +447,6 @@ Reports the current relative offset of an item in the Grid List Box in proportio
 No |
 
 Yes |
-|
 
 Calculated Offset |
 
@@ -513,7 +455,6 @@ Reports the current offset of an item in a Trajectory Layout in the proportional
 No |
 
 Yes |
-|
 
 Center Image |
 
@@ -522,7 +463,6 @@ The image to use in the center. |
 No |
 
 Yes |
-|
 
 Character Spacing |
 
@@ -531,7 +471,6 @@ Sets the character spacing in pixels. |
 No |
 
 Yes |
-|
 
 Clear Coat Normal Scale |
 
@@ -540,7 +479,6 @@ Sets the clear coat normal scale for the material. Use the scale to set the inte
 No |
 
 Yes |
-|
 
 Clear Coat Normal Texture |
 
@@ -549,7 +487,6 @@ Sets the texture that contains a clear coat normal map for the material. Use the
 No |
 
 Yes |
-|
 
 Clear Coat Roughness Factor |
 
@@ -558,7 +495,6 @@ Sets the roughness of the outer clear coat layer for the material: 0 represents 
 No |
 
 Yes |
-|
 
 Clear Coat Roughness Texture |
 
@@ -567,7 +503,6 @@ Sets the texture that contains a clear coat roughness map for the material. Kanz
 No |
 
 Yes |
-|
 
 Clear Coat Strength Factor |
 
@@ -576,7 +511,6 @@ Sets the clear coat strength for the material: 0 represents a material with no c
 No |
 
 Yes |
-|
 
 Clear Coat Strength Texture |
 
@@ -585,7 +519,6 @@ Sets the texture that contains a clear coat strength map for the material. Kanzi
 No |
 
 Yes |
-|
 
 Clip Children |
 
@@ -594,7 +527,6 @@ Sets whether to clip the child nodes of this node. Kanzi clips the child nodes w
 No |
 
 Yes |
-|
 
 Code Behind Source |
 
@@ -603,7 +535,6 @@ Sets the metaclass name of the code behind class for this node. |
 No |
 
 Yes |
-|
 
 Color Font Material |
 
@@ -612,7 +543,6 @@ Sets the material whose shader is used to render the text containing colored gly
 No |
 
 Yes |
-|
 
 Column |
 
@@ -621,7 +551,6 @@ The column into which grid layout places the item. |
 No |
 
 Yes |
-|
 
 Column Span |
 
@@ -630,7 +559,6 @@ Defines the number of columns an item in a grid layout occupies. |
 No |
 
 Yes |
-|
 
 Command |
 
@@ -639,7 +567,6 @@ The command executed by a UI control |
 No |
 
 Yes |
-|
 
 Constraint In World Coordinates |
 
@@ -648,7 +575,6 @@ Specifies if the object constraining is done in world coordinates (when false, d
 No |
 
 Yes |
-|
 
 Constraint Orientation |
 
@@ -657,7 +583,6 @@ Makes an object node where the property is attached to obtain orientation from t
 No |
 
 Yes |
-|
 
 Constraint Position |
 
@@ -666,7 +591,6 @@ Makes an object node where the property is attached to obtain position from targ
 No |
 
 Yes |
-|
 
 Controller Property |
 
@@ -675,7 +599,6 @@ Sets the property type that the Exclusive Activity Host node uses to switch betw
 No |
 
 Yes |
-|
 
 Cubemap Texture |
 
@@ -684,7 +607,6 @@ Sets the cubemap texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Custom Asset Thumbnail |
 
@@ -693,7 +615,6 @@ When enabled, the asset will have selected image as thumbnail instead of the gen
 No |
 
 No |
-|
 
 Cyclic Focus Navigation |
 
@@ -702,7 +623,6 @@ Sets whether the focus chain navigation within the focus scope is cyclic. When y
 No |
 
 Yes |
-|
 
 D |
 
@@ -711,7 +631,6 @@ Tonemapping parameter D. |
 No |
 
 Yes |
-|
 
 Data Context |
 
@@ -720,7 +639,6 @@ Source of data for this node and its descendants |
 No |
 
 Yes |
-|
 
 Data Source Controller Property Path |
 
@@ -729,7 +647,6 @@ Sets the path in the Data Source object of an Exclusive Activity Host node to a 
 No |
 
 Yes |
-|
 
 Depth Alignment |
 
@@ -738,7 +655,6 @@ The alignment in depth direction the node should use when it resides under a lay
 No |
 
 Yes |
-|
 
 Depth Margin |
 
@@ -749,7 +665,6 @@ To access the Depth Margin property fields in a binding, use: * X for the **Back
 No |
 
 Yes |
-|
 
 Description |
 
@@ -758,7 +673,6 @@ Add a description of the purpose of this item. To export descriptions to a plain
 No |
 
 No |
-|
 
 Detail Base Color Factor |
 
@@ -767,7 +681,6 @@ Sets the detail base color for the material. The detail base color is alpha blen
 No |
 
 Yes |
-|
 
 Detail Base Color Texture |
 
@@ -776,7 +689,6 @@ Sets the detail texture that contains the base color for the material. Use the D
 No |
 
 Yes |
-|
 
 Detail Clear Coat Normal Scale |
 
@@ -785,7 +697,6 @@ Sets the detail clear coat normal scale for the material. Use the scale to set t
 No |
 
 Yes |
-|
 
 Detail Clear Coat Normal Texture |
 
@@ -794,7 +705,6 @@ Sets the detail texture that contains a clear coat normal map for the material. 
 No |
 
 Yes |
-|
 
 Detail Clear Coat Roughness Texture |
 
@@ -803,7 +713,6 @@ Sets the detail texture that contains a clear coat roughness map for the materia
 No |
 
 Yes |
-|
 
 Detail Clear Coat Strength Texture |
 
@@ -812,7 +721,6 @@ Sets the detail texture that contains a clear coat strength map for the material
 No |
 
 Yes |
-|
 
 Detail Diffuse Color Factor |
 
@@ -821,7 +729,6 @@ Sets the detail diffuse color for the material. Kanzi alpha blends the detail di
 No |
 
 Yes |
-|
 
 Detail Diffuse Color Texture |
 
@@ -830,7 +737,6 @@ Sets the detail texture that contains the diffuse color for the material. Use th
 No |
 
 Yes |
-|
 
 Detail Emissive Factor |
 
@@ -839,7 +745,6 @@ Sets the color of the light that is emitted from a detail texture for the materi
 No |
 
 Yes |
-|
 
 Detail Emissive Texture |
 
@@ -848,7 +753,6 @@ Sets the detail texture that contains the light emitted from the material. Use t
 No |
 
 Yes |
-|
 
 Detail Glossiness Texture |
 
@@ -857,7 +761,6 @@ Sets the detail texture that contains a glossiness map for the material. Kanzi r
 No |
 
 Yes |
-|
 
 Detail Metallic Texture |
 
@@ -866,7 +769,6 @@ Sets the detail texture that contains a metallic map for the material. Kanzi rea
 No |
 
 Yes |
-|
 
 Detail Normal Scale |
 
@@ -875,7 +777,6 @@ Sets the detail normal scale for the material. Use the scale to set the intensit
 No |
 
 Yes |
-|
 
 Detail Normal Texture |
 
@@ -884,7 +785,6 @@ Sets the detail texture that contains a normal map for the material. Use the Det
 No |
 
 Yes |
-|
 
 Detail Occlusion Strength |
 
@@ -893,7 +793,6 @@ Sets the detail occlusion strength for the material. Use the strength to set the
 No |
 
 Yes |
-|
 
 Detail Occlusion Texture |
 
@@ -902,7 +801,6 @@ Sets the detail texture that contains an occlusion map for the material. Kanzi r
 No |
 
 Yes |
-|
 
 Detail Roughness Texture |
 
@@ -911,7 +809,6 @@ Sets the detail texture that contains a roughness map for the material. Kanzi re
 No |
 
 Yes |
-|
 
 Detail Specular Color Factor |
 
@@ -920,7 +817,6 @@ Sets the detail specular color for the material. Kanzi alpha blends the detail s
 No |
 
 Yes |
-|
 
 Detail Specular Color Texture |
 
@@ -929,7 +825,6 @@ Sets the detail texture that contains the specular color for the material. Use t
 No |
 
 Yes |
-|
 
 Detail Texture Offset |
 
@@ -938,7 +833,6 @@ Sets the detail texture offset for the material. Kanzi adds this value to the UV
 No |
 
 Yes |
-|
 
 Detail Texture Tiling |
 
@@ -947,7 +841,6 @@ Sets the detail texture tiling factor for the material. Kanzi multiplies this va
 No |
 
 Yes |
-|
 
 Diffuse Color |
 
@@ -956,7 +849,6 @@ Sets the color of the material when it is lit by a light. |
 No |
 
 Yes |
-|
 
 Diffuse Color Factor |
 
@@ -965,7 +857,6 @@ Sets the diffuse color for the material. |
 No |
 
 Yes |
-|
 
 Diffuse Color Texture |
 
@@ -974,7 +865,6 @@ Sets the texture that contains the diffuse color for the material. Use the Diffu
 No |
 
 Yes |
-|
 
 Directional Light View Projection |
 
@@ -983,7 +873,6 @@ The premultiplied projection view matrix of a directional light. |
 No |
 
 Yes |
-|
 
 Directional Shadow Map |
 
@@ -992,7 +881,6 @@ Depth map used to calculate directional shadows. |
 No |
 
 Yes |
-|
 
 Disable KZB Export |
 
@@ -1001,7 +889,6 @@ Disables the exporting of the item into KZB. Can be used for, e.g. letting items
 No |
 
 No |
-|
 
 Dithering Amount |
 
@@ -1010,7 +897,6 @@ Sets the chromatic aberration dithering amount. |
 No |
 
 Yes |
-|
 
 Down On Hover |
 
@@ -1019,7 +905,6 @@ Whether holding a finger on the device screen and moving it over the button tran
 No |
 
 Yes |
-|
 
 Drawn as Bounding Box |
 
@@ -1028,7 +913,6 @@ When enabled the object is drawn its solid bounding box. |
 No |
 
 Yes |
-|
 
 E |
 
@@ -1037,7 +921,6 @@ Tonemapping parameter E. |
 No |
 
 Yes |
-|
 
 Effectively Enabled |
 
@@ -1046,7 +929,6 @@ Indicates whether this node and its ancestor nodes are enabled. Use this propert
 No |
 
 Yes |
-|
 
 Emissive Color |
 
@@ -1055,7 +937,6 @@ Sets the color of the light that is emitted from the material surface. |
 No |
 
 Yes |
-|
 
 Emissive Factor |
 
@@ -1064,7 +945,6 @@ Sets the color of the light that is emitted from the material. Use the Intensity
 No |
 
 Yes |
-|
 
 Emissive Texture |
 
@@ -1073,7 +953,6 @@ Sets the texture that contains the light emitted from the material. Use the Emis
 No |
 
 Yes |
-|
 
 Enabled |
 
@@ -1082,7 +961,6 @@ Whether this node is enabled. When you disable this property in a node, that nod
 No |
 
 Yes |
-|
 
 Environment Ambient Factor |
 
@@ -1091,7 +969,6 @@ Sets the strength of the cubemap texture to use for ambient environment light. U
 No |
 
 Yes |
-|
 
 Environment Ambient Texture |
 
@@ -1100,7 +977,6 @@ Sets the cubemap to use for the ambient environment light for the material. This
 No |
 
 Yes |
-|
 
 Environment Reflection Factor |
 
@@ -1109,7 +985,6 @@ Sets the strength of the cubemap texture to use for specular environment light. 
 No |
 
 Yes |
-|
 
 Environment Reflection Texture |
 
@@ -1118,7 +993,6 @@ Sets the cubemap to use for the specular environment light for the material. Thi
 No |
 
 Yes |
-|
 
 Export in Asset Package |
 
@@ -1127,7 +1001,6 @@ When enabled, this item is exported into asset package if this project is saved 
 No |
 
 No |
-|
 
 Exposure |
 
@@ -1136,7 +1009,6 @@ Sets the exposure compensation for the material. The exposure compensation emula
 No |
 
 Yes |
-|
 
 F |
 
@@ -1145,7 +1017,6 @@ Tonemapping parameter F. |
 No |
 
 Yes |
-|
 
 Face to Camera Mode |
 
@@ -1156,7 +1027,6 @@ By default, the node turns to the Scene default camera. To use a different camer
 No |
 
 Yes |
-|
 
 Face to Camera Target Camera |
 
@@ -1165,7 +1035,6 @@ Sets the camera towards which the 3D node turns when you set the **Face to Camer
 No |
 
 Yes |
-|
 
 Final Transformation |
 
@@ -1174,7 +1043,6 @@ The combined location, orientation and scale of the node and its ancestor nodes.
 No |
 
 Yes |
-|
 
 Fixed Character Width |
 
@@ -1183,7 +1051,6 @@ When set, overrides the font advance widths to make each character take a fixed 
 No |
 
 Yes |
-|
 
 Focus On Press |
 
@@ -1194,7 +1061,6 @@ The descendants of the node where you set this property inherit value of the pro
 No |
 
 Yes |
-|
 
 Focus Order |
 
@@ -1203,7 +1069,6 @@ Sets the focus chain order of the node within the focus scope. |
 No |
 
 Yes |
-|
 
 Focus Scope Type |
 
@@ -1212,7 +1077,6 @@ Sets the type of the focus scope node: * **Group** groups focusable nodes. * **F
 No |
 
 Yes |
-|
 
 Focus State |
 
@@ -1225,7 +1089,6 @@ To observe whether a node is the key focus node, you can use the boolean **Focus
 No |
 
 Yes |
-|
 
 Focusable |
 
@@ -1234,7 +1097,6 @@ Indicates whether the node can receive focus. |
 No |
 
 Yes |
-|
 
 Focused |
 
@@ -1243,7 +1105,6 @@ Indicates whether the node has the key focus. |
 No |
 
 Yes |
-|
 
 Font Color |
 
@@ -1252,7 +1113,6 @@ Sets the color of the text in a 3D text node. |
 No |
 
 Yes |
-|
 
 Font Family |
 
@@ -1261,7 +1121,6 @@ The font family used to render the text. |
 No |
 
 Yes |
-|
 
 Font Hinting Preference |
 
@@ -1270,7 +1129,6 @@ Sets the hinting preference of the font. * **No hinting**: Render text without h
 No |
 
 Yes |
-|
 
 Font Material |
 
@@ -1279,7 +1137,6 @@ Sets the material whose shader is used to render the text. The shader must use t
 No |
 
 Yes |
-|
 
 Font Size |
 
@@ -1288,7 +1145,6 @@ Sets the size of the font in pixels. |
 No |
 
 Yes |
-|
 
 Font Style |
 
@@ -1297,7 +1153,6 @@ Sets the style of the font. |
 No |
 
 Yes |
-|
 
 Font Weight |
 
@@ -1306,7 +1161,6 @@ Sets the weight of the font. |
 No |
 
 Yes |
-|
 
 Fractional Character Width |
 
@@ -1315,7 +1169,6 @@ Sets whether Kanzi uses fractional or rounded character widths to lay out text. 
 No |
 
 Yes |
-|
 
 Frustum Cull Margin |
 
@@ -1324,7 +1177,6 @@ The margin of the frustum cull radius of the node. For example, set the margin w
 No |
 
 Yes |
-|
 
 Global Ambient Color |
 
@@ -1333,7 +1185,6 @@ Sets the color that is multiplied automatically with the Ambient property of the
 No |
 
 Yes |
-|
 
 Glossiness Factor |
 
@@ -1342,7 +1193,6 @@ Sets the glossiness of the material: 0 represents a rough, diffuse surface, and 
 No |
 
 Yes |
-|
 
 Glossiness Texture |
 
@@ -1351,7 +1201,6 @@ Sets the texture that contains a glossiness map for the material. Kanzi reads th
 No |
 
 Yes |
-|
 
 Grading Color Highlight |
 
@@ -1360,7 +1209,6 @@ Sets the color grading highlight color. |
 No |
 
 Yes |
-|
 
 Grading Color Midtone |
 
@@ -1369,7 +1217,6 @@ Sets the color grading midtone color. |
 No |
 
 Yes |
-|
 
 Grading Color Shadow |
 
@@ -1378,7 +1225,6 @@ Sets the color grading shadow color. |
 No |
 
 Yes |
-|
 
 Grading Highlight Range |
 
@@ -1387,7 +1233,6 @@ Sets the luminance range where the highlight color is applied. |
 No |
 
 Yes |
-|
 
 Grading Hue Saturation Value |
 
@@ -1396,7 +1241,6 @@ Sets the HSV adjustment for the input color. |
 No |
 
 Yes |
-|
 
 Grading Shadow Range |
 
@@ -1405,7 +1249,6 @@ Sets the luminance range where the shadow color is applied. |
 No |
 
 Yes |
-|
 
 Hit Testable |
 
@@ -1414,7 +1257,6 @@ When enabled, the node can be hit tested. Enabling Hit Testable for a 2D node en
 No |
 
 Yes |
-|
 
 Hit Testable Container |
 
@@ -1423,7 +1265,6 @@ When enabled, Kanzi uses the layout bounds as geometry for hit testing. |
 No |
 
 Yes |
-|
 
 Hold Interval |
 
@@ -1432,7 +1273,6 @@ Sets the amount of time in milliseconds that the user must hold the button press
 No |
 
 Yes |
-|
 
 Horizontal Alignment |
 
@@ -1441,7 +1281,6 @@ The alignment in horizontal direction the node should use when it resides under 
 No |
 
 Yes |
-|
 
 Horizontal Fit |
 
@@ -1450,7 +1289,6 @@ Whether to horizontally scale the glyphs to make them fit into the **Layout Widt
 No |
 
 Yes |
-|
 
 Horizontal Fit Scale Limits |
 
@@ -1459,7 +1297,6 @@ When the **Horizontal Fit** property is enabled, sets the minimum and maximum sc
 No |
 
 Yes |
-|
 
 Horizontal Margin |
 
@@ -1470,7 +1307,6 @@ To access the Horizontal Margin property fields in a binding, use: * X for the *
 No |
 
 Yes |
-|
 
 Horizontal Padding |
 
@@ -1479,7 +1315,6 @@ Sets the padding spaces between the content and the left and right boundaries of
 No |
 
 Yes |
-|
 
 Hover |
 
@@ -1488,7 +1323,6 @@ Indicates whether a node is the foremost hit testable node under the cursor. |
 No |
 
 Yes |
-|
 
 Index In Group |
 
@@ -1497,7 +1331,6 @@ Sets the index of the Toggle Button in the Toggle Button Group to which that Tog
 No |
 
 Yes |
-|
 
 Inner Distance |
 
@@ -1506,7 +1339,6 @@ Sets the distnace range where the vignette color transition starts. |
 No |
 
 Yes |
-|
 
 Is Down |
 
@@ -1515,7 +1347,6 @@ Indicates whether the button is pressed and in the down state. |
 No |
 
 Yes |
-|
 
 Is Value Changing |
 
@@ -1524,7 +1355,6 @@ Whether the value is currently changing. |
 No |
 
 Yes |
-|
 
 Item Index |
 
@@ -1533,7 +1363,6 @@ Reports the index of the item in the List Box Item Container. |
 No |
 
 Yes |
-|
 
 Keep Alive Behavior |
 
@@ -1542,7 +1371,6 @@ The keep-alive behavior of this resource. Can be used to deny unloading of the r
 No |
 
 No |
-|
 
 Layout Depth |
 
@@ -1551,7 +1379,6 @@ The size of the node in depth direction when used in a layout. Overrides the def
 No |
 
 Yes |
-|
 
 Layout Height |
 
@@ -1560,7 +1387,6 @@ The height of the node when used in a layout. Overrides the default bounds of th
 No |
 
 Yes |
-|
 
 Layout Transformation |
 
@@ -1569,7 +1395,6 @@ The location, orientation and scale of the node relative to its parent node. Lay
 No |
 
 Yes |
-|
 
 Layout Width |
 
@@ -1578,7 +1403,6 @@ The width of the node when used in a layout. Overrides the default bounds of the
 No |
 
 Yes |
-|
 
 Left Image |
 
@@ -1587,7 +1411,6 @@ The image to use in the center-left. |
 No |
 
 Yes |
-|
 
 Line Spacing |
 
@@ -1596,7 +1419,6 @@ Sets the line spacing in multiples of the normal line height of the selected fon
 No |
 
 Yes |
-|
 
 Look At |
 
@@ -1605,7 +1427,6 @@ Makes a node to always face the node set in this property. |
 No |
 
 Yes |
-|
 
 Mask Texture |
 
@@ -1614,7 +1435,6 @@ Sets the texture that masks another texture or color. |
 No |
 
 Yes |
-|
 
 Mask Texture Offset |
 
@@ -1623,7 +1443,6 @@ Sets an offset for mask in materials. |
 No |
 
 Yes |
-|
 
 Mask Texture Tiling |
 
@@ -1632,7 +1451,6 @@ Determines the number of times a mask is presented in a material |
 No |
 
 Yes |
-|
 
 Material |
 
@@ -1641,7 +1459,6 @@ Use this material to override the materials defined in the clusters of the mesh.
 No |
 
 Yes |
-|
 
 Maximum Distance From Curve |
 
@@ -1650,7 +1467,6 @@ The distance from the curve where hit testing succeeds. |
 No |
 
 Yes |
-|
 
 Maximum Value |
 
@@ -1659,7 +1475,6 @@ The maximum value that the range allows. |
 No |
 
 Yes |
-|
 
 Metallic Factor |
 
@@ -1668,7 +1483,6 @@ Sets the metalness of the material: 0 represents a non-metallic or dielectric ob
 No |
 
 Yes |
-|
 
 Metallic Texture |
 
@@ -1677,7 +1491,6 @@ Sets the texture that contains a metallic map for the material. Kanzi reads the 
 No |
 
 Yes |
-|
 
 Minimum Value |
 
@@ -1686,7 +1499,6 @@ The minimum value that the range allows. |
 No |
 
 Yes |
-|
 
 Morph Data Texture |
 
@@ -1695,7 +1507,6 @@ Data texture to use for storing morph data when the are are too many targets to 
 No |
 
 Yes |
-|
 
 Morphing |
 
@@ -1704,7 +1515,6 @@ Add morph weights to Model3D to enable Morphing. |
 No |
 
 Yes |
-|
 
 Node.Path |
 
@@ -1713,7 +1523,6 @@ Full path to the node. |
 No |
 
 Yes |
-|
 
 Normal Scale |
 
@@ -1722,7 +1531,6 @@ Sets the normal scale for the material. Use the scale to set the intensity of th
 No |
 
 Yes |
-|
 
 Normal Texture |
 
@@ -1731,7 +1539,6 @@ Sets the texture that contains a normal map for the material. Use the Normal Sca
 No |
 
 Yes |
-|
 
 Normalized Value |
 
@@ -1740,7 +1547,6 @@ The current value normalized to range [0, 1]. |
 No |
 
 Yes |
-|
 
 Occlusion Render Strength |
 
@@ -1749,7 +1555,6 @@ Sets the SSAO strength for the material. Use the strength to set the intensity o
 No |
 
 Yes |
-|
 
 Occlusion Render Texture |
 
@@ -1758,7 +1563,6 @@ Sets the texture that contains a SSAO computed for the scene. Use the Occlusion 
 No |
 
 Yes |
-|
 
 Occlusion Strength |
 
@@ -1767,7 +1571,6 @@ Sets the occlusion strength for the material. Use the strength to set the intens
 No |
 
 Yes |
-|
 
 Occlusion Texture |
 
@@ -1776,7 +1579,6 @@ Sets the texture that contains an occlusion map for the material. Use the Occlus
 No |
 
 Yes |
-|
 
 Opacity |
 
@@ -1785,7 +1587,6 @@ Opacity of the node. |
 No |
 
 Yes |
-|
 
 Outer Color |
 
@@ -1794,7 +1595,6 @@ Sets the vignette color. |
 No |
 
 Yes |
-|
 
 Outer Distance |
 
@@ -1803,7 +1603,6 @@ Sets the distnace range where the vignette color transition ends. |
 No |
 
 Yes |
-|
 
 Overflow |
 
@@ -1814,7 +1613,6 @@ Kanzi truncates text to fit within the vertical and horizontal limits of the con
 No |
 
 Yes |
-|
 
 Override Material |
 
@@ -1823,7 +1621,6 @@ Sets the override material to use to render the content of the 2D prefab in the 
 No |
 
 Yes |
-|
 
 Planar Reflection Map |
 
@@ -1832,7 +1629,6 @@ Rendered texture for planar reflections. |
 No |
 
 Yes |
-|
 
 Planar Reflection View Projection |
 
@@ -1841,7 +1637,6 @@ The premultiplied projection view matrix for planar reflections. |
 No |
 
 Yes |
-|
 
 Point Shadow Map |
 
@@ -1850,7 +1645,6 @@ Depth cubemap used to calculate point light shadows. |
 No |
 
 Yes |
-|
 
 Point Shadow Near Far |
 
@@ -1859,7 +1653,6 @@ Sets the near & far values used for point shadow calculations. |
 No |
 
 Yes |
-|
 
 Prefab Template |
 
@@ -1868,7 +1661,6 @@ Sets the 2D prefab whose content the Viewport 3D node renders in 3D space. |
 No |
 
 Yes |
-|
 
 Previous Final Transformation |
 
@@ -1877,7 +1669,6 @@ Final transformation (world matrix) from the previous frame, used for velocity b
 No |
 
 Yes |
-|
 
 Remove Side Bearings |
 
@@ -1886,7 +1677,6 @@ Whether to position the leftmost characters of left-aligned text and rightmost c
 No |
 
 Yes |
-|
 
 Render Transformation |
 
@@ -1895,7 +1685,6 @@ The location, orientation, and scale of the node relative to its parent node. Re
 No |
 
 Yes |
-|
 
 Right Image |
 
@@ -1904,7 +1693,6 @@ The image to use in the center-right. |
 No |
 
 Yes |
-|
 
 Roughness Factor |
 
@@ -1913,7 +1701,6 @@ Sets the roughness of the material: 0 represents a smooth, glossy surface, and 1
 No |
 
 Yes |
-|
 
 Roughness Texture |
 
@@ -1922,7 +1709,6 @@ Sets the texture that contains a roughness map for the material. Kanzi reads the
 No |
 
 Yes |
-|
 
 Row |
 
@@ -1931,7 +1717,6 @@ The row into which grid layout places the item. |
 No |
 
 Yes |
-|
 
 Row Span |
 
@@ -1940,7 +1725,6 @@ Defines the number of rows an item in a grid layout occupies. |
 No |
 
 Yes |
-|
 
 Selected |
 
@@ -1949,7 +1733,6 @@ Indicates whether the List Box item held by this List Box Item Container is sele
 No |
 
 Yes |
-|
 
 Selected Item Index |
 
@@ -1958,7 +1741,6 @@ Sets the index of the item that is currently selected in the List Box node. A Li
 No |
 
 Yes |
-|
 
 Show Material Debug Objects |
 
@@ -1967,7 +1749,6 @@ When enabled, Kanzi Studio does not hide material debug objects. |
 No |
 
 No |
-|
 
 Side |
 
@@ -1976,7 +1757,6 @@ The docking side of an item in the dock layout. |
 No |
 
 Yes |
-|
 
 Snap Character To Pixel |
 
@@ -1985,7 +1765,6 @@ Sets whether Kanzi positions characters in 2D rendering to the nearest pixel: * 
 No |
 
 Yes |
-|
 
 Specular Anti-Aliasing Strength |
 
@@ -1994,7 +1773,6 @@ Sets the strength of the specular anti-aliasing effect. Higher value results in 
 No |
 
 Yes |
-|
 
 Specular Anti-Aliasing Threshold |
 
@@ -2003,7 +1781,6 @@ Sets the upper limit for the amount of specular anti-aliasing effect to apply. T
 No |
 
 Yes |
-|
 
 Specular Color |
 
@@ -2012,7 +1789,6 @@ Sets the color of the specular reflection. |
 No |
 
 Yes |
-|
 
 Specular Color Factor |
 
@@ -2021,7 +1797,6 @@ Sets the specular color for the material. |
 No |
 
 Yes |
-|
 
 Specular Color Texture |
 
@@ -2030,7 +1805,6 @@ Sets the texture that contains the specular color for the material. Use the Spec
 No |
 
 Yes |
-|
 
 Specular Exponent |
 
@@ -2039,7 +1813,6 @@ Sets the size of the specular highlight. |
 No |
 
 Yes |
-|
 
 Spot Light View Projection |
 
@@ -2048,7 +1821,6 @@ The premultiplied projection view matrix of a spot light. |
 No |
 
 Yes |
-|
 
 Spot Shadow Map |
 
@@ -2057,7 +1829,6 @@ Depth map used to calculate spot shadows. |
 No |
 
 Yes |
-|
 
 State Manager |
 
@@ -2066,7 +1837,6 @@ Sets the State Manager to the node. |
 No |
 
 Yes |
-|
 
 Step Value |
 
@@ -2075,7 +1845,6 @@ The minimum amount that the value of the range can change at a time. |
 No |
 
 Yes |
-|
 
 Stretch |
 
@@ -2084,7 +1853,6 @@ Whether to scale this Trajectory Layout to match the layout size. |
 No |
 
 Yes |
-|
 
 Style |
 
@@ -2093,7 +1861,6 @@ Sets a style to the node. |
 No |
 
 Yes |
-|
 
 Tags |
 
@@ -2102,7 +1869,6 @@ List of tags attached to the item |
 No |
 
 No |
-|
 
 Text |
 
@@ -2111,7 +1877,6 @@ Sets the text content that the text node renders. To create a line break press S
 No |
 
 Yes |
-|
 
 Text Horizontal Alignment |
 
@@ -2120,7 +1885,6 @@ Sets the horizontal alignment of the text. |
 No |
 
 Yes |
-|
 
 Text Vertical Alignment |
 
@@ -2129,7 +1893,6 @@ Sets the vertical alignment of the text. |
 No |
 
 Yes |
-|
 
 Texture |
 
@@ -2138,7 +1901,6 @@ Sets the texture of the material. |
 No |
 
 Yes |
-|
 
 Texture 0 |
 
@@ -2147,7 +1909,6 @@ Sets the first texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Texture 1 |
 
@@ -2156,7 +1917,6 @@ Sets the second texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Texture 2 |
 
@@ -2165,7 +1925,6 @@ Sets the third texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Texture 3 |
 
@@ -2174,7 +1933,6 @@ Sets the fourth texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Texture 4 |
 
@@ -2183,7 +1941,6 @@ Sets the fifth texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Texture 5 |
 
@@ -2192,7 +1949,6 @@ Sets the sixth texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Texture 6 |
 
@@ -2201,7 +1957,6 @@ Sets the seventh texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Texture 7 |
 
@@ -2210,7 +1965,6 @@ Sets the eighth texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Texture 8 |
 
@@ -2219,7 +1973,6 @@ Sets the ninth texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Texture 9 |
 
@@ -2228,7 +1981,6 @@ Sets the tenth texture you want the Blit render pass to blit. |
 No |
 
 Yes |
-|
 
 Texture Offset |
 
@@ -2237,7 +1989,6 @@ Sets an offset for texture in materials. |
 No |
 
 Yes |
-|
 
 Texture Tiling |
 
@@ -2246,7 +1997,6 @@ Determines the number of times a texture is presented in a material. |
 No |
 
 Yes |
-|
 
 Toggle State |
 
@@ -2255,7 +2005,6 @@ Sets the toggle state of a Toggle Button. To update this property with a binding
 No |
 
 Yes |
-|
 
 Toggle State Count |
 
@@ -2264,7 +2013,6 @@ Sets the number of toggle states of a Toggle Button. |
 No |
 
 Yes |
-|
 
 Tone Map Linear Scale |
 
@@ -2273,7 +2021,6 @@ Sets the scale for the linear tonemap option for the material. When linear tonem
 No |
 
 Yes |
-|
 
 Top Image |
 
@@ -2282,7 +2029,6 @@ The image to use in the middle of the top row. |
 No |
 
 Yes |
-|
 
 Top-Left Image |
 
@@ -2291,7 +2037,6 @@ The image to use in the top-left corner. |
 No |
 
 Yes |
-|
 
 Top-Right Image |
 
@@ -2300,7 +2045,6 @@ The image to use in the top-right corner. |
 No |
 
 Yes |
-|
 
 Trajectory Override Offset |
 
@@ -2309,7 +2053,6 @@ Sets the offset of an item in a Trajectory Layout. When you do not set this prop
 No |
 
 Yes |
-|
 
 Transition Phase |
 
@@ -2318,7 +2061,6 @@ The phase of the transition. For example, use for pixel-based effects. |
 No |
 
 Yes |
-|
 
 Truncation |
 
@@ -2329,7 +2071,6 @@ Kanzi truncates text to fit within the vertical and horizontal limits of the con
 No |
 
 Yes |
-|
 
 Truncation Direction |
 
@@ -2338,7 +2079,6 @@ Sets which part Kanzi truncates when either the **Truncation** or **Overflow** p
 No |
 
 Yes |
-|
 
 Two Pass Rendering |
 
@@ -2347,7 +2087,6 @@ Defines whether the Text Block 3D is rendered in two passes. Disabling the two p
 No |
 
 Yes |
-|
 
 Use Intensity Texture |
 
@@ -2356,7 +2095,6 @@ Enable or disable the use of the Bloom Intensity texture property. |
 No |
 
 Yes |
-|
 
 Value |
 
@@ -2365,7 +2103,6 @@ The current value. To update this property with a binding, use a to-source or tw
 No |
 
 Yes |
-|
 
 Vertical Alignment |
 
@@ -2374,7 +2111,6 @@ The alignment in vertical direction the node should use when it resides under a 
 No |
 
 Yes |
-|
 
 Vertical Margin |
 
@@ -2385,7 +2121,6 @@ To access the Vertical Margin property fields in a binding, use: * X for the **B
 No |
 
 Yes |
-|
 
 Vertical Padding |
 
@@ -2394,7 +2129,6 @@ Sets the padding spaces between the content and the top and bottom boundaries of
 No |
 
 Yes |
-|
 
 Visible |
 
@@ -2403,7 +2137,6 @@ When disabled, Kanzi does not render the node. |
 No |
 
 Yes |
-|
 
 Visible Amount in Parent |
 
@@ -2412,7 +2145,6 @@ Sets the amount the node is inside its parent. Use the value of this property in
 No |
 
 Yes |
-|
 
 White Scale |
 
@@ -2421,7 +2153,6 @@ Sets the value that will be tonemapped to pure white. |
 No |
 
 Yes |
-|
 
 Word Wrap |
 
@@ -2432,8 +2163,6 @@ No |
 Yes |
 ## Sphere messages
 
-|
-
 Name |
 
 Description |
@@ -2441,7 +2170,6 @@ Description |
 Inherited |
 
 Exported to Kanzi Engine |
-|
 
 Activity Host: Activity Prefab Attached |
 
@@ -2450,7 +2178,6 @@ An Activity Host sends this message when it attaches the prefab of the Activity 
 No |
 
 Yes |
-|
 
 Activity Host: Activity Prefab Detached |
 
@@ -2459,7 +2186,6 @@ An Activity Host sends this message when it detaches the prefab of the Activity 
 No |
 
 Yes |
-|
 
 Activity: Activated |
 
@@ -2468,7 +2194,6 @@ An Activity sends this message when it is activated. |
 No |
 
 Yes |
-|
 
 Activity: Activating |
 
@@ -2477,7 +2202,6 @@ An Activity sends this message when it is in the activating state. |
 No |
 
 Yes |
-|
 
 Activity: Deactivated |
 
@@ -2486,7 +2210,6 @@ An Activity sends this message when it is deactivated. |
 No |
 
 Yes |
-|
 
 Activity: Deactivating |
 
@@ -2495,7 +2218,6 @@ An Activity sends this message when it is in the deactivating state. |
 No |
 
 Yes |
-|
 
 Activity: Status Changed |
 
@@ -2504,7 +2226,6 @@ An Activity sends this message when the value of its Activity Status property ch
 No |
 
 Yes |
-|
 
 Animation Player: Completed |
 
@@ -2513,7 +2234,6 @@ Occurs when an Animation Player completes animation playback. |
 No |
 
 Yes |
-|
 
 Animation Player: Started |
 
@@ -2522,7 +2242,6 @@ Occurs when an Animation Player starts animation playback. |
 No |
 
 Yes |
-|
 
 Animation Player: Stopped |
 
@@ -2531,7 +2250,6 @@ Occurs when an Animation Player stops animation playback. |
 No |
 
 Yes |
-|
 
 Button: Cancel |
 
@@ -2540,7 +2258,6 @@ Occurs when a user lifts their finger outside of a Button that they previously p
 No |
 
 Yes |
-|
 
 Button: Click |
 
@@ -2549,7 +2266,6 @@ Occurs when a user lifts their finger on top of a Button that they previously pr
 No |
 
 Yes |
-|
 
 Button: Down |
 
@@ -2558,7 +2274,6 @@ Occurs when the user presses down the Button. |
 No |
 
 Yes |
-|
 
 Button: Enter |
 
@@ -2567,7 +2282,6 @@ Button: Enter trigger is set off: * When the user presses down the button. * Whe
 No |
 
 Yes |
-|
 
 Button: Leave |
 
@@ -2576,7 +2290,6 @@ Button: Leave trigger is set off: * When the user presses down the button and th
 No |
 
 Yes |
-|
 
 Button: Long Press |
 
@@ -2585,7 +2298,6 @@ Occurs when the user presses down a Button and holds the Button pressed for the 
 No |
 
 Yes |
-|
 
 Click: Begin |
 
@@ -2596,7 +2308,6 @@ You cannot use this trigger with nodes that handle input by default, such as But
 No |
 
 Yes |
-|
 
 Click: Cancel |
 
@@ -2607,7 +2318,6 @@ You cannot use this trigger with nodes that handle input by default, such as But
 No |
 
 Yes |
-|
 
 Click: Click |
 
@@ -2618,7 +2328,6 @@ You cannot use this trigger with nodes that handle input by default, such as But
 No |
 
 Yes |
-|
 
 Click: Enter |
 
@@ -2629,7 +2338,6 @@ You cannot use this trigger with nodes that handle input by default, such as But
 No |
 
 Yes |
-|
 
 Click: Leave |
 
@@ -2640,7 +2348,6 @@ You cannot use this trigger with nodes that handle input by default, such as But
 No |
 
 Yes |
-|
 
 Command: Command |
 
@@ -2649,7 +2356,6 @@ Command message arguments |
 No |
 
 Yes |
-|
 
 Data Trigger |
 
@@ -2658,7 +2364,6 @@ Monitors changes in properties and data source values. Use a Data Trigger to app
 No |
 
 Yes |
-|
 
 Drag and Drop: Drag and Drop Canceled |
 
@@ -2667,7 +2372,6 @@ Occurs when focus moves away from the node during the drag-and-drop gesture. |
 No |
 
 Yes |
-|
 
 Drag and Drop: Drag and Drop Finished |
 
@@ -2676,7 +2380,6 @@ Occurs when the user lifts their finger after starting the drag-and-drop gesture
 No |
 
 Yes |
-|
 
 Drag and Drop: Drag and Drop Moved |
 
@@ -2685,7 +2388,6 @@ Occurs when the user moves their finger after starting the drag-and-drop gesture
 No |
 
 Yes |
-|
 
 Drag and Drop: Drag and Drop Started |
 
@@ -2694,7 +2396,6 @@ Occurs when the user holds their finger for 500ms on the node. |
 No |
 
 Yes |
-|
 
 Focus: About To Gain Focus |
 
@@ -2703,7 +2404,6 @@ Kanzi sends this message before a focusable node receives focus. |
 No |
 
 Yes |
-|
 
 Focus: About To Lose Focus |
 
@@ -2712,7 +2412,6 @@ Kanzi sends this message before the focused node loses focus. |
 No |
 
 Yes |
-|
 
 Focus: Focus Entered Focus Scope |
 
@@ -2721,7 +2420,6 @@ When focus enters a focus scope, Kanzi sends this message to the focus scope nod
 No |
 
 Yes |
-|
 
 Focus: Focus Gained |
 
@@ -2730,7 +2428,6 @@ Kanzi sends this message to the node that received focus. |
 No |
 
 Yes |
-|
 
 Focus: Focus Left Focus Scope |
 
@@ -2739,7 +2436,6 @@ When focus leaves a focus scope, Kanzi sends this message to the focus scope nod
 No |
 
 Yes |
-|
 
 Focus: Focus Lost |
 
@@ -2748,7 +2444,6 @@ Kanzi sends this message to the node that lost focus. |
 No |
 
 Yes |
-|
 
 Focus: Input Outside Overlay |
 
@@ -2757,7 +2452,6 @@ Kanzi sends this message to an overlay focus scope when the application area out
 No |
 
 Yes |
-|
 
 Focus: Overlay Brought To Front |
 
@@ -2766,7 +2460,6 @@ Occurs when an overlay focus scope becomes the foremost overlay scope in the ove
 No |
 
 Yes |
-|
 
 Focus: Overlay Gained Focus |
 
@@ -2775,7 +2468,6 @@ When an overlay scope gains focus, Kanzi sends this message to the overlay scope
 No |
 
 Yes |
-|
 
 Focus: Overlay Lost Focus |
 
@@ -2784,7 +2476,6 @@ When an overlay scope loses focus, Kanzi sends this message to the overlay scope
 No |
 
 Yes |
-|
 
 Focus: Overlay Sent To Back |
 
@@ -2793,7 +2484,6 @@ Occurs when an overlay focus scope is no longer the foremost overlay scope in th
 No |
 
 Yes |
-|
 
 Key Input: Key Canceled |
 
@@ -2802,7 +2492,6 @@ Occurs when Kanzi recognizes a key-canceled gesture. A key-canceled gesture occu
 No |
 
 Yes |
-|
 
 Key Input: Key Pressed |
 
@@ -2811,7 +2500,6 @@ Occurs when Kanzi recognizes a key-pressed gesture. A key-pressed gesture occurs
 No |
 
 Yes |
-|
 
 Key Input: Key Released |
 
@@ -2820,7 +2508,6 @@ Occurs when Kanzi recognizes a key-released gesture. A key-released gesture occu
 No |
 
 Yes |
-|
 
 Key Navigation: Key Navigation Canceled |
 
@@ -2829,7 +2516,6 @@ Occurs when the key-pressed gesture is canceled for the navigation direction. |
 No |
 
 Yes |
-|
 
 Key Navigation: Key Navigation Finished |
 
@@ -2838,7 +2524,6 @@ Occurs when Kanzi recognizes the key-released gesture for the navigation directi
 No |
 
 Yes |
-|
 
 Key Navigation: Key Navigation Started |
 
@@ -2847,7 +2532,6 @@ Occurs when Kanzi recognizes the key-pressed and key repeat gestures for the nav
 No |
 
 Yes |
-|
 
 List Box: Item Loaded |
 
@@ -2856,7 +2540,6 @@ Occurs when an item is loaded to the working memory. To set how many items you w
 No |
 
 Yes |
-|
 
 List Box: Item Selected |
 
@@ -2865,7 +2548,6 @@ Occurs when an item is selected. |
 No |
 
 Yes |
-|
 
 List Box: Item Unloaded |
 
@@ -2874,7 +2556,6 @@ Occurs when an item is unloaded from the working memory. To set how many items y
 No |
 
 Yes |
-|
 
 List Box: Scroll Finished |
 
@@ -2883,7 +2564,6 @@ Occurs when the List Box stops scrolling. |
 No |
 
 Yes |
-|
 
 List Box: Scroll Started |
 
@@ -2892,7 +2572,6 @@ Occurs when the List Box starts to scroll. |
 No |
 
 Yes |
-|
 
 List Box: Scrolled |
 
@@ -2901,7 +2580,6 @@ Occurs when the List Box scrolls. |
 No |
 
 Yes |
-|
 
 List Box: Target Changed |
 
@@ -2910,7 +2588,6 @@ Occurs when List Box gets a new target item. |
 No |
 
 Yes |
-|
 
 List Box: User Scroll Finished |
 
@@ -2919,7 +2596,6 @@ Occurs when the application user stops scrolling the List Box. |
 No |
 
 Yes |
-|
 
 List Box: User Scroll Started |
 
@@ -2928,7 +2604,6 @@ Occurs when the application user starts to scroll the List Box. |
 No |
 
 Yes |
-|
 
 Long Press: Long Press |
 
@@ -2939,7 +2614,6 @@ You cannot use this trigger with nodes that handle input by default, such as But
 No |
 
 Yes |
-|
 
 Long Press: Long Press Cancel |
 
@@ -2950,14 +2624,12 @@ You cannot use this trigger with nodes that handle input by default, such as But
 No |
 
 Yes |
-|
 
 Message Trigger |   |
 
 No |
 
 Yes |
-|
 
 Multi-Click: Intermediate Click |
 
@@ -2970,7 +2642,6 @@ You cannot use this trigger with nodes that handle input by default, such as But
 No |
 
 Yes |
-|
 
 Multi-Click: Multi-Click |
 
@@ -2981,7 +2652,6 @@ You cannot use this trigger with nodes that handle input by default, such as But
 No |
 
 Yes |
-|
 
 Multi-Click: Multi-Click Canceled |
 
@@ -2992,7 +2662,6 @@ You cannot use this trigger with nodes that handle input by default, such as But
 No |
 
 Yes |
-|
 
 On Attached |
 
@@ -3001,7 +2670,6 @@ This trigger is set off when the item is initialized. For example, when you add 
 No |
 
 Yes |
-|
 
 On Property Change |
 
@@ -3010,7 +2678,6 @@ Occurs when a property is changed |
 No |
 
 Yes |
-|
 
 On Timer |
 
@@ -3019,7 +2686,6 @@ Occurs when timer interval is elapsed |
 No |
 
 Yes |
-|
 
 Page (deprecated): Activated (deprecated) |
 
@@ -3028,7 +2694,6 @@ Page has been activated. |
 No |
 
 Yes |
-|
 
 Page (deprecated): Deactivated (deprecated) |
 
@@ -3037,7 +2702,6 @@ Page has been deactivated. |
 No |
 
 Yes |
-|
 
 Page Host (deprecated): Page Navigation Finished (deprecated) |
 
@@ -3046,7 +2710,6 @@ Page host has finished navigation process. |
 No |
 
 Yes |
-|
 
 Page Host (deprecated): Page Navigation Started (deprecated) |
 
@@ -3055,7 +2718,6 @@ Page host has started navigation process. |
 No |
 
 Yes |
-|
 
 Pan: Pan Canceled |
 
@@ -3064,7 +2726,6 @@ Occurs when focus moves away from the node during the pan gesture. |
 No |
 
 Yes |
-|
 
 Pan: Pan Entered |
 
@@ -3073,7 +2734,6 @@ Occurs when the pan gesture enters the node to which the Pan Manipulator is atta
 No |
 
 Yes |
-|
 
 Pan: Pan Finished |
 
@@ -3082,7 +2742,6 @@ Occurs when the user lifts their finger after Kanzi recognizes a pan gesture. |
 No |
 
 Yes |
-|
 
 Pan: Pan Left |
 
@@ -3091,7 +2750,6 @@ Occurs when the pan gesture leaves the node to which the Pan Manipulator is atta
 No |
 
 Yes |
-|
 
 Pan: Pan Moved |
 
@@ -3100,7 +2758,6 @@ Occurs when the user changes the position of their finger and that change exceed
 No |
 
 Yes |
-|
 
 Pan: Pan Started |
 
@@ -3109,7 +2766,6 @@ Occurs when the user presses down their finger on the node. If the user lifts th
 No |
 
 Yes |
-|
 
 Pinch: Pinch Canceled |
 
@@ -3118,7 +2774,6 @@ Occurs when focus moves away from the node during the pinch gesture. |
 No |
 
 Yes |
-|
 
 Pinch: Pinch Finished |
 
@@ -3127,7 +2782,6 @@ Occurs when the user lifts their finger after Kanzi recognizes a pinch gesture. 
 No |
 
 Yes |
-|
 
 Pinch: Pinch Moved |
 
@@ -3136,7 +2790,6 @@ Occurs when the user changes the position of their finger and that change exceed
 No |
 
 Yes |
-|
 
 Pinch: Pinch Started |
 
@@ -3145,7 +2798,6 @@ Occurs when the user presses down their finger. If the user lifts their finger b
 No |
 
 Yes |
-|
 
 Prefab View: Asynchronous Load Completed |
 
@@ -3154,7 +2806,6 @@ Occurs when asynchronous loading of resources from a prefab has been finished. |
 No |
 
 Yes |
-|
 
 Property Target Easing Interpolator: Easing Interpolation Completed |
 
@@ -3163,7 +2814,6 @@ Occurs when Property Target Easing Interpolator completes its interpolation. |
 No |
 
 Yes |
-|
 
 Property Target Interpolator: Interpolation Completed |
 
@@ -3172,7 +2822,6 @@ Occurs when property target interpolator completes interpolation. |
 No |
 
 Yes |
-|
 
 Range: Value Change Finished |
 
@@ -3181,7 +2830,6 @@ Occurs when the range value stops changing. |
 No |
 
 Yes |
-|
 
 Range: Value Change Started |
 
@@ -3190,7 +2838,6 @@ Occurs when the range value starts changing. |
 No |
 
 Yes |
-|
 
 Range: Value Changed |
 
@@ -3199,7 +2846,6 @@ Occurs when the range value has changed. |
 No |
 
 Yes |
-|
 
 Scroll View: Scroll Ended |
 
@@ -3208,7 +2854,6 @@ Occurs when the scroll position of a Scroll View node stops changing. |
 No |
 
 Yes |
-|
 
 Scroll View: Scroll Started |
 
@@ -3217,7 +2862,6 @@ Occurs when the scroll position of a Scroll View node starts changing. |
 No |
 
 Yes |
-|
 
 Scroll View: Scroll Zoomed |
 
@@ -3226,7 +2870,6 @@ Occurs when the zoom level of a Scroll View node changes. |
 No |
 
 Yes |
-|
 
 Scroll View: Scrolled |
 
@@ -3235,7 +2878,6 @@ Occurs when the scroll position of a Scroll View node changes. |
 No |
 
 Yes |
-|
 
 Scroll View: Snap Request |
 
@@ -3244,7 +2886,6 @@ Occurs when a Scroll View node requests snapping target from the hosting compone
 No |
 
 Yes |
-|
 
 Scroll View: User Scroll Ended |
 
@@ -3253,7 +2894,6 @@ Occurs when the user stops scrolling a Scroll View node. |
 No |
 
 Yes |
-|
 
 Scroll View: User Scroll Started |
 
@@ -3262,7 +2902,6 @@ Occurs when the user starts scrolling a Scroll View node. |
 No |
 
 Yes |
-|
 
 State Manager: Entered State |
 
@@ -3271,7 +2910,6 @@ Occurs when a state manager has entered a state. |
 No |
 
 Yes |
-|
 
 State Manager: Left State |
 
@@ -3280,7 +2918,6 @@ Occurs when a state manager has left a state. |
 No |
 
 Yes |
-|
 
 State Manager: Transition Finished |
 
@@ -3289,7 +2926,6 @@ Occurs when a state manager finishes a transition to a state. |
 No |
 
 Yes |
-|
 
 State Manager: Transition Started |
 
@@ -3298,7 +2934,6 @@ Occurs when a state manager begins a transition to a state. |
 No |
 
 Yes |
-|
 
 Text Box: Composition Text Changed |
 
@@ -3307,7 +2942,6 @@ Occurs when the text produced in an Input Method Editor is updated in a Text Box
 No |
 
 Yes |
-|
 
 Text Box: Composition Text Committed |
 
@@ -3316,7 +2950,6 @@ Occurs: * When the text produced in an Input Method Editor is committed to the c
 No |
 
 Yes |
-|
 
 Text Box: Cursor Moved |
 
@@ -3325,7 +2958,6 @@ Occurs when the user moves the cursor in a Text Box node. |
 No |
 
 Yes |
-|
 
 Text Box: Editing Finished |
 
@@ -3334,7 +2966,6 @@ Occurs when a Text Box node leaves the editing state after the user modified the
 No |
 
 Yes |
-|
 
 Text Box: Editing Started |
 
@@ -3343,7 +2974,6 @@ Occurs when the user makes the first modification to the text in a Text Box node
 No |
 
 Yes |
-|
 
 Text Box: Entered Editing State |
 
@@ -3352,7 +2982,6 @@ Occurs when a Text Box node enters the editing state. |
 No |
 
 Yes |
-|
 
 Text Box: Input Method Action |
 
@@ -3361,7 +2990,6 @@ Occurs when the user taps the action button on their on-screen keyboard while ed
 No |
 
 Yes |
-|
 
 Text Box: Input Method Available |
 
@@ -3370,7 +2998,6 @@ Occurs when an input method becomes available to a Text Box node. For example, a
 No |
 
 Yes |
-|
 
 Text Box: Input Method Unavailable |
 
@@ -3379,7 +3006,6 @@ Occurs when the input method that is composing text in a Text Box node becomes u
 No |
 
 Yes |
-|
 
 Text Box: Left Editing State |
 
@@ -3388,7 +3014,6 @@ Occurs when a Text Box node leaves the editing state |
 No |
 
 Yes |
-|
 
 Text Box: Selection Changed |
 
@@ -3397,7 +3022,6 @@ Occurs when the user changes the text selection in a Text Box node. |
 No |
 
 Yes |
-|
 
 Text Box: Selection Cleared |
 
@@ -3406,7 +3030,6 @@ Occurs when the user clears or resets the text selection in a Text Box node. |
 No |
 
 Yes |
-|
 
 Text Box: Selection Started |
 
@@ -3415,7 +3038,6 @@ Occurs when the user starts selecting text in a Text Box node. |
 No |
 
 Yes |
-|
 
 Text Box: Text Changed |
 
@@ -3424,7 +3046,6 @@ Occurs when the user changes the text in a Text Box node. |
 No |
 
 Yes |
-|
 
 Text Box: Text Composition Canceled |
 
@@ -3433,7 +3054,6 @@ Occurs: * When the text composition in a Text Box node is canceled by Input Meth
 No |
 
 Yes |
-|
 
 Toggle Button Group: Toggled |
 
@@ -3442,7 +3062,6 @@ Occurs when the toggle state of a **Toggle Button** node in a **Toggle Button Gr
 No |
 
 Yes |
-|
 
 Toggle Button: State Toggled |
 
@@ -3451,7 +3070,6 @@ Occurs when the toggle state of a Toggle Button changes. |
 No |
 
 Yes |
-|
 
 Toggle Button: Toggled Off |
 
@@ -3460,7 +3078,6 @@ Occurs when a Toggle Button is toggled off. |
 No |
 
 Yes |
-|
 
 Toggle Button: Toggled On |
 

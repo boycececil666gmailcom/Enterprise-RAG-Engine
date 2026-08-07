@@ -26,7 +26,6 @@ The Shader Source Editor opens.
 2.
 
 Declare variables with the appropriate precision qualifier:
-|
 
 Precision qualifier |
 
@@ -35,7 +34,6 @@ Range |
 Data type |
 
 Examples of use |
-|
 
 `lowp` |    \[(-2,2)\]   |
 
@@ -44,7 +42,6 @@ Examples of use |
 Modern GPUs do not have fixed point shader units and map this to 16-bit floating point. When you are not sure which precision to choose, prefer `mediump` over `lowp`.  |
 
 Colors in the RGB data range [0..1] and intensities in the range [0..1]. |
-|
 
 `mediump` |    \[(-2^{15},2^{15})\]   |
 
@@ -53,7 +50,6 @@ Colors in the RGB data range [0..1] and intensities in the range [0..1]. |
 Some GPUs map this to 32-bit floating point.  |
 
 Colors, normals, textures, positions in object space. |
-|
 
 `highp` |    \[(-2^{128},2^{128})\]   |
 

@@ -26,119 +26,102 @@ See Main loop profiler.
 The startup performance profilers measure the time Kanzi Engine spends on different tasks during application startup. The startup performance profilers are registered in `StartupProfilerRegistry`. By default, all startup performance profiling categories are enabled. To set the state of a category in the application configuration, use the **Configuration name**. See ProfilingCategoryFilter.
 
 This table lists the Kanzi startup performance profiling categories and profilers that are included in the Profiling build.
-|
 
 Category |
 
 Configuration name |
 
 Profiler |
-|
 
 Application initialization |
 
 `StartupInitialization` |
 
 `StartupProfilerRegistry::m_initializationProfiler` |
-|
 
 Default resource registration |
 
 `StartupRegisterDefaultResources` |
 
 `StartupProfilerRegistry::m_registerDefaultResourcesProfiler` |
-|
 
 Graphics initialization |
 
 `StartupInitializeGraphics` |
 
 `StartupProfilerRegistry::m_initializeGraphicsProfiler` |
-|
 
 Startup kzb file opening |
 
 `StartupOpenKzb` |
 
 `StartupProfilerRegistry::m_openKzbProfiler` |
-|
 
 Loading threads initialization |
 
 `StartupInitializeLoadingThreads` |
 
 `StartupProfilerRegistry::m_initializeLoadingThreadsProfiler` |
-|
 
 Metadata registration |
 
 `StartupRegisterMetadata` |
 
 `StartupProfilerRegistry::m_registerMetadataProfiler` |
-|
 
 Plugins loading |
 
 `StartupLoadPlugins` |
 
 `StartupProfilerRegistry::m_loadPluginsProfiler` |
-|
 
 Prefabs loading |
 
 `StartupLoadPrefab` |
 
 `StartupProfilerRegistry::m_loadPrefabProfiler` |
-|
 
 Prefabs instantiation |
 
 `StartupInstantiatePrefab` |
 
 `StartupProfilerRegistry::m_instantiatePrefabProfiler` |
-|
 
 Prefabs attachment |
 
 `StartupAttachPrefab` |
 
 `StartupProfilerRegistry::m_attachPrefabProfiler` |
-|
 
 Renderer reset |
 
 `StartupResetRenderer` |
 
 `StartupProfilerRegistry::m_resetRendererProfiler` |
-|
 
 Runtime assets registration |
 
 `StartupRegisterRuntimeAssets` |
 
 `StartupProfilerRegistry::m_registerRuntimeAssetsProfiler` |
-|
 
 Domain initialization |
 
 `StartupInitializeDomain` |
 
 `StartupProfilerRegistry::m_initializeDomainProfiler` |
-|
 
 `Application::onProjectLoaded` |
 
 `StartupOnProjectLoaded` |
 
 `StartupProfilerRegistry::m_onProjectLoadedProfiler` |
-|
 
 `Application::initializeGL` |
 
 `StartupInitializeGL` |
 
 `StartupProfilerRegistry::m_initializeGLProfiler` |
-|
 
 `Application::resumeGL` |
 

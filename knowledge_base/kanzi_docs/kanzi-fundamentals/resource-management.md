@@ -13,8 +13,6 @@ Kanzi resource manager enables you to organize and reuse resources in your appli
 In Kanzi you can set the resources to nodes either directly using the resource URL, or indirectly using the resource key. When you set resources in Kanzi Studio, it by default assigns all resources using the URL. If you want to use the indirect setting in Kanzi Studio you need to create a key for the resource in a resource dictionary, and in the property select that key. Because key lookup is hierarchical you can define what the key resolves to by creating resource dictionary entries in the tree.
 
 Setting resources using resource keys enables you to:
-|   |   |    |   |    |
-|
 
 Create and apply different skins or themes to change the appearance of your application. |   |
 
@@ -35,16 +33,11 @@ Kanzi offers many tools to manage the resources while the application is running
 
 ## Kanzi resource types
 
-|
-|   |
-
 Alias
 
 Use an Alias to get consistent access to a Kanzi node. You can use aliases to access nodes both in Kanzi Studio and using the Kanzi Engine API.  |
 
 Using aliases |      |
-|
-|   |
 
 Animation Clip
 
@@ -55,56 +48,44 @@ Animations
 Editing animation clips
 
 Editing timeline sequences  |
-|   |
 
 Animation Data
 
 Use an Animation Data resource to define the keyframes and target property of a keyframe animation. One Animation Data resource can target only one property or property field. Animation Data resources are independent from the nodes they target. This allows you to reuse Animation Data resources to animate different nodes.  |   |
-|   |
 
 Timeline Sequence
 
 Use a Timeline Sequence to combine a set of Timeline Entry resources.  |   |      |
-|
-|   |
 
 Brushes
 
 Use brushes to set the background of 2D nodes. In Kanzi, all 2D nodes by default have transparent background.  |
 
 Using brushes |      |
-|
-|   |
 
 Fonts
 
 Use a font to render text. The default font in Kanzi is Fira Sans Regular. To use your own font, import it to your Kanzi Studio project.  |
 
 Importing fonts |      |
-|
-|   |
 
 Materials
 
 Use materials to set the appearance of 3D nodes and Material Brush brushes.  |
 
 Material types and materials |
-|   |
 
 Mesh Data
 
 A mesh is a collection of vertices, edges, and faces that define the shape of a solid object in 3D with flat faces and straight edges and the triangles that form the surface between the points.  |
 
 Using meshes |
-|   |
 
 Textures
 
 Use textures to show content in Image nodes, to set the look of textured materials, and to show content in Texture Brush brushes. You can create textures from common image file formats.  |
 
 Textures |      |
-|
-|   |
 
 Render Pass Prefabs
 
@@ -113,47 +94,36 @@ Use render passes to define the rendering of 3D content in your Kanzi applicatio
 In a render pass prefab, you can create a hierarchy of render passes to achieve a specific rendering result.  |
 
 Rendering |
-|   |
 
 Object Source
 
 Use object sources and filters to tell a Draw Objects render pass which nodes in your Kanzi application you want to render. Root Object Source contains all nodes in the node tree of the currently active Scene node.  |
 
 Using object sources |      |
-|
-|   |
 
 Resource Dictionary
 
 A resource dictionary is a collection of resource IDs pointing to resources. You can add a resource dictionary to any node.  |
 
 Using resource dictionaries |      |
-|
-|   |
 
 State Managers
 
 Use a State Manager to create different states in your Kanzi application.  |
 
 State manager |      |
-|
-|   |
 
 Styles
 
 Use styles to set the property values of one or more nodes of a certain type.  |
 
 Using styles |      |
-|
-|   |
 
 Text Resources
 
 A text resource is a text string used by Text Block and Text Box nodes.  |
 
 Text |      |
-|
-|   |
 
 Trajectories
 

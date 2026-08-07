@@ -66,48 +66,36 @@ If Word Wrap property is set to disabled, Kanzi horizontally clips multiline tex
 The value of the Overflow property indicates truncation at the beginning of the first visible line.
 
 This table shows some options that you can use to set text layout.
-|
 
 Goal |
 
 Required property values |
 
 Result |
-|
 
 - The text defines the size of a Text Block node.
 - You cannot wrap or truncate text.
-  |
 
 Default property values |    |
-|
 
 - Set the width, but the text sets the height of a Text Block node.
 - Clip the text to fit into the width of a Text Block node.
 - You can wrap or truncate this text with the Word Wrap and Overflow properties.
-  |
 
 Layout Width to set the width of the node   |    |
-|
 
 - Set the width and height of a Text Block node.
 - Clip the text to fit into the size of a Text Block node.
 - You can wrap and truncate this text with the Word Wrap and Overflow properties.
-  |
 
 - Layout Width to set the width of the node
 - Layout Height to set the height of the node
-   |    |
-|
 
 - Wrap into a new line the text that is longer than the width of a Text Block node.
 - The text sets the height of a Text Block node.
-  |
 
 - Layout Width to set the width of the node
 - Word Wrap enabled
-   |    |
-|
 
 Truncate the text on a single line.
 
@@ -115,8 +103,6 @@ By default, Kanzi truncates the end of the text that does not fit.  |
 
 - Layout Width to set the width of the node
 - Overflow to set the characters that indicate truncation
-   |    |
-|
 
 Truncate the text on a single line and ensure, that only entire words are visible in Text Block node.
 
@@ -124,8 +110,6 @@ By default, Kanzi truncates the end of the text that does not fit and uses ellip
 
 - Layout Width to set the width of the node
 - Truncation to At word to enable truncation at a word boundary
-   |    |
-|
 
 Wrap and truncate the text that is longer than the width and higher than the height of a Text Block node.
 
@@ -135,27 +119,21 @@ By default, Kanzi truncates the end of the text that does not fit.  |
 - Layout Height to set the height of the node
 - Word Wrap enabled
 - Overflow to set the characters that indicate truncation
-   |    |
-|
 
 Truncate the middle part of single-line text, when the text is longer than the width of a Text Block node. |
 
 - Layout Width to set the width of the node
 - Overflow to set the characters that indicate truncation
 - Truncation Direction to Center to truncate text in the middle of the Text Block
-   |    |
-|
 
 - Wrap the lines and truncate the lines at the beginning, when the text does not fit into the height of a Text Block node.
 - Use custom text that indicates truncation.
-  |
 
 - Layout Width to set the width of the node
 - Layout Height to set the height of the node
 - Word Wrap enabled
 - Overflow to set the custom characters that indicate truncation
 - Truncation Direction to Leading to truncate text at the beginning of the Text Block
-   |    |
 ## Fitting text into a Text Block node
 
 When you want to make sure that the entire text of a Text Block node fits into the width of that node, use the Horizontal Fit and Horizontal Fit Scale Limits properties.
@@ -249,23 +227,19 @@ This improves text sharpness, but some characters can shift by a fraction of a p
 In most cases this provides the best text rendering result. Fractional widths can cause characters of small font sizes to run together or have too much space. This can make the text more difficult to read.
 
 This table lists the options you can use to set the rendering of characters in a Text Block 2D node.
-|
 
 Goal |
 
 Required property values |
 
 Result |
-|
 
 Best text rendering result for most cases:
 
 - Round the translation and scale of each character to a full pixel.
 - Allow the spacing between characters to vary and be a fraction of a pixel.
-  |
 
 Default property values |    |
-|
 
 Render characters as the font designer intended.
 
@@ -274,7 +248,6 @@ Do not round the translation and scale of each character to a full pixel.
 Depending on the screen resolution, anti-aliasing, and font size, this can make the text appear more blurry.  |
 
 Snap Character To Pixel disabled   |    |
-|
 
 Improve the sharpness of small text.
 
@@ -283,7 +256,6 @@ Round character widths to the nearest pixel.
 This prevents characters in small font sizes from running together and can make text appear sharper.  |
 
 Fractional Character Width disabled   |    |
-|
 
 Manually set the space between the characters. |
 

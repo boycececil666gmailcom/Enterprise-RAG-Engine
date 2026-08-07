@@ -11,7 +11,6 @@ To edit your application in the Preview use the Preview tools.
 ## The Preview tools
 
 You can use these tools to edit the content in your project:
-|
 
 Tool |
 
@@ -20,116 +19,58 @@ Control |
 Description |
 
 Shortcut key |
-|   |   |
 
 Use the Node tool to select any node. |   |
-|  |    |
 
 Move the selected node. |
 
 1 |
-|  |    |
 
 Rotate the selected node. |
 
 2 |
-|  |    |
 
 Scale the selected node. |
 
 3 |
-|  |    |
 
 Click the square to align the selected 2D node to that side. For example, the setting in this image sets the Vertical Alignment property to Top and Horizontal Alignment property to Left. |   |
-|  |    |
 
 Stretch the selected 2D node horizontally. Sets the Horizontal Alignment property to Stretch. |   |
-|  |    |
 
 Stretch the selected 2D node vertically. Sets the Vertical Alignment property to Stretch. |   |
-|  |
-
- |
 
 Stretch the selected 2D node horizontally and vertically. Sets the Horizontal Alignment and Vertical Alignment properties to Stretch. |   |
-|  |
-
- |
 
 Use the Layout Transformation property fields to place the selected node. For 2D nodes enter the values for the X and Y property fields. See Optimizing the rendering of layouts. |   |
-|  |
-
- |
 
 Use the Render Transformation property fields to place the selected node. For 2D nodes enter the values for the X and Y property fields. See Optimizing the rendering of layouts. |   |
-|  |
-
- |
 
 Use the Layout Height and Layout Width properties to set the size of the selected 2D node. |   |
-|  |
-
- |
 
 Snap the size or position of the selected 2D node to the nearest coordinates of a surrounding node. |   |
-|  |
-
- |
 
 Use the Scale of the Layout Transformation or Render Transformation properties to set the size of the selected node. |   |
-|  |
-
- |
 
 Use the world coordinates to position the selected 3D node. |   |
-|  |
-
- |
 
 Use the local coordinates to position the selected 3D node. |   |
-|
-
- |   |
 
 Grid Layout 2D tool. Click and drag in the Preview to create a Grid Layout 2D. The size of the area you create defines the size of the layout (Layout Width and Layout Height). See Using the Grid Layout nodes. |   |
-|
-
- |   |
 
 Text Block 2D tool. Click and drag in the Preview to create a Text Block 2D. The size of the area you create defines the size of the layout (Layout Width and Layout Height). See Using the Text Block nodes. |   |
-|  |
-
- |
 
 Enter the text that a Text Block 2D shows. |   |
-|  |
-
- |
 
 Click the square to align the text to that side. For example, the setting in this image sets the Text Vertical Alignment property to Top and Text Horizontal Alignment property to Left. |   |
-|  |
-
- |
 
 Select the font size in device independent pixels you want to use for the Text Block 2D node. |   |
-|  |
-
- |
 
 Select the font you want to use for the Text Block 2D node. Note that the dropdown menu lists only the fonts in your current project. See Importing fonts. |   |
-|
-
- |   |
 
 Stack Layout 2D tool. Click and drag in the Preview to create a Stack Layout 2D. The size of the area you create defines the size of the layout (Layout Width and Layout Height). To set the Stack Layout 2D to arrange its items along either x or y axis, create an area that is longer on the axis along which you want the Stack Layout 2D to arrange its items. See Using the Stack Layout nodes. |   |
-|
-
- |   |
 
 Flow Layout 2D tool. Click and drag in the Preview to create a Flow Layout 2D. The size of the area you create defines the size of the layout (Layout Width and Layout Height). See Using the Flow Layout nodes. |   |
-|
-
- |   |
 
 Use the Camera tool to move around the scene using the preview camera and to create and position cameras in your project. See Using the Camera node.
 **Tip:** You can control the position of a Camera node when you use the Node tool in the Preview window.
@@ -158,74 +99,44 @@ Right-click the node to whose position you want to place a Camera node and selec
 2.
 
 To store that position to the Camera, right-click the Camera and select Align With View.
-    |   |
-|  |
-
- |
 
 Store the current position of the camera to the preview Camera node. |   |
-|  |
-
- |
 
 Reset the camera to the current position of the preview Camera node. |   |
-|  |
-
- |
 
 Create a new Camera node from the current position of the camera. |
 
 J |
-|  |
-
- |
 
 Orbit Camera lets you move around:
 
 - The nodes that you select in the Node Tree.
 - The node that you set with the Constraints > Look At property of the camera.
-  |   |
-|  |
-
- |
 
 Free Camera lets you move around without attachment to any point. |   |
-|  |
-
- |
 
 Bring the camera to the 3D object selected in the Node Tree or the Preview. |   |
-|  |
-
- |
 
 Select the Camera node through which you want to view the current scene. |   |
-|  |
-
- |
 
 Set the field of view for the camera in degrees when working with 3D nodes. |   |
 ## Panning and zooming in the Preview
 
 To pan and zoom in the Preview:
-|
 
 Action |
 
 Shortcut |
-|
 
 Pan |
 
 Click and drag the middle mouse button. |
-|
 
 Zoom |
 
 - Use the control in the upper right corner of the Preview:
 - Scroll the mouse wheel.
 - Press the Shift and Alt keys, and click and drag the left mouse button.
-  |
 ## Resetting the view in the Preview
 
 When you want to return the Preview zoom level to 100% and position your application screen in the center of the Preview, click  or press Ctrl 1 to reset the view in the Preview.

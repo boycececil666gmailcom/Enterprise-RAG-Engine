@@ -25,17 +25,14 @@ In the Web-based editors section, enable Shader graph editor.
 Each shader graph targets one material type. The material type sets which input ports the Material Output node exposes and what kind of GLSL fragment shader Kanzi Studio generates.
 
 You set the material type from the Material dropdown in the top-left corner of the editor.
-|
 
 Material type |
 
 Description |
-|
 
 PBR |
 
 Physically-based material. The Material Output node exposes Base Color, Metallic, Roughness, Normal, Emissive, and AO (ambient occlusion) inputs. When you generate the shader, Kanzi Studio creates a Material Type and a Material that uses it. |
-|
 
 Fullscreen |
 
@@ -44,82 +41,65 @@ Fullscreen effect material. The Material Output node exposes a single Color inpu
 When you switch material types, Kanzi Studio reconfigures the Material Output node and disconnects any inputs that no longer exist on the new port set.
 ## Navigating the editor
 
-|
-
 Action |
 
 Shortcut |
-|
 
 Select |
 
 Left-click a node or connection |
-|
 
 Pan |
 
 Click and drag the canvas background |
-|
 
 Zoom |
 
 Mouse wheel |
-|
 
 Multi-select |
 
 Shift + left-click, or click and drag a marquee on the canvas |
-|
 
 Select all |
 
 Ctrl A |
-|
 
 Delete |
 
 Select a node or connection and press Delete or Backspace |
-|
 
 Copy |
 
 Ctrl C |
-|
 
 Paste |
 
 Ctrl V |
-|
 
 Duplicate |
 
 Ctrl D |
-|
 
 Undo |
 
 Ctrl Z |
-|
 
 Redo |
 
 Ctrl Y |
-|
 
 Group selection |
 
 Ctrl G |
-|
 
 Ungroup |
 
 Ctrl Shift G |
-|
 
 Auto-layout |
 
 Ctrl Shift A |
-|
 
 Add a node |
 
@@ -132,56 +112,48 @@ In addition to the catalog categories, you can add Note nodes from the Utilities
 ### Constants
 
 Constant nodes hold literal values that you edit directly on the node.
-|
 
 Node |
 
 Description |
 
 Outputs |
-|
 
 Scalar |
 
 Constant float value. |
 
 result (float) |
-|
 
 Int |
 
 Constant integer value. |
 
 result (int) |
-|
 
 Vec2 |
 
 Constant 2D vector. |
 
 result (vec2), x (float), y (float) |
-|
 
 Vec3 |
 
 Constant 3D vector. |
 
 result (vec3), x (float), y (float), z (float) |
-|
 
 Vec4 |
 
 Constant 4D vector. |
 
 result (vec4), x (float), y (float), z (float), w (float) |
-|
 
 Color3 |
 
 RGB color constant. Click the swatch on the node to open the color picker. |
 
 result (vec3) |
-|
 
 Color4 |
 
@@ -193,7 +165,6 @@ You can promote any constant node to a parameter so that its value becomes a uni
 ### Built-in
 
 Built-in nodes provide values that the engine produces during rendering.
-|
 
 Node |
 
@@ -202,7 +173,6 @@ Description |
 Inputs |
 
 Outputs |
-|
 
 UV |
 
@@ -211,7 +181,6 @@ UV texture coordinates. |
 â |
 
 uv (vec2), u (float), v (float) |
-|
 
 Time |
 
@@ -220,7 +189,6 @@ Elapsed time and per-frame delta. |
 â |
 
 Seconds (float), Delta (float) |
-|
 
 TilingOffset |
 
@@ -229,7 +197,6 @@ Apply tiling and offset to UV coordinates. |
 uv (vec2), tiling (vec2), offset (vec2) |
 
 result (vec2) |
-|
 
 Combine4 |
 
@@ -238,7 +205,6 @@ Combine four floats into a vec4. |
 r (float), g (float), b (float), a (float) |
 
 result (vec4) |
-|
 
 RGB |
 
@@ -249,112 +215,89 @@ r (float), g (float), b (float) |
 result (vec3) |
 ### Math
 
-|
-
 Node |
 
 Description |
-|
 
 Sin |
 
 Sine function. |
-|
 
 Cos |
 
 Cosine function. |
-|
 
 Abs |
 
 Absolute value. |
-|
 
 Exp |
 
 Natural exponentiation (`e^x`). |
-|
 
 Negate |
 
 Negation (unary minus). |
-|
 
 Normalize |
 
 Vector normalization. |
-|
 
 Length |
 
 Vector magnitude. Always outputs float. |
-|
 
 Dot |
 
 Dot product. Always outputs float. |
-|
 
 Cross |
 
 Cross product of two vec3 values. |
-|
 
 Distance |
 
 Distance between two vec3 values. Always outputs float. |
-|
 
 Reflect |
 
 Reflect an incident vec3 across a vec3 normal. |
-|
 
 Add |
 
 Addition. |
-|
 
 Subtract |
 
 Subtraction. |
-|
 
 Multiply |
 
 Multiplication. |
-|
 
 Divide |
 
 Division. |
-|
 
 Max |
 
 Component-wise maximum. |
-|
 
 Min |
 
 Component-wise minimum. |
-|
 
 Mix |
 
 Linear interpolation (`mix`). |
-|
 
 Lerp |
 
 Linear interpolation (`lerp`). |
-|
 
 Power |
 
 Exponentiation. |
-|
 
 Clamp |
 
@@ -362,49 +305,42 @@ Clamp value between a minimum and a maximum. |
 ### Material
 
 Material nodes provide per-fragment surface and view data that the engine populates from the rendered geometry. They have no inputs.
-|
 
 Node |
 
 Description |
 
 Outputs |
-|
 
 Normal |
 
 Surface normal in world space. |
 
 normal (vec3), x (float), y (float), z (float) |
-|
 
 Tangent |
 
 Surface tangent in world space. |
 
 tangent (vec3), x (float), y (float), z (float) |
-|
 
 Bitangent |
 
 Computes the bitangent from a normal and a tangent. Connect any vec3 sources. You do not need to use the Normal and Tangent nodes. |
 
 bitangent (vec3) |
-|
 
 WorldPos |
 
 World-space position of the current fragment. |
 
 pos (vec3), posX (float), posY (float), posZ (float) |
-|
 
 CameraPos |
 
 World-space position of the active camera. |
 
 pos (vec3), posX (float), posY (float), posZ (float) |
-|
 
 ViewDir |
 
@@ -414,22 +350,18 @@ viewDir (vec3) |
 ### Texture
 
 Texture nodes sample texture resources from the Kanzi Studio Library. The Texture resource picker lists every texture in the project.
-|
 
 Node |
 
 Description |
-|
 
 Texture |
 
 Sample a texture. Pick the Texture resource on the node, or leave it unset to use a placeholder. Properties: Wrap (repeat, clamp, mirror), Filter (linear, nearest). Inputs: uv (vec2). Outputs: rgba (vec4), r, g, b, a (float). |
-|
 
 NormalMap |
 
 Sample a normal map and transform the result into world space. Inputs: uv (vec2), textureIndex (int), strength (float), worldNormal (vec3). Outputs: result (vec3). |
-|
 
 UnpackNormal |
 
@@ -437,12 +369,10 @@ Convert an already-sampled normal-map color into a world-space normal vector. In
 ### Custom
 
 The Custom category lets you embed hand-written GLSL alongside the graph.
-|
 
 Node |
 
 Description |
-|
 
 GLSL Code |
 
@@ -468,12 +398,10 @@ float Checker(vec2 uv, float tile, float softness, out float bright) {
 ### Output
 
 Every graph must have exactly one Material Output or Output node, connected to all other contributing nodes.
-|
 
 Node |
 
 Description |
-|
 
 Material Output |
 
@@ -481,8 +409,6 @@ The required sink for graphs that target a material type. The input ports change
 
 - PBR: Base Color (vec4), Metallic (float), Roughness (float), Normal (vec3), Emissive (vec3), AO (float).
 - Fullscreen: Color (vec4).
-  |
-|
 
 Output |
 
@@ -490,17 +416,14 @@ Generic color sink for graphs that do not target a material type. |
 ### Utility nodes
 
 Utility nodes do not produce shader code. Use them to organize the graph.
-|
 
 Node |
 
 Description |
-|
 
 Group |
 
 A resizable container that holds other nodes. Create a group from a selection of two or more nodes by pressing Ctrl G, by clicking Group in the selection toolbar, or by selecting Create Group from the right-click context menu. Double-click the group header to rename it. Click the + / - button on the header to collapse or expand the group, click the N button to attach notes, and pick a header color from the right-click Color row. |
-|
 
 Note |
 
@@ -551,27 +474,22 @@ To break a group apart and keep its child nodes, select the group and press Ctrl
 ### Context menu reference
 
 What you see in the right-click context menu depends on what you right-click:
-|
 
 Target |
 
 Actions |
-|
 
 Empty canvas |
 
 Add Node menu (with Paste shortcut when the clipboard is non-empty). |
-|
 
 A single node |
 
 Copy, Duplicate, Select Upstream, Select Downstream, Break Links, Promote to Parameter / Unpromote from Parameter (for promotable constants), Delete. Group nodes also offer Collapse Group / Expand Group, Fit to Content, Ungroup, and a Color row. |
-|
 
 A connection |
 
 Select Upstream, Select Downstream, Delete. |
-|
 
 A multi-selection |
 

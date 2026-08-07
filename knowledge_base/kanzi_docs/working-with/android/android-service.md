@@ -105,70 +105,60 @@ KanziServiceComposable(
 `KanziServiceComposable` is based on `KanziServiceSurfaceView` and also accepts optional parameters: `transparency`, `focusableInTouchMode`, and `listener`.
 
 The view and composable types accept these XML attributes:
-|
 
 Attribute |
 
 Format |
 
 Description |
-|
 
 `clientId` |
 
 string |
 
 Unique identifier each client must supply. |
-|
 
 `kzbPathList` |
 
 string |
 
 Comma-separated list of .kzb or .kzb.cfg files to be loaded for this client. |
-|
 
 `startupPrefabUrl` |
 
 string |
 
 URL of the prefab that is instantiated onto the clientâs surface when it loads. |
-|
 
 `serviceHostPackage` |
 
 string |
 
 Android package name of the application that hosts Kanzi Android Service. |
-|
 
 `serviceIntentAction` |
 
 string |
 
 Intent action that Kanzi Android Service uses to bind the client application with the service. |
-|
 
 `clearColor` |
 
 color |
 
 Color used to clear the surface. Default: `0xff000000`. |
-|
 
 `clearEnabled` |
 
 boolean |
 
 Enables clearing the surface. Default: `false`. |
-|
 
 `rotaryHandlingEnabled` |
 
 boolean |
 
 Enables built-in rotary input handling. When set, Kanzi processes rotary input events and translates them to Kanzi key events. Default: `true`. |
-|
 
 `transparency` |
 
@@ -180,37 +170,30 @@ Ensure that `serviceHostPackage` and `serviceIntentAction` exactly match `applic
 ### KanziServiceClientListener
 
 `KanziServiceClientListener` is an interface for receiving notifications about client lifecycle events. All callbacks have default empty implementations, so you only need to override the ones you are interested in.
-|
 
 Callback |
 
 Description |
-|
 
 `onServiceConnected(client)` |
 
 Called when the Kanzi Android Service is connected and the client is ready to use. |
-|
 
 `onAttachedToWindow(client)` |
 
 Called when the client view is attached to a window. |
-|
 
 `onDetachedFromWindow(client)` |
 
 Called when the client view is detached from its window. |
-|
 
 `onSurfaceCreated(surface)` |
 
 Called when the rendering surface is created and available. |
-|
 
 `onSurfaceDestroyed(surface)` |
 
 Called when the rendering surface is about to be destroyed. |
-|
 
 `onSurfaceChanged(surface, width, height)` |
 

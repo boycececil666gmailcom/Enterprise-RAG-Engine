@@ -30,22 +30,17 @@ A preset tailored for quickly starting with offscreen or post-processing effects
 This is a good starting point for building post-processing or offscreen rendering effects where you want to apply a shader to all pixels on screen.
 ## Navigating the Prism editor
 
-|
-
 Action |
 
 Shortcut |
-|
 
 Select |
 
 Left-click a node or connection |
-|
 
 Pan |
 
 Middle mouse button |
-|
 
 Zoom |
 
@@ -96,27 +91,22 @@ See Binding Render Pass node properties for worked examples.
 You can enable the minimap from the top-left corner of the Prism editor.
 
 The minimap shows an overview of your graph. A light rectangle shows the visible area in the Prism Editor. Use the minimap to navigate large graphs.
-|
 
 Action |
 
 Shortcut |
-|
 
 Resize |
 
 Drag the lower-left corner of the minimap |
-|
 
 Zoom |
 
 Scroll the mouse wheel |
-|
 
 Center view |
 
 Click in the minimap |
-|
 
 Pan |
 

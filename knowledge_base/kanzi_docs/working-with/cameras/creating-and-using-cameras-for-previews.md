@@ -27,31 +27,24 @@ In the Camera tool, you can select the Orbit Camera or Free Camera:
     - The node that you set with the Constraints > Look At property of the camera.
 
 To move with the orbit camera, use these controls:
-|
 
 Control |
 
 Description |
-|
 
 Click and drag the left mouse button. |
 
 Rotate |
-|
 
     - Click and drag the middle mouse button.
     - Press the Space key, and click and drag the left mouse button.
-  |
 
 Pan |
-|
 
     - Scroll the mouse wheel.
     - Press the Shift and Alt keys, and click and drag the left mouse button.
-  |
 
 Zoom |
-|
 
 Hold down Alt and click the left mouse button. |
 
@@ -59,60 +52,50 @@ Select or deselect a node. |
   - Free Camera lets you move around without attachment to any point.
 
 To move with the free camera, use these controls:
-|
 
 Control |
 
 Description |
-|
 
 W |
 
 Move forward.
 
 Hold down Shift to double the speed.  |
-|
 
 S |
 
 Move backward.
 
 Hold down Shift to double the speed.  |
-|
 
 A |
 
 Move left.
 
 Hold down Shift to double the speed.  |
-|
 
 D |
 
 Move right.
 
 Hold down Shift to double the speed.  |
-|
 
 Q |
 
 Move up. |
-|
 
 E |
 
 Move down. |
-|
 
 Click and drag the left mouse button. |
 
 Rotate |
-|
 
 Click and drag the middle mouse button. |
 
 Pan |
-|
 
 Scroll the mouse wheel. |
 
@@ -121,7 +104,6 @@ Set camera speed.
 Scroll down to decrease the camera speed.
 
 Scroll up to increase the camera speed.  |
-|
 
 Hold down Alt and click the left mouse button. |
 
@@ -130,39 +112,20 @@ Select or deselect a node. |
 3.
 
 When setting the position of a Camera node, use these controls:
-|
 
 Control |
 
 Description |
-|
-
- |
 
 Store the current position of the camera to the preview Camera node. |
-|
-
- |
 
 Reset the camera to the current position of the preview Camera node. |
-|
-
- |
 
 Create a new Camera node from the current position of the camera. |
-|
-
- |
 
 Bring the camera to the 3D object selected in the Node Tree or the Preview. |
-|
-
- |
 
 Select the Camera node through which you want to view the current scene. |
-|
-
- |
 
 Set the field of view for the camera in degrees when working with 3D nodes. |
 **Tip:** You can control the position of a Camera node when you use the Node tool in the Preview window.
@@ -220,49 +183,42 @@ In the Preview, select the Camera tool.
 2.
 
 Use these default shortcuts:
-|
 
 Preset viewpoint |
 
 Default shortcut |
 
 Shortcut description |
-|
 
 View a scene from the left. |
 
 Shift 1 |
 
 Left Camera Preset |
-|
 
 View a scene from the right. |
 
 Shift 2 |
 
 Right Camera Preset |
-|
 
 View a scene from the top. |
 
 Shift 3 |
 
 Top Camera Preset |
-|
 
 View a scene from the bottom. |
 
 Shift 4 |
 
 Bottom Camera Preset |
-|
 
 View a scene from the front. |
 
 Shift 5 |
 
 Front Camera Preset |
-|
 
 View a scene from the back. |
 

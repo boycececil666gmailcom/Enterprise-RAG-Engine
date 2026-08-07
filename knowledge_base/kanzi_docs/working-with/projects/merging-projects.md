@@ -115,27 +115,22 @@ Kanzi Studio monitors all files with `.kzm` extensions in the project directory 
 ## Merging projects using version control tools
 
 After configuring your version control tool you can use the Kanzi merge tool for Kanzi project updating and merging. For the integration Kanzi requires a version control tool that provides the necessary parameters to the Kanzi merge tool.
-|
 
 Example of parameter types |
 
 Description |
-|
 
 MINE |
 
 The parameter for the source project. |
-|
 
 THEIRS |
 
 The parameter for the target project. |
-|
 
 BASE |
 
 The parameter for the base project. |
-|
 
 MERGED |
 

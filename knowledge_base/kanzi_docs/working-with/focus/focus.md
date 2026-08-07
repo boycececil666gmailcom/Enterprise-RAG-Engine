@@ -31,7 +31,6 @@ You can move focus within the boundaries of a focus group and outside of a focus
     - **Auto-closing modeless overlay** is similar to modeless overlay, except that when the overlay is an Activity in a Parallel Activity Host, the Parallel Activity Host deactivates that Activity when user input originates from outside the boundaries of that Activity.
 
 - **Focus state** reports the focus state of a node or nodes in a focus scope. These are the available values for the Focus State property:
-|
 
 Enumeration value |
 
@@ -40,7 +39,6 @@ Enumeration key |
 Meaning for a focusable node |
 
 Meaning for a focus scope |
-|
 
 No Focus |
 
@@ -49,7 +47,6 @@ No Focus |
 The node does not have focus. |
 
 None of the nodes in the focus scope have focus. |
-|
 
 Logical Focus |
 
@@ -58,7 +55,6 @@ Logical Focus |
 The node is the logical focus node of an overlay-type focus scope. The logical focus node was the key focus node before the overlay lost the focus. When the overlay regains the focus, the logical focus node becomes the key focus node. |
 
 A node in the focus scope is the logical focus node of the overlay to which the scope belongs. |
-|
 
 Key Focus |
 

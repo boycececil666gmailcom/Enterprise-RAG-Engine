@@ -34,7 +34,6 @@ You can activate multiple Kanzi-based views simultaneously within an app and acc
 ## Configuring a Kanzi view
 
 These view types expose various configurations that you can assign directly from a layout.
-|
 
 Attribute |
 
@@ -43,7 +42,6 @@ Use |
 Format |
 
 Default value |
-|
 
 `name` |
 
@@ -52,7 +50,6 @@ Name of the view. |
 string |
 
 `Kanzi View` |
-|
 
 `kzbPathList` |
 
@@ -61,7 +58,6 @@ Comma-separated list of kzb files. When set, Kanzi automatically loads these fil
 string |
 
 `null` |
-|
 
 `startupPrefabUrl` |
 
@@ -70,7 +66,6 @@ URL of the startup prefab. When set, Kanzi asynchronously loads and instantiates
 string |
 
 `null` |
-|
 
 `clearColor` |
 
@@ -79,7 +74,6 @@ Color used to clear the surface. |
 color |
 
 `0xff000000` |
-|
 
 `clearEnabled` |
 

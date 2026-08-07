@@ -10,27 +10,22 @@ Use effects to apply post-processing effects to 2D nodes.
 In Kanzi Studio you can find the effects in the Library > Effects.
 
 These effects are available in Kanzi:
-|
 
 Use the Blur Effect 2D effect to apply a Gaussian blur to a 2D node.
 
 See Using the Blur Effect 2D effect.  |    |
-|
 
 Use the Mask Effect 2D effect to apply a mask to a 2D node.
 
 See Using the Mask Effect 2D effect.  |    |
-|
 
 Use the Outline Effect 2D effect to apply an outline to the content of a 2D node.
 
 See Using the Outline Effect 2D effect.  |    |
-|
 
 Use the Shadow Effect 2D effect to apply a shadow to the content of a 2D node.
 
 See Using the Shadow Effect 2D effect.  |    |
-|
 
 Use an Effect Stack 2D effect prefab to apply multiple effects to a 2D node.
 

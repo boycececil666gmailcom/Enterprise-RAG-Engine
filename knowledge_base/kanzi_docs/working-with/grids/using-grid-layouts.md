@@ -87,7 +87,6 @@ Create a Grid Layout node and add several child nodes to it. See Creating a Grid
 In each child node of the Grid Layout node, add the Grid Layout > Column and Grid Layout > Row properties. See Assigning nodes to cells in a Grid Layout node.
 
 A Grid Layout node by default has three columns and three rows. For example, you can arrange the first five child nodes in a Grid Layout on the top row and left column. The sixth child node can occupy the rest of the space. In the child nodes of the Grid Layout node, set these properties:
-|
 
 Child node |
 
@@ -96,7 +95,6 @@ Column |
 Row |
 
 Layout Width |
-|
 
 1 |
 
@@ -105,7 +103,6 @@ Layout Width |
 0 |
 
 200 |
-|
 
 2 |
 
@@ -114,7 +111,6 @@ Layout Width |
 0 |
 
 200 |
-|
 
 3 |
 
@@ -123,7 +119,6 @@ Layout Width |
 0 |
 
 200 |
-|
 
 4 |
 
@@ -132,7 +127,6 @@ Layout Width |
 1 |
 
 200 |
-|
 
 5 |
 
@@ -141,7 +135,6 @@ Layout Width |
 2 |
 
 200 |
-|
 
 6 |
 

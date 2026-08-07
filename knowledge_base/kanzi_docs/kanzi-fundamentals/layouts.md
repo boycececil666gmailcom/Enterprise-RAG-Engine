@@ -6,13 +6,10 @@ source: https://docs.kanzi.com/4.1.0/en/kanzi-fundamentals/layouts.html
 # Layouts
 
 In Kanzi there are three types of layouts:
-|   |
 
 Layouts that base the position and size of their child nodes, such as the Flow Layout, Grid Layout, Stack Layout, and Trajectory Layout nodes. For example, these layouts are useful when the amount of content changes dynamically. |
-|   |
 
 Content controls that show specific content and usually center the content, such as the Image node and Button nodes. |
-|   |
 
 Absolute positioning controls that act as containers that group their child nodes, such as the Viewport 2D and Empty Node 2D nodes. |
 

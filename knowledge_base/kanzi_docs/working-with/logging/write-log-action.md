@@ -53,22 +53,18 @@ For example, instead of manually entering the name of a node, use the <Name> mac
 The <Name> macro inserts the name of the node that contains the Write Log action.
 
 You can combine macros and text.
-|
 
 Macro |
 
 Description |
-|
 
 <Name> |
 
 Inserts the name of the node that contains a Write Log action. |
-|
 
 <EventName> |
 
 Inserts the name of the trigger that executes a Write Log action. |
-|
 
 {ValueSourceIndex} |
 

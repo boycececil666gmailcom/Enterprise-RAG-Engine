@@ -103,24 +103,19 @@ On the command line use:
 - `--wgl` to use WGL
 - `--glx` to use GLX
 
-|
-
 In `application.cfg` |
 
 `SurfaceClientAPI = clientApi`
 
 `GraphicsContextAPI = contextApi`  |
-|
 
 In `Application::onConfigure` |
 
 `configuration.defaultSurfaceProperties.clientAPI = clientApi;`
 
 `configuration.defaultSurfaceProperties.contextAPI = contextApi;`  |
-|
 
 Values |
-|
 
 `clientApi` |
 
@@ -138,8 +133,6 @@ To use Vulkan:
 
 - In `application.cfg` use `vk` or `vulkan`.
 - In `Application::onConfigure` use `SurfaceClientAPI::Vulkan`.
-  |
-|
 
 `contextApi` |
 
@@ -157,8 +150,6 @@ To use GLX:
 
 - In `application.cfg` use `glx`.
 - In `Application::onConfigure` use `GraphicsContextAPI::GLX`.
-  |      |
-|
 
 `application.cfg` example |
 
@@ -168,8 +159,6 @@ SurfaceClientAPI = gl
 GraphicsContextAPI = wgl
 
 ```
-   |
-|
 
 `Application::onConfigure` example |
 
@@ -179,7 +168,6 @@ configuration.defaultSurfaceProperties.clientAPI = SurfaceClientAPI::OpenGL;
 configuration.defaultSurfaceProperties.contextAPI = GraphicsContextAPI::WGL;
 
 ```
-   |
 ## Enabling OpenGL ES 3.0 in the Android Emulator
 
 When you deploy to the Android Emulator an application that uses OpenGL ES API level higher than 2.0, enable OpenGL ES 3.0 in the Android Emulator.
