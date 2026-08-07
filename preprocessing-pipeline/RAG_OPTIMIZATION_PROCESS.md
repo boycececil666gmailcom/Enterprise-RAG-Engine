@@ -18,6 +18,8 @@
 | **[I]** | **Contextual Retrieval (文脈付与)** | Anthropic推奨のチャンキング戦略。各チャンク本文の先頭に `[Document Context: Title > Section]` を自動合成し、ベクトル類似度検索の失敗率を激減させる。 |
 | **[J]** | **Parent-Document Retrieval (親検索)** | 小さな子チャンク (200-250文字) で高精度ベクトル検索を行い、ヒット時に `metadata.parent_content` (1,500文字の親文脈) をLLMへ渡す二重コンテキスト設計。 |
 | **[K]** | **マークダウン表の平坦化 (Table Flattening)** | 2次元のMarkdown表構造を `Key: Value` 形式の自然言語行リストへ自動変換し、ベクトル検索における表データの構造・文脈認識精度を大幅向上。 |
+| **[L]** | **予想質問のメタデータ化 (Hypothetical Questions)** | LLMを用いて各チャンクに対して「ユーザーが探しそうな質問文」を2〜3件自動生成し、チャンクのメタデータ/埋め込み対象に加える。 |
+
 
 
 ```mermaid
