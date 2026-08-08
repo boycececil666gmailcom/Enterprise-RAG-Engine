@@ -16,8 +16,8 @@ import time
 from pathlib import Path
 
 SCRIPT_DIR  = Path(__file__).parent
-TARGET_JSON = (SCRIPT_DIR.parent / "kanzi_rag_chunks.json").resolve()
-TARGET_GZ   = (SCRIPT_DIR.parent / "kanzi_rag_chunks.json.gz").resolve()
+TARGET_JSON = (SCRIPT_DIR.parent / "rag_chunks.json").resolve()
+TARGET_GZ   = (SCRIPT_DIR.parent / "rag_chunks.json.gz").resolve()
 
 CYAN  = "\033[1;96m"
 GREEN = "\033[1;92m"
