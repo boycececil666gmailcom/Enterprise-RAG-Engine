@@ -36,15 +36,11 @@ app.add_middleware(
 # Initialize an async HTTP client for proxy routing
 async_client = httpx.AsyncClient(timeout=60.0)
 
-@app.post("/ingest", response_model=IngestResponse)
-async def route_ingest(request: IngestRequest):
-    """Proxies ingestion requests downstream to the core RAG backend."""
-    target_url = f"{RAG_BACKEND_URL.rstrip('/')}/ingest"
-    
+#region Ingestion Proxy Endpoints
+async def _proxy_ingest(target_url: str, request: IngestRequest) -> IngestResponse:
     print(f"\n\033[1;96m========================================================\033[0m")
     print(f"\033[1;92m>>> [1/2] [{os.path.basename(__file__)}] API Gateway proxying ingestion request to: {target_url}\033[0m")
     print(f"\033[1;96m========================================================\033[0m\n")
-    
     try:
         response = await async_client.post(target_url, json=request.dict())
         if response.status_code != 200:
@@ -52,11 +48,9 @@ async def route_ingest(request: IngestRequest):
                 status_code=response.status_code, 
                 detail=f"Downstream error: {response.text}"
             )
-        
         print(f"\n\033[1;96m========================================================\033[0m")
         print(f"\033[1;92m>>> [2/2] [{os.path.basename(__file__)}] API Gateway received success response from backend\033[0m")
         print(f"\033[1;96m========================================================\033[0m\n")
-        
         return IngestResponse(**response.json())
     except httpx.RequestError as exc:
         logger.error(f"Failed connecting to downstream backend at {target_url}: {exc}")
@@ -64,6 +58,19 @@ async def route_ingest(request: IngestRequest):
             status_code=503, 
             detail=f"Downstream service unavailable: {str(exc)}"
         )
+
+@app.post("/ingest/vector", response_model=IngestResponse)
+async def route_ingest_vector(request: IngestRequest):
+    """Proxies vector store ingestion requests downstream to core RAG backend."""
+    target_url = f"{RAG_BACKEND_URL.rstrip('/')}/ingest/vector"
+    return await _proxy_ingest(target_url, request)
+
+@app.post("/ingest/graph", response_model=IngestResponse)
+async def route_ingest_graph(request: IngestRequest):
+    """Proxies graph store ingestion requests downstream to core RAG backend."""
+    target_url = f"{RAG_BACKEND_URL.rstrip('/')}/ingest/graph"
+    return await _proxy_ingest(target_url, request)
+#endregion
 
 @app.post("/query", response_model=QueryResponse)
 async def route_query(request: QueryRequest):

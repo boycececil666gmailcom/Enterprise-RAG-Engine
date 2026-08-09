@@ -14,8 +14,8 @@ def test_k8s_real_e2e_flow():
         "text": "The Aurora Project is an experimental quantum computing initiative developed by Zenith Tech for our Fintech SaaS platform.",
         "metadata": {"project": "Aurora"}
     }
-    print(f"\nSending ingest request to: {GATEWAY_URL}/ingest")
-    ingest_response = client.post(f"{GATEWAY_URL}/ingest", json=ingest_payload)
+    print(f"\nSending ingest request to: {GATEWAY_URL}/ingest/vector")
+    ingest_response = client.post(f"{GATEWAY_URL}/ingest/vector", json=ingest_payload)
     
     assert ingest_response.status_code == 200, f"Ingestion failed: {ingest_response.text}"
     res_ingest = ingest_response.json()

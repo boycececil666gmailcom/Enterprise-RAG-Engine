@@ -131,7 +131,9 @@ def test_graph_rag_integration_flow(mock_get_vector_store, mock_get_driver, mock
     
     # 1. Trigger Ingestion
     from src.theme_based_rag_backend.vector_db import add_document_text
+    from src.theme_based_rag_backend.graph_db import ingest_graph_document
     chunk_count = add_document_text("Zenith operates Supernova platform.")
+    ingest_graph_document("Zenith operates Supernova platform.")
     
     assert chunk_count > 0
     # Verify that add_graph_relations was called (indicated by session.run calls)

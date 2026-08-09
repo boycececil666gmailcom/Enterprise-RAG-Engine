@@ -56,15 +56,19 @@ def test_full_e2e_flow(mock_llm, mock_hyde_llm, mock_embeddings, mock_get_driver
 
     gateway_client = TestClient(gateway_app)
     
-    # 1. Ingest document via API Gateway
+    # 1. Ingest document via API Gateway (Vector and Graph stores)
     ingest_payload = {
         "text": "Supernova project is a next generation security scanning system developed for Fintech platforms.",
         "metadata": {"project": "Supernova"}
     }
-    ingest_response = gateway_client.post("/ingest", json=ingest_payload)
-    assert ingest_response.status_code == 200
-    assert ingest_response.json()["status"] == "success"
-    assert ingest_response.json()["chunk_count"] > 0
+    ingest_vector_res = gateway_client.post("/ingest/vector", json=ingest_payload)
+    assert ingest_vector_res.status_code == 200
+    assert ingest_vector_res.json()["status"] == "success"
+    assert ingest_vector_res.json()["chunk_count"] > 0
+
+    ingest_graph_res = gateway_client.post("/ingest/graph", json=ingest_payload)
+    assert ingest_graph_res.status_code == 200
+    assert ingest_graph_res.json()["status"] == "success"
 
     # 2. Query chatbot via API Gateway
     mock_resp_hyde = MagicMock(content='Supernova project security scanning system excerpt.')

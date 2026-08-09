@@ -174,7 +174,7 @@ flowchart TB
     end
 
     subgraph Exposed["Exposed to Host via Nginx Ingress"]
-        GW["theme-based-rag-gateway (FastAPI + Uvicorn)<br/>NodePort: 30080 / Service: port 8080<br/>Routes: POST /query, POST /ingest, GET /health"]
+        GW["theme-based-rag-gateway (FastAPI + Uvicorn)<br/>NodePort: 30080 / Service: port 8080<br/>Routes: POST /query, POST /ingest/vector, POST /ingest/graph, GET /health"]
     end
 
     subgraph Internal["Kubernetes Internal Network (rag-engine namespace) - not reachable from outside"]
@@ -182,7 +182,7 @@ flowchart TB
         subgraph BackendCtr["theme-based-rag-backend (FastAPI + Uvicorn, ClusterIP port 80 -> 8000)"]
             direction TB
             BEQueryH["POST /query - invoke LangGraph StateGraph"]
-            BEIngestH["POST /ingest - chunk text + store embeddings"]
+            BEIngestH["POST /ingest/vector & /ingest/graph - store embeddings & knowledge graph"]
             BEHealthH["GET /health - ping vector store"]
         end
 

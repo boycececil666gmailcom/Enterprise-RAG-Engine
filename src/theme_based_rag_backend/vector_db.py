@@ -88,21 +88,12 @@ except Exception:
 #region Knowledge Ingestion API
 def add_document_text(text: str, metadata: dict = None) -> int:
     """
-    Directly ingests a pre-processed document chunk into Qdrant vector database and Neo4j graph database.
+    Directly ingests a pre-processed document chunk into Qdrant vector database.
     All chunking and optimization strategies are managed upstream by preprocessing-pipeline.
     """
     store = get_vector_store()
     doc = Document(page_content=text, metadata=metadata or {})
     store.add_documents([doc])
-
-    # Process Neo4j knowledge graph ingestion
-    try:
-        from src.theme_based_rag_backend.graph_db import extract_entities_and_relations, add_graph_relations
-        extracted = extract_entities_and_relations(text)
-        if extracted.get("entities") or extracted.get("relationships"):
-            add_graph_relations(extracted["entities"], extracted["relationships"])
-    except Exception as e:
-        logger.warning(f"Failed to ingest data into Neo4j graph database: {e}")
-
     return 1
 #endregion
+

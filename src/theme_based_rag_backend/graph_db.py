@@ -228,3 +228,17 @@ def retrieve_graph_relations(query_entities: list) -> str:
     except Exception as e:
         logger.error(f"Failed to query Neo4j graph relationships: {e}")
         return ""
+
+#region Knowledge Ingestion API
+def ingest_graph_document(text: str) -> int:
+    """Extracts entities and relationships from document text using Gemini LLM and saves them into Neo4j."""
+    try:
+        extracted = extract_entities_and_relations(text)
+        if extracted.get("entities") or extracted.get("relationships"):
+            add_graph_relations(extracted["entities"], extracted["relationships"])
+            return len(extracted.get("entities", [])) + len(extracted.get("relationships", []))
+    except Exception as e:
+        logger.warning(f"Failed to ingest data into Neo4j graph database: {e}")
+    return 0
+#endregion
+

@@ -23,7 +23,7 @@ def test_aws_e2e_health_check():
 @pytest.mark.e2e
 def test_aws_e2e_ingest_document():
     """Verify document ingestion against the live AWS deployment."""
-    url = f"{AWS_RAG_BASE_URL}/ingest"
+    url = f"{AWS_RAG_BASE_URL}/ingest/vector"
     headers = {
         "Authorization": f"Bearer {AWS_BEARER_TOKEN}",
         "Content-Type": "application/json"

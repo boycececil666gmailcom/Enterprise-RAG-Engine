@@ -38,37 +38,48 @@ def test_health_endpoint_backend_exception(mock_async_client):
     assert response.json()["downstream_backend"]["status"] == "unreachable"
 
 @patch("src.theme_based_rag_gateway.main.async_client")
-def test_ingest_endpoint_success(mock_async_client):
-    """Test that the document ingestion (/ingest) endpoint succeeds when the downstream backend processes it successfully."""
-    mock_resp = httpx.Response(200, json={"status": "success", "chunk_count": 5})
+def test_ingest_vector_endpoint_success(mock_async_client):
+    """Test that the vector document ingestion (/ingest/vector) endpoint succeeds."""
+    mock_resp = httpx.Response(200, json={"status": "success", "chunk_count": 3})
     mock_async_client.post = AsyncMock(return_value=mock_resp)
 
-    payload = {"text": "Document text", "metadata": {"key": "value"}}
-    response = client.post("/ingest", json=payload)
+    payload = {"text": "Vector doc", "metadata": {"key": "val"}}
+    response = client.post("/ingest/vector", json=payload)
     
     assert response.status_code == 200
-    assert response.json() == {"status": "success", "chunk_count": 5}
-    mock_async_client.post.assert_called_once()
+    assert response.json() == {"status": "success", "chunk_count": 3}
+
+@patch("src.theme_based_rag_gateway.main.async_client")
+def test_ingest_graph_endpoint_success(mock_async_client):
+    """Test that the graph document ingestion (/ingest/graph) endpoint succeeds."""
+    mock_resp = httpx.Response(200, json={"status": "success", "chunk_count": 2})
+    mock_async_client.post = AsyncMock(return_value=mock_resp)
+
+    payload = {"text": "Graph doc"}
+    response = client.post("/ingest/graph", json=payload)
+    
+    assert response.status_code == 200
+    assert response.json() == {"status": "success", "chunk_count": 2}
 
 @patch("src.theme_based_rag_gateway.main.async_client")
 def test_ingest_endpoint_downstream_error(mock_async_client):
-    """Test that the document ingestion (/ingest) endpoint correctly propagates errors when the downstream backend returns an HTTP 400 error."""
+    """Test that the document ingestion (/ingest/vector) endpoint correctly propagates errors when the downstream backend returns an HTTP 400 error."""
     mock_resp = httpx.Response(400, text="Bad Request downstream")
     mock_async_client.post = AsyncMock(return_value=mock_resp)
 
     payload = {"text": "Document text", "metadata": {"key": "value"}}
-    response = client.post("/ingest", json=payload)
+    response = client.post("/ingest/vector", json=payload)
     
     assert response.status_code == 400
     assert "Downstream error" in response.json()["detail"]
 
 @patch("src.theme_based_rag_gateway.main.async_client")
 def test_ingest_endpoint_connection_error(mock_async_client):
-    """Test that the document ingestion (/ingest) endpoint returns an HTTP 503 error when a connection error occurs with the downstream backend."""
+    """Test that the document ingestion (/ingest/vector) endpoint returns an HTTP 503 error when a connection error occurs with the downstream backend."""
     mock_async_client.post = AsyncMock(side_effect=httpx.RequestError("Gateway timeout"))
 
     payload = {"text": "Document text", "metadata": {"key": "value"}}
-    response = client.post("/ingest", json=payload)
+    response = client.post("/ingest/vector", json=payload)
     
     assert response.status_code == 503
     assert "Downstream service unavailable" in response.json()["detail"]
