@@ -2,7 +2,29 @@
 import os
 import sys
 import logging
-from langchain_qdrant import QdrantVectorStore, FastEmbedSparse, RetrievalMode
+try:
+    from langchain_qdrant import QdrantVectorStore, FastEmbedSparse, RetrievalMode
+except ImportError:
+    try:
+        from langchain_qdrant import Qdrant as QdrantVectorStore
+    except ImportError:
+        from langchain_community.vectorstores import Qdrant as QdrantVectorStore
+    
+    try:
+        from langchain_qdrant import FastEmbedSparse
+    except ImportError:
+        try:
+            from langchain_qdrant.fastembed_sparse import FastEmbedSparse
+        except ImportError:
+            from fastembed import TextEmbedding as FastEmbedSparse
+
+    try:
+        from langchain_qdrant import RetrievalMode
+    except ImportError:
+        class RetrievalMode:
+            DENSE = "dense"
+            SPARSE = "sparse"
+            HYBRID = "hybrid"
 from langchain_core.documents import Document
 from src.theme_based_rag_backend.config import QDRANT_URL, QDRANT_API_KEY, GEMINI_API_KEY, GEMINI_EMBED_MODEL
 
@@ -34,18 +56,26 @@ def get_vector_store():
             print(f"Initialized Google Gemini Embeddings Model: {GEMINI_EMBED_MODEL}")
 
         if sparse_embeddings is None:
-            sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
-            print("Initialized FastEmbed BM25 Sparse Embeddings Model")
+            try:
+                sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
+                print("Initialized FastEmbed BM25 Sparse Embeddings Model")
+            except Exception as se_err:
+                print(f"Sparse embeddings skipped: {se_err}")
+                sparse_embeddings = None
+
+        sparse_kwargs = {}
+        if sparse_embeddings is not None:
+            sparse_kwargs["sparse_embedding"] = sparse_embeddings
+            sparse_kwargs["retrieval_mode"] = RetrievalMode.HYBRID
 
         if "pytest" in sys.modules or QDRANT_URL == ":memory:":
             print("Running in-memory Qdrant Client for testing...")
             vector_store = QdrantVectorStore.from_documents(
                 [],
                 embedding=embeddings,
-                sparse_embedding=sparse_embeddings,
                 location=":memory:",
                 collection_name="local_rag_documents",
-                retrieval_mode=RetrievalMode.HYBRID
+                **sparse_kwargs
             )
         elif QDRANT_URL:
             print(f"Connecting to remote Qdrant DB server at {QDRANT_URL}")
@@ -55,19 +85,18 @@ def get_vector_store():
                     api_key=QDRANT_API_KEY,
                     collection_name="local_rag_documents",
                     embedding=embeddings,
-                    sparse_embedding=sparse_embeddings,
-                    retrieval_mode=RetrievalMode.HYBRID
+                    **sparse_kwargs
                 )
             except Exception:
                 print("Collection 'local_rag_documents' not found. Creating a new one...")
+                init_doc = Document(page_content="System Vector DB initialized.", metadata={"system": "init"})
                 vector_store = QdrantVectorStore.from_documents(
-                    [],
+                    [init_doc],
                     url=QDRANT_URL,
                     api_key=QDRANT_API_KEY,
                     collection_name="local_rag_documents",
                     embedding=embeddings,
-                    sparse_embedding=sparse_embeddings,
-                    retrieval_mode=RetrievalMode.HYBRID
+                    **sparse_kwargs
                 )
         else:
             raise ValueError("QDRANT_URL environment variable is not configured.")

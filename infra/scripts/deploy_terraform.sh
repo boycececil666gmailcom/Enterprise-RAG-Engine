@@ -9,7 +9,7 @@ log_step() {
 
 # Step 1: Initialize Terraform
 log_step "[1/4]" "Initializing Terraform Providers"
-cd "$(dirname "$0")/infra/terraform" || exit 1
+cd "$(dirname "$0")/.." || exit 1
 
 terraform init || exit 1
 

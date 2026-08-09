@@ -12,7 +12,10 @@ if not GEMINI_API_KEY and "pytest" in sys.modules:
     GEMINI_API_KEY = "dummy_key_for_testing"
 
 GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.1-flash-lite")
-GEMINI_EMBED_MODEL = os.getenv("GEMINI_EMBED_MODEL", "gemini-embedding-001")
+_embed_model = os.getenv("GEMINI_EMBED_MODEL", "models/text-embedding-004")
+if not _embed_model.startswith("models/") and not _embed_model.startswith("tunedModels/"):
+    _embed_model = f"models/{_embed_model}"
+GEMINI_EMBED_MODEL = _embed_model
 GEMINI_TEMPERATURE = float(os.getenv("GEMINI_TEMPERATURE", "0.0"))
 
 # FastAPI server settings

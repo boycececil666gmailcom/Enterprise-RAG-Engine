@@ -1,14 +1,23 @@
 from langchain_core.tools import tool
 import src.theme_based_rag_backend.vector_db as db
-from langchain_community.document_compressors.flashrank_rerank import FlashrankRerank
+try:
+    from langchain_community.document_compressors.flashrank_rerank import FlashrankRerank
+except ImportError:
+    try:
+        from langchain_community.document_compressors import FlashrankRerank
+    except ImportError:
+        FlashrankRerank = None
 
 _compressor = None
 
-def get_reranker() -> FlashrankRerank:
+def get_reranker():
     """Helper to lazily instantiate and cache the FlashrankRerank instance."""
     global _compressor
     if _compressor is None:
-        _compressor = FlashrankRerank(top_n=2)
+        if FlashrankRerank is not None:
+            _compressor = FlashrankRerank(top_n=2)
+        else:
+            return None
     return _compressor
 
 @tool
