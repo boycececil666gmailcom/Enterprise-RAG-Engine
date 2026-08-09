@@ -18,12 +18,6 @@ resource "kubernetes_service" "qdrant_service" {
       port        = 6333
       target_port = 6333
     }
-
-    port {
-      name        = "grpc"
-      port        = 6334
-      target_port = 6334
-    }
   }
 }
 
@@ -65,11 +59,6 @@ resource "kubernetes_stateful_set" "qdrant" {
           port {
             name           = "http"
             container_port = 6333
-          }
-
-          port {
-            name           = "grpc"
-            container_port = 6334
           }
 
           volume_mount {

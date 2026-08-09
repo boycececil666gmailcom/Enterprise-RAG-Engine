@@ -18,12 +18,6 @@ resource "kubernetes_service" "neo4j_service" {
       port        = 7474
       target_port = 7474
     }
-
-    port {
-      name        = "bolt"
-      port        = 7687
-      target_port = 7687
-    }
   }
 }
 
@@ -64,11 +58,6 @@ resource "kubernetes_stateful_set" "neo4j" {
           port {
             name           = "http"
             container_port = 7474
-          }
-
-          port {
-            name           = "bolt"
-            container_port = 7687
           }
 
           env {
