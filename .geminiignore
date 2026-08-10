@@ -1,0 +1,10 @@
+# Sensitive & Secret Files
+*.tfvars
+*.tfvars.json
+.env
+.env.*
+*.pem
+*.key
+*.tfstate
+*.tfstate.backup
+kubeconfig*
