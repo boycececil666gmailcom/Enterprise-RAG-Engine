@@ -63,12 +63,12 @@ resource "kubernetes_deployment" "backend" {
 
           env {
             name  = "QDRANT_URL"
-            value = "http://${kubernetes_service.qdrant_service.metadata[0].name}:6333"
+            value = var.qdrant_url
           }
 
           env {
             name  = "NEO4J_URI"
-            value = "bolt://${kubernetes_service.neo4j_service.metadata[0].name}:7687"
+            value = var.neo4j_uri
           }
 
           env {

@@ -2,29 +2,7 @@
 import os
 import sys
 import logging
-try:
-    from langchain_qdrant import QdrantVectorStore, FastEmbedSparse, RetrievalMode
-except ImportError:
-    try:
-        from langchain_qdrant import Qdrant as QdrantVectorStore
-    except ImportError:
-        from langchain_community.vectorstores import Qdrant as QdrantVectorStore
-    
-    try:
-        from langchain_qdrant import FastEmbedSparse
-    except ImportError:
-        try:
-            from langchain_qdrant.fastembed_sparse import FastEmbedSparse
-        except ImportError:
-            from fastembed import TextEmbedding as FastEmbedSparse
-
-    try:
-        from langchain_qdrant import RetrievalMode
-    except ImportError:
-        class RetrievalMode:
-            DENSE = "dense"
-            SPARSE = "sparse"
-            HYBRID = "hybrid"
+from langchain_qdrant import QdrantVectorStore, FastEmbedSparse, RetrievalMode
 from langchain_core.documents import Document
 from src.theme_based_rag_backend.config import QDRANT_URL, QDRANT_API_KEY, GEMINI_API_KEY, GEMINI_EMBED_MODEL
 
@@ -42,10 +20,6 @@ def get_vector_store():
     global vector_store, init_error, embeddings, sparse_embeddings
     if vector_store is not None:
         return vector_store
-
-    if not GEMINI_API_KEY:
-        raise ValueError("GEMINI_API_KEY is not configured in the environment variables.")
-
     try:
         from langchain_google_genai import GoogleGenerativeAIEmbeddings
         if embeddings is None:

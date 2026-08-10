@@ -53,7 +53,7 @@ resource "kubernetes_stateful_set" "qdrant" {
       spec {
         container {
           name              = "qdrant"
-          image             = "qdrant/qdrant:latest"
+          image             = var.qdrant_image
           image_pull_policy = "IfNotPresent"
 
           port {

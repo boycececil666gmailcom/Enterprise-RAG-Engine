@@ -52,7 +52,7 @@ resource "kubernetes_stateful_set" "neo4j" {
       spec {
         container {
           name              = "neo4j"
-          image             = "neo4j:latest"
+          image             = var.neo4j_image
           image_pull_policy = "IfNotPresent"
 
           port {

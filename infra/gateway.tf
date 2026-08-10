@@ -64,7 +64,7 @@ resource "kubernetes_deployment" "gateway" {
 
           env {
             name  = "RAG_BACKEND_URL"
-            value = "http://${kubernetes_service.backend_service.metadata[0].name}"
+            value = var.rag_backend_url
           }
 
 

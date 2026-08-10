@@ -104,6 +104,18 @@ variable "gateway_image" {
   default     = "theme-based-rag-gateway:latest"
 }
 
+variable "qdrant_image" {
+  type        = string
+  description = "Docker image for Qdrant Vector DB"
+  default     = "qdrant/qdrant:v1.11.0"
+}
+
+variable "neo4j_image" {
+  type        = string
+  description = "Docker image for Neo4j Graph DB"
+  default     = "neo4j:5.20.0"
+}
+
 variable "neo4j_username" {
   type        = string
   description = "Neo4j database username"
@@ -115,5 +127,23 @@ variable "neo4j_password" {
   description = "Neo4j database password"
   sensitive   = true
   default     = "neo4jpassword123"
+}
+
+variable "qdrant_url" {
+  type        = string
+  description = "Qdrant Vector DB Service URL or external endpoint (leave empty for internal K8s service)"
+  default     = ""
+}
+
+variable "neo4j_uri" {
+  type        = string
+  description = "Neo4j Graph DB Service URI or external endpoint (leave empty for internal K8s service)"
+  default     = ""
+}
+
+variable "rag_backend_url" {
+  type        = string
+  description = "Backend Service Endpoint URL for Gateway (leave empty for internal K8s service)"
+  default     = ""
 }
 
