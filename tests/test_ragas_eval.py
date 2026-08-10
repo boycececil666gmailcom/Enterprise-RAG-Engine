@@ -9,7 +9,8 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.theme_based_rag_backend.eval import RagasEvalSample, RagasEvalResult, generate_eval_dataset_from_chunks
+from eval.ragas_evaluator import RagasEvalSample, RagasEvalResult
+from eval.scripts.dataset_generator import generate_eval_dataset_from_chunks
 #endregion
 
 #region Unit Tests for RAGAS Data Models

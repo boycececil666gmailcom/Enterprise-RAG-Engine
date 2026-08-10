@@ -8,10 +8,10 @@ def __getattr__(name):
         from .ragas_evaluator import evaluate_rag_pipeline, RagasEvalResult, RagasEvalSample
         return locals()[name]
     elif name == "generate_eval_dataset_from_chunks":
-        from .dataset_generator import generate_eval_dataset_from_chunks
+        from .scripts.dataset_generator import generate_eval_dataset_from_chunks
         return generate_eval_dataset_from_chunks
     elif name == "run_agent_evaluation":
-        from .run_ragas_eval import run_agent_evaluation
+        from .scripts.run_ragas_eval import run_agent_evaluation
         return run_agent_evaluation
     raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
 

@@ -1,8 +1,15 @@
 #region Imports & Configuration
+import os
+import sys
 import json
 import logging
 from pathlib import Path
 from typing import List, Dict, Any
+
+# Ensure project root is in sys.path
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 logger = logging.getLogger(__name__)
 #endregion
@@ -11,7 +18,7 @@ logger = logging.getLogger(__name__)
 def generate_eval_dataset_from_chunks(
     json_chunks_path: Path,
     output_path: Path,
-    max_samples: int = 15
+    max_samples: int = 20
 ) -> List[Dict[str, Any]]:
     """
     Extracts synthetic evaluation QA pairs from preprocessed rag_chunks.json metadata.
@@ -47,7 +54,6 @@ def generate_eval_dataset_from_chunks(
         if not questions or not content:
             continue
 
-        # Use the first generated hypothetical question
         sample_question = questions[0] if isinstance(questions, list) else str(questions)
 
         eval_item = {
@@ -63,17 +69,19 @@ def generate_eval_dataset_from_chunks(
     with open(output_path, "w", encoding="utf-8") as out_f:
         json.dump(eval_dataset, out_f, ensure_ascii=False, indent=2)
 
-    logger.info(f"Successfully generated {len(eval_dataset)} evaluation samples at: {output_path}")
+    print(f"\033[1;92mSuccessfully generated {len(eval_dataset)} evaluation samples at: {output_path}\033[0m")
     return eval_dataset
 #endregion
 
 #region CLI Entry Point
 if __name__ == "__main__":
     import argparse
+    default_dataset_out = Path(__file__).resolve().parents[1] / "eval_dataset.json"
+
     parser = argparse.ArgumentParser(description="Generate RAGAS evaluation dataset from rag_chunks.json")
     parser.add_argument("--input", "-i", type=str, default="preprocessing-pipeline/rag_chunks.json", help="Path to rag_chunks.json")
-    parser.add_argument("--output", "-o", type=str, default="tests/eval/eval_dataset.json", help="Output path for eval_dataset.json")
-    parser.add_argument("--max", "-m", type=int, default=10, help="Max samples to generate")
+    parser.add_argument("--output", "-o", type=str, default=str(default_dataset_out), help=f"Output path for eval_dataset.json (default: {default_dataset_out})")
+    parser.add_argument("--max", "-m", type=int, default=20, help="Max samples to generate (default: 20)")
 
     args = parser.parse_args()
     in_path = Path(args.input).resolve()

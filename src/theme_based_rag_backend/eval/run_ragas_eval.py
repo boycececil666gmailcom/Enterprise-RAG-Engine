@@ -9,11 +9,11 @@ from typing import List, Dict, Any
 import httpx
 
 # Ensure project root is in sys.path
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from eval.ragas_evaluator import (
+from src.theme_based_rag_backend.eval.ragas_evaluator import (
     evaluate_rag_pipeline,
     RagasEvalSample,
     RagasEvalResult
@@ -25,10 +25,11 @@ logger = logging.getLogger(__name__)
 #region Pipeline Execution Harness
 def run_agent_evaluation(
     dataset_path: Path,
-    endpoint_url: str
+    endpoint_url: str = None
 ) -> List[RagasEvalSample]:
     """
-    Runs evaluation over all questions in dataset by querying the running HTTP API Endpoint.
+    Runs evaluation over all questions in dataset using either HTTP API Endpoint (K8s/Docker)
+    or local direct agent_graph.invoke.
     """
     if not dataset_path.exists():
         raise FileNotFoundError(f"Evaluation dataset file not found: {dataset_path}")
@@ -36,13 +37,21 @@ def run_agent_evaluation(
     with open(dataset_path, "r", encoding="utf-8") as f:
         raw_dataset = json.load(f)
 
+    is_remote_http = bool(endpoint_url and endpoint_url.lower() != "local")
+    mode_str = f"HTTP Endpoint ({endpoint_url})" if is_remote_http else "Local Direct agent_graph.invoke"
+
     print(f"\n\033[1;96m========================================================\033[0m")
-    print(f"\033[1;92m>>> [1/2] Executing Evaluation Pipeline via HTTP Endpoint: {endpoint_url}\033[0m")
+    print(f"\033[1;92m>>> [1/2] Executing Evaluation Pipeline over {len(raw_dataset)} Questions [{mode_str}]\033[0m")
     print(f"\033[1;96m========================================================\033[0m\n")
 
     samples: List[RagasEvalSample] = []
 
-    with httpx.Client(timeout=90.0) as http_client:
+    agent_graph = None
+    if not is_remote_http:
+        from src.theme_based_rag_backend.agent_flow.graph import agent_graph as local_graph
+        agent_graph = local_graph
+
+    with httpx.Client(timeout=90.0) if is_remote_http else sys.modules[__name__] as http_client:
         for idx, item in enumerate(raw_dataset, start=1):
             question = item.get("question")
             ground_truth = item.get("ground_truth")
@@ -53,15 +62,19 @@ def run_agent_evaluation(
             print(f"[{idx}/{len(raw_dataset)}] Processing Query: '{question}'")
 
             try:
-                resp = http_client.post(endpoint_url, json={"message": question, "history": []})
-                if resp.status_code != 200:
-                    raise RuntimeError(f"HTTP {resp.status_code}: {resp.text}")
-                
-                data = resp.json()
-                answer = data.get("agent_response", "") or data.get("response", "")
-                raw_contexts = data.get("retrieved_documents", "") or data.get("contexts", "")
+                if is_remote_http:
+                    resp = http_client.post(endpoint_url, json={"message": question, "history": []})
+                    if resp.status_code != 200:
+                        raise RuntimeError(f"HTTP {resp.status_code}: {resp.text}")
+                    data = resp.json()
+                    answer = data.get("agent_response", "") or data.get("response", "")
+                    raw_contexts = data.get("retrieved_documents", "") or data.get("contexts", "")
+                else:
+                    initial_state = {"message": question, "history": []}
+                    final_state = agent_graph.invoke(initial_state)
+                    answer = final_state.get("agent_response", "")
+                    raw_contexts = final_state.get("retrieved_documents", "")
 
-                # Extract retrieved contexts
                 if isinstance(raw_contexts, list):
                     contexts = [str(c) for c in raw_contexts]
                 elif isinstance(raw_contexts, str):
@@ -80,7 +93,7 @@ def run_agent_evaluation(
                 logger.error(f"Error executing pipeline on question '{question}': {err}")
                 samples.append(RagasEvalSample(
                     question=question,
-                    answer="Error executing RAG pipeline via HTTP API.",
+                    answer="Error executing RAG pipeline.",
                     contexts=["Error"],
                     ground_truth=ground_truth
                 ))
@@ -90,8 +103,13 @@ def run_agent_evaluation(
 
 #region CLI Entry Point & Report Output
 def main():
-    default_dataset = Path(__file__).resolve().parents[1] / "eval_dataset.json"
-    default_output = Path(__file__).resolve().parents[1] / "output"
+    default_dataset = Path(__file__).resolve().parent / "eval_dataset.json"
+    if not default_dataset.exists():
+        default_dataset = Path(__file__).resolve().parents[1] / "eval_dataset.json"
+
+    default_output = Path(__file__).resolve().parent / "output"
+    if not default_output.exists():
+        default_output = Path(__file__).resolve().parents[1] / "output"
     
     parser = argparse.ArgumentParser(description="Run RAGAS evaluation on Enterprise RAG Backend Engine.")
     parser.add_argument(
@@ -109,8 +127,8 @@ def main():
     parser.add_argument(
         "--endpoint", "-e",
         type=str,
-        default=os.getenv("RAG_ENDPOINT", "http://localhost:8000/query"),
-        help="HTTP API Endpoint URL for container/K8s evaluation (default: http://localhost:8000/query)"
+        default=os.getenv("RAG_ENDPOINT", "local"),
+        help="HTTP API Endpoint URL for container/K8s evaluation (e.g. http://localhost:8000/query or http://localhost:8080/query). Pass 'local' for in-memory direct invocation."
     )
 
     args = parser.parse_args()

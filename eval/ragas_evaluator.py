@@ -1,11 +1,34 @@
 #region Imports & Configuration
 import os
+import sys
 import logging
 from dataclasses import dataclass, field
 from typing import List, Dict, Any, Optional
+from pathlib import Path
 import pandas as pd
+from dotenv import load_dotenv
 
-from src.theme_based_rag_backend.config import GEMINI_API_KEY, GEMINI_MODEL, GEMINI_EMBED_MODEL
+# Directly load .env file from project root without depending on backend modules
+ENV_PATH = Path(__file__).resolve().parents[1] / ".env"
+load_dotenv(dotenv_path=ENV_PATH)
+
+# Apply compatibility shim for ragas vertexai import
+try:
+    import langchain_community.chat_models.vertexai
+except ModuleNotFoundError:
+    import types
+    mod = types.ModuleType("langchain_community.chat_models.vertexai")
+    try:
+        from langchain_google_vertexai import ChatVertexAI
+        mod.ChatVertexAI = ChatVertexAI
+    except ImportError:
+        mod.ChatVertexAI = None
+    import sys
+    sys.modules["langchain_community.chat_models.vertexai"] = mod
+
+from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
+from ragas.llms import LangchainLLMWrapper
+from ragas.embeddings import LangchainEmbeddingsWrapper
 
 logger = logging.getLogger(__name__)
 #endregion
@@ -37,27 +60,31 @@ class RagasEvalResult:
 #region Evaluator Backend Setup
 def get_evaluator_llm_and_embeddings():
     """Instantiates and wraps Gemini LLM and Embeddings for RAGAS evaluation."""
-    if not GEMINI_API_KEY:
+    gemini_api_key = os.getenv("GEMINI_API_KEY")
+    if not gemini_api_key and "pytest" in sys.modules:
+        gemini_api_key = "dummy_key_for_testing"
+
+    if not gemini_api_key:
         raise ValueError("GEMINI_API_KEY is not set in environment variables.")
 
-    from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
-    from ragas.llms import LangchainLLMWrapper
-    from ragas.embeddings import LangchainEmbeddingsWrapper
+    gemini_model = os.getenv("GEMINI_MODEL", "gemini-1.5-flash")
+    gemini_embed_model = os.getenv("GEMINI_EMBED_MODEL", "models/text-embedding-004")
+    if not gemini_embed_model.startswith("models/") and not gemini_embed_model.startswith("tunedModels/"):
+        gemini_embed_model = f"models/{gemini_embed_model}"
 
-    eval_model_name = GEMINI_MODEL if GEMINI_MODEL else "gemini-1.5-flash"
-    
     llm = ChatGoogleGenerativeAI(
-        model=eval_model_name,
-        google_api_key=GEMINI_API_KEY,
+        model=gemini_model,
+        google_api_key=gemini_api_key,
         temperature=0.0
     )
     embeddings = GoogleGenerativeAIEmbeddings(
-        model=GEMINI_EMBED_MODEL,
-        google_api_key=GEMINI_API_KEY
+        model=gemini_embed_model,
+        google_api_key=gemini_api_key
     )
 
     ragas_llm = LangchainLLMWrapper(llm)
     ragas_embeddings = LangchainEmbeddingsWrapper(embeddings)
+
     return ragas_llm, ragas_embeddings
 #endregion
 
@@ -80,6 +107,19 @@ def evaluate_rag_pipeline(
         raise ValueError("No evaluation samples provided for RAGAS evaluation.")
 
     try:
+        try:
+            import langchain_community.chat_models.vertexai
+        except ModuleNotFoundError:
+            import types
+            mod = types.ModuleType("langchain_community.chat_models.vertexai")
+            try:
+                from langchain_google_vertexai import ChatVertexAI
+                mod.ChatVertexAI = ChatVertexAI
+            except ImportError:
+                mod.ChatVertexAI = None
+            import sys
+            sys.modules["langchain_community.chat_models.vertexai"] = mod
+
         from ragas import evaluate
         from ragas.metrics import (
             faithfulness,
