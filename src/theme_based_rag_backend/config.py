@@ -6,17 +6,18 @@ load_dotenv()
 
 import sys
 
-# Gemini settings
+#region Gemini Settings
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 if not GEMINI_API_KEY and "pytest" in sys.modules:
     GEMINI_API_KEY = "dummy_key_for_testing"
 
 GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.1-flash-lite")
-_embed_model = os.getenv("GEMINI_EMBED_MODEL", "models/text-embedding-004")
+_embed_model = os.getenv("GEMINI_EMBED_MODEL", "models/gemini-embedding-001")
 if not _embed_model.startswith("models/") and not _embed_model.startswith("tunedModels/"):
     _embed_model = f"models/{_embed_model}"
 GEMINI_EMBED_MODEL = _embed_model
 GEMINI_TEMPERATURE = float(os.getenv("GEMINI_TEMPERATURE", "0.0"))
+#endregion
 
 # FastAPI server settings
 PORT = int(os.getenv("PORT", "8000"))

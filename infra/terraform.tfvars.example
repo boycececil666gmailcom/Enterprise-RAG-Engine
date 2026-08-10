@@ -12,6 +12,8 @@ kubeconfig_path    = "~/.kube/config"
 # Namespace & Secrets Configuration
 namespace          = "theme-based-rag-workflow"
 gemini_api_key     = "YOUR_GEMINI_API_KEY_HERE"
+gemini_model       = "gemini-3.6-flash"
+gemini_embed_model = "gemini-embedding-004"
 langsmith_tracing  = "true"
 langsmith_api_key  = "YOUR_LANGSMITH_API_KEY_HERE"
 langsmith_project  = "pr-virtual-cork-53"

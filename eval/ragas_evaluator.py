@@ -67,7 +67,7 @@ def get_evaluator_llm_and_embeddings():
     if not gemini_api_key:
         raise ValueError("GEMINI_API_KEY is not set in environment variables.")
 
-    gemini_model = os.getenv("GEMINI_MODEL", "gemini-1.5-flash")
+    gemini_model = os.getenv("GEMINI_MODEL", "gemini-3.6-flash")
     gemini_embed_model = os.getenv("GEMINI_EMBED_MODEL", "models/text-embedding-004")
     if not gemini_embed_model.startswith("models/") and not gemini_embed_model.startswith("tunedModels/"):
         gemini_embed_model = f"models/{gemini_embed_model}"
