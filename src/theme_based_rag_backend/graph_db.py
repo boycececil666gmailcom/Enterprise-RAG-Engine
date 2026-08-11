@@ -1,56 +1,30 @@
+#region Imports & Driver Initialization
 import os
 import re
 import json
 import logging
+from functools import lru_cache
 from langchain_core.messages import SystemMessage, HumanMessage
 from src.theme_based_rag_backend.config import NEO4J_URI, NEO4J_USERNAME, NEO4J_PASSWORD, GEMINI_API_KEY
+from src.theme_based_rag_backend.llm_client import llm
 
 logger = logging.getLogger(__name__)
 
-# Lazy driver and LLM initialization
-_driver = None
-_llm = None
-
+@lru_cache(maxsize=1)
 def get_driver():
-    global _driver
-    if _driver is not None:
-        return _driver
-    
-    # Do not fail if driver cannot be initialized (e.g. testing or database offline)
+    """Lazily initializes and caches Neo4j GraphDatabase driver using lru_cache."""
     try:
         from neo4j import GraphDatabase
         logger.info(f"Initializing Neo4j Bolt connection to {NEO4J_URI}...")
-        _driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USERNAME, NEO4J_PASSWORD))
-        # Test connection
-        _driver.verify_connectivity()
+        driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USERNAME, NEO4J_PASSWORD))
+        driver.verify_connectivity()
         logger.info("Successfully connected to Neo4j database.")
-        return _driver
+        return driver
     except Exception as e:
         logger.warning(f"Could not connect to Neo4j at {NEO4J_URI}: {e}")
-        _driver = None
         return None
 
-def get_llm():
-    global _llm
-    if _llm is not None:
-        return _llm
-    
-    if not GEMINI_API_KEY:
-        logger.warning("GEMINI_API_KEY is not set. LLM capabilities in graph_db will be disabled.")
-        return None
-        
-    try:
-        from langchain_google_genai import ChatGoogleGenerativeAI
-        from src.theme_based_rag_backend.config import GEMINI_MODEL
-        _llm = ChatGoogleGenerativeAI(
-            model=GEMINI_MODEL,
-            google_api_key=GEMINI_API_KEY,
-            temperature=0.0
-        )
-        return _llm
-    except Exception as e:
-        logger.error(f"Error initializing LLM: {e}")
-        return None
+#endregion
 
 def sanitize_rel_type(rel_type: str) -> str:
     """Sanitizes relationship type to avoid Cypher injection and conform to Cypher naming rules."""
@@ -77,7 +51,6 @@ def clean_json_response(content) -> str:
 
 def extract_entities_and_relations(text: str) -> dict:
     """Uses Gemini LLM to extract entities and relations from a text chunk."""
-    llm = get_llm()
     if not llm:
         return {"entities": [], "relationships": []}
     
@@ -155,11 +128,7 @@ def add_graph_relations(entities: list, relationships: list):
         logger.error(f"Failed to write graph data to Neo4j: {e}")
 
 def extract_query_entities(query: str) -> list:
-    """Uses Gemini LLM to identify main entity names mentioned in a user search query."""
-    llm = get_llm()
-    if not llm:
-        return []
-        
+    """Uses Gemini LLM to identify main entity names mentioned in a user search query."""        
     system_prompt = (
         "You are an entity extractor. Identify and list the main entities (proper nouns, products, services, terms) "
         "mentioned in the user query. Output ONLY a valid JSON array of strings representing entity names, e.g.:\n"

@@ -2,13 +2,9 @@
 from langchain_core.messages import SystemMessage, HumanMessage
 from src.theme_based_rag_backend.config import CHATBOT_THEME
 from src.theme_based_rag_backend.agent_flow.state import AgentState
-from src.theme_based_rag_backend.agent_flow.llm_client import llm
+from src.theme_based_rag_backend.llm_client import llm
 
 def refuse_node(state: AgentState) -> dict:
-    print(f"\n\033[1;96m========================================================\033[0m")
-    print(f"\033[1;92m>>> [Agent Flow] Executing Refuse node refusal\033[0m")
-    print(f"\033[1;96m========================================================\033[0m\n")
-    
     refusal_prompt = (
         f"You are a customer service assistant bound to the theme '{CHATBOT_THEME}'.\n"
         f"Politely explain to the user that you are only configured to assist with questions "
@@ -23,3 +19,4 @@ def refuse_node(state: AgentState) -> dict:
     if isinstance(content, list):
         content = "".join(part if isinstance(part, str) else part.get("text", "") for part in content)
     return {"agent_response": content}
+#endregion

@@ -1,18 +1,15 @@
+#region Imports & Node Implementation
 import logging
 from langchain_core.messages import SystemMessage, HumanMessage
 from src.theme_based_rag_backend.config import CHATBOT_THEME, FORCE_RAG_KEYWORDS
 from src.theme_based_rag_backend.agent_flow.state import AgentState
+from src.theme_based_rag_backend.llm_client import llm
 
 logger = logging.getLogger(__name__)
 
 def routing_node(state: AgentState) -> dict:
-    from src.theme_based_rag_backend.agent_flow import llm
     
     query = state["message"]
-    
-    print(f"\n\033[1;96m========================================================\033[0m")
-    print(f"\033[1;92m>>> [Agent Flow] Classifying user query theme via LLM Agent\033[0m")
-    print(f"\033[1;96m========================================================\033[0m\n")
     
     try:
         # Construct dynamic prompt referencing theme and any forced keywords
@@ -51,5 +48,5 @@ def routing_node(state: AgentState) -> dict:
         logger.error(f"Error during LLM classification: {e}. Falling back to 'refuse'.")
         category = "refuse"
         
-    print(f"-> Categorized as: '{category}'")
     return {"category": category}
+#endregion

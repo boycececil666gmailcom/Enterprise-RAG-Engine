@@ -21,9 +21,6 @@ app = FastAPI(title="Theme-Based RAG Workflow Backend")
 async def ingest_vector_document(request: IngestRequest):
     """Ingests document text specifically into Qdrant Vector Database."""
     try:
-        print(f"\n\033[1;96m========================================================\033[0m")
-        print(f"\033[1;92m>>> [{os.path.basename(__file__)}] Forwarding ingestion request to Vector Store\033[0m")
-        print(f"\033[1;96m========================================================\033[0m\n")
         chunk_count = db.add_document_text(request.text, request.metadata)
         return IngestResponse(status="success", chunk_count=chunk_count)
     except Exception as e:
@@ -35,9 +32,6 @@ async def ingest_vector_document(request: IngestRequest):
 async def ingest_graph_document(request: IngestRequest):
     """Ingests document text specifically into Neo4j Graph Database."""
     try:
-        print(f"\n\033[1;96m========================================================\033[0m")
-        print(f"\033[1;92m>>> [{os.path.basename(__file__)}] Forwarding ingestion request to Graph Store\033[0m")
-        print(f"\033[1;96m========================================================\033[0m\n")
         element_count = graph_db.ingest_graph_document(request.text)
         return IngestResponse(status="success", chunk_count=element_count)
     except Exception as e:

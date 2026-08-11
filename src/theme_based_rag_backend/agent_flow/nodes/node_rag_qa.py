@@ -3,7 +3,7 @@ from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
 from src.theme_based_rag_backend.config import CHATBOT_THEME
 from src.theme_based_rag_backend.models import RAGResponseSchema
 from src.theme_based_rag_backend.agent_flow.state import AgentState
-from src.theme_based_rag_backend.agent_flow.llm_client import llm
+from src.theme_based_rag_backend.llm_client import llm
 from src.theme_based_rag_backend.tools import retrieve_local_documents
 #endregion
 
@@ -12,16 +12,11 @@ def rag_qa_node(state: AgentState) -> dict:
     query = state["message"]
     history = state.get("history", [])
     hypo_doc = state.get("hypothetical_document")
-    
-    print(f"\n\033[1;96m========================================================\033[0m")
-    print(f"\033[1;92m>>> [Agent Flow] Executing RAG QA retrieval & synthesis\033[0m")
-    print(f"\033[1;96m========================================================\033[0m\n")
 
     # Retrieve local documents using HyDE hypothetical document if present, otherwise raw query
     retrieved_docs = state.get("retrieved_documents")
     if not retrieved_docs:
         search_target = hypo_doc if hypo_doc else query
-        print(f"Invoking retrieve_local_documents tool with target: '{search_target[:60]}...'")
         retrieved_docs = retrieve_local_documents.invoke(search_target)
     
     system_prompt = (
@@ -31,7 +26,7 @@ def rag_qa_node(state: AgentState) -> dict:
         f"CRITICAL RULES:\n"
         f"1. Your answer must be strictly grounded in the retrieved document context.\n"
         f"2. If the context does not contain the answer or specific details (such as prices, plans, dates, or figures), "
-        f"explicitly state 'ドキュメントに該当情報が記載されていません' (Information not available in documentation).\n"
+        f"explicitly state 'Information not available in documentation'. \n"
         f"3. NEVER extrapolate, guess, or invent numbers, prices, or missing facts to fill in gaps (Anti-Hallucination Amplification).\n"
         f"4. Do not make up facts or use pre-trained general knowledge."
     )
@@ -53,7 +48,6 @@ def rag_qa_node(state: AgentState) -> dict:
     feedback = state.get("critique_feedback")
     prev_draft = state.get("agent_response")
     if feedback and prev_draft:
-        print(f"Refinement attempt: applying critique feedback: {feedback}")
         messages.append(AIMessage(content=prev_draft))
         refine_msg = (
             f"CRITIQUE FEEDBACK: Your previous draft answer was rejected because: {feedback}\n"

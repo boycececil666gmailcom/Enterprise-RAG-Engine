@@ -57,9 +57,9 @@ class RagasEvalResult:
         return "\n".join(lines)
 #endregion
 
-#region Evaluator Backend Setup
-def get_evaluator_llm_and_embeddings():
-    """Instantiates and wraps Gemini LLM and Embeddings for RAGAS evaluation."""
+#region RAGAS Client Initialization
+def create_ragas_llm_and_embeddings():
+    """Instantiates and wraps Gemini LLM and Embeddings independently for RAGAS evaluation."""
     gemini_api_key = os.getenv("GEMINI_API_KEY")
     if not gemini_api_key and "pytest" in sys.modules:
         gemini_api_key = "dummy_key_for_testing"

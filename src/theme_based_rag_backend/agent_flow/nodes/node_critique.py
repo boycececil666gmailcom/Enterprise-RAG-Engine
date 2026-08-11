@@ -3,7 +3,7 @@ import logging
 from langchain_core.messages import HumanMessage
 from src.theme_based_rag_backend.config import CHATBOT_THEME
 from src.theme_based_rag_backend.agent_flow.state import AgentState
-from src.theme_based_rag_backend.agent_flow.llm_client import llm
+from src.theme_based_rag_backend.llm_client import llm
 
 logger = logging.getLogger(__name__)
 
@@ -14,11 +14,6 @@ def critique_node(state: AgentState) -> dict:
     docs = state.get("retrieved_documents")
     query = state["message"]
     attempts = state.get("attempts", 0)
-    
-    print(f"\n\033[1;96m========================================================\033[0m")
-    print(f"\033[1;92m>>> [Agent Flow] Critique Node validating response ({category})\033[0m")
-    print(f"\033[1;96m========================================================\033[0m\n")
-    
     hypo_doc = state.get("hypothetical_document")
 
     if category == "refuse":
@@ -47,8 +42,6 @@ def critique_node(state: AgentState) -> dict:
             f"Otherwise, output a detailed explanation of what is wrong, extrapolated, or hallucinated."
         )
 
-
-    
     messages = [HumanMessage(content=critique_prompt)]
     response = llm.invoke(messages)
     
@@ -63,13 +56,12 @@ def critique_node(state: AgentState) -> dict:
         status = "FAIL"
         reason = content
             
-    print(f"Critique result: '{status}'")
     if status == "PASS":
         return {"critique_feedback": "PASS"}
     else:
-        print(f"Rejection reason: {reason}")
         return {
             "critique_feedback": reason,
             "attempts": attempts + 1
         }
+#endregion
 

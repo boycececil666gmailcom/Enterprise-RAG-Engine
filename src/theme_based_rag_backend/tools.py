@@ -1,24 +1,8 @@
+#region Imports & Setup
 from langchain_core.tools import tool
+from langchain_community.document_compressors.flashrank_rerank import FlashrankRerank
 import src.theme_based_rag_backend.vector_db as db
-try:
-    from langchain_community.document_compressors.flashrank_rerank import FlashrankRerank
-except ImportError:
-    try:
-        from langchain_community.document_compressors import FlashrankRerank
-    except ImportError:
-        FlashrankRerank = None
 
-_compressor = None
-
-def get_reranker():
-    """Helper to lazily instantiate and cache the FlashrankRerank instance."""
-    global _compressor
-    if _compressor is None:
-        if FlashrankRerank is not None:
-            _compressor = FlashrankRerank(top_n=2)
-        else:
-            return None
-    return _compressor
 
 @tool
 def retrieve_local_documents(query: str) -> str:
@@ -37,8 +21,7 @@ def retrieve_local_documents(query: str) -> str:
         if docs:
             # Apply FlashRank Cross-Encoder reranker using the original user query
             try:
-                compressor = get_reranker()
-                vector_docs = compressor.compress_documents(docs, query)
+                vector_docs = FlashrankRerank(top_n=2).compress_documents(docs, query)
             except Exception as rerank_err:
                 import logging
                 logging.getLogger(__name__).warning(
@@ -55,7 +38,6 @@ def retrieve_local_documents(query: str) -> str:
         from src.theme_based_rag_backend.graph_db import extract_query_entities, retrieve_graph_relations
         query_entities = extract_query_entities(query)
         if query_entities:
-            print(f"Extracted entities for GraphRAG query: {query_entities}")
             graph_context = retrieve_graph_relations(query_entities)
     except Exception as graph_err:
         import logging
