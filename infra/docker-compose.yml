@@ -28,6 +28,7 @@ services:
     build:
       context: ..
       dockerfile: src/theme_based_rag_backend/Dockerfile
+    image: theme-based-rag-langgraph-studio:latest
     container_name: rag-langgraph-studio
     command: >
       sh -c "pip install --no-cache-dir -U 'langgraph-cli[inmem]' 'langchain-google-genai>=2.0.0' 'langchain-community>=0.3.0' 'langchain-qdrant>=0.2.0' &&
@@ -48,6 +49,7 @@ services:
     build:
       context: ..
       dockerfile: src/theme_based_rag_backend/Dockerfile
+    image: theme-based-rag-backend:latest
     container_name: rag-backend
     ports:
       - "8000:8000"
@@ -62,6 +64,7 @@ services:
     build:
       context: ..
       dockerfile: src/theme_based_rag_gateway/Dockerfile
+    image: theme-based-rag-gateway:latest
     container_name: rag-gateway
     ports:
       - "8080:8080"

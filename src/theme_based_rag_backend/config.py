@@ -16,7 +16,12 @@ def require_env(key: str) -> str:
 #region Gemini Settings
 GEMINI_API_KEY = require_env("GEMINI_API_KEY")
 GEMINI_MODEL = require_env("GEMINI_MODEL")
-GEMINI_EMBED_MODEL = require_env("GEMINI_EMBED_MODEL")
+_raw_embed = require_env("GEMINI_EMBED_MODEL")
+if _raw_embed.startswith("models/"):
+    _raw_embed = _raw_embed.replace("models/", "", 1)
+if _raw_embed == "text-embedding-004":
+    _raw_embed = "gemini-embedding-001"
+GEMINI_EMBED_MODEL = _raw_embed
 GEMINI_TEMPERATURE = float(require_env("GEMINI_TEMPERATURE"))
 #endregion
 
