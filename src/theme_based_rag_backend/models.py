@@ -7,6 +7,11 @@ from pydantic import BaseModel, Field, model_validator
 class RAGResponseSchema(BaseModel):
     """Guaranteed deterministic output schema for RAG QA synthesis."""
     answer: str = Field(description="Strictly grounded answer text synthesized from retrieved document context")
+
+class CritiqueResultSchema(BaseModel):
+    """Guaranteed deterministic output schema for critique node evaluation."""
+    is_passed: bool = Field(description="True if response passes critique evaluation, False otherwise")
+    feedback: Optional[str] = Field(default=None, description="Detailed explanation of hallucination or issue if is_passed is False")
 #endregion
 
 #region API Payload Schemas
@@ -25,6 +30,7 @@ class QueryResponse(BaseModel):
     hyde_reason: Optional[str] = None
     hyde_content: Optional[str] = None
     retrieved_documents: Optional[str] = None
+    history: Optional[List[MessageSchema]] = None
 
 class IngestRequest(BaseModel):
     text: str = Field(min_length=1, description="Raw document text to ingest")

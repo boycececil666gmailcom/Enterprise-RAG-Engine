@@ -71,7 +71,8 @@ async def run_query(request: QueryRequest):
             should_hyde=result.get("should_hyde"),
             hyde_reason=result.get("hyde_reason"),
             hyde_content=result.get("hyde_content"),
-            retrieved_documents=result.get("retrieved_documents")
+            retrieved_documents=result.get("retrieved_documents"),
+            history=result.get("history")
         )
     except Exception as e:
         import traceback

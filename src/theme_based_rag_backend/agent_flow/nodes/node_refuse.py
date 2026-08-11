@@ -1,6 +1,7 @@
 #region Imports & Node Implementation
 from langchain_core.messages import SystemMessage, HumanMessage
 from src.theme_based_rag_backend.config import CHATBOT_THEME
+from src.theme_based_rag_backend.models import RAGResponseSchema
 from src.theme_based_rag_backend.agent_flow.state import AgentState
 from src.theme_based_rag_backend.llm_client import llm
 
@@ -14,9 +15,7 @@ def refuse_node(state: AgentState) -> dict:
         SystemMessage(content=refusal_prompt),
         HumanMessage(content=state["query"])
     ]
-    response = llm.invoke(messages)
-    content = response.content
-    if isinstance(content, list):
-        content = "".join(part if isinstance(part, str) else part.get("text", "") for part in content)
-    return {"final_response": content}
+    structured_llm = llm.with_structured_output(RAGResponseSchema)
+    response: RAGResponseSchema = structured_llm.invoke(messages)
+    return {"final_response": response.answer}
 #endregion

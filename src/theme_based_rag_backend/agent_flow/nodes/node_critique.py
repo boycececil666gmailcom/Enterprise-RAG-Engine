@@ -2,6 +2,7 @@
 import logging
 from langchain_core.messages import HumanMessage
 from src.theme_based_rag_backend.config import CHATBOT_THEME
+from src.theme_based_rag_backend.models import CritiqueResultSchema
 from src.theme_based_rag_backend.agent_flow.state import AgentState
 from src.theme_based_rag_backend.llm_client import llm
 
@@ -43,24 +44,15 @@ def critique_node(state: AgentState) -> dict:
         )
 
     messages = [HumanMessage(content=critique_prompt)]
-    response = llm.invoke(messages)
+    structured_llm = llm.with_structured_output(CritiqueResultSchema)
+    eval_result: CritiqueResultSchema = structured_llm.invoke(messages)
     
-    content = response.content
-    if isinstance(content, list):
-        content = "".join(part if isinstance(part, str) else part.get("text", "") for part in content)
-    content = content.strip()
-    if "pass" in content.lower():
-        status = "PASS"
-        reason = None
-    else:
-        status = "FAIL"
-        reason = content
-            
-    if status == "PASS":
+    if eval_result.is_passed:
         return {"critique_feedback": "PASS"}
     else:
+        feedback_reason = eval_result.feedback or "Failed groundedness or accuracy validation"
         return {
-            "critique_feedback": reason,
+            "critique_feedback": feedback_reason,
             "attempt_count": attempt_count + 1
         }
 #endregion
