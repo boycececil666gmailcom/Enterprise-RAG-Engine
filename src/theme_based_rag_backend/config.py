@@ -1,45 +1,47 @@
+#region Imports & Configuration
 import os
+import sys
 from dotenv import load_dotenv
 
 # Load .env file
 load_dotenv()
 
-import sys
-
-#region Gemini Settings
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-if not GEMINI_API_KEY and "pytest" in sys.modules:
-    GEMINI_API_KEY = "dummy_key_for_testing"
-
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.1-flash-lite")
-_embed_model = os.getenv("GEMINI_EMBED_MODEL", "models/text-embedding-004")
-if not _embed_model.startswith("models/") and not _embed_model.startswith("tunedModels/"):
-    _embed_model = f"models/{_embed_model}"
-GEMINI_EMBED_MODEL = _embed_model
-GEMINI_TEMPERATURE = float(os.getenv("GEMINI_TEMPERATURE", "0.0"))
+def require_env(key: str) -> str:
+    val = os.getenv(key)
+    if not val:
+        raise ValueError(f"CRITICAL CONFIG ERROR: Environment variable '{key}' is required but not set.")
+    return val
 #endregion
 
-# FastAPI server settings
-PORT = int(os.getenv("PORT", "8000"))
-HOST = os.getenv("HOST", "0.0.0.0")
+#region Gemini Settings
+GEMINI_API_KEY = require_env("GEMINI_API_KEY")
+GEMINI_MODEL = require_env("GEMINI_MODEL")
+GEMINI_EMBED_MODEL = require_env("GEMINI_EMBED_MODEL")
+GEMINI_TEMPERATURE = float(require_env("GEMINI_TEMPERATURE"))
+#endregion
 
-# Qdrant settings
-QDRANT_URL = os.getenv("QDRANT_URL")
+#region FastAPI Server Settings
+BACKEND_PORT = int(require_env("BACKEND_PORT"))
+BACKEND_HOST = require_env("BACKEND_HOST")
+#endregion
+
+#region Qdrant Database Settings
+QDRANT_URL = require_env("QDRANT_URL")
 QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
+#endregion
 
-# Neo4j settings
-NEO4J_URI = os.getenv("NEO4J_URI", "bolt://localhost:7687")
-NEO4J_USERNAME = os.getenv("NEO4J_USERNAME", "neo4j")
-NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD", "password123")
+#region Neo4j Database Settings
+NEO4J_URI = require_env("NEO4J_URI")
+NEO4J_USERNAME = require_env("NEO4J_USERNAME")
+NEO4J_PASSWORD = require_env("NEO4J_PASSWORD")
+#endregion
 
-# Chatbot Theme setting
-CHATBOT_THEME = os.getenv("CHATBOT_THEME", "Fintech SaaS platform")
+#region Chatbot Theme Settings
+CHATBOT_THEME = require_env("CHATBOT_THEME")
+#endregion
 
-# LangSmith Observability settings
-LANGSMITH_TRACING = (os.getenv("LANGSMITH_TRACING") or os.getenv("LANGCHAIN_TRACING_V2") or "false").lower() == "true"
+#region LangSmith Settings
+LANGSMITH_TRACING = require_env("LANGSMITH_TRACING").lower() == "true"
 LANGSMITH_API_KEY = os.getenv("LANGSMITH_API_KEY") or os.getenv("LANGCHAIN_API_KEY")
-LANGSMITH_PROJECT = os.getenv("LANGSMITH_PROJECT") or os.getenv("LANGCHAIN_PROJECT") or "pr-virtual-cork-53"
-LANGSMITH_ENDPOINT = os.getenv("LANGSMITH_ENDPOINT") or os.getenv("LANGCHAIN_ENDPOINT") or "https://api.smith.langchain.com"
-
-
-
+LANGSMITH_PROJECT = require_env("LANGSMITH_PROJECT")
+#endregion

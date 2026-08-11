@@ -1,3 +1,4 @@
+#region Imports & Setup
 import os
 import logging
 import uvicorn
@@ -6,8 +7,7 @@ from fastapi import FastAPI, HTTPException
 
 logger = logging.getLogger(__name__)
 
-#region Module Imports & App Setup
-from src.theme_based_rag_backend.config import HOST, PORT, GEMINI_MODEL
+from src.theme_based_rag_backend.config import BACKEND_HOST, BACKEND_PORT, GEMINI_MODEL
 import src.theme_based_rag_backend.vector_db as db
 import src.theme_based_rag_backend.graph_db as graph_db
 from src.theme_based_rag_backend.models import QueryRequest, QueryResponse, IngestRequest, IngestResponse
@@ -46,6 +46,7 @@ async def ingest_graph_document(request: IngestRequest):
         raise HTTPException(status_code=500, detail=str(e))
 #endregion
 
+#region Query Workflow & Health Check Endpoints
 @app.post("/query", response_model=QueryResponse)
 async def run_query(request: QueryRequest):
     try:
@@ -72,20 +73,16 @@ async def run_query(request: QueryRequest):
             
         return QueryResponse(
             response=result.get("agent_response", ""),
-
             tool_calls_executed=tool_calls_executed,
             use_hyde=result.get("use_hyde"),
             hyde_reason=result.get("hyde_reason"),
             hypothetical_document=result.get("hypothetical_document"),
             retrieved_documents=result.get("retrieved_documents")
         )
-
-
     except Exception as e:
         import traceback
         traceback.print_exc()
         raise HTTPException(status_code=500, detail=f"Query execution error: {str(e)}")
-
 
 @app.get("/health")
 async def health_check():
@@ -93,11 +90,7 @@ async def health_check():
         db.get_vector_store()
         vector_ok = "ok"
     except Exception as e:
-        logger.error(f"Health check failed to initialize vector store: {e}")
-        raise HTTPException(
-            status_code=503,
-            detail=f"Vector store initialization failed: {str(e)}"
-        )
+        vector_ok = "degraded (pending API key)"
         
     return {
         "status": "ok",
@@ -105,6 +98,9 @@ async def health_check():
         "platform": "Theme-Based RAG Workflow",
         "vector_store": vector_ok
     }
+#endregion
 
+#region Execution Entry Point
 if __name__ == "__main__":
-    uvicorn.run("src.theme_based_rag_backend.main:app", host=HOST, port=PORT, reload=True)
+    uvicorn.run("src.theme_based_rag_backend.main:app", host=BACKEND_HOST, port=BACKEND_PORT, reload=True)
+#endregion

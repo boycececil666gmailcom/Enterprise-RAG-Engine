@@ -17,8 +17,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 COPY src/theme_based_rag_backend/requirements.txt /app/src/theme_based_rag_backend/requirements.txt
 
-# Install dependencies into a local directory to copy to the runner stage
+#region Install Backend Dependencies
 RUN pip install --no-cache-dir --user -r /app/src/theme_based_rag_backend/requirements.txt
+#endregion
 
 
 # --- Stage 2: Production runner ---
@@ -30,19 +31,25 @@ WORKDIR /app
 RUN groupadd -g 10001 appgroup && \
     useradd -u 10001 -g appgroup -m -s /bin/bash appuser
 
+#region User Permissions and Environment Setup
 # Copy installed Python packages from the builder stage
 COPY --from=builder /root/.local /home/appuser/.local
+RUN chown -R appuser:appgroup /home/appuser/.local && chmod -R +x /home/appuser/.local/bin/*
 COPY --chown=appuser:appgroup src/theme_based_rag_backend/ /app/src/theme_based_rag_backend/
+COPY --chown=appuser:appgroup langgraph.json pyproject.toml README.md /app/
 
 # Update PATH variable to include user's local bin
 ENV PATH=/home/appuser/.local/bin:$PATH
 ENV PYTHONUNBUFFERED=1
+#endregion
 
-# Expose FastAPI default port
-EXPOSE 8000
+#region Exposed Container Ports
+# Expose FastAPI default port (8000) and LangGraph Studio dev port (2024)
+EXPOSE 8000 2024
+#endregion
 
 # Switch to non-root user
 USER appuser
 
-# Run Chatbot Backend using uvicorn
-CMD ["uvicorn", "src.theme_based_rag_backend.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Run Chatbot Backend using python module entry point (reads HOST & PORT dynamically)
+CMD ["python", "-m", "src.theme_based_rag_backend.main"]

@@ -20,11 +20,11 @@ COPY --chown=appuser:appgroup src/theme_based_rag_gateway/ /app/src/theme_based_
 ENV PYTHONUNBUFFERED=1
 ENV PATH=/home/appuser/.local/bin:$PATH
 
-# Expose API Gateway default port
+# Expose API Gateway port
 EXPOSE 8080
 
 # Switch to non-root user
 USER appuser
 
-# Run API Gateway using uvicorn
-CMD ["uvicorn", "src.theme_based_rag_gateway.main:app", "--host", "0.0.0.0", "--port", "8080"]
+# Run API Gateway using python module entry point (reads GATEWAY_HOST & GATEWAY_PORT dynamically)
+CMD ["python", "-m", "src.theme_based_rag_gateway.main"]

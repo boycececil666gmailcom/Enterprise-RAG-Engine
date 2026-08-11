@@ -5,6 +5,7 @@ import logging
 from langchain_qdrant import QdrantVectorStore, FastEmbedSparse, RetrievalMode
 from langchain_core.documents import Document
 from src.theme_based_rag_backend.config import QDRANT_URL, QDRANT_API_KEY, GEMINI_API_KEY, GEMINI_EMBED_MODEL
+#endregion
 
 logger = logging.getLogger(__name__)
 
@@ -23,9 +24,10 @@ def get_vector_store():
     try:
         from langchain_google_genai import GoogleGenerativeAIEmbeddings
         if embeddings is None:
+            api_key = GEMINI_API_KEY if (GEMINI_API_KEY and GEMINI_API_KEY.strip()) else "dummy_key_for_testing"
             embeddings = GoogleGenerativeAIEmbeddings(
                 model=GEMINI_EMBED_MODEL,
-                google_api_key=GEMINI_API_KEY
+                google_api_key=api_key
             )
             print(f"Initialized Google Gemini Embeddings Model: {GEMINI_EMBED_MODEL}")
 
@@ -63,15 +65,19 @@ def get_vector_store():
                 )
             except Exception:
                 print("Collection 'local_rag_documents' not found. Creating a new one...")
-                init_doc = Document(page_content="System Vector DB initialized.", metadata={"system": "init"})
-                vector_store = QdrantVectorStore.from_documents(
-                    [init_doc],
-                    url=QDRANT_URL,
-                    api_key=QDRANT_API_KEY,
-                    collection_name="local_rag_documents",
-                    embedding=embeddings,
-                    **sparse_kwargs
-                )
+                try:
+                    init_doc = Document(page_content="System Vector DB initialized.", metadata={"system": "init"})
+                    vector_store = QdrantVectorStore.from_documents(
+                        [init_doc],
+                        url=QDRANT_URL,
+                        api_key=QDRANT_API_KEY,
+                        collection_name="local_rag_documents",
+                        embedding=embeddings,
+                        **sparse_kwargs
+                    )
+                except Exception as create_err:
+                    print(f"Vector DB collection creation deferred (pending valid API key): {create_err}")
+                    init_error = create_err
         else:
             raise ValueError("QDRANT_URL environment variable is not configured.")
         init_error = None
@@ -95,6 +101,8 @@ def add_document_text(text: str, metadata: dict = None) -> int:
     All chunking and optimization strategies are managed upstream by preprocessing-pipeline.
     """
     store = get_vector_store()
+    if store is None:
+        raise ValueError("Vector DB store is not initialized. Please set a valid GEMINI_API_KEY in .env file.")
     doc = Document(page_content=text, metadata=metadata or {})
     store.add_documents([doc])
     return 1

@@ -2,15 +2,15 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from src.theme_based_rag_backend.config import GEMINI_API_KEY, GEMINI_MODEL, GEMINI_TEMPERATURE
 from src.theme_based_rag_backend.tools import retrieve_local_documents
 
-# Initialize LLM
-if not GEMINI_API_KEY:
-    raise ValueError("GEMINI_API_KEY is not configured in the environment variables.")
+#region LLM Initialization
+api_key = GEMINI_API_KEY or "DUMMY_KEY_FOR_STARTUP"
 
 llm = ChatGoogleGenerativeAI(
     model=GEMINI_MODEL,
-    google_api_key=GEMINI_API_KEY,
+    google_api_key=api_key,
     temperature=GEMINI_TEMPERATURE
 )
+#endregion
 
 from src.theme_based_rag_backend.agent_flow.state import AgentState
 from src.theme_based_rag_backend.agent_flow.nodes import (

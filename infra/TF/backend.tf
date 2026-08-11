@@ -61,56 +61,42 @@ resource "kubernetes_deployment" "backend" {
             container_port = 8000
           }
 
+          #region General Environment Configuration
           env {
             name  = "QDRANT_URL"
             value = var.qdrant_url
           }
-
           env {
             name  = "NEO4J_URI"
             value = var.neo4j_uri
           }
-
-          env {
-            name = "NEO4J_USERNAME"
-            value_from {
-              secret_key_ref {
-                name = kubernetes_secret.neo4j_secrets.metadata[0].name
-                key  = "neo4j-username"
-              }
-            }
-          }
-
-          env {
-            name = "NEO4J_PASSWORD"
-            value_from {
-              secret_key_ref {
-                name = kubernetes_secret.neo4j_secrets.metadata[0].name
-                key  = "neo4j-password"
-              }
-            }
-          }
-
           env {
             name  = "GEMINI_MODEL"
             value = var.gemini_model
           }
-
           env {
             name  = "GEMINI_EMBED_MODEL"
             value = var.gemini_embed_model
           }
-
           env {
             name  = "GEMINI_TEMPERATURE"
             value = "0.0"
           }
-
           env {
             name  = "CHATBOT_THEME"
             value = var.chatbot_theme
           }
+          env {
+            name  = "LANGSMITH_TRACING"
+            value = var.langsmith_tracing
+          }
+          env {
+            name  = "LANGSMITH_PROJECT"
+            value = var.langsmith_project
+          }
+          #endregion
 
+          #region Secret Credentials
           env {
             name = "GEMINI_API_KEY"
             value_from {
@@ -120,23 +106,24 @@ resource "kubernetes_deployment" "backend" {
               }
             }
           }
-
-          # LangSmith Tracing & Observability
           env {
-            name  = "LANGSMITH_TRACING"
-            value = var.langsmith_tracing
+            name = "NEO4J_USERNAME"
+            value_from {
+              secret_key_ref {
+                name = kubernetes_secret.neo4j_secrets.metadata[0].name
+                key  = "neo4j-username"
+              }
+            }
           }
-
           env {
-            name  = "LANGSMITH_PROJECT"
-            value = var.langsmith_project
+            name = "NEO4J_PASSWORD"
+            value_from {
+              secret_key_ref {
+                name = kubernetes_secret.neo4j_secrets.metadata[0].name
+                key  = "neo4j-password"
+              }
+            }
           }
-
-          env {
-            name  = "LANGSMITH_ENDPOINT"
-            value = "https://api.smith.langchain.com"
-          }
-
           env {
             name = "LANGSMITH_API_KEY"
             value_from {
@@ -147,6 +134,7 @@ resource "kubernetes_deployment" "backend" {
               }
             }
           }
+          #endregion
 
 
           liveness_probe {

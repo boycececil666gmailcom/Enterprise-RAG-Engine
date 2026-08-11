@@ -6,28 +6,24 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from src.theme_based_rag_gateway.models import QueryRequest, QueryResponse, IngestRequest, IngestResponse
 
+#region Gateway Configuration Imports
+from src.theme_based_rag_gateway.config import (
+    RAG_BACKEND_URL,
+    GATEWAY_HOST,
+    GATEWAY_PORT,
+    ALLOWED_ORIGINS,
+    ALLOW_CREDENTIALS
+)
+#endregion
+
 logger = logging.getLogger(__name__)
 
 app = FastAPI(title="Theme-Based RAG Workflow Gateway")
 
-# Read downstream backend endpoint configuration
-RAG_BACKEND_URL = os.getenv("RAG_BACKEND_URL", os.getenv("BACKEND_URL", "http://localhost:8000"))
-
-GATEWAY_HOST = os.getenv("HOST", "0.0.0.0")
-GATEWAY_PORT = int(os.getenv("PORT", "8080"))
-
-# Configure CORS origins from environment variable, default to allowing all (*)
-ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "*").split(",")
-
-# If "*" is in allowed origins, we must disable allow_credentials to prevent FastAPI startup failure.
-allow_credentials = True
-if "*" in ALLOWED_ORIGINS:
-    allow_credentials = False
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
-    allow_credentials=allow_credentials,
+    allow_credentials=ALLOW_CREDENTIALS,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -115,8 +111,6 @@ async def health_check():
     except Exception as e:
         logger.warning(f"Health check failed to contact downstream backend: {e}")
 
-
-        
     return {
         "status": "ok",
         "service": "Theme-Based RAG Workflow Gateway",
