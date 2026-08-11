@@ -85,6 +85,7 @@ services:
     container_name: enterprise-rag-evaluator
     environment:
       - RAG_ENDPOINT=http://backend:8000/query
+      - ENABLE_RAGAS_EVAL=${ENABLE_RAGAS_EVAL:-false}
     env_file:
       - ../.env
     volumes:

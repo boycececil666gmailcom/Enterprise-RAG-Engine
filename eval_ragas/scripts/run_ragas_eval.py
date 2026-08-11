@@ -109,8 +109,19 @@ def main():
         default=os.getenv("RAG_ENDPOINT", "http://localhost:8000/query"),
         help="HTTP API Endpoint URL for container/K8s evaluation (default: http://localhost:8000/query)"
     )
+    parser.add_argument(
+        "--enable",
+        action="store_true",
+        default=os.getenv("ENABLE_RAGAS_EVAL", "false").lower() in ("true", "1", "yes"),
+        help="Safety switch to enable RAGAS evaluation execution (default: false)"
+    )
 
     args = parser.parse_args()
+    if not args.enable:
+        print("\n\033[1;93m[SKIP] RAGAS Evaluation is disabled by default to prevent API costs.\033[0m")
+        print("\033[1;93mTo run evaluation, set environment variable 'ENABLE_RAGAS_EVAL=true' or pass '--enable'.\033[0m\n")
+        return
+
     dataset_path = Path(args.dataset).resolve()
     output_dir = Path(args.output_dir).resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
