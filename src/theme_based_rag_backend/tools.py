@@ -28,7 +28,11 @@ def retrieve_VDB(query: str) -> str:
         vector_list = []
         for doc in vector_docs:
             score = doc.metadata.get("relevance_score", 0.0)
-            vector_list.append(f"[Match Score: {score:.3f}] Content: {doc.page_content}")
+            # Parent-Child (Small-to-Big) Retrieval:
+            # Similarity matching is performed on granular child chunks (page_content),
+            # while rich full context (parent_content) is supplied to LLM synthesis.
+            content = doc.metadata.get("parent_content") or doc.page_content
+            vector_list.append(f"[Match Score: {score:.3f}] Content: {content}")
             
         return "=== VECTOR DATABASE CONTEXT ===\n" + "\n\n".join(vector_list)
         

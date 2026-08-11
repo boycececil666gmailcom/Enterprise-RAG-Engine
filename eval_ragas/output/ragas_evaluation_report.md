@@ -23,7 +23,7 @@ To create more efficient animations:
 - After you import an animation that is heavily sampled, check whether the keyframes are using Bezier interpolation. To significantly reduce the CPU workload, select all keyframes and use linear interpolation. This rarely has an impact on the visual quality of the animation.
 - To dynamically change the size of text in a Text Block node, use the Scale property field of either Render Transformation or Layout Transformation properties, instead of the Font Size property. For example, use this approach when you want to animate the size of text in a Text Block node. When you use the Font Size property to dynamically scale the text, Kanzi creates multiple textures for different font sizes and does not release them from the memory.
 **Tip:** In the Kanzi Studio Node Tree window, an indicator next to a node shows when a State Manager, Binding, Data Source Binding, or an Animation overrides the values of some properties in that node.
-To navigate to the source of the override in the Kanzi Studio project, right-click the override indicator and select the source you wish to navigate to from the context menu.",,,0.0,0.0
+To navigate to the source of the override in the Kanzi Studio project, right-click the override indicator and select the source you wish to navigate to from the context menu.",0.0,,0.0,0.0
 What is Animations best practices in Kanzi?,['Error'],Error executing RAG pipeline via HTTP API.,"[Document Context: Animations best practices]
 
 To create more efficient animations:
@@ -50,7 +50,7 @@ In the Library select Animations > Animation Clips and select your animation cli
 
 Right-click the animation clip for which you want to remove the redundant Animation Data resources and select Delete Animations with One or Zero Effective Keyframes.
 
-These images show the same Animation Clip before and after removing the Animation Data resources without effective animations.",,,0.0,0.0
+These images show the same Animation Clip before and after removing the Animation Data resources without effective animations.",0.0,,0.0,0.0
 What is Removing redundant Animation Data channels in Kanzi?,['Error'],Error executing RAG pipeline via HTTP API.,"[Document Context: Removing redundant Animation Data channels]
 
 Whether importing animations from a third-party tool or creating them in Kanzi, animations sometimes contain Animation Data resources that do not animate anything. For example, when you add a keyframe for a Render Transformation by dragging the property from the Properties to the Animation Clip Editor, Kanzi adds an Animation Data resource for all property attributes, even if they have not changed.
@@ -82,7 +82,7 @@ In the Library select Animations > Animation Clips and select your animation cli
 
 Right-click the animation clip for which you want to remove the redundant Animation Data resources and select Delete Animations with One or Zero Effective Keyframes.
 
-These images show the same Animation Clip before and after removing the Animation Data resources without effective animations.",,,0.0,0.0
+These images show the same Animation Clip before and after removing the Animation Data resources without effective animations.",0.0,,0.0,0.0
 What is Removing redundant Animation Data channels in Kanzi?,['Error'],Error executing RAG pipeline via HTTP API.,"[Document Context: Removing redundant Animation Data channels]
 
 Whether importing animations from a third-party tool or creating them in Kanzi, animations sometimes contain Animation Data resources that do not animate anything. For example, when you add a keyframe for a Render Transformation by dragging the property from the Properties to the Animation Clip Editor, Kanzi adds an Animation Data resource for all property attributes, even if they have not changed.
@@ -98,7 +98,7 @@ In the Library select Animations > Animation Clips and select your animation cli
 
 Right-click the animation clip for which you want to remove the redundant Animation Data resources and select Delete Animations with One or Zero Effective Keyframes.
 
-These images show the same Animation Clip before and after removing the Animation Data resources without effective animations.",,,,0.0
+These images show the same Animation Clip before and after removing the Animation Data resources without effective animations.",0.0,,0.0,0.0
 What is Removing redundant keyframes in Kanzi?,['Error'],Error executing RAG pipeline via HTTP API.,"[Document Context: Removing redundant keyframes]
 
 Sometimes animations contain more keyframes than necessary. Kanzi provides an easy way to optimize animation data, which results in a significantly smaller number of keyframes, often without losing the animation precision at all. For example, in the animation shown here there are too many keyframes than is needed for most purposes.
@@ -119,7 +119,7 @@ Value 0.1 is a good starting point. This removes all keyframes with a delta valu
 
 If you want to make sure no information is lost, use 0.
 
-This image shows the example animation after removing all keyframes with a delta value smaller than 0.1.",,,0.0,0.0
+This image shows the example animation after removing all keyframes with a delta value smaller than 0.1.",0.0,,0.0,0.0
 What is Removing redundant keyframes in Kanzi?,['Error'],Error executing RAG pipeline via HTTP API.,"[Document Context: Removing redundant keyframes]
 
 Sometimes animations contain more keyframes than necessary. Kanzi provides an easy way to optimize animation data, which results in a significantly smaller number of keyframes, often without losing the animation precision at all. For example, in the animation shown here there are too many keyframes than is needed for most purposes.
