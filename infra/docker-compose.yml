@@ -34,6 +34,7 @@ services:
     command: >
       sh -c "python -m pip install --no-cache-dir -U 'langgraph-cli[inmem]' 'langchain-google-genai>=2.0.0' 'langchain-community>=0.3.0' 'langchain-qdrant>=0.2.0' &&
              export PATH=\"/home/appuser/.local/bin:\$PATH\" &&
+             export PYTHONPATH=\"/app/src\" &&
              langgraph dev --host 0.0.0.0 --port 2024"
     ports:
       - "2024:2024"
