@@ -1,7 +1,6 @@
 #region Imports & Configuration
 import os
 import sys
-import logging
 from dataclasses import dataclass, field
 from typing import List, Dict, Any, Optional
 from pathlib import Path
@@ -29,8 +28,6 @@ except ModuleNotFoundError:
 from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
 from ragas.llms import LangchainLLMWrapper
 from ragas.embeddings import LangchainEmbeddingsWrapper
-
-logger = logging.getLogger(__name__)
 #endregion
 
 #region Data Models
@@ -129,7 +126,6 @@ def evaluate_rag_pipeline(
         )
         from datasets import Dataset
     except ImportError as e:
-        logger.error(f"RAGAS or datasets package not available: {e}")
         raise RuntimeError("RAGAS dependency missing. Please run `pip install ragas datasets pandas`.") from e
 
     ragas_llm, ragas_embeddings = create_ragas_llm_and_embeddings()
@@ -169,7 +165,7 @@ def evaluate_rag_pipeline(
         if hasattr(m, "embeddings"):
             m.embeddings = ragas_embeddings
 
-    logger.info(f"Running RAGAS evaluation on {len(samples)} samples using {len(selected_metrics)} metrics...")
+    print(f"Running RAGAS evaluation on {len(samples)} samples using {len(selected_metrics)} metrics...")
     
     result = evaluate(
         dataset=eval_dataset,

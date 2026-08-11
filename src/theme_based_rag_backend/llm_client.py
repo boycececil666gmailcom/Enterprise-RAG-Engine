@@ -1,6 +1,6 @@
 #region Imports & AI Models Initialization
 from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
-from src.theme_based_rag_backend.config import (
+from .config import (
     GEMINI_API_KEY,
     GEMINI_MODEL,
     GEMINI_TEMPERATURE,

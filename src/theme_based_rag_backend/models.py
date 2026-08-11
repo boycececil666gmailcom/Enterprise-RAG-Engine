@@ -12,6 +12,20 @@ class CritiqueResultSchema(BaseModel):
     """Guaranteed deterministic output schema for critique node evaluation."""
     is_passed: bool = Field(description="True if response passes critique evaluation, False otherwise")
     feedback: Optional[str] = Field(default=None, description="Detailed explanation of hallucination or issue if is_passed is False")
+
+class HyDESchema(BaseModel):
+    """Guaranteed deterministic output schema for HyDE hypothetical document generation."""
+    passage: str = Field(description="Short, plausible documentation excerpt passage answering the user's query")
+
+class ClassifierSchema(BaseModel):
+    """Guaranteed deterministic output schema for domain query classification."""
+    category: Literal["pass", "refuse"] = Field(description="Category 'pass' if query is on-topic, 'refuse' if off-topic")
+    reason: Optional[str] = Field(default=None, description="Reason for refusal if off-topic")
+
+class HyDEDecisionSchema(BaseModel):
+    """Guaranteed deterministic output schema for HyDE decision."""
+    should_hyde: bool = Field(description="True if query is abstract/non-technical and benefits from HyDE")
+    reason: str = Field(description="Reason for HyDE decision")
 #endregion
 
 #region API Payload Schemas

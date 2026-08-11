@@ -3,7 +3,6 @@ import os
 import sys
 import json
 import argparse
-import logging
 from pathlib import Path
 from typing import List, Dict, Any
 import httpx
@@ -18,8 +17,6 @@ from eval_ragas.ragas_evaluator import (
     RagasEvalSample,
     RagasEvalResult
 )
-
-logger = logging.getLogger(__name__)
 #endregion
 
 #region Pipeline Execution Harness
@@ -77,7 +74,7 @@ def run_agent_evaluation(
                     metadata={"id": item.get("id", str(idx))}
                 ))
             except Exception as err:
-                logger.error(f"Error executing pipeline on question '{question}': {err}")
+                print(f"Error executing pipeline on question '{question}': {err}")
                 samples.append(RagasEvalSample(
                     question=question,
                     answer="Error executing RAG pipeline via HTTP API.",

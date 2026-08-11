@@ -1,12 +1,9 @@
 #region Imports & Node Implementation
-import logging
 from functools import lru_cache
-from src.theme_based_rag_backend.config import CHATBOT_THEME
-from src.theme_based_rag_backend.utils import cosine_similarity
-from src.theme_based_rag_backend.agent_flow.state import AgentState
-from src.theme_based_rag_backend.llm_client import embeddings
-
-logger = logging.getLogger(__name__)
+from ...config import CHATBOT_THEME
+from ...utils import cosine_similarity
+from ..state import AgentState
+from ...llm_client import embeddings
 
 @lru_cache(maxsize=1)
 def get_theme_embedding(theme: str) -> list:
@@ -28,8 +25,7 @@ def classifier_node(state: AgentState) -> dict:
         threshold = 0.65
         should_answer = "pass" if similarity >= threshold else "refuse"
         
-    except Exception as e:
-        logger.error(f"Error during vector similarity classification: {e}. Falling back to 'refuse'.")
+    except Exception:
         should_answer = "refuse"
         
     return {"should_answer": should_answer}

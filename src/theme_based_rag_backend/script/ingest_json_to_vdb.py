@@ -4,12 +4,8 @@ import sys
 import json
 import gzip
 import argparse
-import logging
 from pathlib import Path
 import httpx
-
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
-logger = logging.getLogger(__name__)
 #endregion
 
 #region Data Ingestion Logic
@@ -24,7 +20,7 @@ def load_chunks(file_path: Path) -> list[dict]:
         data = json.load(f)
 
     chunks = data.get("chunks", []) if isinstance(data, dict) else (data if isinstance(data, list) else [])
-    logger.info(f"Successfully loaded {len(chunks):,} chunk records from dataset.")
+    print(f"Successfully loaded {len(chunks):,} chunk records from dataset.")
     return chunks
 
 def ingest_chunks(chunks: list[dict], endpoint_url: str, batch_size: int = 50):
@@ -53,10 +49,10 @@ def ingest_chunks(chunks: list[dict], endpoint_url: str, batch_size: int = 50):
                     success += 1
                 else:
                     failures += 1
-                    logger.warning(f"Failed chunk {idx}/{total}: HTTP {res.status_code} - {res.text}")
+                    print(f"Failed chunk {idx}/{total}: HTTP {res.status_code} - {res.text}")
             except Exception as e:
                 failures += 1
-                logger.error(f"Error sending chunk {idx}/{total}: {e}")
+                print(f"Error sending chunk {idx}/{total}: {e}")
 
             if idx % batch_size == 0 or idx == total:
                 print(f"Progress: [{idx}/{total}] chunks processed (Success: {success}, Failures: {failures})")
@@ -79,7 +75,7 @@ def main():
         chunks = load_chunks(input_path)
         ingest_chunks(chunks, args.endpoint, args.batch_size)
     except Exception as err:
-        logger.error(f"Execution Error: {err}")
+        print(f"Execution Error: {err}")
         sys.exit(1)
 
 if __name__ == "__main__":

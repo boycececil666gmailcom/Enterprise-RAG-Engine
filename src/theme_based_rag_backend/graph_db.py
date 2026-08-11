@@ -2,26 +2,20 @@
 import os
 import re
 import json
-import logging
 from functools import lru_cache
 from langchain_core.messages import SystemMessage, HumanMessage
-from src.theme_based_rag_backend.config import NEO4J_URI, NEO4J_USERNAME, NEO4J_PASSWORD, GEMINI_API_KEY
-from src.theme_based_rag_backend.llm_client import llm
-
-logger = logging.getLogger(__name__)
+from .config import NEO4J_URI, NEO4J_USERNAME, NEO4J_PASSWORD, GEMINI_API_KEY
+from .llm_client import llm
 
 @lru_cache(maxsize=1)
 def get_driver():
     """Lazily initializes and caches Neo4j GraphDatabase driver using lru_cache."""
     try:
         from neo4j import GraphDatabase
-        logger.info(f"Initializing Neo4j Bolt connection to {NEO4J_URI}...")
         driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USERNAME, NEO4J_PASSWORD))
         driver.verify_connectivity()
-        logger.info("Successfully connected to Neo4j database.")
         return driver
-    except Exception as e:
-        logger.warning(f"Could not connect to Neo4j at {NEO4J_URI}: {e}")
+    except Exception:
         return None
 
 #endregion
@@ -80,15 +74,13 @@ def extract_entities_and_relations(text: str) -> dict:
             "entities": data.get("entities", []),
             "relationships": data.get("relationships", [])
         }
-    except Exception as e:
-        logger.error(f"Failed to extract entities/relationships via LLM: {e}")
+    except Exception:
         return {"entities": [], "relationships": []}
 
 def add_graph_relations(entities: list, relationships: list):
     """Saves extracted entities and relationships to the Neo4j database."""
     driver = get_driver()
     if not driver:
-        logger.warning("Neo4j driver is not available. Skipping writing to graph database.")
         return
         
     try:
@@ -123,9 +115,8 @@ def add_graph_relations(entities: list, relationships: list):
                         f"MERGE (s)-[r:{rel_type}]->(t)"
                     )
                     session.run(query, source=source, target=target)
-        logger.info(f"Successfully saved {len(entities)} nodes and {len(relationships)} relationships to Neo4j.")
-    except Exception as e:
-        logger.error(f"Failed to write graph data to Neo4j: {e}")
+    except Exception:
+        pass
 
 def extract_query_entities(query: str) -> list:
     """Uses Gemini LLM to identify main entity names mentioned in a user search query."""        
@@ -146,8 +137,7 @@ def extract_query_entities(query: str) -> list:
         if isinstance(entities, list):
             return [str(item) for item in entities]
         return []
-    except Exception as e:
-        logger.error(f"Failed to extract search entities: {e}")
+    except Exception:
         return []
 
 def retrieve_graph_relations(query_entities: list) -> str:
@@ -194,8 +184,7 @@ def retrieve_graph_relations(query_entities: list) -> str:
                 context_parts.append(part)
         
         return "\n\n".join(context_parts) if context_parts else ""
-    except Exception as e:
-        logger.error(f"Failed to query Neo4j graph relationships: {e}")
+    except Exception:
         return ""
 
 #region Knowledge Ingestion API
@@ -206,8 +195,8 @@ def ingest_graph_document(text: str) -> int:
         if extracted.get("entities") or extracted.get("relationships"):
             add_graph_relations(extracted["entities"], extracted["relationships"])
             return len(extracted.get("entities", [])) + len(extracted.get("relationships", []))
-    except Exception as e:
-        logger.warning(f"Failed to ingest data into Neo4j graph database: {e}")
+    except Exception:
+        pass
     return 0
 #endregion
 

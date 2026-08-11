@@ -1,17 +1,14 @@
 #region Imports & Setup
 import os
-import logging
 import uvicorn
 from typing import List, Optional
 from fastapi import FastAPI, HTTPException
 
-logger = logging.getLogger(__name__)
-
-from src.theme_based_rag_backend.config import BACKEND_HOST, BACKEND_PORT, GEMINI_MODEL
-import src.theme_based_rag_backend.vector_db as db
-import src.theme_based_rag_backend.graph_db as graph_db
-from src.theme_based_rag_backend.models import QueryRequest, QueryResponse, IngestRequest, IngestResponse
-from src.theme_based_rag_backend.agent_flow import agent_graph
+from .config import BACKEND_HOST, BACKEND_PORT, GEMINI_MODEL
+from . import vector_db as db
+from . import graph_db as graph_db
+from .models import QueryRequest, QueryResponse, IngestRequest, IngestResponse
+from .agent_flow import agent_graph
 
 app = FastAPI(title="Theme-Based RAG Workflow Backend")
 #endregion

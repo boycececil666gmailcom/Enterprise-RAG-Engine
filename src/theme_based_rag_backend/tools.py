@@ -1,10 +1,7 @@
 #region Imports & Setup
-import logging
 from langchain_core.tools import tool
 from langchain_community.document_compressors.flashrank_rerank import FlashrankRerank
-import src.theme_based_rag_backend.vector_db as db
-
-logger = logging.getLogger(__name__)
+from . import vector_db as db
 #endregion
 
 
@@ -36,6 +33,5 @@ def retrieve_VDB(query: str) -> str:
         return "=== VECTOR DATABASE CONTEXT ===\n" + "\n\n".join(vector_list)
         
     except Exception as e:
-        logger.warning(f"Vector search failed: {e}")
         return f"Vector search error: {e}"
 #endregion

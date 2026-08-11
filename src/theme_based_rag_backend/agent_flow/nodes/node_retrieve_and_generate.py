@@ -1,10 +1,10 @@
 #region Imports & Node Implementation
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
-from src.theme_based_rag_backend.config import CHATBOT_THEME
-from src.theme_based_rag_backend.models import RAGResponseSchema
-from src.theme_based_rag_backend.agent_flow.state import AgentState
-from src.theme_based_rag_backend.llm_client import llm
-from src.theme_based_rag_backend.tools import retrieve_VDB
+from ...config import CHATBOT_THEME
+from ...models import RAGResponseSchema
+from ..state import AgentState
+from ...llm_client import llm
+from ...tools import retrieve_VDB
 #endregion
 
 #region Retrieve and Generate Node Implementation
@@ -53,15 +53,20 @@ def retrieve_and_generate_node(state: AgentState) -> dict:
         messages.append(HumanMessage(content=refine_msg))
         
     structured_llm = llm.with_structured_output(RAGResponseSchema)
-    response: RAGResponseSchema = structured_llm.invoke(messages)
+    response = structured_llm.invoke(messages)
+    
+    if not response or not getattr(response, "answer", None):
+        raise ValueError(f"Failed to generate valid structured RAG response from LLM. Received: {response}")
+    
+    answer_text = response.answer
     
     updated_history = list(history) + [
         {"role": "user", "content": query},
-        {"role": "assistant", "content": response.answer}
+        {"role": "assistant", "content": answer_text}
     ]
     
     return {
-        "final_response": response.answer,
+        "final_response": answer_text,
         "retrieved_documents": retrieved_documents,
         "history": updated_history
     }

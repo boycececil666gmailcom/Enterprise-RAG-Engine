@@ -1,6 +1,6 @@
 from langgraph.graph import StateGraph, END
-from src.theme_based_rag_backend.agent_flow.state import AgentState, InputState
-from src.theme_based_rag_backend.agent_flow.nodes import (
+from .state import AgentState, InputState
+from .nodes import (
     classifier_node,
     hyde_decision_node,
     hyde_node,
@@ -8,7 +8,7 @@ from src.theme_based_rag_backend.agent_flow.nodes import (
     refuse_node,
     critique_node
 )
-from src.theme_based_rag_backend.agent_flow.edges import (
+from .edges import (
     route_by_category,
     route_by_hyde_decision,
     route_after_critique

@@ -1,5 +1,4 @@
 import os
-import logging
 import httpx
 import uvicorn
 from fastapi import FastAPI, HTTPException
@@ -15,8 +14,6 @@ from src.theme_based_rag_gateway.config import (
     ALLOW_CREDENTIALS
 )
 #endregion
-
-logger = logging.getLogger(__name__)
 
 app = FastAPI(title="Theme-Based RAG Workflow Gateway")
 
@@ -49,7 +46,6 @@ async def _proxy_ingest(target_url: str, request: IngestRequest) -> IngestRespon
         print(f"\033[1;96m========================================================\033[0m\n")
         return IngestResponse(**response.json())
     except httpx.RequestError as exc:
-        logger.error(f"Failed connecting to downstream backend at {target_url}: {exc}")
         raise HTTPException(
             status_code=503, 
             detail=f"Downstream service unavailable: {str(exc)}"
@@ -91,7 +87,6 @@ async def route_query(request: QueryRequest):
         
         return QueryResponse(**response.json())
     except httpx.RequestError as exc:
-        logger.error(f"Failed connecting to downstream backend at {target_url}: {exc}")
         raise HTTPException(
             status_code=503, 
             detail=f"Downstream service unavailable: {str(exc)}"
@@ -109,7 +104,7 @@ async def health_check():
         else:
             backend_status = f"unhealthy (status {response.status_code})"
     except Exception as e:
-        logger.warning(f"Health check failed to contact downstream backend: {e}")
+        pass
 
     return {
         "status": "ok",

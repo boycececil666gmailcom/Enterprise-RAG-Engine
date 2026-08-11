@@ -1,9 +1,6 @@
 #region Imports & Node Implementation
 import re
-import logging
-from src.theme_based_rag_backend.agent_flow.state import AgentState
-
-logger = logging.getLogger(__name__)
+from ..state import AgentState
 
 def hyde_decision_node(state: AgentState) -> dict:
     """Analyzes the user query dynamically to decide whether HyDE expansion should be enabled or skipped."""

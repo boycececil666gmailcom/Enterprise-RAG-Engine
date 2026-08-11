@@ -1,8 +1,6 @@
 #region Imports & Configuration
-import os
 import sys
 import json
-import logging
 from pathlib import Path
 from typing import List, Dict, Any
 
@@ -10,8 +8,6 @@ from typing import List, Dict, Any
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
-
-logger = logging.getLogger(__name__)
 #endregion
 
 #region Dataset Generation Functions
@@ -34,7 +30,6 @@ def generate_eval_dataset_from_chunks(
     if not json_chunks_path.exists():
         raise FileNotFoundError(f"Source chunks dataset file not found at: {json_chunks_path}")
 
-    logger.info(f"Loading chunks dataset from: {json_chunks_path}")
     with open(json_chunks_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 

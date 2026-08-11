@@ -1,14 +1,11 @@
 #region Imports & Node Implementation
-import logging
 from langchain_core.messages import SystemMessage, HumanMessage
-from src.theme_based_rag_backend.agent_flow.state import AgentState
-from src.theme_based_rag_backend.llm_client import hyde_llm
-
-logger = logging.getLogger(__name__)
+from ..state import AgentState
+from ...llm_client import hyde_llm
+from ...models import HyDESchema
 
 def generate_hypothetical_document(query: str) -> str:
-    """Generates a hypothetical document passage for the given user query.
-    Falls back to original query if generation fails or LLM is unavailable."""
+    """Generates a hypothetical document passage for the given user query with Pydantic type safety."""
     try:
         system_prompt = (
             "You are a helpful assistant. Please write a short, plausible excerpt or passage "
@@ -19,11 +16,12 @@ def generate_hypothetical_document(query: str) -> str:
             SystemMessage(content=system_prompt),
             HumanMessage(content=query)
         ]
-        response = hyde_llm.invoke(messages)
-        content = response.content
-        return content.strip()
-    except Exception as e:
-        logger.warning(f"HyDE generation failed ({e})")
+        structured_llm = hyde_llm.with_structured_output(HyDESchema)
+        res: HyDESchema = structured_llm.invoke(messages)
+        if res and res.passage:
+            return res.passage.strip()
+    except Exception:
+        pass
     
     return query
 
