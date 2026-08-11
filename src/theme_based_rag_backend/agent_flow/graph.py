@@ -32,7 +32,7 @@ workflow.add_conditional_edges(
     "classifier",
     route_by_category,
     {
-        "rag": "hyde_decision",
+        "pass": "hyde_decision",
         "refuse": "refuse"
     }
 )

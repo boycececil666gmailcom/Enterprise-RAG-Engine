@@ -19,9 +19,9 @@ def routing_node(state: AgentState) -> dict:
             f"Your task is to classify whether a user query is related to the theme: '{CHATBOT_THEME}'.\n"
             f"Queries referencing the following proprietary or theme-specific keywords should also be routed as relevant: {keywords_str}.\n\n"
             f"Classification Criteria:\n"
-            f"- 'rag': The query is related to '{CHATBOT_THEME}', financial technology, or mentions any of the theme-specific keywords ({keywords_str}).\n"
+            f"- 'pass': The query is related to '{CHATBOT_THEME}', financial technology, or mentions any of the theme-specific keywords ({keywords_str}).\n"
             f"- 'refuse': The query is completely unrelated to the theme.\n\n"
-            f"Output exactly 'rag' or 'refuse'. Do not include any other explanation, text, or punctuation."
+            f"Output exactly 'pass' or 'refuse'. Do not include any other explanation, text, or punctuation."
         )
         
         messages = [
@@ -35,8 +35,8 @@ def routing_node(state: AgentState) -> dict:
             content = "".join(part if isinstance(part, str) else part.get("text", "") for part in content)
         
         should_answer = content.strip().lower()
-        if "rag" in should_answer:
-            should_answer = "rag"
+        if "pass" in should_answer:
+            should_answer = "pass"
         elif "refuse" in should_answer:
             should_answer = "refuse"
         else:

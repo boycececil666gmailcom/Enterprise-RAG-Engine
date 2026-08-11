@@ -13,7 +13,7 @@ class AgentState(TypedDict):
     """State graph schema passed between LangGraph workflow nodes."""
     query: str  # Primary user query string passed across nodes
     history: NotRequired[List[dict]]  # Chat history messages for conversational context
-    should_answer: NotRequired[Literal["rag", "refuse"]]  # Query theme classification result ('rag' or 'refuse')
+    should_answer: NotRequired[Literal["pass", "refuse"]]  # Query theme classification result ('pass' or 'refuse')
     should_hyde: NotRequired[bool]  # Flag indicating whether HyDE expansion is enabled
     hyde_reason: NotRequired[Optional[str]]  # Rationale for enabling or skipping HyDE expansion
     hyde_content: NotRequired[Optional[str]]  # Generated hypothetical document passage for vector search

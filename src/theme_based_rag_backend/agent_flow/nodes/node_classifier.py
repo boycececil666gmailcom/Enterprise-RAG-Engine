@@ -26,7 +26,7 @@ def classifier_node(state: AgentState) -> dict:
         
         # Threshold check (0.65 is a good baseline for gemini-embedding-001)
         threshold = 0.65
-        should_answer = "rag" if similarity >= threshold else "refuse"
+        should_answer = "pass" if similarity >= threshold else "refuse"
         
     except Exception as e:
         logger.error(f"Error during vector similarity classification: {e}. Falling back to 'refuse'.")
