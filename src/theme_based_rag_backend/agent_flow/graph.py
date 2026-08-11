@@ -15,7 +15,7 @@ from .edges import (
 )
 
 # Workflow Graph Setup
-workflow = StateGraph(AgentState, input=InputState)
+workflow = StateGraph(AgentState, input_schema=InputState)
 
 # Add Nodes
 workflow.add_node("classifier", classifier_node)

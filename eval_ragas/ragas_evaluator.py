@@ -12,8 +12,9 @@ ENV_PATH = Path(__file__).resolve().parents[1] / ".env"
 load_dotenv(dotenv_path=ENV_PATH)
 
 # Apply compatibility shim for ragas vertexai import
+import importlib
 try:
-    import langchain_community.chat_models.vertexai
+    importlib.import_module("langchain_community.chat_models.vertexai")
 except ModuleNotFoundError:
     import types
     mod = types.ModuleType("langchain_community.chat_models.vertexai")
@@ -105,7 +106,7 @@ def evaluate_rag_pipeline(
 
     try:
         try:
-            import langchain_community.chat_models.vertexai
+            importlib.import_module("langchain_community.chat_models.vertexai")
         except ModuleNotFoundError:
             import types
             mod = types.ModuleType("langchain_community.chat_models.vertexai")
