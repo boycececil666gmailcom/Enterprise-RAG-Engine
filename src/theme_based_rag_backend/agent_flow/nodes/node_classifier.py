@@ -1,7 +1,9 @@
+#region Imports & Node Implementation
 import math
 import logging
 from src.theme_based_rag_backend.config import CHATBOT_THEME
 from src.theme_based_rag_backend.agent_flow.state import AgentState
+from src.theme_based_rag_backend.agent_flow.llm_client import embeddings
 
 logger = logging.getLogger(__name__)
 
@@ -24,9 +26,6 @@ def cosine_similarity(v1, v2) -> float:
     return dot_product / (norm_v1 * norm_v2)
 
 def classifier_node(state: AgentState) -> dict:
-    from src.theme_based_rag_backend.vector_db import get_vector_store
-    import src.theme_based_rag_backend.vector_db as vector_db_module
-    
     query = state["message"]
     
     print(f"\n\033[1;96m========================================================\033[0m")
@@ -34,9 +33,7 @@ def classifier_node(state: AgentState) -> dict:
     print(f"\033[1;96m========================================================\033[0m\n")
     
     try:
-        # Ensure vector store is initialized to access the embeddings model
-        get_vector_store()
-        embeddings = vector_db_module.embeddings
+        # Embed theme (cached) and query using shared embeddings client
         
         # Embed theme (cached) and query
         theme_vector = get_theme_embedding(embeddings)

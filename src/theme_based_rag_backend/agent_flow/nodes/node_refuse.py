@@ -1,9 +1,10 @@
+#region Imports & Node Implementation
 from langchain_core.messages import SystemMessage, HumanMessage
 from src.theme_based_rag_backend.config import CHATBOT_THEME
 from src.theme_based_rag_backend.agent_flow.state import AgentState
+from src.theme_based_rag_backend.agent_flow.llm_client import llm
 
 def refuse_node(state: AgentState) -> dict:
-    from src.theme_based_rag_backend.agent_flow import llm
     print(f"\n\033[1;96m========================================================\033[0m")
     print(f"\033[1;92m>>> [Agent Flow] Executing Refuse node refusal\033[0m")
     print(f"\033[1;96m========================================================\033[0m\n")

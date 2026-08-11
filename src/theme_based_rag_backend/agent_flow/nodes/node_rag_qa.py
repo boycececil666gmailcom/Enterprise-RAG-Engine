@@ -3,11 +3,12 @@ from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
 from src.theme_based_rag_backend.config import CHATBOT_THEME
 from src.theme_based_rag_backend.models import RAGResponseSchema
 from src.theme_based_rag_backend.agent_flow.state import AgentState
+from src.theme_based_rag_backend.agent_flow.llm_client import llm
+from src.theme_based_rag_backend.tools import retrieve_local_documents
 #endregion
 
 #region RAG QA Node Implementation
 def rag_qa_node(state: AgentState) -> dict:
-    from src.theme_based_rag_backend.agent_flow import llm, retrieve_local_documents
     query = state["message"]
     history = state.get("history", [])
     hypo_doc = state.get("hypothetical_document")

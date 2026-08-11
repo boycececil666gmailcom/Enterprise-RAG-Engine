@@ -4,14 +4,13 @@ import sys
 import logging
 from langchain_qdrant import QdrantVectorStore, FastEmbedSparse, RetrievalMode
 from langchain_core.documents import Document
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
-from src.theme_based_rag_backend.config import QDRANT_URL, QDRANT_API_KEY, GEMINI_API_KEY, GEMINI_EMBED_MODEL
+from src.theme_based_rag_backend.config import QDRANT_URL, QDRANT_API_KEY
+from src.theme_based_rag_backend.agent_flow.llm_client import embeddings
 #endregion
 
 logger = logging.getLogger(__name__)
 
-# Initialize embeddings and vector DB lazily
-embeddings = None
+# Initialize vector DB lazily
 sparse_embeddings = None
 vector_store = None
 init_error = None
@@ -19,17 +18,11 @@ init_error = None
 
 #region Vector Database Initialization
 def get_vector_store():
-    global vector_store, init_error, embeddings, sparse_embeddings
+    global vector_store, init_error, sparse_embeddings
     if vector_store is not None:
         return vector_store
     try:
-        if embeddings is None:
-            api_key = GEMINI_API_KEY if (GEMINI_API_KEY and GEMINI_API_KEY.strip()) else "dummy_key_for_testing"
-            embeddings = GoogleGenerativeAIEmbeddings(
-                model=GEMINI_EMBED_MODEL,
-                google_api_key=api_key
-            )
-            print(f"Initialized Google Gemini Embeddings Model: {GEMINI_EMBED_MODEL}")
+        print(f"Using shared Google Gemini Embeddings Model: {embeddings.model}")
 
         if sparse_embeddings is None:
             try:

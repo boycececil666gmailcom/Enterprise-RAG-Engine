@@ -1,12 +1,13 @@
+#region Imports & Node Implementation
 import logging
 from langchain_core.messages import HumanMessage
 from src.theme_based_rag_backend.config import CHATBOT_THEME
 from src.theme_based_rag_backend.agent_flow.state import AgentState
+from src.theme_based_rag_backend.agent_flow.llm_client import llm
 
 logger = logging.getLogger(__name__)
 
 def critique_node(state: AgentState) -> dict:
-    from src.theme_based_rag_backend.agent_flow import llm
     category = state.get("category")
     draft = state.get("agent_response")
 
