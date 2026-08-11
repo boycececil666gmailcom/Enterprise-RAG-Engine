@@ -4,6 +4,7 @@ from src.theme_based_rag_backend.config import CHATBOT_THEME
 from src.theme_based_rag_backend.models import RAGResponseSchema
 from src.theme_based_rag_backend.agent_flow.state import AgentState
 from src.theme_based_rag_backend.llm_client import llm
+from src.theme_based_rag_backend.tools import retrieve_VDB
 #endregion
 
 #region Retrieve and Generate Node Implementation
