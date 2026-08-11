@@ -1,5 +1,5 @@
 # ==============================================================================
-# Lightweight Gateway Service Dockerfile
+# RAGAS Evaluation Harness Service Dockerfile
 # ==============================================================================
 FROM python:3.12-slim
 
@@ -14,17 +14,17 @@ RUN groupadd -g 10001 appgroup && \
     useradd -u 10001 -g appgroup -m -s /bin/bash appuser
 #endregion
 
-#region Install Gateway Dependencies from pyproject.toml & uv.lock
-COPY --chown=appuser:appgroup src/theme_based_rag_gateway/pyproject.toml src/theme_based_rag_gateway/uv.lock /app/src/theme_based_rag_gateway/
-RUN cd /app/src/theme_based_rag_gateway && uv sync --frozen --system
+#region Install Evaluation Dependencies from pyproject.toml & uv.lock
+COPY --chown=appuser:appgroup eval_ragas/pyproject.toml eval_ragas/uv.lock /app/eval_ragas/
+RUN cd /app/eval_ragas && uv sync --frozen --system
 #endregion
 
 #region Application Setup
-COPY --chown=appuser:appgroup src/theme_based_rag_gateway/ /app/src/theme_based_rag_gateway/
+COPY --chown=appuser:appgroup eval_ragas/ /app/eval_ragas/
 ENV PYTHONUNBUFFERED=1
-EXPOSE 8080
+ENV PYTHONPATH=/app
 #endregion
 
 USER appuser
 
-CMD ["python", "-m", "src.theme_based_rag_gateway.main"]
+CMD ["python", "-m", "eval_ragas.scripts.run_ragas_eval"]

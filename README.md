@@ -224,9 +224,6 @@ flowchart TB
 
 ```text
 Enterprise-RAG-Engine/
-├── .github/
-│   └── workflows/
-│       └── renovate.yml               # Automated dependency version updates
 ├── infra/
 │   └── terraform/
 │       ├── backend.tf                 # Backend Deployment + ClusterIP Service
@@ -272,6 +269,5 @@ Enterprise-RAG-Engine/
 │   └── e2e_aws.py                     # E2E: AWS EKS deployment validation
 ├── pyproject.toml                     # Project metadata, dependencies, ruff + pytest config
 ├── langgraph.json                     # LangGraph API server configuration
-├── renovate.json                      # Renovate bot dependency update rules
 └── README.md
 ```

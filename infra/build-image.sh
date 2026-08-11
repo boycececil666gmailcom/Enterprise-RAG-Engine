@@ -17,3 +17,7 @@ docker build -t theme-based-rag-backend:latest -f src/theme_based_rag_backend/Do
 echo "Building API gateway image..."
 docker build -t theme-based-rag-gateway:latest -f src/theme_based_rag_gateway/Dockerfile . || exit 1
 
+echo "Building RAGAS evaluator image..."
+docker build -t theme-based-rag-evaluator:latest -f eval_ragas/Dockerfile . || exit 1
+
+

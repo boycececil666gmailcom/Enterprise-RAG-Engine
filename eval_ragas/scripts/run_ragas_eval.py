@@ -13,7 +13,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from eval.ragas_evaluator import (
+from eval_ragas.ragas_evaluator import (
     evaluate_rag_pipeline,
     RagasEvalSample,
     RagasEvalResult
