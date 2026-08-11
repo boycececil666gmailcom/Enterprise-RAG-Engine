@@ -8,15 +8,15 @@ from src.theme_based_rag_backend.llm_client import llm
 logger = logging.getLogger(__name__)
 
 def critique_node(state: AgentState) -> dict:
-    category = state.get("category")
-    draft = state.get("agent_response")
+    should_answer = state.get("should_answer")
+    draft = state.get("final_response")
 
     docs = state.get("retrieved_documents")
-    query = state["message"]
-    attempts = state.get("attempts", 0)
-    hypo_doc = state.get("hypothetical_document")
+    query = state["query"]
+    attempt_count = state.get("attempt_count", 0)
+    hypo_doc = state.get("hyde_content")
 
-    if category == "refuse":
+    if should_answer == "refuse":
         critique_prompt = (
             f"You are a strict quality control evaluator.\n"
             f"Your task is to verify if the draft response is a polite refusal to answer a query outside the theme: '{CHATBOT_THEME}'.\n"
@@ -61,7 +61,7 @@ def critique_node(state: AgentState) -> dict:
     else:
         return {
             "critique_feedback": reason,
-            "attempts": attempts + 1
+            "attempt_count": attempt_count + 1
         }
 #endregion
 

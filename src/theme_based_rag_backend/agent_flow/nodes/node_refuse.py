@@ -12,11 +12,11 @@ def refuse_node(state: AgentState) -> dict:
     )
     messages = [
         SystemMessage(content=refusal_prompt),
-        HumanMessage(content=state["message"])
+        HumanMessage(content=state["query"])
     ]
     response = llm.invoke(messages)
     content = response.content
     if isinstance(content, list):
         content = "".join(part if isinstance(part, str) else part.get("text", "") for part in content)
-    return {"agent_response": content}
+    return {"final_response": content}
 #endregion

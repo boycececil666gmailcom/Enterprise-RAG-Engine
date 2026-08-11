@@ -8,8 +8,7 @@ from src.theme_based_rag_backend.llm_client import llm
 logger = logging.getLogger(__name__)
 
 def routing_node(state: AgentState) -> dict:
-    
-    query = state["message"]
+    query = state["query"]
     
     try:
         # Construct dynamic prompt referencing theme and any forced keywords
@@ -35,18 +34,18 @@ def routing_node(state: AgentState) -> dict:
         if isinstance(content, list):
             content = "".join(part if isinstance(part, str) else part.get("text", "") for part in content)
         
-        category = content.strip().lower()
-        if "rag" in category:
-            category = "rag"
-        elif "refuse" in category:
-            category = "refuse"
+        should_answer = content.strip().lower()
+        if "rag" in should_answer:
+            should_answer = "rag"
+        elif "refuse" in should_answer:
+            should_answer = "refuse"
         else:
             # Fallback parsing in case the LLM outputs something else
-            category = "refuse"
+            should_answer = "refuse"
             
     except Exception as e:
         logger.error(f"Error during LLM classification: {e}. Falling back to 'refuse'.")
-        category = "refuse"
+        should_answer = "refuse"
         
-    return {"category": category}
+    return {"should_answer": should_answer}
 #endregion

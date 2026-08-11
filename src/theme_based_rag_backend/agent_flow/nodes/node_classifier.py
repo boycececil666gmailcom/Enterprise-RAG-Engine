@@ -14,7 +14,7 @@ def get_theme_embedding(theme: str) -> list:
     return embeddings.embed_query(theme)
 
 def classifier_node(state: AgentState) -> dict:
-    query = state["message"]
+    query = state["query"]
     
     try:
         # Embed theme (cached) and query using shared embeddings client
@@ -26,12 +26,12 @@ def classifier_node(state: AgentState) -> dict:
         
         # Threshold check (0.65 is a good baseline for gemini-embedding-001)
         threshold = 0.65
-        category = "rag" if similarity >= threshold else "refuse"
+        should_answer = "rag" if similarity >= threshold else "refuse"
         
     except Exception as e:
         logger.error(f"Error during vector similarity classification: {e}. Falling back to 'refuse'.")
-        category = "refuse"
+        should_answer = "refuse"
         
-    return {"category": category}
+    return {"should_answer": should_answer}
 #endregion
 

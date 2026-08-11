@@ -46,16 +46,16 @@ async def run_query(request: QueryRequest):
     try:
         # Map input payload to LangGraph state
         inputs = {
-            "message": request.message,
+            "query": request.query,
             "history": [{"role": msg.role, "content": msg.content} for msg in request.history],
-            "category": "refuse",
-            "use_hyde": True,
+            "should_answer": "refuse",
+            "should_hyde": True,
             "hyde_reason": None,
-            "hypothetical_document": None,
+            "hyde_content": None,
             "retrieved_documents": None,
-            "agent_response": "",
+            "final_response": "",
             "critique_feedback": None,
-            "attempts": 0
+            "attempt_count": 0
         }
         
         # Execute workflow graph asynchronously
@@ -66,11 +66,11 @@ async def run_query(request: QueryRequest):
             tool_calls_executed.append("retrieve_local_documents")
             
         return QueryResponse(
-            response=result.get("agent_response", ""),
+            response=result.get("final_response", ""),
             tool_calls_executed=tool_calls_executed,
-            use_hyde=result.get("use_hyde"),
+            should_hyde=result.get("should_hyde"),
             hyde_reason=result.get("hyde_reason"),
-            hypothetical_document=result.get("hypothetical_document"),
+            hyde_content=result.get("hyde_content"),
             retrieved_documents=result.get("retrieved_documents")
         )
     except Exception as e:

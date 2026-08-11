@@ -6,7 +6,7 @@ class MessageSchema(BaseModel):
     content: str = Field(min_length=1, description="Message content cannot be empty")
 
 class QueryRequest(BaseModel):
-    message: str = Field(min_length=1, description="Query message cannot be empty")
+    query: str = Field(min_length=1, description="Query string cannot be empty")
     history: List[MessageSchema] = Field(default_factory=list, description="Chat history messages")
 
 class QueryResponse(BaseModel):

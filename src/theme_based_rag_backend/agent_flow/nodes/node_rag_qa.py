@@ -9,9 +9,9 @@ from src.theme_based_rag_backend.tools import retrieve_local_documents
 
 #region RAG QA Node Implementation
 def rag_qa_node(state: AgentState) -> dict:
-    query = state["message"]
+    query = state["query"]
     history = state.get("history", [])
-    hypo_doc = state.get("hypothetical_document")
+    hypo_doc = state.get("hyde_content")
 
     # Retrieve local documents using HyDE hypothetical document if present, otherwise raw query
     retrieved_docs = state.get("retrieved_documents")
@@ -46,7 +46,7 @@ def rag_qa_node(state: AgentState) -> dict:
     
     # Include critique feedback
     feedback = state.get("critique_feedback")
-    prev_draft = state.get("agent_response")
+    prev_draft = state.get("final_response")
     if feedback and prev_draft:
         messages.append(AIMessage(content=prev_draft))
         refine_msg = (
@@ -59,7 +59,7 @@ def rag_qa_node(state: AgentState) -> dict:
     structured_llm = llm.with_structured_output(RAGResponseSchema)
     response: RAGResponseSchema = structured_llm.invoke(messages)
     return {
-        "agent_response": response.answer,
+        "final_response": response.answer,
         "retrieved_documents": retrieved_docs
     }
 #endregion

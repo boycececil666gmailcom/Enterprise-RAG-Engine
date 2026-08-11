@@ -15,15 +15,15 @@ class MessageSchema(BaseModel):
     content: str = Field(min_length=1, description="Message content cannot be empty")
 
 class QueryRequest(BaseModel):
-    message: str = Field(min_length=1, description="Query message cannot be empty")
+    query: str = Field(min_length=1, description="Query string cannot be empty")
     history: List[MessageSchema] = Field(default_factory=list, description="Chat history messages")
 
 class QueryResponse(BaseModel):
     response: str
     tool_calls_executed: List[str] = Field(default_factory=list)
-    use_hyde: Optional[bool] = None
+    should_hyde: Optional[bool] = None
     hyde_reason: Optional[str] = None
-    hypothetical_document: Optional[str] = None
+    hyde_content: Optional[str] = None
     retrieved_documents: Optional[str] = None
 
 class IngestRequest(BaseModel):

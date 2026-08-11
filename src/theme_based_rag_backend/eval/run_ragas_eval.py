@@ -63,16 +63,16 @@ def run_agent_evaluation(
 
             try:
                 if is_remote_http:
-                    resp = http_client.post(endpoint_url, json={"message": question, "history": []})
+                    resp = http_client.post(endpoint_url, json={"query": question, "history": []})
                     if resp.status_code != 200:
                         raise RuntimeError(f"HTTP {resp.status_code}: {resp.text}")
                     data = resp.json()
-                    answer = data.get("agent_response", "") or data.get("response", "")
+                    answer = data.get("final_response", "") or data.get("response", "")
                     raw_contexts = data.get("retrieved_documents", "") or data.get("contexts", "")
                 else:
-                    initial_state = {"message": question, "history": []}
+                    initial_state = {"query": question, "history": []}
                     final_state = agent_graph.invoke(initial_state)
-                    answer = final_state.get("agent_response", "")
+                    answer = final_state.get("final_response", "")
                     raw_contexts = final_state.get("retrieved_documents", "")
 
                 if isinstance(raw_contexts, list):

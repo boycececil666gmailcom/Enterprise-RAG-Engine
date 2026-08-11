@@ -29,7 +29,7 @@ def generate_hypothetical_document(query: str) -> str:
 
 def hyde_node(state: AgentState) -> dict:
     """Standalone LangGraph node that generates a hypothetical document and saves it into AgentState."""
-    query = state["message"]
+    query = state["query"]
     hypo_doc = generate_hypothetical_document(query)
-    return {"hypothetical_document": hypo_doc}
+    return {"hyde_content": hypo_doc}
 #endregion

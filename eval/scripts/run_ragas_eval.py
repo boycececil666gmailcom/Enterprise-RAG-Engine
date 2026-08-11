@@ -53,12 +53,12 @@ def run_agent_evaluation(
             print(f"[{idx}/{len(raw_dataset)}] Processing Query: '{question}'")
 
             try:
-                resp = http_client.post(endpoint_url, json={"message": question, "history": []})
+                resp = http_client.post(endpoint_url, json={"query": question, "history": []})
                 if resp.status_code != 200:
                     raise RuntimeError(f"HTTP {resp.status_code}: {resp.text}")
                 
                 data = resp.json()
-                answer = data.get("agent_response", "") or data.get("response", "")
+                answer = data.get("final_response", "") or data.get("response", "")
                 raw_contexts = data.get("retrieved_documents", "") or data.get("contexts", "")
 
                 # Extract retrieved contexts
