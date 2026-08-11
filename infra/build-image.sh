@@ -12,12 +12,12 @@ log_step "Building Local Docker Images"
 docker info >/dev/null 2>&1 || { echo -e "\033[1;31mError: Docker daemon is not running. Please start Docker and try again.\033[0m"; exit 1; }
 
 echo "Building core chatbot backend image..."
-docker build -t theme-based-rag-backend:latest -f src/theme_based_rag_backend/Dockerfile . || exit 1
+docker build -t enterprise-rag-backend:latest -f src/theme_based_rag_backend/Dockerfile . || exit 1
 
 echo "Building API gateway image..."
-docker build -t theme-based-rag-gateway:latest -f src/theme_based_rag_gateway/Dockerfile . || exit 1
+docker build -t enterprise-rag-gateway:latest -f src/theme_based_rag_gateway/Dockerfile . || exit 1
 
 echo "Building RAGAS evaluator image..."
-docker build -t theme-based-rag-evaluator:latest -f eval_ragas/Dockerfile . || exit 1
+docker build -t enterprise-rag-evaluator:latest -f eval_ragas/Dockerfile . || exit 1
 
 

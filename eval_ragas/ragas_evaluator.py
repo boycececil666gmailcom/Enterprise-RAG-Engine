@@ -132,7 +132,7 @@ def evaluate_rag_pipeline(
         logger.error(f"RAGAS or datasets package not available: {e}")
         raise RuntimeError("RAGAS dependency missing. Please run `pip install ragas datasets pandas`.") from e
 
-    ragas_llm, ragas_embeddings = get_evaluator_llm_and_embeddings()
+    ragas_llm, ragas_embeddings = create_ragas_llm_and_embeddings()
 
     # Prepare dataset payload dictionary
     dataset_dict: Dict[str, List[Any]] = {

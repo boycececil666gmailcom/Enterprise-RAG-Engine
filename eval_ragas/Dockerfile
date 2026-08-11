@@ -14,9 +14,10 @@ RUN groupadd -g 10001 appgroup && \
     useradd -u 10001 -g appgroup -m -s /bin/bash appuser
 #endregion
 
-#region Install Evaluation Dependencies from pyproject.toml & uv.lock
+#region Install Evaluation Dependencies
+ENV UV_PROJECT_ENVIRONMENT=/usr/local
 COPY --chown=appuser:appgroup eval_ragas/pyproject.toml eval_ragas/uv.lock /app/eval_ragas/
-RUN cd /app/eval_ragas && uv sync --frozen --system
+RUN cd /app/eval_ragas && uv sync --frozen --no-install-project
 #endregion
 
 #region Application Setup

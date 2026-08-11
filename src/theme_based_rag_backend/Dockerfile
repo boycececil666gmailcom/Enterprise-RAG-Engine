@@ -20,9 +20,10 @@ RUN groupadd -g 10001 appgroup && \
     useradd -u 10001 -g appgroup -m -s /bin/bash appuser
 #endregion
 
-#region Install Backend Dependencies from pyproject.toml & uv.lock
+#region Install Backend Dependencies
+ENV UV_PROJECT_ENVIRONMENT=/usr/local
 COPY --chown=appuser:appgroup src/theme_based_rag_backend/pyproject.toml src/theme_based_rag_backend/uv.lock /app/src/theme_based_rag_backend/
-RUN cd /app/src/theme_based_rag_backend && uv sync --frozen --system
+RUN cd /app/src/theme_based_rag_backend && uv sync --frozen --no-install-project
 #endregion
 
 #region Application Setup
