@@ -1,6 +1,15 @@
+#region Imports
 from typing import List, Optional, Dict, Literal
 from pydantic import BaseModel, Field, model_validator
+#endregion
 
+#region Agent Output Schemas
+class RAGResponseSchema(BaseModel):
+    """Guaranteed deterministic output schema for RAG QA synthesis."""
+    answer: str = Field(description="Strictly grounded answer text synthesized from retrieved document context")
+#endregion
+
+#region API Payload Schemas
 class MessageSchema(BaseModel):
     role: Literal["user", "assistant", "system"]
     content: str = Field(min_length=1, description="Message content cannot be empty")
@@ -17,10 +26,6 @@ class QueryResponse(BaseModel):
     hypothetical_document: Optional[str] = None
     retrieved_documents: Optional[str] = None
 
-
-
-
-
 class IngestRequest(BaseModel):
     text: str = Field(min_length=1, description="Raw document text to ingest")
     metadata: Optional[Dict[str, str]] = Field(default=None, description="Metadata key-value pairs")
@@ -28,8 +33,9 @@ class IngestRequest(BaseModel):
 class IngestResponse(BaseModel):
     status: str
     chunk_count: int = Field(ge=0)
+#endregion
 
-
+#region Tool Arguments Schemas
 class ToolQueryArgs(BaseModel):
     query: str
 
@@ -40,4 +46,4 @@ class ToolQueryArgs(BaseModel):
             q_val = data.get("query") or data.get("input") or (list(data.values())[0] if data else "")
             return {"query": str(q_val)}
         return {"query": str(data)}
-
+#endregion

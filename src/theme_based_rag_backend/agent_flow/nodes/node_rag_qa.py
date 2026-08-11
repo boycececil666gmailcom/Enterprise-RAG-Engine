@@ -1,7 +1,11 @@
+#region Imports & Node Implementation
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
 from src.theme_based_rag_backend.config import CHATBOT_THEME
+from src.theme_based_rag_backend.models import RAGResponseSchema
 from src.theme_based_rag_backend.agent_flow.state import AgentState
+#endregion
 
+#region RAG QA Node Implementation
 def rag_qa_node(state: AgentState) -> dict:
     from src.theme_based_rag_backend.agent_flow import llm, retrieve_local_documents
     query = state["message"]
@@ -31,7 +35,6 @@ def rag_qa_node(state: AgentState) -> dict:
         f"4. Do not make up facts or use pre-trained general knowledge."
     )
 
-    
     messages = [SystemMessage(content=system_prompt)]
     
     # Hydrate history
@@ -43,28 +46,26 @@ def rag_qa_node(state: AgentState) -> dict:
         elif role == "assistant":
             messages.append(AIMessage(content=content))
             
-    # Include critique feedback if looping back
+    messages.append(HumanMessage(content=query))
+    
+    # Include critique feedback
     feedback = state.get("critique_feedback")
     prev_draft = state.get("agent_response")
     if feedback and prev_draft:
         print(f"Refinement attempt: applying critique feedback: {feedback}")
-        messages.append(HumanMessage(content=query))
         messages.append(AIMessage(content=prev_draft))
         refine_msg = (
             f"CRITIQUE FEEDBACK: Your previous draft answer was rejected because: {feedback}\n"
             f"Please revise your answer to address this feedback. Make sure the response is "
             f"fully grounded in the retrieved document context."
         )
-        messages.append(SystemMessage(content=refine_msg))
-    else:
-        messages.append(HumanMessage(content=query))
+        messages.append(HumanMessage(content=refine_msg))
         
-    response = llm.invoke(messages)
-    content = response.content
-    if isinstance(content, list):
-        content = "".join(part if isinstance(part, str) else part.get("text", "") for part in content)
+    structured_llm = llm.with_structured_output(RAGResponseSchema)
+    response: RAGResponseSchema = structured_llm.invoke(messages)
     return {
-        "agent_response": content,
+        "agent_response": response.answer,
         "retrieved_documents": retrieved_docs
     }
+#endregion
 

@@ -1,5 +1,5 @@
 from langgraph.graph import StateGraph, END
-from src.theme_based_rag_backend.agent_flow.state import AgentState
+from src.theme_based_rag_backend.agent_flow.state import AgentState, InputState
 from src.theme_based_rag_backend.agent_flow.nodes import (
     classifier_node,
     hyde_decision_node,
@@ -15,7 +15,7 @@ from src.theme_based_rag_backend.agent_flow.edges import (
 )
 
 # Workflow Graph Setup
-workflow = StateGraph(AgentState)
+workflow = StateGraph(AgentState, input=InputState)
 
 # Add Nodes
 workflow.add_node("classifier", classifier_node)
