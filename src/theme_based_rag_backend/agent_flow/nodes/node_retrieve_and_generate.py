@@ -4,25 +4,26 @@ from src.theme_based_rag_backend.config import CHATBOT_THEME
 from src.theme_based_rag_backend.models import RAGResponseSchema
 from src.theme_based_rag_backend.agent_flow.state import AgentState
 from src.theme_based_rag_backend.llm_client import llm
-from src.theme_based_rag_backend.tools import retrieve_local_documents
 #endregion
 
-#region RAG QA Node Implementation
-def rag_qa_node(state: AgentState) -> dict:
+#region Retrieve and Generate Node Implementation
+def retrieve_and_generate_node(state: AgentState) -> dict:
     query = state["query"]
     history = state.get("history", [])
+    hypo_doc = state.get("hyde_content")
+
     retrieved_documents = state.get("retrieved_documents")
+    if not retrieved_documents:
+        search_target = hypo_doc if hypo_doc else query
+        retrieved_documents = retrieve_VDB.invoke(search_target)
 
     system_prompt = (
-        f"You are a customer service assistant. Your primary theme is: {CHATBOT_THEME}.\n"
-        f"Answer the user's question using ONLY the provided retrieved document context below.\n\n"
         f"Retrieved Document Context:\n{retrieved_documents}\n\n"
         f"CRITICAL RULES:\n"
         f"1. Your answer must be strictly grounded in the retrieved document context.\n"
         f"2. If the context does not contain the answer or specific details (such as prices, plans, dates, or figures), "
         f"explicitly state 'Information not available in documentation'. \n"
         f"3. NEVER extrapolate, guess, or invent numbers, prices, or missing facts to fill in gaps (Anti-Hallucination Amplification).\n"
-        f"4. Do not make up facts or use pre-trained general knowledge."
     )
 
     messages = [SystemMessage(content=system_prompt)]

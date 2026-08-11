@@ -4,7 +4,7 @@ from src.theme_based_rag_backend.agent_flow.nodes import (
     classifier_node,
     hyde_decision_node,
     hyde_node,
-    rag_qa_node,
+    retrieve_and_generate_node,
     refuse_node,
     critique_node
 )
@@ -21,7 +21,7 @@ workflow = StateGraph(AgentState, input=InputState)
 workflow.add_node("classifier", classifier_node)
 workflow.add_node("hyde_decision", hyde_decision_node)
 workflow.add_node("hyde", hyde_node)
-workflow.add_node("rag_qa", rag_qa_node)
+workflow.add_node("retrieve_and_generate", retrieve_and_generate_node)
 workflow.add_node("refuse", refuse_node)
 workflow.add_node("critique", critique_node)
 
@@ -42,12 +42,12 @@ workflow.add_conditional_edges(
     route_by_hyde_decision,
     {
         "enable": "hyde",
-        "skip": "rag_qa"
+        "skip": "retrieve_and_generate"
     }
 )
 
-workflow.add_edge("hyde", "rag_qa")
-workflow.add_edge("rag_qa", "critique")
+workflow.add_edge("hyde", "retrieve_and_generate")
+workflow.add_edge("retrieve_and_generate", "critique")
 workflow.add_edge("refuse", "critique")
 
 workflow.add_conditional_edges(

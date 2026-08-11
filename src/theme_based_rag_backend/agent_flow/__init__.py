@@ -5,7 +5,7 @@ from src.theme_based_rag_backend.llm_client import llm
 from src.theme_based_rag_backend.agent_flow.state import AgentState
 from src.theme_based_rag_backend.agent_flow.nodes import (
     classifier_node,
-    rag_qa_node,
+    retrieve_and_generate_node,
     refuse_node,
     critique_node
 )

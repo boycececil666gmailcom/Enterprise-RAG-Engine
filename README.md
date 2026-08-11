@@ -60,7 +60,7 @@ sequenceDiagram
             AG->>VDB: Hybrid dense+sparse vector search (Qdrant BM25 + Gemini embeddings)
             AG->>GDB: Cypher graph query - extract entity relationships (Neo4j Bolt)
             AG->>AG: FlashRank neural reranking - merge and rank passages
-            AG->>AG: node_rag_qa - Synthesize grounded answer from retrieved context
+            AG->>AG: retrieve_and_generate - Synthesize grounded answer from retrieved context
             AG->>AG: node_critique - Self-critique quality check
         end
     else Query outside business domain
@@ -110,7 +110,7 @@ flowchart TB
             Classifier["node_classifier"]
             HyDEDecision["node_hyde_decision"]
             HyDEGen["node_hyde_generator"]
-            RAGQA["node_rag_qa + FlashRank Reranker"]
+            RAGQA["retrieve_and_generate + FlashRank Reranker"]
             Critique["node_critique"]
             Refuse["node_refuse"]
         end
@@ -250,7 +250,7 @@ Enterprise-RAG-Engine/
 │   │   ├── config.py                  # Environment variable configuration
 │   │   ├── graph_db.py                # Neo4j driver, entity extraction, Cypher queries
 │   │   ├── vector_db.py               # Qdrant hybrid search, embedding pipeline
-│   │   ├── tools.py                   # LangGraph tool: retrieve_local_documents
+│   │   ├── tools.py                   # LangGraph tool: retrieve_VDB
 │   │   ├── models.py                  # Pydantic request/response schemas
 │   │   └── main.py                    # FastAPI app: /query, /ingest, /health
 │   └── theme_based_rag_gateway/

@@ -63,7 +63,7 @@ async def run_query(request: QueryRequest):
         
         tool_calls_executed = []
         if result.get("retrieved_documents"):
-            tool_calls_executed.append("retrieve_local_documents")
+            tool_calls_executed.append("retrieve_VDB")
             
         return QueryResponse(
             response=result.get("final_response", ""),
