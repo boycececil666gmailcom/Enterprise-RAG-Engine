@@ -119,6 +119,7 @@ def evaluate_rag_pipeline(
             sys.modules["langchain_community.chat_models.vertexai"] = mod
 
         from ragas import evaluate
+        from ragas.run_config import RunConfig
         from ragas.metrics import (
             faithfulness,
             answer_relevancy,
@@ -168,11 +169,19 @@ def evaluate_rag_pipeline(
 
     print(f"Running RAGAS evaluation on {len(samples)} samples using {len(selected_metrics)} metrics...")
     
+    # Configure concurrency limit to prevent API rate/cost spikes
+    run_config = RunConfig(
+        max_workers=2,
+        max_retries=10,
+        timeout=120
+    )
+
     result = evaluate(
         dataset=eval_dataset,
         metrics=selected_metrics,
         llm=ragas_llm,
-        embeddings=ragas_embeddings
+        embeddings=ragas_embeddings,
+        run_config=run_config
     )
 
     detailed_df = result.to_pandas()

@@ -22,7 +22,8 @@ from eval_ragas.ragas_evaluator import (
 #region Pipeline Execution Harness
 def run_agent_evaluation(
     dataset_path: Path,
-    endpoint_url: str
+    endpoint_url: str,
+    limit: int = 0
 ) -> List[RagasEvalSample]:
     """
     Runs evaluation over all questions in dataset by querying the running HTTP API Endpoint.
@@ -32,6 +33,9 @@ def run_agent_evaluation(
 
     with open(dataset_path, "r", encoding="utf-8") as f:
         raw_dataset = json.load(f)
+
+    if limit > 0:
+        raw_dataset = raw_dataset[:limit]
 
     print(f"\n\033[1;96m========================================================\033[0m")
     print(f"\033[1;92m>>> [1/2] Executing Evaluation Pipeline via HTTP Endpoint: {endpoint_url}\033[0m")
@@ -115,6 +119,12 @@ def main():
         default=os.getenv("ENABLE_RAGAS_EVAL", "false").lower() in ("true", "1", "yes"),
         help="Safety switch to enable RAGAS evaluation execution (default: false)"
     )
+    parser.add_argument(
+        "--limit", "-l",
+        type=int,
+        default=0,
+        help="Limit number of dataset samples to evaluate (0 for all, default: 0)"
+    )
 
     args = parser.parse_args()
     if not args.enable:
@@ -126,7 +136,7 @@ def main():
     output_dir = Path(args.output_dir).resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    samples = run_agent_evaluation(dataset_path, endpoint_url=args.endpoint)
+    samples = run_agent_evaluation(dataset_path, endpoint_url=args.endpoint, limit=args.limit)
     if not samples:
         print("No valid evaluation samples collected. Exiting.")
         return
