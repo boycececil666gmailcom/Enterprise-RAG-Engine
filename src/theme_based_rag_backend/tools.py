@@ -1,6 +1,7 @@
 #region Imports & Setup
 from langchain_core.tools import tool
 from langchain_community.document_compressors.flashrank_rerank import FlashrankRerank
+from flashrank import Ranker
 from . import vector_db as db
 #endregion
 
@@ -23,7 +24,7 @@ def retrieve_VDB(query: str) -> str:
             return "No matching vector documents found."
             
         # 2. FlashRank Cross-Encoder Reranker
-        vector_docs = FlashrankRerank(top_n=2).compress_documents(docs, query)
+        vector_docs = FlashrankRerank(client=Ranker(), top_n=2).compress_documents(docs, query)
             
         vector_list = []
         for doc in vector_docs:

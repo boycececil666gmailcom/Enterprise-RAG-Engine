@@ -19,4 +19,9 @@ dependencies = [
     "httpx>=0.27.0",
     "python-dotenv>=1.0.0",
 ]
+
+#region Build Target Configuration
+[tool.hatch.build.targets.wheel]
+packages = ["."]
+#endregion
 #endregion
