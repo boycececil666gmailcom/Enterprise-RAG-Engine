@@ -1,5 +1,7 @@
-from typing import List, Optional, Dict, Literal
+from typing import Literal
+
 from pydantic import BaseModel, Field
+
 
 class MessageSchema(BaseModel):
     role: Literal["user", "assistant", "system"]
@@ -7,18 +9,18 @@ class MessageSchema(BaseModel):
 
 class QueryRequest(BaseModel):
     query: str = Field(min_length=1, description="Query string cannot be empty")
-    history: List[MessageSchema] = Field(default_factory=list, description="Chat history messages")
+    history: list[MessageSchema] = Field(default_factory=list, description="Chat history messages")
 
 class QueryResponse(BaseModel):
     response: str
-    tool_calls_executed: List[str] = Field(default_factory=list)
-    retrieved_documents: Optional[str] = None
+    tool_calls_executed: list[str] = Field(default_factory=list)
+    retrieved_documents: str | None = None
 
 
 
 class IngestRequest(BaseModel):
     text: str = Field(min_length=1, description="Raw document text to ingest")
-    metadata: Optional[Dict[str, str]] = Field(default=None, description="Metadata key-value pairs")
+    metadata: dict[str, str] | None = Field(default=None, description="Metadata key-value pairs")
 
 class IngestResponse(BaseModel):
     status: str

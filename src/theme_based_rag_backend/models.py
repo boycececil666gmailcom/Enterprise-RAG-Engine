@@ -1,6 +1,8 @@
 #region Imports
-from typing import List, Optional, Dict, Literal
+from typing import Literal
+
 from pydantic import BaseModel, Field, model_validator
+
 #endregion
 
 #region Agent Output Schemas
@@ -11,7 +13,7 @@ class RAGResponseSchema(BaseModel):
 class CritiqueResultSchema(BaseModel):
     """Guaranteed deterministic output schema for critique node evaluation."""
     is_passed: bool = Field(description="True if response passes critique evaluation, False otherwise")
-    feedback: Optional[str] = Field(default=None, description="Detailed explanation of hallucination or issue if is_passed is False")
+    feedback: str | None = Field(default=None, description="Detailed explanation of hallucination or issue if is_passed is False")
 
 class HyDESchema(BaseModel):
     """Guaranteed deterministic output schema for HyDE hypothetical document generation."""
@@ -20,7 +22,7 @@ class HyDESchema(BaseModel):
 class ClassifierSchema(BaseModel):
     """Guaranteed deterministic output schema for domain query classification."""
     category: Literal["pass", "refuse"] = Field(description="Category 'pass' if query is on-topic, 'refuse' if off-topic")
-    reason: Optional[str] = Field(default=None, description="Reason for refusal if off-topic")
+    reason: str | None = Field(default=None, description="Reason for refusal if off-topic")
 
 class HyDEDecisionSchema(BaseModel):
     """Guaranteed deterministic output schema for HyDE decision."""
@@ -35,20 +37,20 @@ class MessageSchema(BaseModel):
 
 class QueryRequest(BaseModel):
     query: str = Field(min_length=1, description="Query string cannot be empty")
-    history: List[MessageSchema] = Field(default_factory=list, description="Chat history messages")
+    history: list[MessageSchema] = Field(default_factory=list, description="Chat history messages")
 
 class QueryResponse(BaseModel):
     response: str
-    tool_calls_executed: List[str] = Field(default_factory=list)
-    should_hyde: Optional[bool] = None
-    hyde_reason: Optional[str] = None
-    hyde_content: Optional[str] = None
-    retrieved_documents: Optional[str] = None
-    history: Optional[List[MessageSchema]] = None
+    tool_calls_executed: list[str] = Field(default_factory=list)
+    should_hyde: bool | None = None
+    hyde_reason: str | None = None
+    hyde_content: str | None = None
+    retrieved_documents: str | None = None
+    history: list[MessageSchema] | None = None
 
 class IngestRequest(BaseModel):
     text: str = Field(min_length=1, description="Raw document text to ingest")
-    metadata: Optional[Dict[str, str]] = Field(default=None, description="Metadata key-value pairs")
+    metadata: dict[str, str] | None = Field(default=None, description="Metadata key-value pairs")
 
 class IngestResponse(BaseModel):
     status: str

@@ -2,8 +2,9 @@
 import os
 import sys
 from dataclasses import dataclass, field
-from typing import List, Dict, Any, Optional
 from pathlib import Path
+from typing import Any
+
 import pandas as pd
 from dotenv import load_dotenv
 
@@ -13,6 +14,7 @@ load_dotenv(dotenv_path=ENV_PATH)
 
 # Apply compatibility shim for ragas vertexai import
 import importlib
+
 try:
     importlib.import_module("langchain_community.chat_models.vertexai")
 except ModuleNotFoundError:
@@ -27,8 +29,9 @@ except ModuleNotFoundError:
     sys.modules["langchain_community.chat_models.vertexai"] = mod
 
 from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
-from ragas.llms import LangchainLLMWrapper
 from ragas.embeddings import LangchainEmbeddingsWrapper
+from ragas.llms import LangchainLLMWrapper
+
 #endregion
 
 #region Data Models
@@ -37,14 +40,14 @@ class RagasEvalSample:
     """Represents a single query-answer evaluation sample."""
     question: str
     answer: str
-    contexts: List[str]
-    ground_truth: Optional[str] = None
-    metadata: Dict[str, Any] = field(default_factory=dict)
+    contexts: list[str]
+    ground_truth: str | None = None
+    metadata: dict[str, Any] = field(default_factory=dict)
 
 @dataclass
 class RagasEvalResult:
     """Container for RAGAS evaluation scores and summary metrics."""
-    scores: Dict[str, float]
+    scores: dict[str, float]
     detailed_df: pd.DataFrame
 
     def to_markdown(self) -> str:
@@ -88,8 +91,8 @@ def create_ragas_llm_and_embeddings():
 
 #region RAGAS Evaluation Core Engine
 def evaluate_rag_pipeline(
-    samples: List[RagasEvalSample],
-    metrics_to_run: Optional[List[str]] = None
+    samples: list[RagasEvalSample],
+    metrics_to_run: list[str] | None = None
 ) -> RagasEvalResult:
     """
     Evaluates a batch of RAG execution samples using RAGAS framework and Gemini models.
@@ -118,22 +121,22 @@ def evaluate_rag_pipeline(
             import sys
             sys.modules["langchain_community.chat_models.vertexai"] = mod
 
+        from datasets import Dataset
         from ragas import evaluate
-        from ragas.run_config import RunConfig
         from ragas.metrics import (
-            faithfulness,
             answer_relevancy,
             context_precision,
-            context_recall
+            context_recall,
+            faithfulness,
         )
-        from datasets import Dataset
+        from ragas.run_config import RunConfig
     except ImportError as e:
         raise RuntimeError("RAGAS dependency missing. Please run `pip install ragas datasets pandas`.") from e
 
     ragas_llm, ragas_embeddings = create_ragas_llm_and_embeddings()
 
     # Prepare dataset payload dictionary
-    dataset_dict: Dict[str, List[Any]] = {
+    dataset_dict: dict[str, list[Any]] = {
         "question": [s.question for s in samples],
         "answer": [s.answer for s in samples],
         "contexts": [s.contexts for s in samples],
@@ -187,7 +190,7 @@ def evaluate_rag_pipeline(
     detailed_df = result.to_pandas()
     
     # Calculate summary mean scores
-    scores: Dict[str, float] = {}
+    scores: dict[str, float] = {}
     for m in selected_metrics:
         metric_name = getattr(m, "name", str(m))
         if metric_name in detailed_df.columns:

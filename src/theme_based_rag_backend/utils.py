@@ -1,6 +1,7 @@
 #region Utility Functions
 import math
 
+
 def cosine_similarity(v1: list, v2: list) -> float:
     """Calculates the cosine similarity between two numerical vectors."""
     dot_product = sum(x * y for x, y in zip(v1, v2))

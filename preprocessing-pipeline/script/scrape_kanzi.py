@@ -4,14 +4,15 @@ Recursively scrapes all pages from https://docs.kanzi.com/4.1.0/en/
 and saves them as Markdown files preserving the directory structure.
 """
 
+import json
 import os
 import re
 import time
-import json
-import requests
+from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urljoin, urlparse
-from html.parser import HTMLParser
+
+import requests
 
 # ─────────────────────────────────────────────
 # region Configuration

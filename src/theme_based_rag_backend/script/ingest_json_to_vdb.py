@@ -1,19 +1,21 @@
 #region Imports & Configuration
+import argparse
+import gzip
+import json
 import os
 import sys
-import json
-import gzip
-import argparse
 from pathlib import Path
+
 import httpx
+
 #endregion
 
 #region Data Ingestion Logic
 def load_chunks(file_path: Path) -> list[dict]:
     """Reads chunk records from a JSON or JSON.GZ file."""
-    print(f"\n\033[1;96m========================================================\033[0m")
+    print("\n\033[1;96m========================================================\033[0m")
     print(f"\033[1;92m>>> [1/3] [{os.path.basename(__file__)}] Reading structured JSON dataset: {file_path.name}\033[0m")
-    print(f"\033[1;96m========================================================\033[0m\n")
+    print("\033[1;96m========================================================\033[0m\n")
 
     opener = gzip.open if file_path.name.endswith(".gz") else open
     with opener(file_path, "rt", encoding="utf-8") as f:
@@ -25,9 +27,9 @@ def load_chunks(file_path: Path) -> list[dict]:
 
 def ingest_chunks(chunks: list[dict], endpoint_url: str, batch_size: int = 50):
     """Posts document chunks to the Vector DB ingestion HTTP endpoint."""
-    print(f"\n\033[1;96m========================================================\033[0m")
+    print("\n\033[1;96m========================================================\033[0m")
     print(f"\033[1;92m>>> [2/3] [{os.path.basename(__file__)}] Connecting to Vector DB Ingestion Endpoint: {endpoint_url}\033[0m")
-    print(f"\033[1;96m========================================================\033[0m\n")
+    print("\033[1;96m========================================================\033[0m\n")
 
     success, failures = 0, 0
     total = len(chunks)
@@ -57,9 +59,9 @@ def ingest_chunks(chunks: list[dict], endpoint_url: str, batch_size: int = 50):
             if idx % batch_size == 0 or idx == total:
                 print(f"Progress: [{idx}/{total}] chunks processed (Success: {success}, Failures: {failures})")
 
-    print(f"\n\033[1;96m========================================================\033[0m")
+    print("\n\033[1;96m========================================================\033[0m")
     print(f"\033[1;92m>>> [3/3] [{os.path.basename(__file__)}] Ingestion Complete: {success}/{total} Chunks Successfully Ingested into VDB\033[0m")
-    print(f"\033[1;96m========================================================\033[0m\n")
+    print("\033[1;96m========================================================\033[0m\n")
 #endregion
 
 #region CLI Entry Point

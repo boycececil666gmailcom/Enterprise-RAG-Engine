@@ -1,6 +1,8 @@
 #region Imports & Node Implementation
 import re
+
 from ..state import AgentState
+
 
 def hyde_decision_node(state: AgentState) -> dict:
     """Analyzes the user query dynamically to decide whether HyDE expansion should be enabled or skipped."""

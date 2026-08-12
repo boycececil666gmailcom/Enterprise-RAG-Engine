@@ -1,10 +1,11 @@
 #region Imports & Node Implementation
-from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
-from ...config import CHATBOT_THEME
-from ...models import RAGResponseSchema
-from ..state import AgentState
+from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
+
 from ...llm_client import llm
+from ...models import RAGResponseSchema
 from ...tools import retrieve_VDB
+from ..state import AgentState
+
 #endregion
 
 #region Retrieve and Generate Node Implementation

@@ -1,8 +1,10 @@
 #region Imports & Node Implementation
-from langchain_core.messages import SystemMessage, HumanMessage
-from ..state import AgentState
+from langchain_core.messages import HumanMessage, SystemMessage
+
 from ...llm_client import hyde_llm
 from ...models import HyDESchema
+from ..state import AgentState
+
 
 def generate_hypothetical_document(query: str) -> str:
     """Generates a hypothetical document passage for the given user query with Pydantic type safety."""

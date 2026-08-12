@@ -1,14 +1,12 @@
 #region Imports & Setup
-import os
 import uvicorn
-from typing import List, Optional
 from fastapi import FastAPI, HTTPException
 
-from .config import BACKEND_HOST, BACKEND_PORT, GEMINI_MODEL
-from . import vector_db as db
 from . import graph_db as graph_db
-from .models import QueryRequest, QueryResponse, IngestRequest, IngestResponse
+from . import vector_db as db
 from .agent_flow import agent_graph
+from .config import BACKEND_HOST, BACKEND_PORT, GEMINI_MODEL
+from .models import IngestRequest, IngestResponse, QueryRequest, QueryResponse
 
 app = FastAPI(title="Theme-Based RAG Workflow Backend")
 #endregion
@@ -81,7 +79,7 @@ async def health_check():
     try:
         db.get_vector_store()
         vector_ok = "ok"
-    except Exception as e:
+    except Exception:
         vector_ok = "degraded (pending API key)"
         
     return {

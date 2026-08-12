@@ -1,6 +1,7 @@
 #region Edge Implementation
 from ..state import AgentState
 
+
 def route_after_critique(state: AgentState) -> str:
     """Routes to 'approved' (END) or 'rejected' (loop back) based on critique feedback."""
     feedback = state.get("critique_feedback")

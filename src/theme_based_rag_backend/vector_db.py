@@ -1,11 +1,13 @@
 #region Imports & Configuration
-import os
 import sys
 from functools import lru_cache
-from langchain_qdrant import QdrantVectorStore, FastEmbedSparse, RetrievalMode
+
 from langchain_core.documents import Document
-from .config import QDRANT_URL, QDRANT_API_KEY
+from langchain_qdrant import FastEmbedSparse, QdrantVectorStore, RetrievalMode
+
+from .config import QDRANT_API_KEY, QDRANT_URL
 from .llm_client import embeddings
+
 #endregion
 
 #region Helper & Vector Database Initialization

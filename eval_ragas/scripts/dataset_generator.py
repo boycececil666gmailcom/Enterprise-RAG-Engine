@@ -1,8 +1,8 @@
 #region Imports & Configuration
-import sys
 import json
+import sys
 from pathlib import Path
-from typing import List, Dict, Any
+from typing import Any
 
 # Ensure project root is in sys.path
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -15,7 +15,7 @@ def generate_eval_dataset_from_chunks(
     json_chunks_path: Path,
     output_path: Path,
     max_samples: int = 20
-) -> List[Dict[str, Any]]:
+) -> list[dict[str, Any]]:
     """
     Extracts synthetic evaluation QA pairs from preprocessed rag_chunks.json metadata.
 
@@ -30,11 +30,11 @@ def generate_eval_dataset_from_chunks(
     if not json_chunks_path.exists():
         raise FileNotFoundError(f"Source chunks dataset file not found at: {json_chunks_path}")
 
-    with open(json_chunks_path, "r", encoding="utf-8") as f:
+    with open(json_chunks_path, encoding="utf-8") as f:
         data = json.load(f)
 
     chunks = data.get("chunks", []) if isinstance(data, dict) else data
-    eval_dataset: List[Dict[str, Any]] = []
+    eval_dataset: list[dict[str, Any]] = []
 
     for chunk in chunks:
         if len(eval_dataset) >= max_samples:

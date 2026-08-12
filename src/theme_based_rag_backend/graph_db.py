@@ -1,11 +1,13 @@
 #region Imports & Driver Initialization
-import os
-import re
 import json
+import re
 from functools import lru_cache
-from langchain_core.messages import SystemMessage, HumanMessage
-from .config import NEO4J_URI, NEO4J_USERNAME, NEO4J_PASSWORD, GEMINI_API_KEY
+
+from langchain_core.messages import HumanMessage, SystemMessage
+
+from .config import NEO4J_PASSWORD, NEO4J_URI, NEO4J_USERNAME
 from .llm_client import llm
+
 
 @lru_cache(maxsize=1)
 def get_driver():

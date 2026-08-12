@@ -1,9 +1,11 @@
 #region Imports & Node Implementation
 from functools import lru_cache
+
 from ...config import CHATBOT_THEME
+from ...llm_client import embeddings
 from ...utils import cosine_similarity
 from ..state import AgentState
-from ...llm_client import embeddings
+
 
 @lru_cache(maxsize=1)
 def get_theme_embedding(theme: str) -> list:

@@ -8,10 +8,10 @@ and saves the result to both `kanzi_rag_chunks.json` and `kanzi_rag_chunks.json.
 """
 
 #region Imports & Config
+import gzip
+import json
 import os
 import re
-import json
-import gzip
 import time
 from pathlib import Path
 
@@ -96,7 +96,7 @@ def main():
     log_step("1/3", f"Reading directly from target file: {TARGET_JSON.name}")
     start_time = time.time()
     
-    with open(TARGET_JSON, "r", encoding="utf-8") as f:
+    with open(TARGET_JSON, encoding="utf-8") as f:
         dataset = json.load(f)
 
     chunks = dataset.get("chunks", [])
@@ -128,7 +128,7 @@ def main():
     print(f"  - Total Chunks Processed : {total:,}")
     print(f"  - Coverage               : 100% ({total:,} / {total:,})")
     print(f"  - Processing Time        : {elapsed:.2f} seconds")
-    print(f"  - External API Cost      : $0.00 (Zero cost)")
+    print("  - External API Cost      : $0.00 (Zero cost)")
     print(f"{SEP}\n")
 
 if __name__ == "__main__":

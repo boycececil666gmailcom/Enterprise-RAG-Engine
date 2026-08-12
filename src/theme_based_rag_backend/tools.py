@@ -1,8 +1,10 @@
 #region Imports & Setup
-from langchain_core.tools import tool
-from langchain_community.document_compressors.flashrank_rerank import FlashrankRerank
 from flashrank import Ranker
+from langchain_community.document_compressors.flashrank_rerank import FlashrankRerank
+from langchain_core.tools import tool
+
 from . import vector_db as db
+
 #endregion
 
 

@@ -1,18 +1,15 @@
-from langgraph.graph import StateGraph, END
-from .state import AgentState, InputState
+from langgraph.graph import END, StateGraph
+
+from .edges import route_after_critique, route_by_category, route_by_hyde_decision
 from .nodes import (
     classifier_node,
+    critique_node,
     hyde_decision_node,
     hyde_node,
-    retrieve_and_generate_node,
     refuse_node,
-    critique_node
+    retrieve_and_generate_node,
 )
-from .edges import (
-    route_by_category,
-    route_by_hyde_decision,
-    route_after_critique
-)
+from .state import AgentState, InputState
 
 # Workflow Graph Setup
 workflow = StateGraph(AgentState, input_schema=InputState)

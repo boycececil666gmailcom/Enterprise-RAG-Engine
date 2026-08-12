@@ -1,15 +1,17 @@
 #region Imports & Setup
-import os
-import json
 import argparse
+import json
+import os
 from pathlib import Path
-from typing import List
+
 import httpx
+
 from eval_ragas.ragas_evaluator import (
-    evaluate_rag_pipeline,
+    RagasEvalResult,
     RagasEvalSample,
-    RagasEvalResult
+    evaluate_rag_pipeline,
 )
+
 #endregion
 
 #region Pipeline Execution Harness
@@ -17,24 +19,24 @@ def run_agent_evaluation(
     dataset_path: Path,
     endpoint_url: str,
     limit: int = 0
-) -> List[RagasEvalSample]:
+) -> list[RagasEvalSample]:
     """
     Runs evaluation over all questions in dataset by querying the running HTTP API Endpoint.
     """
     if not dataset_path.exists():
         raise FileNotFoundError(f"Evaluation dataset file not found: {dataset_path}")
 
-    with open(dataset_path, "r", encoding="utf-8") as f:
+    with open(dataset_path, encoding="utf-8") as f:
         raw_dataset = json.load(f)
 
     if limit > 0:
         raw_dataset = raw_dataset[:limit]
 
-    print(f"\n\033[1;96m========================================================\033[0m")
+    print("\n\033[1;96m========================================================\033[0m")
     print(f"\033[1;92m>>> [1/2] Executing Evaluation Pipeline via HTTP Endpoint: {endpoint_url}\033[0m")
-    print(f"\033[1;96m========================================================\033[0m\n")
+    print("\033[1;96m========================================================\033[0m\n")
 
-    samples: List[RagasEvalSample] = []
+    samples: list[RagasEvalSample] = []
 
     with httpx.Client(timeout=90.0) as http_client:
         for idx, item in enumerate(raw_dataset, start=1):
@@ -134,9 +136,9 @@ def main():
         print("No valid evaluation samples collected. Exiting.")
         return
 
-    print(f"\n\033[1;96m========================================================\033[0m")
-    print(f"\033[1;92m>>> [2/2] Running RAGAS Metrics Evaluation Backend\033[0m")
-    print(f"\033[1;96m========================================================\033[0m\n")
+    print("\n\033[1;96m========================================================\033[0m")
+    print("\033[1;92m>>> [2/2] Running RAGAS Metrics Evaluation Backend\033[0m")
+    print("\033[1;96m========================================================\033[0m\n")
 
     eval_result: RagasEvalResult = evaluate_rag_pipeline(samples)
 
@@ -152,7 +154,7 @@ def main():
 
     eval_result.detailed_df.to_csv(csv_path, index=False)
 
-    print(f"✅ RAGAS Evaluation Completed!")
+    print("✅ RAGAS Evaluation Completed!")
     print(f"📄 Markdown Report saved to: {report_path}")
     print(f"📊 Detailed CSV saved to: {csv_path}")
 

@@ -1,12 +1,7 @@
 #region Imports & AI Models Initialization
 from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
-from .config import (
-    GEMINI_API_KEY,
-    GEMINI_MODEL,
-    GEMINI_TEMPERATURE,
-    GEMINI_EMBED_MODEL
-)
 
+from .config import GEMINI_API_KEY, GEMINI_EMBED_MODEL, GEMINI_MODEL, GEMINI_TEMPERATURE
 
 # Primary LLM instance for standard chat response generation
 llm = ChatGoogleGenerativeAI(

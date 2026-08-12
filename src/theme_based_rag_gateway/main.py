@@ -1,18 +1,25 @@
 import os
+
 import httpx
 import uvicorn
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from src.theme_based_rag_gateway.models import QueryRequest, QueryResponse, IngestRequest, IngestResponse
 
 #region Gateway Configuration Imports
 from src.theme_based_rag_gateway.config import (
-    RAG_BACKEND_URL,
+    ALLOW_CREDENTIALS,
+    ALLOWED_ORIGINS,
     GATEWAY_HOST,
     GATEWAY_PORT,
-    ALLOWED_ORIGINS,
-    ALLOW_CREDENTIALS
+    RAG_BACKEND_URL,
 )
+from src.theme_based_rag_gateway.models import (
+    IngestRequest,
+    IngestResponse,
+    QueryRequest,
+    QueryResponse,
+)
+
 #endregion
 
 app = FastAPI(title="Theme-Based RAG Workflow Gateway")
@@ -31,9 +38,9 @@ async_client = httpx.AsyncClient(timeout=60.0)
 
 #region Ingestion Proxy Endpoints
 async def _proxy_ingest(target_url: str, request: IngestRequest) -> IngestResponse:
-    print(f"\n\033[1;96m========================================================\033[0m")
+    print("\n\033[1;96m========================================================\033[0m")
     print(f"\033[1;92m>>> [1/2] [{os.path.basename(__file__)}] API Gateway proxying ingestion request to: {target_url}\033[0m")
-    print(f"\033[1;96m========================================================\033[0m\n")
+    print("\033[1;96m========================================================\033[0m\n")
     try:
         response = await async_client.post(target_url, json=request.dict())
         if response.status_code != 200:
@@ -41,9 +48,9 @@ async def _proxy_ingest(target_url: str, request: IngestRequest) -> IngestRespon
                 status_code=response.status_code, 
                 detail=f"Downstream error: {response.text}"
             )
-        print(f"\n\033[1;96m========================================================\033[0m")
+        print("\n\033[1;96m========================================================\033[0m")
         print(f"\033[1;92m>>> [2/2] [{os.path.basename(__file__)}] API Gateway received success response from backend\033[0m")
-        print(f"\033[1;96m========================================================\033[0m\n")
+        print("\033[1;96m========================================================\033[0m\n")
         return IngestResponse(**response.json())
     except httpx.RequestError as exc:
         raise HTTPException(
@@ -69,9 +76,9 @@ async def route_query(request: QueryRequest):
     """Proxies query requests downstream to the core RAG backend."""
     target_url = f"{RAG_BACKEND_URL.rstrip('/')}/query"
     
-    print(f"\n\033[1;96m========================================================\033[0m")
+    print("\n\033[1;96m========================================================\033[0m")
     print(f"\033[1;92m>>> [1/2] [{os.path.basename(__file__)}] API Gateway proxying query request to: {target_url}\033[0m")
-    print(f"\033[1;96m========================================================\033[0m\n")
+    print("\033[1;96m========================================================\033[0m\n")
     
     try:
         response = await async_client.post(target_url, json=request.dict())
@@ -81,9 +88,9 @@ async def route_query(request: QueryRequest):
                 detail=f"Downstream error: {response.text}"
             )
             
-        print(f"\n\033[1;96m========================================================\033[0m")
+        print("\n\033[1;96m========================================================\033[0m")
         print(f"\033[1;92m>>> [2/2] [{os.path.basename(__file__)}] API Gateway received success response from backend\033[0m")
-        print(f"\033[1;96m========================================================\033[0m\n")
+        print("\033[1;96m========================================================\033[0m\n")
         
         return QueryResponse(**response.json())
     except httpx.RequestError as exc:
@@ -103,7 +110,7 @@ async def health_check():
             backend_status = "healthy"
         else:
             backend_status = f"unhealthy (status {response.status_code})"
-    except Exception as e:
+    except Exception:
         pass
 
     return {
