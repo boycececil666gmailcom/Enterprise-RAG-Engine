@@ -1,7 +1,5 @@
 # Kanzi Framework 4.1.0 RAG/VDB 最適化パイプライン構築およびプロセス記録
 
----
-
 ## データ前処理手法
 
 
@@ -26,31 +24,27 @@
 sequenceDiagram
     autonumber
     actor User as User / Admin
-    participant Scraper as scrape_kanzi.py
+    participant Pipeline as crawl4ai_ollama_pipeline.py
+    participant Crawl4AI as Crawl4AI Engine (Playwright)
+    participant Ollama as Local Ollama LLM (llama3.2)
     participant Web as docs.kanzi.com
-    participant Notebook as build_vdb_dataset.ipynb
-    participant Storage as Local Storage (kanzi_docs)
-    participant VectorDB as Vector Database (Chroma/Qdrant)
+    participant Storage as Local Storage (rag_chunks.json)
+    participant VectorDB as Vector Database (Qdrant)
 
-    Note over User, VectorDB: Phase 1: Web Scraping & HTML to Markdown Conversion
-    User->>Scraper: Execute Scraping
-    Scraper->>Web: Fetch HTML Pages (HTTP GET)
-    Web-->>Scraper: Return HTML Content
-    Scraper->>Storage: Save converted Markdown (*.md)
+    Note over User, VectorDB: Phase 1: Crawl4AI Web Extraction & Ollama Pydantic Structuring
+    User->>Pipeline: Execute Pipeline
+    Pipeline->>Crawl4AI: Launch AsyncWebCrawler
+    Crawl4AI->>Web: Render & Fetch Page (Playwright)
+    Web-->>Crawl4AI: Return Raw HTML / DOM
+    Crawl4AI->>Ollama: Send LLMExtractionStrategy Prompt & Pydantic Schema
+    Ollama-->>Crawl4AI: Return Structured KanziDocSection JSON
+    Crawl4AI-->>Pipeline: Extracted Small-to-Big Sections (child_content / parent_content)
 
-    Note over User, VectorDB: Phase 2: Integrated Cleaning & Semantic Chunking (Jupyter Notebook)
-    User->>Notebook: Run All-in-One Notebook
-    Notebook->>Storage: Delete Noise (licenses/, release-notes/kanzi-3.0/, <200 char stubs)
-    Notebook->>Storage: Apply 11-Rule Markdown Text Cleaning
-    Notebook->>Notebook: Parse Frontmatter & Split H2/H3 Sections
-    Notebook->>Notebook: Separate Code vs Prose & Prepend Context Headers
-    Notebook->>Notebook: Link Parent Content (Small-to-Big Strategy) & Deduplicate SHA-256
-    Notebook->>Storage: Export kanzi_rag_chunks.json.gz (5.29 MB)
-
-    Note over User, VectorDB: Phase 3: Vector Database Indexing
-    User->>VectorDB: Ingest kanzi_rag_chunks.json.gz
-    VectorDB->>VectorDB: Compute Embeddings & Create Index
-    VectorDB-->>User: RAG Pipeline Complete & Ready for QA Search
+    Note over User, VectorDB: Phase 2: Dataset Export & Indexing
+    Pipeline->>Storage: Export rag_chunks.json & rag_chunks.json.gz
+    User->>VectorDB: Ingest rag_chunks.json into Qdrant
+    VectorDB->>VectorDB: Compute Dense & Sparse Embeddings
+    VectorDB-->>User: RAG Pipeline Ready for Hybrid QA Search
 ```
 
 
