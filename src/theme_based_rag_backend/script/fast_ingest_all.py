@@ -62,7 +62,7 @@ def run_full_ingestion(batch_size: int = 100):
     start_time = time.time()
 
     for idx, item in enumerate(all_raw, start=1):
-        text = item.get("content") or item.get("text") or ""
+        text = item.get("child_content") or item.get("content") or item.get("text") or ""
         if not text:
             continue
 

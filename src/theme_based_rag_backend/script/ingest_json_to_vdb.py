@@ -36,7 +36,7 @@ def ingest_chunks(chunks: list[dict], endpoint_url: str, batch_size: int = 50):
 
     with httpx.Client(timeout=60.0) as client:
         for idx, chunk in enumerate(chunks, start=1):
-            text = chunk.get("content") or chunk.get("text") or ""
+            text = chunk.get("child_content") or chunk.get("content") or chunk.get("text") or ""
             if not text:
                 continue
 
