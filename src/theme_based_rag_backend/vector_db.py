@@ -24,42 +24,18 @@ def get_sparse_embeddings():
 def get_vector_store():
     """Lazily initializes and caches QdrantVectorStore using lru_cache."""
     try:
-        sparse = get_sparse_embeddings()
-
         sparse_kwargs = {}
-        if sparse is not None:
-            sparse_kwargs["sparse_embedding"] = sparse
-            sparse_kwargs["retrieval_mode"] = RetrievalMode.HYBRID
+        sparse_kwargs["sparse_embedding"] = get_sparse_embeddings()
+        sparse_kwargs["retrieval_mode"] = RetrievalMode.HYBRID
 
-        if "pytest" in sys.modules or QDRANT_URL == ":memory:":
-            return QdrantVectorStore.from_documents(
-                [],
-                embedding=embeddings,
-                location=":memory:",
-                collection_name="local_rag_documents",
-                **sparse_kwargs
-            )
-        elif QDRANT_URL:
-            try:
-                return QdrantVectorStore.from_existing_collection(
-                    url=QDRANT_URL,
-                    api_key=QDRANT_API_KEY,
-                    collection_name="local_rag_documents",
-                    embedding=embeddings,
-                    **sparse_kwargs
-                )
-            except Exception:
-                init_doc = Document(page_content="System Vector DB initialized.", metadata={"system": "init"})
-                return QdrantVectorStore.from_documents(
-                    [init_doc],
-                    url=QDRANT_URL,
-                    api_key=QDRANT_API_KEY,
-                    collection_name="local_rag_documents",
-                    embedding=embeddings,
-                    **sparse_kwargs
-                )
-        else:
-            raise ValueError("QDRANT_URL environment variable is not configured.")
+        return QdrantVectorStore.from_existing_collection(
+            url=QDRANT_URL,
+            api_key=QDRANT_API_KEY,
+            collection_name="local_rag_documents",
+            embedding=embeddings,
+            **sparse_kwargs
+        )
+
     except Exception as e:
         raise e
 
