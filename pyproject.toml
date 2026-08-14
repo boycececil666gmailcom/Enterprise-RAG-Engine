@@ -24,6 +24,9 @@ dependencies = [
     "flashrank>=0.2.0,<0.3.0",
     "neo4j>=5.18.0,<6.0.0",
     "ddgs>=0.1.0",
+    "beautifulsoup4>=4.15.0",
+    "requests>=2.34.2",
+    "crawl4ai>=0.9.2",
 ]
 #endregion
 
@@ -50,3 +53,6 @@ target-version = "py311"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "N", "UP", "B"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
