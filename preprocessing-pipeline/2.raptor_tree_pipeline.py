@@ -47,10 +47,15 @@ class RaptorNode:
         self.breadcrumb = breadcrumb
 
     def to_dict(self) -> Dict[str, Any]:
-        """Converts RaptorNode to standardized JSON format with clean content and metadata."""
+        """Converts RaptorNode to standardized JSON format with keywords appended to small."""
+        small_text = self.content
+        if self.keywords:
+            keywords_str = ", ".join(self.keywords)
+            small_text = f"{self.content}\nKeywords: {keywords_str}"
+
         return {
             "id": self.node_id,
-            "small": self.content,
+            "small": small_text,
             "metadata": {
                 "parent_id": self.parent_id or "",
                 "title": self.title,
@@ -108,7 +113,7 @@ class RaptorTreeBuilder:
             node_id=root_id,
             title=title,
             layer=0,
-            content=summary or markdown[:1000],
+            content=summary,
             url=url,
             markdown=markdown,
             keywords=root_item.get("keywords", []),
@@ -134,7 +139,7 @@ class RaptorTreeBuilder:
             node_id=sec_id,
             title=title,
             layer=1,
-            content=summary or markdown[:1000],
+            content=summary,
             url=url,
             markdown=markdown,
             keywords=sec_item.get("keywords", []),
@@ -167,6 +172,7 @@ class RaptorTreeBuilder:
         
         doc_url = doc_item.get("url", "")
         doc_title = doc_item.get("title", "Detail Chunk")
+        doc_summary = doc_item.get("summary", "")
         doc_keywords = doc_item.get("keywords", [])
 
         for idx, split in enumerate(final_splits):
@@ -175,7 +181,7 @@ class RaptorTreeBuilder:
                 node_id=leaf_id,
                 title=doc_title,
                 layer=2,  # Layer 2: Detailed Leaf Chunk
-                content=split.page_content,
+                content=doc_summary or split.page_content,
                 url=doc_url,
                 markdown=split.page_content,
                 keywords=doc_keywords,

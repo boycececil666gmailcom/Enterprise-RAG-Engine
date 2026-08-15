@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 from langchain_core.documents import Document
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_qdrant import FastEmbedSparse, QdrantVectorStore, RetrievalMode
+from qdrant_client import QdrantClient
 #endregion
 
 #region Environment & Configuration
@@ -38,11 +39,17 @@ INPUT_JSON_PATH = Path(__file__).resolve().parent / "2.raptor_chunks.json"
 
 #region Ingestion Logic
 def ingest_chunks_to_qdrant():
-    """Reads raptor_chunks.json and batch-ingests into Qdrant Vector Store."""
+    """Deletes existing collection, reads 2.raptor_chunks.json and batch-ingests into Qdrant."""
     if not INPUT_JSON_PATH.exists():
         raise FileNotFoundError(f"Input file '{INPUT_JSON_PATH.name}' not found. Please run 2.raptor_tree_pipeline.py first.")
 
     print(f"[Ingestion] Connecting to Qdrant at: {QDRANT_URL}")
+    client = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY)
+    if client.collection_exists(QDRANT_COLLECTION):
+        print(f"[Ingestion] Deleting existing collection '{QDRANT_COLLECTION}'...")
+        client.delete_collection(QDRANT_COLLECTION)
+        print(f"[Ingestion] Existing collection '{QDRANT_COLLECTION}' deleted.")
+
     print(f"[Ingestion] Loading chunks from {INPUT_JSON_PATH.name}...")
     with open(INPUT_JSON_PATH, "r", encoding="utf-8") as f:
         data = json.load(f)

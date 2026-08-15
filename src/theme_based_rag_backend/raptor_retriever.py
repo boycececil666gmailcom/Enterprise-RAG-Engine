@@ -69,7 +69,7 @@ class RaptorRetriever:
                 "breadcrumb": meta.get("breadcrumb", ""),
                 "url": meta.get("url", ""),
                 "small": doc.page_content,
-                "markdown": meta.get("markdown", doc.page_content),
+                "big": meta.get("big", meta.get("markdown", doc.page_content)),
             })
 
         return results
