@@ -1,4 +1,4 @@
-#region Imports & Node Implementation
+#region HyDE Generator
 from langchain_core.messages import HumanMessage, SystemMessage
 
 from ...llm_client import hyde_llm
@@ -7,16 +7,13 @@ from ..state import AgentState
 
 
 def generate_hypothetical_document(query: str) -> str:
-    """Generates a hypothetical document passage for the given user query with Pydantic type safety."""
+    """Generates a hypothetical document passage for query expansion."""
     try:
-        system_prompt = (
-            "You are a helpful assistant. Please write a short, plausible excerpt or passage "
-            "from an internal documentation document that directly answers the user's query. "
-            "Do not include conversational intros or filler. Output only the hypothetical document excerpt."
-        )
         messages = [
-            SystemMessage(content=system_prompt),
-            HumanMessage(content=query)
+            SystemMessage(
+                content="Write a short, plausible documentation excerpt that answers the user's query. Output only the excerpt."
+            ),
+            HumanMessage(content=query),
         ]
         structured_llm = hyde_llm.with_structured_output(HyDESchema)
         res: HyDESchema = structured_llm.invoke(messages)
@@ -24,12 +21,10 @@ def generate_hypothetical_document(query: str) -> str:
             return res.passage.strip()
     except Exception:
         pass
-    
     return query
 
+
 def hyde_node(state: AgentState) -> dict:
-    """Standalone LangGraph node that generates a hypothetical document and saves it into AgentState."""
-    query = state["query"]
-    hypo_doc = generate_hypothetical_document(query)
-    return {"hyde_content": hypo_doc}
+    """Generates hypothetical document passage and updates agent state."""
+    return {"hyde_content": generate_hypothetical_document(state["query"])}
 #endregion

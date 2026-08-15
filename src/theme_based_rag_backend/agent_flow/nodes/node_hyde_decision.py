@@ -1,25 +1,30 @@
-#region Imports & Node Implementation
+#region HyDE Decision
 import re
-
 from ..state import AgentState
 
 
 def hyde_decision_node(state: AgentState) -> dict:
-    """Analyzes the user query dynamically to decide whether HyDE expansion should be enabled or skipped."""
+    """Decides whether HyDE expansion is beneficial for the user query."""
     query = state["query"].strip()
 
-    # 1. Check for specific error codes, UUIDs, model/version patterns or numeric identifiers
-    error_pattern = r'(error|err|code|uuid|v\d+\.\d+|\b[A-Z]{2,}-\d+\b|\b\d{3,5}\b)'
+    # Skip HyDE for technical codes, versions, or error patterns
+    error_pattern = r"(error|err|code|uuid|v\d+\.\d+|\b[A-Z]{2,}-\d+\b|\b\d{3,5}\b)"
     if re.search(error_pattern, query, re.IGNORECASE):
-        reason = "Query contains exact technical identifier, code, or error number pattern"
-        return {"should_hyde": False, "hyde_reason": reason}
+        return {
+            "should_hyde": False,
+            "hyde_reason": "Query contains specific identifier or error pattern",
+        }
 
-    # 2. Check for overly detailed / long queries
+    # Skip HyDE for detailed long queries
     if len(query) > 80 or len(query.split()) >= 12:
-        reason = "Query is already specific, detailed, and keyword-rich"
-        return {"should_hyde": False, "hyde_reason": reason}
+        return {
+            "should_hyde": False,
+            "hyde_reason": "Query is already specific and detailed",
+        }
 
-    # 3. Default for abstract / non-technical / short queries -> Enable HyDE
-    reason = "Abstract or non-technical query benefits from HyDE hypothetical expansion"
-    return {"should_hyde": True, "hyde_reason": reason}
+    # Enable HyDE for short or abstract queries
+    return {
+        "should_hyde": True,
+        "hyde_reason": "Abstract or short query benefits from hypothetical expansion",
+    }
 #endregion

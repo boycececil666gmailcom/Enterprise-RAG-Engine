@@ -1,5 +1,5 @@
+#region Gateway Schemas
 from typing import Literal
-
 from pydantic import BaseModel, Field
 
 
@@ -7,9 +7,11 @@ class MessageSchema(BaseModel):
     role: Literal["user", "assistant", "system"]
     content: str = Field(min_length=1, description="Message content cannot be empty")
 
+
 class QueryRequest(BaseModel):
     query: str = Field(min_length=1, description="Query string cannot be empty")
     history: list[MessageSchema] = Field(default_factory=list, description="Chat history messages")
+
 
 class QueryResponse(BaseModel):
     response: str
@@ -17,11 +19,12 @@ class QueryResponse(BaseModel):
     retrieved_documents: str | None = None
 
 
-
 class IngestRequest(BaseModel):
     text: str = Field(min_length=1, description="Raw document text to ingest")
     metadata: dict[str, str] | None = Field(default=None, description="Metadata key-value pairs")
 
+
 class IngestResponse(BaseModel):
     status: str
     chunk_count: int = Field(ge=0)
+#endregion

@@ -1,3 +1,4 @@
+#region Graph Definition
 from langgraph.graph import END, StateGraph
 
 from .edges import route_after_critique, route_by_category, route_by_hyde_decision
@@ -11,7 +12,7 @@ from .nodes import (
 )
 from .state import AgentState, InputState
 
-# Workflow Graph Setup
+# Initialize Workflow Graph
 workflow = StateGraph(AgentState, input_schema=InputState)
 
 # Add Nodes
@@ -22,25 +23,19 @@ workflow.add_node("retrieve_and_generate", retrieve_and_generate_node)
 workflow.add_node("refuse", refuse_node)
 workflow.add_node("critique", critique_node)
 
-# Set Entry Point and Edges
+# Set Entry Point and Conditional Transitions
 workflow.set_entry_point("classifier")
 
 workflow.add_conditional_edges(
     "classifier",
     route_by_category,
-    {
-        "pass": "hyde_decision",
-        "refuse": "refuse"
-    }
+    {"pass": "hyde_decision", "refuse": "refuse"},
 )
 
 workflow.add_conditional_edges(
     "hyde_decision",
     route_by_hyde_decision,
-    {
-        "enable": "hyde",
-        "skip": "retrieve_and_generate"
-    }
+    {"enable": "hyde", "skip": "retrieve_and_generate"},
 )
 
 workflow.add_edge("hyde", "retrieve_and_generate")
@@ -50,11 +45,8 @@ workflow.add_edge("refuse", "critique")
 workflow.add_conditional_edges(
     "critique",
     route_after_critique,
-    {
-        "approved": END,
-        "rejected": "classifier"  # Loop back to the start (Classifier Node)
-    }
+    {"approved": END, "rejected": "classifier"},
 )
 
-# Compile Workflow Graph
 agent_graph = workflow.compile()
+#endregion

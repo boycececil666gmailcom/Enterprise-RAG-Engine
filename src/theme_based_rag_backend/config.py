@@ -1,9 +1,7 @@
-#region Imports & Configuration
+#region Config
 import os
-
 from dotenv import load_dotenv
 
-# Load .env file
 load_dotenv()
 
 def require_env(key: str) -> str:
@@ -11,41 +9,31 @@ def require_env(key: str) -> str:
     if not val:
         raise ValueError(f"CRITICAL CONFIG ERROR: Environment variable '{key}' is required but not set.")
     return val
-#endregion
 
-#region Gemini Settings
+# Gemini Settings
 GEMINI_API_KEY = require_env("GEMINI_API_KEY")
 GEMINI_MODEL = require_env("GEMINI_MODEL")
-_raw_embed = require_env("GEMINI_EMBED_MODEL")
-if _raw_embed.startswith("models/"):
-    _raw_embed = _raw_embed.replace("models/", "", 1)
-if _raw_embed == "text-embedding-004":
-    _raw_embed = "gemini-embedding-001"
-GEMINI_EMBED_MODEL = _raw_embed
+_raw_embed = require_env("GEMINI_EMBED_MODEL").removeprefix("models/")
+GEMINI_EMBED_MODEL = "gemini-embedding-001" if _raw_embed == "text-embedding-004" else _raw_embed
 GEMINI_TEMPERATURE = float(require_env("GEMINI_TEMPERATURE"))
-#endregion
 
-#region FastAPI Server Settings
-BACKEND_PORT = int(require_env("BACKEND_PORT"))
+# Server Settings
 BACKEND_HOST = require_env("BACKEND_HOST")
-#endregion
+BACKEND_PORT = int(require_env("BACKEND_PORT"))
 
-#region Qdrant Database Settings
+# Qdrant Database Settings
 QDRANT_URL = require_env("QDRANT_URL")
 QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
-#endregion
 
-#region Neo4j Database Settings
+# Neo4j Database Settings
 NEO4J_URI = require_env("NEO4J_URI")
 NEO4J_USERNAME = require_env("NEO4J_USERNAME")
 NEO4J_PASSWORD = require_env("NEO4J_PASSWORD")
-#endregion
 
-#region Chatbot Theme Settings
+# Chatbot Theme Settings
 CHATBOT_THEME = require_env("CHATBOT_THEME")
-#endregion
 
-#region LangSmith Settings
+# LangSmith Settings
 LANGSMITH_TRACING = require_env("LANGSMITH_TRACING").lower() == "true"
 LANGSMITH_API_KEY = os.getenv("LANGSMITH_API_KEY") or os.getenv("LANGCHAIN_API_KEY")
 LANGSMITH_PROJECT = require_env("LANGSMITH_PROJECT")

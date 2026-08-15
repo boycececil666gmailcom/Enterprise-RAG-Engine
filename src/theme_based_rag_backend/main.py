@@ -1,96 +1,80 @@
-#region Imports & Setup
+#region App Setup
 import uvicorn
 from fastapi import FastAPI, HTTPException
 
-from . import graph_db as graph_db
-from . import vector_db as db
+from . import graph_db, vector_db
 from .agent_flow import agent_graph
 from .config import BACKEND_HOST, BACKEND_PORT, GEMINI_MODEL
 from .models import IngestRequest, IngestResponse, QueryRequest, QueryResponse
 
-app = FastAPI(title="Theme-Based RAG Workflow Backend")
+app = FastAPI(title="Theme-Based RAG Backend")
 #endregion
 
-#region Document Ingestion Endpoints
+#region Ingest Endpoints
 @app.post("/ingest/vector", response_model=IngestResponse)
 async def ingest_vector_document(request: IngestRequest):
-    """Ingests document text specifically into Qdrant Vector Database."""
+    """Ingests document text into Qdrant Vector Database."""
     try:
-        chunk_count = db.add_document_text(request.text, request.metadata)
-        return IngestResponse(status="success", chunk_count=chunk_count)
+        count = vector_db.add_document_text(request.text, request.metadata)
+        return IngestResponse(status="success", chunk_count=count)
     except Exception as e:
-        import traceback
-        traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.post("/ingest/graph", response_model=IngestResponse)
 async def ingest_graph_document(request: IngestRequest):
-    """Ingests document text specifically into Neo4j Graph Database."""
+    """Ingests document text into Neo4j Graph Database."""
     try:
-        element_count = graph_db.ingest_graph_document(request.text)
-        return IngestResponse(status="success", chunk_count=element_count)
+        count = graph_db.ingest_graph_document(request.text)
+        return IngestResponse(status="success", chunk_count=count)
     except Exception as e:
-        import traceback
-        traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
 #endregion
 
-#region Query Workflow & Health Check Endpoints
+#region Query Endpoints
 @app.post("/query", response_model=QueryResponse)
 async def run_query(request: QueryRequest):
+    """Executes the agent workflow graph for user queries."""
     try:
-        # Map input payload to LangGraph state
         inputs = {
             "query": request.query,
-            "history": [{"role": msg.role, "content": msg.content} for msg in request.history],
-            "should_answer": "refuse",
-            "should_hyde": True,
-            "hyde_reason": None,
-            "hyde_content": None,
-            "retrieved_documents": None,
-            "final_response": "",
-            "critique_feedback": None,
-            "attempt_count": 0
+            "history": [msg.model_dump() for msg in request.history],
+            "attempt_count": 0,
         }
-        
-        # Execute workflow graph asynchronously
         result = await agent_graph.ainvoke(inputs)
-        
-        tool_calls_executed = []
-        if result.get("retrieved_documents"):
-            tool_calls_executed.append("retrieve_VDB")
-            
+        tools_used = ["retrieve_VDB"] if result.get("retrieved_documents") else []
+
         return QueryResponse(
             response=result.get("final_response", ""),
-            tool_calls_executed=tool_calls_executed,
+            tool_calls_executed=tools_used,
             should_hyde=result.get("should_hyde"),
             hyde_reason=result.get("hyde_reason"),
             hyde_content=result.get("hyde_content"),
             retrieved_documents=result.get("retrieved_documents"),
-            history=result.get("history")
+            history=result.get("history"),
         )
     except Exception as e:
-        import traceback
-        traceback.print_exc()
-        raise HTTPException(status_code=500, detail=f"Query execution error: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Query error: {str(e)}")
+
 
 @app.get("/health")
 async def health_check():
+    """Returns backend and vector store health status."""
     try:
-        db.get_vector_store()
+        vector_db.get_vector_store()
         vector_ok = "ok"
     except Exception:
-        vector_ok = "degraded (pending API key)"
-        
+        vector_ok = "degraded"
+
     return {
         "status": "ok",
         "model": GEMINI_MODEL,
         "platform": "Theme-Based RAG Workflow",
-        "vector_store": vector_ok
+        "vector_store": vector_ok,
     }
 #endregion
 
-#region Execution Entry Point
+#region Server Runner
 if __name__ == "__main__":
     uvicorn.run("src.theme_based_rag_backend.main:app", host=BACKEND_HOST, port=BACKEND_PORT, reload=True)
 #endregion

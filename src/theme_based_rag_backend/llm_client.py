@@ -1,25 +1,25 @@
-#region Imports & AI Models Initialization
+#region LLM Clients
 from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
 
 from .config import GEMINI_API_KEY, GEMINI_EMBED_MODEL, GEMINI_MODEL, GEMINI_TEMPERATURE
 
-# Primary LLM instance for standard chat response generation
+# Primary LLM instance for standard generation
 llm = ChatGoogleGenerativeAI(
     model=GEMINI_MODEL,
     google_api_key=GEMINI_API_KEY,
-    temperature=GEMINI_TEMPERATURE
+    temperature=GEMINI_TEMPERATURE,
 )
 
-# Dedicated LLM instance with lower temperature for creative HyDE hypothetical document generation
+# LLM instance configured with lower temperature for HyDE passage generation
 hyde_llm = ChatGoogleGenerativeAI(
     model=GEMINI_MODEL,
     google_api_key=GEMINI_API_KEY,
-    temperature=0.3
+    temperature=0.3,
 )
 
-# Shared Embeddings instance for vector search and query classification
+# Shared embeddings client for vector store and theme similarity
 embeddings = GoogleGenerativeAIEmbeddings(
     model=GEMINI_EMBED_MODEL,
-    google_api_key=GEMINI_API_KEY
+    google_api_key=GEMINI_API_KEY,
 )
 #endregion
