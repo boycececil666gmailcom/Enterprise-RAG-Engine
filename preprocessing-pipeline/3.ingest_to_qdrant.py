@@ -1,7 +1,6 @@
 #region Imports
 import json
 import os
-import socket
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -11,105 +10,95 @@ from langchain_qdrant import FastEmbedSparse, QdrantVectorStore, RetrievalMode
 from qdrant_client import QdrantClient
 #endregion
 
-#region Environment & Configuration
+#region Configuration
 _env_path = Path(__file__).resolve().parent.parent / ".env"
 load_dotenv(dotenv_path=_env_path)
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 GEMINI_EMBED_MODEL = os.getenv("GEMINI_EMBED_MODEL", "models/gemini-embedding-001")
-
-raw_qdrant_url = os.getenv("QDRANT_URL", "http://localhost:6333")
-
-# Auto-resolve Docker hostname 'qdrant' to 'localhost' when running outside docker
-if "qdrant:6333" in raw_qdrant_url:
-    try:
-        socket.gethostbyname("qdrant")
-        QDRANT_URL = raw_qdrant_url
-    except socket.gaierror:
-        QDRANT_URL = raw_qdrant_url.replace("qdrant:6333", "localhost:6333")
-else:
-    QDRANT_URL = raw_qdrant_url
-
+QDRANT_URL = os.getenv("QDRANT_URL", "http://localhost:6333").replace("qdrant:6333", "localhost:6333")
 QDRANT_API_KEY = os.getenv("QDRANT_API_KEY", None)
-QDRANT_COLLECTION = "raptor_documents"
 BATCH_SIZE = 64
-
 INPUT_JSON_PATH = Path(__file__).resolve().parent / "2.raptor_chunks.json"
 #endregion
 
 #region Ingestion Logic
-def ingest_chunks_to_qdrant():
-    """Deletes existing collection, reads 2.raptor_chunks.json and batch-ingests into Qdrant."""
-    if not INPUT_JSON_PATH.exists():
-        raise FileNotFoundError(f"Input file '{INPUT_JSON_PATH.name}' not found. Please run 2.raptor_tree_pipeline.py first.")
+def ingest_layer(
+    layer: int,
+    chunks: list[dict],
+    dense_embed: GoogleGenerativeAIEmbeddings,
+    sparse_embed: FastEmbedSparse,
+    client: QdrantClient
+) -> None:
+    """Wipes and batch-ingests chunks into a dedicated layer collection ('raptor_layer_{N}')."""
+    collection = f"raptor_layer_{layer}"
+    total = len(chunks)
+    if total == 0:
+        return
 
-    print(f"[Ingestion] Connecting to Qdrant at: {QDRANT_URL}")
-    client = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY)
-    if client.collection_exists(QDRANT_COLLECTION):
-        print(f"[Ingestion] Deleting existing collection '{QDRANT_COLLECTION}'...")
-        client.delete_collection(QDRANT_COLLECTION)
-        print(f"[Ingestion] Existing collection '{QDRANT_COLLECTION}' deleted.")
+    print(f"\n[Ingestion] Layer {layer}: '{collection}' ({total} chunks)")
+    if client.collection_exists(collection):
+        client.delete_collection(collection)
+        print(f"[Ingestion] Cleaned existing '{collection}'.")
 
-    print(f"[Ingestion] Loading chunks from {INPUT_JSON_PATH.name}...")
-    with open(INPUT_JSON_PATH, "r", encoding="utf-8") as f:
-        data = json.load(f)
+    # Ingest first batch to initialize collection
+    first_batch = chunks[:BATCH_SIZE]
+    docs = [Document(page_content=d["small"], metadata=d["metadata"]) for d in first_batch]
+    ids = [d["id"] for d in first_batch]
 
-    total_chunks = len(data)
-    print(f"[Ingestion] Loaded {total_chunks} chunks. Initializing Embedding models (Model: {GEMINI_EMBED_MODEL})...")
-
-    dense_embeddings = GoogleGenerativeAIEmbeddings(
-        model=GEMINI_EMBED_MODEL,
-        google_api_key=GEMINI_API_KEY
-    )
-    sparse_embeddings = FastEmbedSparse(model_name="Qdrant/bm25")
-
-    # Ingest the first batch with force_recreate=True to initialize collection
-    first_batch_data = data[:BATCH_SIZE]
-    first_docs = [
-        Document(
-            page_content=item["small"],
-            metadata=item["metadata"]
-        )
-        for item in first_batch_data
-    ]
-    first_ids = [item["id"] for item in first_batch_data]
-
-    total_batches = ((total_chunks - 1) // BATCH_SIZE) + 1
-    print(f"[Ingestion] Initializing collection '{QDRANT_COLLECTION}' with batch 1/{total_batches}...")
+    total_batches = ((total - 1) // BATCH_SIZE) + 1
     vector_store = QdrantVectorStore.from_documents(
-        documents=first_docs,
-        ids=first_ids,
-        embedding=dense_embeddings,
-        sparse_embedding=sparse_embeddings,
+        documents=docs,
+        ids=ids,
+        embedding=dense_embed,
+        sparse_embedding=sparse_embed,
         url=QDRANT_URL,
         api_key=QDRANT_API_KEY,
-        collection_name=QDRANT_COLLECTION,
+        collection_name=collection,
         content_payload_key="small",
         retrieval_mode=RetrievalMode.HYBRID,
         force_recreate=True
     )
-    print(f"[Ingestion] Progress: {len(first_docs)}/{total_chunks} ({len(first_docs)/total_chunks*100:.1f}%) uploaded.")
+    print(f"[Ingestion] Batch 1/{total_batches} ({min(BATCH_SIZE, total)}/{total}) initialized.")
 
-    # Batch upload remaining documents
-    for batch_num, start_idx in enumerate(range(BATCH_SIZE, total_chunks, BATCH_SIZE), start=2):
-        batch_data = data[start_idx : start_idx + BATCH_SIZE]
-        batch_docs = [
-            Document(
-                page_content=item["small"],
-                metadata=item["metadata"]
-            )
-            for item in batch_data
-        ]
-        batch_ids = [item["id"] for item in batch_data]
+    # Upload remaining batches
+    for b_idx, start in enumerate(range(BATCH_SIZE, total, BATCH_SIZE), start=2):
+        batch = chunks[start : start + BATCH_SIZE]
+        batch_docs = [Document(page_content=d["small"], metadata=d["metadata"]) for d in batch]
+        batch_ids = [d["id"] for d in batch]
+        vector_store.add_documents(documents=batch_docs, ids=batch_ids)
+        print(f"[Ingestion] Batch {b_idx}/{total_batches} ({min(start + BATCH_SIZE, total)}/{total}) uploaded.")
 
-        vector_store.add_documents(
-            documents=batch_docs,
-            ids=batch_ids
-        )
-        processed = min(start_idx + BATCH_SIZE, total_chunks)
-        print(f"[Ingestion] Batch {batch_num}/{total_batches}: {processed}/{total_chunks} ({processed/total_chunks*100:.1f}%) uploaded.")
+    print(f"[Ingestion] Layer {layer} ('{collection}') completed.")
 
-    print(f"[Ingestion] Completed successfully. All {total_chunks} chunks ingested into Qdrant '{QDRANT_COLLECTION}'.")
+
+def ingest_chunks_to_qdrant() -> None:
+    """Loads 2.raptor_chunks.json and ingests into 3 separate collections for tree traversal."""
+    if not INPUT_JSON_PATH.exists():
+        raise FileNotFoundError(f"Input file '{INPUT_JSON_PATH.name}' not found. Run 2.raptor_tree_pipeline.py first.")
+
+    print(f"[Ingestion] Connecting to Qdrant at: {QDRANT_URL}")
+    client = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY)
+
+    with open(INPUT_JSON_PATH, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    dense_embed = GoogleGenerativeAIEmbeddings(model=GEMINI_EMBED_MODEL, google_api_key=GEMINI_API_KEY)
+    sparse_embed = FastEmbedSparse(model_name="Qdrant/bm25")
+
+    # Partition by raptor_layer (0: Root, 1: Section, 2: Leaf)
+    layers: dict[int, list[dict]] = {0: [], 1: [], 2: []}
+    for item in data:
+        layer = item.get("metadata", {}).get("raptor_layer", 2)
+        layers.setdefault(layer, []).append(item)
+
+    print(f"[Ingestion] Loaded {len(data)} chunks -> Layer 0: {len(layers[0])}, Layer 1: {len(layers[1])}, Layer 2: {len(layers[2])}")
+
+    for layer_num in sorted(layers.keys()):
+        ingest_layer(layer_num, layers[layer_num], dense_embed, sparse_embed, client)
+
+    print(f"\n[Ingestion] All 3 collections ('raptor_layer_0', 'raptor_layer_1', 'raptor_layer_2') ready for Tree Traversal.")
+
 
 if __name__ == "__main__":
     ingest_chunks_to_qdrant()
