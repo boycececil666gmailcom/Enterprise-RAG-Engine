@@ -14,7 +14,7 @@ RUN groupadd -g 10001 appgroup && \
     useradd -u 10001 -g appgroup -m -s /bin/bash appuser
 #endregion
 
-#region Install Gateway Dependencies
+#region Install Dependencies
 ENV UV_PROJECT_ENVIRONMENT=/usr/local
 COPY --chown=appuser:appgroup src/theme_based_rag_gateway/pyproject.toml src/theme_based_rag_gateway/uv.lock /app/src/theme_based_rag_gateway/
 RUN cd /app/src/theme_based_rag_gateway && uv sync --frozen --no-install-project

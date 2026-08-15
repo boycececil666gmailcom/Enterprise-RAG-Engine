@@ -9,12 +9,6 @@ COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
 WORKDIR /app
 
-#region Build Tools
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential gcc g++ python3-dev \
-    && rm -rf /var/lib/apt/lists/*
-#endregion
-
 #region User Security
 RUN groupadd -g 10001 appgroup && \
     useradd -u 10001 -g appgroup -m -s /bin/bash appuser

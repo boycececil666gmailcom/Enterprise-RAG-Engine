@@ -96,5 +96,4 @@ services:
 
 volumes:
   qdrant_data:
-  neo4j_data:
-#endregion
+  neo4j_data: #endregion
