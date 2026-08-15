@@ -6,6 +6,7 @@ import os
 from dataclasses import dataclass, field
 from typing import Any
 from urllib.parse import urljoin, urlparse
+
 from pydantic import BaseModel, Field
 from crawl4ai import AsyncWebCrawler, CrawlResult, CrawlerRunConfig, LLMExtractionStrategy, LLMConfig
 from config import OPENROUTER_API_KEY
@@ -20,7 +21,7 @@ class CrawlerConfig:
     css_selector: str = "article"
     llm_provider: str = "openrouter/deepseek/deepseek-v4-flash-0731"
     provider_routing: list[str] = field(default_factory=lambda: ["Decart"])
-    output_filename: str = "scrape.json"
+    output_filename: str = "1.scrape.json"
 #endregion
 
 #region Data Models
