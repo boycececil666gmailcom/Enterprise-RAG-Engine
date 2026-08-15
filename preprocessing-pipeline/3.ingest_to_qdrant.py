@@ -5,28 +5,30 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 from langchain_core.documents import Document
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
+from langchain_openai import OpenAIEmbeddings
 from langchain_qdrant import FastEmbedSparse, QdrantVectorStore, RetrievalMode
 from qdrant_client import QdrantClient
+
+from llm_client import embeddings
 #endregion
 
 #region Configuration
-_env_path = Path(__file__).resolve().parent.parent / ".env"
-load_dotenv(dotenv_path=_env_path)
+_CURRENT_DIR = Path(__file__).resolve().parent
+_ROOT_DIR = _CURRENT_DIR.parent
+load_dotenv(dotenv_path=_ROOT_DIR / ".env")
+load_dotenv(dotenv_path=_CURRENT_DIR / ".env", override=True)
 
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
-GEMINI_EMBED_MODEL = os.getenv("GEMINI_EMBED_MODEL", "models/gemini-embedding-001")
 QDRANT_URL = os.getenv("QDRANT_URL", "http://localhost:6333").replace("qdrant:6333", "localhost:6333")
 QDRANT_API_KEY = os.getenv("QDRANT_API_KEY", None)
 BATCH_SIZE = 64
-INPUT_JSON_PATH = Path(__file__).resolve().parent / "2.raptor_chunks.json"
+INPUT_JSON_PATH = _CURRENT_DIR / "2.raptor_chunks.json"
 #endregion
 
 #region Ingestion Logic
 def ingest_layer(
     layer: int,
     chunks: list[dict],
-    dense_embed: GoogleGenerativeAIEmbeddings,
+    dense_embed: OpenAIEmbeddings,
     sparse_embed: FastEmbedSparse,
     client: QdrantClient
 ) -> None:
@@ -95,7 +97,7 @@ def ingest_chunks_to_qdrant() -> None:
     with open(INPUT_JSON_PATH, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    dense_embed = GoogleGenerativeAIEmbeddings(model=GEMINI_EMBED_MODEL, google_api_key=GEMINI_API_KEY)
+    dense_embed = embeddings
     sparse_embed = FastEmbedSparse(model_name="Qdrant/bm25")
 
     # Partition by raptor_layer (0: Root, 1: Section, 2: Leaf)
