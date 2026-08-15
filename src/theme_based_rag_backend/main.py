@@ -2,33 +2,12 @@
 import uvicorn
 from fastapi import FastAPI, HTTPException
 
-from . import graph_db, vector_db
+from . import vector_db
 from .agent_flow import agent_graph
 from .config import BACKEND_HOST, BACKEND_PORT, GEMINI_MODEL
-from .models import IngestRequest, IngestResponse, QueryRequest, QueryResponse
+from .models import QueryRequest, QueryResponse
 
 app = FastAPI(title="Theme-Based RAG Backend")
-#endregion
-
-#region Ingest Endpoints
-@app.post("/ingest/vector", response_model=IngestResponse)
-async def ingest_vector_document(request: IngestRequest):
-    """Ingests document text into Qdrant Vector Database."""
-    try:
-        count = vector_db.add_document_text(request.text, request.metadata)
-        return IngestResponse(status="success", chunk_count=count)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-
-@app.post("/ingest/graph", response_model=IngestResponse)
-async def ingest_graph_document(request: IngestRequest):
-    """Ingests document text into Neo4j Graph Database."""
-    try:
-        count = graph_db.ingest_graph_document(request.text)
-        return IngestResponse(status="success", chunk_count=count)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
 #endregion
 
 #region Query Endpoints
@@ -61,7 +40,7 @@ async def run_query(request: QueryRequest):
 async def health_check():
     """Returns backend and vector store health status."""
     try:
-        vector_db.get_vector_store()
+        vector_db.get_layer_store(2)
         vector_ok = "ok"
     except Exception:
         vector_ok = "degraded"

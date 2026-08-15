@@ -50,16 +50,6 @@ class QueryResponse(BaseModel):
     hyde_content: str | None = None
     retrieved_documents: str | None = None
     history: list[MessageSchema] | None = None
-
-
-class IngestRequest(BaseModel):
-    text: str = Field(min_length=1, description="Raw document text to ingest")
-    metadata: dict[str, str] | None = Field(default=None, description="Metadata key-value pairs")
-
-
-class IngestResponse(BaseModel):
-    status: str
-    chunk_count: int = Field(ge=0)
 #endregion
 
 #region Tool Schemas

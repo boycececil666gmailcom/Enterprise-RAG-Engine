@@ -17,14 +17,4 @@ class QueryResponse(BaseModel):
     response: str
     tool_calls_executed: list[str] = Field(default_factory=list)
     retrieved_documents: str | None = None
-
-
-class IngestRequest(BaseModel):
-    text: str = Field(min_length=1, description="Raw document text to ingest")
-    metadata: dict[str, str] | None = Field(default=None, description="Metadata key-value pairs")
-
-
-class IngestResponse(BaseModel):
-    status: str
-    chunk_count: int = Field(ge=0)
 #endregion

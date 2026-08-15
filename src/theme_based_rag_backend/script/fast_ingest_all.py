@@ -11,7 +11,7 @@ project_root = Path(__file__).resolve().parents[3]
 if str(project_root) not in sys.path:
     sys.path.insert(0, str(project_root))
 
-from src.theme_based_rag_backend.vector_db import get_vector_store
+from src.theme_based_rag_backend.vector_db import get_layer_store
 #endregion
 
 #region Full Ingestion Script
@@ -20,7 +20,7 @@ def run_full_ingestion(batch_size: int = 100):
     print("\033[1;92m>>> Starting Full Reset & Re-Ingestion of All Chunks into Qdrant\033[0m")
     print("\033[1;96m========================================================\033[0m\n")
 
-    store = get_vector_store()
+    store = get_layer_store(2)
 
     # 1. Load rag_chunks.json
     chunks_path = project_root / "preprocessing-pipeline" / "rag_chunks.json"

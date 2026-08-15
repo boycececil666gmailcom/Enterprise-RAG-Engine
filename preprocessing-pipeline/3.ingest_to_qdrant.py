@@ -43,7 +43,13 @@ def ingest_layer(
 
     # Ingest first batch to initialize collection
     first_batch = chunks[:BATCH_SIZE]
-    docs = [Document(page_content=d["small"], metadata=d["metadata"]) for d in first_batch]
+    docs = [
+        Document(
+            page_content=d["small"],
+            metadata={**d.get("metadata", {}), "id": d.get("id", "")}
+        )
+        for d in first_batch
+    ]
     ids = [d["id"] for d in first_batch]
 
     total_batches = ((total - 1) // BATCH_SIZE) + 1
@@ -64,7 +70,13 @@ def ingest_layer(
     # Upload remaining batches
     for b_idx, start in enumerate(range(BATCH_SIZE, total, BATCH_SIZE), start=2):
         batch = chunks[start : start + BATCH_SIZE]
-        batch_docs = [Document(page_content=d["small"], metadata=d["metadata"]) for d in batch]
+        batch_docs = [
+            Document(
+                page_content=d["small"],
+                metadata={**d.get("metadata", {}), "id": d.get("id", "")}
+            )
+            for d in batch
+        ]
         batch_ids = [d["id"] for d in batch]
         vector_store.add_documents(documents=batch_docs, ids=batch_ids)
         print(f"[Ingestion] Batch {b_idx}/{total_batches} ({min(start + BATCH_SIZE, total)}/{total}) uploaded.")

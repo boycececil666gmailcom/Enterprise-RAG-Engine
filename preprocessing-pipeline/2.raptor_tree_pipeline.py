@@ -53,6 +53,7 @@ class RaptorNode:
             "id": self.node_id,
             "small": "\n".join(parts) if parts else self.content,
             "metadata": {
+                "id": self.node_id,
                 "parent_id": self.parent_id or "",
                 "title": self.title,
                 "url": self.url,

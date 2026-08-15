@@ -13,8 +13,6 @@ from .config import (
     RAG_BACKEND_URL,
 )
 from .models import (
-    IngestRequest,
-    IngestResponse,
     QueryRequest,
     QueryResponse,
 )
@@ -46,20 +44,6 @@ async def _proxy_post(endpoint: str, payload: BaseModel) -> dict:
 #endregion
 
 #region Gateway Endpoints
-@app.post("/ingest/vector", response_model=IngestResponse)
-async def route_ingest_vector(request: IngestRequest):
-    """Proxies vector store ingestion request downstream."""
-    data = await _proxy_post("/ingest/vector", request)
-    return IngestResponse(**data)
-
-
-@app.post("/ingest/graph", response_model=IngestResponse)
-async def route_ingest_graph(request: IngestRequest):
-    """Proxies graph store ingestion request downstream."""
-    data = await _proxy_post("/ingest/graph", request)
-    return IngestResponse(**data)
-
-
 @app.post("/query", response_model=QueryResponse)
 async def route_query(request: QueryRequest):
     """Proxies query request downstream to core RAG backend."""
