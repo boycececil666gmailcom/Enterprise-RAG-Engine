@@ -31,10 +31,12 @@ def get_layer_store(layer: int = 2) -> QdrantVectorStore:
 #endregion
 
 #region Tree Traversal
-def _build_parent_filter(parent_ids: list[str]) -> qmodels.Filter | None:
-    if not parent_ids:
+def _build_parent_filter(docs: list[Document]) -> qmodels.Filter | None:
+    """Builds a Qdrant parent_id filter from document IDs or metadata."""
+    ids = [d.id or d.metadata.get("id") for d in docs if d.id or d.metadata.get("id")]
+    if not ids:
         return None
-    match = qmodels.MatchValue(value=parent_ids[0]) if len(parent_ids) == 1 else qmodels.MatchAny(any=parent_ids)
+    match = qmodels.MatchValue(value=ids[0]) if len(ids) == 1 else qmodels.MatchAny(any=ids)
     return qmodels.Filter(must=[qmodels.FieldCondition(key="metadata.parent_id", match=match)])
 
 
@@ -54,14 +56,8 @@ def retrieve_tree_traversal(
     top_k_layer2: int = 5,
 ) -> list[Document]:
     """Executes top-down hierarchical tree traversal across RAPTOR layers (Root -> Section -> Leaf)."""
-    # 1. Root search
     root_docs = retrieve_layer(0, query, top_k_layer0)
-    root_ids = [d.id for d in root_docs]
-
-    # 2. Section search under matched Roots
-    sec_docs = retrieve_layer(1, query, top_k_layer1, _build_parent_filter(root_ids))
-    sec_ids = [d.id for d in sec_docs]
-
-    # 3. Leaf detail search under matched Sections
-    return retrieve_layer(2, query, top_k_layer2, _build_parent_filter(sec_ids))
+    sec_docs = retrieve_layer(1, query, top_k_layer1, _build_parent_filter(root_docs))
+    leaf_docs = retrieve_layer(2, query, top_k_layer2, _build_parent_filter(sec_docs))
+    return leaf_docs or retrieve_layer(2, query, top_k_layer2)
 #endregion
