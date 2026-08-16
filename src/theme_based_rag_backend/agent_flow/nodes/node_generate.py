@@ -11,10 +11,10 @@ def generate_node(state: AgentState) -> dict:
     """Synthesizes strictly grounded response based on retrieved documents and conversation history."""
     query = state["query"]
     history = state.get("history", [])
-    _compressed_documents = state.get("compressed_documents") or state.get("retrieved_documents") or ""
+    retrieved_documents = state.get("retrieved_documents", "")
 
     system_prompt = (
-        f"Retrieved Document Context:\n{_compressed_documents}\n\n"
+        f"Retrieved Document Context:\n{retrieved_documents}\n\n"
         "CRITICAL RULES:\n"
         "1. Your answer must be strictly grounded in the retrieved document context.\n"
         "2. If context does not contain the answer or specific details, state 'Information not available in documentation'.\n"

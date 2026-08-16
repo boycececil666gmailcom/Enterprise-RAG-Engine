@@ -38,9 +38,4 @@ CHATBOT_THEME = require_env("CHATBOT_THEME")
 LANGSMITH_TRACING = require_env("LANGSMITH_TRACING").lower() == "true"
 LANGSMITH_API_KEY = os.getenv("LANGSMITH_API_KEY") or os.getenv("LANGCHAIN_API_KEY")
 LANGSMITH_PROJECT = require_env("LANGSMITH_PROJECT")
-
-# LLMLingua-2 Context Compression Settings
-LLMLINGUA_MODEL = os.getenv("LLMLINGUA_MODEL", "microsoft/llmlingua-2-bert-base-multilingual-cased-meetingbank")
-LLMLINGUA_RATE = float(os.getenv("LLMLINGUA_RATE", "0.6"))
-LLMLINGUA_DEVICE = os.getenv("LLMLINGUA_DEVICE", "cpu")
 #endregion

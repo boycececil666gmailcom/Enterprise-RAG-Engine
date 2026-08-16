@@ -4,7 +4,6 @@ from langgraph.graph import END, StateGraph
 from .edges import route_after_critique, route_by_category, route_by_hyde_decision
 from .nodes import (
     classifier_node,
-    compress_node,
     critique_node,
     generate_node,
     hyde_decision_node,
@@ -22,7 +21,6 @@ workflow.add_node("classifier", classifier_node)
 workflow.add_node("hyde_decision", hyde_decision_node)
 workflow.add_node("hyde", hyde_node)
 workflow.add_node("retrieve", retrieve_node)
-workflow.add_node("compress", compress_node)
 workflow.add_node("generate", generate_node)
 workflow.add_node("refuse", refuse_node)
 workflow.add_node("critique", critique_node)
@@ -43,8 +41,7 @@ workflow.add_conditional_edges(
 )
 
 workflow.add_edge("hyde", "retrieve")
-workflow.add_edge("retrieve", "compress")
-workflow.add_edge("compress", "generate")
+workflow.add_edge("retrieve", "generate")
 workflow.add_edge("generate", "critique")
 workflow.add_edge("refuse", "critique")
 

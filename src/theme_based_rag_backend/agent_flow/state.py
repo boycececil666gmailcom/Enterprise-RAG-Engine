@@ -17,7 +17,6 @@ class AgentState(TypedDict):
     hyde_reason: NotRequired[str | None]
     hyde_content: NotRequired[str | None]
     retrieved_documents: NotRequired[str | None]
-    compressed_documents: NotRequired[str | None]
     final_response: NotRequired[str]
     critique_feedback: NotRequired[str | None]
     attempt_count: NotRequired[int]
