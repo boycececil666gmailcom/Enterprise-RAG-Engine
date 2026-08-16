@@ -1,27 +1,28 @@
 #region Classifier Node
-from functools import lru_cache
+from langchain_core.messages import HumanMessage, SystemMessage
 
 from ...config import CHATBOT_THEME
-from ...llm_client import embeddings
-from ...utils import cosine_similarity
+from ...llm_client import llm
+from ...models import ClassifierSchema
 from ..state import AgentState
 
 
-@lru_cache(maxsize=1)
-def get_theme_embedding(theme: str) -> list[float]:
-    """Generates and caches theme embedding."""
-    return embeddings.embed_query(theme)
-
-
 def classifier_node(state: AgentState) -> dict:
-    """Classifies if query aligns with configured chatbot theme."""
-    try:
-        theme_vector = get_theme_embedding(CHATBOT_THEME)
-        query_vector = embeddings.embed_query(state["query"])
-        similarity = cosine_similarity(theme_vector, query_vector)
-        should_answer = "pass" if similarity >= 0.65 else "refuse"
-    except Exception:
-        should_answer = "refuse"
+    """Classifies if query aligns with configured chatbot theme using Pydantic structured output."""
+    system_prompt = (
+        f"You are a domain intent classifier for a technical support assistant.\n"
+        f"Allowed Domain/Theme: '{CHATBOT_THEME}'.\n\n"
+        "Determine if the user query is relevant to this domain or is general greetings/questions related to it.\n"
+        "Respond with a JSON object matching this schema:\n"
+        '- "category": "pass" if on-topic, "refuse" if off-topic\n'
+        '- "reason": optional explanation string'
+    )
 
-    return {"should_answer": should_answer}
+    structured_llm = llm.with_structured_output(ClassifierSchema, method="json_mode")
+    result: ClassifierSchema = structured_llm.invoke([
+        SystemMessage(content=system_prompt),
+        HumanMessage(content=state["query"]),
+    ])
+
+    return {"should_answer": result.category if result else "refuse"}
 #endregion
