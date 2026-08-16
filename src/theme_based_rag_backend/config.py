@@ -10,12 +10,13 @@ def require_env(key: str) -> str:
         raise ValueError(f"CRITICAL CONFIG ERROR: Environment variable '{key}' is required but not set.")
     return val
 
-# Gemini Settings
-GEMINI_API_KEY = require_env("GEMINI_API_KEY")
-GEMINI_MODEL = require_env("GEMINI_MODEL")
-_raw_embed = require_env("GEMINI_EMBED_MODEL").removeprefix("models/")
-GEMINI_EMBED_MODEL = "gemini-embedding-001" if _raw_embed == "text-embedding-004" else _raw_embed
-GEMINI_TEMPERATURE = float(require_env("GEMINI_TEMPERATURE"))
+# OpenRouter Settings
+OPENROUTER_API_KEY = require_env("OPENROUTER_API_KEY")
+OPENROUTER_BASE_URL = os.getenv("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1")
+OPENROUTER_MODEL = os.getenv("OPENROUTER_MODEL", "deepseek/deepseek-v4-flash-0731")
+OPENROUTER_PROVIDER = os.getenv("OPENROUTER_PROVIDER", "baidu")
+OPENROUTER_EMBED_MODEL = os.getenv("OPENROUTER_EMBED_MODEL", "nvidia/nemotron-3-embed-1b:free")
+OPENROUTER_TEMPERATURE = float(os.getenv("OPENROUTER_TEMPERATURE", "0.2"))
 
 # Server Settings
 BACKEND_HOST = require_env("BACKEND_HOST")

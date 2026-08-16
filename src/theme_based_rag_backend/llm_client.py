@@ -1,25 +1,46 @@
 #region LLM Clients
-from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
+from flashrank import Ranker
+from langchain_community.document_compressors.flashrank_rerank import FlashrankRerank
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 
-from .config import GEMINI_API_KEY, GEMINI_EMBED_MODEL, GEMINI_MODEL, GEMINI_TEMPERATURE
+from .config import (
+    OPENROUTER_API_KEY,
+    OPENROUTER_BASE_URL,
+    OPENROUTER_EMBED_MODEL,
+    OPENROUTER_MODEL,
+    OPENROUTER_PROVIDER,
+    OPENROUTER_TEMPERATURE,
+)
 
-# Primary LLM instance for standard generation
-llm = ChatGoogleGenerativeAI(
-    model=GEMINI_MODEL,
-    google_api_key=GEMINI_API_KEY,
-    temperature=GEMINI_TEMPERATURE,
+_extra_body = {}
+if OPENROUTER_PROVIDER:
+    _extra_body["provider"] = {"order": [OPENROUTER_PROVIDER], "allow_fallbacks": True}
+
+# Primary LLM instance for standard generation (DeepSeek via OpenRouter)
+llm = ChatOpenAI(
+    model=OPENROUTER_MODEL,
+    api_key=OPENROUTER_API_KEY,
+    base_url=OPENROUTER_BASE_URL,
+    temperature=OPENROUTER_TEMPERATURE,
+    extra_body=_extra_body if _extra_body else None,
 )
 
 # LLM instance configured with lower temperature for HyDE passage generation
-hyde_llm = ChatGoogleGenerativeAI(
-    model=GEMINI_MODEL,
-    google_api_key=GEMINI_API_KEY,
-    temperature=0.3,
+hyde_llm = ChatOpenAI(
+    model=OPENROUTER_MODEL,
+    api_key=OPENROUTER_API_KEY,
+    base_url=OPENROUTER_BASE_URL,
+    temperature=0.0,
+    extra_body=_extra_body if _extra_body else None,
 )
 
 # Shared embeddings client for vector store and theme similarity
-embeddings = GoogleGenerativeAIEmbeddings(
-    model=GEMINI_EMBED_MODEL,
-    google_api_key=GEMINI_API_KEY,
+embeddings = OpenAIEmbeddings(
+    model=OPENROUTER_EMBED_MODEL,
+    api_key=OPENROUTER_API_KEY,
+    base_url=OPENROUTER_BASE_URL,
 )
+
+# Shared Cross-Encoder reranker instance
+reranker = FlashrankRerank(client=Ranker(), top_n=5)
 #endregion

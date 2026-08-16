@@ -7,10 +7,8 @@ from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 #endregion
 
 #region Env Loading
-_CURRENT_DIR = Path(__file__).resolve().parent
-_ROOT_DIR = _CURRENT_DIR.parent
+_ROOT_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(dotenv_path=_ROOT_DIR / ".env")
-load_dotenv(dotenv_path=_CURRENT_DIR / ".env", override=True)
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
 OPENROUTER_BASE_URL = os.getenv("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1")

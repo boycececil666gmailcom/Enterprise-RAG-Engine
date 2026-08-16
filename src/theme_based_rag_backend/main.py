@@ -4,7 +4,7 @@ from fastapi import FastAPI, HTTPException
 
 from . import vector_db
 from .agent_flow import agent_graph
-from .config import BACKEND_HOST, BACKEND_PORT, GEMINI_MODEL
+from .config import BACKEND_HOST, BACKEND_PORT, OPENROUTER_MODEL
 from .models import QueryRequest, QueryResponse
 
 app = FastAPI(title="Theme-Based RAG Backend")
@@ -40,14 +40,14 @@ async def run_query(request: QueryRequest):
 async def health_check():
     """Returns backend and vector store health status."""
     try:
-        vector_db.get_layer_store(2)
+        vector_db.get_vector_store("raptor_chunks")
         vector_ok = "ok"
     except Exception:
         vector_ok = "degraded"
 
     return {
         "status": "ok",
-        "model": GEMINI_MODEL,
+        "model": OPENROUTER_MODEL,
         "platform": "Theme-Based RAG Workflow",
         "vector_store": vector_ok,
     }
