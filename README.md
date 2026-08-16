@@ -3,16 +3,33 @@
 > Modular, enterprise-grade Retrieval-Augmented Generation (RAG) backend engine template with multi-agent orchestration, hybrid vector search, and GraphRAG entity-relationship reasoning.
 
 ![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=flat&logo=python&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-009688?style=flat&logo=fastapi&logoColor=white)
-![LangGraph](https://img.shields.io/badge/LangGraph-0.0.30+-1C3C3C?style=flat&logo=langchain&logoColor=white)
-![LangChain](https://img.shields.io/badge/LangChain-0.1+-1C3C3C?style=flat&logo=langchain&logoColor=white)
-![Google Gemini](https://img.shields.io/badge/Google_Gemini-API-4285F4?style=flat&logo=google&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688?style=flat&logo=fastapi&logoColor=white)
+![LangGraph](https://img.shields.io/badge/LangGraph-0.2+-1C3C3C?style=flat&logo=langchain&logoColor=white)
+![LangChain](https://img.shields.io/badge/LangChain-0.3+-1C3C3C?style=flat&logo=langchain&logoColor=white)
+![OpenRouter](https://img.shields.io/badge/OpenRouter-DeepSeek_V4_Flash-6366F1?style=flat)
 ![Qdrant](https://img.shields.io/badge/Qdrant-Vector_DB-DC2626?style=flat&logo=qdrant&logoColor=white)
 ![Neo4j](https://img.shields.io/badge/Neo4j-Graph_DB-008CC1?style=flat&logo=neo4j&logoColor=white)
 ![Terraform](https://img.shields.io/badge/Terraform-IaC-7B42BC?style=flat&logo=terraform&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED?style=flat&logo=docker&logoColor=white)
 ![Kubernetes](https://img.shields.io/badge/Kubernetes-Orchestration-326CE5?style=flat&logo=kubernetes&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
+
+---
+
+## End-to-End Pipeline Architecture
+
+```mermaid
+---
+config:
+  theme: neutral
+---
+flowchart LR
+    A["1. Data Ingestion<br/>(Crawl4AI & RAPTOR)"] --> B[("2. Hybrid Knowledge Store<br/>(Qdrant & Neo4j)")]
+    B --> C["3. Multi-Agent Retrieval<br/>(HyDE + Dense + BM25)"]
+    C --> D["4. Neural Rerank<br/>(FlashRank Cross-Encoder)"]
+    D --> E["5. Self-Critique Loop<br/>& Answer Generation"]
+    E --> F["6. LLMOps Evaluation<br/>(LangSmith & Ragas)"]
+```
 
 ---
 
@@ -36,6 +53,10 @@ The platform separates an API Gateway proxy (`theme_based_rag_gateway`) from the
 ### Core Concept & Phased Execution Sequence
 
 ```mermaid
+---
+config:
+  theme: neutral
+---
 sequenceDiagram
     autonumber
     actor Client as Client App / End User
@@ -54,7 +75,7 @@ sequenceDiagram
     AG->>AG: node_classifier - Classify domain scope
 
     alt Query within business domain
-        rect rgb(235, 247, 238)
+        rect rgb(240, 243, 246)
             AG->>AG: node_hyde_decision - Evaluate HyDE necessity
             AG->>AG: node_hyde_generator - Generate hypothetical document (if enabled)
             AG->>VDB: Hybrid dense+sparse vector search (Qdrant BM25 + Gemini embeddings)
@@ -64,7 +85,7 @@ sequenceDiagram
             AG->>AG: node_critique - Self-critique quality check
         end
     else Query outside business domain
-        rect rgb(253, 237, 237)
+        rect rgb(250, 235, 235)
             AG->>AG: node_refuse - Generate polite refusal message
         end
     end
