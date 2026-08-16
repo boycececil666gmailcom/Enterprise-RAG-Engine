@@ -5,10 +5,11 @@ from .edges import route_after_critique, route_by_category, route_by_hyde_decisi
 from .nodes import (
     classifier_node,
     critique_node,
+    generate_node,
     hyde_decision_node,
     hyde_node,
     refuse_node,
-    retrieve_and_generate_node,
+    retrieve_node,
 )
 from .state import AgentState, InputState
 
@@ -19,7 +20,8 @@ workflow = StateGraph(AgentState, input_schema=InputState)
 workflow.add_node("classifier", classifier_node)
 workflow.add_node("hyde_decision", hyde_decision_node)
 workflow.add_node("hyde", hyde_node)
-workflow.add_node("retrieve_and_generate", retrieve_and_generate_node)
+workflow.add_node("retrieve", retrieve_node)
+workflow.add_node("generate", generate_node)
 workflow.add_node("refuse", refuse_node)
 workflow.add_node("critique", critique_node)
 
@@ -35,11 +37,12 @@ workflow.add_conditional_edges(
 workflow.add_conditional_edges(
     "hyde_decision",
     route_by_hyde_decision,
-    {"enable": "hyde", "skip": "retrieve_and_generate"},
+    {"enable": "hyde", "skip": "retrieve"},
 )
 
-workflow.add_edge("hyde", "retrieve_and_generate")
-workflow.add_edge("retrieve_and_generate", "critique")
+workflow.add_edge("hyde", "retrieve")
+workflow.add_edge("retrieve", "generate")
+workflow.add_edge("generate", "critique")
 workflow.add_edge("refuse", "critique")
 
 workflow.add_conditional_edges(

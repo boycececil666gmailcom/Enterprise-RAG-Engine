@@ -1,22 +1,16 @@
-#region Retrieval & Generation
+#region Generation Node
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 
 from ...llm_client import llm
 from ...models import RAGResponseSchema
-from ...tools import retrieve_VDB
 from ..state import AgentState
 
 
-def retrieve_and_generate_node(state: AgentState) -> dict:
-    """Retrieves document context and synthesizes strictly grounded answer."""
+def generate_node(state: AgentState) -> dict:
+    """Synthesizes strictly grounded response based on retrieved documents and conversation history."""
     query = state["query"]
     history = state.get("history", [])
-    hypo_doc = state.get("hyde_content")
-
-    retrieved_documents = state.get("retrieved_documents")
-    if not retrieved_documents:
-        search_target = hypo_doc if hypo_doc else query
-        retrieved_documents = retrieve_VDB.invoke(search_target)
+    retrieved_documents = state.get("retrieved_documents", "")
 
     system_prompt = (
         f"Retrieved Document Context:\n{retrieved_documents}\n\n"
@@ -59,7 +53,6 @@ def retrieve_and_generate_node(state: AgentState) -> dict:
 
     return {
         "final_response": answer_text,
-        "retrieved_documents": retrieved_documents,
         "history": updated_history,
     }
 #endregion

@@ -80,8 +80,8 @@ sequenceDiagram
             AG->>AG: node_hyde_generator - Generate hypothetical document (if enabled)
             AG->>VDB: Hybrid dense+sparse vector search (Qdrant BM25 + Gemini embeddings)
             AG->>GDB: Cypher graph query - extract entity relationships (Neo4j Bolt)
-            AG->>AG: FlashRank neural reranking - merge and rank passages
-            AG->>AG: retrieve_and_generate - Synthesize grounded answer from retrieved context
+            AG->>AG: node_retrieve - Retrieve context & rerank (Qdrant + FlashRank)
+            AG->>AG: node_generate - Synthesize grounded answer from context
             AG->>AG: node_critique - Self-critique quality check
         end
     else Query outside business domain
@@ -131,7 +131,8 @@ flowchart TB
             Classifier["node_classifier"]
             HyDEDecision["node_hyde_decision"]
             HyDEGen["node_hyde_generator"]
-            RAGQA["retrieve_and_generate + FlashRank Reranker"]
+            Retrieve["node_retrieve"]
+            Generate["node_generate"]
             Critique["node_critique"]
             Refuse["node_refuse"]
         end
