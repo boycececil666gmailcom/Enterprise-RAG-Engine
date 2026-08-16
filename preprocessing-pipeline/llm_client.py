@@ -34,5 +34,17 @@ embeddings = OpenAIEmbeddings(
     model=OPENROUTER_EMBED_MODEL,
     api_key=OPENROUTER_API_KEY,
     base_url=OPENROUTER_BASE_URL,
+    check_embedding_ctx_length=False,
+    model_kwargs={"encoding_format": "float"},
 ) if OPENROUTER_API_KEY else None
 #endregion
+
+if __name__ == "__main__":
+    print(f"[LLM Client] Model: {OPENROUTER_MODEL}")
+    print(f"[LLM Client] Embed Model: {OPENROUTER_EMBED_MODEL}")
+    if embeddings:
+        vec = embeddings.embed_query("test embedding connection")
+        print(f"[LLM Client] Embeddings test success! Vector dimension: {len(vec)}")
+    if llm:
+        res = llm.invoke("Say 'OK'")
+        print(f"[LLM Client] LLM test success! Response: {res.content}")

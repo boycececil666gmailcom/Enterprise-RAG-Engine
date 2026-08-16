@@ -39,6 +39,8 @@ embeddings = OpenAIEmbeddings(
     model=OPENROUTER_EMBED_MODEL,
     api_key=OPENROUTER_API_KEY,
     base_url=OPENROUTER_BASE_URL,
+    check_embedding_ctx_length=False,
+    model_kwargs={"encoding_format": "float"},
 )
 
 # Shared Cross-Encoder reranker instance

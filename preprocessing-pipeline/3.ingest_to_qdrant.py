@@ -1,6 +1,7 @@
 #region Imports
 import json
 import os
+import warnings
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -45,7 +46,7 @@ def ingest_collapsed_tree(
     first_batch = chunks[:BATCH_SIZE]
     docs = [
         Document(
-            page_content=d.get("small", ""),
+            page_content=d.get("small") or d.get("metadata", {}).get("summary") or d.get("metadata", {}).get("title") or d.get("metadata", {}).get("big", "document"),
             metadata=d.get("metadata", {})
         )
         for d in first_batch
@@ -71,7 +72,7 @@ def ingest_collapsed_tree(
         batch = chunks[start : start + BATCH_SIZE]
         batch_docs = [
             Document(
-                page_content=d.get("small", ""),
+                page_content=d.get("small") or d.get("metadata", {}).get("summary") or d.get("metadata", {}).get("title") or d.get("metadata", {}).get("big", "document"),
                 metadata=d.get("metadata", {})
             )
             for d in batch
