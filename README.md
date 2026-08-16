@@ -7,6 +7,7 @@
 ![LangGraph](https://img.shields.io/badge/LangGraph-0.2+-1C3C3C?style=flat&logo=langchain&logoColor=white)
 ![LangChain](https://img.shields.io/badge/LangChain-0.3+-1C3C3C?style=flat&logo=langchain&logoColor=white)
 ![OpenRouter](https://img.shields.io/badge/OpenRouter-DeepSeek_V4_Flash-6366F1?style=flat)
+![LLMLingua-2](https://img.shields.io/badge/LLMLingua--2-Prompt_Compression-8A2BE2?style=flat)
 ![Qdrant](https://img.shields.io/badge/Qdrant-Vector_DB-DC2626?style=flat&logo=qdrant&logoColor=white)
 ![Neo4j](https://img.shields.io/badge/Neo4j-Graph_DB-008CC1?style=flat&logo=neo4j&logoColor=white)
 ![Terraform](https://img.shields.io/badge/Terraform-IaC-7B42BC?style=flat&logo=terraform&logoColor=white)
@@ -27,8 +28,9 @@ flowchart LR
     A["1. Data Ingestion<br/>(Crawl4AI & RAPTOR)"] --> B[("2. Hybrid Knowledge Store<br/>(Qdrant & Neo4j)")]
     B --> C["3. Multi-Agent Retrieval<br/>(HyDE + Dense + BM25)"]
     C --> D["4. Neural Rerank<br/>(FlashRank Cross-Encoder)"]
-    D --> E["5. Self-Critique Loop<br/>& Answer Generation"]
-    E --> F["6. LLMOps Evaluation<br/>(LangSmith & Ragas)"]
+    D --> E["5. Context Compression<br/>(LLMLingua-2 Compactor)"]
+    E --> F["6. Self-Critique Loop<br/>& Answer Generation"]
+    F --> G["7. LLMOps Evaluation<br/>(LangSmith & Ragas)"]
 ```
 
 ---
@@ -41,6 +43,7 @@ The **Enterprise-RAG-Engine** eliminates the guesswork from AI-powered customer 
 - **Domain Boundary Enforcement**: The engine automatically rejects off-topic inquiries, keeping support conversations strictly within defined business domains (e.g., Fintech SaaS product documentation).
 - **Comprehensive Knowledge Coverage**: Combines traditional document search with intelligent entity-relationship mapping, surfacing connections between products, pricing tiers, and organizational hierarchies that simple search cannot find.
 - **Self-Correcting Quality Assurance**: An automated review loop verifies every draft answer against source material before delivery, catching errors before customers ever see them.
+- **Prompt Token & Latency Optimization**: Integrates LLMLingua-2 context compression to compact retrieved passages, reducing LLM token consumption and latency while preserving vital semantic facts.
 - **Plug-and-Play Backend Template**: The decoupled microservices architecture means this engine can be connected to any customer portal, mobile app, or internal tool with minimal integration effort.
 - **Intelligent Query Enhancement**: Automatically improves vague or abstract questions via hypothetical document expansion, maximizing the chance of surfacing the most relevant knowledge for complex queries.
 
@@ -48,7 +51,7 @@ The **Enterprise-RAG-Engine** eliminates the guesswork from AI-powered customer 
 
 ## 2. System Architecture & Technical Execution
 
-The platform separates an API Gateway proxy (`theme_based_rag_gateway`) from the core RAG engine (`theme_based_rag_backend`). The backend runs a stateful multi-node LangGraph agent that performs domain classification, optional HyDE query expansion, hybrid vector + graph retrieval, neural reranking (FlashRank), and a self-critique quality loop before returning a response.
+The platform separates an API Gateway proxy (`theme_based_rag_gateway`) from the core RAG engine (`theme_based_rag_backend`). The backend runs a stateful multi-node LangGraph agent that performs domain classification, optional HyDE query expansion, hybrid vector + graph retrieval, neural reranking (FlashRank), context compression (LLMLingua-2), and a self-critique quality loop before returning a response.
 
 ### Core Concept & Phased Execution Sequence
 
@@ -81,6 +84,7 @@ sequenceDiagram
             AG->>VDB: Hybrid dense+sparse vector search (Qdrant BM25 + Gemini embeddings)
             AG->>GDB: Cypher graph query - extract entity relationships (Neo4j Bolt)
             AG->>AG: node_retrieve - Retrieve context & rerank (Qdrant + FlashRank)
+            AG->>AG: node_retrieve - LLMLingua-2 context compression
             AG->>AG: node_generate - Synthesize grounded answer from context
             AG->>AG: node_critique - Self-critique quality check
         end
@@ -131,7 +135,7 @@ flowchart TB
             Classifier["node_classifier"]
             HyDEDecision["node_hyde_decision"]
             HyDEGen["node_hyde_generator"]
-            Retrieve["node_retrieve"]
+            Retrieve["node_retrieve<br/>(FlashRank Rerank + LLMLingua-2)"]
             Generate["node_generate"]
             Critique["node_critique"]
             Refuse["node_refuse"]
