@@ -1,4 +1,5 @@
 #region Critique Node
+from typing import cast
 from langchain_core.messages import HumanMessage
 
 from ...config import CHATBOT_THEME
@@ -11,7 +12,7 @@ def critique_node(state: AgentState) -> dict:
     """Evaluates draft answer quality and groundedness against retrieved context or refusal rules."""
     should_answer = state.get("should_answer")
     draft = state.get("final_response")
-    docs = state.get("retrieved_documents")
+    docs = state.get("compressed_documents")
     query = state["query"]
     attempt_count = state.get("attempt_count", 0)
     hypo_doc = state.get("hyde_content")
@@ -37,7 +38,10 @@ def critique_node(state: AgentState) -> dict:
         )
 
     structured_llm = llm.with_structured_output(CritiqueResultSchema)
-    eval_result: CritiqueResultSchema = structured_llm.invoke([HumanMessage(content=prompt)])
+    eval_result = cast(
+        CritiqueResultSchema,
+        structured_llm.invoke([HumanMessage(content=prompt)]),
+    )
 
     if eval_result.is_passed:
         return {"critique_feedback": "PASS"}

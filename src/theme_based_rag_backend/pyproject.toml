@@ -24,6 +24,7 @@ dependencies = [
     "flashrank>=0.2.0,<0.3.0",
     "neo4j>=5.18.0,<6.0.0",
     "ddgs>=0.1.0",
+    "llmlingua>=0.2.2",
     "python-dotenv>=1.0.0",
 ]
 #endregion

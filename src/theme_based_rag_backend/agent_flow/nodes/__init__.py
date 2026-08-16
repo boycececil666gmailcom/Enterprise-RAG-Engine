@@ -1,5 +1,6 @@
 #region Node Exports
 from .node_classifier import classifier_node
+from .node_compress import compress_node
 from .node_critique import critique_node
 from .node_generate import generate_node
 from .node_hyde_decision import hyde_decision_node
@@ -9,6 +10,7 @@ from .node_retrieve import retrieve_node
 
 __all__ = [
     "classifier_node",
+    "compress_node",
     "critique_node",
     "generate_node",
     "hyde_decision_node",

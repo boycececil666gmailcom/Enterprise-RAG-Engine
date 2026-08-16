@@ -1,0 +1,4 @@
+#region Pyrefly Configuration
+[errors]
+unused-call-result = false
+#endregion

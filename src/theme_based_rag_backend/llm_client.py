@@ -2,19 +2,17 @@
 from flashrank import Ranker
 from langchain_community.document_compressors.flashrank_rerank import FlashrankRerank
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+from llmlingua import PromptCompressor
 
 from .config import (
+    LLMLINGUA_DEVICE,
+    LLMLINGUA_MODEL,
     OPENROUTER_API_KEY,
     OPENROUTER_BASE_URL,
     OPENROUTER_EMBED_MODEL,
     OPENROUTER_MODEL,
-    OPENROUTER_PROVIDER,
     OPENROUTER_TEMPERATURE,
 )
-
-_extra_body = {}
-if OPENROUTER_PROVIDER:
-    _extra_body["provider"] = {"order": [OPENROUTER_PROVIDER], "allow_fallbacks": True}
 
 # Primary LLM instance for standard generation (DeepSeek via OpenRouter)
 llm = ChatOpenAI(
@@ -22,7 +20,6 @@ llm = ChatOpenAI(
     api_key=OPENROUTER_API_KEY,
     base_url=OPENROUTER_BASE_URL,
     temperature=OPENROUTER_TEMPERATURE,
-    extra_body=_extra_body if _extra_body else None,
 )
 
 # LLM instance configured with lower temperature for HyDE passage generation
@@ -31,7 +28,6 @@ hyde_llm = ChatOpenAI(
     api_key=OPENROUTER_API_KEY,
     base_url=OPENROUTER_BASE_URL,
     temperature=0.0,
-    extra_body=_extra_body if _extra_body else None,
 )
 
 # Shared embeddings client for vector store and theme similarity
@@ -45,4 +41,11 @@ embeddings = OpenAIEmbeddings(
 
 # Shared Cross-Encoder reranker instance
 reranker = FlashrankRerank(client=Ranker(), top_n=5)
+
+# Shared LLMLingua-2 Prompt Compressor instance
+compressor = PromptCompressor(
+    model_name=LLMLINGUA_MODEL,
+    use_llmlingua2=True,
+    device_map=LLMLINGUA_DEVICE,
+)
 #endregion

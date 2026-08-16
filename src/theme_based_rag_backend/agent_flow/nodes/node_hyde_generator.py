@@ -1,4 +1,5 @@
 #region HyDE Generator
+from typing import cast
 from langchain_core.messages import HumanMessage, SystemMessage
 
 from ...llm_client import hyde_llm
@@ -16,7 +17,7 @@ def generate_hypothetical_document(query: str) -> str:
             HumanMessage(content=query),
         ]
         structured_llm = hyde_llm.with_structured_output(HyDESchema)
-        res: HyDESchema = structured_llm.invoke(messages)
+        res = cast(HyDESchema, structured_llm.invoke(messages))
         if res and res.passage:
             return res.passage.strip()
     except Exception:

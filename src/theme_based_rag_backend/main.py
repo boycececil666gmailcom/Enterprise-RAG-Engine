@@ -30,6 +30,7 @@ async def run_query(request: QueryRequest):
             hyde_reason=result.get("hyde_reason"),
             hyde_content=result.get("hyde_content"),
             retrieved_documents=result.get("retrieved_documents"),
+            compressed_documents=result.get("compressed_documents"),
             history=result.get("history"),
         )
     except Exception as e:

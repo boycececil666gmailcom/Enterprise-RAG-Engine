@@ -49,6 +49,7 @@ class QueryResponse(BaseModel):
     hyde_reason: str | None = None
     hyde_content: str | None = None
     retrieved_documents: str | None = None
+    compressed_documents: str | None = None
     history: list[MessageSchema] | None = None
 #endregion
 

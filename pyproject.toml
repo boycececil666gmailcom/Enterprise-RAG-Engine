@@ -27,6 +27,7 @@ dependencies = [
     "beautifulsoup4>=4.15.0",
     "requests>=2.34.2",
     "crawl4ai>=0.9.2",
+    "llmlingua>=0.2.2",
 ]
 #endregion
 
@@ -56,3 +57,6 @@ select = ["E", "F", "I", "N", "UP", "B"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src"]
+
+[tool.pyrefly.errors]
+unused-call-result = false
