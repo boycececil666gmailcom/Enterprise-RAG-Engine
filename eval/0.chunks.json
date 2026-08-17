@@ -1,0 +1,42 @@
+[
+  {
+    "id": "kanzi-render-pass-01",
+    "metadata": {
+      "title": "Using Kanzi Studio render pass presets",
+      "breadcrumb": "Using Kanzi Studio render pass presets",
+      "level": 1,
+      "summary": "Overview of Kanzi Studio render pass presets including Default render pass, Render to Texture Pass, Compose and Blit Pass, and Image-Based Lighting Filter Pass.",
+      "big": "# Using Kanzi Studio render pass presets\n\nUse render passes to define the rendering of 3D content in your Kanzi application.\nTo help you get started, Kanzi Studio comes with these render pass presets:\n- **Default render pass**: contains a basic set of render passes that first render opaque nodes and then transparent nodes.\n- **Render to Texture Pass**: contains the render passes that enable you to render to a texture.\n- **Compose and Blit Pass**: contains the render pass structure that enables you to blit to the screen Composition Target render passes or textures using a specific material.\n- **Image-Based Lighting Filter Pass**: contains the render passes that enable you to create dynamic Environment Ambient Texture and Environment Reflection Texture cubemap textures for real-time image-based lighting."
+    }
+  },
+  {
+    "id": "kanzi-render-pass-02",
+    "metadata": {
+      "title": "Using the Default render pass",
+      "breadcrumb": "Using Kanzi Studio render pass presets > Using the Default render pass",
+      "level": 2,
+      "summary": "Introduction to using the Default render pass preset in Kanzi Studio.",
+      "big": "## Using the Default render pass\n\nUse the Default render pass preset to create a basic set of render passes you need to get started."
+    }
+  },
+  {
+    "id": "kanzi-render-pass-03",
+    "metadata": {
+      "title": "To use the Default render pass",
+      "breadcrumb": "Using Kanzi Studio render pass presets > Using the Default render pass > To use the Default render pass",
+      "level": 3,
+      "summary": "Step-by-step instructions to instantiate and configure Default render pass, including Tag Filters (Opaque, Transparent), Clear render pass, Gather Lights render pass, and Draw Objects render passes.",
+      "big": "### To use the Default render pass:\n1. In the Library > Rendering press Alt and right-click Render Pass Prefabs and select Default render pass.\n2. Kanzi Studio creates in the Library > Rendering the filters and render passes it needs to first render opaque nodes and then transparent nodes:\n   - In **Object Sources** these Tag Filter filters:\n     - **Opaque**: picks the nodes that do not have the Transparent tag.\n     - **Transparent**: picks the nodes that have the Transparent tag.\n   - In **Render Pass Prefabs** a Group render pass named Default render pass and inside it:\n     - **Clear render pass**: clears some or all of the buffers of the current render context. By default the Clear render pass in the Default render pass clears the depth buffer.\n     - **Gather Lights render pass**: collects the Light nodes in the Viewport 2D node that you set to use the Default render pass, and passes them to its child Draw Objects render passes.\n     - **Draw Objects render pass named Draw Objects Opaque**: renders the nodes picked by the Opaque filter. Draw Objects render pass allows you to set a Camera node to render a specific list of nodes, to filter those nodes, and to control frustum culling. Draw Objects render pass by default renders nodes using the lights provided by its nearest ancestor Gather Lights render pass.\n     - **Draw Objects render pass named Draw Objects Transparent**: renders the nodes picked by the Transparent filter.\n3. In the Node Tree select the Viewport 2D node whose content you want to render, and in the Properties set the Render Pass Prefab property to the Default render pass you created. Kanzi Studio renders the Viewport 2D node using the Default render pass."
+    }
+  },
+  {
+    "id": "kanzi-render-pass-04",
+    "metadata": {
+      "title": "Optional Configurations",
+      "breadcrumb": "Using Kanzi Studio render pass presets > Using the Default render pass > Optional Configurations",
+      "level": 3,
+      "summary": "Optional configurations for Viewport 2D nodes including setting Transparent tags and configuring Clear Color 0 for backgrounds.",
+      "big": "### Optional Configurations:\n- (Optional) If your Viewport 2D node contains transparent nodes, in the Node Tree select the nodes, in the Properties next to the Tags property click the Tags button, and select Transparent.\n- (Optional) To set the background of the Viewport 2D node the content of which you want to render, in the Default render pass you created select the Clear render pass and in the Properties add and set the Clear Color 0 property."
+    }
+  }
+]

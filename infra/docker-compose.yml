@@ -74,24 +74,7 @@ services:
     depends_on:
       - backend
 
-  #region RAGAS Evaluation Harness Service
-  ragas-evaluator:
-    build:
-      context: ..
-      dockerfile: eval_ragas/Dockerfile
-    image: enterprise-rag-evaluator:latest
-    container_name: enterprise-rag-evaluator
-    environment:
-      - RAG_ENDPOINT=http://backend:8000/query
-      - ENABLE_RAGAS_EVAL=${ENABLE_RAGAS_EVAL:-false}
-    env_file:
-      - ../.env
-    volumes:
-      - ../eval_ragas/output:/app/eval_ragas/output
-    depends_on:
-      - backend
-  #endregion
-
 volumes:
   qdrant_data:
-  neo4j_data: #endregion
+  neo4j_data:
+#endregion

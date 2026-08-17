@@ -1,0 +1,32 @@
+[
+  {
+    "id": "sample-01",
+    "question": "As a technical director who relies on efficient render pass presets to streamline the initial setup for compositing and visual effects work, could you please explain what the Image-Based Lighting Filter Pass does within Kanzi Studio, and what specific output or capability does it provide for real-time lighting and reflection in a scene?",
+    "ground_truth": "The Image-Based Lighting Filter Pass contains the render passes that enable you to create dynamic Environment Ambient Texture and Environment Reflection Texture cubemap textures for real-time image-based lighting."
+  },
+  {
+    "id": "sample-02",
+    "question": "wat does Draw Objcts Opaque do?",
+    "ground_truth": "Draw Objects Opaque is a Draw Objects render pass that renders the nodes picked by the Opaque filter. It also allows you to set a Camera node, filter nodes, and control frustum culling."
+  },
+  {
+    "id": "sample-03",
+    "question": "How do I set up teh Default render pass in Kanzi and how does teh opaque filter and the transparent nodess werk togethr to render a Viewport, and what optinal taggin sttep do I need to do if teh Viewport 2d node containes transparent nodess so they are picked by the transparent filter?",
+    "ground_truth": "To set up the Default render pass, in the Library > Rendering press Alt and right-click Render Pass Prefabs and select Default render pass. Kanzi Studio then creates the filters and render passes needed to first render opaque nodes and then transparent nodes. In Object Sources, it creates Tag Filters: the Opaque filter picks nodes that do not have the Transparent tag, and the Transparent filter picks nodes that have the Transparent tag. The Group render pass named Default render pass contains a Clear render pass, a Gather Lights render pass, a Draw Objects render pass named Draw Objects Opaque, and a Draw Objects render pass named Draw Objects Transparent. The Draw Objects Opaque pass renders the nodes picked by the Opaque filter, and the Draw Objects Transparent pass renders the nodes picked by the Transparent filter. To use this render pass, select the Viewport 2D node whose content you want to render and set its Render Pass Prefab property to the Default render pass. If the Viewport 2D node contains transparent nodes, you must optionally select those nodes in the Node Tree, open the Tags property in the Properties, click the Tags button, and select Transparent so that the Transparent filter picks them and the Draw Objects Transparent pass renders them."
+  },
+  {
+    "id": "sample-04",
+    "question": "How do the Opaque filter and transparent nodes work together in Kanzi Studio's Default render pass, and what optional configuration should you apply to ensure transparent nodes are rendered correctly?",
+    "ground_truth": "The Default render pass in Kanzi Studio creates two Tag Filters: an Opaque filter that picks nodes without the Transparent tag, and a Transparent filter that picks nodes with the Transparent tag. The Default render pass then uses a Draw Objects render pass named Draw Objects Opaque to render the nodes picked by the Opaque filter, and another Draw Objects render pass named Draw Objects Transparent to render the nodes picked by the Transparent filter. To ensure transparent nodes are rendered correctly, you must select those nodes in the Node Tree, open the Tags property, click the Tags button, and add the Transparent tag so that the Transparent filter can pick them up."
+  },
+  {
+    "id": "sample-05",
+    "question": "What is the Clear render pass in Kanzi Studio's Default render pass and how do you use it to set the background color?",
+    "ground_truth": "The Clear render pass in the Default render pass clears some or all of the buffers of the current render context, and by default clears the depth buffer. To set the background of a Viewport 2D node, select the Clear render pass in the Default render pass and in the Properties add and set the Clear Color 0 property."
+  },
+  {
+    "id": "sample-06",
+    "question": "Wat render pass preset in kanzi studio is it that first renders opaque nodes and then transparent nodes, and how do the opaque and transparent filers in it work?",
+    "ground_truth": "The Default render pass preset in Kanzi Studio first renders opaque nodes and then transparent nodes. In this preset, the Opaque filter picks the nodes that do not have the Transparent tag, and the Transparent filter picks the nodes that have the Transparent tag. The Default render pass also contains a Clear render pass, a Gather Lights render pass, a Draw Objects render pass named Draw Objects Opaque, and a Draw Objects render pass named Draw Objects Transparent."
+  }
+]

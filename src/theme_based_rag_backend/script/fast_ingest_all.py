@@ -34,7 +34,7 @@ def run_full_ingestion(batch_size: int = 100):
     print(f"Loaded {len(raw_chunks):,} chunks from {chunks_path.name}.")
 
     # 2. Load eval_dataset.json
-    eval_path = project_root / "eval_ragas" / "eval_dataset.json"
+    eval_path = project_root / "eval" / "eval_dataset.json"
     eval_chunks = []
     if eval_path.exists():
         with open(eval_path, "r", encoding="utf-8") as ef:
