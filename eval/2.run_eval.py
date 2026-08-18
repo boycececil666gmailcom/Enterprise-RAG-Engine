@@ -29,13 +29,17 @@ def get_eval_models(temperature: float = 0.0):
         raise ValueError("[EvalRunner-init] OPENROUTER_API_KEY is not set in environment.")
 
     base_url = os.getenv("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1")
-    model = os.getenv("OPENROUTER_MODEL", "deepseek/deepseek-chat")
+    model = "google/gemini-3.7-flash"
     embed_model = os.getenv("OPENROUTER_EMBED_MODEL", "text-embedding-3-small")
-    provider = os.getenv("OPENROUTER_PROVIDER")
-    extra_body = {"provider": {"order": [provider], "allow_fallbacks": False}} if provider else None
 
-    llm = ChatOpenAI(model=model, api_key=api_key, base_url=base_url, temperature=temperature, extra_body=extra_body)
-    embeddings = OpenAIEmbeddings(model=embed_model, api_key=api_key, base_url=base_url, check_embedding_ctx_length=False, model_kwargs={"encoding_format": "float"})
+    llm = ChatOpenAI(model=model, api_key=api_key, base_url=base_url, temperature=temperature)
+    embeddings = OpenAIEmbeddings(
+        model=embed_model,
+        api_key=api_key,
+        base_url=base_url,
+        check_embedding_ctx_length=False,
+        model_kwargs={"encoding_format": "float"},
+    )
     return LangchainLLMWrapper(llm), LangchainEmbeddingsWrapper(embeddings)
 #endregion
 
@@ -132,20 +136,10 @@ def main():
 
     parser = argparse.ArgumentParser(description="Run RAGAS evaluation on RAG pipeline.")
     parser.add_argument("--dataset", "-d", type=str, default=str(default_dataset), help="Dataset JSON path")
-    parser.add_argument("--output-dir", "-o", type=str, default=str(default_output), help="Output directory (default: eval folder)")
+    parser.add_argument("--output-dir", "-o", type=str, default=str(default_output), help="Output directory")
     parser.add_argument("--endpoint", "-e", type=str, default=os.getenv("RAG_ENDPOINT", "http://localhost:8000/query"), help="RAG API Endpoint")
     parser.add_argument("--limit", "-l", type=int, default=0, help="Limit sample count (0 for all)")
-    parser.add_argument(
-        "--enable",
-        action="store_true",
-        default=os.getenv("ENABLE_RAGAS_EVAL", "false").lower() in ("true", "1", "yes"),
-        help="Safety switch to execute RAGAS API evaluation",
-    )
     args = parser.parse_args()
-
-    if not args.enable:
-        print("[EvalRunner-skip] Evaluation skipped to prevent unintended API costs. Use --enable to run.")
-        return
 
     samples = fetch_rag_responses(
         dataset_path=Path(args.dataset).resolve(),

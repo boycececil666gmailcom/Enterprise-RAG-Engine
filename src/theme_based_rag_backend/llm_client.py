@@ -11,12 +11,21 @@ from .config import (
     OPENROUTER_TEMPERATURE,
 )
 
+_extra_body = {
+    "provider": {
+        "sort": "throughput",
+        "ignore": ["wafer"],
+        "allow_fallbacks": True,
+    }
+}
+
 # Primary LLM instance for standard generation (DeepSeek via OpenRouter)
 llm = ChatOpenAI(
     model=OPENROUTER_MODEL,
     api_key=OPENROUTER_API_KEY,
     base_url=OPENROUTER_BASE_URL,
     temperature=OPENROUTER_TEMPERATURE,
+    extra_body=_extra_body,
 )
 
 # LLM instance configured with lower temperature for HyDE passage generation
@@ -25,6 +34,7 @@ hyde_llm = ChatOpenAI(
     api_key=OPENROUTER_API_KEY,
     base_url=OPENROUTER_BASE_URL,
     temperature=0.0,
+    extra_body=_extra_body,
 )
 
 # Shared embeddings client for vector store and theme similarity
