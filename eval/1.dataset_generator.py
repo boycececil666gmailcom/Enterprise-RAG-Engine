@@ -14,6 +14,7 @@ from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from ragas.embeddings import LangchainEmbeddingsWrapper
 from ragas.llms import LangchainLLMWrapper
 from ragas.testset import TestsetGenerator
+from ragas.testset.graph import KnowledgeGraph
 from ragas.testset.synthesizers.multi_hop import (
     MultiHopAbstractQuerySynthesizer,
     MultiHopSpecificQuerySynthesizer,
@@ -29,38 +30,10 @@ from ragas.testset.transforms.relationship_builders import CosineSimilarityBuild
 
 from ragas.run_config import RunConfig
 
-load_dotenv(Path(__file__).resolve().parents[1] / ".env")
-#endregion
-
-#region Model Init
-def get_openrouter_models(temperature: float = 0.0):
-    """Initializes LLM and Embeddings configured for OpenRouter."""
-    api_key = os.getenv("OPENROUTER_API_KEY")
-    if not api_key:
-        raise ValueError("[DatasetGenerator-init] OPENROUTER_API_KEY is not set in environment.")
-
-    base_url = os.getenv("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1")
-    model = "google/gemini-3.7-flash"
-    embed_model = os.getenv("OPENROUTER_EMBED_MODEL", "text-embedding-3-small")
-    extra_body = {"provider": {"order": ["google-vertex"], "allow_fallbacks": True}}
-
-    llm = ChatOpenAI(
-        model=model,
-        api_key=api_key,
-        base_url=base_url,
-        temperature=temperature,
-        max_tokens=4096,
-        request_timeout=120.0,
-        extra_body=extra_body,
-    )
-    embeddings = OpenAIEmbeddings(
-        model=embed_model,
-        api_key=api_key,
-        base_url=base_url,
-        check_embedding_ctx_length=False,
-        model_kwargs={"encoding_format": "float"},
-    )
-    return LangchainLLMWrapper(llm, is_finished_parser=lambda _: True), LangchainEmbeddingsWrapper(embeddings)
+try:
+    from .llm_client import get_eval_models
+except ImportError:
+    from llm_client import get_eval_models
 #endregion
 
 #region Document Loader
@@ -88,12 +61,15 @@ def load_input_documents(doc_path: Path, max_chunks: int = 20) -> list[Document]
 #region Query Distribution
 def build_query_distribution(ragas_llm, weights: dict[str, float]) -> list[tuple]:
     """Builds a normalized 4-path query distribution matrix."""
-    return [
-        (SingleHopSpecificQuerySynthesizer(llm=ragas_llm), weights.get("single_specific", 0.25)),
-        (SingleHopAbstractQuerySynthesizer(llm=ragas_llm), weights.get("single_abstract", 0.25)),
-        (MultiHopSpecificQuerySynthesizer(llm=ragas_llm), weights.get("multi_specific", 0.25)),
-        (MultiHopAbstractQuerySynthesizer(llm=ragas_llm), weights.get("multi_abstract", 0.25)),
-    ]
+    synthesizers = {
+        "single_specific": SingleHopSpecificQuerySynthesizer(llm=ragas_llm, property_name="entities", name="single_hop_specific"),
+        "single_abstract": SingleHopSpecificQuerySynthesizer(llm=ragas_llm, property_name="themes", name="single_hop_abstract"),
+        "multi_specific": MultiHopSpecificQuerySynthesizer(llm=ragas_llm, name="multi_hop_specific"),
+        "multi_abstract": MultiHopAbstractQuerySynthesizer(llm=ragas_llm, name="multi_hop_abstract"),
+    }
+    raw = [(synthesizers[k], max(0.0, weights.get(k, 0.25))) for k in synthesizers]
+    total = sum(w for _, w in raw) or 1.0
+    return [(s, w / total) for s, w in raw if w > 0]
 #endregion
 
 #region Dataset Generator
@@ -110,7 +86,7 @@ def generate_eval_dataset_from_docs(
     if not docs:
         raise ValueError(f"[DatasetGenerator-load] No readable document content found in {doc_path}")
 
-    ragas_llm, ragas_embeddings = get_openrouter_models()
+    ragas_llm, ragas_embeddings = get_eval_models(is_generator=True)
     transforms = [
         SummaryExtractor(llm=ragas_llm),
         CustomNodeFilter(llm=ragas_llm),
@@ -120,7 +96,7 @@ def generate_eval_dataset_from_docs(
             NERExtractor(llm=ragas_llm),
         ),
         Parallel(
-            CosineSimilarityBuilder(property_name="summary_embedding", new_property_name="summary_similarity", threshold=0.5),
+            CosineSimilarityBuilder(property_name="summary_embedding", new_property_name="summary_similarity", threshold=0.1),
             OverlapScoreBuilder(threshold=0.01),
         ),
     ]
@@ -134,7 +110,7 @@ def generate_eval_dataset_from_docs(
         embedding_model=ragas_embeddings,
         knowledge_graph=KnowledgeGraph(),
     )
-    run_config = RunConfig(max_workers=4, max_retries=5, timeout=180)
+    run_config = RunConfig(max_workers=4, max_retries=5, timeout=240)
     dataset = generator.generate_with_langchain_docs(
         documents=docs,
         testset_size=test_size,

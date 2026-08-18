@@ -2,14 +2,11 @@
 import argparse
 import json
 import os
-import warnings
 from pathlib import Path
 import httpx
 import pandas as pd
 from datasets import Dataset
-from dotenv import load_dotenv
 
-warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from ragas import evaluate
@@ -18,39 +15,20 @@ from ragas.llms import LangchainLLMWrapper
 from ragas.metrics import answer_relevancy, context_precision, context_recall, faithfulness
 from ragas.run_config import RunConfig
 
-load_dotenv(Path(__file__).resolve().parents[1] / ".env")
-#endregion
 
-#region Model Init
-def get_eval_models(temperature: float = 0.0):
-    """Initializes LLM and Embeddings configured for OpenRouter evaluation."""
-    api_key = os.getenv("OPENROUTER_API_KEY")
-    if not api_key:
-        raise ValueError("[EvalRunner-init] OPENROUTER_API_KEY is not set in environment.")
-
-    base_url = os.getenv("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1")
-    model = "google/gemini-3.7-flash"
-    embed_model = os.getenv("OPENROUTER_EMBED_MODEL", "text-embedding-3-small")
-
-    llm = ChatOpenAI(model=model, api_key=api_key, base_url=base_url, temperature=temperature)
-    embeddings = OpenAIEmbeddings(
-        model=embed_model,
-        api_key=api_key,
-        base_url=base_url,
-        check_embedding_ctx_length=False,
-        model_kwargs={"encoding_format": "float"},
-    )
-    return LangchainLLMWrapper(llm), LangchainEmbeddingsWrapper(embeddings)
+try:
+    from .llm_client import get_eval_models
+except ImportError:
+    from llm_client import get_eval_models
 #endregion
 
 #region RAG Fetcher
-def fetch_rag_responses(dataset_path: Path, endpoint_url: str, limit: int = 0) -> list[dict]:
+def fetch_rag_responses(dataset_path: Path, endpoint_url: str) -> list[dict]:
     """Queries the running RAG endpoint for each test question in the dataset."""
     if not dataset_path.exists():
         raise FileNotFoundError(f"[EvalRunner-fetch] Dataset file not found: {dataset_path}")
 
     dataset = json.loads(dataset_path.read_text(encoding="utf-8"))
-    dataset = dataset[:limit] if limit > 0 else dataset
     print(f"[EvalRunner-fetch] Querying RAG endpoint ({endpoint_url}) for {len(dataset)} questions...")
 
     samples = []
@@ -93,7 +71,7 @@ def fetch_rag_responses(dataset_path: Path, endpoint_url: str, limit: int = 0) -
 
 #region Metric Evaluation
 def run_ragas_evaluation(samples: list[dict], output_dir: Path):
-    """Executes RAGAS evaluation on collected samples and exports CSV & Markdown reports."""
+    """Executes RAGAS evaluation on collected samples and exports results to CSV."""
     if not samples:
         raise ValueError("[EvalRunner-eval] No samples to evaluate.")
 
@@ -113,28 +91,22 @@ def run_ragas_evaluation(samples: list[dict], output_dir: Path):
         metrics=metrics,
         llm=eval_llm,
         embeddings=eval_embeddings,
-        run_config=RunConfig(max_workers=2, max_retries=5, timeout=120),
+        run_config=RunConfig(max_workers=2, max_retries=5, timeout=240),
     )
 
     df: pd.DataFrame = result.to_pandas()
     output_dir.mkdir(parents=True, exist_ok=True)
     csv_path = output_dir / "2.run_eval.csv"
-    report_path = output_dir / "2.run_eval.md"
-
     df.to_csv(csv_path, index=False)
-    summary_rows = [f"| **{m.name}** | `{df[m.name].mean():.4f}` |" for m in metrics if m.name in df.columns]
-    report_content = (
-        "# 📊 RAGAS Pipeline Evaluation Report (2.run_eval)\n\n"
-        "| Metric | Average Score |\n"
-        "| :--- | :--- |\n"
-        + "\n".join(summary_rows)
-        + "\n\n## Detailed Sample Results\n\n"
-        + df.to_markdown(index=False)
-    )
 
-    report_path.write_text(report_content, encoding="utf-8")
-    print(f"[EvalRunner-save] Report saved to: {report_path}")
-    print(f"[EvalRunner-save] CSV saved to: {csv_path}\n\n{report_content}\n")
+    print(f"\n[EvalRunner-save] CSV saved to: {csv_path}\n")
+    print("=" * 40)
+    print(" 📊 Evaluation Summary Scores")
+    print("=" * 40)
+    for m in metrics:
+        if m.name in df.columns:
+            print(f"  • {m.name:<20}: {df[m.name].mean():.4f}")
+    print("=" * 40 + "\n")
 #endregion
 
 #region CLI Interface
@@ -146,13 +118,11 @@ def main():
     parser.add_argument("--dataset", "-d", type=str, default=str(default_dataset), help="Dataset JSON path")
     parser.add_argument("--output-dir", "-o", type=str, default=str(default_output), help="Output directory")
     parser.add_argument("--endpoint", "-e", type=str, default=os.getenv("RAG_ENDPOINT", "http://localhost:8000/query"), help="RAG API Endpoint")
-    parser.add_argument("--limit", "-l", type=int, default=0, help="Limit sample count (0 for all)")
     args = parser.parse_args()
 
     samples = fetch_rag_responses(
         dataset_path=Path(args.dataset).resolve(),
         endpoint_url=args.endpoint,
-        limit=args.limit,
     )
     run_ragas_evaluation(samples=samples, output_dir=Path(args.output_dir).resolve())
 
