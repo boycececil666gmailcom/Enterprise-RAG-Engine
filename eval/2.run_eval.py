@@ -2,19 +2,19 @@
 import argparse
 import json
 import os
+from datetime import datetime
 from pathlib import Path
 import httpx
 import pandas as pd
 from datasets import Dataset
-
-
-from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from ragas import evaluate
-from ragas.embeddings import LangchainEmbeddingsWrapper
-from ragas.llms import LangchainLLMWrapper
-from ragas.metrics import answer_relevancy, context_precision, context_recall, faithfulness
+from ragas.metrics.collections import (
+    answer_relevancy,
+    context_precision,
+    context_recall,
+    faithfulness,
+)
 from ragas.run_config import RunConfig
-
 
 try:
     from .llm_client import get_eval_models
@@ -96,17 +96,11 @@ def run_ragas_evaluation(samples: list[dict], output_dir: Path):
 
     df: pd.DataFrame = result.to_pandas()
     output_dir.mkdir(parents=True, exist_ok=True)
-    csv_path = output_dir / "2.run_eval.csv"
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    csv_path = output_dir / f"2.run_eval_{timestamp}.csv"
     df.to_csv(csv_path, index=False)
 
     print(f"\n[EvalRunner-save] CSV saved to: {csv_path}\n")
-    print("=" * 40)
-    print(" 📊 Evaluation Summary Scores")
-    print("=" * 40)
-    for m in metrics:
-        if m.name in df.columns:
-            print(f"  • {m.name:<20}: {df[m.name].mean():.4f}")
-    print("=" * 40 + "\n")
 #endregion
 
 #region CLI Interface
