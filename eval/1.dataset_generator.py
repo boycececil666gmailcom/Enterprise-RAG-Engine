@@ -14,33 +14,43 @@ from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from ragas.embeddings import LangchainEmbeddingsWrapper
 from ragas.llms import LangchainLLMWrapper
 from ragas.testset import TestsetGenerator
+from ragas.testset.synthesizers.multi_hop import (
+    MultiHopAbstractQuerySynthesizer,
+    MultiHopSpecificQuerySynthesizer,
+)
+from ragas.testset.synthesizers.single_hop.specific import (
+    SingleHopSpecificQuerySynthesizer,
+)
 from ragas.testset.transforms.engine import Parallel
 from ragas.testset.transforms.extractors import EmbeddingExtractor, SummaryExtractor
 from ragas.testset.transforms.extractors.llm_based import NERExtractor, ThemesExtractor
 from ragas.testset.transforms.filters import CustomNodeFilter
 from ragas.testset.transforms.relationship_builders import CosineSimilarityBuilder, OverlapScoreBuilder
 
+from ragas.run_config import RunConfig
+
 load_dotenv(Path(__file__).resolve().parents[1] / ".env")
 #endregion
 
 #region Model Init
-def get_openrouter_models(temperature: float = 0.3):
+def get_openrouter_models(temperature: float = 0.0):
     """Initializes LLM and Embeddings configured for OpenRouter."""
     api_key = os.getenv("OPENROUTER_API_KEY")
     if not api_key:
         raise ValueError("[DatasetGenerator-init] OPENROUTER_API_KEY is not set in environment.")
 
     base_url = os.getenv("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1")
-    model = os.getenv("OPENROUTER_MODEL", "deepseek/deepseek-chat")
+    model = "google/gemini-3.7-flash"
     embed_model = os.getenv("OPENROUTER_EMBED_MODEL", "text-embedding-3-small")
-    provider = os.getenv("OPENROUTER_PROVIDER")
-    extra_body = {"provider": {"order": [provider], "allow_fallbacks": True}} if provider else None
+    extra_body = {"provider": {"order": ["google-vertex"], "allow_fallbacks": True}}
 
     llm = ChatOpenAI(
         model=model,
         api_key=api_key,
         base_url=base_url,
         temperature=temperature,
+        max_tokens=4096,
+        request_timeout=120.0,
         extra_body=extra_body,
     )
     embeddings = OpenAIEmbeddings(
@@ -50,7 +60,7 @@ def get_openrouter_models(temperature: float = 0.3):
         check_embedding_ctx_length=False,
         model_kwargs={"encoding_format": "float"},
     )
-    return LangchainLLMWrapper(llm), LangchainEmbeddingsWrapper(embeddings)
+    return LangchainLLMWrapper(llm, is_finished_parser=lambda _: True), LangchainEmbeddingsWrapper(embeddings)
 #endregion
 
 #region Document Loader
@@ -60,20 +70,33 @@ def load_input_documents(doc_path: Path, max_chunks: int = 5) -> list[Document]:
         raise FileNotFoundError(f"[DatasetGenerator-load] Target document not found: {doc_path}")
 
     if doc_path.suffix.lower() == ".json":
-        with open(doc_path, encoding="utf-8") as f:
-            items = json.load(f)
+        items = json.loads(doc_path.read_text(encoding="utf-8"))
         items = items if isinstance(items, list) else [items]
         docs = []
         for item in items:
             meta = item.get("metadata", {})
-            content = meta.get("big") or meta.get("summary") or item.get("small") or ""
-            if len(content.strip()) > 50:
-                docs.append(Document(page_content=content.strip(), metadata={"id": item.get("id", "")}))
+            content = (meta.get("big") or meta.get("summary") or item.get("small") or "").strip()
+            if len(content) > 50:
+                docs.append(Document(page_content=content, metadata={"id": item.get("id", "")}))
             if 0 < max_chunks <= len(docs):
                 break
         return docs
 
     return TextLoader(str(doc_path), encoding="utf-8").load()
+#endregion
+
+#region Query Distribution
+def build_query_distribution(ragas_llm, weights: dict[str, float]) -> list[tuple]:
+    """Builds a normalized 4-path query distribution matrix."""
+    synthesizers = {
+        "single_specific": SingleHopSpecificQuerySynthesizer(llm=ragas_llm, property_name="entities", name="single_hop_specific"),
+        "single_abstract": SingleHopSpecificQuerySynthesizer(llm=ragas_llm, property_name="themes", name="single_hop_abstract"),
+        "multi_specific": MultiHopSpecificQuerySynthesizer(llm=ragas_llm, name="multi_hop_specific"),
+        "multi_abstract": MultiHopAbstractQuerySynthesizer(llm=ragas_llm, name="multi_hop_abstract"),
+    }
+    raw = [(synthesizers[k], max(0.0, weights.get(k, 0.25))) for k in synthesizers]
+    total = sum(w for _, w in raw) or 1.0
+    return [(s, w / total) for s, w in raw if w > 0]
 #endregion
 
 #region Dataset Generator
@@ -82,8 +105,9 @@ def generate_eval_dataset_from_docs(
     output_path: Path,
     test_size: int = 5,
     max_chunks: int = 5,
+    weights: dict[str, float] | None = None,
 ) -> list[dict]:
-    """Synthesizes evaluation test samples from selected chunks using OpenRouter."""
+    """Synthesizes evaluation test samples across 4 distinct query synthesis paths."""
     print(f"[DatasetGenerator-load] Loading up to {max_chunks} chunks from: {doc_path}")
     docs = load_input_documents(doc_path, max_chunks=max_chunks)
     if not docs:
@@ -104,15 +128,27 @@ def generate_eval_dataset_from_docs(
         ),
     ]
 
-    print(f"[DatasetGenerator-generate] Synthesizing {test_size} samples across {len(docs)} selected chunks...")
+    distribution = build_query_distribution(ragas_llm, weights or {})
+    summary_str = ", ".join(f"{s.name}: {w:.0%}" for s, w in distribution)
+    print(f"[DatasetGenerator-generate] Synthesizing {test_size} samples ({summary_str}) across {len(docs)} chunks...")
+
     generator = TestsetGenerator(llm=ragas_llm, embedding_model=ragas_embeddings)
-    dataset = generator.generate_with_langchain_docs(docs, testset_size=test_size, transforms=transforms)
+    run_config = RunConfig(max_workers=2, timeout=120, max_retries=3)
+    dataset = generator.generate_with_langchain_docs(
+        docs,
+        testset_size=test_size,
+        transforms=transforms,
+        query_distribution=distribution,
+        run_config=run_config,
+    )
 
     samples = [
         {
             "id": f"sample-{idx + 1:02d}",
             "question": row.get("user_input") or row.get("question") or "",
             "ground_truth": row.get("reference") or row.get("ground_truth") or "",
+            "ground_truth_contexts": list(row.get("reference_contexts") or []),
+            "synthesizer": row.get("synthesizer_name") or "",
         }
         for idx, row in dataset.to_pandas().iterrows()
     ]
@@ -133,13 +169,24 @@ def main():
     parser.add_argument("--output", "-o", type=str, default=str(default_output), help="Output JSON path")
     parser.add_argument("--size", "-s", type=int, default=5, help="Number of test samples (default: 5)")
     parser.add_argument("--chunks", "-c", type=int, default=5, help="Number of chunks to sample from JSON (default: 5)")
+    parser.add_argument("--single-specific", type=float, default=0.25, help="Weight for Single-Hop Specific (default: 0.25)")
+    parser.add_argument("--single-abstract", type=float, default=0.25, help="Weight for Single-Hop Abstract (default: 0.25)")
+    parser.add_argument("--multi-specific", type=float, default=0.25, help="Weight for Multi-Hop Specific (default: 0.25)")
+    parser.add_argument("--multi-abstract", type=float, default=0.25, help="Weight for Multi-Hop Abstract (default: 0.25)")
     args = parser.parse_args()
 
+    weights = {
+        "single_specific": args.single_specific,
+        "single_abstract": args.single_abstract,
+        "multi_specific": args.multi_specific,
+        "multi_abstract": args.multi_abstract,
+    }
     generate_eval_dataset_from_docs(
         doc_path=Path(args.doc).resolve(),
         output_path=Path(args.output).resolve(),
         test_size=args.size,
         max_chunks=args.chunks,
+        weights=weights,
     )
 
 if __name__ == "__main__":

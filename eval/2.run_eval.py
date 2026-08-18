@@ -15,12 +15,7 @@ from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from ragas import evaluate
 from ragas.embeddings import LangchainEmbeddingsWrapper
 from ragas.llms import LangchainLLMWrapper
-from ragas.metrics import (
-    answer_relevancy,
-    context_precision,
-    context_recall,
-    faithfulness,
-)
+from ragas.metrics import answer_relevancy, context_precision, context_recall, faithfulness
 from ragas.run_config import RunConfig
 
 load_dotenv(Path(__file__).resolve().parents[1] / ".env")
@@ -37,73 +32,56 @@ def get_eval_models(temperature: float = 0.0):
     model = os.getenv("OPENROUTER_MODEL", "deepseek/deepseek-chat")
     embed_model = os.getenv("OPENROUTER_EMBED_MODEL", "text-embedding-3-small")
     provider = os.getenv("OPENROUTER_PROVIDER")
-    extra_body = {"provider": {"order": [provider], "allow_fallbacks": True}} if provider else None
+    extra_body = {"provider": {"order": [provider], "allow_fallbacks": False}} if provider else None
 
-    llm = ChatOpenAI(
-        model=model,
-        api_key=api_key,
-        base_url=base_url,
-        temperature=temperature,
-        extra_body=extra_body,
-    )
-    embeddings = OpenAIEmbeddings(
-        model=embed_model,
-        api_key=api_key,
-        base_url=base_url,
-        check_embedding_ctx_length=False,
-        model_kwargs={"encoding_format": "float"},
-    )
+    llm = ChatOpenAI(model=model, api_key=api_key, base_url=base_url, temperature=temperature, extra_body=extra_body)
+    embeddings = OpenAIEmbeddings(model=embed_model, api_key=api_key, base_url=base_url, check_embedding_ctx_length=False, model_kwargs={"encoding_format": "float"})
     return LangchainLLMWrapper(llm), LangchainEmbeddingsWrapper(embeddings)
 #endregion
 
-#region Pipeline Evaluation
-def fetch_rag_responses(
-    dataset_path: Path,
-    endpoint_url: str,
-    limit: int = 0,
-) -> list[dict]:
-    """Queries the running RAG endpoint for each question in the dataset."""
+#region RAG Fetcher
+def fetch_rag_responses(dataset_path: Path, endpoint_url: str, limit: int = 0) -> list[dict]:
+    """Queries the running RAG endpoint for each test question in the dataset."""
     if not dataset_path.exists():
         raise FileNotFoundError(f"[EvalRunner-fetch] Dataset file not found: {dataset_path}")
 
-    with open(dataset_path, encoding="utf-8") as f:
-        dataset = json.load(f)
-
-    if limit > 0:
-        dataset = dataset[:limit]
-
+    dataset = json.loads(dataset_path.read_text(encoding="utf-8"))
+    dataset = dataset[:limit] if limit > 0 else dataset
     print(f"[EvalRunner-fetch] Querying RAG endpoint ({endpoint_url}) for {len(dataset)} questions...")
-    samples: list[dict] = []
 
+    samples = []
     with httpx.Client(timeout=90.0) as client:
-        for idx, item in enumerate(dataset, start=1):
-            question = item.get("question", "")
-            if not question:
+        for idx, item in enumerate(dataset, 1):
+            q = item.get("question", "").strip()
+            if not q:
                 continue
 
-            print(f"[EvalRunner-fetch] [{idx}/{len(dataset)}] Query: '{question}'")
+            print(f"[EvalRunner-fetch] [{idx}/{len(dataset)}] Query: '{q[:60]}...'")
             try:
-                resp = client.post(endpoint_url, json={"query": question, "history": []})
+                resp = client.post(endpoint_url, json={"query": q, "history": []})
                 resp.raise_for_status()
                 data = resp.json()
                 answer = data.get("final_response") or data.get("response") or ""
-                raw_contexts = data.get("retrieved_documents") or data.get("contexts") or []
-                contexts = [str(c) for c in raw_contexts] if isinstance(raw_contexts, list) else [str(raw_contexts)]
+                raw_ctx = data.get("retrieved_documents") or data.get("contexts") or []
+                contexts = [str(c) for c in raw_ctx] if isinstance(raw_ctx, list) else [str(raw_ctx)]
             except Exception as err:
-                print(f"[EvalRunner-fetch] Error querying '{question}': {err}")
+                print(f"[EvalRunner-fetch] Error querying '{q[:40]}': {err}")
                 answer, contexts = "Error querying RAG endpoint.", ["Error"]
 
             samples.append({
-                "question": question,
+                "question": q,
                 "answer": answer,
                 "contexts": contexts,
                 "ground_truth": item.get("ground_truth", ""),
+                "reference_contexts": item.get("ground_truth_contexts", []),
             })
 
     return samples
+#endregion
 
+#region Metric Evaluation
 def run_ragas_evaluation(samples: list[dict], output_dir: Path):
-    """Executes RAGAS metrics evaluation against collected RAG outputs."""
+    """Executes RAGAS evaluation on collected samples and exports CSV & Markdown reports."""
     if not samples:
         raise ValueError("[EvalRunner-eval] No samples to evaluate.")
 
@@ -113,10 +91,11 @@ def run_ragas_evaluation(samples: list[dict], output_dir: Path):
         "answer": [s["answer"] for s in samples],
         "contexts": [s["contexts"] for s in samples],
         "ground_truth": [s["ground_truth"] for s in samples],
+        "reference_contexts": [s["reference_contexts"] for s in samples],
     })
 
     metrics = [faithfulness, answer_relevancy, context_precision, context_recall]
-    print(f"[EvalRunner-eval] Running RAGAS evaluation on {len(samples)} samples...")
+    print(f"[EvalRunner-eval] Evaluating {len(samples)} samples with RAGAS metrics...")
     result = evaluate(
         dataset=eval_dataset,
         metrics=metrics,
@@ -127,18 +106,13 @@ def run_ragas_evaluation(samples: list[dict], output_dir: Path):
 
     df: pd.DataFrame = result.to_pandas()
     output_dir.mkdir(parents=True, exist_ok=True)
+    csv_path = output_dir / "2.run_eval.csv"
+    report_path = output_dir / "2.run_eval.md"
 
-    csv_path = output_dir / "ragas_evaluation_results.csv"
-    report_path = output_dir / "ragas_evaluation_report.md"
     df.to_csv(csv_path, index=False)
-
-    summary_rows = [
-        f"| **{getattr(m, 'name', str(m))}** | `{df[getattr(m, 'name', str(m))].mean():.4f}` |"
-        for m in metrics
-        if getattr(m, "name", str(m)) in df.columns
-    ]
+    summary_rows = [f"| **{m.name}** | `{df[m.name].mean():.4f}` |" for m in metrics if m.name in df.columns]
     report_content = (
-        "# 📊 OpenRouter RAGAS Pipeline Evaluation Report\n\n"
+        "# 📊 RAGAS Pipeline Evaluation Report (2.run_eval)\n\n"
         "| Metric | Average Score |\n"
         "| :--- | :--- |\n"
         + "\n".join(summary_rows)
@@ -153,12 +127,12 @@ def run_ragas_evaluation(samples: list[dict], output_dir: Path):
 
 #region CLI Interface
 def main():
-    default_dataset = Path(__file__).resolve().parent / "eval_dataset.json"
-    default_output = Path(__file__).resolve().parent / "output"
+    default_dataset = Path(__file__).resolve().parent / "1.eval_dataset.json"
+    default_output = Path(__file__).resolve().parent
 
     parser = argparse.ArgumentParser(description="Run RAGAS evaluation on RAG pipeline.")
     parser.add_argument("--dataset", "-d", type=str, default=str(default_dataset), help="Dataset JSON path")
-    parser.add_argument("--output-dir", "-o", type=str, default=str(default_output), help="Output directory")
+    parser.add_argument("--output-dir", "-o", type=str, default=str(default_output), help="Output directory (default: eval folder)")
     parser.add_argument("--endpoint", "-e", type=str, default=os.getenv("RAG_ENDPOINT", "http://localhost:8000/query"), help="RAG API Endpoint")
     parser.add_argument("--limit", "-l", type=int, default=0, help="Limit sample count (0 for all)")
     parser.add_argument(
