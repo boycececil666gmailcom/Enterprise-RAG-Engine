@@ -64,7 +64,7 @@ def get_openrouter_models(temperature: float = 0.0):
 #endregion
 
 #region Document Loader
-def load_input_documents(doc_path: Path, max_chunks: int = 5) -> list[Document]:
+def load_input_documents(doc_path: Path, max_chunks: int = 20) -> list[Document]:
     """Loads documents from text files or sampled JSON chunks."""
     if not doc_path.exists():
         raise FileNotFoundError(f"[DatasetGenerator-load] Target document not found: {doc_path}")
@@ -88,23 +88,20 @@ def load_input_documents(doc_path: Path, max_chunks: int = 5) -> list[Document]:
 #region Query Distribution
 def build_query_distribution(ragas_llm, weights: dict[str, float]) -> list[tuple]:
     """Builds a normalized 4-path query distribution matrix."""
-    synthesizers = {
-        "single_specific": SingleHopSpecificQuerySynthesizer(llm=ragas_llm, property_name="entities", name="single_hop_specific"),
-        "single_abstract": SingleHopSpecificQuerySynthesizer(llm=ragas_llm, property_name="themes", name="single_hop_abstract"),
-        "multi_specific": MultiHopSpecificQuerySynthesizer(llm=ragas_llm, name="multi_hop_specific"),
-        "multi_abstract": MultiHopAbstractQuerySynthesizer(llm=ragas_llm, name="multi_hop_abstract"),
-    }
-    raw = [(synthesizers[k], max(0.0, weights.get(k, 0.25))) for k in synthesizers]
-    total = sum(w for _, w in raw) or 1.0
-    return [(s, w / total) for s, w in raw if w > 0]
+    return [
+        (SingleHopSpecificQuerySynthesizer(llm=ragas_llm), weights.get("single_specific", 0.25)),
+        (SingleHopAbstractQuerySynthesizer(llm=ragas_llm), weights.get("single_abstract", 0.25)),
+        (MultiHopSpecificQuerySynthesizer(llm=ragas_llm), weights.get("multi_specific", 0.25)),
+        (MultiHopAbstractQuerySynthesizer(llm=ragas_llm), weights.get("multi_abstract", 0.25)),
+    ]
 #endregion
 
 #region Dataset Generator
 def generate_eval_dataset_from_docs(
     doc_path: Path,
     output_path: Path,
-    test_size: int = 5,
-    max_chunks: int = 5,
+    test_size: int = 30,
+    max_chunks: int = 20,
     weights: dict[str, float] | None = None,
 ) -> list[dict]:
     """Synthesizes evaluation test samples across 4 distinct query synthesis paths."""
@@ -132,10 +129,14 @@ def generate_eval_dataset_from_docs(
     summary_str = ", ".join(f"{s.name}: {w:.0%}" for s, w in distribution)
     print(f"[DatasetGenerator-generate] Synthesizing {test_size} samples ({summary_str}) across {len(docs)} chunks...")
 
-    generator = TestsetGenerator(llm=ragas_llm, embedding_model=ragas_embeddings)
-    run_config = RunConfig(max_workers=2, timeout=120, max_retries=3)
+    generator = TestsetGenerator(
+        llm=ragas_llm,
+        embedding_model=ragas_embeddings,
+        knowledge_graph=KnowledgeGraph(),
+    )
+    run_config = RunConfig(max_workers=4, max_retries=5, timeout=180)
     dataset = generator.generate_with_langchain_docs(
-        docs,
+        documents=docs,
         testset_size=test_size,
         transforms=transforms,
         query_distribution=distribution,
@@ -144,11 +145,13 @@ def generate_eval_dataset_from_docs(
 
     samples = [
         {
-            "id": f"sample-{idx + 1:02d}",
             "question": row.get("user_input") or row.get("question") or "",
-            "ground_truth": row.get("reference") or row.get("ground_truth") or "",
-            "ground_truth_contexts": list(row.get("reference_contexts") or []),
-            "synthesizer": row.get("synthesizer_name") or "",
+            "right_answer": row.get("reference") or row.get("ground_truth") or "",
+            "metadata": {
+                "id": f"sample-{idx + 1:02d}",
+                "ground_truth_contexts": list(row.get("reference_contexts") or []),
+                "synthesizer": row.get("synthesizer_name") or "",
+            },
         }
         for idx, row in dataset.to_pandas().iterrows()
     ]
@@ -167,8 +170,8 @@ def main():
     parser = argparse.ArgumentParser(description="Synthesize evaluation dataset from sampled chunks via OpenRouter.")
     parser.add_argument("--doc", "-d", type=str, default=str(default_doc), help="Input document or JSON path")
     parser.add_argument("--output", "-o", type=str, default=str(default_output), help="Output JSON path")
-    parser.add_argument("--size", "-s", type=int, default=5, help="Number of test samples (default: 5)")
-    parser.add_argument("--chunks", "-c", type=int, default=5, help="Number of chunks to sample from JSON (default: 5)")
+    parser.add_argument("--size", "-s", type=int, default=30, help="Number of test samples (default: 30)")
+    parser.add_argument("--chunks", "-c", type=int, default=20, help="Number of chunks to sample from JSON (default: 20)")
     parser.add_argument("--single-specific", type=float, default=0.25, help="Weight for Single-Hop Specific (default: 0.25)")
     parser.add_argument("--single-abstract", type=float, default=0.25, help="Weight for Single-Hop Abstract (default: 0.25)")
     parser.add_argument("--multi-specific", type=float, default=0.25, help="Weight for Multi-Hop Specific (default: 0.25)")

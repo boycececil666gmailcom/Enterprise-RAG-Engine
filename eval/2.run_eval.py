@@ -61,23 +61,31 @@ def fetch_rag_responses(dataset_path: Path, endpoint_url: str, limit: int = 0) -
                 continue
 
             print(f"[EvalRunner-fetch] [{idx}/{len(dataset)}] Query: '{q[:60]}...'")
-            try:
-                resp = client.post(endpoint_url, json={"query": q, "history": []})
-                resp.raise_for_status()
-                data = resp.json()
-                answer = data.get("final_response") or data.get("response") or ""
-                raw_ctx = data.get("retrieved_documents") or data.get("contexts") or []
-                contexts = [str(c) for c in raw_ctx] if isinstance(raw_ctx, list) else [str(raw_ctx)]
-            except Exception as err:
-                print(f"[EvalRunner-fetch] Error querying '{q[:40]}': {err}")
-                answer, contexts = "Error querying RAG endpoint.", ["Error"]
+            answer, contexts = "Error querying RAG endpoint.", ["Error"]
+            for attempt in range(1, 4):
+                try:
+                    resp = client.post(endpoint_url, json={"query": q, "history": []})
+                    resp.raise_for_status()
+                    data = resp.json()
+                    answer = data.get("final_response") or data.get("response") or ""
+                    raw_ctx = data.get("retrieved_documents") or data.get("contexts") or []
+                    contexts = [str(c) for c in raw_ctx] if isinstance(raw_ctx, list) else [str(raw_ctx)]
+                    break
+                except Exception as err:
+                    print(f"[EvalRunner-fetch] Attempt {attempt}/3 failed for '{q[:40]}': {err}")
+                    if attempt < 3:
+                        import time
+                        time.sleep(2.0 * attempt)
+
+            meta = item.get("metadata", {})
+            gt_contexts = meta.get("ground_truth_contexts")
 
             samples.append({
                 "question": q,
                 "answer": answer,
                 "contexts": contexts,
-                "ground_truth": item.get("ground_truth", ""),
-                "reference_contexts": item.get("ground_truth_contexts", []),
+                "right_answer": item.get("right_answer", ""),
+                "reference_contexts": gt_contexts,
             })
 
     return samples
@@ -94,7 +102,7 @@ def run_ragas_evaluation(samples: list[dict], output_dir: Path):
         "question": [s["question"] for s in samples],
         "answer": [s["answer"] for s in samples],
         "contexts": [s["contexts"] for s in samples],
-        "ground_truth": [s["ground_truth"] for s in samples],
+        "ground_truth": [s["right_answer"] for s in samples],
         "reference_contexts": [s["reference_contexts"] for s in samples],
     })
 
