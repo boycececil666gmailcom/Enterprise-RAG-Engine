@@ -23,6 +23,9 @@ OPENROUTER_EMBED_MODEL = os.getenv(
     "OPENROUTER_EMBED_MODEL", "nvidia/nemotron-3-embed-1b:free"
 )
 OPENROUTER_TEMPERATURE = float(os.getenv("OPENROUTER_TEMPERATURE", "0.2"))
+OPENROUTER_PROVIDER_SORT = os.getenv("OPENROUTER_PROVIDER_SORT", "throughput")
+_ignore_env = os.getenv("OPENROUTER_PROVIDER_IGNORE", "wafer")
+OPENROUTER_PROVIDER_IGNORE = [p.strip() for p in _ignore_env.split(",") if p.strip()]
 
 # Server Settings
 BACKEND_HOST = require_env("BACKEND_HOST")

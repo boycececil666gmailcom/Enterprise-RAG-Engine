@@ -14,16 +14,25 @@ load_dotenv(dotenv_path=_ROOT_DIR / ".env")
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
 OPENROUTER_BASE_URL = os.getenv("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1")
 OPENROUTER_MODEL = os.getenv("OPENROUTER_MODEL", "deepseek/deepseek-v4-flash-0731")
-OPENROUTER_PROVIDER = os.getenv("OPENROUTER_PROVIDER", "baidu")
 OPENROUTER_EMBED_MODEL = os.getenv(
     "OPENROUTER_EMBED_MODEL", "nvidia/nemotron-3-embed-1b:free"
 )
+OPENROUTER_PROVIDER_SORT = os.getenv("OPENROUTER_PROVIDER_SORT", "throughput")
+_ignore_env = os.getenv("OPENROUTER_PROVIDER_IGNORE", "wafer")
+OPENROUTER_PROVIDER_IGNORE = [p.strip() for p in _ignore_env.split(",") if p.strip()]
+OPENROUTER_PROVIDER = os.getenv("OPENROUTER_PROVIDER")
 # endregion
 
-# region LLM & Embedding Instances
-_extra_body = {}
+# region LLM Instances
+_provider_config = {"allow_fallbacks": True}
+if OPENROUTER_PROVIDER_SORT:
+    _provider_config["sort"] = OPENROUTER_PROVIDER_SORT
+if OPENROUTER_PROVIDER_IGNORE:
+    _provider_config["ignore"] = OPENROUTER_PROVIDER_IGNORE
 if OPENROUTER_PROVIDER:
-    _extra_body["provider"] = {"order": [OPENROUTER_PROVIDER], "allow_fallbacks": True}
+    _provider_config["order"] = [OPENROUTER_PROVIDER]
+
+_extra_body = {"provider": _provider_config} if _provider_config else {}
 
 llm = (
     ChatOpenAI(
