@@ -3,18 +3,22 @@ from typing import cast
 
 from langchain_core.messages import HumanMessage, SystemMessage
 
+from ...config import CHATBOT_THEME
 from ...llm_client import hyde_llm
 from ...models import HyDESchema
 from ..state import AgentState
 
 
 def generate_hypothetical_document(query: str) -> str:
-    """Generates a hypothetical document passage for query expansion."""
+    """Generates a domain-injected hypothetical document passage for query expansion."""
+    system_prompt = (
+        f"You are a senior technical documentation author for '{CHATBOT_THEME}'.\n"
+        "Write a concise, realistic 2-3 sentence documentation excerpt that directly answers the user's query.\n"
+        "Include relevant domain-specific concepts, APIs, and tool terminology if applicable. Output only the excerpt."
+    )
     try:
         messages = [
-            SystemMessage(
-                content="Write a short, plausible documentation excerpt that answers the user's query. Output only the excerpt."
-            ),
+            SystemMessage(content=system_prompt),
             HumanMessage(content=query),
         ]
         structured_llm = hyde_llm.with_structured_output(HyDESchema)

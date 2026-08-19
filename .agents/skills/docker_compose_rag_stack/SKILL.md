@@ -1,6 +1,6 @@
 ---
 name: docker_compose_rag_stack
-description: Manage, build, and orchestrate the Enterprise RAG Engine multi-container stack (Qdrant, Neo4j, LangGraph Studio, Backend, Gateway, Ragas Evaluator) using Docker Compose with infra/docker-compose.yml.
+description: Manage, build, and orchestrate the Enterprise RAG Engine multi-container stack (Qdrant, Neo4j, LangGraph Studio, Backend, Gateway) using Docker Compose with infra/docker-compose.yml.
 ---
 
 # Enterprise RAG Engine Docker Compose Workflow
@@ -14,7 +14,6 @@ This skill provides standard operating procedures for managing the multi-contain
 - **`langgraph-studio`** (Port `2024`): Interactive developer UI for LangGraph agent workflows.
 - **`backend`** (Port `8000`): Stateful LangGraph FastAPI backend engine (`/query`, `/health`).
 - **`gateway`** (Port `8080`): API Gateway proxy with request validation and routing.
-- **`ragas-evaluator`**: Automated evaluation suite for RAG retrieval and generation metrics.
 
 ## Standard Operating Procedures
 
