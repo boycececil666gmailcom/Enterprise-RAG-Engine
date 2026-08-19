@@ -98,7 +98,15 @@ def run_ragas_evaluation(samples: list[dict], output_dir: Path):
     output_dir.mkdir(parents=True, exist_ok=True)
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     csv_path = output_dir / f"2.run_eval_{timestamp}.csv"
-    df.to_csv(csv_path, index=False)
+
+    avg_row = {col: "-" for col in df.columns}
+    avg_row["user_input"] = "[AVERAGE SUMMARY]"
+    for m in metrics:
+        if m.name in df.columns:
+            avg_row[m.name] = round(float(df[m.name].mean()), 4)
+
+    df_out = pd.concat([pd.DataFrame([avg_row]), df], ignore_index=True)
+    df_out.to_csv(csv_path, index=False)
 
     print(f"\n[EvalRunner-save] CSV saved to: {csv_path}\n")
 #endregion
