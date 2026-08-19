@@ -32,9 +32,6 @@ BACKEND_PORT = int(require_env("BACKEND_PORT"))
 QDRANT_URL = require_env("QDRANT_URL")
 QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
 
-# Chatbot Theme Settings
-CHATBOT_THEME = require_env("CHATBOT_THEME")
-
 # LangSmith Settings
 LANGSMITH_TRACING = require_env("LANGSMITH_TRACING").lower() == "true"
 LANGSMITH_API_KEY = os.getenv("LANGSMITH_API_KEY") or os.getenv("LANGCHAIN_API_KEY")

@@ -134,8 +134,8 @@ Enterprise-RAG-Engine/
 │   ├── build-image.sh                 # Docker backend image build script
 │   └── docker-compose.yml             # Streamlined 3-service stack (Qdrant, Studio, Backend)
 ├── preprocessing-pipeline/
-│   ├── 1.scrape.py                    # Web & documentation scraper (Crawl4AI)
-│   ├── 2.raptor_tree_pipeline.py      # RAPTOR hierarchical clustering & Small-to-Big chunking
+│   ├── 1.export_jira_tickets.py       # JIRA REST API ticket exporter
+│   ├── 2.model_jira_defects.py        # AI defect modeling & Horizontal expansion checklist
 │   ├── 3.ingest_to_qdrant.py          # Hybrid dense + BM25 vector ingestion
 │   └── llm_client.py                  # Embedding & LLM client wrapper
 ├── progress-doc/                      # Weekly engineering milestone reports

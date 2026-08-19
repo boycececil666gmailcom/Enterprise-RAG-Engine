@@ -1,5 +1,5 @@
 # region State
-from typing import Literal, NotRequired, TypedDict
+from typing import NotRequired, TypedDict
 
 
 class InputState(TypedDict):
@@ -14,7 +14,6 @@ class AgentState(TypedDict):
 
     query: str
     history: NotRequired[list[dict]]
-    should_answer: NotRequired[Literal["pass", "refuse"]]
     should_hyde: NotRequired[bool]
     hyde_reason: NotRequired[str | None]
     hyde_content: NotRequired[str | None]
