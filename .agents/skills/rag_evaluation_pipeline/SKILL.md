@@ -40,15 +40,13 @@ This skill defines standard operating procedures and workflows for generating sy
 
 ### 1. Prerequisites Check
 
-Verify that the RAG backend or gateway is up and healthy:
+Verify that the RAG backend is up and healthy:
 
 ```powershell
 # Verify backend service
 curl.exe http://localhost:8000/health
-
-# Or verify gateway service
-curl.exe http://localhost:8080/health
 ```
+
 
 ### 2. Generate Synthetic Dataset (Optional)(Normally you don't need this as the test set is already well defined)
 

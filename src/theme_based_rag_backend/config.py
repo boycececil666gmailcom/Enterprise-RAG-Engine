@@ -32,11 +32,6 @@ BACKEND_PORT = int(require_env("BACKEND_PORT"))
 QDRANT_URL = require_env("QDRANT_URL")
 QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
 
-# Neo4j Database Settings
-NEO4J_URI = require_env("NEO4J_URI")
-NEO4J_USERNAME = require_env("NEO4J_USERNAME")
-NEO4J_PASSWORD = require_env("NEO4J_PASSWORD")
-
 # Chatbot Theme Settings
 CHATBOT_THEME = require_env("CHATBOT_THEME")
 

@@ -801,7 +801,6 @@ dependencies = [
     { name = "langchain-openai" },
     { name = "langchain-qdrant" },
     { name = "langgraph" },
-    { name = "neo4j" },
     { name = "requests" },
     { name = "uvicorn", extra = ["standard"] },
 ]
@@ -832,7 +831,6 @@ requires-dist = [
     { name = "langchain-openai", specifier = ">=0.2.0" },
     { name = "langchain-qdrant", specifier = ">=0.2.0" },
     { name = "langgraph", specifier = ">=0.2.0" },
-    { name = "neo4j", specifier = ">=5.18.0,<6.0.0" },
     { name = "requests", specifier = ">=2.34.2" },
     { name = "uvicorn", extras = ["standard"], specifier = ">=0.28.0" },
 ]
@@ -1320,9 +1318,9 @@ name = "grpcio-tools"
 version = "1.62.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "grpcio" },
-    { name = "protobuf" },
-    { name = "setuptools" },
+    { name = "grpcio", marker = "python_full_version >= '3.13'" },
+    { name = "protobuf", marker = "python_full_version >= '3.13'" },
+    { name = "setuptools", marker = "python_full_version >= '3.13'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/54/fa/b69bd8040eafc09b88bb0ec0fea59e8aacd1a801e688af087cead213b0d0/grpcio-tools-1.62.3.tar.gz", hash = "sha256:7c7136015c3d62c3eef493efabaf9e3380e3e66d24ee8e94c01cb71377f57833", size = 4538520, upload-time = "2024-08-06T00:37:11.035Z" }
 wheels = [
@@ -2172,7 +2170,7 @@ resolution-markers = [
     "python_full_version == '3.13.*'",
 ]
 dependencies = [
-    { name = "numpy" },
+    { name = "numpy", marker = "python_full_version >= '3.13'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/fd/15/76f86faa0902836cc133939732f7611ace68cf54148487a99c539c272dc8/ml_dtypes-0.4.1.tar.gz", hash = "sha256:fad5f2de464fd09127e49b7fd1252b9006fb43d2edc1ff112d390c324af5ca7a", size = 692594, upload-time = "2024-09-13T19:07:11.624Z" }
 wheels = [
@@ -2196,7 +2194,7 @@ resolution-markers = [
     "python_full_version < '3.12'",
 ]
 dependencies = [
-    { name = "numpy" },
+    { name = "numpy", marker = "python_full_version < '3.13'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/0e/4a/c27b42ed9b1c7d13d9ba8b6905dece787d6259152f2309338aed29b2447b/ml_dtypes-0.5.4.tar.gz", hash = "sha256:8ab06a50fb9bf9666dd0fe5dfb4676fa2b0ac0f31ecff72a6c3af8e22c063453", size = 692314, upload-time = "2025-11-17T22:32:31.031Z" }
 wheels = [
@@ -2419,18 +2417,6 @@ wheels = [
 ]
 
 [[package]]
-name = "neo4j"
-version = "5.28.4"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "pytz" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/62/aa/83baca8f9e5e5ba1a00722067a4bf3c088c5c02019a7b485e94c8cf05d39/neo4j-5.28.4.tar.gz", hash = "sha256:4a2d8d6eb8c2da0bc87a30e96e2c179fbc0045665626482901ca3dcc9c2b1811", size = 232608, upload-time = "2026-05-04T08:00:55.426Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/d9/fd/d46f29f4089a00a7d4894f5e1739288c2a42622b72ea7161a226b73ff4fa/neo4j-5.28.4-py3-none-any.whl", hash = "sha256:ba87c423fd2a1fbe6a116c47ac96cfbe7d8c419d24d2f5611e5674283dddf7b9", size = 313927, upload-time = "2026-05-04T08:00:52.005Z" },
-]
-
-[[package]]
 name = "nest-asyncio"
 version = "1.6.0"
 source = { registry = "https://pypi.org/simple" }
@@ -2500,10 +2486,10 @@ resolution-markers = [
     "python_full_version == '3.13.*'",
 ]
 dependencies = [
-    { name = "ml-dtypes", version = "0.4.1", source = { registry = "https://pypi.org/simple" } },
-    { name = "numpy" },
-    { name = "protobuf" },
-    { name = "typing-extensions" },
+    { name = "ml-dtypes", version = "0.4.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.13'" },
+    { name = "numpy", marker = "python_full_version >= '3.13'" },
+    { name = "protobuf", marker = "python_full_version >= '3.13'" },
+    { name = "typing-extensions", marker = "python_full_version >= '3.13'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/5b/bf/b0a63ee9f3759dcd177b28c6f2cb22f2aecc6d9b3efecaabc298883caa5f/onnx-1.19.0.tar.gz", hash = "sha256:aa3f70b60f54a29015e41639298ace06adf1dd6b023b9b30f1bca91bb0db9473", size = 11949859, upload-time = "2025-08-27T02:34:27.107Z" }
 wheels = [
@@ -2542,10 +2528,10 @@ resolution-markers = [
     "python_full_version < '3.12'",
 ]
 dependencies = [
-    { name = "ml-dtypes", version = "0.5.4", source = { registry = "https://pypi.org/simple" } },
-    { name = "numpy" },
-    { name = "protobuf" },
-    { name = "typing-extensions" },
+    { name = "ml-dtypes", version = "0.5.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.13'" },
+    { name = "numpy", marker = "python_full_version < '3.13'" },
+    { name = "protobuf", marker = "python_full_version < '3.13'" },
+    { name = "typing-extensions", marker = "python_full_version < '3.13'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/04/19/8ea73a64b368b75fe339771a20a02bc61ea1f551484c9e3d9d0bfbd0450f/onnx-1.22.0.tar.gz", hash = "sha256:ef40c0aaf0b643857ea9306fc7eddce17eaf9fb0407e4801f1fc5758443a38e0", size = 12024721, upload-time = "2026-06-15T12:50:05.354Z" }
 wheels = [
@@ -3536,13 +3522,13 @@ resolution-markers = [
     "python_full_version == '3.13.*'",
 ]
 dependencies = [
-    { name = "grpcio" },
-    { name = "grpcio-tools" },
-    { name = "httpx", extra = ["http2"] },
-    { name = "numpy" },
-    { name = "portalocker" },
-    { name = "pydantic" },
-    { name = "urllib3" },
+    { name = "grpcio", marker = "python_full_version >= '3.13'" },
+    { name = "grpcio-tools", marker = "python_full_version >= '3.13'" },
+    { name = "httpx", extra = ["http2"], marker = "python_full_version >= '3.13'" },
+    { name = "numpy", marker = "python_full_version >= '3.13'" },
+    { name = "portalocker", marker = "python_full_version >= '3.13'" },
+    { name = "pydantic", marker = "python_full_version >= '3.13'" },
+    { name = "urllib3", marker = "python_full_version >= '3.13'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/15/5e/ec560881e086f893947c8798949c72de5cfae9453fd05c2250f8dfeaa571/qdrant_client-1.12.1.tar.gz", hash = "sha256:35e8e646f75b7b883b3d2d0ee4c69c5301000bba41c82aa546e985db0f1aeb72", size = 237441, upload-time = "2024-10-29T17:31:09.698Z" }
 wheels = [
@@ -3559,13 +3545,13 @@ resolution-markers = [
     "python_full_version < '3.12'",
 ]
 dependencies = [
-    { name = "grpcio" },
-    { name = "httpx", extra = ["http2"] },
-    { name = "numpy" },
-    { name = "portalocker" },
-    { name = "protobuf" },
-    { name = "pydantic" },
-    { name = "urllib3" },
+    { name = "grpcio", marker = "python_full_version < '3.13'" },
+    { name = "httpx", extra = ["http2"], marker = "python_full_version < '3.13'" },
+    { name = "numpy", marker = "python_full_version < '3.13'" },
+    { name = "portalocker", marker = "python_full_version < '3.13'" },
+    { name = "protobuf", marker = "python_full_version < '3.13'" },
+    { name = "pydantic", marker = "python_full_version < '3.13'" },
+    { name = "urllib3", marker = "python_full_version < '3.13'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/3a/33/c6e4ec45b4fca5a0b808e8804e60be54a6d7505b68b53c0b1d0d62ba86c1/qdrant_client-1.19.0.tar.gz", hash = "sha256:365395a04b0a26c309b25b7d8b1c99ef2071ec9a2b74bc8a5fd3b7a3642fe963", size = 350953, upload-time = "2026-08-04T14:32:56.923Z" }
 wheels = [

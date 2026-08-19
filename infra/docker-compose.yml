@@ -12,18 +12,6 @@ services:
     volumes:
       - qdrant_data:/qdrant/storage
 
-  # Neo4j Graph Database
-  neo4j:
-    image: neo4j:5.20.0
-    container_name: enterprise-rag-neo4j
-    ports:
-      - "7474:7474"
-      - "7687:7687"
-    environment:
-      - NEO4J_AUTH=neo4j/neo4jpassword123
-    volumes:
-      - neo4j_data:/data
-
   #region LangGraph Studio Dev Server Service
   langgraph-studio:
     build:
@@ -43,7 +31,6 @@ services:
       - ..:/app
     depends_on:
       - qdrant
-      - neo4j
 
   # Core RAG Backend Service
   backend:
@@ -58,23 +45,9 @@ services:
       - ../.env
     depends_on:
       - qdrant
-      - neo4j
-
-  # API Gateway Service
-  gateway:
-    build:
-      context: ..
-      dockerfile: src/theme_based_rag_gateway/Dockerfile
-    image: enterprise-rag-gateway:latest
-    container_name: enterprise-rag-gateway
-    ports:
-      - "8080:8080"
-    env_file:
-      - ../.env
-    depends_on:
-      - backend
 
 volumes:
   qdrant_data:
-  neo4j_data:
 #endregion
+
+
