@@ -31,7 +31,7 @@ def critique_node(state: AgentState) -> dict:
     else:
         prompt = (
             f"You are a strict quality control evaluator.\n"
-            f"Verify if the draft response is fully grounded in the retrieved documents context.\n"
+            f"Verify if the draft response is fully grounded in the retrieved documents context and that all inline citations [Topic Name] accurately correspond to the specific facts cited from retrieved topics.\n"
             f"STRICT CHECK: No extrapolated or invented numbers/facts.\n"
             f"User Query: {query}\n"
             f"HyDE Passage: {hypo_doc or 'N/A'}\n"

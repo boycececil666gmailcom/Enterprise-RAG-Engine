@@ -20,7 +20,7 @@ def refuse_node(state: AgentState) -> dict:
     ]
     structured_llm = llm.with_structured_output(RAGResponseSchema)
     response: RAGResponseSchema = structured_llm.invoke(messages)
-    return {"final_response": response.answer}
+    return {"final_response": response.answer, "citations": []}
 
 
 # endregion

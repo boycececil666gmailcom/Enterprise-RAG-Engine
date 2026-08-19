@@ -10,6 +10,10 @@ class RAGResponseSchema(BaseModel):
     answer: str = Field(
         description="Strictly grounded answer text synthesized from retrieved document context"
     )
+    citations: list[str] = Field(
+        default_factory=list,
+        description="List of referenced topic titles or breadcrumbs cited from retrieved context",
+    )
 
 
 class CritiqueResultSchema(BaseModel):
@@ -69,6 +73,7 @@ class QueryRequest(BaseModel):
 
 class QueryResponse(BaseModel):
     response: str
+    citations: list[str] = Field(default_factory=list)
     tool_calls_executed: list[str] = Field(default_factory=list)
     should_hyde: bool | None = None
     hyde_reason: str | None = None

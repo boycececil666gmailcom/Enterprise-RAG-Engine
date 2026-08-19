@@ -17,9 +17,10 @@ def generate_node(state: AgentState) -> dict:
     system_prompt = (
         f"Retrieved Document Context:\n{retrieved_documents}\n\n"
         "CRITICAL RULES:\n"
-        "1. Your answer must be strictly grounded in the retrieved document context.\n"
-        "2. If context does not contain the answer or specific details, state 'Information not available in documentation'.\n"
-        "3. NEVER extrapolate, guess, or invent numbers, prices, or missing facts."
+        "1. GROUNDEDNESS: Your answer must be strictly grounded in the retrieved document context. Never invent facts.\n"
+        "2. INLINE CITATIONS: For every factual claim, guideline, or step in your answer, immediately attach an inline citation specifying the exact source topic in brackets (e.g., 'To reduce draw calls, batch static meshes [Performance > Meshes].'). Place citations directly on the relevant sentence or bullet point, NOT as a vague generic dump at the end.\n"
+        "3. CITATIONS ARRAY: In the 'citations' field, include only the topic names that you actively cited inline in the answer.\n"
+        "4. MISSING INFO: If the context does not contain the answer, state 'Information not available in documentation' and return an empty citations list."
     )
 
     messages = [SystemMessage(content=system_prompt)]
@@ -43,24 +44,27 @@ def generate_node(state: AgentState) -> dict:
             HumanMessage(
                 content=(
                     f"CRITIQUE FEEDBACK: Previous draft was rejected because: {feedback}\n"
-                    "Revise your answer to strictly follow retrieved context."
+                    "Revise your answer to strictly ground every claim with precise inline citations [Topic Name] matching the source chunks."
                 )
             )
         )
 
     structured_llm = llm.with_structured_output(RAGResponseSchema)
     response = cast(RAGResponseSchema, structured_llm.invoke(messages))
-    answer_text = (
-        response.answer if response else "Information not available in documentation."
+    final_text = (
+        response.answer.strip() if response and response.answer else "Information not available in documentation."
     )
+    raw_citations = [c.strip(" []") for c in (response.citations if response else []) if c.strip()]
+    unique_citations = list(dict.fromkeys(raw_citations)) if final_text != "Information not available in documentation." else []
 
     updated_history = list(history) + [
         {"role": "user", "content": query},
-        {"role": "assistant", "content": answer_text},
+        {"role": "assistant", "content": final_text},
     ]
 
     return {
-        "final_response": answer_text,
+        "final_response": final_text,
+        "citations": unique_citations,
         "history": updated_history,
     }
 

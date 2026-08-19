@@ -26,6 +26,7 @@ async def run_query(request: QueryRequest):
 
         return QueryResponse(
             response=result.get("final_response", ""),
+            citations=result.get("citations", []),
             tool_calls_executed=tools_used,
             should_hyde=result.get("should_hyde"),
             hyde_reason=result.get("hyde_reason"),

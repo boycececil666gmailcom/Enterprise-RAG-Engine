@@ -20,6 +20,7 @@ class AgentState(TypedDict):
     hyde_content: NotRequired[str | None]
     retrieved_documents: NotRequired[str | None]
     final_response: NotRequired[str]
+    citations: NotRequired[list[str]]
     critique_feedback: NotRequired[str | None]
     attempt_count: NotRequired[int]
 
