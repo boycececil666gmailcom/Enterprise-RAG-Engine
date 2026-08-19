@@ -8,16 +8,20 @@ from .config import (
     OPENROUTER_BASE_URL,
     OPENROUTER_EMBED_MODEL,
     OPENROUTER_MODEL,
+    OPENROUTER_PROVIDER_IGNORE,
+    OPENROUTER_PROVIDER_SORT,
     OPENROUTER_TEMPERATURE,
 )
 
-_extra_body = {
-    "provider": {
-        "sort": "throughput",
-        "ignore": ["wafer"],
-        "allow_fallbacks": True,
-    }
-}
+_provider_config = {"allow_fallbacks": True}
+if OPENROUTER_PROVIDER_SORT:
+    _provider_config["sort"] = OPENROUTER_PROVIDER_SORT
+if OPENROUTER_PROVIDER_IGNORE:
+    _provider_config["ignore"] = [
+        p.strip() for p in OPENROUTER_PROVIDER_IGNORE.split(",") if p.strip()
+    ]
+
+_extra_body = {"provider": _provider_config}
 
 # Primary LLM instance for standard generation (DeepSeek via OpenRouter)
 llm = ChatOpenAI(

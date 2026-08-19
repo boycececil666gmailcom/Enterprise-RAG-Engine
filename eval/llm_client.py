@@ -11,16 +11,23 @@ load_dotenv(Path(__file__).resolve().parents[1] / ".env")
 # endregion
 
 # region Model Config & Factory
-_EXTRA_BODY = {
-    "provider": {
-        "sort": "throughput",
-        "ignore": ["wafer"],
-        "allow_fallbacks": True,
-    },
-    "reasoning": {
-        "effort": "medium",
-    },
-}
+def _get_extra_body() -> dict:
+    provider_sort = os.getenv("OPENROUTER_PROVIDER_SORT", "throughput")
+    provider_ignore = os.getenv("OPENROUTER_PROVIDER_IGNORE", "wafer")
+    provider_config = {"allow_fallbacks": True}
+    if provider_sort:
+        provider_config["sort"] = provider_sort
+    if provider_ignore:
+        provider_config["ignore"] = [
+            p.strip() for p in provider_ignore.split(",") if p.strip()
+        ]
+
+    return {
+        "provider": provider_config,
+        "reasoning": {
+            "effort": "medium",
+        },
+    }
 
 
 def get_eval_models(temperature: float = 0.0, is_generator: bool = False):
@@ -42,7 +49,7 @@ def get_eval_models(temperature: float = 0.0, is_generator: bool = False):
         temperature=temperature,
         max_tokens=16384,
         request_timeout=240.0,
-        extra_body=_EXTRA_BODY,
+        extra_body=_get_extra_body(),
     )
     embeddings = OpenAIEmbeddings(
         model=embed_model,
