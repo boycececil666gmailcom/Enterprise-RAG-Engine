@@ -1,4 +1,4 @@
-#region Graph Definition
+# region Graph Definition
 from langgraph.graph import END, StateGraph
 
 from .edges import route_after_critique, route_by_category, route_by_hyde_decision
@@ -52,4 +52,4 @@ workflow.add_conditional_edges(
 )
 
 agent_graph = workflow.compile()
-#endregion
+# endregion

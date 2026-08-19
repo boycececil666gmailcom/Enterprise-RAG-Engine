@@ -1,5 +1,6 @@
-#region Generation Node
+# region Generation Node
 from typing import cast
+
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 
 from ...llm_client import llm
@@ -38,14 +39,20 @@ def generate_node(state: AgentState) -> dict:
     prev_draft = state.get("final_response")
     if feedback and prev_draft:
         messages.append(AIMessage(content=prev_draft))
-        messages.append(HumanMessage(content=(
-            f"CRITIQUE FEEDBACK: Previous draft was rejected because: {feedback}\n"
-            "Revise your answer to strictly follow retrieved context."
-        )))
+        messages.append(
+            HumanMessage(
+                content=(
+                    f"CRITIQUE FEEDBACK: Previous draft was rejected because: {feedback}\n"
+                    "Revise your answer to strictly follow retrieved context."
+                )
+            )
+        )
 
     structured_llm = llm.with_structured_output(RAGResponseSchema)
     response = cast(RAGResponseSchema, structured_llm.invoke(messages))
-    answer_text = response.answer if response else "Information not available in documentation."
+    answer_text = (
+        response.answer if response else "Information not available in documentation."
+    )
 
     updated_history = list(history) + [
         {"role": "user", "content": query},
@@ -56,4 +63,6 @@ def generate_node(state: AgentState) -> dict:
         "final_response": answer_text,
         "history": updated_history,
     }
-#endregion
+
+
+# endregion

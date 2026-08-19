@@ -1,4 +1,4 @@
-#region App Setup
+# region App Setup
 import uvicorn
 from fastapi import FastAPI, HTTPException
 
@@ -8,9 +8,10 @@ from .config import BACKEND_HOST, BACKEND_PORT, OPENROUTER_MODEL
 from .models import QueryRequest, QueryResponse
 
 app = FastAPI(title="Theme-Based RAG Backend")
-#endregion
+# endregion
 
-#region Query Endpoints
+
+# region Query Endpoints
 @app.post("/query", response_model=QueryResponse)
 async def run_query(request: QueryRequest):
     """Executes the agent workflow graph for user queries."""
@@ -33,7 +34,7 @@ async def run_query(request: QueryRequest):
             history=result.get("history"),
         )
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Query error: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Query error: {str(e)}") from e
 
 
 @app.get("/health")
@@ -51,9 +52,16 @@ async def health_check():
         "platform": "Theme-Based RAG Workflow",
         "vector_store": vector_ok,
     }
-#endregion
 
-#region Server Runner
+
+# endregion
+
+# region Server Runner
 if __name__ == "__main__":
-    uvicorn.run("src.theme_based_rag_backend.main:app", host=BACKEND_HOST, port=BACKEND_PORT, reload=True)
-#endregion
+    uvicorn.run(
+        "src.theme_based_rag_backend.main:app",
+        host=BACKEND_HOST,
+        port=BACKEND_PORT,
+        reload=True,
+    )
+# endregion

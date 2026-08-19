@@ -1,5 +1,6 @@
-#region HyDE Generator
+# region HyDE Generator
 from typing import cast
+
 from langchain_core.messages import HumanMessage, SystemMessage
 
 from ...llm_client import hyde_llm
@@ -28,4 +29,6 @@ def generate_hypothetical_document(query: str) -> str:
 def hyde_node(state: AgentState) -> dict:
     """Generates hypothetical document passage and updates agent state."""
     return {"hyde_content": generate_hypothetical_document(state["query"])}
-#endregion
+
+
+# endregion

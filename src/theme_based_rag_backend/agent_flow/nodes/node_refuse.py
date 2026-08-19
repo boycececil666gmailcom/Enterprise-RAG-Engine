@@ -1,4 +1,4 @@
-#region Refusal Node
+# region Refusal Node
 from langchain_core.messages import HumanMessage, SystemMessage
 
 from ...config import CHATBOT_THEME
@@ -21,4 +21,6 @@ def refuse_node(state: AgentState) -> dict:
     structured_llm = llm.with_structured_output(RAGResponseSchema)
     response: RAGResponseSchema = structured_llm.invoke(messages)
     return {"final_response": response.answer}
-#endregion
+
+
+# endregion

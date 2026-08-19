@@ -1,4 +1,4 @@
-#region Retrieval Tool
+# region Retrieval Tool
 from langchain_core.tools import tool
 
 from . import vector_db as db
@@ -17,5 +17,11 @@ def retrieve_VDB(query: str) -> str:
         for doc in ranked_docs
     ]
 
-    return "=== VECTOR DATABASE CONTEXT ===\n" + "\n\n".join(formatted_chunks) if formatted_chunks else "No matching vector documents found."
-#endregion
+    return (
+        "=== VECTOR DATABASE CONTEXT ===\n" + "\n\n".join(formatted_chunks)
+        if formatted_chunks
+        else "No matching vector documents found."
+    )
+
+
+# endregion

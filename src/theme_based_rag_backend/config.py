@@ -1,20 +1,27 @@
-#region Config
+# region Config
 import os
+
 from dotenv import load_dotenv
 
 load_dotenv()
 
+
 def require_env(key: str) -> str:
     val = os.getenv(key)
     if not val:
-        raise ValueError(f"CRITICAL CONFIG ERROR: Environment variable '{key}' is required but not set.")
+        raise ValueError(
+            f"CRITICAL CONFIG ERROR: Environment variable '{key}' is required but not set."
+        )
     return val
+
 
 # OpenRouter Settings
 OPENROUTER_API_KEY = require_env("OPENROUTER_API_KEY")
 OPENROUTER_BASE_URL = os.getenv("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1")
 OPENROUTER_MODEL = os.getenv("OPENROUTER_MODEL", "deepseek/deepseek-v4-flash-0731")
-OPENROUTER_EMBED_MODEL = os.getenv("OPENROUTER_EMBED_MODEL", "nvidia/nemotron-3-embed-1b:free")
+OPENROUTER_EMBED_MODEL = os.getenv(
+    "OPENROUTER_EMBED_MODEL", "nvidia/nemotron-3-embed-1b:free"
+)
 OPENROUTER_TEMPERATURE = float(os.getenv("OPENROUTER_TEMPERATURE", "0.2"))
 
 # Server Settings
@@ -37,4 +44,4 @@ CHATBOT_THEME = require_env("CHATBOT_THEME")
 LANGSMITH_TRACING = require_env("LANGSMITH_TRACING").lower() == "true"
 LANGSMITH_API_KEY = os.getenv("LANGSMITH_API_KEY") or os.getenv("LANGCHAIN_API_KEY")
 LANGSMITH_PROJECT = require_env("LANGSMITH_PROJECT")
-#endregion
+# endregion

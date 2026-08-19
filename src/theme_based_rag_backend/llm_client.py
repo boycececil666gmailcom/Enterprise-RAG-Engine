@@ -1,4 +1,4 @@
-#region LLM Clients
+# region LLM Clients
 from flashrank import Ranker
 from langchain_community.document_compressors.flashrank_rerank import FlashrankRerank
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
@@ -48,4 +48,4 @@ embeddings = OpenAIEmbeddings(
 
 # Shared Cross-Encoder reranker instance
 reranker = FlashrankRerank(client=Ranker(), top_n=5)
-#endregion
+# endregion

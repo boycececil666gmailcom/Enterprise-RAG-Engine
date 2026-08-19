@@ -1,4 +1,4 @@
-#region Driver
+# region Driver
 import json
 import re
 from functools import lru_cache
@@ -15,14 +15,18 @@ def get_driver():
     """Lazily initializes and caches Neo4j GraphDatabase driver."""
     try:
         from neo4j import GraphDatabase
+
         driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USERNAME, NEO4J_PASSWORD))
         driver.verify_connectivity()
         return driver
     except Exception:
         return None
-#endregion
 
-#region Helpers
+
+# endregion
+
+
+# region Helpers
 def sanitize_rel_type(rel_type: str) -> str:
     """Sanitizes relationship type to conform to Cypher naming rules."""
     sanitized = re.sub(r"[^a-zA-Z0-9_]", "_", rel_type).upper().strip("_")
@@ -32,7 +36,9 @@ def sanitize_rel_type(rel_type: str) -> str:
 def clean_json_response(content: Any) -> str:
     """Strips markdown code fences from LLM response text."""
     if isinstance(content, list):
-        content = "".join(part if isinstance(part, str) else part.get("text", "") for part in content)
+        content = "".join(
+            part if isinstance(part, str) else part.get("text", "") for part in content
+        )
     text = str(content).strip()
     if text.startswith("```"):
         lines = text.splitlines()
@@ -42,9 +48,12 @@ def clean_json_response(content: Any) -> str:
             lines = lines[:-1]
         text = "\n".join(lines).strip()
     return text
-#endregion
 
-#region Graph Extractors
+
+# endregion
+
+
+# region Graph Extractors
 def extract_entities_and_relations(text: str) -> dict[str, list[dict[str, Any]]]:
     """Extracts entities and relationships from text using LLM."""
     system_prompt = (
@@ -57,14 +66,16 @@ def extract_entities_and_relations(text: str) -> dict[str, list[dict[str, Any]]]
         "Do not include markdown fences. Output raw JSON only."
     )
     try:
-        response = llm.invoke([
-            SystemMessage(content=system_prompt),
-            HumanMessage(content=f"Text to extract from:\n{text}")
-        ])
+        response = llm.invoke(
+            [
+                SystemMessage(content=system_prompt),
+                HumanMessage(content=f"Text to extract from:\n{text}"),
+            ]
+        )
         data = json.loads(clean_json_response(response.content))
         return {
             "entities": data.get("entities", []),
-            "relationships": data.get("relationships", [])
+            "relationships": data.get("relationships", []),
         }
     except Exception:
         return {"entities": [], "relationships": []}
@@ -74,22 +85,29 @@ def extract_query_entities(query: str) -> list[str]:
     """Identifies entity names mentioned in a user search query."""
     system_prompt = (
         "You are an entity extractor. Identify and list the main entities in the user query. "
-        "Output ONLY a valid JSON array of strings, e.g. [\"Supernova\", \"Premium Plan\"]. "
+        'Output ONLY a valid JSON array of strings, e.g. ["Supernova", "Premium Plan"]. '
         "Output raw JSON only."
     )
     try:
-        response = llm.invoke([
-            SystemMessage(content=system_prompt),
-            HumanMessage(content=f"Query: '{query}'")
-        ])
+        response = llm.invoke(
+            [
+                SystemMessage(content=system_prompt),
+                HumanMessage(content=f"Query: '{query}'"),
+            ]
+        )
         entities = json.loads(clean_json_response(response.content))
         return [str(item) for item in entities] if isinstance(entities, list) else []
     except Exception:
         return []
-#endregion
 
-#region Cypher Operations
-def add_graph_relations(entities: list[dict[str, Any]], relationships: list[dict[str, Any]]) -> None:
+
+# endregion
+
+
+# region Cypher Operations
+def add_graph_relations(
+    entities: list[dict[str, Any]], relationships: list[dict[str, Any]]
+) -> None:
     """Saves extracted entities and relationships into Neo4j."""
     driver = get_driver()
     if not driver:
@@ -107,7 +125,7 @@ def add_graph_relations(entities: list[dict[str, Any]], relationships: list[dict
                         "THEN e.description ELSE e.description + '; ' + $description END",
                         name=name,
                         type=ent.get("type", "Unknown"),
-                        description=ent.get("description", "")
+                        description=ent.get("description", ""),
                     )
 
             for rel in relationships:
@@ -120,7 +138,7 @@ def add_graph_relations(entities: list[dict[str, Any]], relationships: list[dict
                         f"MATCH (s:Entity {{name: $source}}), (t:Entity {{name: $target}}) "
                         f"MERGE (s)-[:{rel_type}]->(t)",
                         source=source,
-                        target=target
+                        target=target,
                     )
     except Exception:
         pass
@@ -142,7 +160,7 @@ def retrieve_graph_relations(query_entities: list[str]) -> str:
                     "RETURN e.name as name, e.type as type, e.description as description, "
                     "       type(r) as rel_type, neighbor.name as neighbor_name, "
                     "       startNode(r) = e as is_source",
-                    name=entity_name
+                    name=entity_name,
                 )
                 records = list(result)
                 if not records:
@@ -153,7 +171,8 @@ def retrieve_graph_relations(query_entities: list[str]) -> str:
                     f"- ({first['name']}) -[{r['rel_type']}]-> ({r['neighbor_name']})"
                     if r.get("is_source")
                     else f"- ({r['neighbor_name']}) -[{r['rel_type']}]-> ({first['name']})"
-                    for r in records if r.get("rel_type") and r.get("neighbor_name")
+                    for r in records
+                    if r.get("rel_type") and r.get("neighbor_name")
                 ]
 
                 part = f"Entity: {first['name']} (Type: {first['type']}, Description: {first['description']})"
@@ -175,4 +194,6 @@ def ingest_graph_document(text: str) -> int:
         add_graph_relations(entities, relationships)
         return len(entities) + len(relationships)
     return 0
-#endregion
+
+
+# endregion

@@ -1,4 +1,4 @@
-#region App Setup
+# region App Setup
 import httpx
 import uvicorn
 from fastapi import FastAPI, HTTPException
@@ -28,9 +28,10 @@ app.add_middleware(
 )
 
 async_client = httpx.AsyncClient(timeout=60.0)
-#endregion
+# endregion
 
-#region Proxy Helper
+
+# region Proxy Helper
 async def _proxy_post(endpoint: str, payload: BaseModel) -> dict:
     """Forwards POST request to downstream RAG backend."""
     target_url = f"{RAG_BACKEND_URL.rstrip('/')}{endpoint}"
@@ -40,10 +41,15 @@ async def _proxy_post(endpoint: str, payload: BaseModel) -> dict:
             raise HTTPException(status_code=response.status_code, detail=response.text)
         return response.json()
     except httpx.RequestError as exc:
-        raise HTTPException(status_code=503, detail=f"Downstream service unavailable: {str(exc)}")
-#endregion
+        raise HTTPException(
+            status_code=503, detail=f"Downstream service unavailable: {str(exc)}"
+        ) from exc
 
-#region Gateway Endpoints
+
+# endregion
+
+
+# region Gateway Endpoints
 @app.post("/query", response_model=QueryResponse)
 async def route_query(request: QueryRequest):
     """Proxies query request downstream to core RAG backend."""
@@ -57,7 +63,9 @@ async def health_check():
     backend_status = "unreachable"
     try:
         res = await async_client.get(f"{RAG_BACKEND_URL.rstrip('/')}/health")
-        backend_status = "healthy" if res.status_code == 200 else f"unhealthy ({res.status_code})"
+        backend_status = (
+            "healthy" if res.status_code == 200 else f"unhealthy ({res.status_code})"
+        )
     except Exception:
         pass
 
@@ -69,9 +77,16 @@ async def health_check():
             "status": backend_status,
         },
     }
-#endregion
 
-#region Server Runner
+
+# endregion
+
+# region Server Runner
 if __name__ == "__main__":
-    uvicorn.run("src.theme_based_rag_gateway.main:app", host=GATEWAY_HOST, port=GATEWAY_PORT, reload=True)
-#endregion
+    uvicorn.run(
+        "src.theme_based_rag_gateway.main:app",
+        host=GATEWAY_HOST,
+        port=GATEWAY_PORT,
+        reload=True,
+    )
+# endregion

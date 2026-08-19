@@ -1,5 +1,6 @@
-#region HyDE Decision
+# region HyDE Decision
 import re
+
 from ..state import AgentState
 
 
@@ -27,4 +28,6 @@ def hyde_decision_node(state: AgentState) -> dict:
         "should_hyde": True,
         "hyde_reason": "Abstract or short query benefits from hypothetical expansion",
     }
-#endregion
+
+
+# endregion

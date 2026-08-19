@@ -1,4 +1,4 @@
-#region Retrieval Node
+# region Retrieval Node
 from ...tools import retrieve_VDB
 from ..state import AgentState
 
@@ -14,4 +14,6 @@ def retrieve_node(state: AgentState) -> dict:
         retrieved_documents = retrieve_VDB.invoke(search_target)
 
     return {"retrieved_documents": retrieved_documents}
-#endregion
+
+
+# endregion

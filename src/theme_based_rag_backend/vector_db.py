@@ -1,4 +1,4 @@
-#region Vector Stores
+# region Vector Stores
 from functools import lru_cache
 
 from langchain_core.documents import Document
@@ -27,9 +27,12 @@ def get_vector_store(collection_name: str = "raptor_chunks") -> QdrantVectorStor
         sparse_embedding=get_sparse_embeddings(),
         retrieval_mode=RetrievalMode.HYBRID,
     )
-#endregion
 
-#region Collapsed Tree Retrieval
+
+# endregion
+
+
+# region Collapsed Tree Retrieval
 def retrieve_collapsed_tree(
     query: str,
     top_k: int = 10,
@@ -52,4 +55,6 @@ def retrieve_collapsed_tree(
         current_tokens += approx_tokens
 
     return selected_docs
-#endregion
+
+
+# endregion

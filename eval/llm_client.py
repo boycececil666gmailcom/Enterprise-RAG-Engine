@@ -1,15 +1,16 @@
-#region Imports & Setup
+# region Imports & Setup
 import os
 from pathlib import Path
+
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from ragas.embeddings import LangchainEmbeddingsWrapper
 from ragas.llms import LangchainLLMWrapper
 
 load_dotenv(Path(__file__).resolve().parents[1] / ".env")
-#endregion
+# endregion
 
-#region Model Config & Factory
+# region Model Config & Factory
 _EXTRA_BODY = {
     "provider": {
         "sort": "throughput",
@@ -21,11 +22,14 @@ _EXTRA_BODY = {
     },
 }
 
+
 def get_eval_models(temperature: float = 0.0, is_generator: bool = False):
     """Initializes LLM and Embeddings wrappers for Ragas evaluation and testset generation."""
     api_key = os.getenv("OPENROUTER_API_KEY")
     if not api_key:
-        raise ValueError("[EvalClient-init] OPENROUTER_API_KEY is not set in environment.")
+        raise ValueError(
+            "[EvalClient-init] OPENROUTER_API_KEY is not set in environment."
+        )
 
     base_url = os.getenv("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1")
     model = os.getenv("OPENROUTER_MODEL", "deepseek/deepseek-v4-flash-0731")
@@ -54,4 +58,6 @@ def get_eval_models(temperature: float = 0.0, is_generator: bool = False):
         else LangchainLLMWrapper(llm)
     )
     return llm_wrapper, LangchainEmbeddingsWrapper(embeddings)
-#endregion
+
+
+# endregion

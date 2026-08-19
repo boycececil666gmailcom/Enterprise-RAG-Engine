@@ -1,5 +1,6 @@
-#region Critique Node
+# region Critique Node
 from typing import cast
+
 from langchain_core.messages import HumanMessage
 
 from ...config import CHATBOT_THEME
@@ -52,10 +53,13 @@ def critique_node(state: AgentState) -> dict:
             return {"critique_feedback": "PASS"}
 
         return {
-            "critique_feedback": (eval_result.feedback if eval_result else None) or "Failed groundedness validation",
+            "critique_feedback": (eval_result.feedback if eval_result else None)
+            or "Failed groundedness validation",
             "attempt_count": attempt_count + 1,
         }
     except Exception:
         # Fallback to PASS on upstream schema validation errors to prevent pipeline crash
         return {"critique_feedback": "PASS"}
-#endregion
+
+
+# endregion

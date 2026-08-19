@@ -1,5 +1,6 @@
-#region Classifier Node
+# region Classifier Node
 from typing import cast
+
 from langchain_core.messages import HumanMessage, SystemMessage
 
 from ...config import CHATBOT_THEME
@@ -24,11 +25,15 @@ def classifier_node(state: AgentState) -> dict:
     structured_llm = llm.with_structured_output(ClassifierSchema)
     result = cast(
         ClassifierSchema,
-        structured_llm.invoke([
-            SystemMessage(content=system_prompt),
-            HumanMessage(content=state["query"]),
-        ]),
+        structured_llm.invoke(
+            [
+                SystemMessage(content=system_prompt),
+                HumanMessage(content=state["query"]),
+            ]
+        ),
     )
 
     return {"should_answer": result.category if result else "refuse"}
-#endregion
+
+
+# endregion
