@@ -2,6 +2,7 @@
   {
     "id": "3171661",
     "key": "VEL-16616",
+    "url": "https://rightware.atlassian.net/browse/VEL-16616",
     "issuetype": "Task",
     "summary": "【#2(Toyota)】【Animation】【车模新增】【004T】【DMS】004T流用HB（232D）个车意匠",
     "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n\n\n[需求来源]/[Source of demand]:\n\n8社会议记录：\n\n[Attachment: image-20260818-072216.png]\n[详细信息]/[Detail information]：\n\n设计要点：\n\n1.每个模式车模的颜色与设计图相比颜色是否OK（因工程无法百分之百设计效果完全一致，但是颜色需接近，要保证色相的统一，整体画面颜色的协调，车身反射颜色与天空以及山体颜色要在同一色系）\n\n2.车模位置、车模形状、车模倒影要与设计图一致（并且要保证工程中每个模式的车模位置相同，模式与模式切换时不能有抖动）\n\n3.车模以外的部分像是每个模式的背景右文言部分等都无变更（右边侧文言布局分为Toggle Switch、Push Switch）\n\n 以上设计要点只站在设计的角度，针对设计效果上开发与测试上需要关注的点 不能作为开发跟测试只需关注以上评论进行测试跟开发的理由\n\n切图文件：\n\n[Attachment: 71348907-9053-4a41-88a3-66b9d77a0e67]\n视频文件：\n\n[Attachment: 186D_master_DMS_eco.mp4]\n\n\n[Attachment: f032d676-04df-4807-b962-72aaeeab0da1]\n\n",
@@ -224,7 +225,7 @@
         "watchCount": 3,
         "isWatching": false
       },
-      "Last Viewed": "2026-08-20T11:34:24.529+0300",
+      "Last Viewed": "2026-08-21T04:47:16.443+0300",
       "Linked Issues": [
         {
           "id": "299291",
@@ -319,6 +320,7 @@
   {
     "id": "3171005",
     "key": "VEL-16610",
+    "url": "https://rightware.atlassian.net/browse/VEL-16610",
     "issuetype": "Task",
     "summary": "【#2(Toyota)】【车模新增】【004T】【DMS】004T流用HB（232D）个车意匠",
     "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n\n\n[需求来源]/[Source of demand]:\n\n8社会议记录：\n\n[Attachment: image-20260818-072216.png]\n[详细信息]/[Detail information]：\n\n设计要点：\n\n1.每个模式车模的颜色与设计图相比颜色是否OK（因工程无法百分之百设计效果完全一致，但是颜色需接近，要保证色相的统一，整体画面颜色的协调，车身反射颜色与天空以及山体颜色要在同一色系）\n\n2.车模位置、车模形状、车模倒影要与设计图一致（并且要保证工程中每个模式的车模位置相同，模式与模式切换时不能有抖动）\n\n3.车模以外的部分像是每个模式的背景右文言部分等都无变更（右边侧文言布局分为Toggle Switch、Push Switch）\n\n 以上设计要点只站在设计的角度，针对设计效果上开发与测试上需要关注的点 不能作为开发跟测试只需关注以上评论进行测试跟开发的理由\n\n【DMS】\n\n[Attachment: Push-Switch_Normal.png]\n全部设计图\n\n[Attachment: e7fac03f-3c77-4d0a-8857-9e23d1a08a5e]\n\n",
@@ -452,7 +454,7 @@
         "watchCount": 3,
         "isWatching": false
       },
-      "Last Viewed": "2026-08-20T10:31:03.915+0300",
+      "Last Viewed": "2026-08-21T04:47:40.471+0300",
       "Linked Issues": [
         {
           "id": "299085",
@@ -597,6 +599,7 @@
   {
     "id": "3164582",
     "key": "VEL-16539",
+    "url": "https://rightware.atlassian.net/browse/VEL-16539",
     "issuetype": "Task",
     "summary": "【#2(Toyota)】【车模新增】【animation】【J-SDN/J-WGN 001T 】【DMS】J-SDN/J-WGN 001T流用J-SDN/J-WGN 342D个车意匠",
     "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n\n\n[需求来源]/[Source of demand]:\n\n[Attachment: img_v3_02135_b8d89914-e841-4d4f-90a1-83a7c8b3bd4g-20260630-063139.jpg]\n[详细信息]/[Detail information]：\n\n设计要点：\n\n1.每个模式车模的颜色与设计图相比颜色是否OK（因工程无法百分之百设计效果完全一致，但是颜色需接近，要保证色相的统一，整体画面颜色的协调，车身反射颜色与天空以及山体颜色要在同一色系）\n\n2.车模位置、车模形状、车模倒影以及动态效果要与设计图一致（并且要保证工程中每个模式的车模位置相同，模式与模式切换时不能有抖动）\n\n3.车模以外的部分像是每个模式的背景右文言部分等都无变更（右边侧文言布局分为Toggle Switch、Push Switch）\n\n只站在设计的角度，针对设计效果上开发与测试上需要关注的点 不能作为开发跟测试只需关注以上评论进行测试跟开发的理由\n\nJ-SDN 001T\n\n[Link: https://rightware.atlassian.net/browse/VEL-4595?search_id=174b3335-24c4-47fa-8a41-75f59a84d86c&referrer=quick-find]  \n\nJ-WGN 001T\n\n  [Link: https://rightware.atlassian.net/browse/VEL-4596?search_id=174b3335-24c4-47fa-8a41-75f59a84d86c&referrer=quick-find]  \n",
@@ -832,6 +835,7 @@
         "watchCount": 5,
         "isWatching": false
       },
+      "Last Viewed": "2026-08-21T04:48:15.489+0300",
       "Linked Issues": [
         {
           "id": "294977",
@@ -955,6 +959,7 @@
   {
     "id": "3164479",
     "key": "VEL-16533",
+    "url": "https://rightware.atlassian.net/browse/VEL-16533",
     "issuetype": "Task",
     "summary": "【#2(Toyota)】【车模新增】【J-SDN/J-WGN 001T 】【DMS】J-SDN/J-WGN 001T流用J-SDN/J-WGN 342D个车意匠",
     "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n\n\n[需求来源]/[Source of demand]:\n\n[Attachment: img_v3_02135_b8d89914-e841-4d4f-90a1-83a7c8b3bd4g-20260630-063139.jpg]\n[详细信息]/[Detail information]：\n\n设计要点：\n\n1.每个模式车模的颜色与设计图相比颜色是否OK（因工程无法百分之百设计效果完全一致，但是颜色需接近，要保证色相的统一，整体画面颜色的协调，车身反射颜色与天空以及山体颜色要在同一色系）\n\n2.车模位置、车模形状、车模倒影要与设计图一致（并且要保证工程中每个模式的车模位置相同，模式与模式切换时不能有抖动）\n\n3.车模以外的部分像是每个模式的背景右文言部分等都无变更（右边侧文言布局分为Toggle Switch、Push Switch）\n\n 以上设计要点只站在设计的角度，针对设计效果上开发与测试上需要关注的点 不能作为开发跟测试只需关注以上评论进行测试跟开发的理由\n\nJ-SDN 001T\n\n全部设计图 \n\n[Attachment: 4e45ef03-18f6-4e31-95df-8c0748e609cd]\n【DMS】\n\n[Attachment: C_DRIMOD-CSTD-1-VM01-GSY01-REQ01-Normal-Push.png]\nJ-WGN 001T\n\n全部设计图  \n\n[Attachment: b0298d05-9991-4c37-8bc8-1cd5909a6430]\n【DMS】\n\n[Attachment: C_DRIMOD-CSTD-1-VM01-GSY01-REQ01-Normal-Push.png]",
@@ -1330,6 +1335,7 @@
   {
     "id": "3162758",
     "key": "VEL-16504",
+    "url": "https://rightware.atlassian.net/browse/VEL-16504",
     "issuetype": "Task",
     "summary": "【#5(Toyota)】【Animation】【车模新增】【737D MLM】【pitch&roll】737D MLM车模新增 动效对应",
     "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n[需求来源]/[Source of demand]:\n\n16.06.2026 TMC x RW Design Meeting\n\n[详细信息]/[Detail information]：\n\n根据客户指示：\n\n737D MLM车模新增\n\n[Link: https://rightware.atlassian.net/browse/VEL-16484]  以上内容需要对应MID动效\n\n动效内容： 开关机（淡入淡出），0-1-2dial（有无widget位置不同），MAP,Setting切换（位移）,和大割入切换（淡入淡出），MID切换滚动效果\n\n[Attachment: 220827_#2-T_Black screen⇒ Casual_1dial_HV_video_003.mp4]\n[Attachment: 220810_#2-T_IG_ON ⇒ Ending_Casual_2Dial_video_003.mp4]\n[Attachment: 220827_#2-T_Setting_Lay0_appear_2Dial_video_001.mp4]\n[Attachment: 220810_#2-T_DriveMode_Casual_1Dial_video_004.mp4]\n[Attachment: 220827_#2-T_Cursor_animation_video_001.mp4]\n请开发和测试确认对应范围是否正确，需要补足请联系\n",
@@ -1760,6 +1766,7 @@
   {
     "id": "3162086",
     "key": "VEL-16479",
+    "url": "https://rightware.atlassian.net/browse/VEL-16479",
     "issuetype": "Bug",
     "summary": "【#2(Toyota)】#77972  私有 【面企画#2】【567D/568D】【DRIMOD】【v4.11.4】【MET-G_T_SCREEN-CSTD-7-01-A-C1】【C】SNOW EXTRA模式与其他DRIMOD模式互切时不流畅，有短时间的黑画面（745D）",
     "description": "【前提条件】 \n 1.+B ON,IG ON \n 【操作步骤】 \n 1.ENG1G90_B_DMODEX =0→1→0→1 \n 2.观察画面切替是否流畅 \n 【预期结果】 \n 画面切替流畅 \n 【实际结果】 \n 画面切替不流畅，有短暂黑画面\n\n备注：异常切替视频见附件切替显示：异常画面切替 \n 正常对比视频见附件：正常画面切替\n\n\n\n[Attachment: image-20240417-092432.png]\n\n\n[Attachment: 异常画面切替.mp4]\n\n\n[Attachment: 正常画面切替.mp4]",
@@ -2056,6 +2063,7 @@
   {
     "id": "3161929",
     "key": "VEL-16474",
+    "url": "https://rightware.atlassian.net/browse/VEL-16474",
     "issuetype": "Task",
     "summary": "【#5(Toyota)】【Animation】【车模新增】【063T】【pitch&roll】063T流用583D  动效对应",
     "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n[需求来源]/[Source of demand]:\n\n[Attachment: img_v3_0212h_068d6f10-4403-43e1-a5b8-6d1e050ef0ag-20260610-100734.jpg]\n[Link: https://rightware.atlassian.net/browse/VEL-16443]  以上票需要对应动效，动效内容如下：\n\n[详细信息]/[Detail information]：\n\n根据客户指示：\n\n063T/737D BEV个车意匠与583D车模外观一致，故063T/737D BEV流用583D个车意匠\n\n设计要点：\n\n1.车模大小位置是都与UI效果一致\n\n2.除车模变更为其他部品无变更\n\n3.注意开关机、view迁移和切换MID时效果是否正常\n\n以上设计要点只站在设计的角度，针对设计效果上开发与测试上需要关注的点 不能作为开发跟测试只需关注以上评论进行测试跟开发的理由 如有任何疑问，请及时联络UI侧\n\n动效内容： 开关机（淡入淡出），0-1-2dial（有无widget位置不同），MAP,Setting切换（位移）,和大割入切换（淡入淡出），MID切换滚动效果\n\n[Attachment: 220827_#2-T_Black screen⇒ Casual_1dial_HV_video_003.mp4]\n[Attachment: 220810_#2-T_IG_ON ⇒ Ending_Casual_2Dial_video_003.mp4]\n[Attachment: 220827_#2-T_Setting_Lay0_appear_2Dial_video_001.mp4]\n[Attachment: 220810_#2-T_DriveMode_Casual_1Dial_video_004.mp4]\n[Attachment: 220827_#2-T_Cursor_animation_video_001.mp4]\n请开发和测试确认对应范围是否正确，需要补足请联系\n",
@@ -2437,6 +2445,7 @@
   {
     "id": "3161921",
     "key": "VEL-16467",
+    "url": "https://rightware.atlassian.net/browse/VEL-16467",
     "issuetype": "Task",
     "summary": "【#5(Toyota)】【Animation】【车模新增】【737D MLM】【DMS】737D MLM车模新增  动效对应",
     "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n\n\n[需求来源]/[Source of demand]:\n\n16.06.2026 TMC x RW GR Design Meeting\n\n[Link: https://rightware.atlassian.net/browse/VEL-16452]  以上票需要对应动效，动效内容如下：\n\n[详细信息]/[Detail information]：\n\n设计要点：\n\n1.每个模式车模的颜色与设计图相比颜色是否OK（因工程无法百分之百设计效果完全一致，但是颜色需接近，要保证色相的统一，整体画面颜色的协调，车身反射颜色与天空以及山体颜色要在同一色系）\n\n2.车模位置、车模形状、车模倒影以及动态效果要与设计图一致（并且要保证工程中每个模式的车模位置相同，模式与模式切换时不能有抖动）\n\n3.此票只为车模新增，车模以外的部分像是每个模式的背景右文言部分等都无变更（右边侧文言布局分为Dial Switch、Toggle Switch、Push Switch） 以上设计要点只站在设计的角度，针对设计效果上开发与测试上需要关注的点 不能作为开发跟测试只需关注以上评论进行测试跟开发的理由\n\n\n\n切图文件：\n\n[Attachment: a178ceb9-1864-4c0e-9a54-4ab94fb3aab2]\n【DMS】\n\neco\n\n[Attachment: 737D_master_DMS_eco.mp4]\nnormal\n\n[Attachment: 737D_master_DMS_normal.mp4]\nsport\n\n[Attachment: 737D_master_DMS_sport.mp4]",
@@ -2828,6 +2837,7 @@
   {
     "id": "3161516",
     "key": "VEL-16456",
+    "url": "https://rightware.atlassian.net/browse/VEL-16456",
     "issuetype": "Task",
     "summary": "【#5(Toyota)】【车模新增】【animation】【063T】【MTS】063T流用583D",
     "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n\n\n[需求来源]/[Source of demand]:\n\n[Attachment: img_v3_0212h_0e21aee1-cee6-432b-ba85-9fb6d096724g-20260610-094708.png]\n[详细信息]/[Detail information]：\n\n根据客户指示：\n\n063T/737D BEV个车意匠与583D车模外观一致，故063T/737D BEV流用583D个车意匠\n\n设计要点：\n\n1.每个模式车模的颜色与设计图相比颜色是否OK（因工程无法百分之百设计效果完全一致，但是颜色需接近，要保证色相的统一，整体画面颜色的协调，车身反射颜色与天空以及山体颜色要在同一色系） \n\n2.车模位置、车模形状、车模倒影要与视频一致（并且要保证工程中每个模式的车模位置相同，模式与模式切换时不能有抖动）  \n\n3.此票只为车模新增，车模以外的部分像是每个模式的背景右文言部分等都无变更（右边侧文言布局分为Dial Switch、Toggle Switch、Push Switch） 以上设计要点只站在设计的角度，针对设计效果上开发与测试上需要关注的点 不能作为开发跟测试只需关注以上评论进行测试跟开发的理由\n\n4.注意IG-ON、IG-OFF以及DMS与其他功能的迁移动效是否正常\n\n切图:与DMS切图相同\n\n[Attachment: e6494068-8659-4784-b16f-53a55c20c774]\n \n\nMTS-auto\n\n[Attachment: 583D_master_MTS_auto.mp4]\nMTS-dirt\n\n \n\n[Attachment: 583D_master_MTS_dirt.mp4]\nMTS-mogul\n\n[Attachment: 583D_master_MTS_mogul.mp4]\nMTS-mud\n\n[Attachment: 583D_master_MTS_mud.mp4]\nMTS-rock\n\n[Attachment: 583D_master_MTS_rock.mp4]\nMTS-sand\n\n[Attachment: 583D_master_MTS_sand.mp4]",
@@ -3218,6 +3228,7 @@
   {
     "id": "3161515",
     "key": "VEL-16455",
+    "url": "https://rightware.atlassian.net/browse/VEL-16455",
     "issuetype": "Task",
     "summary": "【#5(Toyota)】【车模新增】【animation】【063T】【DMS】063T流用583D",
     "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n\n\n[需求来源]/[Source of demand]:\n\n[Attachment: img_v3_0212h_0e21aee1-cee6-432b-ba85-9fb6d096724g-20260610-094708.png]\n[详细信息]/[Detail information]：\n\n根据客户指示：\n\n063T/737D BEV个车意匠与583D车模外观一致，故063T/737D BEV流用583D个车意匠\n\n设计要点：\n\n1.每个模式车模的颜色与设计图相比颜色是否OK（因工程无法百分之百设计效果完全一致，但是颜色需接近，要保证色相的统一，整体画面颜色的协调，车身反射颜色与天空以及山体颜色要在同一色系） \n\n2.车模位置、车模形状、车模倒影要与视频一致（并且要保证工程中每个模式的车模位置相同，模式与模式切换时不能有抖动）  \n\n3.此票只为车模新增，车模以外的部分像是每个模式的背景右文言部分等都无变更（右边侧文言布局分为Dial Switch、Toggle Switch、Push Switch） 以上设计要点只站在设计的角度，针对设计效果上开发与测试上需要关注的点 不能作为开发跟测试只需关注以上评论进行测试跟开发的理由\n\n4.注意IG-ON、IG-OFF以及DMS与其他功能的迁移动效是否正常\n\n\n\n切图\n\n[Attachment: 9cbe4f8f-b424-4a39-9b75-7c0f9cf51a70]\nDMS-eco\n\n[Attachment: video_1280.mp4]\nDMS-normal\n\n[Attachment: video_1280 (1).mp4]\nDMS-sport\n\n[Attachment: video_1280 (2).mp4]",
@@ -3604,6 +3615,7 @@
   {
     "id": "3161511",
     "key": "VEL-16452",
+    "url": "https://rightware.atlassian.net/browse/VEL-16452",
     "issuetype": "Task",
     "summary": "【#5(Toyota)】【车模新增】【737D MLM】【DMS】737D MLM车模新增",
     "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n\n\n[需求来源]/[Source of demand]:\n\n16.06.2026 TMC x RW GR Design Meeting\n\n[详细信息]/[Detail information]：\n\n设计要点：\n\n1.每个模式车模的颜色与设计图相比颜色是否OK（因工程无法百分之百设计效果完全一致，但是颜色需接近，要保证色相的统一，整体画面颜色的协调，车身反射颜色与天空以及山体颜色要在同一色系）\n\n2.车模位置、车模形状、车模倒影要与设计图一致（并且要保证工程中每个模式的车模位置相同，模式与模式切换时不能有抖动）\n\n3.此票只为车模新增，车模以外的部分像是每个模式的背景右文言部分等都无变更（右边侧文言布局分为Dial Switch、Toggle Switch、Push Switch） 以上设计要点只站在设计的角度，针对设计效果上开发与测试上需要关注的点 不能作为开发跟测试只需关注以上评论进行测试跟开发的理由\n\n【DMS】\n\neco\n\n[Attachment: 737D-MLM_Push-Switch_ECO.png]\nnormal\n\n[Attachment: 737D-MLM_Push-Switch_NORMAL.png]\nsport\n\n[Attachment: 737D-MLM_Push-Switch_SPORT.png]\n\n\n全部设计图\n\n[Attachment: 1a92c9a9-3d4b-4ccc-97b3-e851ec54a556]\n\n",
@@ -4007,6 +4019,7 @@
   {
     "id": "3161507",
     "key": "VEL-16448",
+    "url": "https://rightware.atlassian.net/browse/VEL-16448",
     "issuetype": "Task",
     "summary": "【#5(Toyota)】【车模新增】【737D MLM】【door open】【DoorUnlock】【SEA】737D MLM车模新增",
     "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n\n\n[需求来源]/[Source of demand]:\n\n16.06.2026 TMC x RW GR Design Meeting\n\n[详细信息]/[Detail information]：\n\n设计要点：\n\n1.车模的大小是否与设计图一致\n\n2.车门全关跟车门全开位置是否正确，注意全关时车门与车身是否会有明显缝隙\n\n3.注意工程中的车门全关与红色车门全关切换时车门不可以有抖动需完全一致\n\n4.door open与door unlock切换时车不可以有抖动，包含车门全关跟车门全开，工程中车模需完全一致\n\n5.车模新增票除车模有变更以外，其他部品无变更\n\n以上设计要点只站在设计的角度，针对设计效果上开发与测试上需要关注的点 不能作为开发跟测试只需关注以上评论进行测试跟开发的理由 如有任何疑问，请及时联络UI侧\n\n【door open】\n\n[Attachment: 737D-MLM_door-closed-red-0Dial.png]\n[Attachment: 737D-MLM_door-closed-White-0Dial.png]\n[Attachment: 737D-MLM_Interrupt-Display-D-Seat-Door-Open-2Dial_1.png]\n【DoorUnlock】\n\n[Attachment: 737D MLM_Interrupt Display-RR Seat Door Open.jpg]\n【SEA】\n\n[Attachment: 737D-MLM_S_SEA-CSTD-REQ02-Rear-right-door-0Dial.png]\n[Attachment: 737D-MLM_S_SEA-GSY02-REQ02-Front-right-door-1Dial.png]",
@@ -5296,6 +5309,7 @@
   {
     "id": "3161505",
     "key": "VEL-16447",
+    "url": "https://rightware.atlassian.net/browse/VEL-16447",
     "issuetype": "Task",
     "summary": "【#5(Toyota)】【车模新增】【063T】【MTS】063T流用583D",
     "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n\n\n[需求来源]/[Source of demand]:\n\n[Attachment: img_v3_0212h_0e21aee1-cee6-432b-ba85-9fb6d096724g-20260610-094708.png]\n[详细信息]/[Detail information]：\n\n根据客户指示：\n\n063T/737D BEV个车意匠与583D车模外观一致，故063T/737D BEV流用583D个车意匠\n\n设计要点：\n\n1.每个模式车模的颜色与设计图相比颜色是否OK（因工程无法百分之百设计效果完全一致，但是颜色需接近，要保证色相的统一，整体画面颜色的协调，车身反射颜色与天空以及山体颜色要在同一色系） \n\n2.车模位置、车模形状、车模倒影要与设计图一致（并且要保证工程中每个模式的车模位置相同，模式与模式切换时不能有抖动）  \n\n3.此票只为车模新增，车模以外的部分像是每个模式的背景右文言部分等都无变更（右边侧文言布局分为Dial Switch、Toggle Switch、Push Switch） 以上设计要点只站在设计的角度，针对设计效果上开发与测试上需要关注的点 不能作为开发跟测试只需关注以上评论进行测试跟开发的理由\n\n4.注意IG-ON、IG-OFF以及DMS与其他功能的迁移动效是否正常\n\n设计图如下：\n\n[Attachment: 3_Arc-List_MTS_6mode-(T_F).png]\n全部设计图\n\n[Attachment: 99aead0f-3ee6-4b27-ae7d-e418c5783a2c]\n如有任何问题，请与UI侧联络\n",
@@ -5606,6 +5620,7 @@
   {
     "id": "3161504",
     "key": "VEL-16446",
+    "url": "https://rightware.atlassian.net/browse/VEL-16446",
     "issuetype": "Task",
     "summary": "【#5(Toyota)】【车模新增】【063T】【DMS】063T流用583D",
     "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n\n\n[需求来源]/[Source of demand]:\n\n[Attachment: img_v3_0212h_0e21aee1-cee6-432b-ba85-9fb6d096724g-20260610-094708.png]\n另外与客户确认此车不适用snow extra模式\n\n[详细信息]/[Detail information]：\n\n根据客户指示：\n\n063T/737D BEV个车意匠与583D车模外观一致，故063T/737D BEV流用583D个车意匠 \n 设计要点：\n\n1.每个模式车模的颜色与设计图相比颜色是否OK（因工程无法百分之百设计效果完全一致，但是颜色需接近，要保证色相的统一，整体画面颜色的协调，车身反射颜色与天空以及山体颜色要在同一色系） \n\n2.车模位置、车模形状、车模倒影要与设计图一致（并且要保证工程中每个模式的车模位置相同，模式与模式切换时不能有抖动）  \n\n3.此票只为车模新增，车模以外的部分像是每个模式的背景右文言部分等都无变更（右边侧文言布局分为Dial Switch、Toggle Switch、Push Switch） 以上设计要点只站在设计的角度，针对设计效果上开发与测试上需要关注的点 不能作为开发跟测试只需关注以上评论进行测试跟开发的理由\n\n4.注意IG-ON、IG-OFF以及DMS与其他功能的迁移动效是否正常\n\n设计图如下：\n\n[Attachment: 2.5_Arc-List_DMS_6mde-CUSTOM.png]\n全部设计图\n\n[Attachment: 6186816d-d951-4a1c-8d00-c796ec1b46c5]\n如有任何问题请与UI侧联络\n",
@@ -5888,6 +5903,7 @@
   {
     "id": "3159401",
     "key": "VEL-16404",
+    "url": "https://rightware.atlassian.net/browse/VEL-16404",
     "issuetype": "Bug",
     "summary": "【#2(Toyota)】【内部Bug】【DMS】2dial切换到DMS List界面时，DMS模式选项框动效超出列表范围（852D）",
     "description": "前提条件】/【Pre-condition】：\n\n<Common.IG_State filename=\"Common\" type=\"int\" value=\"3\" />\n\n<Common.ThemeType filename=\"Common\" type=\"int\" value=\"1\" />\n\n<Gauge.SpeedMaximum filename=\"Gauge\" type=\"int\" value=\"1\" />\n\n<Gauge.RpmMaximum filename=\"Gauge\" type=\"int\" value=\"1\" />\n\n<Common.ModeType filename=\"Common\" type=\"int\" value=\"3\" />\n\n<Gauge.DialMode filename=\"Gauge\" type=\"int\" value=\"1\" />\n\n<Common.LeftRightMidPosition filename=\"Common\" type=\"int\" value=\"3\"/>\n\n【 测试环境 】 / 【 Testing Environment 】 :\n\nPC\n\n【语种】/【Languages】：-\n\n【Message No】/【Message No】：-\n\n【操作手顺】/【Procedure】：\n\n1.<DriveMode.DisplayIndex filename=\"DriveMode\" type=\"int\" value=\"1\" /> \n  <DriveMode.DriveModeVisible filename=\"DriveMode\" type=\"bool\" value=\"1\" /> \n <DriveMode.List_Comfort filename=\"DriveMode\" type=\"bool\" value=\"1\" /> \n <DriveMode.List_CUSTOM filename=\"DriveMode\" type=\"bool\" value=\"1\" /> \n <DriveMode.List_ECO filename=\"DriveMode\" type=\"bool\" value=\"1\" /> \n <DriveMode.List_Normal filename=\"DriveMode\" type=\"bool\" value=\"1\" /> \n <DriveMode.List_Range filename=\"DriveMode\" type=\"bool\" value=\"1\" /> \n <DriveMode.List_RearComfort filename=\"DriveMode\" type=\"bool\" value=\"1\" /> \n <DriveMode.List_SPORT filename=\"DriveMode\" type=\"bool\" value=\"1\" /> \n <DriveMode.ModeSelectIndex filename=\"DriveMode\" type=\"int\" value=\"3\" />\n\n2.<DriveMode.DriveModeVisible filename=\"DriveMode\" type=\"bool\" value=\"0\" />\n\n3.<DriveMode.ModeSelectIndex filename=\"DriveMode\" type=\"int\" value=\"6\" />\n\n4.<DriveMode.DriveModeVisible filename=\"DriveMode\" type=\"bool\" value=\"1\" />\n\n【周边确认】/【Surrounding Confirmation】：\n\n从2dial进入DMS画面，DMS淡入时，选项框位置没有从第一个选项开始移动\n\n备注：Base版本20240927_Kanzi_Project_Platform_vReleasefor#2T-18(567D568D-1A) 567D车型也存在此问题\n\n问题截图：\n\n[Attachment: image-20260525-093332.png]\n视频：\n\n[Attachment: 录制_2026_05_25_18_26_48_951.mp4]",
@@ -6060,6 +6076,7 @@
   {
     "id": "3159019",
     "key": "VEL-16399",
+    "url": "https://rightware.atlassian.net/browse/VEL-16399",
     "issuetype": "Task",
     "summary": "【#2(Toyota)】【DN】【Animation】【745D】【新增功能】新增Normal Display - Battery Status功能 动效对应",
     "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n[需求来源]/[Source of demand]:\n\nDN_面開発管理用_標準仕様DB_260512_v0151\n\nREQ-0806\n\nMET-H_SOHDSP-CSTD-0-07-A-C0\n\n[详细信息]/[Detail information]：\n\n[Link: https://rightware.atlassian.net/browse/VEL-16386]  \n\n动效内容： 开关机（淡入淡出），0-1-2dial（有无widget位置不同），MAP,Setting切换（位移）,和大割入切换（淡入淡出），MID切换滚动效果\n\n[Attachment: 220827_#2-T_Black screen⇒ Casual_1dial_HV_video_003.mp4]\n[Attachment: 220810_#2-T_IG_ON ⇒ Ending_Casual_2Dial_video_003.mp4]\n[Attachment: 220827_#2-T_Setting_Lay0_appear_2Dial_video_001.mp4]\n[Attachment: 220810_#2-T_DriveMode_Casual_1Dial_video_004.mp4]\n[Attachment: 220827_#2-T_Cursor_animation_video_001.mp4]\n请开发和测试确认对应范围是否正确，需要补足请联系\n",
@@ -6440,6 +6457,7 @@
   {
     "id": "3154257",
     "key": "VEL-16328",
+    "url": "https://rightware.atlassian.net/browse/VEL-16328",
     "issuetype": "Task",
     "summary": "【#2(Toyota)】【DN】【852D】【功能适用变更】【 ANIMATION】Interrupt Display - Drive mode 3增加CUSTOM和SNOW EXTRA模式",
     "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n\n\n[需求来源]/[Source of demand]:\n\n\n\n[详细信息]/[Detail information]：\n\n因#2T的式样追加 [Link: https://rightware.atlassian.net/browse/VEL-16327]   所以起了这张动效票，以下DMS模式按照式样票中的模式列举出，动效视频只参考动态效果 ，852D车型以UI设计图为准\n\nDMS与2dial/1dial切换参考动效\n\n[Attachment: 221011_#2.5-T_920Dcab_DMS_1dial_NORMAL_video_001.mp4]\ncustom\n\n[Attachment: 120D_master_DMS_normal-custom-comfort-Rcomfort.mp4]\nSnow extra\n\n[Attachment: 231213_#2.5-T_920Dcab_DMS_2dial_snow_extra_video_001.mp4]",
@@ -6755,6 +6773,7 @@
   {
     "id": "3154242",
     "key": "VEL-16326",
+    "url": "https://rightware.atlassian.net/browse/VEL-16326",
     "issuetype": "Task",
     "summary": "【#2(Toyota)】【车模新增】【745D】【ANIMATION】【DMS】745D追加snow extra模式",
     "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n\n\n[需求来源]/[Source of demand]:\n\n[Attachment: 截屏2026-04-16 14.10.53.png]\n根据客户指示，745D适用snow extra模式\n\n[Attachment: img_v3_0210q_af629d1d-4da4-45bc-ae7d-f3e1faa1563g-20260416-030738.jpg]\n[详细信息]/[Detail information]：\n\n745D与130D车模外观一致，所以745D留用130D个车意匠，因130D之前没有snow extra模式，所以起此票追加745D snow extra模式，此票只是追加该模式并不代表745D的DMS只适用snow extra模式\n\nsnow extra参考动效：（动效中的车模不是745D，动效仅作为参考）\n\n[Attachment: 240516_#2.5-T_920Dcab_DMS_2dial_snow_extra(sand)_video_001.mp4]",
@@ -7267,6 +7286,7 @@
   {
     "id": "3153813",
     "key": "VEL-16310",
+    "url": "https://rightware.atlassian.net/browse/VEL-16310",
     "issuetype": "Task",
     "summary": "【#2(Toyota)】【车模新增】【animation】【567D/568D】【DMS】567/568D流用397D_DMS功能对应",
     "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n\n\n[需求来源]/[Source of demand]:\n\n22.12.2023 TMC x RW Design Meeting\n\n[详细信息]/[Detail information]：\n\n设计要点：\n\n车身颜色以及天空背景颜色与地面反射颜色需保持一致\n\n\n\n567/568D使用397D个车意匠\n\n车轮序列帧： [http://192.168.9.128:8000/svn2/Veleda_Global/06-Release/00.UIDesignRelease/03.Animation/#1](http://192.168.9.128:8000/svn2/Veleda_Global/06-Release/00.UIDesignRelease/03.Animation/#1)  Toyota/Drivemode/397D\n\n397D DMS功能票链接\n\n[Link: https://rightware.atlassian.net/browse/VEL-11346]\n\n表盘与大割入切换参考\n\n[Attachment: 20260420-182415.mp4]",
@@ -7600,6 +7620,7 @@
   {
     "id": "3153357",
     "key": "VEL-16294",
+    "url": "https://rightware.atlassian.net/browse/VEL-16294",
     "issuetype": "Task",
     "summary": "【#2(Toyota)】【车模新增】【animation】【567D/568D】【Drive mode】增加SNOW EXTRA模式567/568D流用397D个车意匠",
     "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n\n\n[需求来源]/[Source of demand]:\n\n22.12.2023 TMC x RW Design Meeting\n\n[详细信息]/[Detail information]：\n\n设计要点：\n\n车身颜色以及天空背景颜色与地面反射颜色需保持一致\n\n\n\n567/568D使用397D个车意匠\n\n车轮序列帧： [http://192.168.9.128:8000/svn2/Veleda_Global/06-Release/00.UIDesignRelease/03.Animation/#1](http://192.168.9.128:8000/svn2/Veleda_Global/06-Release/00.UIDesignRelease/03.Animation/#1)  Toyota/Drivemode/397D\n\n雪特效切图SVN\n\n[http://192.168.9.128:8000/svn2/Veleda_Global/06-Release/00.UIDesignRelease/03.Animation/#2](http://192.168.9.128:8000/svn2/Veleda_Global/06-Release/00.UIDesignRelease/03.Animation/#2)  Toyota/DMS_MTS_CRAWL_DAC AE/567&568D\n\nsnow extra动效视频参考：\n\n[Attachment: image-20260420-050210.png]\n表盘与大割入切换参考\n\n[Attachment: 20260420-182415.mp4]",

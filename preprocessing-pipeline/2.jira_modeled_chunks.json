@@ -1,0 +1,66 @@
+[
+  {
+    "id": "jira-VEL-16399",
+    "small": "Issue: VEL-16399 - 【#2(Toyota)】【DN】【Animation】【745D】【新增功能】新增Normal Display - Battery Status功能 动效对应\nKeywords: Rendering / Pipeline, fade animation, first load performance, resource loading, MID text, DMS switch, Kanzi, 745D, 852D, animation not visible, transition effect, historical defect, PM acceptance\nRCA: The MID text fade-out animation is not visible on the first DMS switch because the required resources are still being loaded on 745D/852D, causing the animation to be skipped or completed before the first frame renders. On subsequent switches, resources are cached and the animation plays correctly. The other two issues (missing car model fade-out and black bar on setting exit) are pre-existing historical defects unrelated to this feature.",
+    "metadata": {
+      "big": "# Defect Case: [VEL-16399](https://rightware.atlassian.net/browse/VEL-16399) - 【#2(Toyota)】【DN】【Animation】【745D】【新增功能】新增Normal Display - Battery Status功能 动效对应\n\n- **JIRA Link**: https://rightware.atlassian.net/browse/VEL-16399\n- **Component**: Unspecified\n- **Priority**: Medium | **Status**: DONE | **Resolution**: Done\n- **Fix Version**: #2-Toyota-1A-DN(745D) | **RCA Category**: Rendering / Pipeline\n\n## 1. Defect Symptom & Description\n[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n[需求来源]/[Source of demand]:\n\nDN_面開発管理用_標準仕様DB_260512_v0151\n\nREQ-0806\n\nMET-H_SOHDSP-CSTD-0-07-A-C0\n\n[详细信息]/[Detail information]：\n\n[Link: https://rightware.atlassian.net/browse/VEL-16386]  \n\n动效内容： 开关机（淡入淡出），0-1-2dial（有无widget位置不同），MAP,Setting切换（位移）,和大割入切换（淡入淡出），MID切换滚动效果\n\n[Attachment: 220827_#2-T_Black screen⇒ Casual_1dial_HV_video_003.mp4]\n[Attachment: 220810_#2-T_IG_ON ⇒ Ending_Casual_2Dial_video_003.mp4]\n[Attachment: 220827_#2-T_Setting_Lay0_appear_2Dial_video_001.mp4]\n[Attachment: 220810_#2-T_DriveMode_Casual_1Dial_video_004.mp4]\n[Attachment: 220827_#2-T_Cursor_animation_video_001.mp4]\n请开发和测试确认对应范围是否正确，需要补足请联系\n\n\n## 2. RCA (Root Cause Analysis)\nThe MID text fade-out animation is not visible on the first DMS switch because the required resources are still being loaded on 745D/852D, causing the animation to be skipped or completed before the first frame renders. On subsequent switches, resources are cached and the animation plays correctly. The other two issues (missing car model fade-out and black bar on setting exit) are pre-existing historical defects unrelated to this feature.\n\n## 3. Resolution & Code Fix Pattern\nNo code fix was applied. The first-load performance issue was diagnosed as a resource loading bottleneck and accepted by the PM as a known limitation. The two historical issues were also accepted as out of scope. The ticket was closed as Done after PM approval, with the understanding that the animation behavior on first load is a performance-related compromise.\n\n## 4. Horizontal Expansion & Prevention Scope (横展指导)\n* **Affected Sister Components**: MID display module, DMS transition logic, Setting screen transition, Car model fade animation, Resource loading pipeline for 745D/852D, Other Kanzi-based animation modules (dial, map, etc.)\n* **Horizontal Inspection Checklist**:\n- [ ] Verify all fade/transition animations on first load after cold start on target hardware (745D/852D).\n- [ ] Check if resources (textures, prefabs, shaders) are preloaded or loaded asynchronously before animation starts.\n- [ ] Compare first-load animation behavior across different platforms (745D, 852D, 100D) to identify resource-specific issues.\n- [ ] Ensure animation timelines are not dependent on resource loading completion; consider delaying animation start until resources are ready.\n- [ ] Review historical defects (e.g., missing car model fade-out, black bar on setting exit) to confirm they are tracked separately and not regressions.\n- [ ] Test repeated transitions to confirm animations work correctly after resources are cached.\n\n## 5. Attachments\n- [220810_#2-T_DriveMode_Casual_1Dial_video_004.mp4](https://rightware.atlassian.net/rest/api/3/attachment/content/340138)\n- [220810_#2-T_IG_ON ⇒ Ending_Casual_2Dial_video_003.mp4](https://rightware.atlassian.net/rest/api/3/attachment/content/340137)\n- [220827_#2-T_Black screen⇒ Casual_1dial_HV_video_003.mp4](https://rightware.atlassian.net/rest/api/3/attachment/content/340141)\n- [220827_#2-T_Cursor_animation_video_001.mp4](https://rightware.atlassian.net/rest/api/3/attachment/content/340139)\n- [220827_#2-T_Setting_Lay0_appear_2Dial_video_001.mp4](https://rightware.atlassian.net/rest/api/3/attachment/content/340140)\n- [image-20260702-025646.png](https://rightware.atlassian.net/rest/api/3/attachment/content/348181)\n- [KanziCheckList.xlsx](https://rightware.atlassian.net/rest/api/3/attachment/content/347391)\n",
+      "issue_key": "VEL-16399",
+      "url": "https://rightware.atlassian.net/browse/VEL-16399",
+      "summary": "【#2(Toyota)】【DN】【Animation】【745D】【新增功能】新增Normal Display - Battery Status功能 动效对应",
+      "priority": "Medium",
+      "status": "DONE",
+      "resolution": "Done",
+      "components": [],
+      "fix_versions": [
+        "#2-Toyota-1A-DN(745D)"
+      ],
+      "rca_category": "Rendering / Pipeline",
+      "rca": "The MID text fade-out animation is not visible on the first DMS switch because the required resources are still being loaded on 745D/852D, causing the animation to be skipped or completed before the first frame renders. On subsequent switches, resources are cached and the animation plays correctly. The other two issues (missing car model fade-out and black bar on setting exit) are pre-existing historical defects unrelated to this feature.",
+      "attachments": [
+        {
+          "filename": "220810_#2-T_DriveMode_Casual_1Dial_video_004.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/340138",
+          "size": 19232376,
+          "mime_type": "video/mp4"
+        },
+        {
+          "filename": "220810_#2-T_IG_ON ⇒ Ending_Casual_2Dial_video_003.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/340137",
+          "size": 1644707,
+          "mime_type": "video/mp4"
+        },
+        {
+          "filename": "220827_#2-T_Black screen⇒ Casual_1dial_HV_video_003.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/340141",
+          "size": 1964804,
+          "mime_type": "video/mp4"
+        },
+        {
+          "filename": "220827_#2-T_Cursor_animation_video_001.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/340139",
+          "size": 8879177,
+          "mime_type": "video/mp4"
+        },
+        {
+          "filename": "220827_#2-T_Setting_Lay0_appear_2Dial_video_001.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/340140",
+          "size": 2310798,
+          "mime_type": "video/mp4"
+        },
+        {
+          "filename": "image-20260702-025646.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/348181",
+          "size": 674881,
+          "mime_type": "image/png"
+        },
+        {
+          "filename": "KanziCheckList.xlsx",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/347391",
+          "size": 40361,
+          "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        }
+      ],
+      "created": "2026-05-22T12:51:57.448+0300"
+    }
+  }
+]

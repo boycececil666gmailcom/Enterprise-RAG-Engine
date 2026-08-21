@@ -1,5 +1,6 @@
 # region Imports
 import json
+import os
 from pathlib import Path
 from typing import Any
 
@@ -18,12 +19,14 @@ OUTPUT_MODELED_PATH = _CURRENT_DIR / "2.jira_modeled_chunks.json"
 SYSTEM_PROMPT = """You are an expert Enterprise Software Defect Analysis & Quality Assurance AI.
 Your task is to analyze historical JIRA defect tickets and transform each ticket into a structured Defect Knowledge Model.
 
-Analyze the given ticket's Summary, Description, and Discussion/Resolution Comments, then output a valid JSON object matching this exact schema:
+First, evaluate if the ticket contains sufficient, actionable Root Cause Analysis (RCA) or technical resolution details. If the ticket is merely an uninvestigated bug report, a vague placeholder, or an unresolved discussion with no technical root cause, set `has_sufficient_rca` to false.
+
+Output a valid JSON object matching this exact schema:
 
 {
-  "rca_category": "One of: Memory Management | Thread Safety / Concurrency | Null Pointer / Boundary Check | State Machine / Lifecycle | Rendering / Pipeline | Resource Leak | API Protocol Mismatch | Configuration / Build | Logic Flaw",
-  "error_signatures": ["list of exact function names, source files, exception names, error codes, and log patterns"],
-  "root_cause_explanation": "Precise, 2-3 sentence technical explanation of the defect's root cause.",
+  "has_sufficient_rca": true,
+  "rca_category": "One of: Memory Management | Thread Safety / Concurrency | Null Pointer / Boundary Check | State Machine / Lifecycle | Rendering / Pipeline | Resource Leak | Configuration / Build | Logic Flaw",
+  "rca": "Precise, 2-3 sentence technical explanation of the defect's root cause.",
   "resolution_pattern": "Specific technical explanation of the fix applied and code logic changes.",
   "horizontal_expansion_scope": {
     "affected_components": ["list of sister modules or submodules sharing similar risk"],
@@ -37,7 +40,7 @@ Ensure your output is strictly valid JSON with no conversational text or markdow
 
 # region Transformation Logic
 def _model_single_ticket(ticket: dict[str, Any]) -> dict[str, Any]:
-    """Uses LLM to model defect root-cause, error signatures, and horizontal expansion."""
+    """Uses LLM to model defect root-cause and horizontal expansion."""
     ticket_text = f"""Ticket Key: {ticket.get('key')}
 Summary: {ticket.get('summary')}
 Status: {ticket.get('status')} | Priority: {ticket.get('priority')} | Resolution: {ticket.get('resolution')}
@@ -47,7 +50,7 @@ Fix Versions: {', '.join(ticket.get('fix_versions', []))}
 Description:
 {ticket.get('description', '')}
 
-Discussion & Resolution Comments:
+Discussion & Comments:
 """
     for c in ticket.get("comments", []):
         ticket_text += f"[{c.get('author')}] {c.get('body')}\n"
@@ -82,29 +85,28 @@ def _fallback_heuristic_model(ticket: dict[str, Any]) -> dict[str, Any]:
     desc = ticket.get("description", "")
     labels = ticket.get("labels", [])
 
-    rca = "Logic Flaw"
-    if any(k in summary.lower() or k in desc.lower() for k in ["memory", "leak", "buffer"]):
-        rca = "Memory Management"
-    elif any(k in summary.lower() or k in desc.lower() for k in ["thread", "async", "lock", "concurrency"]):
-        rca = "Thread Safety / Concurrency"
-    elif any(k in summary.lower() or k in desc.lower() for k in ["null", "crash", "segv", "nullptr"]):
-        rca = "Null Pointer / Boundary Check"
+    # Check if there is basic text to form an RCA
+    if len(desc.strip()) < 30:
+        return {"has_sufficient_rca": False}
 
-    signatures = []
-    for line in desc.split("\n"):
-        if any(token in line for token in ["::", "at ", "Warning:", "Error:", "SIGSEGV", "0x"]):
-            signatures.append(line.strip())
+    rca_cat = "Logic Flaw"
+    if any(k in summary.lower() or k in desc.lower() for k in ["memory", "leak", "buffer"]):
+        rca_cat = "Memory Management"
+    elif any(k in summary.lower() or k in desc.lower() for k in ["thread", "async", "lock", "concurrency"]):
+        rca_cat = "Thread Safety / Concurrency"
+    elif any(k in summary.lower() or k in desc.lower() for k in ["null", "crash", "segv", "nullptr"]):
+        rca_cat = "Null Pointer / Boundary Check"
 
     return {
-        "rca_category": rca,
-        "error_signatures": signatures or labels,
-        "root_cause_explanation": f"Defect in {', '.join(ticket.get('components', ['core']))} related to: {summary}.",
-        "resolution_pattern": "Applied boundary checks and state synchronization.",
+        "has_sufficient_rca": True,
+        "rca_category": rca_cat,
+        "rca": f"Defect in {', '.join(ticket.get('components', ['core']))} related to: {summary}.",
+        "resolution_pattern": "Applied state synchronization, boundary checks, and logic validation.",
         "horizontal_expansion_scope": {
             "affected_components": ticket.get("components", []),
             "inspection_checklist": [
-                "Audit sister modules with similar lifecycle management.",
-                "Verify thread safety and resource cleanup in corresponding destructors.",
+                "Audit sister modules sharing similar lifecycle and data flow.",
+                "Verify state consistency and resource cleanup in corresponding destructors.",
             ],
         },
         "search_keywords": labels + ticket.get("components", []),
@@ -116,35 +118,46 @@ def _build_small_to_big_chunk(ticket: dict[str, Any], model_data: dict[str, Any]
     key = ticket.get("key", "JIRA-UNKNOWN")
     summary = ticket.get("summary", "")
     components = ticket.get("components", [])
-    rca = model_data.get("rca_category", "Defect")
-    signatures = " | ".join(model_data.get("error_signatures", []))
-    keywords = ", ".join(model_data.get("search_keywords", []))
+    rca_cat = model_data.get("rca_category", "")
+    rca_text = model_data.get("rca", "")
+
+    # Combine RCA category into keywords list to keep small chunk ultra-clean
+    keywords_list = []
+    if rca_cat:
+        keywords_list.append(rca_cat)
+    keywords_list.extend(model_data.get("search_keywords", []))
 
     # 1. Small chunk: Dense & BM25 sparse matching token
-    small_chunk = (
-        f"Issue: {key} - {summary}\n"
-        f"Components: {', '.join(components)}\n"
-        f"RCA Category: {rca}\n"
-        f"Error Signatures: {signatures}\n"
-        f"Keywords: {keywords}\n"
-        f"Root Cause: {model_data.get('root_cause_explanation', '')}"
-    )
+    small_parts = [f"Issue: {key} - {summary}"]
+    if keywords_list:
+        small_parts.append(f"Keywords: {', '.join(keywords_list)}")
+    if rca_text:
+        small_parts.append(f"RCA: {rca_text}")
 
-    # 2. Big Markdown card: Full LLM context delivery
+    small_chunk = "\n".join(small_parts)
+
+    # 2. Attachments Markdown list
+    attachments_md = "\n".join(
+        [f"- [{a.get('filename')}]({a.get('url')})" for a in ticket.get("attachments", [])]
+    ) or "None"
+
+    # 3. Big Markdown card: Full LLM context delivery
     checklist_md = "\n".join(
         [f"- [ ] {item}" for item in model_data.get("horizontal_expansion_scope", {}).get("inspection_checklist", [])]
     )
-    big_markdown = f"""# Defect Case: {key} - {summary}
+    ticket_url = ticket.get("url", "")
+    big_markdown = f"""# Defect Case: [{key}]({ticket_url}) - {summary}
 
-- **Component**: {', '.join(components)}
+- **JIRA Link**: {ticket_url if ticket_url else 'N/A'}
+- **Component**: {', '.join(components) if components else 'Unspecified'}
 - **Priority**: {ticket.get('priority')} | **Status**: {ticket.get('status')} | **Resolution**: {ticket.get('resolution')}
-- **Fix Version**: {', '.join(ticket.get('fix_versions', []))} | **RCA Category**: {rca}
+- **Fix Version**: {', '.join(ticket.get('fix_versions', []))} | **RCA Category**: {rca_cat}
 
 ## 1. Defect Symptom & Description
 {ticket.get('description', '')}
 
-## 2. Root Cause Analysis (RCA)
-{model_data.get('root_cause_explanation', '')}
+## 2. RCA (Root Cause Analysis)
+{rca_text}
 
 ## 3. Resolution & Code Fix Pattern
 {model_data.get('resolution_pattern', '')}
@@ -153,6 +166,9 @@ def _build_small_to_big_chunk(ticket: dict[str, Any], model_data: dict[str, Any]
 * **Affected Sister Components**: {', '.join(model_data.get('horizontal_expansion_scope', {}).get('affected_components', []))}
 * **Horizontal Inspection Checklist**:
 {checklist_md}
+
+## 5. Attachments
+{attachments_md}
 """
 
     return {
@@ -161,14 +177,16 @@ def _build_small_to_big_chunk(ticket: dict[str, Any], model_data: dict[str, Any]
         "metadata": {
             "big": big_markdown,
             "issue_key": key,
+            "url": ticket_url,
             "summary": summary,
             "priority": ticket.get("priority", "Normal"),
             "status": ticket.get("status", "Unknown"),
             "resolution": ticket.get("resolution", "Fixed"),
             "components": components,
             "fix_versions": ticket.get("fix_versions", []),
-            "rca_category": rca,
-            "error_signatures": model_data.get("error_signatures", []),
+            "rca_category": rca_cat,
+            "rca": rca_text,
+            "attachments": ticket.get("attachments", []),
             "created": ticket.get("created", ""),
         },
     }
@@ -187,18 +205,28 @@ def process_all_tickets() -> None:
 
     print(f"[Model-Defects] Modeling {len(tickets)} JIRA tickets with AI defect extraction...")
     modeled_chunks = []
+    skipped_count = 0
 
     for idx, ticket in enumerate(tickets, start=1):
         key = ticket.get("key", f"Ticket-{idx}")
         print(f"[Model-Defects] ({idx}/{len(tickets)}) Modeling ticket {key}...")
         model_data = _model_single_ticket(ticket)
+
+        # AI-driven filtering: Skip tickets lacking actionable RCA
+        if not model_data.get("has_sufficient_rca", True):
+            print(f"[Model-Defects] Skipped {key}: Insufficient or uninvestigated RCA information.")
+            skipped_count += 1
+            continue
+
         chunk = _build_small_to_big_chunk(ticket, model_data)
         modeled_chunks.append(chunk)
 
     with open(OUTPUT_MODELED_PATH, "w", encoding="utf-8") as f:
         json.dump(modeled_chunks, f, ensure_ascii=False, indent=2)
 
-    print(f"[Model-Defects] Successfully generated {len(modeled_chunks)} modeled chunks to '{OUTPUT_MODELED_PATH.name}'.")
+    print(
+        f"[Model-Defects] Finished! Saved {len(modeled_chunks)} valid chunks (Skipped {skipped_count} low-info tickets) to '{OUTPUT_MODELED_PATH.name}'."
+    )
 
 
 if __name__ == "__main__":

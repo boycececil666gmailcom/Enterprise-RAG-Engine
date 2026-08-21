@@ -17,7 +17,7 @@ JIRA_BASE_URL = os.getenv("JIRA_BASE_URL", "").rstrip("/")
 JIRA_API_TOKEN = os.getenv("JIRA_API_TOKEN", "")
 JIRA_EMAIL = os.getenv("JIRA_EMAIL", "")
 JIRA_JQL = os.getenv("JIRA_JQL", 'project = "VEL" AND text ~ "DMS" ORDER BY created DESC')
-JIRA_MAX_RESULTS = int(os.getenv("JIRA_MAX_RESULTS", "100"))
+JIRA_MAX_RESULTS = int(os.getenv("JIRA_MAX_RESULTS", "5"))
 OUTPUT_JSON_PATH = Path(__file__).resolve().parent / "1.jira_tickets.json"
 # endregion
 
@@ -75,9 +75,12 @@ def _extract_ticket(issue: dict[str, Any], schema_map: dict[str, str]) -> dict[s
         "updated", "comment", "issuetype", "project", "reporter", "assignee",
         "attachment",
     }
+    key = issue.get("key", "")
+    ticket_url = f"{JIRA_BASE_URL}/browse/{key}" if JIRA_BASE_URL and key else ""
     return {
         "id": issue.get("id", ""),
-        "key": issue.get("key", ""),
+        "key": key,
+        "url": ticket_url,
         "issuetype": (f.get("issuetype") or {}).get("name", "Unknown"),
         "summary": f.get("summary", ""),
         "description": _text(f.get("description")),
