@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Any
 
 from langchain_core.messages import HumanMessage, SystemMessage
-from llm_client import llm
+from llm_client import llm, vision_llm
 
 # endregion
 
@@ -36,6 +36,38 @@ Output a valid JSON object matching this exact schema:
 }
 
 Ensure your output is strictly valid JSON with no conversational text or markdown code fences."""
+# endregion
+
+# region Multimodal Analysis
+def _extract_visual_symptom(attachments: list[dict[str, Any]]) -> str:
+    """Uses Gemini Flash (vision_llm) to extract visual defect symptoms from video/image attachments."""
+    if not vision_llm or not attachments:
+        return ""
+
+    visual_media = [
+        a for a in attachments
+        if any(t in a.get("mime_type", "") for t in ["image", "video"])
+    ]
+    if not visual_media:
+        return ""
+
+    target = visual_media[0]
+    prompt_text = (
+        f"Attachment file: {target.get('filename')}. "
+        "Describe the visual UI anomaly, defect behavior, or animation glitch in 1-2 concise sentences."
+    )
+    try:
+        msg = HumanMessage(
+            content=[
+                {"type": "text", "text": prompt_text},
+                {"type": "image_url", "image_url": {"url": target.get("url", "")}},
+            ]
+        )
+        res = vision_llm.invoke([msg])
+        return res.content.strip()
+    except Exception as e:
+        print(f"[Model-Defects] Vision analysis skipped for {target.get('filename')} ({e})")
+        return ""
 # endregion
 
 # region Transformation Logic
@@ -85,7 +117,6 @@ def _fallback_heuristic_model(ticket: dict[str, Any]) -> dict[str, Any]:
     desc = ticket.get("description", "")
     labels = ticket.get("labels", [])
 
-    # Check if there is basic text to form an RCA
     if len(desc.strip()) < 30:
         return {"has_sufficient_rca": False}
 
@@ -113,7 +144,7 @@ def _fallback_heuristic_model(ticket: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def _build_small_to_big_chunk(ticket: dict[str, Any], model_data: dict[str, Any]) -> dict[str, Any]:
+def _build_small_to_big_chunk(ticket: dict[str, Any], model_data: dict[str, Any], visual_symptom: str = "") -> dict[str, Any]:
     """Constructs decoupled Small-to-Big chunk optimized for Qdrant Hybrid Search & LLM Context."""
     key = ticket.get("key", "JIRA-UNKNOWN")
     summary = ticket.get("summary", "")
@@ -121,16 +152,17 @@ def _build_small_to_big_chunk(ticket: dict[str, Any], model_data: dict[str, Any]
     rca_cat = model_data.get("rca_category", "")
     rca_text = model_data.get("rca", "")
 
-    # Combine RCA category into keywords list to keep small chunk ultra-clean
     keywords_list = []
     if rca_cat:
         keywords_list.append(rca_cat)
     keywords_list.extend(model_data.get("search_keywords", []))
 
-    # 1. Small chunk: Dense & BM25 sparse matching token
-    small_parts = [f"Issue: {key} - {summary}"]
+    # 1. Small chunk: Dense & BM25 sparse matching token (pure semantic content)
+    small_parts = [f"Summary: {summary}"]
     if keywords_list:
         small_parts.append(f"Keywords: {', '.join(keywords_list)}")
+    if visual_symptom:
+        small_parts.append(f"Visual Symptom: {visual_symptom}")
     if rca_text:
         small_parts.append(f"RCA: {rca_text}")
 
@@ -156,6 +188,7 @@ def _build_small_to_big_chunk(ticket: dict[str, Any], model_data: dict[str, Any]
 ## 1. Defect Symptom & Description
 {ticket.get('description', '')}
 
+{f"## Visual Anomaly (Multimodal AI Analysis)\n{visual_symptom}\n" if visual_symptom else ""}
 ## 2. RCA (Root Cause Analysis)
 {rca_text}
 
@@ -186,6 +219,7 @@ def _build_small_to_big_chunk(ticket: dict[str, Any], model_data: dict[str, Any]
             "fix_versions": ticket.get("fix_versions", []),
             "rca_category": rca_cat,
             "rca": rca_text,
+            "visual_symptom": visual_symptom,
             "attachments": ticket.get("attachments", []),
             "created": ticket.get("created", ""),
         },
@@ -212,13 +246,13 @@ def process_all_tickets() -> None:
         print(f"[Model-Defects] ({idx}/{len(tickets)}) Modeling ticket {key}...")
         model_data = _model_single_ticket(ticket)
 
-        # AI-driven filtering: Skip tickets lacking actionable RCA
         if not model_data.get("has_sufficient_rca", True):
             print(f"[Model-Defects] Skipped {key}: Insufficient or uninvestigated RCA information.")
             skipped_count += 1
             continue
 
-        chunk = _build_small_to_big_chunk(ticket, model_data)
+        visual_symptom = _extract_visual_symptom(ticket.get("attachments", []))
+        chunk = _build_small_to_big_chunk(ticket, model_data, visual_symptom=visual_symptom)
         modeled_chunks.append(chunk)
 
     with open(OUTPUT_MODELED_PATH, "w", encoding="utf-8") as f:
