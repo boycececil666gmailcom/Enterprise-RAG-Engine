@@ -1,7 +1,8 @@
 [
   {
     "id": "fbe55b82-d389-517f-9744-1dd5bddb8cbb",
-    "small": "Theme: Drive Mode Selection (DMS) 3D Car Model & Animation\nSummary: 【#2(Toyota)】【Animation】【车模新增】【004T】【DMS】004T流用HB（232D）个车意匠",
+    "sparse": "【#2(Toyota)】【Animation】【车模新增】【004T】【DMS】004T流用HB（232D）个车意匠",
+    "dense": "placeholder",
     "metadata_jira": {
       "issue_key": "VEL-16616",
       "url": "https://rightware.atlassian.net/browse/VEL-16616",

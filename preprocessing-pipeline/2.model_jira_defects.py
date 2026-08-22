@@ -92,9 +92,10 @@ class KnowledgeMetadata(BaseModel):
 
 
 class ModeledKnowledgeChunk(BaseModel):
-    """Modeled knowledge chunk pairing deterministic UUID, small retrieval anchor, and unified metadata."""
+    """Modeled knowledge chunk pairing deterministic UUID, sparse text (summary), dense placeholder, and unified metadata."""
     id: str
-    small: str
+    sparse: str
+    dense: str = "placeholder"
     metadata: KnowledgeMetadata
 # endregion
 
@@ -214,7 +215,8 @@ async def process_ticket(ticket: dict[str, Any]) -> ModeledKnowledgeChunk | None
     print(f"[Model-process_ticket] Modeled [{metadata.issuetype}] {key} [{model.theme}] -> UUID {qdrant_uuid}")
     return ModeledKnowledgeChunk(
         id=qdrant_uuid,
-        small=f"Theme: {model.theme}\nSummary: {summary}".strip(),
+        sparse=summary.strip(),
+        dense="placeholder",
         metadata=metadata,
     )
 # endregion

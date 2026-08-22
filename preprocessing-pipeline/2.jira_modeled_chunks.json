@@ -1,7 +1,8 @@
 [
   {
     "id": "fbe55b82-d389-517f-9744-1dd5bddb8cbb",
-    "small": "Theme: Drive Mode Selection (DMS) 3D Car Model & Animation\nSummary: 【#2(Toyota)】【Animation】【车模新增】【004T】【DMS】004T流用HB（232D）个车意匠",
+    "sparse": "【#2(Toyota)】【Animation】【车模新增】【004T】【DMS】004T流用HB（232D）个车意匠",
+    "dense": "placeholder",
     "metadata": {
       "issue_key": "VEL-16616",
       "url": "https://rightware.atlassian.net/browse/VEL-16616",
@@ -172,7 +173,8 @@
   },
   {
     "id": "81b57660-ca25-5db9-9b60-7d3acb6f4ca9",
-    "small": "Theme: Drive Mode Selection (DMS) 3D Car Model & Animation\nSummary: 【#2(Toyota)】【车模新增】【animation】【J-SDN/J-WGN 001T 】【DMS】J-SDN/J-WGN 001T流用J-SDN/J-WGN 342D个车意匠",
+    "sparse": "【#2(Toyota)】【车模新增】【animation】【J-SDN/J-WGN 001T 】【DMS】J-SDN/J-WGN 001T流用J-SDN/J-WGN 342D个车意匠",
+    "dense": "placeholder",
     "metadata": {
       "issue_key": "VEL-16539",
       "url": "https://rightware.atlassian.net/browse/VEL-16539",
@@ -329,7 +331,8 @@
   },
   {
     "id": "1f2fea92-de94-5a03-919c-f73b9c6b2892",
-    "small": "Theme: Drive Mode Selection (DMS) 3D Car Model & Animation\nSummary: 【#2(Toyota)】#77972  私有 【面企画#2】【567D/568D】【DRIMOD】【v4.11.4】【MET-G_T_SCREEN-CSTD-7-01-A-C1】【C】SNOW EXTRA模式与其他DRIMOD模式互切时不流畅，有短时间的黑画面（745D）",
+    "sparse": "【#2(Toyota)】#77972  私有 【面企画#2】【567D/568D】【DRIMOD】【v4.11.4】【MET-G_T_SCREEN-CSTD-7-01-A-C1】【C】SNOW EXTRA模式与其他DRIMOD模式互切时不流畅，有短时间的黑画面（745D）",
+    "dense": "placeholder",
     "metadata": {
       "issue_key": "VEL-16479",
       "url": "https://rightware.atlassian.net/browse/VEL-16479",
@@ -390,7 +393,8 @@
   },
   {
     "id": "78c70685-fa89-5d37-97cf-03e50b9b2927",
-    "small": "Theme: Car Model Animation & Transition Effects\nSummary: 【#5(Toyota)】【Animation】【车模新增】【063T】【pitch&roll】063T流用583D  动效对应",
+    "sparse": "【#5(Toyota)】【Animation】【车模新增】【063T】【pitch&roll】063T流用583D  动效对应",
+    "dense": "placeholder",
     "metadata": {
       "issue_key": "VEL-16474",
       "url": "https://rightware.atlassian.net/browse/VEL-16474",
@@ -573,7 +577,8 @@
   },
   {
     "id": "8244d415-48f2-5640-b8f2-aa7c1fb812e2",
-    "small": "Theme: Drive Mode Selection (DMS) 3D Car Model & Animation\nSummary: 【#5(Toyota)】【Animation】【车模新增】【737D MLM】【DMS】737D MLM车模新增  动效对应",
+    "sparse": "【#5(Toyota)】【Animation】【车模新增】【737D MLM】【DMS】737D MLM车模新增  动效对应",
+    "dense": "placeholder",
     "metadata": {
       "issue_key": "VEL-16467",
       "url": "https://rightware.atlassian.net/browse/VEL-16467",
@@ -728,7 +733,8 @@
   },
   {
     "id": "8e702af7-f87f-5b01-b588-ae090c3f85aa",
-    "small": "Theme: Drive Mode Selection (DMS) 3D Car Model & Animation\nSummary: 【#5(Toyota)】【车模新增】【animation】【063T】【MTS】063T流用583D",
+    "sparse": "【#5(Toyota)】【车模新增】【animation】【063T】【MTS】063T流用583D",
+    "dense": "placeholder",
     "metadata": {
       "issue_key": "VEL-16456",
       "url": "https://rightware.atlassian.net/browse/VEL-16456",
@@ -912,7 +918,8 @@
   },
   {
     "id": "4562324f-0fcb-515d-b137-be49dd5723b4",
-    "small": "Theme: Drive Mode Selection (DMS) 3D Car Model & Animation\nSummary: 【#5(Toyota)】【车模新增】【737D MLM】【DMS】737D MLM车模新增",
+    "sparse": "【#5(Toyota)】【车模新增】【737D MLM】【DMS】737D MLM车模新增",
+    "dense": "placeholder",
     "metadata": {
       "issue_key": "VEL-16452",
       "url": "https://rightware.atlassian.net/browse/VEL-16452",
@@ -1015,7 +1022,8 @@
   },
   {
     "id": "8c785d3f-d8dc-5ba3-9719-fe9a5eed9642",
-    "small": "Theme: 3D Car Model State Animation & Visual Consistency (Door Open / Door Unlock / SEA)\nSummary: 【#5(Toyota)】【车模新增】【737D MLM】【door open】【DoorUnlock】【SEA】737D MLM车模新增",
+    "sparse": "【#5(Toyota)】【车模新增】【737D MLM】【door open】【DoorUnlock】【SEA】737D MLM车模新增",
+    "dense": "placeholder",
     "metadata": {
       "issue_key": "VEL-16448",
       "url": "https://rightware.atlassian.net/browse/VEL-16448",
@@ -1330,7 +1338,8 @@
   },
   {
     "id": "37f664a8-c756-5673-a1b3-f46944541c00",
-    "small": "Theme: Drive Mode Selection (DMS) 3D Car Model & Animation\nSummary: 【#5(Toyota)】【车模新增】【063T】【MTS】063T流用583D",
+    "sparse": "【#5(Toyota)】【车模新增】【063T】【MTS】063T流用583D",
+    "dense": "placeholder",
     "metadata": {
       "issue_key": "VEL-16447",
       "url": "https://rightware.atlassian.net/browse/VEL-16447",
@@ -1417,7 +1426,8 @@
   },
   {
     "id": "547c1a8b-0d4c-56af-89f4-22282f7807d4",
-    "small": "Theme: Drive Mode Selection (DMS) 3D Car Model & Animation\nSummary: 【#5(Toyota)】【车模新增】【063T】【DMS】063T流用583D",
+    "sparse": "【#5(Toyota)】【车模新增】【063T】【DMS】063T流用583D",
+    "dense": "placeholder",
     "metadata": {
       "issue_key": "VEL-16446",
       "url": "https://rightware.atlassian.net/browse/VEL-16446",
@@ -1473,7 +1483,8 @@
   },
   {
     "id": "a79291c5-5b3e-5b82-a641-a3cd89882985",
-    "small": "Theme: Drive Mode Selection (DMS) List UI Animation & Highlight Boundary\nSummary: 【#2(Toyota)】【内部Bug】【DMS】2dial切换到DMS List界面时，DMS模式选项框动效超出列表范围（852D）",
+    "sparse": "【#2(Toyota)】【内部Bug】【DMS】2dial切换到DMS List界面时，DMS模式选项框动效超出列表范围（852D）",
+    "dense": "placeholder",
     "metadata": {
       "issue_key": "VEL-16404",
       "url": "https://rightware.atlassian.net/browse/VEL-16404",
@@ -1509,7 +1520,8 @@
   },
   {
     "id": "064836a6-8547-5814-9aee-567c5b9d0000",
-    "small": "Theme: Instrument Cluster Display Transition & Animation Effects\nSummary: 【#2(Toyota)】【DN】【Animation】【745D】【新增功能】新增Normal Display - Battery Status功能 动效对应",
+    "sparse": "【#2(Toyota)】【DN】【Animation】【745D】【新增功能】新增Normal Display - Battery Status功能 动效对应",
+    "dense": "placeholder",
     "metadata": {
       "issue_key": "VEL-16399",
       "url": "https://rightware.atlassian.net/browse/VEL-16399",
@@ -1603,7 +1615,8 @@
   },
   {
     "id": "a9795618-2432-55fb-a479-b565dfb70722",
-    "small": "Theme: Drive Mode Selection (DMS) 3D Car Model & Animation\nSummary: 【#2(Toyota)】【DN】【852D】【功能适用变更】【 ANIMATION】Interrupt Display - Drive mode 3增加CUSTOM和SNOW EXTRA模式",
+    "sparse": "【#2(Toyota)】【DN】【852D】【功能适用变更】【 ANIMATION】Interrupt Display - Drive mode 3增加CUSTOM和SNOW EXTRA模式",
+    "dense": "placeholder",
     "metadata": {
       "issue_key": "VEL-16328",
       "url": "https://rightware.atlassian.net/browse/VEL-16328",
@@ -1668,7 +1681,8 @@
   },
   {
     "id": "0890ed7e-683a-5c71-b22f-1ea571879097",
-    "small": "Theme: Drive Mode Selection (DMS) 3D Car Model & Animation\nSummary: 【#2(Toyota)】【车模新增】【animation】【567D/568D】【DMS】567/568D流用397D_DMS功能对应",
+    "sparse": "【#2(Toyota)】【车模新增】【animation】【567D/568D】【DMS】567/568D流用397D_DMS功能对应",
+    "dense": "placeholder",
     "metadata": {
       "issue_key": "VEL-16310",
       "url": "https://rightware.atlassian.net/browse/VEL-16310",
@@ -1774,7 +1788,8 @@
   },
   {
     "id": "5f9add8e-578e-516c-840c-07d97c2655cc",
-    "small": "Theme: Drive Mode Selection (DMS) 3D Car Model & Animation\nSummary: 【#2(Toyota)】【车模新增】【animation】【567D/568D】【Drive mode】增加SNOW EXTRA模式567/568D流用397D个车意匠",
+    "sparse": "【#2(Toyota)】【车模新增】【animation】【567D/568D】【Drive mode】增加SNOW EXTRA模式567/568D流用397D个车意匠",
+    "dense": "placeholder",
     "metadata": {
       "issue_key": "VEL-16294",
       "url": "https://rightware.atlassian.net/browse/VEL-16294",

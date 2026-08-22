@@ -48,7 +48,7 @@ def ingest_chunks(
 
     def _to_doc(d: dict[str, Any]) -> Document:
         meta = d.get("metadata", {})
-        content = (d.get("small", "") or meta.get("summary", "")).strip() or "document"
+        content = (d.get("sparse", "") or meta.get("summary", "") or d.get("small", "")).strip() or "document"
         return Document(page_content=content, metadata=meta)
 
     # Ingest first batch to initialize vector store schema
@@ -64,7 +64,7 @@ def ingest_chunks(
         url=QDRANT_URL,
         api_key=QDRANT_API_KEY,
         collection_name=collection_name,
-        content_payload_key="small",
+        content_payload_key="sparse",
         retrieval_mode=RetrievalMode.HYBRID,
         force_recreate=True,
     )

@@ -49,7 +49,11 @@ def load_input_documents(doc_path: Path, max_chunks: int = 20) -> list[Document]
         for item in items:
             meta = item.get("metadata", {})
             content = (
-                meta.get("big") or meta.get("summary") or item.get("small") or ""
+                meta.get("big")
+                or meta.get("summary")
+                or item.get("sparse")
+                or item.get("small")
+                or ""
             ).strip()
             if len(content) > 50:
                 docs.append(
