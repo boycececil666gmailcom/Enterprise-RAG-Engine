@@ -1,66 +1,1845 @@
 [
   {
-    "id": "jira-VEL-16399",
-    "small": "Issue: VEL-16399 - 【#2(Toyota)】【DN】【Animation】【745D】【新增功能】新增Normal Display - Battery Status功能 动效对应\nKeywords: Rendering / Pipeline, fade animation, first load performance, resource loading, MID text, DMS switch, Kanzi, 745D, 852D, animation not visible, transition effect, historical defect, PM acceptance\nRCA: The MID text fade-out animation is not visible on the first DMS switch because the required resources are still being loaded on 745D/852D, causing the animation to be skipped or completed before the first frame renders. On subsequent switches, resources are cached and the animation plays correctly. The other two issues (missing car model fade-out and black bar on setting exit) are pre-existing historical defects unrelated to this feature.",
+    "id": "fbe55b82-d389-517f-9744-1dd5bddb8cbb",
+    "small": "Theme: Drive Mode Selection (DMS) 3D Car Model & Animation\nSummary: 【#2(Toyota)】【Animation】【车模新增】【004T】【DMS】004T流用HB（232D）个车意匠",
     "metadata": {
-      "big": "# Defect Case: [VEL-16399](https://rightware.atlassian.net/browse/VEL-16399) - 【#2(Toyota)】【DN】【Animation】【745D】【新增功能】新增Normal Display - Battery Status功能 动效对应\n\n- **JIRA Link**: https://rightware.atlassian.net/browse/VEL-16399\n- **Component**: Unspecified\n- **Priority**: Medium | **Status**: DONE | **Resolution**: Done\n- **Fix Version**: #2-Toyota-1A-DN(745D) | **RCA Category**: Rendering / Pipeline\n\n## 1. Defect Symptom & Description\n[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n[需求来源]/[Source of demand]:\n\nDN_面開発管理用_標準仕様DB_260512_v0151\n\nREQ-0806\n\nMET-H_SOHDSP-CSTD-0-07-A-C0\n\n[详细信息]/[Detail information]：\n\n[Link: https://rightware.atlassian.net/browse/VEL-16386]  \n\n动效内容： 开关机（淡入淡出），0-1-2dial（有无widget位置不同），MAP,Setting切换（位移）,和大割入切换（淡入淡出），MID切换滚动效果\n\n[Attachment: 220827_#2-T_Black screen⇒ Casual_1dial_HV_video_003.mp4]\n[Attachment: 220810_#2-T_IG_ON ⇒ Ending_Casual_2Dial_video_003.mp4]\n[Attachment: 220827_#2-T_Setting_Lay0_appear_2Dial_video_001.mp4]\n[Attachment: 220810_#2-T_DriveMode_Casual_1Dial_video_004.mp4]\n[Attachment: 220827_#2-T_Cursor_animation_video_001.mp4]\n请开发和测试确认对应范围是否正确，需要补足请联系\n\n\n## 2. RCA (Root Cause Analysis)\nThe MID text fade-out animation is not visible on the first DMS switch because the required resources are still being loaded on 745D/852D, causing the animation to be skipped or completed before the first frame renders. On subsequent switches, resources are cached and the animation plays correctly. The other two issues (missing car model fade-out and black bar on setting exit) are pre-existing historical defects unrelated to this feature.\n\n## 3. Resolution & Code Fix Pattern\nNo code fix was applied. The first-load performance issue was diagnosed as a resource loading bottleneck and accepted by the PM as a known limitation. The two historical issues were also accepted as out of scope. The ticket was closed as Done after PM approval, with the understanding that the animation behavior on first load is a performance-related compromise.\n\n## 4. Horizontal Expansion & Prevention Scope (横展指导)\n* **Affected Sister Components**: MID display module, DMS transition logic, Setting screen transition, Car model fade animation, Resource loading pipeline for 745D/852D, Other Kanzi-based animation modules (dial, map, etc.)\n* **Horizontal Inspection Checklist**:\n- [ ] Verify all fade/transition animations on first load after cold start on target hardware (745D/852D).\n- [ ] Check if resources (textures, prefabs, shaders) are preloaded or loaded asynchronously before animation starts.\n- [ ] Compare first-load animation behavior across different platforms (745D, 852D, 100D) to identify resource-specific issues.\n- [ ] Ensure animation timelines are not dependent on resource loading completion; consider delaying animation start until resources are ready.\n- [ ] Review historical defects (e.g., missing car model fade-out, black bar on setting exit) to confirm they are tracked separately and not regressions.\n- [ ] Test repeated transitions to confirm animations work correctly after resources are cached.\n\n## 5. Attachments\n- [220810_#2-T_DriveMode_Casual_1Dial_video_004.mp4](https://rightware.atlassian.net/rest/api/3/attachment/content/340138)\n- [220810_#2-T_IG_ON ⇒ Ending_Casual_2Dial_video_003.mp4](https://rightware.atlassian.net/rest/api/3/attachment/content/340137)\n- [220827_#2-T_Black screen⇒ Casual_1dial_HV_video_003.mp4](https://rightware.atlassian.net/rest/api/3/attachment/content/340141)\n- [220827_#2-T_Cursor_animation_video_001.mp4](https://rightware.atlassian.net/rest/api/3/attachment/content/340139)\n- [220827_#2-T_Setting_Lay0_appear_2Dial_video_001.mp4](https://rightware.atlassian.net/rest/api/3/attachment/content/340140)\n- [image-20260702-025646.png](https://rightware.atlassian.net/rest/api/3/attachment/content/348181)\n- [KanziCheckList.xlsx](https://rightware.atlassian.net/rest/api/3/attachment/content/347391)\n",
-      "issue_key": "VEL-16399",
-      "url": "https://rightware.atlassian.net/browse/VEL-16399",
-      "summary": "【#2(Toyota)】【DN】【Animation】【745D】【新增功能】新增Normal Display - Battery Status功能 动效对应",
-      "priority": "Medium",
-      "status": "DONE",
-      "resolution": "Done",
-      "components": [],
+      "issue_key": "VEL-16616",
+      "url": "https://rightware.atlassian.net/browse/VEL-16616",
+      "issuetype": "Task",
+      "summary": "【#2(Toyota)】【Animation】【车模新增】【004T】【DMS】004T流用HB（232D）个车意匠",
+      "theme": "Drive Mode Selection (DMS) 3D Car Model & Animation",
+      "has_valuable_information": true,
+      "rca": "RCA should be performed based on the detailed comments and attachment descriptions. Specific bug symptoms, timing discrepancies, and hardware-specific behavior are intentionally left to the RCA, comments, and attachment files.",
+      "resolution_pattern": "Standardize DMS 3D car model animation behavior across vehicle variants by defining a reusable animation state machine, design-reference comparison criteria, and cross-platform validation checklist.",
+      "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n[需求来源]/[Source of demand]:\n\n8社会议记录：\n\n[Attachment: image-20260818-072216.png | Description: Screenshot of a communication record confirming vehicle model reuse specifications for 004T using HB(232D) design assets.]\n[详细信息]/[Detail information]：\n\n设计要点：\n\n1.每个模式车模的颜色与设计图相比颜色是否OK（因工程无法百分之百设计效果完全一致，但是颜色需接近，要保证色相的统一，整体画面颜色的协调，车身反射颜色与天空以及山体颜色要在同一色系）\n\n2.车模位置、车模形状、车模倒影要与设计图一致（并且要保证工程中每个模式的车模位置相同，模式与模式切换时不能有抖动）\n\n3.车模以外的部分像是每个模式的背景右文言部分等都无变更（右边侧文言布局分为Toggle Switch、Push Switch）\n\n 以上设计要点只站在设计的角度，针对设计效果上开发与测试上需要关注的点 不能作为开发跟测试只需关注以上评论进行测试跟开发的理由\n\n切图文件：\n\n视频文件：\n\n[Attachment: 186D_master_DMS_eco.mp4 | Description: Reference video showing the expected DMS animation behavior for ECO mode.]",
+      "status": "TEST",
+      "resolution": "Unresolved",
       "fix_versions": [
         "#2-Toyota-1A-DN(745D)"
       ],
-      "rca_category": "Rendering / Pipeline",
-      "rca": "The MID text fade-out animation is not visible on the first DMS switch because the required resources are still being loaded on 745D/852D, causing the animation to be skipped or completed before the first frame renders. On subsequent switches, resources are cached and the animation plays correctly. The other two issues (missing car model fade-out and black bar on setting exit) are pre-existing historical defects unrelated to this feature.",
+      "attachments": [
+        {
+          "filename": "186D_master_DMS_eco.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/355853",
+          "size": 8478718,
+          "mime_type": "video/mp4",
+          "description": "Reference video showing the expected DMS animation behavior for ECO mode."
+        },
+        {
+          "filename": "20260818160646_rec_-convert.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/355931",
+          "size": 1850381,
+          "mime_type": "video/mp4",
+          "description": "Screen recording showing mode transition behavior for the option box."
+        },
+        {
+          "filename": "20260818161318_rec_-convert.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/355928",
+          "size": 1687395,
+          "mime_type": "video/mp4",
+          "description": "Screen recording showing another mode transition behavior for the option box."
+        },
+        {
+          "filename": "20260819115129_rec_.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/356116",
+          "size": 7760899,
+          "mime_type": "video/mp4",
+          "description": "Board-level recording showing initial DMS display behavior."
+        },
+        {
+          "filename": "20260819115408_rec_-convert.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/356114",
+          "size": 7493083,
+          "mime_type": "video/mp4",
+          "description": "Board-level recording showing right gauge animation behavior on first entry."
+        },
+        {
+          "filename": "20260819115551_rec_-convert.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/356115",
+          "size": 8290614,
+          "mime_type": "video/mp4",
+          "description": "Board-level recording showing gauge animation behavior on first entry."
+        },
+        {
+          "filename": "image-20260818-025221.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/355937",
+          "size": 1320767,
+          "mime_type": "image/png",
+          "description": "Comparison between the reference UI video (top) and the Kanzi simulator (bottom), highlighting that the vehicle model renders instantly in a single frame without a smooth fade-in animation upon entering DMS."
+        },
+        {
+          "filename": "image-20260818-053808.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/355933",
+          "size": 1312273,
+          "mime_type": "image/png",
+          "description": "Comparison showing that while the reference UI displays the car model and background simultaneously, the runtime engineering build displays the car model before the background renders."
+        },
+        {
+          "filename": "image-20260818-053910.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/355927",
+          "size": 1076157,
+          "mime_type": "image/png",
+          "description": "Side-by-side comparison showing the drive mode list appearing before the vehicle model in the engineering build, contradicting the reference design where the list appears after the vehicle."
+        },
+        {
+          "filename": "image-20260818-054450.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/355930",
+          "size": 1263884,
+          "mime_type": "image/png",
+          "description": "Comparison displaying an asynchronous fade-out issue where the middle meters fade out before the gauge dials start fading, unlike the synchronous fade-out in the reference UI."
+        },
+        {
+          "filename": "image-20260818-063832.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/355932",
+          "size": 863451,
+          "mime_type": "image/png",
+          "description": "Comparison illustrating that upon DMS exit, the gauge dials only begin appearing after the middle area has fully displayed, rather than fading in simultaneously as designed."
+        },
+        {
+          "filename": "image-20260818-070409.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/355929",
+          "size": 1002195,
+          "mime_type": "image/png",
+          "description": "Comparison showing color discrepancies between the reference video and the engineering build regarding the vehicle sweep light effect and wheel highlight colors."
+        },
+        {
+          "filename": "image-20260818-071133.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/355935",
+          "size": 1097899,
+          "mime_type": "image/png",
+          "description": "Comparison highlighting that the selection box fades in statically in place rather than moving synchronously with the mode text as specified in the reference animation."
+        },
+        {
+          "filename": "image-20260818-071907.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/355936",
+          "size": 1036021,
+          "mime_type": "image/png",
+          "description": "Comparison showing that the selection highlight box begins shifting downwards prematurely as soon as the list appears, failing to match the reference animation timing."
+        },
+        {
+          "filename": "image-20260818-072216.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/355884",
+          "size": 46262,
+          "mime_type": "image/png",
+          "description": "Screenshot of a communication record confirming vehicle model reuse specifications for 004T using HB(232D) design assets."
+        },
+        {
+          "filename": "image-20260818-073652.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/355934",
+          "size": 1069209,
+          "mime_type": "image/png",
+          "description": "Comparison showing that in Push mode, the mode text appears prior to the vehicle model entering in the engineering build, diverging from the reference UI sequence."
+        },
+        {
+          "filename": "image-20260819-045255.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/356113",
+          "size": 1868416,
+          "mime_type": "image/png",
+          "description": "Photo of the physical cluster test bench showing screen stutter and weak fade-in/fade-out transitions when entering the Drive Mode Selection screen."
+        },
+        {
+          "filename": "img_v3_0214b_d251acda-688c-4e46-9fec-87f3c4943efg-20260807-061737.jpg",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/354671",
+          "size": 124848,
+          "mime_type": "image/jpeg",
+          "description": "Screenshot of a message discussing design model lineage and vehicle flow for HB(232D) across vehicle models 186D/187D, 588D, 691D, and 837D."
+        }
+      ],
+      "comments": [
+        {
+          "author": "Guanglei You",
+          "created": "2026-08-18T04:14:54.089+0300",
+          "body": "请拿20260717_Kanzi_Project_Platform_vReleasefor#2-Toyota-1A-DN(745D)外部版确认该车模显示是否正确。"
+        },
+        {
+          "author": "Yuying Xing",
+          "created": "2026-08-18T12:20:36.001+0300",
+          "body": "测试版本：20260717_Kanzi_Project_Platform_vReleasefor#2-Toyota-1A-DN(745D)\n\n测试结果：NG\n\nPC端动效请动效侧 @Bin Huang  走查\n\n动效云盘路径：/群组文件/RW_Veleda2026/05-Testing/Jira_Attachments/VEL-16616/004T-DMS1.mp4&004T-DMS2.mp4\n\n问题1：首次进入DMS画面时，车模一帧显示，无渐显效果\n\n[Attachment: image-20260818-025221.png | Description: Comparison between the reference UI video (top) and the Kanzi simulator (bottom), highlighting that the vehicle model renders instantly in a single frame without a smooth fade-in animation upon entering DMS.]\n问题2：UI视频中右侧list是在车模进场后出现，工程中list先于车模出现，且渐显效果不一致\n\n[Attachment: image-20260818-053910.png | Description: Side-by-side comparison showing the drive mode list appearing before the vehicle model in the engineering build, contradicting the reference design where the list appears after the vehicle.]\n问题3：UI视频中车模和DMS背景同时显示；工程中车模先显示，背景后显示\n\n[Attachment: image-20260818-053808.png | Description: Comparison showing that while the reference UI displays the car model and background simultaneously, the runtime engineering build displays the car model before the background renders.]\n问题4：UI视频中车模渐显的同时左右mid和表盘同步渐隐；工程中左右mid渐隐后表盘才开始渐隐，且渐隐效果与UI不同\n\n[Attachment: image-20260818-054450.png | Description: Comparison displaying an asynchronous fade-out issue where the middle meters fade out before the gauge dials start fading, unlike the synchronous fade-out in the reference UI.]\n问题5：工程中车模进场时车轮高亮显示，UI视频为扫光时高亮\n\n问题6：UI视频中，右侧list渐显一段时间后，选项框才开始下移，工程中在list刚开始渐显时，选项框就已经开始下移，与UI的下移时机不符\n\n[Attachment: image-20260818-071907.png | Description: Comparison showing that the selection highlight box begins shifting downwards prematurely as soon as the list appears, failing to match the reference animation timing.]\n问题7：UI视频中车模扫光约816毫秒(约49帧)，扫光与车轮高亮同时结束；工程中车模扫光约534毫秒(15帧)，扫光后车轮仍高亮显示\n\n问题8：DMS退场时一帧消去，没有渐隐动效\n\n问题9：UI视频中 左右mid渐显时表盘同步渐显；工程中左右mid完全显示后，表盘才显示\n\n[Attachment: image-20260818-063832.png | Description: Comparison illustrating that upon DMS exit, the gauge dials only begin appearing after the middle area has fully displayed, rather than fading in simultaneously as designed.]\n问题10：ECO→表盘→CUSTOM情况下，右侧选项框是从ECO上移到CUSTOM\n\n[Attachment: 20260818160646_rec_-convert.mp4 | Description: Screen recording showing mode transition behavior for the option box.]\nCUSTOM→表盘→RANGE情况下，右侧选项框从Drivemode小字上方入场\n\n[Attachment: 20260818161318_rec_-convert.mp4 | Description: Screen recording showing another mode transition behavior for the option box.]\n问题11：车模扫光颜色与车轮高亮颜色与UI视频不符\n\n[Attachment: image-20260818-070409.png | Description: Comparison showing color discrepancies between the reference video and the engineering build regarding the vehicle sweep light effect and wheel highlight colors.]\n问题12：UI视频中选项框跟随文字同步移动；工程中选项框位置原地渐显，不跟随文字移动\n\n[Attachment: image-20260818-071133.png | Description: Comparison highlighting that the selection box fades in statically in place rather than moving synchronously with the mode text as specified in the reference animation.]\n问题13：push模式下，UI视频中车模先进场后文言渐显，工程中文言先于车模出现，且渐显效果与UI 不同\n\n[Attachment: image-20260818-073652.png | Description: Comparison showing that in Push mode, the mode text appears prior to the vehicle model entering in the engineering build, diverging from the reference UI sequence.]"
+        },
+        {
+          "author": "Bin Huang",
+          "created": "2026-08-19T06:30:34.014+0300",
+          "body": "@Yuying Xing  未发现其他新的问题"
+        },
+        {
+          "author": "Yuying Xing",
+          "created": "2026-08-19T09:52:07.735+0300",
+          "body": "板端验证：\n\n测试版本：20260717_Kanzi_Project_Platform_vReleasefor#2-Toyota-1A-DN(745D)\n\n测试结果：NG\n\n板端动效请动效侧 @Bin Huang  走查\n\n视频云盘路径：/群组文件/RW_Veleda2026/05-Testing/Jira_Attachments/VEL-16616/004T-DMS-板端.mp4\n\n问题1：首次启动左右表盘无动效，且出现不同步(1/5)\n\n[Attachment: 20260819115129_rec_.mp4 | Description: Board-level recording showing initial DMS display behavior.]\n首次启动右侧表盘无动效(3/5)\n\n[Attachment: 20260819115408_rec_-convert.mp4 | Description: Board-level recording showing right gauge animation behavior on first entry.]\n首次启动左右表盘都有动效(1/5)\n\n[Attachment: 20260819115551_rec_-convert.mp4 | Description: Board-level recording showing gauge animation behavior on first entry.]\n问题2：首次进入DMS画面渐隐渐显效果不明显，且画面卡顿\n\n[Attachment: image-20260819-045255.png | Description: Photo of the physical cluster test bench showing screen stutter and weak fade-in/fade-out transitions when entering the Drive Mode Selection screen.]\n问题3：其余问题与PC端一致"
+        }
+      ],
+      "created": "2026-08-11T11:11:59.432+0300"
+    }
+  },
+  {
+    "id": "81b57660-ca25-5db9-9b60-7d3acb6f4ca9",
+    "small": "Theme: Drive Mode Selection (DMS) 3D Car Model & Animation\nSummary: 【#2(Toyota)】【车模新增】【animation】【J-SDN/J-WGN 001T 】【DMS】J-SDN/J-WGN 001T流用J-SDN/J-WGN 342D个车意匠",
+    "metadata": {
+      "issue_key": "VEL-16539",
+      "url": "https://rightware.atlassian.net/browse/VEL-16539",
+      "issuetype": "Task",
+      "summary": "【#2(Toyota)】【车模新增】【animation】【J-SDN/J-WGN 001T 】【DMS】J-SDN/J-WGN 001T流用J-SDN/J-WGN 342D个车意匠",
+      "theme": "Drive Mode Selection (DMS) 3D Car Model & Animation",
+      "has_valuable_information": true,
+      "rca": "Not applicable — this ticket is a design/implementation validation ticket, not a defect RCA ticket.",
+      "resolution_pattern": "Design fidelity validation for DMS 3D car model animation; implementation must match the approved UI design in color, position, reflection, animation behavior, and non-car-model UI layout.",
+      "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n[需求来源]/[Source of demand]:\n\n[Attachment: img_v3_02135_b8d89914-e841-4d4f-90a1-83a7c8b3bd4g-20260630-063139.jpg | Description: A screenshot of a chat message from Yoshiki Shouji confirming that the 001T project applies to both Sedan (SDN) and Wagon (WGN) body types using 342D design assets.]\n[详细信息]/[Detail information]：\n\n设计要点：\n\n1.每个模式车模的颜色与设计图相比颜色是否OK（因工程无法百分之百设计效果完全一致，但是颜色需接近，要保证色相的统一，整体画面颜色的协调，车身反射颜色与天空以及山体颜色要在同一色系）\n\n2.车模位置、车模形状、车模倒影以及动态效果要与设计图一致（并且要保证工程中每个模式的车模位置相同，模式与模式切换时不能有抖动）\n\n3.车模以外的部分像是每个模式的背景右文言部分等都无变更（右边侧文言布局分为Toggle Switch、Push Switch）\n\n只站在设计的角度，针对设计效果上开发与测试上需要关注的点 不能作为开发跟测试只需关注以上评论进行测试跟开发的理由\n\nJ-SDN 001T\n\n[Link: https://rightware.atlassian.net/browse/VEL-4595?search_id=174b3335-24c4-47fa-8a41-75f59a84d86c&referrer=quick-find]  \n\nJ-WGN 001T\n\n  [Link: https://rightware.atlassian.net/browse/VEL-4596?search_id=174b3335-24c4-47fa-8a41-75f59a84d86c&referrer=quick-find]",
+      "status": "DONE",
+      "resolution": "Done",
+      "fix_versions": [
+        "#2-Toyota-1A-DN(745D)"
+      ],
+      "attachments": [
+        {
+          "filename": "20260708193708_rec_.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/349442",
+          "size": 1192877,
+          "mime_type": "video/mp4",
+          "description": "Video recording used to validate DMS car model animation behavior and mode-switch transitions."
+        },
+        {
+          "filename": "20260708194858_rec_-convert.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/349446",
+          "size": 1881128,
+          "mime_type": "video/mp4",
+          "description": "Converted video recording for animation sequence review."
+        },
+        {
+          "filename": "20260709114631_rec_-convert.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/349506",
+          "size": 1449793,
+          "mime_type": "video/mp4",
+          "description": "Converted video recording for car model entry animation review."
+        },
+        {
+          "filename": "20260713150055_rec_.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/349955",
+          "size": 993232,
+          "mime_type": "video/mp4",
+          "description": "Video recording for later validation round."
+        },
+        {
+          "filename": "image-20260708-090619.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/349436",
+          "size": 845991,
+          "mime_type": "image/png",
+          "description": "The Kanzi runtime display shows the J-SDN 3D vehicle model appearing abruptly in a single frame across the dual meter cluster without the intended smooth fade-in transition."
+        },
+        {
+          "filename": "image-20260708-091211.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/349437",
+          "size": 1091999,
+          "mime_type": "image/png",
+          "description": "A split-screen comparison between the UI reference video (top) and Kanzi implementation (bottom) showing discrepancies in the entry timing and motion path of the Drive Mode selection list and focus box."
+        },
+        {
+          "filename": "image-20260708-092345.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/349435",
+          "size": 889580,
+          "mime_type": "image/png",
+          "description": "A comparison showing the exit transition from DMS, where the engineering build renders the left and right mid widgets prior to the gauge dials fading in, unlike the synchronous UI specification."
+        },
+        {
+          "filename": "image-20260708-094418.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/349434",
+          "size": 1343542,
+          "mime_type": "image/png",
+          "description": "A visual comparison showing the vehicle model appearing ahead of the background graphics in the Kanzi preview, whereas the design specification displays them concurrently."
+        },
+        {
+          "filename": "image-20260708-100141.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/349438",
+          "size": 909701,
+          "mime_type": "image/png",
+          "description": "A comparison illustrating the Drive Mode selection box shifting downward prematurely during text fade-in in the build, rather than waiting for the list to be fully rendered."
+        },
+        {
+          "filename": "image-20260708-102709.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/349441",
+          "size": 1048420,
+          "mime_type": "image/png",
+          "description": "A comparison of the ECO mode animation showing light sweep timing discrepancies and wheel rim highlights that remain active after the sweep concludes in the Kanzi implementation."
+        },
+        {
+          "filename": "image-20260708-104243.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/349445",
+          "size": 1103821,
+          "mime_type": "image/png",
+          "description": "A split comparison showing the selection box fading in stationary on the selected item in the Kanzi build instead of smoothly translating alongside the moving text."
+        },
+        {
+          "filename": "image-20260708-105819.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/349448",
+          "size": 1105804,
+          "mime_type": "image/png",
+          "description": "A comparison showing angular differences in the body light sweep overlay and color variations in the illuminated wheel rims during RANGE mode."
+        },
+        {
+          "filename": "image-20260709-012157.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/349502",
+          "size": 1106443,
+          "mime_type": "image/png",
+          "description": "A comparison during push switch mode demonstrating that mode text displays before the vehicle model enters in the implementation, contradicting the design sequence."
+        },
+        {
+          "filename": "image-20260709-051334.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/349541",
+          "size": 989245,
+          "mime_type": "image/png",
+          "description": "A comparison of the J-WGN wagon model in SPORT mode highlighting missing light sweep illumination along the lower chassis skirt."
+        },
+        {
+          "filename": "image-20260709-051610.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/349540",
+          "size": 941835,
+          "mime_type": "image/png",
+          "description": "A comparison of the J-SDN sedan model in POWER mode showing missing light sweep highlights across the upper roofline and lower side skirt."
+        },
+        {
+          "filename": "img_v3_02135_b8d89914-e841-4d4f-90a1-83a7c8b3bd4g-20260630-063139.jpg",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/348874",
+          "size": 18459,
+          "mime_type": "image/jpeg",
+          "description": "A screenshot of a chat message from Yoshiki Shouji confirming that the 001T project applies to both Sedan (SDN) and Wagon (WGN) body types using 342D design assets."
+        }
+      ],
+      "comments": [
+        {
+          "author": "Yuying Xing",
+          "created": "2026-07-08T13:10:36.452+0300",
+          "body": "测试版本：20260717_Kanzi_Project_Platform_vReleasefor#2-Toyota-1A-DN(745D)_Meter_PC_Ts04\n\n测试结果：NG\n\nPC端和板端动效视频请动效侧 @Bin Huang  走查\n\n视频云盘路径：/群组文件/RW_Veleda2026/05-Testing/Jira_Attachments/VEL-16539\n\nJ-SDN 001T-PC1.mp4&J-SDN 001T-PC2.mp4&J-WGN 001T-PC1.mp4&J-WGN 001T-PC2.mp4&DMS板端-001T.mp4\n\n车型： J-SDN 001T\n\n问题1：首次进入DMS画面时，车模一帧显示，无渐显效果( J-SDN 001T 车型复现)\n\n[Attachment: image-20260708-090619.png | Description: The Kanzi runtime display shows the J-SDN 3D vehicle model appearing abruptly in a single frame across the dual meter cluster without the intended smooth fade-in transition.]\n问题2：UI视频中右侧list是在车模进场后出现，工程中list先于车模出现，且渐显效果不一致( J-SDN 001T 车型复现)\n\n问题3：第一个UI视频中的选项框从Drivemode小字上方入场，工程中从CUSTOM开始滑动，请UI帮忙判断哪种效果正确\n\n[Attachment: image-20260708-091211.png | Description: A split-screen comparison between the UI reference video (top) and Kanzi implementation (bottom) showing discrepancies in the entry timing and motion path of the Drive Mode selection list and focus box.]\n问题4：UI视频中车模和DMS背景同时显示；工程中车模先显示，背景后显示( J-SDN 001T 车型复现)\n\n[Attachment: image-20260708-094418.png | Description: A visual comparison showing the vehicle model appearing ahead of the background graphics in the Kanzi preview, whereas the design specification displays them concurrently.]\n问题5：车模进场时车轮高亮显示( J-SDN 001T 车型复现)\n\n问题6：UI视频中右侧list完全显示后，选项框才开始下移；工程中在list渐显时，选项框就已经下移( J-SDN 001T 车型复现)\n\n[Attachment: image-20260708-100141.png | Description: A comparison illustrating the Drive Mode selection box shifting downward prematurely during text fade-in in the build, rather than waiting for the list to be fully rendered.]\n问题7：UI视频中车模扫光约735毫秒，扫光与车轮高亮同时结束；工程中车模扫光约533毫秒，扫光后车轮仍高亮显示( J-SDN 001T 车型复现)\n\n[Attachment: image-20260708-102709.png | Description: A comparison of the ECO mode animation showing light sweep timing discrepancies and wheel rim highlights that remain active after the sweep concludes in the Kanzi implementation.]\n问题8：DMS退场时一帧消去，没有渐隐动效( J-SDN 001T 车型复现)\n\n问题9：UI视频中 左右mid渐显时表盘同步渐显；工程中左右mid完全显示后，表盘才显示( J-SDN 001T 车型复现)\n\n[Attachment: image-20260708-092345.png | Description: A comparison showing the exit transition from DMS, where the engineering build renders the left and right mid widgets prior to the gauge dials fading in, unlike the synchronous UI specification.]\n问题10：ECO→表盘→CUSTOM情况下，右侧选项框是从ECO上移到CUSTOM( J-SDN 001T 车型复现)\n\nCUSTOM→表盘→RANGE情况下，右侧选项框从Drivemode小字上方入场( J-SDN 001T 车型复现)\n\n[Attachment: 20260708193708_rec_.mp4 | Description: Video recording used to validate DMS car model animation behavior and mode-switch transitions.]\n[Attachment: 20260708194858_rec_-convert.mp4 | Description: Converted video recording for animation sequence review.]\n问题11：UI视频中选项框跟随文字同步移动；工程中选项框位置原地渐显，不跟随文字移动( J-SDN 001T 车型复现)\n\n[Attachment: image-20260708-104243.png | Description: A split comparison showing the selection box fading in stationary on the selected item in the Kanzi build instead of smoothly translating alongside the moving text.]\n问题12：扫光角度不一致，车轮高亮颜色不一致( J-SDN 001T 车型复现)\n\n[Attachment: image-20260708-105819.png | Description: A comparison showing angular differences in the body light sweep overlay and color variations in the illuminated wheel rims during RANGE mode.]\n问题13：push模式下，UI视频中车模先进场后文言渐显，工程中文言先于车模出现，且渐显效果与UI 不同( J-SDN 001T 车型复现)\n\n[Attachment: image-20260709-012157.png | Description: A comparison during push switch mode demonstrating that mode text displays before the vehicle model enters in the implementation, contradicting the design sequence.]\n问题14：车模顶部和底部扫光缺失\n\n[Attachment: image-20260709-051610.png | Description: A comparison of the J-SDN sedan model in POWER mode showing missing light sweep highlights across the upper roofline and lower side skirt.]\nJ-WGN 001T\n\n问题15：车模入场时后车轮抖动\n\n[Attachment: 20260709114631_rec_-convert.mp4 | Description: Converted video recording for car model entry animation review.]\n问题16：车模下底部扫光缺失\n\n[Attachment: image-20260709-051334.png | Description: A comparison of the J-WGN wagon model in SPORT mode highlighting missing light sweep illumination along the lower chassis skirt.]"
+        },
+        {
+          "author": "Bin Huang",
+          "created": "2026-07-13T10:52:09.761+0300",
+          "body": "@Yuying Xing  问题3第二种正确，未发现其他新的问题"
+        },
+        {
+          "author": "Guanglei You",
+          "created": "2026-07-14T10:48:43.712+0300",
+          "body": "以下内容均为#2T的历史问题，非本次修改导致。麻烦PM确认是否容赦  @Song Hu"
+        },
+        {
+          "author": "Song Hu",
+          "created": "2026-07-14T10:50:58.323+0300",
+          "body": "与历史#2T保持一致即可，不需要修正。"
+        }
+      ],
+      "created": "2026-07-07T04:37:44.026+0300"
+    }
+  },
+  {
+    "id": "1f2fea92-de94-5a03-919c-f73b9c6b2892",
+    "small": "Theme: Drive Mode Selection (DMS) 3D Car Model & Animation\nSummary: 【#2(Toyota)】#77972  私有 【面企画#2】【567D/568D】【DRIMOD】【v4.11.4】【MET-G_T_SCREEN-CSTD-7-01-A-C1】【C】SNOW EXTRA模式与其他DRIMOD模式互切时不流畅，有短时间的黑画面（745D）",
+    "metadata": {
+      "issue_key": "VEL-16479",
+      "url": "https://rightware.atlassian.net/browse/VEL-16479",
+      "issuetype": "Bug",
+      "summary": "【#2(Toyota)】#77972  私有 【面企画#2】【567D/568D】【DRIMOD】【v4.11.4】【MET-G_T_SCREEN-CSTD-7-01-A-C1】【C】SNOW EXTRA模式与其他DRIMOD模式互切时不流畅，有短时间的黑画面（745D）",
+      "theme": "Drive Mode Selection (DMS) 3D Car Model & Animation",
+      "has_valuable_information": true,
+      "rca": "The black screen issue was caused by the way Snow Extra mode was integrated into the DMS mode transition flow. In the base architecture, Snow Extra is handled through multiple interface calls, which prevents the black screen. This ticket was a confirmation task to verify that the target variant with Snow Extra implemented does not exhibit the issue.",
+      "resolution_pattern": "Verified via linked ticket VEL-16326 that Snow Extra mode animations and transitions to/from other DMS modes work without a brief black screen. Ticket closed.",
+      "description": "【前提条件】 \n 1.+B ON,IG ON \n 【操作步骤】 \n 1.ENG1G90_B_DMODEX =0→1→0→1 \n 2.观察画面切替是否流畅 \n 【预期结果】 \n 画面切替流畅 \n 【实际结果】 \n 画面切替不流畅，有短暂黑画面\n\n备注：异常切替视频见附件切替显示：异常画面切替 \n 正常对比视频见附件：正常画面切替\n\n[Attachment: image-20240417-092432.png | Description: Screenshot of the issue tracking history showing updates to ticket assignments, project components to Kanzi, and notes regarding Kanzi platform version dependencies.]\n\n[Attachment: 异常画面切替.mp4 | Description: Video showing the abnormal screen transition with a brief black screen.]\n\n[Attachment: 正常画面切替.mp4 | Description: Video showing the normal screen transition for comparison.]",
+      "status": "DONE",
+      "resolution": "Done",
+      "fix_versions": [],
+      "attachments": [
+        {
+          "filename": "image-20240417-092432.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/344414",
+          "size": 18157,
+          "mime_type": "image/png",
+          "description": "Screenshot of the issue tracking history showing updates to ticket assignments, project components to Kanzi, and notes regarding Kanzi platform version dependencies."
+        },
+        {
+          "filename": "img_v3_02134_bfef3e24-4072-4e84-b229-babdd5f0be0g-20260629-051605.jpg",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/347013",
+          "size": 85965,
+          "mime_type": "image/jpeg",
+          "description": "Screenshot of a data interface specification spreadsheet showing integer definitions for 'TextDisplayInext' and 'OptionSelectIndex', highlighting the values for the 'SNOW EXTRA' mode."
+        },
+        {
+          "filename": "异常画面切替.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/344412",
+          "size": 7234541,
+          "mime_type": "video/mp4",
+          "description": "Video showing the abnormal screen transition with a brief black screen."
+        },
+        {
+          "filename": "正常画面切替.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/344413",
+          "size": 13958173,
+          "mime_type": "video/mp4",
+          "description": "Video showing the normal screen transition for comparison."
+        }
+      ],
+      "comments": [
+        {
+          "author": "Guanglei You",
+          "created": "2026-06-29T08:31:24.582+0300",
+          "body": "黑画面问题，在base版本852D做架构的时候已经将Snow Extra按照多个接口调用，不出黑画面的情况对应了。\n\n此单只需要确认745D实装Snow Extra无此问题即可。\n\nDriveMode.DriveModeVisible = 1\n\nDriveMode.DisplayIndex =2\n\nDriveMode.TextDisplayInext = 5\n\nDriveMode.OptionSelectIndex =10\n\n[Attachment: img_v3_02134_bfef3e24-4072-4e84-b229-babdd5f0be0g-20260629-051605.jpg | Description: Screenshot of a data interface specification spreadsheet showing integer definitions for 'TextDisplayInext' and 'OptionSelectIndex', highlighting the values for the 'SNOW EXTRA' mode.]"
+        },
+        {
+          "author": "Yuying Xing",
+          "created": "2026-07-08T13:07:57.891+0300",
+          "body": "[[VEL-16326] 【#2(Toyota)】【车模新增】【745D】【ANIMATION】【DMS】745D追加snow extra模式 - Jira](https://rightware.atlassian.net/browse/VEL-16326)\n\n已在上记票中验证SNOW EXTRA模式相关动效，确认SNOW EXTRA与其他DMS模式互切时，无短时间的黑画面，此票关闭"
+        }
+      ],
+      "created": "2026-06-16T07:50:08.473+0300"
+    }
+  },
+  {
+    "id": "78c70685-fa89-5d37-97cf-03e50b9b2927",
+    "small": "Theme: Car Model Animation & Transition Effects\nSummary: 【#5(Toyota)】【Animation】【车模新增】【063T】【pitch&roll】063T流用583D  动效对应",
+    "metadata": {
+      "issue_key": "VEL-16474",
+      "url": "https://rightware.atlassian.net/browse/VEL-16474",
+      "issuetype": "Task",
+      "summary": "【#5(Toyota)】【Animation】【车模新增】【063T】【pitch&roll】063T流用583D  动效对应",
+      "theme": "Car Model Animation & Transition Effects",
+      "has_valuable_information": true,
+      "rca": "Historical behavior and performance limitations; no code changes required for identified issues.",
+      "resolution_pattern": "Accepted as historical/performance issues; no fix applied.",
+      "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n[需求来源]/[Source of demand]:\n\n[Attachment: img_v3_0212h_068d6f10-4403-43e1-a5b8-6d1e050ef0ag-20260610-100734.jpg | Description: Source requirement image.]\n[Link: https://rightware.atlassian.net/browse/VEL-16443]  以上票需要对应动效，动效内容如下：\n\n[详细信息]/[Detail information]：\n\n根据客户指示：\n\n063T/737D BEV个车意匠与583D车模外观一致，故063T/737D BEV流用583D个车意匠\n\n设计要点：\n\n1.车模大小位置是都与UI效果一致\n\n2.除车模变更为其他部品无变更\n\n3.注意开关机、view迁移和切换MID时效果是否正常\n\n以上设计要点只站在设计的角度，针对设计效果上开发与测试上需要关注的点 不能作为开发跟测试只需关注以上评论进行测试跟开发的理由 如有任何疑问，请及时联络UI侧\n\n动效内容： 开关机（淡入淡出），0-1-2dial（有无widget位置不同），MAP,Setting切换（位移）,和大割入切换（淡入淡出），MID切换滚动效果\n\n[Attachment: 220827_#2-T_Black screen⇒ Casual_1dial_HV_video_003.mp4 | Description: Reference video for black screen to casual 1-dial HV animation.]\n[Attachment: 220810_#2-T_IG_ON ⇒ Ending_Casual_2Dial_video_003.mp4 | Description: Reference video for IG ON to ending casual 2-dial animation.]\n[Attachment: 220827_#2-T_Setting_Lay0_appear_2Dial_video_001.mp4 | Description: Reference video for setting layer 0 appear with 2-dial animation.]\n[Attachment: 220810_#2-T_DriveMode_Casual_1Dial_video_004.mp4 | Description: Reference video for drive mode casual 1-dial animation.]\n[Attachment: 220827_#2-T_Cursor_animation_video_001.mp4 | Description: Reference video for cursor animation.]\n请开发和测试确认对应范围是否正确，需要补足请联系",
+      "status": "DONE",
+      "resolution": "Done",
+      "fix_versions": [
+        "#5-Toyota-CV-5-YZK(738D)"
+      ],
+      "attachments": [
+        {
+          "filename": "220810_#2-T_DriveMode_Casual_1Dial_video_004.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/347516",
+          "size": 19232376,
+          "mime_type": "video/mp4",
+          "description": "Reference video for drive mode casual 1-dial animation."
+        },
+        {
+          "filename": "220810_#2-T_IG_ON ⇒ Ending_Casual_2Dial_video_003.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/347519",
+          "size": 1644707,
+          "mime_type": "video/mp4",
+          "description": "Reference video for IG ON to ending casual 2-dial animation."
+        },
+        {
+          "filename": "220827_#2-T_Black screen⇒ Casual_1dial_HV_video_003.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/347517",
+          "size": 1964804,
+          "mime_type": "video/mp4",
+          "description": "Reference video for black screen to casual 1-dial HV animation."
+        },
+        {
+          "filename": "220827_#2-T_Cursor_animation_video_001.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/347518",
+          "size": 8879177,
+          "mime_type": "video/mp4",
+          "description": "Reference video for cursor animation."
+        },
+        {
+          "filename": "220827_#2-T_Setting_Lay0_appear_2Dial_video_001.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/347515",
+          "size": 2310798,
+          "mime_type": "video/mp4",
+          "description": "Reference video for setting layer 0 appear with 2-dial animation."
+        },
+        {
+          "filename": "image-20260721-090953.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351232",
+          "size": 765626,
+          "mime_type": "image/png",
+          "description": "Screenshot for animation timing comparison."
+        },
+        {
+          "filename": "image-20260721-102733.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351233",
+          "size": 665134,
+          "mime_type": "image/png",
+          "description": "Screenshot for animation timing comparison."
+        },
+        {
+          "filename": "image-20260722-015642.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351387",
+          "size": 201891,
+          "mime_type": "image/png",
+          "description": "Screenshot for animation timing comparison."
+        },
+        {
+          "filename": "image-20260722-020240.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351388",
+          "size": 354621,
+          "mime_type": "image/png",
+          "description": "Screenshot for animation timing comparison."
+        },
+        {
+          "filename": "image-20260722-022953.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351389",
+          "size": 797129,
+          "mime_type": "image/png",
+          "description": "Screenshot for animation timing comparison."
+        },
+        {
+          "filename": "image-20260722-023054.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351386",
+          "size": 593024,
+          "mime_type": "image/png",
+          "description": "Screenshot for animation timing comparison."
+        },
+        {
+          "filename": "image-20260722-055703.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351405",
+          "size": 798649,
+          "mime_type": "image/png",
+          "description": "Screenshot for animation timing comparison."
+        },
+        {
+          "filename": "image-20260722-103315.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351474",
+          "size": 2635114,
+          "mime_type": "image/png",
+          "description": "Screenshot for animation timing comparison."
+        },
+        {
+          "filename": "image-20260723-085219.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351651",
+          "size": 3679730,
+          "mime_type": "image/png",
+          "description": "Screenshot for animation timing comparison."
+        },
+        {
+          "filename": "img_v3_0212h_068d6f10-4403-43e1-a5b8-6d1e050ef0ag-20260610-100734.jpg",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/344160",
+          "size": 63518,
+          "mime_type": "image/jpeg",
+          "description": "Source requirement image."
+        },
+        {
+          "filename": "mid向上滑.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351476",
+          "size": 30211569,
+          "mime_type": "video/mp4",
+          "description": "Video for MID upward swipe animation."
+        },
+        {
+          "filename": "mid向下滑.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351475",
+          "size": 6566894,
+          "mime_type": "video/mp4",
+          "description": "Video for MID downward swipe animation."
+        },
+        {
+          "filename": "右滑首次.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351599",
+          "size": 15039155,
+          "mime_type": "video/mp4",
+          "description": "Video for first right swipe MID animation."
+        },
+        {
+          "filename": "左滑首次.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351600",
+          "size": 11533115,
+          "mime_type": "video/mp4",
+          "description": "Video for first left swipe MID animation."
+        }
+      ],
+      "comments": [
+        {
+          "author": "Yuying Xing",
+          "created": "2026-07-21T13:43:14.520+0300",
+          "body": "1.PC端动效\n\n测试版本：20260731_Kanzi_Project_Platform_vReleasefor#5-Toyota-CV-5-YZK(738D)_Meter_PC_Ts01\n\n测试结果：NG\n\nPC端视频请动效侧 @Bin Huang  走查\n\n视频云盘路径：/群组文件/RW_Veleda2026/05-Testing/Jira_Attachments/VEL-16474/pitch&roll-063T动效.mp4\n\n问题1：UI视频中IG OFF后，表盘归零后左右mid信息才开始渐隐；工程中表盘归零的同时，左右mid就开始渐隐\n\n[Attachment: image-20260721-090953.png | Description: Screenshot for animation timing comparison.]\n问题2：向DMS切替时，UI视频：表盘指针先进行回退动效，后缩小渐隐同时左右mid同步渐隐；工程：左右mid渐隐两帧后表盘直接缩小渐隐，指针保持不变\n\n问题3：DMS向表盘切替时，UI视频：左右mid显示后表盘指针回到设定值(有动效)；工程：表盘一直保持设定值\n\n[Attachment: image-20260721-102733.png | Description: Screenshot for animation timing comparison.]\n问题4：向MTS切替时，背景一瞬黑画，左右mid无渐隐动效\n\n[Attachment: image-20260722-015642.png | Description: Screenshot for animation timing comparison.]\n问题5：MTS向表盘切替时，表盘完全显示后，左右mid信息才开始渐显，效果与DMS不一致，请UI帮忙判断该效果是否符合需求\n\n[Attachment: image-20260722-020240.png | Description: Screenshot for animation timing comparison.]\n问题6：setting文字没有渐显效果，一帧显示\n\n[Attachment: image-20260722-022953.png | Description: Screenshot for animation timing comparison.]\n问题7：进入setting画面时，UI视频中左右mid位置与表盘同时切换显示；工程中mid位置移动完成后才出现0dial背景\n\n[Attachment: image-20260722-023054.png | Description: Screenshot for animation timing comparison.]\n问题8：向setting画面切替时，UI视频中的cursor原地渐隐，但是工程中的cursor横向拉伸后渐隐\n\n[Attachment: image-20260722-055703.png | Description: Screenshot for animation timing comparison.]"
+        },
+        {
+          "author": "Yuying Xing",
+          "created": "2026-07-22T13:54:39.146+0300",
+          "body": "2.板端动效\n\n测试版本：20260731_Kanzi_Project_Platform_vReleasefor#5-Toyota-CV-5-YZK(738D)_Meter_Board_Ts01\n\n测试结果：NG\n\n板端视频和上条评论的PC端视频 请动效侧 @Bin Huang  帮忙一起走查\n\n视频云盘路径：/群组文件/RW_Veleda2026/05-Testing/Jira_Attachments/VEL-16474/063T-pitch&roll板端.mp4\n\n问题1：左右mid的滑动动效设为上/下滑动后进行切替，mid信息自上/下滑入，但是原地消去退场，无上/下滑出的效果\n\n下滑\n\n[Attachment: mid向下滑.mp4 | Description: Video for MID downward swipe animation.]\n上滑\n\n[Attachment: mid向上滑.mp4 | Description: Video for MID upward swipe animation.]\n[Attachment: image-20260722-103315.png | Description: Screenshot for animation timing comparison.]\n问题2：左右mid的滑动动效设为向左/右滑动，首次切换mid时，mid信息自左/右滑入，但是原地消去退场，无向左/右滑出的效果\n\n左滑\n\n[Attachment: 左滑首次.mp4 | Description: Video for first left swipe MID animation.]\n右滑\n\n[Attachment: 右滑首次.mp4 | Description: Video for first right swipe MID animation.]\n问题3：板端中向DMS切替时，左右mid先渐隐后表盘才开始缩小，没有同步变化\n\n[Attachment: image-20260723-085219.png | Description: Screenshot for animation timing comparison.]\n问题4：其余问题与PC端一致"
+        },
+        {
+          "author": "Bin Huang",
+          "created": "2026-07-27T04:39:20.233+0300",
+          "body": "@Yuying Xing  未发现其他新的问题"
+        },
+        {
+          "author": "Guanglei You",
+          "created": "2026-07-27T12:27:31.819+0300",
+          "body": "板端提出的问题1-问题2，属于性能问题，非本次修改导致。\n\n问题3指出的：左右mid先渐隐后表盘才开始缩小，没有同步变化，也是因为性能问题，PC性能好，可以处理的数据较多，但是板端性能差，在这个时刻处理慢一些，就会导致没同步变化，也属于性能问题。\n\n当前板端提出的问题，均属于性能问题，非本次修改导致。\n\nPC测试问题，通过确认，内容均非本次修改导致，属于历史问题，非本次修改导致。\n\n麻烦PM确认板端和PC问题是否容赦。 @Song Hu"
+        },
+        {
+          "author": "Song Hu",
+          "created": "2026-07-27T13:15:32.990+0300",
+          "body": "历史和性能问题不修正。"
+        }
+      ],
+      "created": "2026-06-15T11:05:32.856+0300"
+    }
+  },
+  {
+    "id": "8244d415-48f2-5640-b8f2-aa7c1fb812e2",
+    "small": "Theme: Drive Mode Selection (DMS) 3D Car Model & Animation\nSummary: 【#5(Toyota)】【Animation】【车模新增】【737D MLM】【DMS】737D MLM车模新增  动效对应",
+    "metadata": {
+      "issue_key": "VEL-16467",
+      "url": "https://rightware.atlassian.net/browse/VEL-16467",
+      "issuetype": "Task",
+      "summary": "【#5(Toyota)】【Animation】【车模新增】【737D MLM】【DMS】737D MLM车模新增  动效对应",
+      "theme": "Drive Mode Selection (DMS) 3D Car Model & Animation",
+      "has_valuable_information": true,
+      "rca": "",
+      "resolution_pattern": "",
+      "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n[需求来源]/[Source of demand]:\n\n16.06.2026 TMC x RW GR Design Meeting\n\n[Link: https://rightware.atlassian.net/browse/VEL-16452]  以上票需要对应动效，动效内容如下：\n\n[详细信息]/[Detail information]：\n\n设计要点：\n\n1.每个模式车模的颜色与设计图相比颜色是否OK（因工程无法百分之百设计效果完全一致，但是颜色需接近，要保证色相的统一，整体画面颜色的协调，车身反射颜色与天空以及山体颜色要在同一色系）\n\n2.车模位置、车模形状、车模倒影以及动态效果要与设计图一致（并且要保证工程中每个模式的车模位置相同，模式与模式切换时不能有抖动）\n\n3.此票只为车模新增，车模以外的部分像是每个模式的背景右文言部分等都无变更（右边侧文言布局分为Dial Switch、Toggle Switch、Push Switch） 以上设计要点只站在设计的角度，针对设计效果上开发与测试上需要关注的点 不能作为开发跟测试只需关注以上评论进行测试跟开发的理由\n\n切图文件：\n\n【DMS】\n\neco\n\n[Attachment: 737D_master_DMS_eco.mp4]\nnormal\n\n[Attachment: 737D_master_DMS_normal.mp4]\nsport\n\n[Attachment: 737D_master_DMS_sport.mp4]",
+      "status": "DONE",
+      "resolution": "Done",
+      "fix_versions": [
+        "#5-Toyota-CV-5-YZK(738D)"
+      ],
+      "attachments": [
+        {
+          "filename": "20260727172329_rec_-convert.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/352050",
+          "size": 1524523,
+          "mime_type": "video/mp4",
+          "description": ""
+        },
+        {
+          "filename": "20260727173755_rec_.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/352047",
+          "size": 1198998,
+          "mime_type": "video/mp4",
+          "description": ""
+        },
+        {
+          "filename": "20260727173946_rec_-convert.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/352051",
+          "size": 1612752,
+          "mime_type": "video/mp4",
+          "description": ""
+        },
+        {
+          "filename": "20260727181135_rec_-convert.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/352054",
+          "size": 4190484,
+          "mime_type": "video/mp4",
+          "description": ""
+        },
+        {
+          "filename": "737D_master_DMS_eco.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/347379",
+          "size": 7095145,
+          "mime_type": "video/mp4",
+          "description": ""
+        },
+        {
+          "filename": "737D_master_DMS_normal.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/347377",
+          "size": 6889445,
+          "mime_type": "video/mp4",
+          "description": ""
+        },
+        {
+          "filename": "737D_master_DMS_sport.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/347378",
+          "size": 6903598,
+          "mime_type": "video/mp4",
+          "description": ""
+        },
+        {
+          "filename": "DMS.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351920",
+          "size": 2309596,
+          "mime_type": "video/mp4",
+          "description": ""
+        },
+        {
+          "filename": "image-20260727-080328.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/352049",
+          "size": 1151252,
+          "mime_type": "image/png",
+          "description": "Comparison shows the car model entering the DMS screen with premature wheel highlighting and overlaying gauges in the Kanzi implementation compared to the design reference."
+        },
+        {
+          "filename": "image-20260727-081107.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/352053",
+          "size": 1118589,
+          "mime_type": "image/png",
+          "description": "Visual comparison demonstrates an entry timing mismatch where the car model renders before the DMS background loads in the implementation build."
+        },
+        {
+          "filename": "image-20260727-081735.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/352046",
+          "size": 869344,
+          "mime_type": "image/png",
+          "description": "Comparison indicates that the implementation retains wheel highlights after the body light sweep ends, failing to synchronize like the reference video."
+        },
+        {
+          "filename": "image-20260727-081932.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/352052",
+          "size": 881120,
+          "mime_type": "image/png",
+          "description": "Comparison highlights DMS exit animation issues where the right list disappears abruptly and mid-cluster elements appear out of sequence in the build."
+        },
+        {
+          "filename": "image-20260727-082605.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/352048",
+          "size": 1009752,
+          "mime_type": "image/png",
+          "description": "Comparison illustrates a visual mismatch between the color tones of the car body light sweep and wheel rim highlights across the design and runtime screens."
+        },
+        {
+          "filename": "image-20260727-084921.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/352055",
+          "size": 955751,
+          "mime_type": "image/png",
+          "description": "Comparison shows drive mode selector box timing discrepancy, with the selection indicator shifting downward earlier relative to the car light sweep in the implementation."
+        },
+        {
+          "filename": "KanziCheckList.xlsx",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351918",
+          "size": 40387,
+          "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "description": ""
+        }
+      ],
+      "comments": [
+        {
+          "author": "Guanglei You",
+          "created": "2026-07-27T06:12:51.514+0300",
+          "body": "已修改，请TS03版本验证"
+        },
+        {
+          "author": "Yuying Xing",
+          "created": "2026-07-27T12:27:38.931+0300",
+          "body": "测试版本：20260731_Kanzi_Project_Platform_vReleasefor#5-Toyota-CV-5-YZK(738D)_Meter_PC_Ts03\n\n测试结果：NG\n\nPC端和板端视频请动效侧 @Bin Huang  double check\n\n视频路径：/群组文件/RW_Veleda2026/05-Testing/Jira_Attachments/VEL-16467/737D_MLM-DMS-PC1.mp4&737D_MLM-DMS-PC2.mp4&737D_MLM-DMS-板端.mp4\n\n问题1：表盘渐隐效果和UI不一致，UI是两边向中间缩小渐隐，工程为原地渐隐\n\n问题2：首次进入DMS画面车模一帧显示，无渐显动效\n\n问题3：UI视频中右侧list是在车模进场后，由画面右侧淡入；工程中右侧list是先于车模出现，并在原地渐显\n\n问题4：进场时车轮高亮显示\n\n[Attachment: image-20260727-080328.png | Description: Comparison shows the car model entering the DMS screen with premature wheel highlighting and overlaying gauges in the Kanzi implementation compared to the design reference.]\n问题5：第二个UI视频中车模进场后，右侧list的光标是从底部向上滑动，工程是从上向下，请UI帮忙确认效果\n\n问题6：UI视频中车模和DMS画面背景同时出现，但工程车模出现时背景还没有出现\n\n[Attachment: image-20260727-081107.png | Description: Visual comparison demonstrates an entry timing mismatch where the car model renders before the DMS background loads in the implementation build.]\n问题7：UI扫光833ms左右，工程扫光499ms左右，扫光时间不一致\n\n问题8：UI车模扫光与车轮高亮同步结束，工程中车模扫光结束后车轮仍高亮显示\n\n[Attachment: image-20260727-081735.png | Description: Comparison indicates that the implementation retains wheel highlights after the body light sweep ends, failing to synchronize like the reference video.]\n问题9：UI视频中的退场动画为车模和右侧list同步渐隐，表盘渐显；工程中右侧list一帧消去，车模渐隐，左右mid渐显，mid信息完全显示后再显示表盘，与UI效果不符\n\n[Attachment: image-20260727-081932.png | Description: Comparison highlights DMS exit animation issues where the right list disappears abruptly and mid-cluster elements appear out of sequence in the build.]\n问题10：RrCOMF→表盘→ECO时，右侧list选项框先由下向上到CUSTOM，再下滑到ECO(选项框位置自下而上变更时会发生)\n\nCUSTOM→表盘→RANGE情况下，右侧选项框从Drivemode小字上方入场(选项框位置自上而下变更时会发生)\n\n[Attachment: 20260727172329_rec_-convert.mp4]\n[Attachment: 20260727173946_rec_-convert.mp4]\n问题11：车模扫光和轮子高亮颜色不一样\n\n[Attachment: image-20260727-082605.png | Description: Comparison illustrates a visual mismatch between the color tones of the car body light sweep and wheel rim highlights across the design and runtime screens.]\n问题12：选项框下移时机不一致，以车模扫光位置为参照，UI视频的选中框在选项1的时候，工程的选中框已经下移\n\n[Attachment: image-20260727-084921.png | Description: Comparison shows drive mode selector box timing discrepancy, with the selection indicator shifting downward earlier relative to the car light sweep in the implementation.]\n问题13：进入DMS画面，右侧的选项框颜色会发生渐变，且抖动\n\n[Attachment: 20260727173755_rec_.mp4]\n问题14：模式切替时，切到CUSTOM模式，文言没有动效\n\n[Attachment: 20260727181135_rec_-convert.mp4]\n问题15：板端问题与PC端一致"
+        },
+        {
+          "author": "Bin Huang",
+          "created": "2026-07-28T11:55:37.407+0300",
+          "body": "@Yuying Xing  未发现其他新的问题，如为历史问题请联系PM看是否需要修正，不是历史问题请修正"
+        },
+        {
+          "author": "Guanglei You",
+          "created": "2026-07-28T13:24:04.088+0300",
+          "body": "该内容均为历史问题，非本次修改导致，与063T一样，麻烦PM确认是否容赦处理 @Song Hu"
+        },
+        {
+          "author": "Song Hu",
+          "created": "2026-07-28T13:30:48.194+0300",
+          "body": "历史问题不修正。"
+        }
+      ],
+      "created": "2026-06-15T10:59:43.084+0300"
+    }
+  },
+  {
+    "id": "8e702af7-f87f-5b01-b588-ae090c3f85aa",
+    "small": "Theme: Drive Mode Selection (DMS) 3D Car Model & Animation\nSummary: 【#5(Toyota)】【车模新增】【animation】【063T】【MTS】063T流用583D",
+    "metadata": {
+      "issue_key": "VEL-16456",
+      "url": "https://rightware.atlassian.net/browse/VEL-16456",
+      "issuetype": "Task",
+      "summary": "【#5(Toyota)】【车模新增】【animation】【063T】【MTS】063T流用583D",
+      "theme": "Drive Mode Selection (DMS) 3D Car Model & Animation",
+      "has_valuable_information": true,
+      "rca": "Refer to ticket comments and attachment descriptions for detailed root cause analysis.",
+      "resolution_pattern": "Historical and performance-related issues were accepted without code changes.",
+      "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n[需求来源]/[Source of demand]:\n\n[Attachment: img_v3_0212h_0e21aee1-cee6-432b-ba85-9fb6d096724g-20260610-094708.png | Description: A specification matrix table detailing the shared vehicle model asset directory mapping for models 583D, 666D, 737D_BEV, and 063T.]\n[详细信息]/[Detail information]：\n\n根据客户指示：\n\n063T/737D BEV个车意匠与583D车模外观一致，故063T/737D BEV流用583D个车意匠\n\n设计要点：\n\n1.每个模式车模的颜色与设计图相比颜色是否OK（因工程无法百分之百设计效果完全一致，但是颜色需接近，要保证色相的统一，整体画面颜色的协调，车身反射颜色与天空以及山体颜色要在同一色系） \n\n2.车模位置、车模形状、车模倒影要与视频一致（并且要保证工程中每个模式的车模位置相同，模式与模式切换时不能有抖动）  \n\n3.此票只为车模新增，车模以外的部分像是每个模式的背景右文言部分等都无变更（右边侧文言布局分为Dial Switch、Toggle Switch、Push Switch） 以上设计要点只站在设计的角度，针对设计效果上开发与测试上需要关注的点 不能作为开发跟测试只需关注以上评论进行测试跟开发的理由\n\n4.注意IG-ON、IG-OFF以及DMS与其他功能的迁移动效是否正常\n\n切图:与DMS切图相同\n\n \n\nMTS-auto\n\n[Attachment: 583D_master_MTS_auto.mp4 | Description: Reference video for MTS auto mode car model animation.]\nMTS-dirt\n\n \n\n[Attachment: 583D_master_MTS_dirt.mp4 | Description: Reference video for MTS dirt mode car model animation.]\nMTS-mogul\n\n[Attachment: 583D_master_MTS_mogul.mp4 | Description: Reference video for MTS mogul mode car model animation.]\nMTS-mud\n\n[Attachment: 583D_master_MTS_mud.mp4 | Description: Reference video for MTS mud mode car model animation.]\nMTS-rock\n\n[Attachment: 583D_master_MTS_rock.mp4 | Description: Reference video for MTS rock mode car model animation.]\nMTS-sand\n\n[Attachment: 583D_master_MTS_sand.mp4 | Description: Reference video for MTS sand mode car model animation.]",
+      "status": "DONE",
+      "resolution": "Done",
+      "fix_versions": [
+        "#5-Toyota-CV-5-YZK(738D)"
+      ],
+      "attachments": [
+        {
+          "filename": "583D_master_MTS_auto.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/343360",
+          "size": 10364830,
+          "mime_type": "video/mp4",
+          "description": "Reference video for MTS auto mode car model animation."
+        },
+        {
+          "filename": "583D_master_MTS_dirt.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/343363",
+          "size": 10249089,
+          "mime_type": "video/mp4",
+          "description": "Reference video for MTS dirt mode car model animation."
+        },
+        {
+          "filename": "583D_master_MTS_mogul.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/343364",
+          "size": 10208566,
+          "mime_type": "video/mp4",
+          "description": "Reference video for MTS mogul mode car model animation."
+        },
+        {
+          "filename": "583D_master_MTS_mud.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/343358",
+          "size": 10014778,
+          "mime_type": "video/mp4",
+          "description": "Reference video for MTS mud mode car model animation."
+        },
+        {
+          "filename": "583D_master_MTS_rock.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/343362",
+          "size": 10193231,
+          "mime_type": "video/mp4",
+          "description": "Reference video for MTS rock mode car model animation."
+        },
+        {
+          "filename": "583D_master_MTS_sand.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/343361",
+          "size": 9502509,
+          "mime_type": "video/mp4",
+          "description": "Reference video for MTS sand mode car model animation."
+        },
+        {
+          "filename": "image-20260611-033304.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/343346",
+          "size": 14683,
+          "mime_type": "image/png",
+          "description": "A text header snippet in red font outlining the task title for Toyota 063T/737D BEV vehicle model reuse of 583D MTS animations."
+        },
+        {
+          "filename": "image-20260715-074537.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/350370",
+          "size": 1102567,
+          "mime_type": "image/png",
+          "description": "A split comparison between the PC build (top) and UI specification (bottom) at 9s, highlighting timing discrepancies where the gauge dials fail to shrink/fade out and the 'AUTO' text appears prematurely."
+        },
+        {
+          "filename": "image-20260715-075026.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/350368",
+          "size": 920230,
+          "mime_type": "image/png",
+          "description": "A full-screen render of the 3D pickup truck model displayed against a mountain and blue dot-matrix terrain background in the 'AUTO' MTS mode."
+        },
+        {
+          "filename": "image-20260715-075655.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/350369",
+          "size": 1274173,
+          "mime_type": "image/png",
+          "description": "A comparison showing the PC test build (top) failing to fade in the Smart gauges during MTS exit at 13s, while the UI design reference (bottom) transitions smoothly back to the meter display."
+        },
+        {
+          "filename": "image-20260715-080532.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/350367",
+          "size": 1909547,
+          "mime_type": "image/png",
+          "description": "A split comparison highlighting an issue where the PC test build (top) displays brightly illuminated blue wheels before the light sweep effect reaches them, unlike the UI design (bottom)."
+        },
+        {
+          "filename": "image-20260723-080643.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351605",
+          "size": 1578220,
+          "mime_type": "image/png",
+          "description": "A photograph of the physical instrument cluster during board testing, capturing a single-frame darkening glitch during the transition out of the 'ROCK & DIRT' MTS screen."
+        },
+        {
+          "filename": "image-20260723-080903.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351606",
+          "size": 1694250,
+          "mime_type": "image/png",
+          "description": "A physical screen capture showing a rendering artifact where two duplicate light sweep lines appear simultaneously across the left dial during the gauge fade-in animation."
+        },
+        {
+          "filename": "image-20260723-081047.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351604",
+          "size": 1633849,
+          "mime_type": "image/png",
+          "description": "A physical screen capture during board testing showing the dual gauge dials fully faded in while the central multi-information display (MID) content is delayed and missing."
+        },
+        {
+          "filename": "img_v3_0212h_0e21aee1-cee6-432b-ba85-9fb6d096724g-20260610-094708.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/343345",
+          "size": 104903,
+          "mime_type": "image/png",
+          "description": "A specification matrix table detailing the shared vehicle model asset directory mapping for models 583D, 666D, 737D_BEV, and 063T."
+        },
+        {
+          "filename": "录制_2026_07_15_16_24_30_412.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/350397",
+          "size": 23051825,
+          "mime_type": "video/mp4",
+          "description": "PC-side recorded video for MTS animation review."
+        },
+        {
+          "filename": "问题1.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/352059",
+          "size": 2534460,
+          "mime_type": "video/mp4",
+          "description": "Video demonstrating a performance-related issue during MTS exit animation."
+        }
+      ],
+      "comments": [
+        {
+          "author": "Shuancheng Wang",
+          "created": "2026-07-15T11:07:54.334+0300",
+          "body": "测试版本：20260731_Kanzi_Project_Platform_vReleasefor#5-Toyota-CV-5-YZK(738D)_Meter_PC_Ts01\n\n测试结果：NG；请UI  @Bin Huang   double check以下问题能否容赦，并确认下是否存在其它问题，谢谢！\n\nPC端视频\n\n[Attachment: 录制_2026_07_15_16_24_30_412.mp4 | Description: PC-side recorded video for MTS animation review.]\n问题1：对比UI视频，视频9s附近，MTS淡入时：①.文言“AUTO”比车模先出现；②.Smart表盘没有缩小淡出；③.MTS背景没有淡入黑色背景显示\n\n[Attachment: image-20260715-074537.png | Description: A split comparison between the PC build (top) and UI specification (bottom) at 9s, highlighting timing discrepancies where the gauge dials fail to shrink/fade out and the 'AUTO' text appears prematurely.]\n问题2：对比UI视频，视频9s附近，MTS淡入时没开始扫光的时候车轮就已经高亮蓝色显示了，UI视频是扫光时车轮才高亮蓝色显示\n\n[Attachment: image-20260715-080532.png | Description: A split comparison highlighting an issue where the PC test build (top) displays brightly illuminated blue wheels before the light sweep effect reaches them, unlike the UI design (bottom).]\n问题3：对比UI视频，视频10.568s附近，车模车轮停止扫光后，车轮会弹跳一下\n\n[Attachment: image-20260715-075026.png | Description: A full-screen render of the 3D pickup truck model displayed against a mountain and blue dot-matrix terrain background in the 'AUTO' MTS mode.]\n问题4：对比UI视频，视频13s附近，MTS淡出时：①.Smart表盘没有淡入；②.UI图文言“AUTO”先淡出车模后淡出，PC视频是车模先淡出、文言“AUTO”后淡出\n\n[Attachment: image-20260715-075655.png | Description: A comparison showing the PC test build (top) failing to fade in the Smart gauges during MTS exit at 13s, while the UI design reference (bottom) transitions smoothly back to the meter display.]\n问题5：每个MTS模式都存在以上4个问题。"
+        },
+        {
+          "author": "Bin Huang",
+          "created": "2026-07-16T10:23:42.836+0300",
+          "body": "@Shuancheng Wang  从设计角度看，问题需要修正，问题2的车轮高亮与设计视频效果不符"
+        },
+        {
+          "author": "Guanglei You",
+          "created": "2026-07-17T04:02:58.640+0300",
+          "body": "@Song Hu  以下内容均为历史问题，非本次留用导致的问题。麻烦PM确认是否容赦处理。"
+        },
+        {
+          "author": "Song Hu",
+          "created": "2026-07-21T08:57:29.613+0300",
+          "body": "效果与历史版本保持一致即可。不修正。"
+        },
+        {
+          "author": "Shuancheng Wang",
+          "created": "2026-07-23T11:14:08.175+0300",
+          "body": "测试版本：20260731_Kanzi_Project_Platform_vReleasefor#5-Toyota-CV-5-YZK(738D)_Meter_Board_Ts01\n\n测试结果：NG（PC端已容赦问题板端也同样存在，在此没有重新提及）；请UI  @Bin Huang   double check以下问题能否容赦，并确认下是否存在其它问题，谢谢！\n\n板端视频云盘路径：/群组文件/RW_Veleda2026/05-Testing/Jira_Attachments/VEL-16456\n\n问题1：板端视频3s左右MTS淡出时，MTS界面从正常显示一帧跳到很黑的背景显示，随后在淡出\n\n[Attachment: image-20260723-080643.png | Description: A photograph of the physical instrument cluster during board testing, capturing a single-frame darkening glitch during the transition out of the 'ROCK & DIRT' MTS screen.]\n问题2：板端视频5s左右MTS淡出表盘淡入时，表盘淡入完成后表盘中的MID才开始淡入\n\n[Attachment: image-20260723-081047.png | Description: A physical screen capture during board testing showing the dual gauge dials fully faded in while the central multi-information display (MID) content is delayed and missing.]\n问题2：板端视频26s左右MTS淡出表盘淡入时，出现了2个扫盘效果\n\n[Attachment: image-20260723-080903.png | Description: A physical screen capture showing a rendering artifact where two duplicate light sweep lines appear simultaneously across the left dial during the gauge fade-in animation.]"
+        },
+        {
+          "author": "Bin Huang",
+          "created": "2026-07-27T05:45:06.490+0300",
+          "body": "@Shuancheng Wang  未发现其他新的问题"
+        },
+        {
+          "author": "Guanglei You",
+          "created": "2026-07-27T13:17:13.185+0300",
+          "body": "问题1确认属于退场卡顿，MTS场景占用时，在渐隐和SmartGauge显示，属于性能问题：\n\n[Attachment: 问题1.mp4 | Description: Video demonstrating a performance-related issue during MTS exit animation.]\n问题2属于历史问题\n\n问题3： PC环境未复现该问题（非逻辑问题）。 \n 由于PC图形处理能力较强，每帧都能及时完成渲染，因此扫光始终只有一条。板端在个别帧渲染压力较大时，可能会短暂显示上一帧和当前帧的扫光位置，因此视觉上会出现两条扫光，下一帧即可恢复正常。属于性能问题。\n\n@Song Hu  麻烦PM确认是否容赦"
+        },
+        {
+          "author": "Song Hu",
+          "created": "2026-07-27T13:18:52.906+0300",
+          "body": "性能和历史问题不修正。"
+        }
+      ],
+      "created": "2026-06-11T06:32:31.592+0300"
+    }
+  },
+  {
+    "id": "4562324f-0fcb-515d-b137-be49dd5723b4",
+    "small": "Theme: Drive Mode Selection (DMS) 3D Car Model & Animation\nSummary: 【#5(Toyota)】【车模新增】【737D MLM】【DMS】737D MLM车模新增",
+    "metadata": {
+      "issue_key": "VEL-16452",
+      "url": "https://rightware.atlassian.net/browse/VEL-16452",
+      "issuetype": "Task",
+      "summary": "【#5(Toyota)】【车模新增】【737D MLM】【DMS】737D MLM车模新增",
+      "theme": "Drive Mode Selection (DMS) 3D Car Model & Animation",
+      "has_valuable_information": true,
+      "rca": "Not included in this extraction. Specific bug symptoms, timing discrepancies, and hardware details are intentionally left to the RCA, comments, and attachment descriptions.",
+      "resolution_pattern": "Add or update the DMS 3D car model per drive mode, ensure visual consistency with design, and verify stable positioning and color harmony across mode switches.",
+      "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n[需求来源]/[Source of demand]:\n\n16.06.2026 TMC x RW GR Design Meeting\n\n[详细信息]/[Detail information]：\n\n设计要点：\n\n1.每个模式车模的颜色与设计图相比颜色是否OK（因工程无法百分之百设计效果完全一致，但是颜色需接近，要保证色相的统一，整体画面颜色的协调，车身反射颜色与天空以及山体颜色要在同一色系）\n\n2.车模位置、车模形状、车模倒影要与设计图一致（并且要保证工程中每个模式的车模位置相同，模式与模式切换时不能有抖动）\n\n3.此票只为车模新增，车模以外的部分像是每个模式的背景右文言部分等都无变更（右边侧文言布局分为Dial Switch、Toggle Switch、Push Switch） 以上设计要点只站在设计的角度，针对设计效果上开发与测试上需要关注的点 不能作为开发跟测试只需关注以上评论进行测试跟开发的理由\n\n【DMS】\n\neco\n\n[Attachment: 737D-MLM_Push-Switch_ECO.png | Description: Digital instrument cluster UI design specification for Push-Switch ECO drive mode, displaying a side-view 3D vehicle model with green accents and cluster layout alignment guides.]\nnormal\n\n[Attachment: 737D-MLM_Push-Switch_NORMAL.png | Description: UI design specification for Push-Switch NORMAL mode, featuring the 3D vehicle model centered on a dark background with the 'NORMAL' text label and alignment markings.]\nsport\n\n[Attachment: 737D-MLM_Push-Switch_SPORT.png | Description: UI design specification for Push-Switch SPORT mode, showcasing red background accent geometry, 'SPORT' mode label, and the vehicle 3D model.]\n\n全部设计图",
+      "status": "DONE",
+      "resolution": "Done",
+      "fix_versions": [
+        "#5-Toyota-CV-5-YZK(738D)"
+      ],
+      "attachments": [
+        {
+          "filename": "737D-MLM_Push-Switch_ECO.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/343481",
+          "size": 431543,
+          "mime_type": "image/png",
+          "description": "Digital instrument cluster UI design specification for Push-Switch ECO drive mode, displaying a side-view 3D vehicle model with green accents and cluster layout alignment guides."
+        },
+        {
+          "filename": "737D-MLM_Push-Switch_ECO (96d894fc-a6d1-439b-893c-5dc8e9fafef3).png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/347373",
+          "size": 431543,
+          "mime_type": "image/png",
+          "description": "Duplicate UI specification showing the 737D MLM cluster in Push-Switch ECO mode with vehicle model rendering, speedometer, and boundary guide overlays."
+        },
+        {
+          "filename": "737D-MLM_Push-Switch_NORMAL.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/343480",
+          "size": 429004,
+          "mime_type": "image/png",
+          "description": "UI design specification for Push-Switch NORMAL mode, featuring the 3D vehicle model centered on a dark background with the 'NORMAL' text label and alignment markings."
+        },
+        {
+          "filename": "737D-MLM_Push-Switch_NORMAL (add861da-f91a-480c-8215-b7c3287f0332).png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/347374",
+          "size": 429004,
+          "mime_type": "image/png",
+          "description": "Duplicate UI specification of the Push-Switch NORMAL mode cluster interface including vehicle model positioning and cluster border overlay lines."
+        },
+        {
+          "filename": "737D-MLM_Push-Switch_SPORT.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/343482",
+          "size": 430717,
+          "mime_type": "image/png",
+          "description": "UI design specification for Push-Switch SPORT mode, showcasing red background accent geometry, 'SPORT' mode label, and the vehicle 3D model."
+        },
+        {
+          "filename": "737D-MLM_Push-Switch_SPORT (b1324397-56c8-4518-aadf-4017fe81a452).png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/347376",
+          "size": 430717,
+          "mime_type": "image/png",
+          "description": "Duplicate UI specification for the Push-Switch SPORT mode interface displaying cluster instrumentation guides and red ambient styling."
+        },
+        {
+          "filename": "image-20260727-060428.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351978",
+          "size": 711971,
+          "mime_type": "image/png",
+          "description": "Image comparison tool view showing a pixel difference analysis comparing the rear wheel arch curvature between the design specification and the Kanzi implementation build."
+        },
+        {
+          "filename": "image-20260727-064414.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351979",
+          "size": 891112,
+          "mime_type": "image/png",
+          "description": "Visual comparison tool output highlighting discrepancies in the Drive mode text title, list alignment, and overall brightness between UI design and engineering implementation in Toggle mode."
+        },
+        {
+          "filename": "KanziCheckList.xlsx",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351916",
+          "size": 40387,
+          "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "description": "Kanzi HMI checklist spreadsheet for verification."
+        }
+      ],
+      "comments": [
+        {
+          "author": "Guanglei You",
+          "created": "2026-07-27T06:12:39.450+0300",
+          "body": "已修改，请TS03版本验证"
+        },
+        {
+          "author": "Yuying Xing",
+          "created": "2026-07-27T09:54:25.776+0300",
+          "body": "测试版本：20260731_Kanzi_Project_Platform_vReleasefor#5-Toyota-CV-5-YZK(738D)_Meter_PC_Ts03\n\n测试结果：NG\n\n工程图请UI @Yifei He  帮忙double check\n\n工程图：  \n\n问题1：后车轮上方弧度与UI相比有差异\n\n[Attachment: image-20260727-060428.png | Description: Image comparison tool view showing a pixel difference analysis comparing the rear wheel arch curvature between the design specification and the Kanzi implementation build.]\n问题2：DMS画面整体色调与UI有差异，UI色调偏暗、工程偏亮\n\n问题3：Toggle模式下右侧Drivemode标题和list与UI图不符\n\n[Attachment: image-20260727-064414.png | Description: Visual comparison tool output highlighting discrepancies in the Drive mode text title, list alignment, and overall brightness between UI design and engineering implementation in Toggle mode.]"
+        },
+        {
+          "author": "Yifei He",
+          "created": "2026-07-27T12:27:14.272+0300",
+          "body": "问题一：确认OK，无需修正\n\n问题二：色调确认OK，无需修正\n\n问题三：确认OK，按照工程效果为准"
+        }
+      ],
+      "created": "2026-06-11T05:29:15.284+0300"
+    }
+  },
+  {
+    "id": "8c785d3f-d8dc-5ba3-9719-fe9a5eed9642",
+    "small": "Theme: 3D Car Model State Animation & Visual Consistency (Door Open / Door Unlock / SEA)\nSummary: 【#5(Toyota)】【车模新增】【737D MLM】【door open】【DoorUnlock】【SEA】737D MLM车模新增",
+    "metadata": {
+      "issue_key": "VEL-16448",
+      "url": "https://rightware.atlassian.net/browse/VEL-16448",
+      "issuetype": "Task",
+      "summary": "【#5(Toyota)】【车模新增】【737D MLM】【door open】【DoorUnlock】【SEA】737D MLM车模新增",
+      "theme": "3D Car Model State Animation & Visual Consistency (Door Open / Door Unlock / SEA)",
+      "has_valuable_information": true,
+      "rca": "Not applicable. UI design owner reviewed the reported observations and confirmed all are acceptable; no design or code correction was required.",
+      "resolution_pattern": "UI confirmation of design intent; ticket closed as DONE without further changes.",
+      "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n[需求来源]/[Source of demand]:\n\n16.06.2026 TMC x RW GR Design Meeting\n\n[详细信息]/[Detail information]：\n\n设计要点：\n\n1.车模的大小是否与设计图一致\n\n2.车门全关跟车门全开位置是否正确，注意全关时车门与车身是否会有明显缝隙\n\n3.注意工程中的车门全关与红色车门全关切换时车门不可以有抖动需完全一致\n\n4.door open与door unlock切换时车不可以有抖动，包含车门全关跟车门全开，工程中车模需完全一致\n\n5.车模新增票除车模有变更以外，其他部品无变更\n\n以上设计要点只站在设计的角度，针对设计效果上开发与测试上需要关注的点 不能作为开发跟测试只需关注以上评论进行测试跟开发的理由 如有任何疑问，请及时联络UI侧\n\n【door open】\n\n[Attachment: 737D-MLM_door-closed-red-0Dial.png | Description: Design specification for the digital cluster showing the top-down car model with closed doors highlighted with red warning borders.]\n[Attachment: 737D-MLM_door-closed-White-0Dial.png | Description: Design specification showing the normal all-doors-closed state for the top-down white car model within the cluster display.]\n[Attachment: 737D-MLM_Interrupt-Display-D-Seat-Door-Open-2Dial_1.png | Description: Design specification showing an interrupt display with all doors, hood, and tailgate open highlighted in red.]\n【DoorUnlock】\n\n[Attachment: 737D MLM_Interrupt Display-RR Seat Door Open.jpg | Description: Design specification mockup illustrating the DoorUnlock state with all four passenger doors opened and highlighted in red.]\n【SEA】\n\n[Attachment: 737D-MLM_S_SEA-CSTD-REQ02-Rear-right-door-0Dial.png | Description: Digital cluster UI design showing the Safe Exit Assist (SEA) warning state with orange arrows and door open indicator.]\n[Attachment: 737D-MLM_S_SEA-GSY02-REQ02-Front-right-door-1Dial.png | Description: Digital cluster UI design depicting the SEA alert configuration with active right-side door opening warning arrows.]",
+      "status": "DONE",
+      "resolution": "Done",
+      "fix_versions": [
+        "#5-Toyota-CV-5-YZK(738D)"
+      ],
+      "attachments": [
+        {
+          "filename": "_0-20260720-124229.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351006",
+          "size": 251159,
+          "mime_type": "image/png",
+          "description": "Instrument cluster display showing tachometer and speedometer dials alongside the center card depicting the top-down 737D vehicle model with all four doors and trunk opened in red highlight."
+        },
+        {
+          "filename": "_0-20260721-085305.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351180",
+          "size": 268488,
+          "mime_type": "image/png",
+          "description": "Full digital cluster interface showing gauge dials and the center Tire Pressure monitor screen with placeholder dashed values and the top-down SUV model."
+        },
+        {
+          "filename": "737D_switch_body-20260706-014639.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/348733",
+          "size": 247210,
+          "mime_type": "image/png",
+          "description": "Side-profile 2D/3D texture asset of the dark grey 737D SUV car body without wheels on an isolated background."
+        },
+        {
+          "filename": "737D-MLM_door-closed-red-0Dial.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/343464",
+          "size": 792431,
+          "mime_type": "image/png",
+          "description": "Design specification for the digital cluster showing the top-down car model with closed doors highlighted with red warning borders."
+        },
+        {
+          "filename": "737D-MLM_door-closed-White-0Dial.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/343465",
+          "size": 791426,
+          "mime_type": "image/png",
+          "description": "Design specification showing the normal all-doors-closed state for the top-down white car model within the cluster display."
+        },
+        {
+          "filename": "737D-MLM_Interrupt-Display-D-Seat-Door-Open-2Dial_1.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/343463",
+          "size": 803205,
+          "mime_type": "image/png",
+          "description": "Design specification showing an interrupt display with all doors, hood, and tailgate open highlighted in red."
+        },
+        {
+          "filename": "737D MLM_Interrupt Display-RR Seat Door Open.jpg",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/343461",
+          "size": 556830,
+          "mime_type": "image/jpeg",
+          "description": "Design specification mockup illustrating the DoorUnlock state with all four passenger doors opened and highlighted in red."
+        },
+        {
+          "filename": "737D-MLM_S_SEA-CSTD-REQ02-Rear-right-door-0Dial.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/343462",
+          "size": 798207,
+          "mime_type": "image/png",
+          "description": "Digital cluster UI design showing the Safe Exit Assist (SEA) warning state with orange arrows and door open indicator."
+        },
+        {
+          "filename": "737D-MLM_S_SEA-GSY02-REQ02-Front-right-door-1Dial.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/343466",
+          "size": 798458,
+          "mime_type": "image/png",
+          "description": "Digital cluster UI design depicting the SEA alert configuration with active right-side door opening warning arrows."
+        },
+        {
+          "filename": "737DMLM-DoorOpen&Unlock.xml",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351227",
+          "size": 7495,
+          "mime_type": "text/html",
+          "description": "XML configuration for door open and door unlock states."
+        },
+        {
+          "filename": "clean.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/348467",
+          "size": 16136,
+          "mime_type": "image/png",
+          "description": "Isolated center display UI element showing the clean top-down vehicle model with closed doors."
+        },
+        {
+          "filename": "DMS-20260727-030915.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351930",
+          "size": 4154770,
+          "mime_type": "image/png",
+          "description": ""
+        },
+        {
+          "filename": "dooropen_1-20260720-124249.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351002",
+          "size": 242422,
+          "mime_type": "image/png",
+          "description": "Cluster screen capture showing tachometer and speedometer dials framing the center card with red-highlighted closed doors."
+        },
+        {
+          "filename": "dooropen_2-20260720-124305.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351008",
+          "size": 242010,
+          "mime_type": "image/png",
+          "description": "Cluster screen capture showing the center vehicle model with the rear trunk/hood area highlighted in red."
+        },
+        {
+          "filename": "Emergency car_1-20260720-124725.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351004",
+          "size": 227546,
+          "mime_type": "image/png",
+          "description": "Cluster screen capture displaying the 'Emergency Vehicle Nearby' text notification below the vehicle model in the center card."
+        },
+        {
+          "filename": "image-20260629-091035.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351029",
+          "size": 147977,
+          "mime_type": "image/png",
+          "description": "Configuration spreadsheet table detailing signal mapping and integer switch values for CommonCarModelType."
+        },
+        {
+          "filename": "image-20260703-091453.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/348500",
+          "size": 288954,
+          "mime_type": "image/png",
+          "description": "Cluster layout display featuring dual pitch and roll 30-degree inclinometer indicators positioned inside the gauge meters."
+        },
+        {
+          "filename": "image-20260706-093130.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/348734",
+          "size": 433039,
+          "mime_type": "image/png",
+          "description": "Side profile 3D rendering of the dark grey 737D vehicle model complete with alloy wheels against a dark background."
+        },
+        {
+          "filename": "image-20260707-065722.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/349058",
+          "size": 86090,
+          "mime_type": "image/png",
+          "description": "UI layout test display showing the TPMS vehicle model rendered across center, left, and right preview positions."
+        },
+        {
+          "filename": "image-20260720-123223.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351027",
+          "size": 16623,
+          "mime_type": "image/png",
+          "description": "Changelog entry snippet describing the addition of CommonCarModelType values 16 through 19 per ticket VEL-16508."
+        },
+        {
+          "filename": "image-20260720-123246.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351026",
+          "size": 113496,
+          "mime_type": "image/png",
+          "description": "Specification document excerpt listing CommonCarModelType integer values 0 through 19 and their corresponding model assignments."
+        },
+        {
+          "filename": "image-20260721-090311.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351181",
+          "size": 104410,
+          "mime_type": "image/png",
+          "description": "Kanzi Studio Project Merge window showing resource tree integration and conflicts for 737D_MLM tire textures and prefabs."
+        },
+        {
+          "filename": "img_v3_0213p_304907d8-8fa4-4fa4-987e-90d161b83deg-20260720-132409.jpg",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351028",
+          "size": 533058,
+          "mime_type": "image/jpeg",
+          "description": "Kanzi Studio Project Merge tool window displaying the batch creation of DMS, DoorOpen, DoorUnlock, and MTS prefabs for 737D_MLM."
+        },
+        {
+          "filename": "KanziCheckList.xlsx",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351012",
+          "size": 40366,
+          "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "description": "Kanzi HMI checklist used for verification."
+        },
+        {
+          "filename": "MTS-20260727-031002.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351929",
+          "size": 4154770,
+          "mime_type": "image/png",
+          "description": ""
+        },
+        {
+          "filename": "poll_1-20260720-124845.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351007",
+          "size": 250124,
+          "mime_type": "image/png",
+          "description": "Cluster display test capture verifying the pitch and roll 30-degree inclinometer vehicle graphics inside the dual dials."
+        },
+        {
+          "filename": "Snipaste_2026-07-03_15-34-48.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/348440",
+          "size": 29995,
+          "mime_type": "image/png",
+          "description": "Snapshot of the isolated center card displaying the default top-down white car model."
+        },
+        {
+          "filename": "Snipaste_2026-07-03_15-36-20.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/348439",
+          "size": 40900,
+          "mime_type": "image/png",
+          "description": "Snapshot of the isolated center card showing the car model with open red doors, hood, and tailgate."
+        },
+        {
+          "filename": "Snipaste_2026-07-03_15-41-12.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/348438",
+          "size": 30335,
+          "mime_type": "image/png",
+          "description": "Snapshot of the isolated center card showing the car model with closed red door highlight outlines."
+        },
+        {
+          "filename": "Snipaste_2026-07-03_16-37-34-20260703-073736.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/348458",
+          "size": 36805,
+          "mime_type": "image/png",
+          "description": "Snapshot of the isolated center card showing the white vehicle model with all four doors open in red."
+        },
+        {
+          "filename": "Snipaste_2026-07-03_17-44-09-20260703-084412.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/348480",
+          "size": 21413,
+          "mime_type": "image/png",
+          "description": "Snapshot of the center card displaying the 'Emergency Vehicle Nearby' alert accompanied by an ambulance icon."
+        },
+        {
+          "filename": "SONAR_1-20260720-124623.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351003",
+          "size": 223224,
+          "mime_type": "image/png",
+          "description": "Full cluster view showing the clean top-down car model within the sonar/center widget between both dials."
+        },
+        {
+          "filename": "Sonar_4-20260720-130559.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351014",
+          "size": 230017,
+          "mime_type": "image/png",
+          "description": "Full cluster view showing the sonar screen displaying the top-down vehicle model with doors opened."
+        },
+        {
+          "filename": "sonar.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/348466",
+          "size": 17430,
+          "mime_type": "image/png",
+          "description": "Cropped center display capture showing the top-down car model in its default sonar monitoring state."
+        },
+        {
+          "filename": "unlock_1-20260720-124507.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351005",
+          "size": 245968,
+          "mime_type": "image/png",
+          "description": "Full cluster view showing the DoorUnlock status with all four passenger doors opened in red."
+        },
+        {
+          "filename": "右前侧红车门后视镜实机和UI图位置不一致.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351225",
+          "size": 166251,
+          "mime_type": "image/png",
+          "description": "Image diff tool comparison highlighting a slight position difference in the front-right red door mirror between UI spec and actual build."
+        },
+        {
+          "filename": "右前侧车门后视镜实机和UI图位置不一致.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351231",
+          "size": 259495,
+          "mime_type": "image/png",
+          "description": "Image diff tool comparison showing a positional offset on the front-right side mirror of the white car model between UI design and runtime build."
+        },
+        {
+          "filename": "后侧红车门最下方与UI图位置不一致.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351229",
+          "size": 75231,
+          "mime_type": "image/png",
+          "description": "Image diff tool comparison showing vertical alignment discrepancy at the bottom edge of the rear red doors between UI design and runtime build."
+        },
+        {
+          "filename": "后尾门接缝处显示比UI图模糊.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351226",
+          "size": 87521,
+          "mime_type": "image/png",
+          "description": "Image diff tool comparison highlighting blurriness along the rear tailgate seam on the actual build compared to the UI design."
+        },
+        {
+          "filename": "红车门实机比UI图模糊.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/351228",
+          "size": 179366,
+          "mime_type": "image/png",
+          "description": "Image diff tool comparison illustrating that the red open doors appear blurrier in the runtime implementation than in the UI reference."
+        }
+      ],
+      "comments": [
+        {
+          "author": "Ruiteng Lu",
+          "created": "2026-07-21T13:41:34.693+0300",
+          "body": "测试版本：20260731_Kanzi_Project_Platform_vReleasefor#5-Toyota-CV-5-YZK(738D)_Meter_PC_Ts01\n\n测试结果：NG\n\n测试脚本：  \n\n测试工程：  \n\n测试有以下问题，请UI  @Yifei He  帮忙double check一下，谢谢。\n\n（左侧为UI图，右侧为实机图）\n\n1.红车门实机比UI图模糊\n\n[Attachment: 红车门实机比UI图模糊.png | Description: Image diff tool comparison illustrating that the red open doors appear blurrier in the runtime implementation than in the UI reference.]\n2.后侧红车门最下方与UI图位置不一致\n\n[Attachment: 后侧红车门最下方与UI图位置不一致.png | Description: Image diff tool comparison showing vertical alignment discrepancy at the bottom edge of the rear red doors between UI design and runtime build.]\n3.后尾门接缝处显示比UI图模糊\n\n[Attachment: 后尾门接缝处显示比UI图模糊.png | Description: Image diff tool comparison highlighting blurriness along the rear tailgate seam on the actual build compared to the UI design.]\n4.右前侧车门后视镜实机和UI图位置不一致\n\n[Attachment: 右前侧车门后视镜实机和UI图位置不一致.png | Description: Image diff tool comparison showing a positional offset on the front-right side mirror of the white car model between UI design and runtime build.]\n5.右前侧红车门后视镜实机和UI图位置不一致\n\n[Attachment: 右前侧红车门后视镜实机和UI图位置不一致.png | Description: Image diff tool comparison highlighting a slight position difference in the front-right red door mirror between UI spec and actual build.]"
+        },
+        {
+          "author": "Yifei He",
+          "created": "2026-07-24T04:57:15.799+0300",
+          "body": "测试提到：\n\n问题一：确认OK，无需修正\n\n问题二：确认OK，无需修正\n\n问题三：确认OK，无需修正\n\n问题四：确认OK，无需修正\n\n问题五：确认OK，无需修正"
+        }
+      ],
+      "created": "2026-06-11T05:25:28.451+0300"
+    }
+  },
+  {
+    "id": "37f664a8-c756-5673-a1b3-f46944541c00",
+    "small": "Theme: Drive Mode Selection (DMS) 3D Car Model & Animation\nSummary: 【#5(Toyota)】【车模新增】【063T】【MTS】063T流用583D",
+    "metadata": {
+      "issue_key": "VEL-16447",
+      "url": "https://rightware.atlassian.net/browse/VEL-16447",
+      "issuetype": "Task",
+      "summary": "【#5(Toyota)】【车模新增】【063T】【MTS】063T流用583D",
+      "theme": "Drive Mode Selection (DMS) 3D Car Model & Animation",
+      "has_valuable_information": true,
+      "rca": "The ticket is a 3D car model addition for a new vehicle variant by reusing an existing approved car model design. UI verification identified visual discrepancies between the engineering render and the design images. Some differences were accepted by UI, while others required correction. Several issues were determined to be common template/historical issues rather than specific to this car model addition. Detailed bug symptoms, test version, and hardware-specific observations are recorded in the ticket comments and attachment descriptions.",
+      "resolution_pattern": "Reuse an existing car model design for a new vehicle variant, then verify visual consistency across all drive modes, including color, position, shape, reflection, and transition animations. UI confirms acceptable deviations; only car-model-related changes are in scope; non-car-model UI elements remain unchanged.",
+      "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n[需求来源]/[Source of demand]:\n\n[详细信息]/[Detail information]：\n\n根据客户指示：\n\n063T/737D BEV个车意匠与583D车模外观一致，故063T/737D BEV流用583D个车意匠\n\n设计要点：\n\n1.每个模式车模的颜色与设计图相比颜色是否OK（因工程无法百分之百设计效果完全一致，但是颜色需接近，要保证色相的统一，整体画面颜色的协调，车身反射颜色与天空以及山体颜色要在同一色系） \n\n2.车模位置、车模形状、车模倒影要与设计图一致（并且要保证工程中每个模式的车模位置相同，模式与模式切换时不能有抖动）  \n\n3.此票只为车模新增，车模以外的部分像是每个模式的背景右文言部分等都无变更（右边侧文言布局分为Dial Switch、Toggle Switch、Push Switch） 以上设计要点只站在设计的角度，针对设计效果上开发与测试上需要关注的点 不能作为开发跟测试只需关注以上评论进行测试跟开发的理由\n\n4.注意IG-ON、IG-OFF以及DMS与其他功能的迁移动效是否正常\n\n设计图如下：\n\n[Attachment: 3_Arc-List_MTS_6mode-(T_F).png | Description: UI design reference showing the Multi-Terrain Select (MTS) interface in SAND mode, featuring a 3D pickup truck model against a mountain backdrop with cluster instrumentation and a mode selector list.]\n全部设计图\n\n如有任何问题，请与UI侧联络",
+      "status": "DONE",
+      "resolution": "Done",
+      "fix_versions": [
+        "#5-Toyota-CV-5-YZK(738D)"
+      ],
+      "attachments": [
+        {
+          "filename": "3_Arc-List_MTS_6mode-(T_F).png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/343329",
+          "size": 596851,
+          "mime_type": "image/png",
+          "description": "UI design reference showing the Multi-Terrain Select (MTS) interface in SAND mode, featuring a 3D pickup truck model against a mountain backdrop with cluster instrumentation and a mode selector list."
+        },
+        {
+          "filename": "image-20260715-064214.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/350355",
+          "size": 1235129,
+          "mime_type": "image/png",
+          "description": "Visual diff tool comparing the design asset to the rendered Kanzi implementation, highlighting RGB color variance across the truck's side door panel."
+        },
+        {
+          "filename": "image-20260715-064555.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/350356",
+          "size": 1236778,
+          "mime_type": "image/png",
+          "description": "Visual diff tool highlighting the underside reflection and contact shadow discrepancy between the design specification and the implementation output."
+        },
+        {
+          "filename": "image-20260715-064748.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/350357",
+          "size": 1237487,
+          "mime_type": "image/png",
+          "description": "Visual diff tool comparing the density and rendering of the dust and smoke effects beneath and behind the vehicle between the design image and the build output."
+        },
+        {
+          "filename": "image-20260715-065148.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/350360",
+          "size": 1235899,
+          "mime_type": "image/png",
+          "description": "Visual diff tool highlighting pixel offsets and brightness differences in the background mountains and the right-hand MTS menu text list."
+        },
+        {
+          "filename": "image-20260715-084708.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/350396",
+          "size": 1462085,
+          "mime_type": "image/png",
+          "description": "Side-by-side video frame comparison between the Kanzi build (top) and reference animation (bottom) in MTS MUD mode, showing differences in wheel ground depression and tire reflections."
+        }
+      ],
+      "comments": [
+        {
+          "author": "Shuancheng Wang",
+          "created": "2026-07-15T09:50:11.061+0300",
+          "body": "测试版本：20260731_Kanzi_Project_Platform_vReleasefor#5-Toyota-CV-5-YZK(738D)_Meter_PC_Ts01\n\n测试结果：NG；请UI @Yifei He   double check工程图效果，并帮忙判断以下是否容赦，谢谢！\n\n工程图：  \n\n问题1：与UI图对比，右侧的文言列表和MTS标题文言存在px差异，背景山也存在px差异（背景山的颜色比UI图的亮）\n\n[Attachment: image-20260715-065148.png | Description: Visual diff tool highlighting pixel offsets and brightness differences in the background mountains and the right-hand MTS menu text list.]\n问题2：与UI图对比，车身颜色的RGB与UI图存在差异\n\n[Attachment: image-20260715-064214.png | Description: Visual diff tool comparing the design asset to the rendered Kanzi implementation, highlighting RGB color variance across the truck's side door panel.]\n问题3：与UI图对比，车模倒影不明显\n\n[Attachment: image-20260715-064555.png | Description: Visual diff tool highlighting the underside reflection and contact shadow discrepancy between the design specification and the implementation output.]\n问题4：与UI图对比，车底和车后面的烟雾有点淡\n\n[Attachment: image-20260715-064748.png | Description: Visual diff tool comparing the density and rendering of the dust and smoke effects beneath and behind the vehicle between the design image and the build output.]\n问题5：测试动效时：MTS的MUD模式，轮子的倒影和轮子的陷入度都和UI动效图不符，请UI确认下工程图中MUD模式的效果\n\n[Attachment: image-20260715-084708.png | Description: Side-by-side video frame comparison between the Kanzi build (top) and reference animation (bottom) in MTS MUD mode, showing differences in wheel ground depression and tire reflections.]"
+        },
+        {
+          "author": "Yifei He",
+          "created": "2026-07-18T04:41:18.149+0300",
+          "body": "测试提到的\n\n问题一：确认OK，无需修改\n\n问题二：确认OK，无需修改\n\n问题三：需要修正\n\n问题四：需要修正\n\n问题五：需要修正"
+        },
+        {
+          "author": "Guanglei You",
+          "created": "2026-07-21T08:40:19.951+0300",
+          "body": "以下问题3，问题4，问题5，属于共同模版控制，非单个车模导致的效果。均属于历史问题，麻烦PM确认是否容赦。  @Song Hu"
+        },
+        {
+          "author": "Song Hu",
+          "created": "2026-07-21T08:53:06.021+0300",
+          "body": "SNOW EXTRA的效果与历史版本一致即可，不需要额外修正。"
+        }
+      ],
+      "created": "2026-06-11T04:50:03.945+0300"
+    }
+  },
+  {
+    "id": "547c1a8b-0d4c-56af-89f4-22282f7807d4",
+    "small": "Theme: Drive Mode Selection (DMS) 3D Car Model & Animation\nSummary: 【#5(Toyota)】【车模新增】【063T】【DMS】063T流用583D",
+    "metadata": {
+      "issue_key": "VEL-16446",
+      "url": "https://rightware.atlassian.net/browse/VEL-16446",
+      "issuetype": "Task",
+      "summary": "【#5(Toyota)】【车模新增】【063T】【DMS】063T流用583D",
+      "theme": "Drive Mode Selection (DMS) 3D Car Model & Animation",
+      "has_valuable_information": true,
+      "rca": "Not applicable — ticket is a design/engineering visual alignment task, not a defect RCA.",
+      "resolution_pattern": "UI design review confirmed the engineering car model effect is acceptable; no modification required.",
+      "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n[需求来源]/[Source of demand]:\n\n另外与客户确认此车不适用snow extra模式\n\n[详细信息]/[Detail information]：\n\n根据客户指示：\n\n063T/737D BEV个车意匠与583D车模外观一致，故063T/737D BEV流用583D个车意匠 \n 设计要点：\n\n1.每个模式车模的颜色与设计图相比颜色是否OK（因工程无法百分之百设计效果完全一致，但是颜色需接近，要保证色相的统一，整体画面颜色的协调，车身反射颜色与天空以及山体颜色要在同一色系） \n\n2.车模位置、车模形状、车模倒影要与设计图一致（并且要保证工程中每个模式的车模位置相同，模式与模式切换时不能有抖动）  \n\n3.此票只为车模新增，车模以外的部分像是每个模式的背景右文言部分等都无变更（右边侧文言布局分为Dial Switch、Toggle Switch、Push Switch） 以上设计要点只站在设计的角度，针对设计效果上开发与测试上需要关注的点 不能作为开发跟测试只需关注以上评论进行测试跟开发的理由\n\n4.注意IG-ON、IG-OFF以及DMS与其他功能的迁移动效是否正常\n\n设计图如下：\n\n[Attachment: 2.5_Arc-List_DMS_6mde-CUSTOM.png | Description: Reference design mockup showing the full digital instrument cluster layout with the 3D pickup truck model, active gauges, and the Drive Mode selection list.]\n全部设计图\n\n如有任何问题请与UI侧联络",
+      "status": "DONE",
+      "resolution": "Done",
+      "fix_versions": [
+        "#5-Toyota-CV-5-YZK(738D)"
+      ],
+      "attachments": [
+        {
+          "filename": "2.5_Arc-List_DMS_6mde-CUSTOM.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/343328",
+          "size": 266953,
+          "mime_type": "image/png",
+          "description": "Reference design mockup showing the full digital instrument cluster layout with the 3D pickup truck model, active gauges, and the Drive Mode selection list."
+        },
+        {
+          "filename": "DriveMode_.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/349830",
+          "size": 285866,
+          "mime_type": "image/png",
+          "description": "Engineering runtime capture of the Drive Mode Selection screen displaying the implemented 3D pickup truck asset alongside the drive mode menu options."
+        },
+        {
+          "filename": "image-20260710-070925.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/349829",
+          "size": 731009,
+          "mime_type": "image/png",
+          "description": "Side-by-side visual difference comparison highlighting discrepancies between the UI design specification and the engineering build regarding wheel textures, reflections, and car body color."
+        }
+      ],
+      "comments": [
+        {
+          "author": "Yuying Xing",
+          "created": "2026-07-10T10:58:09.211+0300",
+          "body": "测试版本：20260731_Kanzi_Project_Platform_vReleasefor#5-Toyota-CV-5-YZK(738D)_Meter_PC_Ts01\n\n测试结果：NG\n\n工程图请UI @Yifei He  走查\n\n其他DMS工程图：  \n\n[Attachment: DriveMode_.png | Description: Engineering runtime capture of the Drive Mode Selection screen displaying the implemented 3D pickup truck asset alongside the drive mode menu options.]\n问题1：工程的车轮素材模糊，线条不平滑，呈锯齿状\n\n问题2：车轮倒影与UI相比颜色较浅\n\n问题3：车身颜色和尾灯颜色与UI不符\n\n[Attachment: image-20260710-070925.png | Description: Side-by-side visual difference comparison highlighting discrepancies between the UI design specification and the engineering build regarding wheel textures, reflections, and car body color.]"
+        },
+        {
+          "author": "Yifei He",
+          "created": "2026-07-10T12:56:04.113+0300",
+          "body": "测试提到的问题一到问题三确认OK\n\n车模效果OK，无需修改"
+        }
+      ],
+      "created": "2026-06-11T04:38:34.473+0300"
+    }
+  },
+  {
+    "id": "a79291c5-5b3e-5b82-a641-a3cd89882985",
+    "small": "Theme: Drive Mode Selection (DMS) List UI Animation & Highlight Boundary\nSummary: 【#2(Toyota)】【内部Bug】【DMS】2dial切换到DMS List界面时，DMS模式选项框动效超出列表范围（852D）",
+    "metadata": {
+      "issue_key": "VEL-16404",
+      "url": "https://rightware.atlassian.net/browse/VEL-16404",
+      "issuetype": "Bug",
+      "summary": "【#2(Toyota)】【内部Bug】【DMS】2dial切换到DMS List界面时，DMS模式选项框动效超出列表范围（852D）",
+      "theme": "Drive Mode Selection (DMS) List UI Animation & Highlight Boundary",
+      "has_valuable_information": true,
+      "rca": "",
+      "resolution_pattern": "",
+      "description": "前提条件】/【Pre-condition】：\n\n<Common.IG_State filename=\"Common\" type=\"int\" value=\"3\" />\n\n<Common.ThemeType filename=\"Common\" type=\"int\" value=\"1\" />\n\n<Gauge.SpeedMaximum filename=\"Gauge\" type=\"int\" value=\"1\" />\n\n<Gauge.RpmMaximum filename=\"Gauge\" type=\"int\" value=\"1\" />\n\n<Common.ModeType filename=\"Common\" type=\"int\" value=\"3\" />\n\n<Gauge.DialMode filename=\"Gauge\" type=\"int\" value=\"1\" />\n\n<Common.LeftRightMidPosition filename=\"Common\" type=\"int\" value=\"3\"/>\n\n【 测试环境 】 / 【 Testing Environment 】 :\n\nPC\n\n【语种】/【Languages】：-\n\n【Message No】/【Message No】：-\n\n【操作手顺】/【Procedure】：\n\n1.<DriveMode.DisplayIndex filename=\"DriveMode\" type=\"int\" value=\"1\" /> \n  <DriveMode.DriveModeVisible filename=\"DriveMode\" type=\"bool\" value=\"1\" /> \n <DriveMode.List_Comfort filename=\"DriveMode\" type=\"bool\" value=\"1\" /> \n <DriveMode.List_CUSTOM filename=\"DriveMode\" type=\"bool\" value=\"1\" /> \n <DriveMode.List_ECO filename=\"DriveMode\" type=\"bool\" value=\"1\" /> \n <DriveMode.List_Normal filename=\"DriveMode\" type=\"bool\" value=\"1\" /> \n <DriveMode.List_Range filename=\"DriveMode\" type=\"bool\" value=\"1\" /> \n <DriveMode.List_RearComfort filename=\"DriveMode\" type=\"bool\" value=\"1\" /> \n <DriveMode.List_SPORT filename=\"DriveMode\" type=\"bool\" value=\"1\" /> \n <DriveMode.ModeSelectIndex filename=\"DriveMode\" type=\"int\" value=\"3\" />\n\n2.<DriveMode.DriveModeVisible filename=\"DriveMode\" type=\"bool\" value=\"0\" />\n\n3.<DriveMode.ModeSelectIndex filename=\"DriveMode\" type=\"int\" value=\"6\" />\n\n4.<DriveMode.DriveModeVisible filename=\"DriveMode\" type=\"bool\" value=\"1\" />\n\n【周边确认】/【Surrounding Confirmation】：\n\n从2dial进入DMS画面，DMS淡入时，选项框位置没有从第一个选项开始移动\n\n备注：Base版本20240927_Kanzi_Project_Platform_vReleasefor#2T-18(567D568D-1A) 567D车型也存在此问题\n\n问题截图：\n\n[Attachment: image-20260525-093332.png | Description: The screenshot shows the Drive Mode Selection (DMS) transition on the instrument cluster, where the mode selection focus box appears out of bounds over the top header area instead of aligning within the option list.]\n视频：\n\n[Attachment: 录制_2026_05_25_18_26_48_951.mp4]",
+      "status": "To Do",
+      "resolution": "Unresolved",
+      "fix_versions": [],
+      "attachments": [
+        {
+          "filename": "image-20260525-093332.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/340451",
+          "size": 473926,
+          "mime_type": "image/png",
+          "description": "The screenshot shows the Drive Mode Selection (DMS) transition on the instrument cluster, where the mode selection focus box appears out of bounds over the top header area instead of aligning within the option list."
+        },
+        {
+          "filename": "录制_2026_05_25_18_26_48_951.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/340450",
+          "size": 2057199,
+          "mime_type": "video/mp4",
+          "description": ""
+        }
+      ],
+      "comments": [],
+      "created": "2026-05-25T12:35:29.025+0300"
+    }
+  },
+  {
+    "id": "064836a6-8547-5814-9aee-567c5b9d0000",
+    "small": "Theme: Instrument Cluster Display Transition & Animation Effects\nSummary: 【#2(Toyota)】【DN】【Animation】【745D】【新增功能】新增Normal Display - Battery Status功能 动效对应",
+    "metadata": {
+      "issue_key": "VEL-16399",
+      "url": "https://rightware.atlassian.net/browse/VEL-16399",
+      "issuetype": "Task",
+      "summary": "【#2(Toyota)】【DN】【Animation】【745D】【新增功能】新增Normal Display - Battery Status功能 动效对应",
+      "theme": "Instrument Cluster Display Transition & Animation Effects",
+      "has_valuable_information": true,
+      "rca": "The ticket is an animation implementation task for a new cluster display feature. The animation scope includes power on/off fade transitions, dial mode changes (0/1/2-dial), MAP/Setting screen transitions, large cut-in switching, and MID scrolling effects. Verification found animation issues, but they were classified as first-load performance degradation or pre-existing historical issues, not new feature defects.",
+      "resolution_pattern": "Animation tasks for cluster display transitions should be verified both on first load and on subsequent transitions. Performance-related animation degradation on first invocation should be distinguished from functional animation defects. Historical issues should be tracked separately and not block acceptance of new animation features.",
+      "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n[需求来源]/[Source of demand]:\n\nDN_面開発管理用_標準仕様DB_260512_v0151\n\nREQ-0806\n\nMET-H_SOHDSP-CSTD-0-07-A-C0\n\n[详细信息]/[Detail information]：\n\n[Link: https://rightware.atlassian.net/browse/VEL-16386]  \n\n动效内容： 开关机（淡入淡出），0-1-2dial（有无widget位置不同），MAP,Setting切换（位移）,和大割入切换（淡入淡出），MID切换滚动效果\n\n[Attachment: 220827_#2-T_Black screen⇒ Casual_1dial_HV_video_003.mp4 | Description: Black screen to casual 1-dial HV animation video]\n[Attachment: 220810_#2-T_IG_ON ⇒ Ending_Casual_2Dial_video_003.mp4 | Description: IG ON to ending casual 2-dial animation video]\n[Attachment: 220827_#2-T_Setting_Lay0_appear_2Dial_video_001.mp4 | Description: Setting layer 0 appear 2-dial animation video]\n[Attachment: 220810_#2-T_DriveMode_Casual_1Dial_video_004.mp4 | Description: Drive mode casual 1-dial animation video]\n[Attachment: 220827_#2-T_Cursor_animation_video_001.mp4 | Description: Cursor animation video]\n请开发和测试确认对应范围是否正确，需要补足请联系",
+      "status": "DONE",
+      "resolution": "Done",
+      "fix_versions": [
+        "#2-Toyota-1A-DN(745D)"
+      ],
       "attachments": [
         {
           "filename": "220810_#2-T_DriveMode_Casual_1Dial_video_004.mp4",
           "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/340138",
           "size": 19232376,
-          "mime_type": "video/mp4"
+          "mime_type": "video/mp4",
+          "description": "Drive mode casual 1-dial animation video"
         },
         {
           "filename": "220810_#2-T_IG_ON ⇒ Ending_Casual_2Dial_video_003.mp4",
           "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/340137",
           "size": 1644707,
-          "mime_type": "video/mp4"
+          "mime_type": "video/mp4",
+          "description": "IG ON to ending casual 2-dial animation video"
         },
         {
           "filename": "220827_#2-T_Black screen⇒ Casual_1dial_HV_video_003.mp4",
           "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/340141",
           "size": 1964804,
-          "mime_type": "video/mp4"
+          "mime_type": "video/mp4",
+          "description": "Black screen to casual 1-dial HV animation video"
         },
         {
           "filename": "220827_#2-T_Cursor_animation_video_001.mp4",
           "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/340139",
           "size": 8879177,
-          "mime_type": "video/mp4"
+          "mime_type": "video/mp4",
+          "description": "Cursor animation video"
         },
         {
           "filename": "220827_#2-T_Setting_Lay0_appear_2Dial_video_001.mp4",
           "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/340140",
           "size": 2310798,
-          "mime_type": "video/mp4"
+          "mime_type": "video/mp4",
+          "description": "Setting layer 0 appear 2-dial animation video"
         },
         {
           "filename": "image-20260702-025646.png",
           "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/348181",
           "size": 674881,
-          "mime_type": "image/png"
+          "mime_type": "image/png",
+          "description": "A screenshot of the digital cluster simulation displaying the 2-dial Battery Status screens with a central Settings icon, highlighting a stray vertical black bar artifact boxed in red during the settings screen fade-out animation."
         },
         {
           "filename": "KanziCheckList.xlsx",
           "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/347391",
           "size": 40361,
-          "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+          "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "description": "Kanzi animation checklist spreadsheet"
+        }
+      ],
+      "comments": [
+        {
+          "author": "Shuancheng Wang",
+          "created": "2026-07-02T05:58:47.419+0300",
+          "body": "测试版本：20260717_Kanzi_Project_Platform_vReleasefor#2-Toyota-1A-DN(745D)_Meter_PC_Ts02\n\n测试结果：NG；请UI @Bin Huang  double check PC端和板端视频效果\n\nPC端和板端视频创达云盘路径：/群组文件/RW_Veleda2026/05-Testing/Jira_Attachments/VEL-16399\n\n问题1：VEL-16399-PC.mp4视频3.17min时（2个板端视频在3.24min左右）表盘第一次切DMS时，MID文言淡出效果很不明显（几乎没有淡出效果），再次从表盘切DMS界面淡出效果很明显（745D/852D的resource存在此问题，100D的resource不存在此问题）\n\n问题2：VEL-16399-PC.mp4视频3.21min时DMS界面退出返回表盘界面没有车模淡出效果（base版本也存在此问题）\n\n问题3：VEL-16399-PC.mp4视频4.48min时，setting界面淡出出去时会有个几帧图像有bar的黑条显示（base版本也存在此问题）\n\n[Attachment: image-20260702-025646.png | Description: A screenshot of the digital cluster simulation displaying the 2-dial Battery Status screens with a central Settings icon, highlighting a stray vertical black bar artifact boxed in red during the settings screen fade-out animation.]"
+        },
+        {
+          "author": "Bin Huang",
+          "created": "2026-07-07T09:11:16.241+0300",
+          "body": "@Shuancheng Wang  以检验，未发现其他新的问题"
+        },
+        {
+          "author": "Guanglei You",
+          "created": "2026-07-08T12:58:06.646+0300",
+          "body": "问题1属于首次加载性能问题，导致淡出动效不明显（745D/852D的resource存在此问题），后续再次切换无此问题。\n\n问题2-3均为历史问题。以上问题申请PM容赦  @Song Hu"
+        },
+        {
+          "author": "Song Hu",
+          "created": "2026-07-08T13:01:04.055+0300",
+          "body": "历史问题不修正。"
         }
       ],
       "created": "2026-05-22T12:51:57.448+0300"
+    }
+  },
+  {
+    "id": "a9795618-2432-55fb-a479-b565dfb70722",
+    "small": "Theme: Drive Mode Selection (DMS) 3D Car Model & Animation\nSummary: 【#2(Toyota)】【DN】【852D】【功能适用变更】【 ANIMATION】Interrupt Display - Drive mode 3增加CUSTOM和SNOW EXTRA模式",
+    "metadata": {
+      "issue_key": "VEL-16328",
+      "url": "https://rightware.atlassian.net/browse/VEL-16328",
+      "issuetype": "Task",
+      "summary": "【#2(Toyota)】【DN】【852D】【功能适用变更】【 ANIMATION】Interrupt Display - Drive mode 3增加CUSTOM和SNOW EXTRA模式",
+      "theme": "Drive Mode Selection (DMS) 3D Car Model & Animation",
+      "has_valuable_information": true,
+      "rca": "",
+      "resolution_pattern": "",
+      "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n[需求来源]/[Source of demand]:\n\n[详细信息]/[Detail information]：\n\n因#2T的式样追加 [Link: https://rightware.atlassian.net/browse/VEL-16327]   所以起了这张动效票，以下DMS模式按照式样票中的模式列举出，动效视频只参考动态效果 ，852D车型以UI设计图为准\n\nDMS与2dial/1dial切换参考动效\n\n[Attachment: 221011_#2.5-T_920Dcab_DMS_1dial_NORMAL_video_001.mp4]\ncustom\n\n[Attachment: 120D_master_DMS_normal-custom-comfort-Rcomfort.mp4]\nSnow extra\n\n[Attachment: 231213_#2.5-T_920Dcab_DMS_2dial_snow_extra_video_001.mp4]",
+      "status": "DONE",
+      "resolution": "Done",
+      "fix_versions": [
+        "#2-Toyota-1A-DN(852D)"
+      ],
+      "attachments": [
+        {
+          "filename": "120D_master_DMS_normal-custom-comfort-Rcomfort.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/332669",
+          "size": 4915853,
+          "mime_type": "video/mp4",
+          "description": ""
+        },
+        {
+          "filename": "221011_#2.5-T_920Dcab_DMS_1dial_NORMAL_video_001.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/332667",
+          "size": 4314895,
+          "mime_type": "video/mp4",
+          "description": ""
+        },
+        {
+          "filename": "231213_#2.5-T_920Dcab_DMS_2dial_snow_extra_video_001.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/332668",
+          "size": 1753117,
+          "mime_type": "video/mp4",
+          "description": ""
+        },
+        {
+          "filename": "image-20260416-085701.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/332670",
+          "size": 4655,
+          "mime_type": "image/png",
+          "description": "An image snippet displaying the text label '【 ANIMATION】', used as a title header tag for animation-related tasks."
+        },
+        {
+          "filename": "KanziCheckList.xlsx",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/340064",
+          "size": 40382,
+          "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "description": ""
+        }
+      ],
+      "comments": [
+        {
+          "author": "Shuancheng Wang",
+          "created": "2026-05-25T11:56:39.937+0300",
+          "body": "CUSTOM和SNOW EXTRA动效效果，在DMS动效票 [Link: https://rightware.atlassian.net/browse/VEL-16310]  跟踪确认"
+        }
+      ],
+      "created": "2026-04-16T11:55:42.376+0300"
+    }
+  },
+  {
+    "id": "0890ed7e-683a-5c71-b22f-1ea571879097",
+    "small": "Theme: Drive Mode Selection (DMS) 3D Car Model & Animation\nSummary: 【#2(Toyota)】【车模新增】【animation】【567D/568D】【DMS】567/568D流用397D_DMS功能对应",
+    "metadata": {
+      "issue_key": "VEL-16310",
+      "url": "https://rightware.atlassian.net/browse/VEL-16310",
+      "issuetype": "Task",
+      "summary": "【#2(Toyota)】【车模新增】【animation】【567D/568D】【DMS】567/568D流用397D_DMS功能对应",
+      "theme": "Drive Mode Selection (DMS) 3D Car Model & Animation",
+      "has_valuable_information": true,
+      "rca": "Not applicable — this ticket is a feature correspondence/reuse task, not a defect RCA.",
+      "resolution_pattern": "Reuse existing DMS car model animation assets and ensure visual consistency across vehicle variants.",
+      "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n[需求来源]/[Source of demand]:\n\n22.12.2023 TMC x RW Design Meeting\n\n[详细信息]/[Detail information]：\n\n设计要点：\n\n车身颜色以及天空背景颜色与地面反射颜色需保持一致\n\n567/568D使用397D个车意匠\n\n车轮序列帧： [http://192.168.9.128:8000/svn2/Veleda_Global/06-Release/00.UIDesignRelease/03.Animation/#1](http://192.168.9.128:8000/svn2/Veleda_Global/06-Release/00.UIDesignRelease/03.Animation/#1)  Toyota/Drivemode/397D\n\n397D DMS功能票链接\n\n[Link: https://rightware.atlassian.net/browse/VEL-11346]\n\n表盘与大割入切换参考\n\n[Attachment: 20260420-182415.mp4 | Description: Reference video for dial and large cut-in switching behavior.]",
+      "status": "DONE",
+      "resolution": "Done",
+      "fix_versions": [
+        "#2-Toyota-1A-DN(852D)"
+      ],
+      "attachments": [
+        {
+          "filename": "20260420-182415.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/333274",
+          "size": 5054665,
+          "mime_type": "video/mp4",
+          "description": "Reference video for dial and large cut-in switching behavior."
+        },
+        {
+          "filename": "20260507-0120-40.3397627.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/336279",
+          "size": 4938662,
+          "mime_type": "video/mp4",
+          "description": "Additional animation reference video."
+        },
+        {
+          "filename": "image-20260525-065746.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/340397",
+          "size": 449790,
+          "mime_type": "image/png",
+          "description": "During the transition to 'SNOW EXTRA' mode at 01:40 in the 2-dial DMS playback, tire tracks and smoke effects are prematurely rendered before the vehicle model appears on screen (highlighted in red)."
+        },
+        {
+          "filename": "image-20260525-072203.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/340402",
+          "size": 434275,
+          "mime_type": "image/png",
+          "description": "During the 1-dial DMS fade-in transition at 00:08, gauge tick marks/indicators are misaligned and rendered outside the perimeter of the central dial ring (boxed in red)."
+        },
+        {
+          "filename": "image-20260525-083330.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/340422",
+          "size": 1634384,
+          "mime_type": "image/png",
+          "description": "On the physical instrument cluster display, multiple 3D car models overlap and ghost during the Drive Mode switching animation between drive modes."
+        },
+        {
+          "filename": "KanziCheckList.xlsx",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/336843",
+          "size": 40385,
+          "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "description": "Kanzi HMI checklist used for validation."
+        },
+        {
+          "filename": "VEL-16310.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/340396",
+          "size": 25514459,
+          "mime_type": "video/mp4",
+          "description": "PC-side 2-dial DMS animation video."
+        },
+        {
+          "filename": "VEL-16310-1dial.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/340401",
+          "size": 8697136,
+          "mime_type": "video/mp4",
+          "description": "PC-side 1-dial DMS animation video."
+        }
+      ],
+      "comments": [
+        {
+          "author": "Shuancheng Wang",
+          "created": "2026-05-25T09:49:24.930+0300",
+          "body": "测试版本：20260529_Kanzi_Project_Platform_vReleasefor#2-Toyota-1A-DN(852D)_Meter_PC_Ts04\n\n测试结果：NG；请UI  @Bin Huang  double check PC端动效效果\n\nPC端视频：\n\n2dial-DMS\n\n[Attachment: VEL-16310.mp4 | Description: PC-side 2-dial DMS animation video.]\n1dial-DMS\n\n[Attachment: VEL-16310-1dial.mp4 | Description: PC-side 1-dial DMS animation video.]\n问题1：在2dial-DMS PC视频1min40s左右，其它模式切换到SNOW EXTRA模式时，车模还没出来车辙和烟都已经显示出来了（base版本也存在此问题）\n\n[Attachment: image-20260525-065746.png | Description: During the transition to 'SNOW EXTRA' mode at 01:40 in the 2-dial DMS playback, tire tracks and smoke effects are prematurely rendered before the vehicle model appears on screen (highlighted in red).]\n问题2：在2dial-DMS PC视频7s左右，车模淡出是直接一帧消失，没有淡出效果（base版本也存在此问题）\n\n问题3：在1dial-DMS PC视频8s左右，表盘淡入时红点跑到表盘之外了（base版本也存在此问题）\n\n[Attachment: image-20260525-072203.png | Description: During the 1-dial DMS fade-in transition at 00:08, gauge tick marks/indicators are misaligned and rendered outside the perimeter of the central dial ring (boxed in red).]"
+        },
+        {
+          "author": "Shuancheng Wang",
+          "created": "2026-05-25T11:35:11.289+0300",
+          "body": "测试版本：20260529_Kanzi_Project_Platform_vReleasefor#2-Toyota-1A-DN(852D)_Meter_Board_Ts04\n\n测试结果：NG;请UI  @Bin Huang   double check 板端动效效果\n\n板端视频创达云盘路径：/群组文件/RW_Veleda2026/05-Testing/Jira_Attachments/VEL-16310/VEL-16310-板端视频.MP4\n\n问题1：DMS模式切换时车模会重叠（base版本也存在此问题）\n\n[Attachment: image-20260525-083330.png | Description: On the physical instrument cluster display, multiple 3D car models overlap and ghost during the Drive Mode switching animation between drive modes.]"
+        },
+        {
+          "author": "Bin Huang",
+          "created": "2026-05-26T09:29:43.054+0300",
+          "body": "@Shuancheng Wang  未发现其他新的问题"
+        },
+        {
+          "author": "Song Hu",
+          "created": "2026-05-26T10:12:39.554+0300",
+          "body": "Base问题不修改。"
+        },
+        {
+          "author": "Guanglei You",
+          "created": "2026-05-26T10:24:18.472+0300",
+          "body": "如下 不做修改 @Shuancheng Wang"
+        }
+      ],
+      "created": "2026-04-13T08:36:37.507+0300"
+    }
+  },
+  {
+    "id": "5f9add8e-578e-516c-840c-07d97c2655cc",
+    "small": "Theme: Drive Mode Selection (DMS) 3D Car Model & Animation\nSummary: 【#2(Toyota)】【车模新增】【animation】【567D/568D】【Drive mode】增加SNOW EXTRA模式567/568D流用397D个车意匠",
+    "metadata": {
+      "issue_key": "VEL-16294",
+      "url": "https://rightware.atlassian.net/browse/VEL-16294",
+      "issuetype": "Task",
+      "summary": "【#2(Toyota)】【车模新增】【animation】【567D/568D】【Drive mode】增加SNOW EXTRA模式567/568D流用397D个车意匠",
+      "theme": "Drive Mode Selection (DMS) 3D Car Model & Animation",
+      "has_valuable_information": true,
+      "rca": "No RCA details are present in the ticket. Specific bug symptoms, timing discrepancies, and hardware details are intentionally left to the ticket comments, RCA, and attachment descriptions.",
+      "resolution_pattern": "Reuse existing vehicle design assets and animation sequences for new vehicle variants, while ensuring visual consistency of body color, sky background, and ground reflection.",
+      "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n[需求来源]/[Source of demand]:\n\n22.12.2023 TMC x RW Design Meeting\n\n[详细信息]/[Detail information]：\n\n设计要点：\n\n车身颜色以及天空背景颜色与地面反射颜色需保持一致\n\n567/568D使用397D个车意匠\n\n车轮序列帧： [http://192.168.9.128:8000/svn2/Veleda_Global/06-Release/00.UIDesignRelease/03.Animation/#1](http://192.168.9.128:8000/svn2/Veleda_Global/06-Release/00.UIDesignRelease/03.Animation/#1)  Toyota/Drivemode/397D\n\n雪特效切图SVN\n\n[http://192.168.9.128:8000/svn2/Veleda_Global/06-Release/00.UIDesignRelease/03.Animation/#2](http://192.168.9.128:8000/svn2/Veleda_Global/06-Release/00.UIDesignRelease/03.Animation/#2)  Toyota/DMS_MTS_CRAWL_DAC AE/567&568D\n\nsnow extra动效视频参考：\n\n[Attachment: image-20260420-050210.png | Description: A digital instrument cluster UI layout featuring dual circular meters for tachometer and speedometer with central digital speed and gear indicators on a dark background.]\n表盘与大割入切换参考\n\n[Attachment: 20260420-182415.mp4 | Description: Reference video for gauge and large cut-in switching behavior.]",
+      "status": "DONE",
+      "resolution": "Done",
+      "fix_versions": [
+        "#2-Toyota-1A-DN(852D)"
+      ],
+      "attachments": [
+        {
+          "filename": "20260420-182415.mp4",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/333277",
+          "size": 5054665,
+          "mime_type": "video/mp4",
+          "description": "Reference video for gauge and large cut-in switching behavior."
+        },
+        {
+          "filename": "image-20260420-045927.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/333171",
+          "size": 40958,
+          "mime_type": "image/png",
+          "description": "An image showing a Chinese text heading specifying requirements for adding the SNOW EXTRA drive mode model and reusing 397D vehicle design for 567D/568D."
+        },
+        {
+          "filename": "image-20260420-050109.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/333172",
+          "size": 4968,
+          "mime_type": "image/png",
+          "description": "A cropped text label showing the tag '【animation】'."
+        },
+        {
+          "filename": "image-20260420-050210.png",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/333173",
+          "size": 235442,
+          "mime_type": "image/png",
+          "description": "A digital instrument cluster UI layout featuring dual circular meters for tachometer and speedometer with central digital speed and gear indicators on a dark background."
+        },
+        {
+          "filename": "KanziCheckList.xlsx",
+          "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/339674",
+          "size": 40382,
+          "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "description": "Kanzi implementation checklist for the animation / HMI asset integration."
+        }
+      ],
+      "comments": [
+        {
+          "author": "Guanglei You",
+          "created": "2026-05-22T09:35:11.757+0300",
+          "body": "该内容为留用单，请TS03版本验证"
+        },
+        {
+          "author": "Shuancheng Wang",
+          "created": "2026-05-25T11:55:32.220+0300",
+          "body": "SNOW EXTRA动效效果，在DMS动效票 [Link: https://rightware.atlassian.net/browse/VEL-16310]  跟踪确认"
+        }
+      ],
+      "created": "2026-04-08T10:44:58.143+0300"
     }
   }
 ]

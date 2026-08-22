@@ -46,18 +46,14 @@ def ingest_chunks(
         client.delete_collection(collection_name)
         print(f"[Ingestion-ingest] Recreated clean collection '{collection_name}'.")
 
+    def _to_doc(d: dict[str, Any]) -> Document:
+        meta = d.get("metadata", {})
+        content = (d.get("small", "") or meta.get("summary", "")).strip() or "document"
+        return Document(page_content=content, metadata=meta)
+
     # Ingest first batch to initialize vector store schema
     first_batch = chunks[:BATCH_SIZE]
-    docs = [
-        Document(
-            page_content=d.get("small")
-            or d.get("metadata", {}).get("summary")
-            or d.get("metadata", {}).get("title")
-            or d.get("metadata", {}).get("big", "document"),
-            metadata=d.get("metadata", {}),
-        )
-        for d in first_batch
-    ]
+    docs = [_to_doc(d) for d in first_batch]
     ids = [d["id"] for d in first_batch]
 
     vector_store = QdrantVectorStore.from_documents(
@@ -76,16 +72,7 @@ def ingest_chunks(
     # Upload remaining batches
     for start in range(BATCH_SIZE, total, BATCH_SIZE):
         batch = chunks[start : start + BATCH_SIZE]
-        batch_docs = [
-            Document(
-                page_content=d.get("small")
-                or d.get("metadata", {}).get("summary")
-                or d.get("metadata", {}).get("title")
-                or d.get("metadata", {}).get("big", "document"),
-                metadata=d.get("metadata", {}),
-            )
-            for d in batch
-        ]
+        batch_docs = [_to_doc(d) for d in batch]
         batch_ids = [d["id"] for d in batch]
         vector_store.add_documents(documents=batch_docs, ids=batch_ids)
         print(f"[Ingestion-ingest] Uploaded {min(start + BATCH_SIZE, total)}/{total} chunks...")

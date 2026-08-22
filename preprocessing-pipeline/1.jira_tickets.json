@@ -225,7 +225,7 @@
         "watchCount": 3,
         "isWatching": false
       },
-      "Last Viewed": "2026-08-21T04:47:16.443+0300",
+      "Last Viewed": "2026-08-22T08:13:29.545+0300",
       "Linked Issues": [
         {
           "id": "299291",
@@ -1161,7 +1161,7 @@
         "watchCount": 2,
         "isWatching": false
       },
-      "Last Viewed": "2026-08-20T10:31:30.942+0300",
+      "Last Viewed": "2026-08-21T05:16:15.105+0300",
       "Linked Issues": [
         {
           "id": "294803",
@@ -1646,7 +1646,7 @@
         "watchCount": 5,
         "isWatching": false
       },
-      "Last Viewed": "2026-07-10T15:08:08.105+0300",
+      "Last Viewed": "2026-08-21T05:16:46.098+0300",
       "Linked Issues": [
         {
           "id": "293283",
@@ -1914,6 +1914,7 @@
         "watchCount": 3,
         "isWatching": false
       },
+      "Last Viewed": "2026-08-21T05:17:08.695+0300",
       "Component(Tester必填)": {
         "self": "https://rightware.atlassian.net/rest/api/3/customFieldOption/10511",
         "value": "DriveMode(List)",
@@ -2322,6 +2323,7 @@
         "watchCount": 4,
         "isWatching": false
       },
+      "Last Viewed": "2026-08-21T08:28:10.039+0300",
       "Linked Issues": [
         {
           "id": "292522",
@@ -2717,7 +2719,7 @@
         "watchCount": 4,
         "isWatching": false
       },
-      "Last Viewed": "2026-07-22T10:02:09.281+0300",
+      "Last Viewed": "2026-08-21T09:27:29.183+0300",
       "Linked Issues": [
         {
           "id": "292515",
@@ -3997,7 +3999,7 @@
         "progress": 0,
         "total": 0
       },
-      "Development": "{repository={count=2, dataType=repository}, json={\"cachedValue\":{\"errors\":[],\"summary\":{\"repository\":{\"overall\":{\"count\":2,\"lastUpdated\":\"2026-07-27T05:31:56.000+0300\",\"dataType\":\"repository\"},\"byInstanceType\":{\"oAuth-com.github.integration.production\":{\"count\":2,\"name\":\"GitHub\"},\"GitHub\":{\"count\":2,\"name\":\"GitHub\"}}}}},\"isStale\":true}}",
+      "Development": "{repository={count=2, dataType=repository}, json={\"cachedValue\":{\"errors\":[],\"summary\":{\"repository\":{\"overall\":{\"count\":2,\"lastUpdated\":\"2026-07-27T05:31:56.000+0300\",\"dataType\":\"repository\"},\"byInstanceType\":{\"GitHub\":{\"count\":2,\"name\":\"GitHub\"},\"oAuth-com.github.integration.production\":{\"count\":2,\"name\":\"GitHub\"}}}}},\"isStale\":true}}",
       "Due date": "2026-07-20",
       "Progress": {
         "progress": 0,
@@ -4841,7 +4843,7 @@
         "watchCount": 2,
         "isWatching": false
       },
-      "Last Viewed": "2026-08-20T10:32:26.710+0300",
+      "Last Viewed": "2026-08-21T09:27:53.227+0300",
       "Linked Issues": [
         {
           "id": "292001",
@@ -5287,7 +5289,7 @@
         "progress": 0,
         "total": 0
       },
-      "Development": "{repository={count=8, dataType=repository}, json={\"cachedValue\":{\"errors\":[],\"summary\":{\"repository\":{\"overall\":{\"count\":8,\"lastUpdated\":\"2026-07-23T11:11:48.000+0300\",\"dataType\":\"repository\"},\"byInstanceType\":{\"oAuth-com.github.integration.production\":{\"count\":8,\"name\":\"GitHub\"},\"GitHub\":{\"count\":8,\"name\":\"GitHub\"}}}}},\"isStale\":true}}",
+      "Development": "{repository={count=8, dataType=repository}, json={\"cachedValue\":{\"errors\":[],\"summary\":{\"repository\":{\"overall\":{\"count\":8,\"lastUpdated\":\"2026-07-23T11:11:48.000+0300\",\"dataType\":\"repository\"},\"byInstanceType\":{\"GitHub\":{\"count\":8,\"name\":\"GitHub\"},\"oAuth-com.github.integration.production\":{\"count\":8,\"name\":\"GitHub\"}}}}},\"isStale\":true}}",
       "Due date": "2026-07-16",
       "Progress": {
         "progress": 0,
@@ -6286,7 +6288,7 @@
         "watchCount": 5,
         "isWatching": false
       },
-      "Last Viewed": "2026-06-29T05:03:31.348+0300",
+      "Last Viewed": "2026-08-21T05:14:31.059+0300",
       "Linked Issues": [
         {
           "id": "289476",
@@ -6435,7 +6437,7 @@
         "progress": 0,
         "total": 0
       },
-      "Development": "{repository={count=3, dataType=repository}, json={\"cachedValue\":{\"errors\":[],\"summary\":{\"repository\":{\"overall\":{\"count\":3,\"lastUpdated\":\"2026-06-29T05:27:02.000+0300\",\"dataType\":\"repository\"},\"byInstanceType\":{\"oAuth-com.github.integration.production\":{\"count\":3,\"name\":\"GitHub\"},\"GitHub\":{\"count\":3,\"name\":\"GitHub\"}}}}},\"isStale\":true}}",
+      "Development": "{repository={count=3, dataType=repository}, json={\"cachedValue\":{\"errors\":[],\"summary\":{\"repository\":{\"overall\":{\"count\":3,\"lastUpdated\":\"2026-06-29T05:27:02.000+0300\",\"dataType\":\"repository\"},\"byInstanceType\":{\"GitHub\":{\"count\":3,\"name\":\"GitHub\"},\"oAuth-com.github.integration.production\":{\"count\":3,\"name\":\"GitHub\"}}}}},\"isStale\":true}}",
       "Due date": "2026-07-10",
       "Progress": {
         "progress": 0,
@@ -6751,7 +6753,7 @@
         "progress": 0,
         "total": 0
       },
-      "Development": "{repository={count=2, dataType=repository}, json={\"cachedValue\":{\"errors\":[],\"summary\":{\"repository\":{\"overall\":{\"count\":2,\"lastUpdated\":\"2026-05-21T11:33:06.000+0300\",\"dataType\":\"repository\"},\"byInstanceType\":{\"oAuth-com.github.integration.production\":{\"count\":2,\"name\":\"GitHub\"},\"GitHub\":{\"count\":2,\"name\":\"GitHub\"}}}}},\"isStale\":true}}",
+      "Development": "{repository={count=2, dataType=repository}, json={\"cachedValue\":{\"errors\":[],\"summary\":{\"repository\":{\"overall\":{\"count\":2,\"lastUpdated\":\"2026-05-21T11:33:06.000+0300\",\"dataType\":\"repository\"},\"byInstanceType\":{\"GitHub\":{\"count\":2,\"name\":\"GitHub\"},\"oAuth-com.github.integration.production\":{\"count\":2,\"name\":\"GitHub\"}}}}},\"isStale\":true}}",
       "Due date": "2026-06-03",
       "Progress": {
         "progress": 0,
@@ -7264,7 +7266,7 @@
         "progress": 0,
         "total": 0
       },
-      "Development": "{repository={count=2, dataType=repository}, json={\"cachedValue\":{\"errors\":[],\"summary\":{\"repository\":{\"overall\":{\"count\":2,\"lastUpdated\":\"2026-06-29T08:26:31.000+0300\",\"dataType\":\"repository\"},\"byInstanceType\":{\"oAuth-com.github.integration.production\":{\"count\":2,\"name\":\"GitHub\"},\"GitHub\":{\"count\":2,\"name\":\"GitHub\"}}}}},\"isStale\":true}}",
+      "Development": "{repository={count=2, dataType=repository}, json={\"cachedValue\":{\"errors\":[],\"summary\":{\"repository\":{\"overall\":{\"count\":2,\"lastUpdated\":\"2026-06-29T08:26:31.000+0300\",\"dataType\":\"repository\"},\"byInstanceType\":{\"GitHub\":{\"count\":2,\"name\":\"GitHub\"},\"oAuth-com.github.integration.production\":{\"count\":2,\"name\":\"GitHub\"}}}}},\"isStale\":true}}",
       "Due date": "2026-07-13",
       "Progress": {
         "progress": 0,
@@ -7856,7 +7858,7 @@
         "progress": 0,
         "total": 0
       },
-      "Development": "{repository={count=4, dataType=repository}, json={\"cachedValue\":{\"errors\":[],\"summary\":{\"repository\":{\"overall\":{\"count\":4,\"lastUpdated\":\"2026-05-21T11:33:06.000+0300\",\"dataType\":\"repository\"},\"byInstanceType\":{\"oAuth-com.github.integration.production\":{\"count\":4,\"name\":\"GitHub\"},\"GitHub\":{\"count\":4,\"name\":\"GitHub\"}}}}},\"isStale\":true}}",
+      "Development": "{repository={count=4, dataType=repository}, json={\"cachedValue\":{\"errors\":[],\"summary\":{\"repository\":{\"overall\":{\"count\":4,\"lastUpdated\":\"2026-05-21T11:33:06.000+0300\",\"dataType\":\"repository\"},\"byInstanceType\":{\"GitHub\":{\"count\":4,\"name\":\"GitHub\"},\"oAuth-com.github.integration.production\":{\"count\":4,\"name\":\"GitHub\"}}}}},\"isStale\":true}}",
       "Due date": "2026-05-04",
       "Progress": {
         "progress": 0,

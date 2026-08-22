@@ -1,0 +1,320 @@
+[
+  {
+    "id": "3171661",
+    "key": "VEL-16616",
+    "url": "https://rightware.atlassian.net/browse/VEL-16616",
+    "issuetype": "Task",
+    "summary": "【#2(Toyota)】【Animation】【车模新增】【004T】【DMS】004T流用HB（232D）个车意匠",
+    "description": "[JIRA票命名规则](https://thundersoft.feishu.cn/docs/doccnIO7IC1pxx5EGOkBvpwCbVd#)\n\n\n\n[需求来源]/[Source of demand]:\n\n8社会议记录：\n\n[Attachment: image-20260818-072216.png]\n[详细信息]/[Detail information]：\n\n设计要点：\n\n1.每个模式车模的颜色与设计图相比颜色是否OK（因工程无法百分之百设计效果完全一致，但是颜色需接近，要保证色相的统一，整体画面颜色的协调，车身反射颜色与天空以及山体颜色要在同一色系）\n\n2.车模位置、车模形状、车模倒影要与设计图一致（并且要保证工程中每个模式的车模位置相同，模式与模式切换时不能有抖动）\n\n3.车模以外的部分像是每个模式的背景右文言部分等都无变更（右边侧文言布局分为Toggle Switch、Push Switch）\n\n 以上设计要点只站在设计的角度，针对设计效果上开发与测试上需要关注的点 不能作为开发跟测试只需关注以上评论进行测试跟开发的理由\n\n切图文件：\n\n[Attachment: 71348907-9053-4a41-88a3-66b9d77a0e67]\n视频文件：\n\n[Attachment: 186D_master_DMS_eco.mp4]\n\n\n[Attachment: f032d676-04df-4807-b962-72aaeeab0da1]\n\n",
+    "status": "TEST",
+    "resolution": "Unresolved",
+    "priority": "Medium",
+    "components": [],
+    "fix_versions": [
+      "#2-Toyota-1A-DN(745D)"
+    ],
+    "affects_versions": [],
+    "labels": [],
+    "created": "2026-08-11T11:11:59.432+0300",
+    "updated": "2026-08-19T09:53:13.337+0300",
+    "attachments": [
+      {
+        "filename": "#2T_400T_MP4.zip",
+        "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/354875",
+        "size": 17714682,
+        "mime_type": "application/zip"
+      },
+      {
+        "filename": "#2T_400T_side_切图.zip",
+        "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/354866",
+        "size": 9472883,
+        "mime_type": "application/zip"
+      },
+      {
+        "filename": "186D_master_DMS_eco.mp4",
+        "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/355853",
+        "size": 8478718,
+        "mime_type": "video/mp4"
+      },
+      {
+        "filename": "20260818160646_rec_-convert.mp4",
+        "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/355931",
+        "size": 1850381,
+        "mime_type": "video/mp4"
+      },
+      {
+        "filename": "20260818161318_rec_-convert.mp4",
+        "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/355928",
+        "size": 1687395,
+        "mime_type": "video/mp4"
+      },
+      {
+        "filename": "20260819115129_rec_.mp4",
+        "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/356116",
+        "size": 7760899,
+        "mime_type": "video/mp4"
+      },
+      {
+        "filename": "20260819115408_rec_-convert.mp4",
+        "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/356114",
+        "size": 7493083,
+        "mime_type": "video/mp4"
+      },
+      {
+        "filename": "20260819115551_rec_-convert.mp4",
+        "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/356115",
+        "size": 8290614,
+        "mime_type": "video/mp4"
+      },
+      {
+        "filename": "image-20260818-025221.png",
+        "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/355937",
+        "size": 1320767,
+        "mime_type": "image/png"
+      },
+      {
+        "filename": "image-20260818-053808.png",
+        "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/355933",
+        "size": 1312273,
+        "mime_type": "image/png"
+      },
+      {
+        "filename": "image-20260818-053910.png",
+        "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/355927",
+        "size": 1076157,
+        "mime_type": "image/png"
+      },
+      {
+        "filename": "image-20260818-054450.png",
+        "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/355930",
+        "size": 1263884,
+        "mime_type": "image/png"
+      },
+      {
+        "filename": "image-20260818-063832.png",
+        "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/355932",
+        "size": 863451,
+        "mime_type": "image/png"
+      },
+      {
+        "filename": "image-20260818-070409.png",
+        "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/355929",
+        "size": 1002195,
+        "mime_type": "image/png"
+      },
+      {
+        "filename": "image-20260818-071133.png",
+        "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/355935",
+        "size": 1097899,
+        "mime_type": "image/png"
+      },
+      {
+        "filename": "image-20260818-071907.png",
+        "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/355936",
+        "size": 1036021,
+        "mime_type": "image/png"
+      },
+      {
+        "filename": "image-20260818-072216.png",
+        "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/355884",
+        "size": 46262,
+        "mime_type": "image/png"
+      },
+      {
+        "filename": "image-20260818-073652.png",
+        "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/355934",
+        "size": 1069209,
+        "mime_type": "image/png"
+      },
+      {
+        "filename": "image-20260819-045255.png",
+        "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/356113",
+        "size": 1868416,
+        "mime_type": "image/png"
+      },
+      {
+        "filename": "img_v3_0214b_d251acda-688c-4e46-9fec-87f3c4943efg-20260807-061737.jpg",
+        "url": "https://rightware.atlassian.net/rest/api/3/attachment/content/354671",
+        "size": 124848,
+        "mime_type": "image/jpeg"
+      }
+    ],
+    "comments": [
+      {
+        "author": "Guanglei You",
+        "created": "2026-08-18T04:14:54.089+0300",
+        "body": "请拿20260717_Kanzi_Project_Platform_vReleasefor#2-Toyota-1A-DN(745D)外部版确认该车模显示是否正确。\n"
+      },
+      {
+        "author": "Yuying Xing",
+        "created": "2026-08-18T12:20:36.001+0300",
+        "body": "测试版本：20260717_Kanzi_Project_Platform_vReleasefor#2-Toyota-1A-DN(745D)\n\n测试结果：NG\n\nPC端动效请动效侧 @Bin Huang  走查\n\n动效云盘路径：/群组文件/RW_Veleda2026/05-Testing/Jira_Attachments/VEL-16616/004T-DMS1.mp4&004T-DMS2.mp4\n\n问题1：首次进入DMS画面时，车模一帧显示，无渐显效果\n\n[Attachment: image-20260818-025221.png]\n问题2：UI视频中右侧list是在车模进场后出现，工程中list先于车模出现，且渐显效果不一致\n\n[Attachment: image-20260818-053910.png]\n问题3：UI视频中车模和DMS背景同时显示；工程中车模先显示，背景后显示\n\n[Attachment: image-20260818-053808.png]\n问题4：UI视频中车模渐显的同时左右mid和表盘同步渐隐；工程中左右mid渐隐后表盘才开始渐隐，且渐隐效果与UI不同\n\n[Attachment: image-20260818-054450.png]\n问题5：工程中车模进场时车轮高亮显示，UI视频为扫光时高亮\n\n问题6：UI视频中，右侧list渐显一段时间后，选项框才开始下移，工程中在list刚开始渐显时，选项框就已经开始下移，与UI的下移时机不符\n\n[Attachment: image-20260818-071907.png]\n问题7：UI视频中车模扫光约816毫秒(约49帧)，扫光与车轮高亮同时结束；工程中车模扫光约534毫秒(15帧)，扫光后车轮仍高亮显示\n\n问题8：DMS退场时一帧消去，没有渐隐动效\n\n问题9：UI视频中 左右mid渐显时表盘同步渐显；工程中左右mid完全显示后，表盘才显示\n\n[Attachment: image-20260818-063832.png]\n问题10：ECO→表盘→CUSTOM情况下，右侧选项框是从ECO上移到CUSTOM\n\n[Attachment: 20260818160646_rec_-convert.mp4]\nCUSTOM→表盘→RANGE情况下，右侧选项框从Drivemode小字上方入场\n\n[Attachment: 20260818161318_rec_-convert.mp4]\n问题11：车模扫光颜色与车轮高亮颜色与UI视频不符\n\n[Attachment: image-20260818-070409.png]\n问题12：UI视频中选项框跟随文字同步移动；工程中选项框位置原地渐显，不跟随文字移动\n\n[Attachment: image-20260818-071133.png]\n问题13：push模式下，UI视频中车模先进场后文言渐显，工程中文言先于车模出现，且渐显效果与UI 不同\n\n[Attachment: image-20260818-073652.png]"
+      },
+      {
+        "author": "Bin Huang",
+        "created": "2026-08-19T06:30:34.014+0300",
+        "body": "@Yuying Xing  未发现其他新的问题\n"
+      },
+      {
+        "author": "Yuying Xing",
+        "created": "2026-08-19T09:52:07.735+0300",
+        "body": "板端验证：\n\n测试版本：20260717_Kanzi_Project_Platform_vReleasefor#2-Toyota-1A-DN(745D)\n\n测试结果：NG\n\n板端动效请动效侧 @Bin Huang  走查\n\n视频云盘路径：/群组文件/RW_Veleda2026/05-Testing/Jira_Attachments/VEL-16616/004T-DMS-板端.mp4\n\n问题1：首次启动左右表盘无动效，且出现不同步(1/5)\n\n[Attachment: 20260819115129_rec_.mp4]\n首次启动右侧表盘无动效(3/5)\n\n[Attachment: 20260819115408_rec_-convert.mp4]\n首次启动左右表盘都有动效(1/5)\n\n[Attachment: 20260819115551_rec_-convert.mp4]\n问题2：首次进入DMS画面渐隐渐显效果不明显，且画面卡顿\n\n[Attachment: image-20260819-045255.png]\n问题3：其余问题与PC端一致\n"
+      }
+    ],
+    "custom_fields": {
+      "Status Category Changed": "2026-08-18T04:08:44.704+0300",
+      "Parent": {
+        "id": "32575",
+        "key": "VEL-4039",
+        "self": "https://rightware.atlassian.net/rest/api/3/issue/32575",
+        "fields": {
+          "summary": "#2(Toyota)",
+          "status": {
+            "self": "https://rightware.atlassian.net/rest/api/3/status/10185",
+            "description": "This work item is being actively worked on at the moment by the assignee.",
+            "iconUrl": "https://rightware.atlassian.net/",
+            "name": "In Progress",
+            "id": "10185",
+            "statusCategory": {
+              "self": "https://rightware.atlassian.net/rest/api/3/statuscategory/4",
+              "id": 4,
+              "key": "indeterminate",
+              "colorName": "yellow",
+              "name": "In Progress"
+            }
+          },
+          "priority": {
+            "self": "https://rightware.atlassian.net/rest/api/3/priority/2",
+            "iconUrl": "https://rightware.atlassian.net/images/icons/priorities/high.svg",
+            "name": "High",
+            "id": "2"
+          },
+          "issuetype": {
+            "self": "https://rightware.atlassian.net/rest/api/3/issuetype/10121",
+            "id": "10121",
+            "description": "Epics track collections of related bugs, stories, and tasks.",
+            "iconUrl": "https://rightware.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10307?size=medium",
+            "name": "Epic",
+            "subtask": false,
+            "avatarId": 10307,
+            "entityId": "cd08d757-e3e9-49ea-b88f-d610336eabe4",
+            "hierarchyLevel": 1
+          }
+        }
+      },
+      "Status Category": {
+        "self": "https://rightware.atlassian.net/rest/api/3/statuscategory/4",
+        "id": 4,
+        "key": "indeterminate",
+        "colorName": "yellow",
+        "name": "In Progress"
+      },
+      "Supplier impact": {
+        "self": "https://rightware.atlassian.net/rest/api/3/customFieldOption/13478",
+        "value": "No Impact",
+        "id": "13478",
+        "color": "GREEN_DARKER"
+      },
+      "Work Ratio": -1,
+      "Restrict to": {
+        "issuerestrictions": {},
+        "shouldDisplay": true
+      },
+      "Watchers": {
+        "self": "https://rightware.atlassian.net/rest/api/3/issue/VEL-16616/watchers",
+        "watchCount": 3,
+        "isWatching": false
+      },
+      "Last Viewed": "2026-08-21T04:47:16.443+0300",
+      "Linked Issues": [
+        {
+          "id": "299291",
+          "self": "https://rightware.atlassian.net/rest/api/3/issueLink/299291",
+          "type": {
+            "id": "10001",
+            "name": "Cloners",
+            "inward": "is cloned by",
+            "outward": "clones",
+            "self": "https://rightware.atlassian.net/rest/api/3/issueLinkType/10001"
+          },
+          "outwardIssue": {
+            "id": "3171005",
+            "key": "VEL-16610",
+            "self": "https://rightware.atlassian.net/rest/api/3/issue/3171005",
+            "fields": {
+              "summary": "【#2(Toyota)】【车模新增】【004T】【DMS】004T流用HB（232D）个车意匠",
+              "status": {
+                "self": "https://rightware.atlassian.net/rest/api/3/status/10201",
+                "description": "",
+                "iconUrl": "https://rightware.atlassian.net/",
+                "name": "TEST",
+                "id": "10201",
+                "statusCategory": {
+                  "self": "https://rightware.atlassian.net/rest/api/3/statuscategory/4",
+                  "id": 4,
+                  "key": "indeterminate",
+                  "colorName": "yellow",
+                  "name": "In Progress"
+                }
+              },
+              "priority": {
+                "self": "https://rightware.atlassian.net/rest/api/3/priority/3",
+                "iconUrl": "https://rightware.atlassian.net/images/icons/priorities/medium.svg",
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "self": "https://rightware.atlassian.net/rest/api/3/issuetype/10120",
+                "id": "10120",
+                "description": "Tasks track small, distinct pieces of work.",
+                "iconUrl": "https://rightware.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium",
+                "name": "Task",
+                "subtask": false,
+                "avatarId": 10318,
+                "entityId": "78cd9c99-91c6-45a9-92e6-15d91d7e7c5a",
+                "hierarchyLevel": 0
+              }
+            }
+          }
+        }
+      ],
+      "Rank": "1|i045lv:",
+      "Creator": {
+        "self": "https://rightware.atlassian.net/rest/api/3/user?accountId=712020%3A20eaf262-628b-4076-a681-c0c1e6d1d05f",
+        "accountId": "712020:20eaf262-628b-4076-a681-c0c1e6d1d05f",
+        "emailAddress": "bin.huang@rightware.com",
+        "avatarUrls": {
+          "48x48": "https://secure.gravatar.com/avatar/d059c14a7121f6eb43e2f08d5ec269fd?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FBH-3.png",
+          "24x24": "https://secure.gravatar.com/avatar/d059c14a7121f6eb43e2f08d5ec269fd?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FBH-3.png",
+          "16x16": "https://secure.gravatar.com/avatar/d059c14a7121f6eb43e2f08d5ec269fd?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FBH-3.png",
+          "32x32": "https://secure.gravatar.com/avatar/d059c14a7121f6eb43e2f08d5ec269fd?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FBH-3.png"
+        },
+        "displayName": "Bin Huang",
+        "active": true,
+        "timeZone": "Europe/Helsinki",
+        "accountType": "atlassian"
+      },
+      "Σ Progress": {
+        "progress": 0,
+        "total": 0
+      },
+      "Development": "{}",
+      "Due date": "2026-09-01",
+      "Progress": {
+        "progress": 0,
+        "total": 0
+      },
+      "Votes": {
+        "self": "https://rightware.atlassian.net/rest/api/3/issue/VEL-16616/votes",
+        "votes": 0,
+        "hasVoted": false
+      },
+      "Log Work": {
+        "startAt": 0,
+        "maxResults": 20,
+        "total": 0,
+        "worklogs": []
+      }
+    }
+  }
+]

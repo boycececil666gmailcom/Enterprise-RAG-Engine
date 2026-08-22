@@ -1,175 +1,224 @@
 # region Imports
 import asyncio
 import json
+import os
+import uuid
+import warnings
 from pathlib import Path
 from typing import Any
 
-from langchain_core.messages import HumanMessage, SystemMessage
+from dotenv import load_dotenv
+import httpx
+from langchain_core.messages import HumanMessage
 from pydantic import BaseModel, Field
 from llm_client import llm, vision_llm
+from utils import clean_attachment_tags, fetch_media_data_uri, format_custom_fields, is_archive
 
+warnings.filterwarnings("ignore", category=UserWarning, module="pydantic")
 # endregion
+
 
 # region Configuration
 _DIR = Path(__file__).resolve().parent
+load_dotenv(_DIR.parent / ".env")
+
 INPUT_PATH = _DIR / "1.jira_tickets.json"
 OUTPUT_PATH = _DIR / "2.jira_modeled_chunks.json"
+
+JIRA_AUTH = (
+    (os.getenv("JIRA_EMAIL", ""), os.getenv("JIRA_API_TOKEN", ""))
+    if os.getenv("JIRA_EMAIL") and os.getenv("JIRA_API_TOKEN")
+    else None
+)
 # endregion
 
+
 # region Pydantic Schemas
-class DefectKnowledgeModel(BaseModel):
-    """Enforced schema for defect knowledge extraction, RCA modeling, and feature technical summaries."""
+class TicketKnowledgeModel(BaseModel):
+    """Enforced schema for ticket knowledge extraction, theme identification, and resolution."""
     has_valuable_information: bool = Field(
-        description="Set to true if the ticket contains actionable technical knowledge (RCA, bug fix, feature implementation, or configuration details). Set to false ONLY if it is an empty placeholder, duplicate, or devoid of technical content.",
+        description="Set to true if the ticket contains actionable technical knowledge. Set to false ONLY if it is an empty placeholder or duplicate.",
+    )
+    theme: str = Field(
+        description=(
+            "The standardized, comprehensive horizontal engineering theme strictly in English. "
+            "Must be a high-level, reusable umbrella category that encompasses multiple related tickets across vehicle programs "
+            "(e.g., 'Drive Mode Selection (DMS) 3D Car Model & Animation', "
+            "'Instrument Cluster Startup Animation & Dial Gauge Integration', "
+            "'Cross-Variant 3D Vehicle Model Asset Reuse & Specification', "
+            "'MID Screen Transition & Menu Layout Management'). "
+            "Do NOT include ticket-specific vehicle project codes (like '004T', '232D', 'Toyota #2') in the theme name."
+        ),
     )
     rca: str = Field(
-        default="", description="Root cause analysis if identified, or concise technical context / requirement background if not a formal RCA"
+        default="",
+        description="Root cause analysis in English if identified, or concise requirement background. Empty if unknown.",
     )
-    resolution_pattern: str = Field(
-        default="", description="Technical description of the fix applied, code changes, or feature implementation logic"
-    )
-
-    search_keywords: list[str] = Field(
-        default_factory=list, description="High-relevance technical search keywords (modules, components, symptoms, technologies)"
+    resolution: str = Field(
+        default="",
+        description="Technical resolution or fix applied in English to resolve the problem. Empty if unknown or not resolved yet.",
     )
 
 
-class DefectChunkMetadata(DefectKnowledgeModel):
-    """Structured metadata payload inheriting LLM analysis and vector filtering fields."""
-    big: str = Field(default="", description="Full markdown card for parent context")
+class VisualAttachmentAnalysis(BaseModel):
+    """Visual analysis for a specific media attachment."""
+    filename: str = Field(description="Exact filename of the attachment")
+    description: str = Field(
+        description="1-2 sentence technical description in English of the UI state, animation behavior, or glitch shown.",
+    )
+
+
+class BatchVisualAnalysisModel(BaseModel):
+    """Enforced schema for batch multimodal media analysis."""
+    analyses: list[VisualAttachmentAnalysis] = Field(default_factory=list)
+
+
+class KnowledgeMetadata(BaseModel):
+    """Unified metadata payload storing raw JIRA attributes, semantic theme, RCA, attachments, and comments."""
     issue_key: str
     url: str = ""
+    issuetype: str = "Task"
     summary: str
-    priority: str = "Normal"
+    theme: str
+    has_valuable_information: bool
+    rca: str = ""
+    resolution: str = ""
+    description: str = ""
     status: str = "Unknown"
-    resolution: str = "Fixed"
-    components: list[str] = Field(default_factory=list)
     fix_versions: list[str] = Field(default_factory=list)
-    visual_symptom: str = ""
     attachments: list[dict[str, Any]] = Field(default_factory=list)
+    comments: list[dict[str, Any]] = Field(default_factory=list)
     created: str = ""
 
 
-class ModeledDefectChunk(BaseModel):
-    """Parent-child Small-to-Big defect chunk."""
+class ModeledKnowledgeChunk(BaseModel):
+    """Modeled knowledge chunk pairing deterministic UUID, small retrieval anchor, and unified metadata."""
     id: str
     small: str
-    metadata: DefectChunkMetadata
+    metadata: KnowledgeMetadata
 # endregion
 
-# region Ticket Processor
-async def _extract_visual_symptom(attachments: list[dict[str, Any]]) -> str:
-    """Extracts visual defect description from image/video attachments using Gemini."""
-    media = [a for a in attachments if any(t in a.get("mime_type", "") for t in ["image", "video"])]
-    if not vision_llm or not media:
-        return ""
+
+# region Media Enrichment
+async def _enrich_attachments(
+    attachments: list[dict[str, Any]],
+    ticket_context: str,
+    key: str,
+    summary: str,
+) -> list[dict[str, Any]]:
+    """Enriches all non-archive image attachments using vision LLM analysis."""
+    enriched = [dict(a, description=a.get("description", "")) for a in attachments]
+    image_items = [a for a in enriched if a.get("mime_type", "").startswith("image/") and a.get("url")]
+
+    if not vision_llm or not image_items:
+        return enriched
+
+    async with httpx.AsyncClient() as client:
+        tasks = [fetch_media_data_uri(client, item, auth=JIRA_AUTH) for item in image_items]
+        data_uris = await asyncio.gather(*tasks)
+
+    valid_media = [(item, uri) for item, uri in zip(image_items, data_uris) if uri]
+    if not valid_media:
+        return enriched
+
+    content_parts: list[dict[str, Any]] = [
+        {
+            "type": "text",
+            "text": f"Analyze the visual attachments for JIRA ticket {key} ({summary}).\nContext:\n{ticket_context}\n\nFor each image, provide a 1-2 sentence description in English.",
+        }
+    ]
+    for item, uri in valid_media:
+        content_parts.extend([
+            {"type": "text", "text": f"\nAttachment: {item['filename']}"},
+            {"type": "image_url", "image_url": {"url": uri}},
+        ])
+
     try:
-        msg = HumanMessage(
-            content=[
-                {"type": "text", "text": f"Attachment: {media[0].get('filename')}. Describe the visual bug/glitch in 1-2 sentences."},
-                {"type": "image_url", "image_url": {"url": media[0].get("url", "")}},
-            ]
-        )
-        res = await vision_llm.ainvoke([msg])
-        return res.content.strip()
-    except Exception:
-        return ""
+        structured_vision = vision_llm.with_structured_output(BatchVisualAnalysisModel)
+        result: BatchVisualAnalysisModel = await structured_vision.ainvoke([HumanMessage(content=content_parts)], config={"callbacks": []})
+        v_map = {item.filename: item.description for item in result.analyses if item.description}
+        for item in enriched:
+            if item["filename"] in v_map:
+                item["description"] = v_map[item["filename"]]
+    except Exception as e:
+        print(f"[Model-_enrich_attachments] Vision analysis skipped for {key}: {e}")
+
+    return enriched
+# endregion
 
 
-async def process_ticket(ticket: dict[str, Any]) -> ModeledDefectChunk | None:
-    """Processes a single ticket from raw data to modeled Small-to-Big chunk."""
-    key = ticket.get("key", "Unknown")
-    summary = ticket.get("summary", "")
-    ticket_url = ticket.get("url", "")
-
-    # 1. Build text context
-    comments = "\n".join([f"[{c.get('author')}] {c.get('body')}" for c in ticket.get("comments", [])])
-    text = f"Key: {key}\nSummary: {summary}\nStatus: {ticket.get('status')}\nDescription:\n{ticket.get('description', '')}\nComments:\n{comments}"
-
-    # 2. Stage 1: Text Knowledge Analysis with Pydantic Structured Output
+# region Ticket Processor
+async def process_ticket(ticket: dict[str, Any]) -> ModeledKnowledgeChunk | None:
+    """Processes a single ticket from raw data to modeled metadata chunk using structured output."""
     if not llm:
         return None
 
+    key = ticket.get("key", "Unknown")
+    summary = ticket.get("summary", "")
+    valid_attachments = [a for a in ticket.get("attachments", []) if not is_archive(a)]
+
+    comments = "\n".join([f"[{c.get('author')}] {c.get('body')}" for c in ticket.get("comments", [])])
+    cf_text = format_custom_fields(ticket.get("custom_fields", {}))
+    ticket_context = (
+        f"Summary: {summary}\n"
+        f"Description:\n{ticket.get('description', '')}\n"
+        f"Custom Fields:\n{cf_text if cf_text else 'None'}\n"
+        f"Comments:\n{comments}"
+    )
+    print("===========FIRST PASS=============")
+
     try:
-        structured_llm = llm.with_structured_output(DefectKnowledgeModel)
-        model: DefectKnowledgeModel = await structured_llm.ainvoke([
-            SystemMessage(
-                content=(
-                    "You are an expert Software Knowledge & Defect Analysis AI. Analyze this JIRA ticket and extract structured technical knowledge. "
-                    "Extract RCA if available, or technical context / problem summary if it is a simple fix or feature implementation. "
-                    "Extract resolution details, code changes, or implementation logic. "
-                    "Retain all tickets with useful technical value. Only set has_valuable_information to false if the ticket is an empty placeholder, duplicate without content, or devoid of useful information."
-                )
-            ),
-            HumanMessage(content=text),
-        ])
+        structured_llm = llm.with_structured_output(TicketKnowledgeModel)
+        model: TicketKnowledgeModel = await structured_llm.ainvoke(ticket_context)
     except Exception as e:
         print(f"[Model-process_ticket] Error analyzing {key}: {e}")
         return None
 
-    # Gatekeeper: Drop ticket only if it lacks meaningful technical value
     if not model.has_valuable_information:
         print(f"[Model-process_ticket] Skipped {key}: Insufficient technical value.")
         return None
 
-    # 3. Stage 2: Multimodal analysis if visual media exists (Gemini 3.7 Flash)
-    visual_symptom = await _extract_visual_symptom(ticket.get("attachments", []))
-
-    # 4. Build Small chunk (pure search token) and Big card (full markdown)
-    keywords = model.search_keywords
-    small_lines = [f"Summary: {summary}"]
-    if keywords:
-        small_lines.append(f"Keywords: {', '.join(keywords)}")
-    if visual_symptom:
-        small_lines.append(f"Visual Symptom: {visual_symptom}")
-    if model.rca:
-        small_lines.append(f"RCA / Context: {model.rca}")
-    if model.resolution_pattern:
-        small_lines.append(f"Resolution / Fix: {model.resolution_pattern}")
-
-    attachments_md = "\n".join([f"- [{a.get('filename')}]({a.get('url')})" for a in ticket.get("attachments", [])]) or "None"
-    visual_section = f"## Visual Anomaly (Multimodal AI Analysis)\n{visual_symptom}\n\n" if visual_symptom else ""
-    rca_section = f"## 2. Root Cause / Technical Context\n{model.rca}\n\n" if model.rca else ""
-    res_section = f"## 3. Resolution / Implementation Details\n{model.resolution_pattern}\n\n" if model.resolution_pattern else ""
-
-    big_markdown = (
-        f"# Case: [{key}]({ticket_url}) - {summary}\n\n"
-        f"- **JIRA Link**: {ticket_url or 'N/A'}\n"
-        f"- **Component**: {', '.join(ticket.get('components', [])) or 'Unspecified'}\n"
-        f"- **Priority**: {ticket.get('priority', 'Normal')} | **Status**: {ticket.get('status', 'Unknown')} | **Resolution**: {ticket.get('resolution', 'Fixed')}\n"
-        f"- **Fix Version**: {', '.join(ticket.get('fix_versions', [])) or 'Unspecified'}\n\n"
-        f"## 1. Description & Requirements\n"
-        f"{ticket.get('description', '')}\n\n"
-        f"{visual_section}"
-        f"{rca_section}"
-        f"{res_section}"
-        f"## 4. Attachments\n"
-        f"{attachments_md}\n"
+    enriched_attachments = await _enrich_attachments(
+        valid_attachments,
+        ticket_context=ticket_context,
+        key=key,
+        summary=summary,
     )
 
-    metadata = DefectChunkMetadata(
-        **model.model_dump(),
-        big=big_markdown,
+    chunk_str_id = f"jira-{key}"
+    qdrant_uuid = str(uuid.uuid5(uuid.NAMESPACE_DNS, chunk_str_id))
+
+    cleaned_desc = clean_attachment_tags(ticket.get("description", ""), enriched_attachments)
+    cleaned_comments = [
+        dict(c, body=clean_attachment_tags(c.get("body", ""), enriched_attachments))
+        for c in ticket.get("comments", [])
+    ]
+
+    metadata = KnowledgeMetadata(
         issue_key=key,
-        url=ticket_url,
+        url=ticket.get("url", ""),
+        issuetype=ticket.get("issuetype", "Task"),
         summary=summary,
-        priority=ticket.get("priority", "Normal"),
+        theme=model.theme,
+        has_valuable_information=model.has_valuable_information,
+        rca=model.rca,
+        resolution=model.resolution,
+        description=cleaned_desc,
         status=ticket.get("status", "Unknown"),
-        resolution=ticket.get("resolution", "Fixed"),
-        components=ticket.get("components", []),
         fix_versions=ticket.get("fix_versions", []),
-        visual_symptom=visual_symptom,
-        attachments=ticket.get("attachments", []),
+        attachments=enriched_attachments,
+        comments=cleaned_comments,
         created=ticket.get("created", ""),
     )
 
-    print(f"[Model-process_ticket] Modeled {key}")
-    return ModeledDefectChunk(
-        id=f"jira-{key}",
-        small="\n".join(small_lines),
+    print(f"[Model-process_ticket] Modeled [{metadata.issuetype}] {key} [{model.theme}] -> UUID {qdrant_uuid}")
+    return ModeledKnowledgeChunk(
+        id=qdrant_uuid,
+        small=f"Theme: {model.theme}\nSummary: {summary}".strip(),
         metadata=metadata,
     )
 # endregion
+
 
 # region Main Execution
 async def main() -> None:
