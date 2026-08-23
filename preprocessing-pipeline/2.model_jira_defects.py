@@ -34,10 +34,18 @@ JIRA_AUTH = (
 
 
 # region Pydantic Schemas
-class TicketKnowledgeModel(BaseModel):
-    """Enforced schema for ticket knowledge extraction and resolution."""
+class TicketFilterModel(BaseModel):
+    """Pass 1: Lightweight evaluation of technical value to avoid unnecessary media processing."""
     has_valuable_information: bool = Field(
-        description="Set to true if the ticket contains actionable technical knowledge. Set to false ONLY if it is an empty placeholder or duplicate.",
+        description="Set to true if the ticket contains actionable technical knowledge, valid task details, or defect reports. Set to false ONLY if it is an empty placeholder, duplicate, or devoid of technical content.",
+    )
+
+
+class TicketKnowledgeModel(BaseModel):
+    """Pass 2: Detailed technical knowledge extraction with visual attachment context."""
+    llm_summary: str = Field(
+        default="",
+        description="Comprehensive technical summary in English synthesized from the description (incorporating the injected visual attachment descriptions) and context.",
     )
     rca: str = Field(
         default="",
@@ -71,6 +79,7 @@ class KnowledgeMetadata(BaseModel):
     has_valuable_information: bool
     rca: str = ""
     resolution: str = ""
+    llm_summary: str = ""
     description: str = ""
     status: str = "Unknown"
     fix_versions: list[str] = Field(default_factory=list)
@@ -137,7 +146,7 @@ async def _enrich_attachments(
 
 # region Ticket Processor
 async def process_ticket(ticket: dict[str, Any]) -> ModeledKnowledgeChunk | None:
-    """Processes a single ticket from raw data to modeled metadata chunk using structured output."""
+    """Processes a single ticket through a multi-pass pipeline: Pass 1 (Value Filter) -> Media Enrichment -> Pass 2 (Deep Modeling)."""
     if not llm:
         return None
 
@@ -145,50 +154,68 @@ async def process_ticket(ticket: dict[str, Any]) -> ModeledKnowledgeChunk | None
     summary = ticket.get("summary", "")
     valid_attachments = [a for a in ticket.get("attachments", []) if not is_archive(a)]
 
-    comments = "\n".join([f"[{c.get('author')}] {c.get('body')}" for c in ticket.get("comments", [])])
+    raw_comments = "\n".join([f"[{c.get('author')}] {c.get('body')}" for c in ticket.get("comments", [])])
     cf_text = format_custom_fields(ticket.get("custom_fields", {}))
-    ticket_context = (
+    raw_context = (
         f"Summary: {summary}\n"
         f"Description:\n{ticket.get('description', '')}\n"
         f"Custom Fields:\n{cf_text if cf_text else 'None'}\n"
-        f"Comments:\n{comments}"
+        f"Comments:\n{raw_comments}"
     )
 
+    # Pass 1: Lightweight Value & Relevance Filtering (Token & Cost Saving)
     try:
-        structured_llm = llm.with_structured_output(TicketKnowledgeModel)
-        model: TicketKnowledgeModel = await structured_llm.ainvoke(ticket_context)
+        filter_llm = llm.with_structured_output(TicketFilterModel)
+        filter_result: TicketFilterModel = await filter_llm.ainvoke(raw_context)
     except Exception as e:
-        print(f"[Model-process_ticket] Error analyzing {key}: {e}")
+        print(f"[Model-process_ticket] Error in Pass 1 filtering for {key}: {e}")
         return None
 
-    if not model.has_valuable_information:
-        print(f"[Model-process_ticket] Skipped {key}: Insufficient technical value.")
+    if not filter_result.has_valuable_information:
+        print(f"[Model-process_ticket] Skipped {key}: Insufficient technical value (Pass 1).")
         return None
 
+    # Pass 2: Media Enrichment & Deep Knowledge Extraction
     enriched_attachments = await _enrich_attachments(
         valid_attachments,
-        ticket_context=ticket_context,
+        ticket_context=raw_context,
         key=key,
         summary=summary,
     )
-
-    chunk_str_id = f"jira-{key}"
-    qdrant_uuid = str(uuid.uuid5(uuid.NAMESPACE_DNS, chunk_str_id))
 
     cleaned_desc = clean_attachment_tags(ticket.get("description", ""), enriched_attachments)
     cleaned_comments = [
         dict(c, body=clean_attachment_tags(c.get("body", ""), enriched_attachments))
         for c in ticket.get("comments", [])
     ]
+    enriched_comments_text = "\n".join([f"[{c.get('author')}] {c.get('body')}" for c in cleaned_comments])
+
+    enriched_ticket_context = (
+        f"Summary: {summary}\n"
+        f"Description (with injected attachment descriptions):\n{cleaned_desc}\n"
+        f"Custom Fields:\n{cf_text if cf_text else 'None'}\n"
+        f"Comments:\n{enriched_comments_text}"
+    )
+
+    try:
+        knowledge_llm = llm.with_structured_output(TicketKnowledgeModel)
+        model: TicketKnowledgeModel = await knowledge_llm.ainvoke(enriched_ticket_context)
+    except Exception as e:
+        print(f"[Model-process_ticket] Error in Pass 2 modeling for {key}: {e}")
+        return None
+
+    chunk_str_id = f"jira-{key}"
+    qdrant_uuid = str(uuid.uuid5(uuid.NAMESPACE_DNS, chunk_str_id))
 
     metadata = KnowledgeMetadata(
         issue_key=key,
         url=ticket.get("url", ""),
         issuetype=ticket.get("issuetype", "Task"),
         summary=summary,
-        has_valuable_information=model.has_valuable_information,
+        has_valuable_information=True,
         rca=model.rca,
         resolution=model.resolution,
+        llm_summary=model.llm_summary,
         description=cleaned_desc,
         status=ticket.get("status", "Unknown"),
         fix_versions=ticket.get("fix_versions", []),
