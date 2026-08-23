@@ -49,6 +49,110 @@ The **Enterprise-RAG-Engine** eliminates the guesswork from AI-powered enterpris
 
 The engine runs a stateful multi-node LangGraph agent within `theme_based_rag_backend`. The backend performs domain classification, optional HyDE query expansion, hybrid vector retrieval, neural reranking (FlashRank), context compression (LLMLingua-2), and a self-critique quality loop before returning a response.
 
+### Layered Multi-Modal & Agent Ecosystem Architecture
+
+```mermaid
+%%{init: {
+  'theme': 'base',
+  'themeVariables': {
+    'primaryColor': '#ffffff',
+    'primaryTextColor': '#212529',
+    'primaryBorderColor': '#adb5bd',
+    'lineColor': '#495057',
+    'fontSize': '13px'
+  }
+}}%%
+flowchart BT
+
+    %% ================= 第 1 层 =================
+    subgraph L1 ["第 1 层 | 硬件与基础设施层 (Hardware & Infrastructure Layer)"]
+        direction LR
+        L1_N1["Object Storage"]
+        L1_N2["GPU Pool"]
+        L1_N3["CPU Pool"]
+        L1_N4["Memory Pool / Object Storage"]
+
+        L1_N1 ~~~ L1_N2 ~~~ L1_N3 ~~~ L1_N4
+    end
+
+    %% ================= 第 2 层 =================
+    subgraph L2 ["第 2 层 | 大模型与多模态基座层 (Large Model & Multi-modal Foundation Layer)"]
+        direction LR
+        L2_M1["Text Foundation Model"]
+        L2_M2["Text Foundation Model"]
+        L2_M3["Text Foundation Model"]
+        L2_M4["Visual Language Model (VLM)"]
+        L2_M5["Domain Adaptation"]
+
+        L2_M1 ~~~ L2_M2 ~~~ L2_M3 ~~~ L2_M4 ~~~ L2_M5
+    end
+
+    %% ================= 第 3 层 (重点强调) =================
+    subgraph L3 ["第 3 层 | OmniBase 多模态语义数据基盘层"]
+        direction LR
+
+        subgraph L3_Inputs ["多模态原始输入"]
+            direction TB
+            L3_In1["Bug Screenshot"]
+            L3_In2["Screen Recording"]
+            L3_In3["Drawing"]
+        end
+
+        L3_Hub["多模态解析引擎"]
+        L3_Index["Vector Index & Knowledge Graph"]
+
+        L3_Inputs --> L3_Hub
+        L3_Hub --> L3_Index
+    end
+
+    %% ================= 第 4 层 =================
+    subgraph L4 ["第 4 层 | 模块化 AI 应用与 Agent 生态层 (Modular AI Application & Agent Ecosystem)"]
+        direction LR
+        
+        subgraph L4_C1 ["历史查询 Agent"]
+            direction TB
+            L4_T1["资产沉淀与跨周期查询<br/>打通转项目历史资产<br/>避免技术断层"]
+        end
+
+        subgraph L4_C2 ["非技术人员专属 Agent"]
+            direction TB
+            L4_T2["业务赋能与交付风控<br/>让 PM、AM 深入洞察 Bug 根因<br/>有效预警交付风险"]
+        end
+
+        subgraph L4_C3 ["Incident 管理 Agent"]
+            direction LR
+            L4_N1["Alarm Clustering<br/>告警聚类"] --> L4_N2["Post-mortem<br/>复盘报告"]
+        end
+
+        subgraph L4_C4 ["更多 AI 场景应用"]
+            direction TB
+            L4_T4["持续扩展的生态<br/>(More Apps)"]
+        end
+
+        L4_C1 ~~~ L4_C2 ~~~ L4_C3 ~~~ L4_C4
+    end
+
+    %% 层级间纯箭头连接
+    L1 ==> L2
+    L2 ==> L3
+    L3 ==> L4
+
+    %% 高亮与强调样式定义
+    style L3 fill:#0c2d48,stroke:#00a8cc,stroke-width:3px,color:#ffffff
+    style L3_Inputs fill:#145da0,stroke:#00a8cc,stroke-width:1px,color:#ffffff
+    style L3_In1 fill:#2e8bc0,stroke:#b1e5f2,stroke-width:1px,color:#ffffff
+    style L3_In2 fill:#2e8bc0,stroke:#b1e5f2,stroke-width:1px,color:#ffffff
+    style L3_In3 fill:#2e8bc0,stroke:#b1e5f2,stroke-width:1px,color:#ffffff
+    style L3_Hub fill:#2e8bc0,stroke:#b1e5f2,stroke-width:1.5px,color:#ffffff
+    style L3_Index fill:#2e8bc0,stroke:#b1e5f2,stroke-width:1.5px,color:#ffffff
+
+    style L1 fill:#f8f9fa,stroke:#dee2e6,stroke-width:1px
+    style L2 fill:#f8f9fa,stroke:#dee2e6,stroke-width:1px
+    style L4 fill:#f8f9fa,stroke:#dee2e6,stroke-width:1px
+```
+
+---
+
 ### Core Execution Sequence
 
 ```mermaid

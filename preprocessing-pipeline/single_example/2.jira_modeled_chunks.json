@@ -1,8 +1,7 @@
 [
   {
     "id": "fbe55b82-d389-517f-9744-1dd5bddb8cbb",
-    "sparse": "【#2(Toyota)】【Animation】【车模新增】【004T】【DMS】004T流用HB（232D）个车意匠",
-    "dense": "placeholder",
+    "small": "【#2(Toyota)】【Animation】【车模新增】【004T】【DMS】004T流用HB（232D）个车意匠",
     "metadata_jira": {
       "issue_key": "VEL-16616",
       "url": "https://rightware.atlassian.net/browse/VEL-16616",
@@ -167,7 +166,6 @@
       "created": "2026-08-11T11:11:59.432+0300"
     },
     "metadata_semantic": {
-      "theme": "Drive Mode Selection (DMS) 3D Car Model & Animation",
       "has_valuable_information": true,
       "rca": "Not provided in ticket. Root cause analysis should be based on comments, attachments, and animation review.",
       "resolution_pattern": "Align DMS car model animation with UI reference video; update Kanzi project; re-test on PC and board."

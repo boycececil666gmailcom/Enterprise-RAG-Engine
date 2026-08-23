@@ -35,20 +35,9 @@ JIRA_AUTH = (
 
 # region Pydantic Schemas
 class TicketKnowledgeModel(BaseModel):
-    """Enforced schema for ticket knowledge extraction, theme identification, and resolution."""
+    """Enforced schema for ticket knowledge extraction and resolution."""
     has_valuable_information: bool = Field(
         description="Set to true if the ticket contains actionable technical knowledge. Set to false ONLY if it is an empty placeholder or duplicate.",
-    )
-    theme: str = Field(
-        description=(
-            "The standardized, comprehensive horizontal engineering theme strictly in English. "
-            "Must be a high-level, reusable umbrella category that encompasses multiple related tickets across vehicle programs "
-            "(e.g., 'Drive Mode Selection (DMS) 3D Car Model & Animation', "
-            "'Instrument Cluster Startup Animation & Dial Gauge Integration', "
-            "'Cross-Variant 3D Vehicle Model Asset Reuse & Specification', "
-            "'MID Screen Transition & Menu Layout Management'). "
-            "Do NOT include ticket-specific vehicle project codes (like '004T', '232D', 'Toyota #2') in the theme name."
-        ),
     )
     rca: str = Field(
         default="",
@@ -74,12 +63,11 @@ class BatchVisualAnalysisModel(BaseModel):
 
 
 class KnowledgeMetadata(BaseModel):
-    """Unified metadata payload storing raw JIRA attributes, semantic theme, RCA, attachments, and comments."""
+    """Unified metadata payload storing raw JIRA attributes, RCA, attachments, and comments."""
     issue_key: str
     url: str = ""
     issuetype: str = "Task"
     summary: str
-    theme: str
     has_valuable_information: bool
     rca: str = ""
     resolution: str = ""
@@ -92,10 +80,9 @@ class KnowledgeMetadata(BaseModel):
 
 
 class ModeledKnowledgeChunk(BaseModel):
-    """Modeled knowledge chunk pairing deterministic UUID, sparse text (summary), dense placeholder, and unified metadata."""
+    """Modeled knowledge chunk pairing deterministic UUID, small retrieval anchor, and unified metadata."""
     id: str
-    sparse: str
-    dense: str = "placeholder"
+    small: str
     metadata: KnowledgeMetadata
 # endregion
 
@@ -166,7 +153,6 @@ async def process_ticket(ticket: dict[str, Any]) -> ModeledKnowledgeChunk | None
         f"Custom Fields:\n{cf_text if cf_text else 'None'}\n"
         f"Comments:\n{comments}"
     )
-    print("===========FIRST PASS=============")
 
     try:
         structured_llm = llm.with_structured_output(TicketKnowledgeModel)
@@ -200,7 +186,6 @@ async def process_ticket(ticket: dict[str, Any]) -> ModeledKnowledgeChunk | None
         url=ticket.get("url", ""),
         issuetype=ticket.get("issuetype", "Task"),
         summary=summary,
-        theme=model.theme,
         has_valuable_information=model.has_valuable_information,
         rca=model.rca,
         resolution=model.resolution,
@@ -212,11 +197,10 @@ async def process_ticket(ticket: dict[str, Any]) -> ModeledKnowledgeChunk | None
         created=ticket.get("created", ""),
     )
 
-    print(f"[Model-process_ticket] Modeled [{metadata.issuetype}] {key} [{model.theme}] -> UUID {qdrant_uuid}")
+    print(f"[Model-process_ticket] Modeled [{metadata.issuetype}] {key} -> UUID {qdrant_uuid}")
     return ModeledKnowledgeChunk(
         id=qdrant_uuid,
-        sparse=summary.strip(),
-        dense="placeholder",
+        small=summary.strip(),
         metadata=metadata,
     )
 # endregion
