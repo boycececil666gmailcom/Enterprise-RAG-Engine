@@ -238,10 +238,11 @@ Enterprise-RAG-Engine/
 │   ├── build-image.sh                 # Docker backend image build script
 │   └── docker-compose.yml             # Streamlined 3-service stack (Qdrant, Studio, Backend)
 ├── preprocessing-pipeline/
-│   ├── 1.export_jira_tickets.py       # JIRA REST API ticket exporter
-│   ├── 2.model_jira_defects.py        # AI defect modeling & Horizontal expansion checklist
+│   ├── 1.jira_tickets.py              # JIRA REST API ticket exporter
+│   ├── 2.model_jira_defects.py        # Vision attachment enrichment & defect modeling
 │   ├── 3.ingest_to_qdrant.py          # Hybrid dense + BM25 vector ingestion
-│   └── llm_client.py                  # Embedding & LLM client wrapper
+│   ├── llm_client.py                  # Embedding & LLM client wrapper
+│   └── utils.py                       # Media & text preprocessing utilities
 ├── progress-doc/                      # Weekly engineering milestone reports
 ├── src/
 │   └── theme_based_rag_backend/

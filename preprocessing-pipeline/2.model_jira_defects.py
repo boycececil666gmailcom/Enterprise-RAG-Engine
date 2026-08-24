@@ -34,15 +34,8 @@ JIRA_AUTH = (
 
 
 # region Pydantic Schemas
-class TicketFilterModel(BaseModel):
-    """Pass 1: Lightweight evaluation of technical value to avoid unnecessary media processing."""
-    has_valuable_information: bool = Field(
-        description="Set to true if the ticket contains actionable technical knowledge, valid task details, or defect reports. Set to false ONLY if it is an empty placeholder, duplicate, or devoid of technical content.",
-    )
-
-
 class TicketKnowledgeModel(BaseModel):
-    """Pass 2: Detailed technical knowledge extraction with visual attachment context."""
+    """Schema for deep defect knowledge modeling and resolution."""
     llm_summary: str = Field(
         default="",
         description="Comprehensive technical summary in English synthesized from the description (incorporating the injected visual attachment descriptions) and context.",
@@ -76,7 +69,7 @@ class KnowledgeMetadata(BaseModel):
     url: str = ""
     issuetype: str = "Task"
     summary: str
-    has_valuable_information: bool
+    has_valuable_information: bool = True
     rca: str = ""
     resolution: str = ""
     llm_summary: str = ""
@@ -101,7 +94,6 @@ async def _enrich_attachments(
     attachments: list[dict[str, Any]],
     ticket_context: str,
     key: str,
-    summary: str,
 ) -> list[dict[str, Any]]:
     """Enriches all non-archive image attachments using vision LLM analysis."""
     enriched = [dict(a, description=a.get("description", "")) for a in attachments]
@@ -121,7 +113,7 @@ async def _enrich_attachments(
     content_parts: list[dict[str, Any]] = [
         {
             "type": "text",
-            "text": f"Analyze the visual attachments for JIRA ticket {key} ({summary}).\nContext:\n{ticket_context}\n\nFor each image, provide a 1-2 sentence description in English.",
+            "text": f"Analyze the visual attachments for JIRA ticket {key}.\nContext:\n{ticket_context}\n\nFor each image, provide a 1-2 sentence description in English.",
         }
     ]
     for item, uri in valid_media:
@@ -146,7 +138,7 @@ async def _enrich_attachments(
 
 # region Ticket Processor
 async def process_ticket(ticket: dict[str, Any]) -> ModeledKnowledgeChunk | None:
-    """Processes a single ticket through a multi-pass pipeline: Pass 1 (Value Filter) -> Media Enrichment -> Pass 2 (Deep Modeling)."""
+    """Enriches attachments and models defect knowledge into structured metadata chunk."""
     if not llm:
         return None
 
@@ -163,24 +155,10 @@ async def process_ticket(ticket: dict[str, Any]) -> ModeledKnowledgeChunk | None
         f"Comments:\n{raw_comments}"
     )
 
-    # Pass 1: Lightweight Value & Relevance Filtering (Token & Cost Saving)
-    try:
-        filter_llm = llm.with_structured_output(TicketFilterModel)
-        filter_result: TicketFilterModel = await filter_llm.ainvoke(raw_context)
-    except Exception as e:
-        print(f"[Model-process_ticket] Error in Pass 1 filtering for {key}: {e}")
-        return None
-
-    if not filter_result.has_valuable_information:
-        print(f"[Model-process_ticket] Skipped {key}: Insufficient technical value (Pass 1).")
-        return None
-
-    # Pass 2: Media Enrichment & Deep Knowledge Extraction
     enriched_attachments = await _enrich_attachments(
         valid_attachments,
         ticket_context=raw_context,
         key=key,
-        summary=summary,
     )
 
     cleaned_desc = clean_attachment_tags(ticket.get("description", ""), enriched_attachments)
@@ -201,7 +179,7 @@ async def process_ticket(ticket: dict[str, Any]) -> ModeledKnowledgeChunk | None
         knowledge_llm = llm.with_structured_output(TicketKnowledgeModel)
         model: TicketKnowledgeModel = await knowledge_llm.ainvoke(enriched_ticket_context)
     except Exception as e:
-        print(f"[Model-process_ticket] Error in Pass 2 modeling for {key}: {e}")
+        print(f"[Model-process_ticket] Error modeling {key}: {e}")
         return None
 
     chunk_str_id = f"jira-{key}"
@@ -243,7 +221,7 @@ async def main() -> None:
     with open(INPUT_PATH, encoding="utf-8") as f:
         tickets = json.load(f)
 
-    print(f"[Model-main] Processing {len(tickets)} tickets concurrently with Pydantic structured output...")
+    print(f"[Model-main] Processing {len(tickets)} tickets from '{INPUT_PATH.name}' concurrently...")
     tasks = [process_ticket(t) for t in tickets]
     results = await asyncio.gather(*tasks)
 
@@ -251,7 +229,7 @@ async def main() -> None:
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         json.dump(chunks, f, ensure_ascii=False, indent=2)
 
-    print(f"[Model-main] Saved {len(chunks)} valid modeled chunks to '{OUTPUT_PATH.name}'.")
+    print(f"[Model-main] Saved {len(chunks)} modeled chunks to '{OUTPUT_PATH.name}'.")
 
 
 if __name__ == "__main__":
